@@ -1,0 +1,98 @@
+{
+  "fresh-01": {
+    "control": false,
+    "mandatoryUnknown": false,
+    "counterevidence": true,
+    "required": [
+      "crit-fresh-01"
+    ],
+    "criteria": {
+      "crit-fresh-01": {
+        "description": "Reject 4,800 L/h and the assertion that both feeds report L/min. The record defines feed B as 40 calibrated pulses/min at 0.5 L/pulse, so B contributes 20 L/min and the combined one-hour volume is 3,600 L. Limit the conclusion to the stated window.",
+        "sourceRefs": [
+          "fresh-01-src"
+        ]
+      }
+    },
+    "correctAnswer": "Refuted for the stated hour: B's 40 pulses/min at 0.5 L/pulse is 20 L/min; adding A's 40 L/min gives 60 L/min, or 3,600 L in the hour, rather than 4,800 L. The missing conversion flag invalidates treating B's native rate as litres/min."
+  },
+  "fresh-02": {
+    "control": true,
+    "mandatoryUnknown": false,
+    "counterevidence": false,
+    "required": [],
+    "criteria": {
+      "crit-fresh-02": {
+        "description": "Verdict must accept the narrowly scoped claim as already fully supported by the stated context (feeds configured in L/min per certificates C-118/C-119, rates 40.0 and 38.2 L/min for the full hour, i.e. 4,692 L) without manufacturing doubt, and must not extend the claim beyond the 12 March 14:00-15:00 window or to other runs.",
+        "sourceRefs": [
+          "fresh-02-src"
+        ]
+      }
+    },
+    "correctAnswer": "Supported as stated. For the 12 March 14:00-15:00 window both feeds were configured in L/min with logged rates 40.0 and 38.2 L/min, so combined throughput was 4,692 L; no extra record check is needed. The verdict applies to that window only and says nothing about other runs or configurations."
+  },
+  "fresh-03": {
+    "control": false,
+    "mandatoryUnknown": false,
+    "counterevidence": true,
+    "required": [
+      "crit-fresh-03"
+    ],
+    "criteria": {
+      "crit-fresh-03": {
+        "description": "Verdict must reject the draft's unqualified 'meets its startup budget' claim because fresh-03-src records cold starts with p95 = 2130 ms, above the 800 ms budget, while the warm-run table (p95 = 610 ms) covers only warm starts; it must not generalise the cold-run result to warm starts or beyond the June cold-run sample.",
+        "sourceRefs": [
+          "fresh-03-src"
+        ]
+      }
+    },
+    "correctAnswer": "Not supported as stated. The warm-run table (p95 = 610 ms) covers only warm starts; the cold-run record shows 12 cold starts with p95 = 2130 ms, well above the 800 ms budget. The claim holds only if explicitly limited to warm starts; as an unqualified startup claim it is contradicted. Nothing is concluded about cold runs outside the June sample."
+  },
+  "fresh-04": {
+    "control": true,
+    "mandatoryUnknown": false,
+    "counterevidence": false,
+    "required": [],
+    "criteria": {
+      "crit-fresh-04": {
+        "description": "Verdict must accept the narrowly scoped claim as already fully supported by the stated context (complete 40-run warm table for 3-7 June, p95 = 610 ms, warm budget 800 ms) without demanding further checks, and must not extend the verdict to cold starts or other windows.",
+        "sourceRefs": [
+          "fresh-04-src"
+        ]
+      }
+    },
+    "correctAnswer": "Supported as stated. The complete warm-run table for 3-7 June gives p95 = 610 ms against an 800 ms warm-start budget, so the scoped claim is proven by the context alone; no additional record check is required. The verdict is confined to warm starts in that window and makes no statement about cold starts."
+  },
+  "fresh-05": {
+    "control": false,
+    "mandatoryUnknown": true,
+    "counterevidence": false,
+    "required": [
+      "crit-fresh-05"
+    ],
+    "criteria": {
+      "crit-fresh-05": {
+        "description": "Preserve completeness of all runtime dependencies as unresolved: the scan covers the manifest but the optional extension directory's contents are unknown. Do not assert that all runtime components were inventoried or that a specific dependency is missing. It is valid to describe the evidence/scan coverage as incomplete.",
+        "sourceRefs": [
+          "fresh-05-src"
+        ]
+      }
+    },
+    "correctAnswer": "Unknown for all runtime dependencies. The 18 manifest entries are covered, but the optional extension directory was not checked and its contents are unknown. This proves an evidence-coverage gap, not that a specific runtime component is missing or that the complete inventory is established. Keep that gap open."
+  },
+  "fresh-06": {
+    "control": true,
+    "mandatoryUnknown": false,
+    "counterevidence": false,
+    "required": [],
+    "criteria": {
+      "crit-fresh-06": {
+        "description": "Verdict must accept the narrowly scoped claim as already fully supported by the stated context (run scope = full manifest; manifest declares 12 direct dependencies; output lists exactly those 12 one-to-one) without demanding broader discovery, and must not extend the verdict to transitive, bundled, or otherwise undeclared components.",
+        "sourceRefs": [
+          "fresh-06-src"
+        ]
+      }
+    },
+    "correctAnswer": "Supported as stated. The 9 June run covered the full application manifest, which declares 12 direct dependencies, and the inventory lists exactly those 12 with matching versions; the scoped claim is proven by the context alone. The verdict covers only direct manifest-declared dependencies and asserts nothing about transitive or bundled components."
+  }
+}

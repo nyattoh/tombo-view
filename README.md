@@ -2,7 +2,7 @@
 
 AIが自分の理解を確かめる複眼ツール。回答案や操作予定を、主張、証拠、未確認事項、検査へ分け、追加証拠に応じて状態を更新します。
 
-**v0.1 は探索的な試作品です。** 固定の架空デモ、TypeScript SDK、CLI、エージェント用スキル、比較実験の準備データを提供します。実モデルによる効果比較は未実施です。未知をすべて発見する能力、完全な理解、幻覚の防止を保証しません。
+**v0.1 は探索的な試作品です。** TypeScript SDK、CLI、会話内スキルで、証拠に応じた状態更新と再考を実行します。最初の実モデル比較36試行は受入条件を満たしませんでした。訂正生成を追加した修正版の効果は未確認です。[比較結果と限界](docs/metacognition-evaluation-epoch1.md)を参照してください。未知をすべて発見する能力、完全な理解、幻覚の防止を保証しません。
 
 [English](#english) · [仕様書](TOMBO_spec_v0.1_ja.md) · [比較実験の準備](evaluation/README.md)
 
@@ -65,7 +65,7 @@ const reopened = tombo.invalidate(next.state, {
 
 CLIの再考は `node dist/cli.js reflect --state state.json --critic file:/absolute/path/critic.mjs --out reflected.json --ledger events.jsonl` で実行します。モジュールは `reflect(input)` を持つcriticを明示的にexportします。暗黙の提供者や有料生成接続は追加しません。
 
-比較評価器は `evaluation/metacognition-runner.mjs`、実ホストへの入出力は `scripts/metacognition-host-trial.mjs` です。通常再点検との同条件比較を準備しています。機構の回帰テスト、開発用パイロット、評価用の成績は区別し、開発用の成功を効果実証としません。[開発計画](docs/metacognition-plan.md)を参照してください。
+比較評価器は `evaluation/metacognition-runner.mjs`、実ホストへの入出力は `scripts/metacognition-host-trial.mjs` です。通常再点検との最初の同条件比較は不合格でした。機構の回帰テスト、開発用パイロット、評価用の成績は区別し、開発用の成功を効果実証としません。[比較結果](docs/metacognition-evaluation-epoch1.md)と[開発計画](docs/metacognition-plan.md)を参照してください。
 
 `createTombo({ adapter })` に渡す生成アダプタは `generate(input)` を提供します。入力には `operation`、`task`、更新時の `state` と `observations`、出力トークン上限を含みます。応答は `proposal` と `usage` です。`proposal` は主張、観点、未確認事項、検査、証拠評価、解決の提案を含み、状態全体の上書きは受け付けません。
 
@@ -99,7 +99,7 @@ node --env-file=.env dist/cli.js inspect --input your-task.json --adapter file:e
 
 候補は最大8件、各回の検査は最大3件です。初期予算は追加探索2回、モデル呼出し3回、ツール呼出し6回、120秒です。上限は設計値で、性能の実測値ではありません。ホストの実行時間と利用量も予算に含めます。
 
-比較用の48件は自作の架空ケースです。評価用の注釈をモデルへ渡さず、通常のエージェント、一般的な再点検、固定チェックリスト、TOMBOを同予算で比較してください。比較実験、実プロバイダー接続、効果の統計評価はまだ行っていません。
+比較準備用の48件は自作の架空ケースです。別の評価用６件で、注釈を参加モデルへ渡さず通常再点検とTOMBOを比較しました。ホスト経由の生成を実行しましたが、直接の有料API接続と効果の統計評価は行っていません。費用とトークン数は不明です。
 
 ## エージェント用スキル
 
@@ -127,7 +127,7 @@ Point the installed skill's `references/runtime.json` at the built repository wi
 
 TOMBO is an experimental tool for checking an AI agent's understanding. It separates draft answers and planned actions into claims, evidence, open questions, and probes. New evidence updates the external state of understanding.
 
-Version 0.1 provides a TypeScript SDK, a CLI, an agent skill, two synthetic replay examples, and 48 synthetic scenarios for preparing comparisons. Real-model effectiveness has not been evaluated. TOMBO does not guarantee complete understanding, discovery of every unknown, or prevention of hallucinations.
+Version 0.1 provides a TypeScript SDK, a CLI, an agent skill, two synthetic replay examples, and 48 synthetic scenarios for preparing comparisons. An initial real-model comparison of 36 trials failed the acceptance criteria. The benefit of the subsequent bounded repair implementation remains untested. See the [comparison results and limits](docs/metacognition-evaluation-epoch1.md). TOMBO does not guarantee complete understanding, discovery of every unknown, or prevention of hallucinations.
 
 ### Run the replay examples
 

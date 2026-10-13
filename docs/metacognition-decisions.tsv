@@ -10,3 +10,5 @@ ts	phase	decision	why	evidence	result
 2026-10-13T19:27:46Z	verification	評価器・製品のGLM静的レビューがpass、導入済みスキル4ファイルのhash一致とreflect準備を確認	静的検証と意味的な効果を分ける	results/metacognition-development/product-review-glm-r1.md	意味的独立採点は未完了
 2026-10-13T19:42:32Z	evaluation-failure	work-07の全6試行をGLMが匿名採点、TOMBOの1更新拒否で非退行条件を満たさない	失敗を保持して評価中の実装を変えない	results/metacognition-development/grading-partial-report-work-07.json	初回エポックの目的達成は不合格、残り比較を継続
 2026-10-13T19:59:41Z	checkpoint	3課題族18試行の匿名採点を保存し形式エラー0、現版のreadinessはFAIL	失敗・時間切れを除外せず原因を分ける	results/metacognition-development/grading-partial-report.json	初回比較と修復・新課題族の再評価を継続
+2026-10-13T21:36:40Z	epoch1-archive	36試行26成功10エラーを保持、独立採点完了、受入FAIL	修正版の効果と混同しない	docs/metacognition-evaluation-epoch1.md	実測費用と非公開再試行は不明
+2026-10-13T21:36:40Z	method-binding	GLM指摘の修復回数照合不足をREDで再現して修正、235全試験成功	凍結条件と実効値を採点時に照合する	results/metacognition-development/method-binding-handover.md	第2回独立レビューと新比較は未完了

@@ -11,7 +11,7 @@ export const RunSchema = z.object({
   id:z.string().min(1), caseId:z.string(), arm:z.enum(['baseline','tombo']), repeat:z.number().int().positive(),
   status:z.enum(['success','error','cancelled','not_run']), origin:z.enum(['real-model','fixture']),
   model:z.object({provider:z.string().min(1),name:z.string().min(1),effort:z.string().min(1)}).strict(),
-  requested:z.object({capabilities:z.array(z.string()),maxCalls:count,maxOutputChars:count}).strict(),
+  requested:z.object({capabilities:z.array(z.string()),maxCalls:count,maxOutputChars:count,modelRepairAttempts:z.number().int().min(0).max(2).optional(),maximumElapsedMs:z.number().int().positive().optional()}).strict(),
   observed:z.object({calls:count,modelCalls:count,inputTokens:usage,outputTokens:usage,cost:usage,durationMs:usage}).strict(),
   checks:z.array(z.object({capability:z.string(),sourceId:z.string(),status:z.enum(['ok','unavailable','incomplete','conflict']),responseDigest:z.string()}).strict()),
   output:z.string(), packetDigest:z.string(), protocolDigest:z.string()
@@ -100,6 +100,11 @@ export function scoreRuns(cases,annotations,protocol,inputRuns,inputJudgements) 
         if(r) {
           if(r.origin==='fixture') fixtures++;
           transcript=r.packetDigest===digest(participantPacket(c))&&r.protocolDigest===digest(protocol)&&r.requested.maxCalls===protocol.requested.maxCalls&&r.requested.maxOutputChars===protocol.requested.maxOutputChars&&digest(r.requested.capabilities)===digest(c.capabilities)&&r.observed.calls<=r.requested.maxCalls&&r.observed.calls===r.observed.modelCalls+r.checks.length&&r.output.length<=r.requested.maxOutputChars&&(r.status!=='success'||r.observed.modelCalls>=1);
+          const expectedRepairs=protocol.modelValidationRepairs?protocol.modelValidationRepairs[arm==='baseline'?'baselineSyntax':'tomboProposal']:0;
+          const actualRepairs=r.requested.modelRepairAttempts??(protocol.modelValidationRepairs?undefined:0);
+          transcript=transcript&&actualRepairs!==undefined&&actualRepairs===expectedRepairs;
+          if(protocol.participantModel!==undefined) transcript=transcript&&digest(r.model)===digest(protocol.participantModel);
+          if(protocol.maximumElapsedMs!==undefined) transcript=transcript&&r.requested.maximumElapsedMs===protocol.maximumElapsedMs&&typeof r.observed.durationMs==='number'&&r.observed.durationMs<=protocol.maximumElapsedMs;
           transcript=transcript&&r.checks.every(check=>{try{return check.responseDigest===digest(executeTool(c,check.capability,check.sourceId))&&check.status===executeTool(c,check.capability,check.sourceId).status;}catch{return false;}});
           if(!transcript) invalidTranscripts++;
           if(j&&!validJudgement(j,r,c,annotation)) invalidJudgements++;
