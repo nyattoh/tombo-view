@@ -1,15 +1,15 @@
 import { createHash } from 'node:crypto';
 import { z } from 'zod';
 import {
-  taskPacketSchema, stateSchema, observationsSchema, generationOutputSchema,
+  taskPacketSchema, stateSchema, observationsSchema, generationOutputSchema, reflectionOutputSchema,
   type Assessment, type Evidence, type Gap, type GenerationAdapter, type GenerationInput,
-  type GenerationOutput, type InspectionResult, type Observation, type Proposal,
+  type GenerationOutput, type ReflectionInput, type InspectionResult, type Observation, type Proposal,
   type TaskPacket, type Tombo, type UnderstandingChange, type UnderstandingState, type Usage,
 } from './types.js';
 
 export type TomboErrorCode = 'invalid_input' | 'input_too_large' | 'invalid_model_output' |
   'model_error' | 'model_timeout' | 'budget_accounting_unavailable' | 'budget_exhausted' |
-  'no_progress' | 'capability_limit' | 'passage_unavailable' | 'revision_conflict' | 'unsupported_fixture' | 'invalid_ledger' | 'candidate_limit';
+  'no_progress' | 'reflection_inconclusive' | 'assessment_pending' | 'capability_limit' | 'passage_unavailable' | 'revision_conflict' | 'unsupported_fixture' | 'invalid_ledger' | 'candidate_limit';
 
 export class TomboError extends Error {
   constructor(public readonly code: TomboErrorCode, message: string, options?: ErrorOptions) {
@@ -30,6 +30,21 @@ function canonical(value: unknown): string {
       .map(key => JSON.stringify(key) + ':' + canonical(record[key])).join(',') + '}';
   }
   return JSON.stringify(value);
+}
+
+export function understandingHash(state: UnderstandingState): string {
+  const metadata = (items: Evidence[]) => items.map(({ passage: _, passageUnavailable: __, ...item }) => item);
+  return hashPassage(canonical({
+    task: { ...state.task, evidence: metadata(state.task.evidence) }, evidence: metadata(state.evidence),
+    claims: state.claims, lenses: state.lenses, gaps: state.gaps, probes: state.probes, excludedCandidates: state.excludedCandidates,
+  }));
+}
+
+function reflectionFresh(state: UnderstandingState): boolean {
+  const receipt = state.reflection;
+  return receipt?.completion === 'completed' && receipt.binding.taskId === state.taskId &&
+    receipt.binding.understandingHash === understandingHash(state) &&
+    receipt.reviewedClaimIds.length === state.claims.length && state.claims.every(claim => receipt.reviewedClaimIds.includes(claim.id));
 }
 
 function parse<T>(schema: z.ZodType<T>, input: unknown, code: TomboErrorCode): T {
@@ -122,6 +137,7 @@ function checkState(state: UnderstandingState, code: TomboErrorCode, derived = t
   requireCondition(new Set(state.appliedExecutions.map(item => item.executionId)).size === state.appliedExecutions.length, code, 'Duplicate execution ID');
   requireCondition(state.appliedExecutions.every(item => probes.has(item.probeId)), code, 'Unknown execution probe');
   requireCondition(state.pendingAssessmentExecutionIds?.every(id => state.appliedExecutions.some(item => item.executionId === id)) ?? true, code, 'Unknown pending assessment execution');
+  if (state.reflection) requireCondition(state.reflection.binding.taskId === state.taskId && state.reflection.binding.basedRevision < state.revision, code, 'Invalid reflection receipt binding');
   if (!derived) return;
   requireCondition(state.gaps.length <= 8, code, 'Candidate cap exceeded');
   for (const claim of state.claims) {
@@ -129,6 +145,8 @@ function checkState(state: UnderstandingState, code: TomboErrorCode, derived = t
     if (!hasRedacted) requireCondition(claim.status === claimStatus(state, claim), code, `Claim status does not follow evidence ${claim.id}`);
   }
   for (const gap of state.gaps) if (gap.status === 'resolved') requireCondition(resolutionValid(state, gap, true), code, `Unjustified resolution ${gap.id}`);
+  if (state.decision === 'ready_for_requested_step' && state.task.reflectionRequired) requireCondition(
+    !state.stopReason && reflectionFresh(state) && (!state.task.proposedAnswer || state.claims.length > 0), code, 'Current completed reflection required');
   if (state.decision === 'ready_for_requested_step') requireCondition(!state.pendingAssessmentExecutionIds && !state.gaps.some(gap => gap.importance === 'required' && gap.status !== 'resolved') && !state.excludedCandidates?.some(item => item.importance === 'required'), code, 'Required gaps or assessments remain');
 }
 
@@ -166,7 +184,18 @@ function result(state: UnderstandingState, changes: UnderstandingChange[] = []):
     }).slice(0, 3);
   const userQuestions = needed.filter(gap => gap.kind === 'ambiguous_intent').map(gap => gap.question);
   if (state.excludedCandidates?.some(item => item.importance === 'required')) { state.decision = 'blocked'; state.stopReason = 'candidate_limit'; }
-  else if (!needed.length && !state.pendingAssessmentExecutionIds) { state.decision = 'ready_for_requested_step'; state.stopReason = null; }
+  else if (state.task.reflectionRequired && state.stopReason) state.decision = 'blocked';
+  else if (!needed.length && !state.pendingAssessmentExecutionIds) {
+    if (state.task.reflectionRequired && state.task.proposedAnswer && !state.claims.length) { state.decision = 'blocked'; state.stopReason = 'no_progress'; }
+    else if (state.task.reflectionRequired && !reflectionFresh(state)) {
+      const budget = state.task.budget;
+      if (state.usage.modelCalls >= budget.maxModelCalls || state.usage.toolCalls > budget.maxToolCalls ||
+        state.usage.elapsedMs >= budget.maxElapsedMs || budget.maxOutputTokensPerCall === 0 ||
+        (budget.maxCostYen !== undefined && state.usage.costYen !== null && state.usage.costYen >= budget.maxCostYen)) {
+        state.decision = 'blocked'; state.stopReason = 'budget_exhausted';
+      } else state.decision = 'needs_reflection';
+    } else { state.decision = 'ready_for_requested_step'; state.stopReason = null; }
+  }
   else if (state.stopReason) state.decision = 'blocked';
   else if (exhausted(state, true)) { state.decision = 'blocked'; state.stopReason = 'budget_exhausted'; }
   else if (next.length) state.decision = 'needs_check';
@@ -283,7 +312,10 @@ export function createTombo(options: { adapter: GenerationAdapter; now?: () => D
     return timestamp;
   };
 
-  async function generate(state: UnderstandingState, input: GenerationInput): Promise<GenerationOutput> {
+  async function generate<I extends GenerationInput | ReflectionInput, O extends { usage?: GenerationOutput['usage'] }>(
+    state: UnderstandingState, input: I,
+    adapter: { generate(input: I): Promise<O>; estimateMaxCostYen?(input: I): number | Promise<number> }, schema: z.ZodType<O>,
+  ): Promise<O> {
     const budget = state.task.budget;
     const generationInput = { ...input, maxOutputTokens: budget.maxOutputTokensPerCall };
     requireCondition(JSON.stringify(generationInput).length <= budget.maxInputChars, 'input_too_large', 'Generation input exceeds character cap');
@@ -292,9 +324,9 @@ export function createTombo(options: { adapter: GenerationAdapter; now?: () => D
       requireCondition(state.usage.modelCalls < budget.maxModelCalls && state.usage.elapsedMs < budget.maxElapsedMs && budget.maxOutputTokensPerCall > 0, 'budget_exhausted', 'Generation budget exhausted');
       let reserved: number | undefined;
       if (budget.maxCostYen !== undefined) {
-        requireCondition(options.adapter.estimateMaxCostYen && state.usage.costYen !== null, 'budget_accounting_unavailable', 'Monetary cap requires a cost upper bound and known usage');
+        requireCondition(adapter.estimateMaxCostYen && state.usage.costYen !== null, 'budget_accounting_unavailable', 'Monetary cap requires a cost upper bound and known usage');
         try {
-          reserved = await timed(() => Promise.resolve(options.adapter.estimateMaxCostYen!(structuredClone(generationInput))), budget.maxElapsedMs - state.usage.elapsedMs);
+          reserved = await timed(() => Promise.resolve(adapter.estimateMaxCostYen!(structuredClone(generationInput))), budget.maxElapsedMs - state.usage.elapsedMs);
         } catch (error) {
           if (error instanceof TomboError) throw error;
           throw new TomboError('budget_accounting_unavailable', 'Cost reservation failed', { cause: error });
@@ -310,12 +342,15 @@ export function createTombo(options: { adapter: GenerationAdapter; now?: () => D
       const elapsedBeforeCall = state.usage.elapsedMs;
       state.usage.modelCalls++;
       let receivedOutput = false;
+      let accountedOutput = false;
       try {
-        const raw = await timed(() => options.adapter.generate(structuredClone(generationInput)), budget.maxElapsedMs - state.usage.elapsedMs);
+        const raw = await timed(() => adapter.generate(structuredClone(generationInput)), budget.maxElapsedMs - state.usage.elapsedMs);
         receivedOutput = true;
-        const output = parse(generationOutputSchema, raw, 'invalid_model_output');
-        state.usage.totalTokens = sumKnown(state.usage.totalTokens, output.usage?.totalTokens ?? null);
-        state.usage.costYen = sumKnown(state.usage.costYen, output.usage?.costYen ?? null);
+        const reported = parse(z.object({ usage: generationOutputSchema.shape.usage }), raw, 'invalid_model_output');
+        state.usage.totalTokens = sumKnown(state.usage.totalTokens, reported.usage?.totalTokens ?? null);
+        state.usage.costYen = sumKnown(state.usage.costYen, reported.usage?.costYen ?? null);
+        accountedOutput = true;
+        const output = parse(schema, raw, 'invalid_model_output');
         if (budget.maxCostYen !== undefined) requireCondition(output.usage?.costYen !== null && output.usage?.costYen !== undefined && output.usage.costYen <= reserved!, 'budget_accounting_unavailable', 'Reported model cost exceeds reserved upper bound or is unavailable');
         const outputTokens = output.usage?.outputTokens ?? output.usage?.totalTokens;
         requireCondition(outputTokens !== null && outputTokens !== undefined, 'budget_accounting_unavailable', 'Adapter must report output token count or total token upper bound');
@@ -326,7 +361,7 @@ export function createTombo(options: { adapter: GenerationAdapter; now?: () => D
       } catch (error) {
         if (!receivedOutput) { state.usage.totalTokens = null; state.usage.costYen = null; }
         if (error instanceof TomboError && error.code !== 'model_timeout') {
-          if (error.code === 'invalid_model_output') { state.usage.totalTokens = null; state.usage.costYen = null; }
+          if (error.code === 'invalid_model_output' && !accountedOutput) { state.usage.totalTokens = null; state.usage.costYen = null; }
           throw error;
         }
         state.usage.totalTokens = null;
@@ -351,20 +386,60 @@ export function createTombo(options: { adapter: GenerationAdapter; now?: () => D
         decision: 'blocked', stopReason: null, appliedExecutions: [], excludedCandidates: [] };
       if (exhausted(state) || task.budget.maxRounds === 0) return { state: { ...state, stopReason: 'budget_exhausted' }, changes: [], nextProbeIds: [], userQuestions: [] };
       const original = structuredClone(state);
-      const output = await generate(state, { operation: 'inspect', task });
+      const output = await generate(state, { operation: 'inspect', task }, options.adapter, generationOutputSchema);
       requireCondition(state.usage.elapsedMs < task.budget.maxElapsedMs, 'budget_exhausted', 'Generation elapsed budget exhausted');
       applyProposal(state, output.proposal);
       state.revision = 1;
       return result(state, changesBetween(original, state, 'Initial inspection proposal'));
     },
-    async update(input, observationsInput) {
+    async reflect(input, critic) {
+      const original = parse(stateSchema, input, 'invalid_input');
+      checkState(original, 'invalid_input');
+      const state = structuredClone(original);
+      state.decision = 'blocked';
+      state.stopReason = null;
+      state.usage.elapsedMs = elapsed(state, clock());
+      try {
+        requireCondition(critic && typeof critic.reflect === 'function', 'invalid_input', 'Explicit critic adapter required');
+        requireCondition(!state.pendingAssessmentExecutionIds, 'assessment_pending', 'Complete the pending assessment before reflection');
+        requireCondition(state.usage.toolCalls <= state.task.budget.maxToolCalls, 'budget_exhausted', 'Observed tool budget exceeded');
+        requireCondition(!state.evidence.some(item => item.validity === 'current' && item.passageUnavailable), 'passage_unavailable', 'Reacquire current evidence passages before reflection');
+        const binding = { taskId: state.taskId, basedRevision: original.revision, understandingHash: understandingHash(original) };
+        const reflectionInput: ReflectionInput = { operation: 'reflect', task: state.task, state: structuredClone(original), binding,
+          maxOutputTokens: state.task.budget.maxOutputTokensPerCall };
+        const output = await generate(state, reflectionInput, {
+          generate: value => critic.reflect(value),
+          ...(critic.estimateMaxCostYen ? { estimateMaxCostYen: (value: ReflectionInput) => critic.estimateMaxCostYen!(value) } : {}),
+        }, reflectionOutputSchema);
+        requireCondition(canonical(output.binding) === canonical(binding), 'invalid_model_output', 'Reflection binding does not match current understanding');
+        requireCondition(output.reviewedClaimIds.every(id => original.claims.some(claim => claim.id === id)) &&
+          (output.completion !== 'completed' || original.claims.every(claim => output.reviewedClaimIds.includes(claim.id))),
+          'invalid_model_output', 'Reflection claim coverage does not match current claims');
+        const candidate = structuredClone(state);
+        applyProposal(candidate, output.proposal);
+        candidate.reflection = { binding: output.binding, reviewedClaimIds: output.reviewedClaimIds, completion: output.completion, limitations: output.limitations };
+        candidate.revision = original.revision + 1;
+        const changes = changesBetween(original, candidate, 'Reflection proposed additional checks');
+        if (output.completion === 'inconclusive') {
+          candidate.decision = 'blocked'; candidate.stopReason = 'reflection_inconclusive';
+          return { state: candidate, changes, nextProbeIds: [], userQuestions: [] };
+        }
+        return result(candidate, changes);
+      } catch (error) {
+        if (error instanceof TomboError) return stopped(original, state.usage, error.code);
+        throw error;
+      }
+    },
+    async update(input, observationsInput, updateOptions) {
       const original = parse(stateSchema, input, 'invalid_input');
       checkState(original, 'invalid_input');
       let state = structuredClone(original);
       let validatedObservations: UnderstandingState | undefined;
+      state.decision = 'blocked';
       state.stopReason = null;
       state.usage.elapsedMs = elapsed(state, clock());
       try {
+        const mode = parse(z.strictObject({ deferAssessment: z.literal(true).optional() }), updateOptions ?? {}, 'invalid_input');
         const observations = parse(observationsSchema, observationsInput, 'invalid_input');
         const unique: Observation[] = [];
         const supplied = new Map<string, Observation>();
@@ -381,11 +456,11 @@ export function createTombo(options: { adapter: GenerationAdapter; now?: () => D
           if (previous === undefined) { deliveries.set(observation.executionId, payloadHash); unique.push(observation); }
         }
         requireCondition(!pending.length || (supplied.size === pending.length && pending.every(id => supplied.has(id))), 'invalid_input', 'Redeliver the exact pending assessment batch before another update');
-        if (observations.length && !unique.length && !pending.length) return { state: original, changes: [], nextProbeIds: original.decision === 'needs_check' ? result(structuredClone(original)).nextProbeIds : [], userQuestions: [] };
+        if (observations.length && !unique.length && (!pending.length || mode.deferAssessment)) return { state: original, changes: [], nextProbeIds: original.decision === 'needs_check' ? result(structuredClone(original)).nextProbeIds : [], userQuestions: [] };
         const assessmentObservations = pending.length ? pending.map(id => supplied.get(id)!) : unique;
         if (!assessmentObservations.length) return stopped(original, state.usage, 'no_progress');
         const budget = state.task.budget;
-        if (pending.length) {
+        if (pending.length && !mode.deferAssessment) {
           const canRetry = state.usage.modelCalls < budget.maxModelCalls && state.usage.rounds < budget.maxRounds &&
             state.usage.toolCalls <= budget.maxToolCalls && state.usage.elapsedMs < budget.maxElapsedMs && budget.maxOutputTokensPerCall > 0 &&
             (budget.maxCostYen === undefined || state.usage.costYen === null || state.usage.costYen < budget.maxCostYen);
@@ -418,11 +493,12 @@ export function createTombo(options: { adapter: GenerationAdapter; now?: () => D
         checkState(state, 'invalid_input');
         state.pendingAssessmentExecutionIds = assessmentObservations.map(item => item.executionId);
         state.decision = 'blocked';
-        state.usage.rounds++;
+        if (!mode.deferAssessment) state.usage.rounds++;
         state.usage.toolCalls += newTools;
         state.usage.elapsedMs = Math.max(original.usage.elapsedMs + toolTime, state.usage.elapsedMs);
         for (const observation of unique) state.usage.costYen = sumKnown(state.usage.costYen, observation.costYen);
         validatedObservations = structuredClone(state);
+        if (mode.deferAssessment) return stopped(state, state.usage, 'assessment_pending');
         requireCondition(state.usage.modelCalls < budget.maxModelCalls && state.usage.rounds <= budget.maxRounds &&
           state.usage.toolCalls <= budget.maxToolCalls && state.usage.elapsedMs < budget.maxElapsedMs && budget.maxOutputTokensPerCall > 0,
           'budget_exhausted', 'Update or observed tool budget exhausted');
@@ -432,7 +508,7 @@ export function createTombo(options: { adapter: GenerationAdapter; now?: () => D
         }
         requireCondition(!state.evidence.some(item => item.validity === 'current' && item.passageUnavailable), 'passage_unavailable', 'Reacquire current evidence passages before generation');
         const beforeProposal = structuredClone(state);
-        const output = await generate(state, { operation: 'update', task: state.task, state: beforeProposal, observations: assessmentObservations });
+        const output = await generate(state, { operation: 'update', task: state.task, state: beforeProposal, observations: assessmentObservations }, options.adapter, generationOutputSchema);
         requireCondition(state.usage.elapsedMs < state.task.budget.maxElapsedMs, 'budget_exhausted', 'Generation elapsed budget exhausted');
         for (const resolution of output.proposal.resolutions ?? []) {
           const gap = state.gaps.find(item => item.id === resolution.gapId);

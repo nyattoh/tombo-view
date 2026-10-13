@@ -1,8 +1,9 @@
+import { understandingHash } from './core.js';
 import type { InspectionResult, UnderstandingState } from './types.js';
 
 const labels = {
   ready_for_requested_step: '今回の証拠と範囲では、次の段階へ進む材料がある',
-  needs_check: '追加の確認が必要', needs_user_input: '本人の条件の確認が必要', blocked: '必須の確認が残り、停止している',
+  needs_reflection: '現在の理解を再考する必要がある', needs_check: '追加の確認が必要', needs_user_input: '本人の条件の確認が必要', blocked: '必須の確認が残り、停止している',
 };
 const safe = (text: string) => text.replace(/[\r\n]+/g, ' ').replace(/[\\`*_{}[\]<>#|]/g, '\\$&');
 const known = (value: number | null, unit: string) => value === null ? '未取得' : `${value}${unit}`;
@@ -15,6 +16,14 @@ export function renderMarkdownReport(input: InspectionResult | UnderstandingStat
   if (state.task.taskId === 'demo-account-close' || state.task.taskId === 'demo-event-resend') lines.push('固定の架空資料による再生デモ。検出能力の測定結果ではない。', '');
   if (state.stopReason) lines.push(`停止理由: ${safe(state.stopReason)}`, '');
   if (state.evidence.some(evidence => evidence.validity === 'current' && evidence.passageUnavailable)) lines.push('履歴の証拠本文は未取得。保存時の判定を表示している。再検証には本文の再取得が必要。', '');
+  if (state.task.reflectionRequired || state.reflection) {
+    const receipt = state.reflection;
+    const fresh = receipt?.binding.understandingHash === understandingHash(state);
+    const status = !receipt || !fresh ? '現在の理解への再考は未完了。' : receipt.completion === 'completed' ? '現在の理解への再考を完了した。' : '再考の結果は不明。';
+    lines.push('## 理解の再考', '', status, '再考の完了は、意味の正しさや未知の不存在を保証しない。');
+    for (const limitation of receipt?.limitations ?? []) lines.push(`- ${safe(limitation)}`);
+    lines.push('');
+  }
   lines.push('## 証拠で確かめたこと', '');
   const claims = state.claims.filter(claim => claim.status === 'supported' || claim.status === 'contradicted' || claim.status === 'disputed');
   for (const claim of claims) lines.push(`- ${safe(claim.text)} (${claim.status === 'supported' ? '支持' : claim.status === 'contradicted' ? '反証' : '証拠が対立'})。範囲: ${safe(claim.scope)}`);

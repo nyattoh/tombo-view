@@ -60,7 +60,7 @@ export const probeSchema = probeDefinitionSchema.extend({ status: z.enum(['pendi
 export const taskPacketSchema = z.strictObject({
   schemaVersion: z.literal('0.1'), taskId: id, goal: text, mode: z.enum(['explain', 'execute']),
   successCriteria: z.array(text).min(1), evidence: z.array(evidenceSchema),
-  proposedAnswer: text.optional(), proposedActions: z.array(text).optional(), capabilities: z.array(text), budget: budgetSchema,
+  reflectionRequired: z.literal(true).optional(), proposedAnswer: text.optional(), proposedActions: z.array(text).optional(), capabilities: z.array(text), budget: budgetSchema,
 });
 export const observationSchema = z.strictObject({
   executionId: id, probeId: id, outcome: z.enum(['completed', 'no_result', 'unavailable', 'error']),
@@ -71,13 +71,19 @@ export const appliedExecutionSchema = z.strictObject({
   executionId: id, payloadHash: z.string().regex(/^[a-f0-9]{64}$/), probeId: id,
   outcome: z.enum(['completed', 'no_result', 'unavailable', 'error']),
 });
-export const decisionSchema = z.enum(['ready_for_requested_step', 'needs_check', 'needs_user_input', 'blocked']);
+export const reflectionBindingSchema = z.strictObject({
+  taskId: id, basedRevision: count, understandingHash: z.string().regex(/^[a-f0-9]{64}$/),
+});
+export const reflectionReceiptSchema = z.strictObject({
+  binding: reflectionBindingSchema, reviewedClaimIds: ids, completion: z.enum(['completed', 'inconclusive']), limitations: z.array(text),
+});
+export const decisionSchema = z.enum(['ready_for_requested_step', 'needs_reflection', 'needs_check', 'needs_user_input', 'blocked']);
 export const stateSchema = z.strictObject({
   schemaVersion: z.literal('0.1'), taskId: id, revision: count, startedAt: z.iso.datetime({ offset: true }),
   task: taskPacketSchema, evidence: z.array(evidenceSchema), claims: z.array(claimSchema), lenses: z.array(lensSchema),
   gaps: z.array(gapSchema), probes: z.array(probeSchema), usage: usageSchema, decision: decisionSchema,
   stopReason: text.nullable(), appliedExecutions: z.array(appliedExecutionSchema),
-  pendingAssessmentExecutionIds: ids.min(1).optional(),
+  pendingAssessmentExecutionIds: ids.min(1).optional(), reflection: reflectionReceiptSchema.optional(),
   excludedCandidates: z.array(z.strictObject({ id, reason: text, importance: z.enum(['required', 'optional']) })).optional(),
 });
 export const proposalSchema = z.strictObject({
@@ -89,6 +95,12 @@ export const proposalSchema = z.strictObject({
 export const generationOutputSchema = z.strictObject({
   proposal: proposalSchema, usage: z.strictObject({ totalTokens: count.nullable(), costYen: amount.nullable(), outputTokens: count.optional() }).optional(),
   model: text.optional(),
+});
+export const reflectionProposalSchema = z.strictObject({
+  lenses: z.array(lensSchema).optional(), gaps: z.array(gapDefinitionSchema).optional(), probes: z.array(probeDefinitionSchema).optional(),
+});
+export const reflectionOutputSchema = reflectionReceiptSchema.extend({
+  proposal: reflectionProposalSchema, usage: generationOutputSchema.shape.usage, model: text.optional(),
 });
 export const changeSchema = z.strictObject({
   kind: z.enum(['claim_changed', 'gap_changed', 'lens_changed']), targetId: id,
@@ -113,6 +125,10 @@ export type UnderstandingChange = z.infer<typeof changeSchema>;
 export type InspectionResult = z.infer<typeof inspectionResultSchema>;
 export type Proposal = z.infer<typeof proposalSchema>;
 export type GenerationOutput = z.infer<typeof generationOutputSchema>;
+export type ReflectionBinding = z.infer<typeof reflectionBindingSchema>;
+export type ReflectionReceipt = z.infer<typeof reflectionReceiptSchema>;
+export type ReflectionProposal = z.infer<typeof reflectionProposalSchema>;
+export type ReflectionOutput = z.infer<typeof reflectionOutputSchema>;
 export type Decision = z.infer<typeof decisionSchema>;
 export type ClaimStatus = Claim['status'];
 export type GapKind = Gap['kind'];
@@ -128,8 +144,20 @@ export interface GenerationAdapter {
   generate(input: GenerationInput): Promise<GenerationOutput>;
   estimateMaxCostYen?(input: GenerationInput): number | Promise<number>;
 }
+export interface ReflectionInput {
+  operation: 'reflect';
+  task: TaskPacket;
+  state: UnderstandingState;
+  binding: ReflectionBinding;
+  maxOutputTokens: number;
+}
+export interface CriticAdapter {
+  reflect(input: ReflectionInput): Promise<ReflectionOutput>;
+  estimateMaxCostYen?(input: ReflectionInput): number | Promise<number>;
+}
 export interface Tombo {
   inspect(packet: unknown): Promise<InspectionResult>;
-  update(state: unknown, observations: unknown): Promise<InspectionResult>;
+  reflect(state: unknown, critic: CriticAdapter): Promise<InspectionResult>;
+  update(state: unknown, observations: unknown, options?: { deferAssessment?: true }): Promise<InspectionResult>;
   invalidate(state: unknown, input: { evidenceIds: string[]; reason: string }): InspectionResult;
 }

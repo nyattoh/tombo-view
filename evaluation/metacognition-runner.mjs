@@ -16,7 +16,7 @@ export const RunSchema = z.object({
   checks:z.array(z.object({capability:z.string(),sourceId:z.string(),status:z.enum(['ok','unavailable','incomplete','conflict']),responseDigest:z.string()}).strict()),
   output:z.string(), packetDigest:z.string(), protocolDigest:z.string()
 }).strict();
-const Evidence = z.object({outputExcerpt:z.string().min(1),sourceRefs:z.array(z.string()).min(1)}).strict();
+const Evidence = z.object({outputExcerpt:z.string().min(12).refine(text=>text.replace(/\s/g,'').length>=12),sourceRefs:z.array(z.string()).min(1)}).strict();
 export const JudgementSchema = z.object({
   runId:z.string(),outputDigest:z.string(),
   assessor:z.object({id:z.string().min(1),kind:z.enum(['independent-human','independent-model']),blinded:z.literal(true)}).strict(),
@@ -48,6 +48,9 @@ export function validateDataset(cases,annotations) {
     if(families.has(c.family)&&families.get(c.family)!==c.split) throw new Error('family crosses splits');
     families.set(c.family,c.split);
     if(!annotations[c.id]) throw new Error('missing annotation');
+    const a=annotations[c.id];
+    if(!Array.isArray(a.required)||new Set(a.required).size!==a.required.length) throw new Error('invalid required criteria');
+    if(a.required.some(id=>typeof id!=='string'||!Object.hasOwn(a.criteria,id))) throw new Error('unknown required criterion');
     const refs=new Set(c.sources.map(s=>s.id));
     for(const criterion of Object.values(annotations[c.id].criteria)) if(criterion.sourceRefs.some(id=>!refs.has(id))) throw new Error('unknown annotation source');
   }
@@ -81,6 +84,8 @@ export function scoreRuns(cases,annotations,protocol,inputRuns,inputJudgements) 
   let invalidJudgements=[...judgements.keys()].filter(id=>![...runs.values()].some(r=>r.id===id)).length, unmatchedPairs=0, invalidTranscripts=0, fixtures=0, unjudged=0;
   const assessorIds=new Set(inputJudgements.filter(j=>j.assessor).map(j=>j.assessor.id));
   const independentAssessorConsistent=assessorIds.size===1;
+  const models=[...new Map([...runs.values()].map(r=>[digest(r.model),r.model])).values()];
+  const modelIdentityConsistent=models.length===1;
   const caseRows=[], rows={baseline:[],tombo:[]}, evaluation=cases.filter(c=>c.split==='evaluation');
   const threshold=protocol.thresholds;
   for(const c of evaluation) {
@@ -115,13 +120,13 @@ export function scoreRuns(cases,annotations,protocol,inputRuns,inputJudgements) 
     arms[arm].controlUnnecessaryProbe=mean(caseRows.filter(r=>r.control).map(r=>r[arm].controlUnnecessaryProbe));
     arms[arm].falseClosure=mean(caseRows.filter(r=>r.mandatorySuite).map(r=>r[arm].falseClosure));
   }
-  const complete=evaluation.length>0&&statusCounts.success===evaluation.length*protocol.minimumRepeats*2&&!invalidJudgements&&!invalidTranscripts&&!fixtures&&!unjudged&&!unmatchedPairs&&independentAssessorConsistent;
+  const complete=evaluation.length>0&&statusCounts.success===evaluation.length*protocol.minimumRepeats*2&&!invalidJudgements&&!invalidTranscripts&&!fixtures&&!unjudged&&!unmatchedPairs&&independentAssessorConsistent&&modelIdentityConsistent;
   const nonRegression=caseRows.every(r=>r.tombo.correctness>=r.baseline.correctness&&r.tombo.recall>=r.baseline.recall&&r.tombo.falseClosure<=r.baseline.falseClosure&&r.tombo.correctionAccuracy>=r.baseline.correctionAccuracy&&(!r.control||r.tombo.controlUnnecessaryProbe<=r.baseline.controlUnnecessaryProbe));
   const t=arms.tombo;
   const ready=complete&&nonRegression&&t.correctness>=threshold.correctness&&t.correctionAccuracy>=threshold.correctionAccuracy&&t.recall>=threshold.recall&&t.falseClosure===threshold.falseClosure&&t.controlUnnecessaryProbe<=threshold.maxControlUnnecessaryProbe;
-  const improved=caseRows.filter(r=>r.tombo.recall>r.baseline.recall||r.tombo.correctness>r.baseline.correctness).length;
+  const improved=caseRows.filter(r=>annotations[r.caseId].required.length&&r.tombo.recall>r.baseline.recall).length;
   const superiority=ready&&improved>=threshold.minimumImprovedCases&&t.recall-arms.baseline.recall>=threshold.superiorityRecallGain;
-  return {readiness:ready?'PASS':'FAIL',comparison:superiority?'SUPERIOR':'INCONCLUSIVE',independentCases:evaluation.length,repeatPairs:evaluation.length*protocol.minimumRepeats,statusCounts,invalidJudgements,invalidTranscripts,unjudged,fixtures,unmatchedPairs,nonRegression,independentAssessorConsistent,improvedCases:improved,arms,cases:caseRows,g4CostProven:false,boundary:protocol.boundary,protocolDigest:digest(protocol)};
+  return {readiness:ready?'PASS':'FAIL',comparison:superiority?'SUPERIOR':'INCONCLUSIVE',independentCases:evaluation.length,repeatPairs:evaluation.length*protocol.minimumRepeats,statusCounts,invalidJudgements,invalidTranscripts,unjudged,fixtures,unmatchedPairs,nonRegression,independentAssessorConsistent,models,modelIdentityConsistent,callsAndOriginAttestationOnly:true,independentAssessorAttestationOnly:true,improvedCases:improved,arms,cases:caseRows,g4CostProven:false,boundary:protocol.boundary,protocolDigest:digest(protocol)};
 }
 
 if(process.argv[1]&&import.meta.url===pathToFileURL(process.argv[1]).href) {
