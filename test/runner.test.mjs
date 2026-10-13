@@ -4,11 +4,11 @@ import { mkdtemp, writeFile, readFile, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { spawnSync } from 'node:child_process';
-import { createTombo, fixtureAdapter, FIXTURE_CASES, hashPassage } from '../dist/index.js';
+import { createTombo, fixtureAdapter, FIXTURE_CASES, hashPassage, FileJournal } from '../dist/index.js';
 import { runUnderstandingCheck } from '../dist/runner.js';
 
 function packet(overrides = {}) {
-  return { schemaVersion: '0.1', taskId: 'demo-account-close', goal: '原因を検証する', mode: 'execute', successCriteria: ['資料で検証する'], evidence: [], capabilities: ['read_document'], budget: { maxRounds: 4, maxModelCalls: 6, maxToolCalls: 6, maxElapsedMs: 10000, maxInputChars: 48000, maxOutputTokensPerCall: 4000, ...overrides } };
+  return { schemaVersion: '0.1', taskId: 'demo-account-close', goal: FIXTURE_CASES.account.goal, mode: 'execute', successCriteria: ['資料で検証する'], evidence: [], capabilities: ['read_document'], budget: { maxRounds: 4, maxModelCalls: 6, maxToolCalls: 6, maxElapsedMs: 10000, maxInputChars: 48000, maxOutputTokensPerCall: 4000, ...overrides } };
 }
 const critic = { async reflect(input) { return { binding: input.binding, reviewedClaimIds: input.state.claims.map(c => c.id), completion: 'completed', limitations: [], proposal: {}, usage: { totalTokens: 0, costYen: 0, outputTokens: 0 } }; } };
 function executor(outcome = 'completed', alter = {}) {
@@ -65,8 +65,9 @@ test('abort rejects late completion and propagates signal to executor', async ()
 test('monetary cap without declared tool upper bound refuses execution', async () => {
   const runResult = await runUnderstandingCheck({ tombo: tombo(), task: packet({ maxCostYen: 1 }), critic, executor: executor() });
   const result = runResult.result;
-  assert.equal(result.state.decision, 'blocked');
-  assert.equal(runResult.reason ?? result.state.stopReason, 'budget_accounting_unavailable');
+  assert.equal(result.state.decision, 'needs_check');
+  assert.equal(runResult.status, 'stopped');
+  assert.equal(runResult.reason, 'budget_accounting_unavailable');
   assert.equal(result.state.usage.toolCalls, 0);
 });
 test('host reflection exact state binding and stale revision refusal', async () => {
@@ -74,21 +75,26 @@ test('host reflection exact state binding and stale revision refusal', async () 
   const helper = resolve('skills/tombo-view/scripts/session.mjs');
   const run = (...args) => spawnSync(process.execPath, [helper, ...args], { encoding: 'utf8' });
   try {
-    const stateFile = join(dir, 'state.json'), envelopeFile = join(dir, 'reflection.json'), output = join(dir, 'result.json');
+    const stateFile = join(dir, 'state.json'), envelopeFile = join(dir, 'reflection.json'), output = join(dir, 'result.json'), ledger = join(dir, 'ledger.jsonl');
     const sdk = createTombo({ adapter: { async generate() { return { proposal: {}, usage: { totalTokens: 0, costYen: 0 } }; } } });
     const initial = await sdk.inspect({ ...packet(), reflectionRequired: true });
     await writeFile(stateFile, JSON.stringify(initial));
-    const prepared = run('prepare', '--operation', 'reflect', '--state', stateFile);
+    await new FileJournal(ledger).commit(-1, initial.state);
+    const prepared = run('prepare', '--operation', 'reflect', '--state', stateFile, '--ledger', ledger);
     assert.equal(prepared.status, 0, prepared.stderr);
     const context = JSON.parse(prepared.stdout);
     assert.equal(context.request.operation, 'reflect');
-    await writeFile(envelopeFile, JSON.stringify({ binding: context.binding, reflection: { binding: context.request.binding, reviewedClaimIds: [], completion: 'completed', limitations: [], proposal: {} } }));
-    const reflected = run('reflect', '--state', stateFile, '--proposal', envelopeFile, '--out', output);
+    await writeFile(envelopeFile, JSON.stringify({ binding: context.binding, reflection: { binding: context.request.binding, reviewedClaimIds: [], completion: 'completed', limitations: [], proposal: {}, usage: { totalTokens: 999, costYen: 999, outputTokens: 999 } } }));
+    const reflected = run('reflect', '--state', stateFile, '--proposal', envelopeFile, '--out', output, '--ledger', ledger);
     assert.equal(reflected.status, 0, reflected.stderr);
     const result = JSON.parse(await readFile(output, 'utf8'));
     assert.equal(result.state.decision, 'ready_for_requested_step');
     assert.equal(result.apiCallsMade, 0);
+    assert.equal(result.state.usage.totalTokens, null);
     assert.equal(result.state.usage.costYen, null);
+    const stalePreparation = run('prepare', '--operation', 'reflect', '--state', stateFile, '--ledger', ledger);
+    assert.equal(stalePreparation.status, 1);
+    assert.equal(JSON.parse(stalePreparation.stderr).error.code, 'revision_conflict');
     const wrong = run('reflect', '--state', output, '--proposal', envelopeFile);
     assert.equal(wrong.status, 1);
     assert.equal(JSON.parse(wrong.stderr).error.code, 'revision_conflict');
@@ -127,4 +133,30 @@ test('bounded cycles stop before a physical probe and keep initial understanding
   assert.equal(result.reason, 'cycle_limit');
   assert.equal(result.result.state.decision, 'needs_check');
   assert.equal(result.result.state.usage.toolCalls, 0);
+});
+
+test('timed out probe propagates abort and records an attempt without late evidence', async () => {
+  let receivedSignal;
+  const runResult = await runUnderstandingCheck({ tombo: tombo(), task: packet({ maxElapsedMs: 100 }), critic, executor: { execute(input) { receivedSignal = input.signal; return new Promise(resolve => setTimeout(() => executor().execute(input).then(resolve), 180)); } } });
+  assert.equal(runResult.status, 'stopped');
+  assert.equal(runResult.reason, 'runner_timeout');
+  assert.equal(receivedSignal.aborted, true);
+  assert.equal(runResult.result.state.evidence.length, 0);
+  assert.equal(runResult.result.state.usage.toolCalls, 1);
+  assert.equal(runResult.result.state.usage.modelCalls, 1);
+  assert.equal(runResult.result.state.usage.costYen, null);
+});
+test('one remaining tool call limits executor before a second probe', async () => {
+  const runResult = await runUnderstandingCheck({ tombo: tombo(), task: packet({ maxToolCalls: 1 }), critic, executor: executor('no_result') });
+  assert.equal(runResult.status, 'stopped');
+  assert.equal(runResult.result.state.usage.toolCalls, 1);
+  assert.equal(runResult.result.state.claims[0].status, 'unverified');
+});
+test('duplicate evidence output keeps attempted accounting without registration', async () => {
+  const normal = executor();
+  const runResult = await runUnderstandingCheck({ tombo: tombo(), task: packet(), critic, executor: { async execute(input) { const observation = await normal.execute(input); return { ...observation, evidence: [...observation.evidence, ...observation.evidence] }; } } });
+  assert.equal(runResult.status, 'stopped');
+  assert.equal(runResult.reason, 'invalid_probe_output');
+  assert.equal(runResult.result.state.usage.toolCalls, 1);
+  assert.equal(runResult.result.state.evidence.length, 0);
 });

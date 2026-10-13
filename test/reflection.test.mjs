@@ -260,3 +260,38 @@ test('deferred assessment records real observations without generation, then res
   assert.equal(resumed.state.decision, 'ready_for_requested_step');
   assert.deepEqual(resumed.state.usage, { rounds: 1, modelCalls: 2, toolCalls: 1, elapsedMs: 2, totalTokens: 20, costYen: 2 });
 });
+
+test('reflection reservation and late output cannot evade the elapsed cap', async () => {
+  let timestamp = now();
+  const tombo = core.createTombo({ adapter: adapter(), now: () => timestamp });
+  const first = await tombo.inspect(packet({ maxElapsedMs: 100, maxCostYen: 10 }));
+  const reserved = await tombo.reflect(first.state, { ...critic(), estimateMaxCostYen() { timestamp += 100; return 1; } });
+  assert.equal(reserved.state.stopReason, 'budget_exhausted');
+  assert.equal(reserved.state.usage.modelCalls, 1);
+  assert.equal(reserved.state.usage.elapsedMs, 100);
+  timestamp = now();
+  const late = await tombo.reflect(first.state, { ...critic(), async reflect(input) { const output = await critic().reflect(input); timestamp += 101; return output; } });
+  assert.equal(late.state.stopReason, 'budget_exhausted');
+  assert.equal(late.state.usage.modelCalls, 2);
+  assert.equal(late.state.usage.costYen, 2);
+  assert.equal(late.state.reflection, undefined);
+});
+
+test('a ninth required critic candidate stays visible as a blocker', async () => {
+  const tombo = core.createTombo({ adapter: adapter(), now });
+  const first = await tombo.inspect(packet());
+  const next = await tombo.reflect(first.state, critic({ lenses: [lens], gaps: Array.from({ length: 9 }, (_, i) => ({ ...gap, id: `gap-${i}`, probeIds: [], importance: i === 8 ? 'required' : 'optional' })) }));
+  assert.equal(next.state.decision, 'blocked');
+  assert.equal(next.state.stopReason, 'candidate_limit');
+  assert.deepEqual(next.state.excludedCandidates, [{ id: 'gap-8', reason: 'Candidate cap of 8 reached', importance: 'required' }]);
+});
+
+test('repeated deferred delivery preserves the pending state and actual usage', async () => {
+  const tombo = core.createTombo({ adapter: adapter(assessed, { claims: [claim], ...candidate }), now });
+  const first = await tombo.inspect(packet());
+  const deferred = await tombo.update(first.state, [observation()], { deferAssessment: true });
+  const duplicate = await tombo.update(deferred.state, [observation()], { deferAssessment: true });
+  assert.deepEqual(duplicate.state, deferred.state);
+  assert.equal(duplicate.state.usage.toolCalls, 1);
+  assert.deepEqual(duplicate.state.pendingAssessmentExecutionIds, ['read-1']);
+});

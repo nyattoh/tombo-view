@@ -20,3 +20,45 @@ test('forged source transcripts and changed frozen cases fail', () => { const s=
 test('unknown evidence references and inconsistent assessors cannot pass', () => { const s=suite(); s.ratings[0].evidence[0].sourceRefs=['nonexistent']; s.ratings[1].assessor.id='another-person'; const report=scoreRuns(cases,annotations,protocol,s.runs,s.ratings); assert.equal(report.invalidJudgements,1); assert.equal(report.independentAssessorConsistent,false); assert.equal(report.readiness,'FAIL'); });
 test('undeclared calls and output budget overflow invalidate captured runs', () => { const s=suite(); s.runs[0].output='x'.repeat(4001); s.runs[1].observed.calls=7; const report=scoreRuns(cases,annotations,protocol,s.runs,s.ratings); assert.equal(report.invalidTranscripts,2); assert.equal(report.comparison,'INCONCLUSIVE'); });
 test('findings cannot claim unseen tool evidence', () => { const s=suite(); s.runs[0].checks=[]; s.runs[0].observed.calls=1; const report=scoreRuns(cases,annotations,protocol,s.runs,s.ratings); assert.equal(report.invalidJudgements,1); assert.equal(report.readiness,'FAIL'); });
+test('dataset rejects dangling, duplicate and non-array required criteria before scoring', () => {
+  for (const required of [['missing-criterion'], [annotations[cases[0].id].required[0], annotations[cases[0].id].required[0]], 'invalid']) {
+    const altered=structuredClone(annotations); altered[cases[0].id].required=required;
+    assert.throws(()=>validateDataset(cases,altered),/required/);
+    assert.throws(()=>scoreRuns(cases,altered,protocol,[],[]),/required/);
+  }
+});
+test('one-character assessor excerpts cannot establish readiness', () => {
+  const s=suite();
+  for (const j of s.ratings) { j.evidence[0].outputExcerpt='e'; j.findings.forEach(f=>f.outputExcerpt='e'); }
+  const report=scoreRuns(cases,annotations,protocol,s.runs,s.ratings);
+  assert.equal(report.invalidJudgements,36); assert.equal(report.readiness,'FAIL');
+});
+test('whitespace padding cannot give excerpts meaningful length', () => {
+  const s=suite(); s.runs[0].output='e           '; s.ratings[0].outputDigest=outputDigest(s.runs[0].output);
+  s.ratings[0].evidence[0].outputExcerpt=s.runs[0].output; s.ratings[0].findings.forEach(f=>f.outputExcerpt=s.runs[0].output);
+  assert.equal(scoreRuns(cases,annotations,protocol,s.runs,s.ratings).invalidJudgements,1);
+});
+test('matching pairs from different case models cannot pass pooled readiness', () => {
+  const s=suite(), otherCase=s.runs[6].caseId;
+  s.runs.filter(r=>r.caseId===otherCase).forEach(r=>r.model={provider:'other-provider',name:'other-model',effort:'low'});
+  const report=scoreRuns(cases,annotations,protocol,s.runs,s.ratings);
+  assert.equal(report.unmatchedPairs,0); assert.equal(report.modelIdentityConsistent,false);
+  assert.deepEqual(report.models,[{provider:'local',name:'same',effort:'high'},{provider:'other-provider',name:'other-model',effort:'low'}]);
+  assert.equal(report.readiness,'FAIL'); assert.equal(report.comparison,'INCONCLUSIVE');
+});
+test('control correctness improvement does not count as required-finding breadth', () => {
+  const s=suite(), requiredCase=cases.find(c=>c.split==='evaluation'&&annotations[c.id].required.length), control=cases.find(c=>c.split==='evaluation'&&annotations[c.id].control);
+  for(const r of s.runs.filter(r=>r.arm==='baseline')) {
+    const j=s.ratings.find(j=>j.runId===r.id);
+    if(r.caseId===requiredCase.id) j.findings=[];
+    if(r.caseId===control.id) {j.correctness=false;j.correctionAccurate=false;}
+  }
+  const report=scoreRuns(cases,annotations,protocol,s.runs,s.ratings);
+  assert.equal(report.improvedCases,1); assert.equal(report.readiness,'PASS'); assert.equal(report.comparison,'INCONCLUSIVE');
+});
+test('perfect synthetic ratings explicitly remain attestations, not capability evidence', () => {
+  const s=suite(), report=scoreRuns(cases,annotations,protocol,s.runs,s.ratings);
+  assert.equal(report.callsAndOriginAttestationOnly,true); assert.equal(report.independentAssessorAttestationOnly,true);
+  assert.equal(report.modelIdentityConsistent,true); assert.deepEqual(report.models,[{provider:'local',name:'same',effort:'high'}]);
+  assert.equal(report.g4CostProven,false); assert.equal(report.readiness,'PASS'); assert.equal(report.comparison,'INCONCLUSIVE');
+});
