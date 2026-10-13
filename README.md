@@ -6,6 +6,14 @@ AIが自分の理解を確かめる複眼ツール。回答案や操作予定を
 
 [English](#english) · [仕様書](TOMBO_spec_v0.1_ja.md) · [比較実験の準備](evaluation/README.md)
 
+## 会話で使う
+
+エージェントへ `TOMBOで、この回答の根拠と未確認の前提を点検して` と依頼します。`skills/tombo` をエージェントのスキル配置先へ入れると、会話中のAIが検査候補を作り、同梱の `scripts/session.mjs` がSDKで状態を検証します。追加のLLM APIキーや生成サービスは不要です。
+
+固定デモに限定せず、許可された資料やコードを使って点検できます。利用者がJSONやアダプタを書く必要はありません。AIが入力、検査、証拠評価を用意します。SDKは参照や状態の整合性を確認しますが、AIの証拠評価の意味まで保証しません。
+
+配置したスキルの `references/runtime.json` に `{ "repositoryRoot": "/absolute/path/to/tombo-view" }` を設定するか、`TOMBO_ROOT` でビルド済みSDKの場所を指定します。会話側の生成トークン数・費用は不明です。SDKのモデル呼出し数はローカル提案適用の回数であり、会話全体の生成予算をSDKが制限したとは扱いません。
+
 ## 固定デモを動かす
 
 Node.js 22以上とnpmを使います。npmへのパッケージ公開はまだ行っていません。
@@ -96,6 +104,12 @@ npm run demo
 CIはLinuxとWindowsでNode.js 22と24を対象にします。MITライセンスです。第三者のPDFや非公開会話は配布物に含めません。学術的な新規性は未確認です。
 
 ## English
+
+### Use TOMBO in a conversation
+
+Install `skills/tombo` in your agent's skill directory and ask it to check the evidence and unverified assumptions in a draft answer. The current agent prepares proposals and performs authorised probes; `scripts/session.mjs` applies the SDK's state checks. You do not need an additional model API key or generation service, and you do not need to write JSON yourself.
+
+Point the installed skill's `references/runtime.json` at the built repository with a `repositoryRoot` field, or set `TOMBO_ROOT`. The helper makes no additional API calls. Usage for the conversation's generation remains unknown. Its SDK model-call counter counts local proposal applications and does not enforce the whole conversation's token, time, or monetary budget. The SDK validates structure and references, not the semantic correctness of the agent's assessments.
 
 TOMBO is an experimental tool for checking an AI agent's understanding. It separates draft answers and planned actions into claims, evidence, open questions, and probes. New evidence updates the external state of understanding.
 
