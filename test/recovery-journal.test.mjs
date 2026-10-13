@@ -68,7 +68,14 @@ test('SDK rejects a subset of a failed batch and permits a later complete repair
   assert.equal(subset.state.stopReason, 'invalid_input');
   assert.equal(subset.state.usage.modelCalls, 2);
   assert.equal(subset.state.usage.toolCalls, 2);
-  const repaired = await tombo.update(subset.state, observations);
+  const superset = await tombo.update(subset.state, [...observations, observation({ executionId: 'read-3' })]);
+  assert.equal(superset.state.stopReason, 'invalid_input');
+  assert.equal(superset.state.usage.modelCalls, 2);
+  assert.equal(superset.state.usage.toolCalls, 2);
+  const collision = await tombo.update(superset.state, [observation({ elapsedMs: 11 }), observations[1]]);
+  assert.equal(collision.state.stopReason, 'invalid_input');
+  assert.equal(collision.state.usage.toolCalls, 2);
+  const repaired = await tombo.update(collision.state, observations);
   assert.equal(repaired.state.decision, 'ready_for_requested_step');
   assert.equal(repaired.state.usage.modelCalls, 3);
   assert.equal(repaired.state.usage.toolCalls, 2);
