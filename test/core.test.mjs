@@ -103,7 +103,16 @@ test('unknown model references reject all model changes and keep registered obse
   assert.equal(next.state.usage.toolCalls, 1);
   assert.equal(next.state.revision, first.state.revision + 1);
   const deliveredAgain = await tombo.update(next.state, [obs]);
-  assert.deepEqual(deliveredAgain.state, next.state);
+  assert.equal(deliveredAgain.state.stopReason, 'invalid_model_output');
+  assert.deepEqual(deliveredAgain.state.claims, next.state.claims);
+  assert.deepEqual(deliveredAgain.state.gaps, next.state.gaps);
+  assert.deepEqual(deliveredAgain.state.evidence, next.state.evidence);
+  assert.deepEqual(deliveredAgain.state.appliedExecutions, next.state.appliedExecutions);
+  assert.equal(deliveredAgain.state.usage.modelCalls, 3);
+  assert.equal(deliveredAgain.state.usage.rounds, 2);
+  assert.equal(deliveredAgain.state.usage.toolCalls, 1);
+  assert.equal(deliveredAgain.state.usage.elapsedMs, 10);
+  assert.equal(deliveredAgain.state.revision, next.state.revision + 1);
   assert.equal(first.state.evidence.length, 0);
 });
 

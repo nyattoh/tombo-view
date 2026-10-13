@@ -8,7 +8,7 @@ AIが自分の理解を確かめる複眼ツール。回答案や操作予定を
 
 ## 会話で使う
 
-エージェントへ `TOMBOで、この回答の根拠と未確認の前提を点検して` と依頼します。`skills/tombo` をエージェントのスキル配置先へ入れると、会話中のAIが検査候補を作り、同梱の `scripts/session.mjs` がSDKで状態を検証します。追加のLLM APIキーや生成サービスは不要です。
+スキルの呼出し名は `tombo-view` です。Codexでは `$tombo-view この回答の根拠と未確認の前提を点検して` と依頼します。`skills/tombo-view` をエージェントのスキル配置先へ入れると、会話中のAIが検査候補を作り、同梱の `scripts/session.mjs` がSDKで状態を検証します。追加のLLM APIキーや生成サービスは不要です。
 
 固定デモに限定せず、許可された資料やコードを使って点検できます。利用者がJSONやアダプタを書く必要はありません。AIが入力、検査、証拠評価を用意します。SDKは参照や状態の整合性を確認しますが、AIの証拠評価の意味まで保証しません。
 
@@ -76,7 +76,11 @@ node --env-file=.env dist/cli.js inspect --input your-task.json --adapter file:e
 ## 保存と再実行
 
 - 各実行に一意の `executionId` を付けます。同じ実行結果の配送を再試行するときは同じIDを使います。別の実行は同じ結果でも別のIDです。
+- 不正なモデル提案を修正する場合は、停止結果と同じ観測バッチ全体を再評価に渡します。追加のモデル適用とラウンドを計上し、実施済みの外部検査を二重計上しません。
+- 修正前に保存された失敗状態には再評価バッチの情報がありません。その状態の回復は保証せず、新しいタスクとして点検を開始してください。旧状態と台帳は引き続き読めます。
+- 証拠を撤回すると評価待ちのバッチを破棄し、必要な検査を再開します。実施済みの利用量は保持し、新しい検査には新しい実行IDと証拠IDを使います。
 - `FileJournal.commit(expectedRevision, state)` が排他的に版を照合し、JSONLへ確定状態を追記します。JSONLを正本とし、状態JSONは再生成できるキャッシュです。
+- `FileJournal.assertCurrent(state)` が入力状態を正本と照合します。CLIと会話用ヘルパーは、モデルを適用する前に版番号と状態の内容を確認します。確定時にも、目的・予算・能力などの固定タスク情報を維持します。
 - 履歴は証拠本文を除去し、参照、ハッシュ、`passageUnavailable` を残します。再生はモデルを呼びません。再検証に必要な本文は呼出し元が元の許可された資料から再取得します。
 - 不完全な末尾や不一致のハッシュを持つ履歴は拒否します。中断後の `.lock` を自動削除しません。書込み中のプロセスがないことを確認し、原本を保全してから明示的に復旧します。
 - 状態JSONには資料本文が含まれ得ます。資料、回答案、目的自体に秘密や個人情報を含めないでください。`results/` と `.env` はGitの対象外です。
@@ -91,7 +95,7 @@ node --env-file=.env dist/cli.js inspect --input your-task.json --adapter file:e
 
 ## エージェント用スキル
 
-`skills/tombo/SKILL.md` を利用するエージェントのスキル配置先へコピーします。スキルを読むだけで検査成功を保証しません。SDKと明示的な生成アダプタ、呼出し元の検査ツールを合わせて使います。
+`skills/tombo-view` ディレクトリ全体を利用するエージェントのスキル配置先へコピーし、上記のSDK配置設定を行います。会話内モードではAIが提案を作り、同梱ヘルパーが適用します。スキルを読むだけで検査成功を保証しません。
 
 ## 開発
 
@@ -107,7 +111,9 @@ CIはLinuxとWindowsでNode.js 22と24を対象にします。MITライセンス
 
 ### Use TOMBO in a conversation
 
-Install `skills/tombo` in your agent's skill directory and ask it to check the evidence and unverified assumptions in a draft answer. The current agent prepares proposals and performs authorised probes; `scripts/session.mjs` applies the SDK's state checks. You do not need an additional model API key or generation service, and you do not need to write JSON yourself.
+The skill name is `tombo-view`. In Codex, invoke it with `$tombo-view`.
+
+Install `skills/tombo-view` in your agent's skill directory and ask it to check the evidence and unverified assumptions in a draft answer. The current agent prepares proposals and performs authorised probes; `scripts/session.mjs` applies the SDK's state checks. You do not need an additional model API key or generation service, and you do not need to write JSON yourself.
 
 Point the installed skill's `references/runtime.json` at the built repository with a `repositoryRoot` field, or set `TOMBO_ROOT`. The helper makes no additional API calls. Usage for the conversation's generation remains unknown. Its SDK model-call counter counts local proposal applications and does not enforce the whole conversation's token, time, or monetary budget. The SDK validates structure and references, not the semantic correctness of the agent's assessments.
 
@@ -133,10 +139,18 @@ An adapter supplies `generate(input)` and returns a proposal plus usage. It prop
 
 Give every real execution a unique `executionId`. Reuse it for delivery retries, but use a new ID for another execution even when the result is identical. No search result is not evidence of absence. Withdrawn evidence reopens dependent gaps. Unknown costs remain unknown.
 
+To repair an invalid model proposal, submit the stopped state and the complete original observation batch. The additional assessment consumes a model attempt and a round, while existing tool usage is counted only once. Partial or mixed batches are rejected. Successful deliveries remain idempotent.
+
+Failed states saved before this fix lack the assessment batch information. Start a new task to check them again. Existing states and journals remain readable.
+
+Withdrawing evidence discards a pending assessment batch and reopens required probes. Usage remains recorded. Use new execution and evidence IDs for a new probe run.
+
+`FileJournal.assertCurrent(state)` checks the input against the authoritative redacted journal state before generation. Commit also preserves the fixed task snapshot inside the lock.
+
 `FileJournal` owns atomic revision checks and append-only state events. The journal is authoritative; a JSON cache is replaceable. Journal events omit evidence passages and retain their references and hashes. Replay needs no model. The host must retrieve missing passages from authorised sources before rechecking them. Incomplete journals and stale locks require explicit recovery. State JSON may contain source passages, so keep sensitive material outside public files.
 
 ### Verification and limitations
 
 Tests cover state invariants, usage, budgets, replay, concurrency conflicts, and actual CLI calls. Structural validation does not prove semantic correctness. Compare TOMBO with a general recheck using the same model, evidence, tools, and budgets. Keep evaluation annotations away from model inputs and use independent human assessment. Real-provider integration, comparative experiments, and statistical effectiveness claims remain unverified.
 
-The agent skill is in `skills/tombo/SKILL.md`. Development checks are `npm run typecheck`, `npm test`, and `npm run demo`. CI targets Linux and Windows with Node.js 22 and 24. The project uses the MIT licence. No third-party PDF or private conversation is distributed. Academic novelty has not been established.
+The agent skill is in `skills/tombo-view/SKILL.md`. Development checks are `npm run typecheck`, `npm test`, and `npm run demo`. CI targets Linux and Windows with Node.js 22 and 24. The project uses the MIT licence. No third-party PDF or private conversation is distributed. Academic novelty has not been established.

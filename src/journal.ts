@@ -1,6 +1,7 @@
 import { createHash, randomUUID } from 'node:crypto';
 import { mkdir, open, readFile, rename, unlink } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
+import { isDeepStrictEqual } from 'node:util';
 import { TomboError, validateState } from './core.js';
 import type { UnderstandingState } from './types.js';
 
@@ -75,6 +76,13 @@ export class FileJournal {
     return (await readEvents(this.path)).at(-1)?.state ?? null;
   }
 
+  async assertCurrent(value: UnderstandingState | null): Promise<void> {
+    const state = value === null ? null : redact(validateState(value));
+    if (!isDeepStrictEqual(state, await this.load())) {
+      throw new TomboError('revision_conflict', 'Reload the authoritative journal state before running this command.');
+    }
+  }
+
   async commit(expectedRevision: number, value: UnderstandingState): Promise<{ cacheWritten: boolean }> {
     const state = validateState(value);
     await mkdir(dirname(this.path), { recursive: true });
@@ -89,11 +97,11 @@ export class FileJournal {
     try {
       const events = await readEvents(this.path);
       const previous = events.at(-1);
+      const saved = redact(state);
       if ((previous?.state.revision ?? -1) !== expectedRevision ||
-        (previous && (state.revision !== previous.state.revision + 1 || state.taskId !== previous.state.taskId))) {
+        (previous && (state.revision !== previous.state.revision + 1 || state.taskId !== previous.state.taskId || !isDeepStrictEqual(saved.task, previous.state.task)))) {
         throw new TomboError('revision_conflict', 'Reload the latest state before committing.');
       }
-      const saved = redact(state);
       const event: Event = {
         schemaVersion: '0.1', sequence: events.length, expectedRevision,
         previousHash: previous ? digest(previous) : null, stateHash: digest(saved), state: saved,

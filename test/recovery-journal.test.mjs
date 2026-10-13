@@ -58,6 +58,19 @@ test('SDK repairs a failed assessment without charging the execution twice, then
   assert.deepEqual(duplicate.state, repaired.state);
 });
 
+test('SDK rejects pending execution IDs that are unknown, duplicated or empty', async () => {
+  const tombo = engine([invalidProposal, repairedProposal]);
+  const first = await tombo.inspect(packet());
+  const failed = await tombo.update(first.state, [observation()]);
+  assert.equal(failed.state.stopReason, 'invalid_model_output');
+  for (const pendingAssessmentExecutionIds of [['unknown'], ['read-1', 'read-1'], []]) {
+    await assert.rejects(tombo.update({ ...failed.state, pendingAssessmentExecutionIds }, [observation()]), { code: 'invalid_input' });
+  }
+  const repaired = await tombo.update(failed.state, [observation()]);
+  assert.equal(repaired.state.claims[0].status, 'supported');
+  assert.equal(repaired.state.usage.modelCalls, 3);
+});
+
 test('SDK rejects a subset of a failed batch and permits a later complete repair', async () => {
   const tombo = engine([invalidProposal, repairedProposal]);
   const first = await tombo.inspect(packet());
@@ -169,6 +182,9 @@ test('session accepts exact journal input and rejects valid same-revision forks 
   }));
   await t.test('exact state', () => temporary(async directory => {
     const paths = await session(directory);
+    const saved = JSON.parse(await readFile(paths.state, 'utf8'));
+    saved.state.task = Object.fromEntries(Object.entries(saved.state.task).reverse());
+    await writeFile(paths.state, JSON.stringify(saved));
     await propose(paths);
     const updated = run(helper, 'update', '--state', paths.state, '--observations', paths.obs, '--proposal', paths.plan, '--ledger', paths.ledger);
     assert.equal(updated.status, 0, updated.stderr);

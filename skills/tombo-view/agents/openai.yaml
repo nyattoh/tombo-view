@@ -1,0 +1,4 @@
+interface:
+  display_name: "tombo-view"
+  short_description: "回答案の根拠と未確認の前提を証拠・検査・状態更新で点検する"
+  default_prompt: "$tombo-view 直前の回答の根拠と未確認の前提を点検して。"

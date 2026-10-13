@@ -48,16 +48,13 @@ async function main() {
     const observations = state ? observationsSchema.parse(await json(values.observations)) : undefined;
     const request = state ? { state, observations } : { task };
     const binding = { schemaVersion: '0.1', operation, taskId: task.taskId, expectedRevision: state?.revision ?? -1, requestHash: digest(request) };
+    if (values.ledger) await new FileJournal(values.ledger).assertCurrent(state);
     if (command === 'prepare') {
       output = `${JSON.stringify({ binding, request, proposalSchema: resolve(repositoryRoot, 'src/types.ts'), hostUsage: { totalTokens: null, costYen: null }, apiCallsMade: 0 }, null, 2)}\n`;
     } else {
       const envelope = await json(values.proposal);
       if (!envelope.binding || canonical(envelope.binding) !== canonical(binding)) throw new TomboError('revision_conflict', 'The proposal does not match this exact task, state and observations. Prepare it again.');
       const proposal = proposalSchema.parse(envelope.proposal);
-      if (values.ledger) {
-        const current = await new FileJournal(values.ledger).load();
-        if ((current?.revision ?? -1) !== binding.expectedRevision) throw new TomboError('revision_conflict', 'Reload the journal before applying the proposal.');
-      }
       const tombo = createTombo({ adapter: {
         async generate(input) {
           if (input.operation !== operation || input.task.taskId !== task.taskId) throw new TomboError('invalid_input', 'Proposal operation mismatch.');
