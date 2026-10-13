@@ -105,12 +105,24 @@ test('SDK assessment repairs obey model, round, elapsed and monetary caps', asyn
   });
 });
 
+test('journal commits reject a changed task snapshot under the same task ID', () => temporary(async directory => {
+  const first = await engine([]).inspect(packet());
+  const journal = new FileJournal(join(directory, 'events.jsonl'));
+  await journal.commit(-1, first.state);
+  const before = await readFile(journal.path, 'utf8');
+  const fork = structuredClone(first.state);
+  fork.revision++;
+  fork.task.goal = 'A different task snapshot.';
+  await assert.rejects(journal.commit(first.state.revision, fork), { code: 'revision_conflict' });
+  assert.equal(await readFile(journal.path, 'utf8'), before);
+}));
+
 function run(path, ...args) {
   return spawnSync(process.execPath, [path, ...args], { encoding: 'utf8', env: { ...process.env, TOMBO_ROOT: resolve('.') } });
 }
-async function session(directory) {
+async function session(directory, task = packet()) {
   const paths = { task: join(directory, 'task.json'), state: join(directory, 'state.json'), obs: join(directory, 'obs.json'), plan: join(directory, 'plan.json'), ledger: join(directory, 'events.jsonl') };
-  await writeFile(paths.task, JSON.stringify(packet()));
+  await writeFile(paths.task, JSON.stringify(task));
   const prepared = run(helper, 'prepare', '--input', paths.task);
   assert.equal(prepared.status, 0, prepared.stderr);
   await writeFile(paths.plan, JSON.stringify({ binding: JSON.parse(prepared.stdout).binding, proposal: initialProposal }));
@@ -159,28 +171,49 @@ test('session accepts exact journal input and rejects valid same-revision forks 
 });
 
 test('session restores exact source passages from a redacted journal and rejects changed passages', () => temporary(async directory => {
-  const paths = await session(directory);
+  const paths = await session(directory, { ...packet(), evidence: [evidence('original')] });
   await propose(paths);
   const updated = run(helper, 'update', '--state', paths.state, '--observations', paths.obs, '--proposal', paths.plan, '--ledger', paths.ledger);
   assert.equal(updated.status, 0, updated.stderr);
   const journal = new FileJournal(paths.ledger);
   const restored = await journal.load();
-  restored.evidence[0].passage = 'enabled=true';
-  delete restored.evidence[0].passageUnavailable;
+  for (const item of [...restored.evidence, ...restored.task.evidence]) {
+    item.passage = 'enabled=true';
+    delete item.passageUnavailable;
+  }
   await writeFile(paths.state, JSON.stringify(restored));
   await propose(paths, {});
   const repeated = run(helper, 'update', '--state', paths.state, '--observations', paths.obs, '--proposal', paths.plan, '--ledger', paths.ledger);
   assert.equal(repeated.status, 0, repeated.stderr);
   assert.equal(JSON.parse(repeated.stdout).state.claims[0].status, 'supported');
   const before = await readFile(paths.ledger, 'utf8');
-  restored.evidence[0].passage = 'enabled=false';
-  restored.evidence[0].contentHash = hashPassage('enabled=false');
+  const changed = restored.evidence.find(item => item.id === 'observed');
+  changed.passage = 'enabled=false';
+  changed.contentHash = hashPassage('enabled=false');
   await writeFile(paths.state, JSON.stringify(restored));
   await propose(paths, {});
   const fork = run(helper, 'update', '--state', paths.state, '--observations', paths.obs, '--proposal', paths.plan, '--ledger', paths.ledger);
   assert.equal(fork.status, 1);
   assert.equal(JSON.parse(fork.stderr).error.code, 'revision_conflict');
   assert.equal(await readFile(paths.ledger, 'utf8'), before);
+}));
+
+test('session persists an invalid assessment and repairs it against the same journal with one tool charge', () => temporary(async directory => {
+  const paths = await session(directory);
+  await propose(paths, invalidProposal);
+  const failed = run(helper, 'update', '--state', paths.state, '--observations', paths.obs, '--proposal', paths.plan, '--ledger', paths.ledger);
+  assert.equal(failed.status, 1);
+  const saved = JSON.parse(failed.stdout);
+  assert.equal(saved.state.stopReason, 'invalid_model_output');
+  await writeFile(paths.state, JSON.stringify(saved));
+  await propose(paths);
+  const repaired = run(helper, 'update', '--state', paths.state, '--observations', paths.obs, '--proposal', paths.plan, '--ledger', paths.ledger);
+  assert.equal(repaired.status, 0, repaired.stderr);
+  const result = JSON.parse(repaired.stdout);
+  assert.equal(result.state.decision, 'ready_for_requested_step');
+  assert.equal(result.state.usage.toolCalls, 1);
+  assert.equal(result.state.usage.modelCalls, 3);
+  assert.equal((await new FileJournal(paths.ledger).load()).revision, 3);
 }));
 
 test('CLI rejects a same-revision cache fork before generation and keeps the ledger intact', () => temporary(async directory => {
