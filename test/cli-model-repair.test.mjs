@@ -146,3 +146,66 @@ test('CLI zero repair accepts valid output without injecting diagnostics', async
   assert.equal(state.usage.modelCalls, 1);
   assert.equal(state.modelRepairDiagnostics, undefined);
 });
+
+async function inconclusiveReportState({ oldReason = 'Old no-record-yet explanation.', reason = 'The current record does not identify the boundary.', latestVerdict = 'inconclusive', validity = 'current', scope = 'test', scopeMatched = true } = {}) {
+  const source = (id, passage) => ({ id, kind: 'document', locator: `fixture:${id}`, sourceGroup: 'source', retrievedAt: '2026-10-14T00:00:00.000Z', version: '1', scope: 'test', passage, contentHash: hashPassage(passage), validity: 'current' });
+  const evidence = [source('old-record', 'No record yet.'), { ...source('current-record', 'A record exists, but its boundary is not specified.'), validity, scope }];
+  const proposal = { claims: [claim], assessments: [{ claimId: 'answer', evidenceIds: ['old-record'], verdict: 'inconclusive', scopeMatched: true, reason: oldReason }, { claimId: 'answer', evidenceIds: ['current-record'], verdict: latestVerdict, scopeMatched, reason }] };
+  return (await createTombo({ adapter: { async generate() { return { proposal, usage }; } } }).inspect({ ...packet, evidence })).state;
+}
+
+test('report shows the latest bounded inconclusive reason without turning it into a confirmed claim', async () => {
+  const state = await inconclusiveReportState({ reason: '<source> cannot identify *this boundary*\nfrom the current record.' });
+  const report = renderMarkdownReport(state);
+  assert.match(report, /## 証拠評価の理由（不明）/);
+  assert.equal(report.includes(String.raw`\<source\> cannot identify \*this boundary\* from the current record.`), true);
+  assert.match(report, /参照証拠: current-record/);
+  assert.doesNotMatch(report, /Old no-record-yet explanation/);
+  assert.match(report, /現在の範囲で証拠により確かめた主張はまだない/);
+  assert.equal(state.claims[0].status, 'unverified');
+});
+
+for (const [name, options] of [['withdrawn', { validity: 'withdrawn' }], ['superseded', { validity: 'superseded' }], ['mismatched evidence scope', { scope: 'different-range' }], ['unmatched assessment scope', { scopeMatched: false }], ['newer support', { latestVerdict: 'supports' }]]) test(`report does not show outdated inconclusive reasons after ${name}`, async () => {
+  const state = await inconclusiveReportState(options);
+  const report = renderMarkdownReport(state);
+  assert.doesNotMatch(report, /証拠評価の理由（不明）/);
+  assert.doesNotMatch(report, /Old no-record-yet explanation/);
+  assert.doesNotMatch(report, /The current record does not identify the boundary/);
+  const withoutReasons = structuredClone(state);
+  withoutReasons.claims[0].assessments = [];
+  assert.equal(renderMarkdownReport(withoutReasons), report);
+});
+
+test('report labels an inconclusive cached assessment as saved and not revalidated', async () => {
+  const state = await inconclusiveReportState();
+  state.evidence[1].passage = '';
+  state.evidence[1].passageUnavailable = true;
+  const report = renderMarkdownReport(state);
+  assert.match(report, /証拠評価の理由（不明）/);
+  assert.match(report, /保存時の評価。本文未取得・未再検証/);
+  assert.match(report, /The current record does not identify the boundary/);
+  assert.match(report, /参照証拠: current-record/);
+  assert.equal(state.claims[0].status, 'unverified');
+});
+
+test('report includes a latest inconclusive reason for a disputed answer while preserving the dispute', async () => {
+  const state = await inconclusiveReportState();
+  const assessments = [{ claimId: 'answer', evidenceIds: ['old-record'], verdict: 'supports', scopeMatched: true, reason: 'One source supports it.' }, { claimId: 'answer', evidenceIds: ['current-record'], verdict: 'refutes', scopeMatched: true, reason: 'The other source refutes it.' }, state.claims[0].assessments.at(-1)];
+  state.claims[0].assessments = assessments;
+  state.claims[0].status = 'disputed';
+  const report = renderMarkdownReport(state);
+  assert.match(report, /証拠が対立/);
+  assert.match(report, /証拠評価の理由（不明）/);
+  assert.match(report, /The current record does not identify the boundary/);
+  assert.equal(state.claims[0].status, 'disputed');
+});
+
+test('report suppresses a latest inconclusive reason if any referenced evidence is withdrawn', async () => {
+  const state = await inconclusiveReportState();
+  state.claims[0].assessments.at(-1).evidenceIds = ['old-record', 'current-record'];
+  state.evidence[0].validity = 'withdrawn';
+  const report = renderMarkdownReport(state);
+  assert.doesNotMatch(report, /証拠評価の理由（不明）/);
+  assert.doesNotMatch(report, /The current record does not identify the boundary/);
+  assert.doesNotMatch(report, /Old no-record-yet explanation/);
+});

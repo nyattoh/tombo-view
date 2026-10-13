@@ -32,6 +32,19 @@ export function renderMarkdownReport(input: InspectionResult | UnderstandingStat
   const gaps = state.gaps.filter(gap => gap.importance === 'required' && gap.status !== 'resolved');
   for (const gap of gaps) lines.push(`- ${safe(gap.question)} ${safe(gap.whyItMatters)}`);
   if (!gaps.length) lines.push('今回取得した証拠と検査範囲では、追加の必須確認を検出しなかった。');
+  const inconclusiveReasons: string[] = [];
+  for (const claim of state.claims) {
+    if (claim.role !== 'answer_claim') continue;
+    const assessment = claim.assessments.at(-1);
+    if (assessment?.verdict !== 'inconclusive' || !assessment.scopeMatched) continue;
+    const evidence = assessment.evidenceIds.map(id => state.evidence.find(item => item.id === id));
+    if (!evidence.every(item => item?.validity === 'current' && item.scope === claim.scope)) continue;
+    const saved = evidence.some(item => item?.passageUnavailable) ? '保存時の評価。本文未取得・未再検証。' : '';
+    inconclusiveReasons.push(`- ${safe(claim.text)}。${saved}理由: ${safe(assessment.reason)}。参照証拠: ${assessment.evidenceIds.map(safe).join('、')}。範囲: ${safe(claim.scope)}`);
+  }
+  if (inconclusiveReasons.length) {
+    lines.push('', '## 証拠評価の理由（不明）', '', '以下は回答の主張を確定できない評価理由であり、検証済みの事実として扱わない。', '', ...inconclusiveReasons);
+  }
   lines.push('', '## 次に行う確認', '');
   for (const id of next) {
     const probe = state.probes.find(item => item.id === id);

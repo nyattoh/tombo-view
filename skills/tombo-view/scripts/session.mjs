@@ -48,7 +48,7 @@ async function main() {
     const state = saved ? validateState(saved.state ?? saved) : null;
     const task = state?.task ?? taskPacketSchema.parse(await json(values.input));
     const lastDiagnostic = state?.modelRepairDiagnostics?.at(-1);
-    if (operation === 'update' && state?.stopReason === 'invalid_model_output' && lastDiagnostic?.operation === 'inspect' && !state.pendingAssessmentExecutionIds?.length && !state.claims.length && !state.probes.length) {
+    if (operation === 'update' && state?.revision === 1 && state.stopReason === 'invalid_model_output' && lastDiagnostic?.operation === 'inspect' && !state.pendingAssessmentExecutionIds?.length && !state.claims.length && !state.probes.length) {
       throw new TomboError('invalid_input', 'Failed inspect resume is unsupported. Preserve its state and usage; do not reset it into a new inspect.');
     }
     const observations = operation === 'update' ? observationsSchema.parse(await json(values.observations)) : undefined;

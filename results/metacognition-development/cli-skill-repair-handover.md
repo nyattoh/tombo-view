@@ -35,3 +35,21 @@ Model the Domainに従い、訂正をSDK既存のtyped feedbackとCLI整数設�
 ## 差分監査
 
 所有コードのdiffを直接確認した。新しいコメント、型逃れ、lint抑制はない。`rg`によるコメント・抑制検索も0件だった。親が独立レビューを担当するため、この担当は追加agentを起動していない。所有外の評価資料とテストは保持した。PR・push・公開・global skill更新は行っていない。
+
+## 追加修正 round 2 の handover
+
+2026-10-14 JST。独立GLM round 1は静的レビューでPASSだった。`cli-skill-review-glm-r1.md` のP3注記と、親が実測した不明理由の表示不足を受け、所有範囲のreport/helperと両テストだけを追加修正した。
+
+`src/report.ts` はanswer_claimの最後のassessmentがinconclusiveの場合、scopeMatched=true、参照証拠IDが現在状態に存在、全証拠のvalidity=current、全証拠のscope=claim.scopeを確認して「証拠評価の理由（不明）」へreason・参照ID・範囲を表示する。最新評価が失効・範囲不一致・supports/refutesなら、古いinconclusive理由へ戻らない。古いno-record-yetの説明を最新根拠として表示しない。本文cacheが未取得の場合は「保存時の評価。本文未取得・未再検証。」を併記する。reasonを支持・反証や検証済み事実に変換せず、状態を変更しない。対象理由がない既存レポートは同じ出力を維持する。
+
+指定された反例を実行したところ、空proposalで正当に成功したinspect後のSDK default0 update([])は、生成を開始せずno_progressで停止した。stopReasonがinvalid_model_outputではないので、現guardの誤認には当たらなかった。この短絡は変更していない。
+
+真正の反例は、拒否1回後に空proposalでinspect成功、default0 update([])のno_progress後、default0 reflectが不正bindingで拒否される経路だった。revision3、invalid_model_output、claims/probes/pendingが空、最後の診断operation=inspectの正当な保存状態で、prepare updateが初回inspect失敗と誤認した。変更前のREDを確認した。guardへrevision===1だけを追加し、初回inspect失敗の拒否を保持した。修正後のhelper update([])はno_progressへ戻り、modelCalls=3、rounds=0、toolCalls=0、totalTokens=12、costYen=0、元startedAtとbudgetを保持した。新inspectへの予算resetは行っていない。
+
+同一executionIdの完全同一重複配送はSDKのdedupe契約のため、新たに禁止していない。entityの追加専用ID規則とexecution配送を混同していない。
+
+追加修正前のfocused実行は38件中34成功・4失敗で、reason表示3件と真正guard反例1件がREDだった。実装後は38件成功、複数参照証拠の一部失効を追加して最終focused39件成功・失敗0。`npm run build` と `git diff --check` も成功した。
+
+この時点の全体 `npm test` は227件中222成功・5失敗。失敗はすべて親が並行追加した `test/host-trial-repair.test.mjs` で、baseline syntax repair、oversized output repair、persistent malformed bound、TOMBO update physical source replay、failed inspection draft labelの5件。担当focused39件と既存回帰は成功した。親がbridge実装後の統合全GREENを確認する。記録はローカル `cli-skill-repair-followup-test-output.txt`。
+
+所有外のbridge、core、評価資料、global skillは変更していない。実モデルの効果は測定していない。親によるGLM round 2を残す。
