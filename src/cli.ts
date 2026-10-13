@@ -8,14 +8,15 @@ import type { CriticAdapter, GenerationAdapter } from './index.js';
 import { FileJournal, replayJournal } from './journal.js';
 
 const help = `TOMBO v0.1
-tombo inspect --input task.json --adapter fixture --out state.json [--ledger events.jsonl]
-tombo update --state state.json --observations observations.json --adapter fixture --out next.json [--ledger events.jsonl]
-tombo reflect --state state.json --critic file:/absolute/path/critic.mjs --out next.json [--ledger events.jsonl]
+tombo inspect --input task.json --adapter fixture --out state.json [--ledger events.jsonl] [--model-repair-attempts 0|1|2]
+tombo update --state state.json --observations observations.json --adapter fixture --out next.json [--ledger events.jsonl] [--model-repair-attempts 0|1|2]
+tombo reflect --state state.json --critic file:/absolute/path/critic.mjs --out next.json [--ledger events.jsonl] [--model-repair-attempts 0|1|2]
 tombo invalidate --state state.json --input invalidation.json --out next.json [--ledger events.jsonl]
 tombo report --state state.json --format markdown --out report.md
 tombo replay --ledger events.jsonl --out restored-state.json
 Generation adapters must be explicitly selected: fixture or file:/absolute/path/adapter.mjs.
 Reflection requires an explicit critic module exporting default or critic with reflect().
+Model repair defaults to 0; 1 or 2 permits additional validation corrections within the original budget.
 fixture is synthetic replay, not an evaluation of detection ability.
 `;
 
@@ -51,7 +52,7 @@ async function main(): Promise<void> {
   const { values, positionals } = parseArgs({ options: {
     input: { type: 'string' }, state: { type: 'string' }, observations: { type: 'string' },
     adapter: { type: 'string' }, critic: { type: 'string' }, out: { type: 'string' }, ledger: { type: 'string' },
-    format: { type: 'string' }, help: { type: 'boolean', short: 'h' },
+    'model-repair-attempts': { type: 'string' }, format: { type: 'string' }, help: { type: 'boolean', short: 'h' },
   }, allowPositionals: true });
   if (values.help || !positionals.length) {
     process.stdout.write(help);
@@ -60,6 +61,11 @@ async function main(): Promise<void> {
   if (positionals.length !== 1) throw new TomboError('invalid_input', 'Specify one command.');
   if (values.out && values.ledger) new FileJournal(values.ledger, values.out);
   const command = positionals[0];
+  const repairOption = values['model-repair-attempts'];
+  if (repairOption !== undefined && (!['inspect', 'update', 'reflect'].includes(command) || !/^[012]$/.test(repairOption))) {
+    throw new TomboError('invalid_input', '--model-repair-attempts must be 0, 1 or 2 and is only valid for inspect, update or reflect.');
+  }
+  const maxModelRepairAttempts = repairOption === undefined ? 0 : Number(repairOption);
   if (values.critic && command !== 'reflect') throw new TomboError('invalid_input', '--critic is only valid for reflect.');
   if (command === 'reflect' && values.adapter) throw new TomboError('invalid_input', 'Reflect uses --critic; --adapter is not used.');
   let output: string;
@@ -67,7 +73,7 @@ async function main(): Promise<void> {
     const prior = command === 'inspect' ? null : validateState(await readJson(values.state));
     const expectedRevision = prior?.revision ?? -1;
     if (values.ledger) await new FileJournal(values.ledger).assertCurrent(prior);
-    const tombo = createTombo({ adapter: command === 'invalidate' || command === 'reflect' ? fixtureAdapter : await loadAdapter(values.adapter) });
+    const tombo = createTombo({ maxModelRepairAttempts, adapter: command === 'invalidate' || command === 'reflect' ? fixtureAdapter : await loadAdapter(values.adapter) });
     const result = command === 'inspect'
       ? await tombo.inspect(await readJson(values.input))
       : command === 'update'
@@ -100,6 +106,6 @@ async function main(): Promise<void> {
 }
 
 main().catch(error => {
-  process.stderr.write(`${JSON.stringify({ error: { code: error instanceof TomboError ? error.code : 'execution_error', message: error instanceof Error ? error.message : String(error) } })}\n`);
+  process.stderr.write(`${JSON.stringify({ error: { code: error instanceof TomboError ? error.code : error instanceof Error && 'code' in error && String(error.code).startsWith('ERR_PARSE_ARGS_') ? 'invalid_input' : 'execution_error', message: error instanceof Error ? error.message : String(error) } })}\n`);
   process.exitCode = 1;
 });

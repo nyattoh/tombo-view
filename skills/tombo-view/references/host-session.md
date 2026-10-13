@@ -16,7 +16,17 @@ prepareは追加モデル呼出しを行わない。bindingのハッシュが対
 
 同じexecutionIdの再配送は二重に適用しない。実際の再実行には新しいIDを使う。`no_result`、予算不足、能力不足を解決へ変換しない。検査も状態変更もない場合や予算上限では停止し、未確認事項を残す。
 
-`invalid_model_output` になった提案だけを修正するときは、停止結果を `--state`、失敗時の観測バッチ全体を同じIDと内容で `--observations` へ渡し、prepareから新しいbindingを作る。一部の観測だけを再送したり、新しい観測を混ぜたりしない。再評価はモデル適用とラウンドの残予算を消費するが、実施済みの外部検査の時間・費用・回数を再加算しない。成功した評価の同じ配送は再評価しない。
+updateが `invalid_model_output` で止まった場合は、その停止結果を保存する。適用前の状態へ戻すと取得済み証拠と利用量を失うため、回復に使わない。提案だけを修正するときは、停止結果を `--state`、失敗時の観測バッチ全体を同じIDと内容で `--observations` へ渡し、prepareから新しいbindingを作る。一部の観測だけを再送したり、新しい観測を混ぜたりしない。再評価はモデル適用とラウンドの残予算を消費するが、実施済みの外部検査の時間・費用・回数を再加算しない。成功した評価の同じ配送は再評価しない。prepareも評価待ちのexecutionIdと観測内容を照合し、不足・変更・別観測の混入を拒否する。
+
+現在のstopReasonが `invalid_model_output` で、最後のmodelRepairDiagnosticsのoperationが今回の操作と一致する場合、prepareはrequest.validationFeedbackへ `{code, message, rejectedAttempt, maxAttempts}` を付ける。messageは512文字以内である。状態、観測、feedbackは新しいbindingに含まれる。拒否理由を読み、assessments・resolutionsを含む候補全体を作り直す。既存のentity IDを再追加せず、新規項目だけ新しいIDで追加する。証拠がない、不明、範囲が一致しない場合はgapを未解決のまま残す。成功した操作の診断履歴はレポート用であり、停止していない状態の訂正指示へ流用しない。
+
+ヘルパーはSDKの自動訂正を有効にせず、一つの保存済み提案を一度だけ適用する。そのためヘルパー自身の新しい拒否理由はmodelRepairDiagnosticsへ追加されない。診断がなければ、停止理由と元の提案、型定義、保存状態を読み、会話のAIが新しい提案を作る。既存診断がある場合も、最後の記録が示す検証内容だけを使い、最新のヘルパー適用から新しい詳細診断が得られたとは言わない。外部検査を再実行せず、startedAt・予算・利用量を変更しない。
+
+reflectが検証で止まった場合は、停止状態から `prepare --operation reflect --state ...` を使う。外側bindingと、現在のrevision・understandingHashに結び付いた内側bindingを更新する。全claimをreviewedClaimIdsに含め、再考の候補はlenses・gaps・probesに限る。再考を証拠評価やgapの解決へ変換しない。
+
+初回inspectの失敗を保存状態から再開する操作はSDKとヘルパーにない。ヘルパーのinspectが例外で失敗した場合も、完了状態や新しい生成が得られたとは扱わない。元タスクを再inspectすると別の点検になり、startedAtと利用量が再初期化される。修復のための同一予算継続と主張せず、失敗の記録を残して停止する。
+
+SDKを直接使う場合は `createTombo({adapter, maxModelRepairAttempts: 1})`、CLIではinspect・update・reflectに `--model-repair-attempts 1` を指定すると、明示した生成アダプタまたはcriticが検証拒否後に新しい提案を生成する。値は0・1・2で、追加訂正回数を表す。既定値0は旧動作を保ち、1・2では一般providerエラーを訂正生成しない。全試行が元の予算を共有し、updateの自動訂正は同じ観測バッチと同じラウンドを使う。モデル上限・時間・会計で停止した場合は継続成功としない。会話ヘルパーの回復は次の外部update適用であるため、追加ラウンドを消費する。
 
 修正前のSDKが保存した失敗状態には再評価バッチの情報がない。その状態の読取りはできるが、回復が必要なら新しいタスクで点検する。
 

@@ -47,8 +47,24 @@ async function main() {
     const saved = operation !== 'inspect' ? await json(values.state) : null;
     const state = saved ? validateState(saved.state ?? saved) : null;
     const task = state?.task ?? taskPacketSchema.parse(await json(values.input));
+    const lastDiagnostic = state?.modelRepairDiagnostics?.at(-1);
+    if (operation === 'update' && state?.stopReason === 'invalid_model_output' && lastDiagnostic?.operation === 'inspect' && !state.pendingAssessmentExecutionIds?.length && !state.claims.length && !state.probes.length) {
+      throw new TomboError('invalid_input', 'Failed inspect resume is unsupported. Preserve its state and usage; do not reset it into a new inspect.');
+    }
     const observations = operation === 'update' ? observationsSchema.parse(await json(values.observations)) : undefined;
+    if (operation === 'update' && state.pendingAssessmentExecutionIds?.length) {
+      const pending = state.pendingAssessmentExecutionIds;
+      const supplied = new Map(observations.map(observation => [observation.executionId, observation]));
+      const applied = new Map(state.appliedExecutions.map(execution => [execution.executionId, execution.payloadHash]));
+      if (supplied.size !== pending.length || !pending.every(id => supplied.has(id) && digest(supplied.get(id)) === applied.get(id))) {
+        throw new TomboError('invalid_input', 'Redeliver the exact pending assessment batch with unchanged execution IDs and payloads.');
+      }
+    }
     const request = operation === 'reflect' ? { operation, task, state, binding: { taskId: task.taskId, basedRevision: state.revision, understandingHash: understandingHash(state) }, maxOutputTokens: task.budget.maxOutputTokensPerCall } : state ? { state, observations } : { task };
+    if (state?.stopReason === 'invalid_model_output' && lastDiagnostic?.operation === operation) {
+      const { code, message, rejectedAttempt, maxAttempts } = lastDiagnostic;
+      request.validationFeedback = { code, message, rejectedAttempt, maxAttempts };
+    }
     const binding = { schemaVersion: '0.1', operation, taskId: task.taskId, expectedRevision: state?.revision ?? -1, requestHash: digest(request) };
     if (values.ledger) await new FileJournal(values.ledger).assertCurrent(state);
     if (command === 'prepare') {

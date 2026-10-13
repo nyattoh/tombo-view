@@ -49,6 +49,12 @@ export function renderMarkdownReport(input: InspectionResult | UnderstandingStat
     lines.push('', '## 上限により採用できなかった確認', '');
     for (const candidate of state.excludedCandidates) lines.push(`- ${safe(candidate.id)} (${candidate.importance === 'required' ? '必須' : '任意'})。${safe(candidate.reason)}`);
   }
+  if (state.modelRepairDiagnostics?.length) {
+    lines.push('', '## 提案の検証と訂正', '', '以下は提案を拒否した運用記録であり、証拠や未確認事項の解決を表さない。提案の採否は現在の状態で確認する。', '');
+    for (const diagnostic of state.modelRepairDiagnostics) {
+      lines.push(`- ${safe(diagnostic.operation)} の試行${diagnostic.rejectedAttempt}/${diagnostic.maxAttempts}を拒否。${safe(diagnostic.message)}`);
+    }
+  }
   lines.push('', '## 適用範囲と利用量', '', '判定は今回の目的、登録された証拠、明示された適用範囲に限る。外部操作の承認を代行しない。', '',
     `- 追加ラウンド: ${state.usage.rounds}`, `- モデル呼出し: ${state.usage.modelCalls}`, `- ツール呼出し: ${state.usage.toolCalls}`,
     `- 経過時間: ${state.usage.elapsedMs}ms`, `- 合計トークン: ${known(state.usage.totalTokens, '')}`, `- 費用: ${known(state.usage.costYen, '円')}`, '');

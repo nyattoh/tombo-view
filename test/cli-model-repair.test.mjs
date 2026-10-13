@@ -1,0 +1,148 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { mkdtemp, readFile, writeFile, rm } from 'node:fs/promises';
+import { tmpdir } from 'node:os';
+import { join, resolve } from 'node:path';
+import { spawnSync } from 'node:child_process';
+import { createTombo, hashPassage, renderMarkdownReport, replayJournal } from '../dist/index.js';
+
+const run = (...args) => spawnSync(process.execPath, [resolve('dist/cli.js'), ...args], { encoding: 'utf8' });
+const claim = { id: 'answer', role: 'answer_claim', text: 'A bounded claim.', scope: 'test' };
+const packet = { schemaVersion: '0.1', taskId: 'cli-repair', goal: 'Check a bounded claim.', mode: 'explain', successCriteria: ['Check the supplied claim.'], reflectionRequired: true, evidence: [], capabilities: [], budget: { maxRounds: 3, maxModelCalls: 8, maxToolCalls: 2, maxElapsedMs: 60000, maxInputChars: 100000, maxOutputTokensPerCall: 1000 } };
+const usage = { totalTokens: 10, outputTokens: 2, costYen: 0 };
+async function setup(t) {
+  const dir = await mkdtemp(join(tmpdir(), 'tombo-cli-repair-'));
+  t.after(() => rm(dir, { recursive: true, force: true }));
+  const input = join(dir, 'task.json'), state = join(dir, 'state.json'), module = join(dir, 'model.mjs'), calls = join(dir, 'calls.jsonl');
+  await writeFile(input, JSON.stringify(packet));
+  const initial = await createTombo({ adapter: { async generate() { return { proposal: { claims: [claim] }, usage }; } } }).inspect(packet);
+  await writeFile(state, JSON.stringify(initial.state));
+  return { dir, input, state, module, calls, initial };
+}
+async function adapter(ctx, body) {
+  await writeFile(ctx.module, `import { appendFileSync } from 'node:fs'; let n = 0; export default { async generate(input) { n++; appendFileSync(${JSON.stringify(ctx.calls)}, JSON.stringify(input) + '\\n'); ${body} } };`);
+  return `file:${ctx.module}`;
+}
+
+test('CLI inspect repairs an actual rejected file proposal and journals accepted state', async t => {
+  const ctx = await setup(t), ledger = join(ctx.dir, 'events.jsonl');
+  const name = await adapter(ctx, `return { proposal: { claims: n === 1 ? [${JSON.stringify(claim)}, ${JSON.stringify(claim)}] : [${JSON.stringify(claim)}] }, usage: ${JSON.stringify(usage)} };`);
+  const output = run('inspect', '--input', ctx.input, '--adapter', name, '--model-repair-attempts', '1', '--ledger', ledger);
+  assert.equal(output.status, 0, output.stderr);
+  const state = JSON.parse(output.stdout);
+  assert.equal(state.decision, 'needs_reflection');
+  assert.equal(state.usage.modelCalls, 2);
+  assert.deepEqual(state.claims.map(c => c.id), ['answer']);
+  assert.deepEqual(state.modelRepairDiagnostics, [{ operation: 'inspect', code: 'invalid_model_output', message: 'Existing entity cannot be overwritten answer', rejectedAttempt: 1, maxAttempts: 2 }]);
+  const inputs = (await readFile(ctx.calls, 'utf8')).trim().split('\n').map(JSON.parse);
+  assert.equal(inputs[0].validationFeedback, undefined);
+  assert.deepEqual(inputs[1].validationFeedback, { code: 'invalid_model_output', message: 'Existing entity cannot be overwritten answer', rejectedAttempt: 1, maxAttempts: 2 });
+  assert.deepEqual((await replayJournal(ledger)).modelRepairDiagnostics, state.modelRepairDiagnostics);
+});
+
+for (const count of ['0', '1', '2']) test(`CLI repeated inspect rejection respects repair limit ${count}`, async t => {
+  const ctx = await setup(t);
+  const name = await adapter(ctx, `return { proposal: { claims: [${JSON.stringify(claim)}, ${JSON.stringify(claim)}] }, usage: ${JSON.stringify(usage)} };`);
+  const output = run('inspect', '--input', ctx.input, '--adapter', name, '--model-repair-attempts', count);
+  assert.equal(output.status, 1);
+  const inputs = (await readFile(ctx.calls, 'utf8')).trim().split('\n').map(JSON.parse);
+  assert.equal(inputs.length, Number(count) + 1);
+  if (count === '0') assert.equal(JSON.parse(output.stderr).error.code, 'invalid_model_output');
+  else {
+    const state = JSON.parse(output.stdout);
+    assert.equal(state.stopReason, 'invalid_model_output');
+    assert.equal(state.claims.length, 0);
+    assert.equal(state.modelRepairDiagnostics.length, Number(count) + 1);
+  }
+});
+
+test('CLI critic repairs claim coverage and creates a fresh receipt', async t => {
+  const ctx = await setup(t);
+  await writeFile(ctx.module, `import { appendFileSync } from 'node:fs'; let n = 0; export const critic = { async reflect(input) { n++; appendFileSync(${JSON.stringify(ctx.calls)}, JSON.stringify(input) + '\\n'); return { binding: input.binding, reviewedClaimIds: n === 1 ? [] : ['answer'], completion: 'completed', limitations: [], proposal: {}, usage: ${JSON.stringify(usage)} }; } };`);
+  const output = run('reflect', '--state', ctx.state, '--critic', `file:${ctx.module}`, '--model-repair-attempts', '1');
+  assert.equal(output.status, 0, output.stderr);
+  const state = JSON.parse(output.stdout);
+  assert.equal(state.decision, 'ready_for_requested_step');
+  assert.equal(state.usage.modelCalls, 3);
+  assert.deepEqual(state.reflection.reviewedClaimIds, ['answer']);
+  assert.equal(state.modelRepairDiagnostics[0].operation, 'reflect');
+  const inputs = (await readFile(ctx.calls, 'utf8')).trim().split('\n').map(JSON.parse);
+  assert.deepEqual(inputs[1].binding, inputs[0].binding);
+  assert.equal(inputs[1].validationFeedback.code, 'invalid_model_output');
+});
+
+for (const value of ['-1', '3', '1.5', '01', 'NaN', '']) test(`CLI rejects invalid repair flag ${JSON.stringify(value)} before module import`, async t => {
+  const ctx = await setup(t), marker = join(ctx.dir, 'imported');
+  await writeFile(ctx.module, `import { writeFileSync } from 'node:fs'; writeFileSync(${JSON.stringify(marker)}, 'imported'); export default {};`);
+  for (const [command, args] of [['inspect', ['--input', ctx.input, '--adapter', `file:${ctx.module}`]], ['reflect', ['--state', ctx.state, '--critic', `file:${ctx.module}`]]]) {
+    const output = run(command, ...args, '--model-repair-attempts', value);
+    assert.equal(output.status, 1);
+    assert.equal(JSON.parse(output.stderr).error.code, 'invalid_input');
+  }
+  await assert.rejects(readFile(marker), { code: 'ENOENT' });
+});
+
+for (const command of ['report', 'replay', 'invalidate', 'unknown']) test(`CLI rejects repair flag for ${command}`, () => {
+  const output = run(command, '--model-repair-attempts', '0');
+  assert.equal(output.status, 1);
+  assert.equal(JSON.parse(output.stderr).error.code, 'invalid_input');
+});
+
+for (const flag of [[], ['--model-repair-attempts', '0'], ['--model-repair-attempts', '1']]) test(`CLI general provider errors preserve only default transport retries ${JSON.stringify(flag)}`, async t => {
+  const ctx = await setup(t), name = await adapter(ctx, "throw new Error('provider unavailable');");
+  const output = run('inspect', '--input', ctx.input, '--adapter', name, ...flag);
+  assert.equal(output.status, 1);
+  assert.equal((await readFile(ctx.calls, 'utf8')).trim().split('\n').length, flag.at(-1) === '1' ? 1 : 2);
+  const error = output.stdout ? JSON.parse(output.stdout).stopReason : JSON.parse(output.stderr).error.code;
+  assert.equal(error, 'model_error');
+});
+
+test('report keeps diagnostics separate from evidence and escapes rejected text', async t => {
+  const ctx = await setup(t), state = ctx.initial.state;
+  const plain = renderMarkdownReport(state);
+  assert.doesNotMatch(plain, /提案の検証と訂正/);
+  state.modelRepairDiagnostics = [{ operation: 'inspect', code: 'invalid_model_output', message: '<fake>\n# rejected *claim*', rejectedAttempt: 1, maxAttempts: 2 }];
+  const report = renderMarkdownReport(state);
+  assert.match(report, /## 提案の検証と訂正/);
+  assert.match(report, /証拠や未確認事項の解決を表さない/);
+  assert.equal(report.includes(String.raw`\<fake\> \# rejected \*claim\*`), true);
+  assert.match(report, /試行1\/2を拒否/);
+  assert.match(report, /現在の範囲で証拠により確かめた主張はまだない/);
+});
+
+test('CLI update repairs a rejected immutable ID against the same recorded observation', async t => {
+  const ctx = await setup(t);
+  const initialProposal = { claims: [claim], lenses: [{ id: 'lens', label: 'Read', rationale: 'Check evidence.', origin: 'initial', status: 'active' }], gaps: [{ id: 'gap', kind: 'unsupported_claim', lensId: 'lens', question: 'Supported?', triggerRefs: ['answer'], whyItMatters: 'Evidence is required.', importance: 'required', claimIds: ['answer'], probeIds: ['probe'] }], probes: [{ id: 'probe', gapIds: ['gap'], method: 'corroboration', question: 'Read.', requiredCapability: 'read_file', sourceGroups: ['source'], successCondition: 'Support.', refutationCondition: 'Refute.', inconclusiveCondition: 'Unknown.' }] };
+  const api = createTombo({ adapter: { async generate() { return { proposal: initialProposal, usage }; } } });
+  const first = await api.inspect({ ...packet, capabilities: ['read_file'] });
+  await writeFile(ctx.state, JSON.stringify(first.state));
+  const observations = join(ctx.dir, 'observations.json');
+  const observation = { executionId: 'read-1', probeId: 'probe', outcome: 'completed', toolCalls: 1, elapsedMs: 2, costYen: 0, evidence: [{ id: 'source', kind: 'document', locator: 'fixture:source', sourceGroup: 'source', retrievedAt: '2026-10-14T00:00:00.000Z', version: '1', scope: 'test', passage: 'Supports.', contentHash: hashPassage('Supports.'), validity: 'current' }] };
+  await writeFile(observations, JSON.stringify([observation]));
+  const valid = { assessments: [{ claimId: 'answer', evidenceIds: ['source'], verdict: 'supports', scopeMatched: true, reason: 'The source supports it.' }], resolutions: [{ gapId: 'gap', reason: 'supported', evidenceIds: ['source'], explanation: 'Supported by source.' }] };
+  const name = await adapter(ctx, `return { proposal: n === 1 ? { claims: [${JSON.stringify(claim)}] } : ${JSON.stringify(valid)}, usage: ${JSON.stringify(usage)} };`);
+  const output = run('update', '--state', ctx.state, '--observations', observations, '--adapter', name, '--model-repair-attempts', '1');
+  assert.equal(output.status, 0, output.stderr);
+  const state = JSON.parse(output.stdout);
+  assert.equal(state.claims[0].status, 'supported');
+  assert.equal(state.gaps[0].status, 'resolved');
+  assert.equal(state.decision, 'needs_reflection');
+  assert.equal(state.usage.rounds, 1);
+  assert.equal(state.usage.toolCalls, 1);
+  assert.equal(state.usage.modelCalls, 3);
+  assert.equal(state.appliedExecutions.length, 1);
+  assert.equal(state.modelRepairDiagnostics[0].operation, 'update');
+  const inputs = (await readFile(ctx.calls, 'utf8')).trim().split('\n').map(JSON.parse);
+  assert.deepEqual(inputs[1].observations, inputs[0].observations);
+  assert.equal(inputs[1].validationFeedback.message, 'Existing entity cannot be overwritten answer');
+});
+
+test('CLI zero repair accepts valid output without injecting diagnostics', async t => {
+  const ctx = await setup(t), name = await adapter(ctx, `return { proposal: { claims: [${JSON.stringify(claim)}] }, usage: ${JSON.stringify(usage)} };`);
+  const output = run('inspect', '--input', ctx.input, '--adapter', name, '--model-repair-attempts', '0');
+  assert.equal(output.status, 0, output.stderr);
+  const state = JSON.parse(output.stdout);
+  assert.equal(state.decision, 'needs_reflection');
+  assert.equal(state.usage.modelCalls, 1);
+  assert.equal(state.modelRepairDiagnostics, undefined);
+});
