@@ -78,11 +78,19 @@ export const reflectionReceiptSchema = z.strictObject({
   binding: reflectionBindingSchema, reviewedClaimIds: ids, completion: z.enum(['completed', 'inconclusive']), limitations: z.array(text),
 });
 export const decisionSchema = z.enum(['ready_for_requested_step', 'needs_reflection', 'needs_check', 'needs_user_input', 'blocked']);
+export const modelValidationFeedbackSchema = z.strictObject({
+  code: z.literal('invalid_model_output'), message: text.max(512),
+  rejectedAttempt: z.number().int().min(1).max(3), maxAttempts: z.number().int().min(1).max(3),
+}).refine(value => value.rejectedAttempt <= value.maxAttempts, 'Rejected attempt exceeds attempt limit');
+export const modelRepairDiagnosticSchema = modelValidationFeedbackSchema.extend({
+  operation: z.enum(['inspect', 'update', 'reflect']),
+});
 export const stateSchema = z.strictObject({
   schemaVersion: z.literal('0.1'), taskId: id, revision: count, startedAt: z.iso.datetime({ offset: true }),
   task: taskPacketSchema, evidence: z.array(evidenceSchema), claims: z.array(claimSchema), lenses: z.array(lensSchema),
   gaps: z.array(gapSchema), probes: z.array(probeSchema), usage: usageSchema, decision: decisionSchema,
   stopReason: text.nullable(), appliedExecutions: z.array(appliedExecutionSchema),
+  modelRepairDiagnostics: z.array(modelRepairDiagnosticSchema).optional(),
   pendingAssessmentExecutionIds: ids.min(1).optional(), reflection: reflectionReceiptSchema.optional(),
   excludedCandidates: z.array(z.strictObject({ id, reason: text, importance: z.enum(['required', 'optional']) })).optional(),
 });
@@ -133,7 +141,10 @@ export type Decision = z.infer<typeof decisionSchema>;
 export type ClaimStatus = Claim['status'];
 export type GapKind = Gap['kind'];
 export type ProbeMethod = Probe['method'];
+export type ModelValidationFeedback = z.infer<typeof modelValidationFeedbackSchema>;
+export type ModelRepairDiagnostic = z.infer<typeof modelRepairDiagnosticSchema>;
 export interface GenerationInput {
+  validationFeedback?: ModelValidationFeedback;
   operation: 'inspect' | 'update';
   task: TaskPacket;
   state?: UnderstandingState;
@@ -145,6 +156,7 @@ export interface GenerationAdapter {
   estimateMaxCostYen?(input: GenerationInput): number | Promise<number>;
 }
 export interface ReflectionInput {
+  validationFeedback?: ModelValidationFeedback;
   operation: 'reflect';
   task: TaskPacket;
   state: UnderstandingState;

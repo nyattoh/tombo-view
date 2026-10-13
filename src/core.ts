@@ -3,7 +3,7 @@ import { z } from 'zod';
 import {
   taskPacketSchema, stateSchema, observationsSchema, generationOutputSchema, reflectionOutputSchema,
   type Assessment, type Evidence, type Gap, type GenerationAdapter, type GenerationInput,
-  type GenerationOutput, type ReflectionInput, type InspectionResult, type Observation, type Proposal,
+  type GenerationOutput, type ReflectionInput, type ModelValidationFeedback, type InspectionResult, type Observation, type Proposal,
   type TaskPacket, type Tombo, type UnderstandingChange, type UnderstandingState, type Usage,
 } from './types.js';
 
@@ -204,9 +204,10 @@ function result(state: UnderstandingState, changes: UnderstandingChange[] = []):
   return { state, changes, nextProbeIds: state.decision === 'needs_check' ? next.map(probe => probe.id) : [], userQuestions };
 }
 
-function stopped(original: UnderstandingState, usage: Usage, code: TomboErrorCode, executions = original.appliedExecutions): InspectionResult {
+function stopped(original: UnderstandingState, usage: Usage, code: TomboErrorCode, executions = original.appliedExecutions, diagnostics = original.modelRepairDiagnostics): InspectionResult {
   const state = structuredClone(original);
   state.usage = usage;
+  if (diagnostics) state.modelRepairDiagnostics = structuredClone(diagnostics);
   state.appliedExecutions = executions;
   state.revision++;
   state.stopReason = code;
@@ -303,8 +304,10 @@ async function timed<T>(operation: () => Promise<T>, timeoutMs: number): Promise
   } finally { if (timer) clearTimeout(timer); }
 }
 
-export function createTombo(options: { adapter: GenerationAdapter; now?: () => Date | number }): Tombo {
+export function createTombo(options: { adapter: GenerationAdapter; now?: () => Date | number; maxModelRepairAttempts?: number }): Tombo {
   requireCondition(options.adapter && typeof options.adapter.generate === 'function', 'invalid_input', 'Explicit generation adapter required');
+  const maxRepairs = options.maxModelRepairAttempts === undefined ? 0 : options.maxModelRepairAttempts;
+  requireCondition(Number.isInteger(maxRepairs) && maxRepairs >= 0 && maxRepairs <= 2, 'invalid_input', 'maxModelRepairAttempts must be an integer from 0 to 2');
   const clock = () => {
     const value = options.now?.() ?? new Date();
     const timestamp = value instanceof Date ? value.getTime() : value;
@@ -341,38 +344,59 @@ export function createTombo(options: { adapter: GenerationAdapter; now?: () => D
       const started = clock();
       const elapsedBeforeCall = state.usage.elapsedMs;
       state.usage.modelCalls++;
-      let receivedOutput = false;
       let accountedOutput = false;
       try {
         const raw = await timed(() => adapter.generate(structuredClone(generationInput)), budget.maxElapsedMs - state.usage.elapsedMs);
-        receivedOutput = true;
-        const reported = parse(z.object({ usage: generationOutputSchema.shape.usage }), raw, 'invalid_model_output');
+        const reported = parse(z.object({ usage: generationOutputSchema.shape.usage }), raw, maxRepairs ? 'budget_accounting_unavailable' : 'invalid_model_output');
         state.usage.totalTokens = sumKnown(state.usage.totalTokens, reported.usage?.totalTokens ?? null);
         state.usage.costYen = sumKnown(state.usage.costYen, reported.usage?.costYen ?? null);
         accountedOutput = true;
-        const output = parse(schema, raw, 'invalid_model_output');
-        if (budget.maxCostYen !== undefined) requireCondition(output.usage?.costYen !== null && output.usage?.costYen !== undefined && output.usage.costYen <= reserved!, 'budget_accounting_unavailable', 'Reported model cost exceeds reserved upper bound or is unavailable');
-        const outputTokens = output.usage?.outputTokens ?? output.usage?.totalTokens;
+        if (budget.maxCostYen !== undefined) requireCondition(reported.usage?.costYen !== null && reported.usage?.costYen !== undefined && reported.usage.costYen <= reserved!, 'budget_accounting_unavailable', 'Reported model cost exceeds reserved upper bound or is unavailable');
+        const outputTokens = reported.usage?.outputTokens ?? reported.usage?.totalTokens;
         requireCondition(outputTokens !== null && outputTokens !== undefined, 'budget_accounting_unavailable', 'Adapter must report output token count or total token upper bound');
         requireCondition(outputTokens <= budget.maxOutputTokensPerCall, 'budget_exhausted', 'Output token cap exceeded');
         state.usage.elapsedMs = elapsed(state, clock());
         requireCondition(state.usage.elapsedMs < budget.maxElapsedMs, 'budget_exhausted', 'Generation consumed remaining elapsed budget');
-        return output;
+        return parse(schema, raw, 'invalid_model_output');
       } catch (error) {
-        if (!receivedOutput) { state.usage.totalTokens = null; state.usage.costYen = null; }
+        if (!accountedOutput) { state.usage.totalTokens = null; state.usage.costYen = null; }
         if (error instanceof TomboError && error.code !== 'model_timeout') {
-          if (error.code === 'invalid_model_output' && !accountedOutput) { state.usage.totalTokens = null; state.usage.costYen = null; }
           throw error;
         }
         state.usage.totalTokens = null;
         state.usage.costYen = null;
         if (error instanceof TomboError && error.code === 'model_timeout') { state.usage.elapsedMs = budget.maxElapsedMs; throw error; }
-        if (attempt === 1 || budget.maxCostYen !== undefined) throw error instanceof TomboError ? error : new TomboError('model_error', 'Generation adapter failed', { cause: error });
+        if (maxRepairs > 0 || attempt === 1 || budget.maxCostYen !== undefined) throw error instanceof TomboError ? error : new TomboError('model_error', 'Generation adapter failed', { cause: error });
       } finally {
         state.usage.elapsedMs = Math.max(elapsed(state, clock()), elapsedBeforeCall + Math.max(0, clock() - started));
       }
     }
     throw new TomboError('model_error', 'Generation failed');
+  }
+
+  async function propose<I extends GenerationInput | ReflectionInput, O extends { usage?: GenerationOutput['usage'] }>(
+    state: UnderstandingState, input: I,
+    adapter: { generate(input: I): Promise<O>; estimateMaxCostYen?(input: I): number | Promise<number> },
+    schema: z.ZodType<O>, apply: (candidate: UnderstandingState, output: O) => void,
+  ): Promise<UnderstandingState> {
+    let feedback: ModelValidationFeedback | undefined;
+    for (let attempt = 1; ; attempt++) {
+      const callsBeforeAttempt = state.usage.modelCalls;
+      try {
+        const output = await generate(state, feedback ? { ...input, validationFeedback: feedback } : input, adapter, schema);
+        const candidate = structuredClone(state);
+        apply(candidate, output);
+        return candidate;
+      } catch (error) {
+        if (!maxRepairs || state.usage.modelCalls === callsBeforeAttempt || !(error instanceof TomboError) || error.code !== 'invalid_model_output') throw error;
+        feedback = { code: error.code, message: error.message.slice(0, 512) || 'Invalid model output', rejectedAttempt: attempt, maxAttempts: maxRepairs + 1 };
+        state.modelRepairDiagnostics ??= [];
+        state.modelRepairDiagnostics.push({ operation: input.operation, ...feedback });
+        requireCondition(state.usage.elapsedMs < state.task.budget.maxElapsedMs, 'budget_exhausted', 'Generation elapsed budget exhausted');
+        if (state.task.budget.maxCostYen !== undefined) requireCondition(state.usage.costYen !== null, 'budget_accounting_unavailable', 'Monetary usage unavailable after rejected model output');
+        if (attempt > maxRepairs) throw error;
+      }
+    }
   }
 
   return {
@@ -386,11 +410,15 @@ export function createTombo(options: { adapter: GenerationAdapter; now?: () => D
         decision: 'blocked', stopReason: null, appliedExecutions: [], excludedCandidates: [] };
       if (exhausted(state) || task.budget.maxRounds === 0) return { state: { ...state, stopReason: 'budget_exhausted' }, changes: [], nextProbeIds: [], userQuestions: [] };
       const original = structuredClone(state);
-      const output = await generate(state, { operation: 'inspect', task }, options.adapter, generationOutputSchema);
-      requireCondition(state.usage.elapsedMs < task.budget.maxElapsedMs, 'budget_exhausted', 'Generation elapsed budget exhausted');
-      applyProposal(state, output.proposal);
-      state.revision = 1;
-      return result(state, changesBetween(original, state, 'Initial inspection proposal'));
+      try {
+        const candidate = await propose(state, { operation: 'inspect', task }, options.adapter, generationOutputSchema,
+          (candidate, output) => applyProposal(candidate, output.proposal));
+        candidate.revision = 1;
+        return result(candidate, changesBetween(original, candidate, 'Initial inspection proposal'));
+      } catch (error) {
+        if (maxRepairs && error instanceof TomboError) return stopped(original, state.usage, error.code, original.appliedExecutions, state.modelRepairDiagnostics);
+        throw error;
+      }
     },
     async reflect(input, critic) {
       const original = parse(stateSchema, input, 'invalid_input');
@@ -407,26 +435,26 @@ export function createTombo(options: { adapter: GenerationAdapter; now?: () => D
         const binding = { taskId: state.taskId, basedRevision: original.revision, understandingHash: understandingHash(original) };
         const reflectionInput: ReflectionInput = { operation: 'reflect', task: state.task, state: structuredClone(original), binding,
           maxOutputTokens: state.task.budget.maxOutputTokensPerCall };
-        const output = await generate(state, reflectionInput, {
+        const candidate = await propose(state, reflectionInput, {
           generate: value => critic.reflect(value),
           ...(critic.estimateMaxCostYen ? { estimateMaxCostYen: (value: ReflectionInput) => critic.estimateMaxCostYen!(value) } : {}),
-        }, reflectionOutputSchema);
-        requireCondition(canonical(output.binding) === canonical(binding), 'invalid_model_output', 'Reflection binding does not match current understanding');
-        requireCondition(output.reviewedClaimIds.every(id => original.claims.some(claim => claim.id === id)) &&
-          (output.completion !== 'completed' || original.claims.every(claim => output.reviewedClaimIds.includes(claim.id))),
-          'invalid_model_output', 'Reflection claim coverage does not match current claims');
-        const candidate = structuredClone(state);
-        applyProposal(candidate, output.proposal);
-        candidate.reflection = { binding: output.binding, reviewedClaimIds: output.reviewedClaimIds, completion: output.completion, limitations: output.limitations };
+        }, reflectionOutputSchema, (candidate, output) => {
+          requireCondition(canonical(output.binding) === canonical(binding), 'invalid_model_output', 'Reflection binding does not match current understanding');
+          requireCondition(output.reviewedClaimIds.every(id => original.claims.some(claim => claim.id === id)) &&
+            (output.completion !== 'completed' || original.claims.every(claim => output.reviewedClaimIds.includes(claim.id))),
+            'invalid_model_output', 'Reflection claim coverage does not match current claims');
+          applyProposal(candidate, output.proposal);
+          candidate.reflection = { binding: output.binding, reviewedClaimIds: output.reviewedClaimIds, completion: output.completion, limitations: output.limitations };
+        });
         candidate.revision = original.revision + 1;
         const changes = changesBetween(original, candidate, 'Reflection proposed additional checks');
-        if (output.completion === 'inconclusive') {
+        if (candidate.reflection!.completion === 'inconclusive') {
           candidate.decision = 'blocked'; candidate.stopReason = 'reflection_inconclusive';
           return { state: candidate, changes, nextProbeIds: [], userQuestions: [] };
         }
         return result(candidate, changes);
       } catch (error) {
-        if (error instanceof TomboError) return stopped(original, state.usage, error.code);
+        if (error instanceof TomboError) return stopped(original, state.usage, error.code, original.appliedExecutions, state.modelRepairDiagnostics);
         throw error;
       }
     },
@@ -508,16 +536,15 @@ export function createTombo(options: { adapter: GenerationAdapter; now?: () => D
         }
         requireCondition(!state.evidence.some(item => item.validity === 'current' && item.passageUnavailable), 'passage_unavailable', 'Reacquire current evidence passages before generation');
         const beforeProposal = structuredClone(state);
-        const output = await generate(state, { operation: 'update', task: state.task, state: beforeProposal, observations: assessmentObservations }, options.adapter, generationOutputSchema);
-        requireCondition(state.usage.elapsedMs < state.task.budget.maxElapsedMs, 'budget_exhausted', 'Generation elapsed budget exhausted');
-        for (const resolution of output.proposal.resolutions ?? []) {
-          const gap = state.gaps.find(item => item.id === resolution.gapId);
-          const observationsForGap = assessmentObservations.filter(observation => gap?.probeIds.includes(observation.probeId));
-          requireCondition(!observationsForGap.length || observationsForGap.some(observation => observation.outcome === 'completed' && observation.evidence.length > 0), 'invalid_model_output', 'Unsuccessful probe outcome cannot resolve a gap');
-        }
-        const candidate = structuredClone(state);
-        applyProposal(candidate, output.proposal);
-        delete candidate.pendingAssessmentExecutionIds;
+        const candidate = await propose(state, { operation: 'update', task: state.task, state: beforeProposal, observations: assessmentObservations }, options.adapter, generationOutputSchema, (candidate, output) => {
+          for (const resolution of output.proposal.resolutions ?? []) {
+            const gap = state.gaps.find(item => item.id === resolution.gapId);
+            const observationsForGap = assessmentObservations.filter(observation => gap?.probeIds.includes(observation.probeId));
+            requireCondition(!observationsForGap.length || observationsForGap.some(observation => observation.outcome === 'completed' && observation.evidence.length > 0), 'invalid_model_output', 'Unsuccessful probe outcome cannot resolve a gap');
+          }
+          applyProposal(candidate, output.proposal);
+          delete candidate.pendingAssessmentExecutionIds;
+        });
         state = candidate;
         state.revision = original.revision + 1;
         const changes = changesBetween(original, state, 'Evidence assessment proposal');
@@ -525,7 +552,7 @@ export function createTombo(options: { adapter: GenerationAdapter; now?: () => D
         if (!hasNewEvidence && !changes.length) state.stopReason = assessmentObservations.some(item => item.outcome === 'unavailable' || item.outcome === 'error') ? 'capability_limit' : 'no_progress';
         return result(state, changes);
       } catch (error) {
-        if (error instanceof TomboError) return stopped(validatedObservations ?? original, state.usage, error.code, validatedObservations?.appliedExecutions ?? original.appliedExecutions);
+        if (error instanceof TomboError) return stopped(validatedObservations ?? original, state.usage, error.code, validatedObservations?.appliedExecutions ?? original.appliedExecutions, state.modelRepairDiagnostics);
         throw error;
       }
     },
