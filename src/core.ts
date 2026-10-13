@@ -1,8 +1,8 @@
 import { createHash } from 'node:crypto';
 import { z } from 'zod';
 import {
-  taskPacketSchema, stateSchema, observationsSchema, generationOutputSchema, reflectionOutputSchema,
-  type Assessment, type Evidence, type Gap, type GenerationAdapter, type GenerationInput,
+  assessmentSchema, taskPacketSchema, stateSchema, observationsSchema, generationOutputSchema, reflectionOutputSchema,
+  type Assessment, type AssessmentReference, type Evidence, type Gap, type GenerationAdapter, type GenerationInput,
   type GenerationOutput, type ReflectionInput, type ModelValidationFeedback, type InspectionResult, type Observation, type Proposal,
   type TaskPacket, type Tombo, type UnderstandingChange, type UnderstandingState, type Usage,
 } from './types.js';
@@ -32,11 +32,21 @@ function canonical(value: unknown): string {
   return JSON.stringify(value);
 }
 
+export function assessmentDigest(input: unknown): string {
+  return hashPassage(canonical(parse(assessmentSchema, input, 'invalid_input')));
+}
+
+export function assessmentReferences(state: UnderstandingState): AssessmentReference[] {
+  return state.claims.flatMap(claim => claim.assessments.map((assessment, assessmentIndex) => ({
+    claimId: claim.id, assessmentIndex, digest: assessmentDigest(assessment),
+  })));
+}
+
 export function understandingHash(state: UnderstandingState): string {
   const metadata = (items: Evidence[]) => items.map(({ passage: _, passageUnavailable: __, ...item }) => item);
   return hashPassage(canonical({
     task: { ...state.task, evidence: metadata(state.task.evidence) }, evidence: metadata(state.evidence),
-    claims: state.claims, lenses: state.lenses, gaps: state.gaps, probes: state.probes, excludedCandidates: state.excludedCandidates,
+    assessmentCorrections: state.assessmentCorrections, claims: state.claims, lenses: state.lenses, gaps: state.gaps, probes: state.probes, excludedCandidates: state.excludedCandidates,
   }));
 }
 
@@ -71,11 +81,12 @@ function conditionIds(task: TaskPacket): Set<string> {
   return new Set(['task:goal', 'task:mode', ...task.successCriteria.map((_, index) => `task:criterion:${index}`)]);
 }
 
-function effectiveAssessment(state: UnderstandingState, assessment: Assessment): boolean {
+function effectiveAssessment(state: UnderstandingState, assessment: Assessment, allowRedacted = false): boolean {
+  if (state.assessmentCorrections?.some(item => item.targetDigest === assessmentDigest(assessment))) return false;
   const claim = state.claims.find(item => item.id === assessment.claimId)!;
   return assessment.scopeMatched && assessment.evidenceIds.every(id => {
     const evidence = state.evidence.find(item => item.id === id)!;
-    return evidence.validity === 'current' && !evidence.passageUnavailable && evidence.scope === claim.scope;
+    return evidence.validity === 'current' && (allowRedacted || !evidence.passageUnavailable) && evidence.scope === claim.scope;
   });
 }
 
@@ -97,9 +108,10 @@ function resolutionValid(state: UnderstandingState, gap: Gap, allowRedacted = fa
   if (!gap.claimIds.length) return false;
   return gap.claimIds.every(id => {
     const claim = state.claims.find(item => item.id === id)!;
-    if (allowRedacted && evidence.some(item => item.passageUnavailable)) return claim.status === expected;
-    return claimStatus(state, claim) === expected && claim.assessments.some(assessment =>
-      assessment.verdict === (expected === 'supported' ? 'supports' : 'refutes') && effectiveAssessment(state, assessment) &&
+    const redactedResolution = allowRedacted && evidence.some(item => item.passageUnavailable);
+    if (redactedResolution && !state.assessmentCorrections?.length) return claim.status === expected;
+    return (redactedResolution ? claim.status : claimStatus(state, claim)) === expected && claim.assessments.some(assessment =>
+      assessment.verdict === (expected === 'supported' ? 'supports' : 'refutes') && effectiveAssessment(state, assessment, redactedResolution) &&
       assessment.evidenceIds.every(ref => gap.resolution!.evidenceIds.includes(ref)));
   });
 }
@@ -123,6 +135,18 @@ function checkState(state: UnderstandingState, code: TomboErrorCode, derived = t
   for (const claim of state.claims) for (const assessment of claim.assessments) {
     requireCondition(assessment.claimId === claim.id, code, 'Assessment assigned to wrong claim');
     requireCondition(assessment.evidenceIds.every(id => evidences.has(id)), code, 'Unknown assessment evidence');
+  }
+  const corrected = new Set<string>();
+  for (const correction of state.assessmentCorrections ?? []) {
+    const history = state.claims.find(item => item.id === correction.claimId)?.assessments ?? [];
+    const target = history.find(item => assessmentDigest(item) === correction.targetDigest);
+    const replacement = history.find(item => assessmentDigest(item) === correction.replacementDigest);
+    requireCondition(target && replacement, code, 'Correction references must belong to the same claim history');
+    requireCondition(correction.targetDigest !== correction.replacementDigest, code, 'Correction cannot replace itself');
+    requireCondition(!corrected.has(correction.targetDigest), code, 'Assessment already corrected');
+    requireCondition(!corrected.has(correction.replacementDigest), code, 'Replacement assessment already corrected');
+    requireCondition(correction.groundingEvidenceIds.every(id => evidences.has(id) && replacement.evidenceIds.includes(id)), code, 'Correction grounding must reference replacement evidence');
+    corrected.add(correction.targetDigest);
   }
   for (const gap of state.gaps) {
     requireCondition(lenses.has(gap.lensId) && gap.claimIds.every(id => claims.has(id)) && gap.probeIds.every(id => probes.has(id)), code, `Unknown gap reference ${gap.id}`);
@@ -243,7 +267,8 @@ function recompute(state: UnderstandingState): void {
   }
 }
 
-function applyProposal(state: UnderstandingState, proposal: Proposal): void {
+function applyProposal(state: UnderstandingState, proposal: Proposal, operation: GenerationInput['operation'] | 'reflect'): void {
+  requireCondition(proposal.assessmentCorrections === undefined || operation === 'update', 'invalid_model_output', 'Assessment corrections require update');
   state.decision = 'blocked';
   const all = new Set([...state.evidence, ...state.claims, ...state.lenses, ...state.gaps, ...state.probes].map(item => item.id));
   for (const entity of [...proposal.claims ?? [], ...proposal.lenses ?? [], ...proposal.gaps ?? [], ...proposal.probes ?? []]) {
@@ -254,11 +279,20 @@ function applyProposal(state: UnderstandingState, proposal: Proposal): void {
   state.lenses.push(...proposal.lenses ?? []);
   state.gaps.push(...(proposal.gaps ?? []).map(gap => ({ ...gap, status: 'open' as const })));
   state.probes.push(...(proposal.probes ?? []).map(probe => ({ ...probe, status: 'pending' as const })));
-  for (const assessment of proposal.assessments ?? []) {
+  for (const assessment of [...proposal.assessments ?? [], ...(proposal.assessmentCorrections ?? []).map(item => item.replacement)]) {
     const claim = state.claims.find(item => item.id === assessment.claimId);
     requireCondition(claim, 'invalid_model_output', `Unknown claim ${assessment.claimId}`);
     requireCondition(assessment.evidenceIds.every(id => state.evidence.some(item => item.id === id)), 'invalid_model_output', 'Unknown evidence assessment');
     if (!claim.assessments.some(old => canonical(old) === canonical(assessment))) claim.assessments.push(assessment);
+  }
+  for (const correction of proposal.assessmentCorrections ?? []) {
+    requireCondition(correction.groundingEvidenceIds.every(id => {
+      const evidence = state.evidence.find(item => item.id === id);
+      return evidence?.validity === 'current' && !evidence.passageUnavailable;
+    }), 'invalid_model_output', 'Correction requires current evidence with an available passage');
+    state.assessmentCorrections ??= [];
+    const { replacement, ...record } = correction;
+    state.assessmentCorrections.push({ ...record, replacementDigest: assessmentDigest(replacement) });
   }
   checkState(state, 'invalid_model_output', false);
   recompute(state);
@@ -412,7 +446,7 @@ export function createTombo(options: { adapter: GenerationAdapter; now?: () => D
       const original = structuredClone(state);
       try {
         const candidate = await propose(state, { operation: 'inspect', task }, options.adapter, generationOutputSchema,
-          (candidate, output) => applyProposal(candidate, output.proposal));
+          (candidate, output) => applyProposal(candidate, output.proposal, 'inspect'));
         candidate.revision = 1;
         return result(candidate, changesBetween(original, candidate, 'Initial inspection proposal'));
       } catch (error) {
@@ -433,7 +467,7 @@ export function createTombo(options: { adapter: GenerationAdapter; now?: () => D
         requireCondition(state.usage.toolCalls <= state.task.budget.maxToolCalls, 'budget_exhausted', 'Observed tool budget exceeded');
         requireCondition(!state.evidence.some(item => item.validity === 'current' && item.passageUnavailable), 'passage_unavailable', 'Reacquire current evidence passages before reflection');
         const binding = { taskId: state.taskId, basedRevision: original.revision, understandingHash: understandingHash(original) };
-        const reflectionInput: ReflectionInput = { operation: 'reflect', task: state.task, state: structuredClone(original), binding,
+        const reflectionInput: ReflectionInput = { operation: 'reflect', task: state.task, state: structuredClone(original), binding, assessmentReferences: assessmentReferences(original),
           maxOutputTokens: state.task.budget.maxOutputTokensPerCall };
         const candidate = await propose(state, reflectionInput, {
           generate: value => critic.reflect(value),
@@ -443,7 +477,7 @@ export function createTombo(options: { adapter: GenerationAdapter; now?: () => D
           requireCondition(output.reviewedClaimIds.every(id => original.claims.some(claim => claim.id === id)) &&
             (output.completion !== 'completed' || original.claims.every(claim => output.reviewedClaimIds.includes(claim.id))),
             'invalid_model_output', 'Reflection claim coverage does not match current claims');
-          applyProposal(candidate, output.proposal);
+          applyProposal(candidate, output.proposal, 'reflect');
           candidate.reflection = { binding: output.binding, reviewedClaimIds: output.reviewedClaimIds, completion: output.completion, limitations: output.limitations };
         });
         candidate.revision = original.revision + 1;
@@ -536,20 +570,21 @@ export function createTombo(options: { adapter: GenerationAdapter; now?: () => D
         }
         requireCondition(!state.evidence.some(item => item.validity === 'current' && item.passageUnavailable), 'passage_unavailable', 'Reacquire current evidence passages before generation');
         const beforeProposal = structuredClone(state);
-        const candidate = await propose(state, { operation: 'update', task: state.task, state: beforeProposal, observations: assessmentObservations }, options.adapter, generationOutputSchema, (candidate, output) => {
+        const candidate = await propose(state, { operation: 'update', task: state.task, state: beforeProposal, assessmentReferences: assessmentReferences(beforeProposal), observations: assessmentObservations }, options.adapter, generationOutputSchema, (candidate, output) => {
           for (const resolution of output.proposal.resolutions ?? []) {
             const gap = state.gaps.find(item => item.id === resolution.gapId);
             const observationsForGap = assessmentObservations.filter(observation => gap?.probeIds.includes(observation.probeId));
             requireCondition(!observationsForGap.length || observationsForGap.some(observation => observation.outcome === 'completed' && observation.evidence.length > 0), 'invalid_model_output', 'Unsuccessful probe outcome cannot resolve a gap');
           }
-          applyProposal(candidate, output.proposal);
+          applyProposal(candidate, output.proposal, 'update');
           delete candidate.pendingAssessmentExecutionIds;
         });
         state = candidate;
         state.revision = original.revision + 1;
         const changes = changesBetween(original, state, 'Evidence assessment proposal');
         const hasNewEvidence = state.evidence.some(item => !original.evidence.some(old => old.id === item.id));
-        if (!hasNewEvidence && !changes.length) state.stopReason = assessmentObservations.some(item => item.outcome === 'unavailable' || item.outcome === 'error') ? 'capability_limit' : 'no_progress';
+        const hasCorrection = (state.assessmentCorrections?.length ?? 0) > (original.assessmentCorrections?.length ?? 0);
+        if (!hasNewEvidence && !hasCorrection && !changes.length) state.stopReason = assessmentObservations.some(item => item.outcome === 'unavailable' || item.outcome === 'error') ? 'capability_limit' : 'no_progress';
         return result(state, changes);
       } catch (error) {
         if (error instanceof TomboError) return stopped(validatedObservations ?? original, state.usage, error.code, validatedObservations?.appliedExecutions ?? original.appliedExecutions, state.modelRepairDiagnostics);

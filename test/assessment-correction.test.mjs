@@ -14,7 +14,8 @@ const cold = evidence('cold', 'Cold p95 is 2130 ms.');
 const assessment = (verdict = 'supports', overrides = {}) => ({ claimId: 'claim', evidenceIds: ['warm'], verdict, scopeMatched: true, reason: 'The report establishes both conditions.', ...overrides });
 const wrong = assessment();
 const replacement = assessment('inconclusive', { scopeMatched: false, reason: 'Warm-only coverage cannot establish both conditions.' });
-const correction = (target = wrong, next = replacement, overrides = {}) => ({ claimId: 'claim', targetDigest: digest(target), replacementDigest: digest(next), groundingEvidenceIds: next.evidenceIds, reason: 'The original interpretation included an unmeasured condition.', ...overrides });
+const correction = (target = wrong, next = replacement, overrides = {}) => ({ claimId: 'claim', targetDigest: digest(target), replacement: next, groundingEvidenceIds: next.evidenceIds, reason: 'The original interpretation included an unmeasured condition.', ...overrides });
+const stored = ({ replacement, ...record }) => ({ ...record, replacementDigest: digest(replacement) });
 const observation = (executionId = 'read-1', items = [warm]) => ({ executionId, probeId: 'probe', outcome: 'completed', evidence: items, toolCalls: 1, elapsedMs: 1, costYen: 2 });
 const initialProposal = {
   claims: [{ id: 'claim', role: 'answer_claim', text: 'Warm and cold p95 are both at most 800 ms.', scope }],
@@ -52,7 +53,7 @@ test('SDK reread correction reopens the required gap without withdrawing the sou
   assert.equal(fixed.state.decision, 'needs_check');
   assert.deepEqual(fixed.state.claims[0].assessments, [wrong, replacement]);
   assert.deepEqual(fixed.state.evidence, [warm]);
-  assert.deepEqual(fixed.state.assessmentCorrections, [correction()]);
+  assert.deepEqual(fixed.state.assessmentCorrections, [stored(correction())]);
   assert.notEqual(sdk.understandingHash(fixed.state), reviewed.state.reflection.binding.understandingHash);
   const rereviewed = await context.tombo.reflect(fixed.state, critic);
   assert.equal(rereviewed.state.decision, 'needs_check');
@@ -75,15 +76,21 @@ test('SDK accepts refuted resolution after correcting the mistaken support and r
 });
 
 test('SDK preserves a real conflict and another claim correction cannot remove its refutation', async () => {
-  const context = await supported();
+  const context = engine();
+  const first = await context.tombo.inspect(packet());
+  const fullSupport = evidence('warm', 'Warm p95 is 610 ms and cold p95 is 700 ms in the same measurement window.');
+  const fullRefutation = evidence('cold', 'Warm p95 is 610 ms and cold p95 is 2130 ms in the same measurement window.');
+  context.set({ assessments: [wrong] });
+  const supportedState = await context.tombo.update(first.state, [observation('full-support', [fullSupport])]);
+  assert.equal(supportedState.state.claims[0].status, 'supported');
   const refutes = assessment('refutes', { evidenceIds: ['cold'], reason: 'The second report disagrees.' });
   const otherWrong = assessment('supports', { claimId: 'other' });
   const otherReplacement = { ...replacement, claimId: 'other' };
   context.set({ claims: [{ id: 'other', role: 'observation', text: 'A separate interpretation.', scope }], assessments: [refutes, otherWrong] });
-  const conflict = await context.tombo.update(context.state, [observation('conflict', [cold])]);
+  const conflict = await context.tombo.update(supportedState.state, [observation('conflict', [fullRefutation])]);
   assert.equal(conflict.state.claims[0].status, 'disputed');
   context.set({ assessments: [otherReplacement], assessmentCorrections: [correction(otherWrong, otherReplacement, { claimId: 'other' })] });
-  const fixed = await context.tombo.update(conflict.state, [observation('other-reread')]);
+  const fixed = await context.tombo.update(conflict.state, [observation('other-reread', [fullSupport])]);
   assert.equal(fixed.state.claims[0].status, 'disputed');
   assert.equal(fixed.state.claims[1].status, 'unverified');
   assert.equal(fixed.state.gaps[0].status, 'open');
@@ -91,8 +98,8 @@ test('SDK preserves a real conflict and another claim correction cannot remove i
 
 test('SDK rejects malformed correction references atomically and retains observed tool accounting', async t => {
   const variants = {
-    unknownTarget: { targetDigest: '0'.repeat(64) }, unknownReplacement: { replacementDigest: '1'.repeat(64) },
-    wrongClaim: { claimId: 'other' }, sameTarget: { replacementDigest: digest(wrong) },
+    unknownTarget: { targetDigest: '0'.repeat(64) }, referenceOnlyReplacement: { replacementDigest: '1'.repeat(64) }, wrongReplacementClaim: { replacement: { ...replacement, claimId: 'other' } },
+    wrongClaim: { claimId: 'other' }, sameTarget: { replacement: wrong },
     unknownGrounding: { groundingEvidenceIds: ['missing'] }, unrelatedGrounding: { groundingEvidenceIds: ['cold'] },
     emptyGrounding: { groundingEvidenceIds: [] }, duplicateGrounding: { groundingEvidenceIds: ['warm', 'warm'] },
     invalidDigest: { targetDigest: 'bad' }, blankReason: { reason: '' }, extraField: { verified: true },
@@ -124,7 +131,7 @@ test('SDK rejects double correction, cycles and an already corrected replacement
     context.set({ assessmentCorrections: [record] });
     const failed = await context.tombo.update(fixed.state, [observation('invalid-chain')]);
     assert.equal(failed.state.stopReason, 'invalid_model_output');
-    assert.deepEqual(failed.state.assessmentCorrections, [correction()]);
+    assert.deepEqual(failed.state.assessmentCorrections, [stored(correction())]);
   }
   const third = assessment('refutes', { reason: 'Both conditions are now covered and one exceeds the limit.' });
   context.set({ assessments: [third], assessmentCorrections: [correction(replacement, third)] });
@@ -179,7 +186,7 @@ test('SDK duplicate observation delivery is idempotent but a newly emitted dupli
   assert.deepEqual(duplicate.state, fixed.state);
   const rejected = await context.tombo.update(fixed.state, [observation('new-delivery')]);
   assert.equal(rejected.state.stopReason, 'invalid_model_output');
-  assert.deepEqual(rejected.state.assessmentCorrections, [correction()]);
+  assert.deepEqual(rejected.state.assessmentCorrections, [stored(correction())]);
 });
 
 test('SDK rejects withdrawn grounding at application and never revives a corrected assessment after withdrawal', async () => {
@@ -224,3 +231,71 @@ test('SDK legacy understanding hashes remain identical when corrections are abse
   assert.equal(Object.hasOwn(sdk.validateState(state), 'assessmentCorrections'), false);
 });
 
+
+test('SDK supplies existing assessment references and accepts an inline replacement in one update', async () => {
+  const context = await supported();
+  context.set(input => {
+    assert.deepEqual(input.assessmentReferences, [{ claimId: 'claim', assessmentIndex: 0, digest: digest(wrong) }]);
+    return { assessmentCorrections: [{ claimId: 'claim', targetDigest: input.assessmentReferences[0].digest, replacement, groundingEvidenceIds: ['warm'], reason: 'The initial interpretation was too broad.' }] };
+  });
+  const fixed = await context.tombo.update(context.state, [observation('inline')]);
+  assert.equal(fixed.state.claims[0].status, 'unverified');
+  assert.deepEqual(fixed.state.claims[0].assessments, [wrong, replacement]);
+  assert.deepEqual(fixed.state.assessmentCorrections, [{ claimId: 'claim', targetDigest: digest(wrong), replacementDigest: digest(replacement), groundingEvidenceIds: ['warm'], reason: 'The initial interpretation was too broad.' }]);
+  let references;
+  const reflected = await context.tombo.reflect(fixed.state, { async reflect(input) { references = input.assessmentReferences; return critic.reflect(input); } });
+  assert.equal(reflected.state.decision, 'needs_check');
+  assert.deepEqual(references, [{ claimId: 'claim', assessmentIndex: 0, digest: digest(wrong) }, { claimId: 'claim', assessmentIndex: 1, digest: digest(replacement) }]);
+  assert.deepEqual(sdk.assessmentReferences(fixed.state), references);
+});
+
+test('SDK corrections that preserve claim status still count as progress and invalidate the old receipt', async () => {
+  const context = await supported();
+  const refined = { ...wrong, reason: 'A corrected interpretation still supports the proposition.' };
+  context.set({ assessments: [refined] });
+  const before = await context.tombo.update(context.state, [observation('refined-assessment')]);
+  const reviewed = await context.tombo.reflect(before.state, critic);
+  assert.equal(reviewed.state.decision, 'ready_for_requested_step');
+  context.set({ assessmentCorrections: [correction(wrong, refined)] });
+  const fixed = await context.tombo.update(reviewed.state, [observation('same-status-correction')]);
+  assert.equal(fixed.state.claims[0].status, 'supported');
+  assert.deepEqual(fixed.changes, []);
+  assert.equal(fixed.state.stopReason, null);
+  assert.equal(fixed.state.decision, 'needs_reflection');
+  assert.notEqual(sdk.understandingHash(fixed.state), reviewed.state.reflection.binding.understandingHash);
+  assert.deepEqual(fixed.state.claims[0].assessments, reviewed.state.claims[0].assessments);
+});
+
+test('SDK correction retries cannot exceed model, round, elapsed or monetary limits', async t => {
+  for (const budget of [{ maxModelCalls: 3 }, { maxRounds: 2 }, { maxElapsedMs: 2 }, { maxCostYen: 7 }]) await t.test(JSON.stringify(budget), async () => {
+    const context = await supported();
+    const state = structuredClone(context.state);
+    Object.assign(state.task.budget, budget);
+    context.set({ assessmentCorrections: [correction(), correction()] });
+    const obs = observation('budget-retry');
+    const failed = await context.tombo.update(state, [obs]);
+    assert.equal(failed.state.claims[0].status, 'supported');
+    assert.equal(failed.state.usage.toolCalls, 2);
+    context.set({ assessmentCorrections: [correction()] });
+    const stopped = await context.tombo.update(failed.state, [obs]);
+    assert.equal(stopped.state.stopReason, 'budget_exhausted');
+    assert.equal(stopped.state.claims[0].status, 'supported');
+    assert.equal(stopped.state.usage.modelCalls, failed.state.usage.modelCalls);
+    assert.equal(stopped.state.usage.rounds, failed.state.usage.rounds);
+    assert.equal(stopped.state.usage.toolCalls, failed.state.usage.toolCalls);
+    assert.equal(stopped.state.assessmentCorrections, undefined);
+  });
+});
+
+test('SDK rejects superseded grounding and unknown evidence in an inline replacement', async t => {
+  for (const mode of ['superseded', 'unknown']) await t.test(mode, async () => {
+    const context = await supported();
+    const basis = evidence('basis', 'A later reading.', { validity: 'superseded' });
+    const next = { ...replacement, evidenceIds: [mode === 'superseded' ? basis.id : 'missing'] };
+    context.set({ assessmentCorrections: [correction(wrong, next)] });
+    const failed = await context.tombo.update(context.state, [observation('invalid-basis', [basis])]);
+    assert.equal(failed.state.stopReason, 'invalid_model_output');
+    assert.deepEqual(failed.state.claims[0].assessments, [wrong]);
+    assert.equal(failed.state.assessmentCorrections, undefined);
+  });
+});

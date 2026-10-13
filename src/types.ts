@@ -27,6 +27,18 @@ export const assessmentSchema = z.strictObject({
   claimId: id, evidenceIds: ids.min(1), verdict: z.enum(['supports', 'refutes', 'inconclusive']),
   scopeMatched: z.boolean(), reason: text,
 });
+export const assessmentCorrectionSchema = z.strictObject({
+  claimId: id, targetDigest: z.string().regex(/^[a-f0-9]{64}$/), replacementDigest: z.string().regex(/^[a-f0-9]{64}$/),
+  groundingEvidenceIds: ids.min(1), reason: text,
+});
+export const assessmentCorrectionProposalSchema = assessmentCorrectionSchema.omit({ replacementDigest: true }).extend({
+  replacement: assessmentSchema,
+});
+export interface AssessmentReference {
+  claimId: string;
+  assessmentIndex: number;
+  digest: string;
+}
 export const claimDefinitionSchema = z.strictObject({
   id, role: z.enum(['observation', 'assumption', 'hypothesis', 'answer_claim']), text, scope: text,
 });
@@ -91,6 +103,7 @@ export const stateSchema = z.strictObject({
   gaps: z.array(gapSchema), probes: z.array(probeSchema), usage: usageSchema, decision: decisionSchema,
   stopReason: text.nullable(), appliedExecutions: z.array(appliedExecutionSchema),
   modelRepairDiagnostics: z.array(modelRepairDiagnosticSchema).optional(),
+  assessmentCorrections: z.array(assessmentCorrectionSchema).optional(),
   pendingAssessmentExecutionIds: ids.min(1).optional(), reflection: reflectionReceiptSchema.optional(),
   excludedCandidates: z.array(z.strictObject({ id, reason: text, importance: z.enum(['required', 'optional']) })).optional(),
 });
@@ -98,6 +111,7 @@ export const proposalSchema = z.strictObject({
   claims: z.array(claimDefinitionSchema).optional(), lenses: z.array(lensSchema).optional(),
   gaps: z.array(gapDefinitionSchema).optional(), probes: z.array(probeDefinitionSchema).optional(),
   assessments: z.array(assessmentSchema).optional(),
+  assessmentCorrections: z.array(assessmentCorrectionProposalSchema).optional(),
   resolutions: z.array(resolutionSchema.extend({ gapId: id })).optional(),
 });
 export const generationOutputSchema = z.strictObject({
@@ -121,6 +135,8 @@ export const inspectionResultSchema = z.strictObject({
 export type Budget = z.infer<typeof budgetSchema>;
 export type Usage = z.infer<typeof usageSchema>;
 export type Evidence = z.infer<typeof evidenceSchema>;
+export type AssessmentCorrectionProposal = z.infer<typeof assessmentCorrectionProposalSchema>;
+export type AssessmentCorrection = z.infer<typeof assessmentCorrectionSchema>;
 export type Assessment = z.infer<typeof assessmentSchema>;
 export type Claim = z.infer<typeof claimSchema>;
 export type Lens = z.infer<typeof lensSchema>;
@@ -144,6 +160,7 @@ export type ProbeMethod = Probe['method'];
 export type ModelValidationFeedback = z.infer<typeof modelValidationFeedbackSchema>;
 export type ModelRepairDiagnostic = z.infer<typeof modelRepairDiagnosticSchema>;
 export interface GenerationInput {
+  assessmentReferences?: AssessmentReference[];
   validationFeedback?: ModelValidationFeedback;
   operation: 'inspect' | 'update';
   task: TaskPacket;
@@ -156,6 +173,7 @@ export interface GenerationAdapter {
   estimateMaxCostYen?(input: GenerationInput): number | Promise<number>;
 }
 export interface ReflectionInput {
+  assessmentReferences?: AssessmentReference[];
   validationFeedback?: ModelValidationFeedback;
   operation: 'reflect';
   task: TaskPacket;
