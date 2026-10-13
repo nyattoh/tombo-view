@@ -77,6 +77,7 @@ export const stateSchema = z.strictObject({
   task: taskPacketSchema, evidence: z.array(evidenceSchema), claims: z.array(claimSchema), lenses: z.array(lensSchema),
   gaps: z.array(gapSchema), probes: z.array(probeSchema), usage: usageSchema, decision: decisionSchema,
   stopReason: text.nullable(), appliedExecutions: z.array(appliedExecutionSchema),
+  pendingAssessmentExecutionIds: ids.min(1).optional(),
   excludedCandidates: z.array(z.strictObject({ id, reason: text, importance: z.enum(['required', 'optional']) })).optional(),
 });
 export const proposalSchema = z.strictObject({

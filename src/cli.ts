@@ -52,13 +52,10 @@ async function main(): Promise<void> {
   const command = positionals[0];
   let output: string;
   if (command === 'inspect' || command === 'update' || command === 'invalidate') {
+    const prior = command === 'inspect' ? null : validateState(await readJson(values.state));
+    const expectedRevision = prior?.revision ?? -1;
+    if (values.ledger) await new FileJournal(values.ledger).assertCurrent(prior);
     const tombo = createTombo({ adapter: command === 'invalidate' ? fixtureAdapter : await loadAdapter(values.adapter) });
-    const prior = command === 'inspect' ? null : await readJson(values.state);
-    const expectedRevision = prior ? (prior as { revision: number }).revision : -1;
-    if (values.ledger) {
-      const saved = await new FileJournal(values.ledger).load();
-      if ((saved?.revision ?? -1) !== expectedRevision) throw new TomboError('revision_conflict', 'Reload the journal state before running this command.');
-    }
     const result = command === 'inspect'
       ? await tombo.inspect(await readJson(values.input))
       : command === 'update'

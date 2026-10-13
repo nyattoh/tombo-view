@@ -6,7 +6,7 @@ import { resolve, join } from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { hashPassage } from '../dist/index.js';
 
-const helper = resolve('skills/tombo/scripts/session.mjs');
+const helper = resolve('skills/tombo-view/scripts/session.mjs');
 const budget = { maxRounds: 2, maxModelCalls: 3, maxToolCalls: 6, maxElapsedMs: 120000, maxInputChars: 48000, maxOutputTokensPerCall: 4000 };
 const initialProposal = {
   claims: [{ id: 'c-requirement', role: 'answer_claim', text: 'このプロジェクトはNode.js 24以上が必要。', scope: 'project-config' }],

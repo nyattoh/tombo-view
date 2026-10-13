@@ -121,6 +121,7 @@ function checkState(state: UnderstandingState, code: TomboErrorCode, derived = t
   }
   requireCondition(new Set(state.appliedExecutions.map(item => item.executionId)).size === state.appliedExecutions.length, code, 'Duplicate execution ID');
   requireCondition(state.appliedExecutions.every(item => probes.has(item.probeId)), code, 'Unknown execution probe');
+  requireCondition(state.pendingAssessmentExecutionIds?.every(id => state.appliedExecutions.some(item => item.executionId === id)) ?? true, code, 'Unknown pending assessment execution');
   if (!derived) return;
   requireCondition(state.gaps.length <= 8, code, 'Candidate cap exceeded');
   for (const claim of state.claims) {
@@ -128,7 +129,7 @@ function checkState(state: UnderstandingState, code: TomboErrorCode, derived = t
     if (!hasRedacted) requireCondition(claim.status === claimStatus(state, claim), code, `Claim status does not follow evidence ${claim.id}`);
   }
   for (const gap of state.gaps) if (gap.status === 'resolved') requireCondition(resolutionValid(state, gap, true), code, `Unjustified resolution ${gap.id}`);
-  if (state.decision === 'ready_for_requested_step') requireCondition(!state.gaps.some(gap => gap.importance === 'required' && gap.status !== 'resolved') && !state.excludedCandidates?.some(item => item.importance === 'required'), code, 'Required gaps remain');
+  if (state.decision === 'ready_for_requested_step') requireCondition(!state.pendingAssessmentExecutionIds && !state.gaps.some(gap => gap.importance === 'required' && gap.status !== 'resolved') && !state.excludedCandidates?.some(item => item.importance === 'required'), code, 'Required gaps or assessments remain');
 }
 
 function sumKnown(left: number | null, right: number | null): number | null {
@@ -165,7 +166,7 @@ function result(state: UnderstandingState, changes: UnderstandingChange[] = []):
     }).slice(0, 3);
   const userQuestions = needed.filter(gap => gap.kind === 'ambiguous_intent').map(gap => gap.question);
   if (state.excludedCandidates?.some(item => item.importance === 'required')) { state.decision = 'blocked'; state.stopReason = 'candidate_limit'; }
-  else if (!needed.length) { state.decision = 'ready_for_requested_step'; state.stopReason = null; }
+  else if (!needed.length && !state.pendingAssessmentExecutionIds) { state.decision = 'ready_for_requested_step'; state.stopReason = null; }
   else if (state.stopReason) state.decision = 'blocked';
   else if (exhausted(state, true)) { state.decision = 'blocked'; state.stopReason = 'budget_exhausted'; }
   else if (next.length) state.decision = 'needs_check';
@@ -366,6 +367,8 @@ export function createTombo(options: { adapter: GenerationAdapter; now?: () => D
       try {
         const observations = parse(observationsSchema, observationsInput, 'invalid_input');
         const unique: Observation[] = [];
+        const supplied = new Map<string, Observation>();
+        const pending = original.pendingAssessmentExecutionIds ?? [];
         const deliveries = new Map(original.appliedExecutions.map(item => [item.executionId, item.payloadHash]));
         for (const observation of observations) {
           checkEvidence(observation.evidence, 'invalid_input', false);
@@ -374,14 +377,25 @@ export function createTombo(options: { adapter: GenerationAdapter; now?: () => D
           const payloadHash = hashPassage(canonical(observation));
           const previous = deliveries.get(observation.executionId);
           requireCondition(previous === undefined || previous === payloadHash, 'invalid_input', `Execution payload collision ${observation.executionId}`);
+          supplied.set(observation.executionId, observation);
           if (previous === undefined) { deliveries.set(observation.executionId, payloadHash); unique.push(observation); }
         }
-        if (observations.length && !unique.length) return { state: original, changes: [], nextProbeIds: original.decision === 'needs_check' ? result(structuredClone(original)).nextProbeIds : [], userQuestions: [] };
-        if (!unique.length) return stopped(original, state.usage, 'no_progress');
+        requireCondition(!pending.length || (supplied.size === pending.length && pending.every(id => supplied.has(id))), 'invalid_input', 'Redeliver the exact pending assessment batch before another update');
+        if (observations.length && !unique.length && !pending.length) return { state: original, changes: [], nextProbeIds: original.decision === 'needs_check' ? result(structuredClone(original)).nextProbeIds : [], userQuestions: [] };
+        const assessmentObservations = pending.length ? pending.map(id => supplied.get(id)!) : unique;
+        if (!assessmentObservations.length) return stopped(original, state.usage, 'no_progress');
+        const budget = state.task.budget;
+        if (pending.length) {
+          const canRetry = state.usage.modelCalls < budget.maxModelCalls && state.usage.rounds < budget.maxRounds &&
+            state.usage.toolCalls <= budget.maxToolCalls && state.usage.elapsedMs < budget.maxElapsedMs && budget.maxOutputTokensPerCall > 0 &&
+            (budget.maxCostYen === undefined || state.usage.costYen === null || state.usage.costYen < budget.maxCostYen);
+          if (!canRetry && original.stopReason === 'budget_exhausted') return { state: original, changes: [], nextProbeIds: [], userQuestions: [] };
+          requireCondition(canRetry, 'budget_exhausted', 'Assessment retry budget exhausted');
+        }
         const newTools = unique.reduce((sum, item) => sum + item.toolCalls, 0);
         const toolTime = unique.reduce((sum, item) => sum + item.elapsedMs, 0);
         const registered = new Map(state.evidence.map(item => [item.id, item]));
-        for (const observation of unique) for (const evidence of observation.evidence) {
+        for (const observation of assessmentObservations) for (const evidence of observation.evidence) {
           const old = registered.get(evidence.id);
           const rehydrated = old?.passageUnavailable && canonical({ ...old, passage: evidence.passage, passageUnavailable: undefined }) === canonical(evidence);
           requireCondition(!old || canonical(old) === canonical(evidence) || rehydrated, 'invalid_input', `Evidence ID collision ${evidence.id}`);
@@ -402,12 +416,13 @@ export function createTombo(options: { adapter: GenerationAdapter; now?: () => D
           }
         }
         checkState(state, 'invalid_input');
+        state.pendingAssessmentExecutionIds = assessmentObservations.map(item => item.executionId);
+        state.decision = 'blocked';
         state.usage.rounds++;
         state.usage.toolCalls += newTools;
         state.usage.elapsedMs = Math.max(original.usage.elapsedMs + toolTime, state.usage.elapsedMs);
         for (const observation of unique) state.usage.costYen = sumKnown(state.usage.costYen, observation.costYen);
         validatedObservations = structuredClone(state);
-        const budget = state.task.budget;
         requireCondition(state.usage.modelCalls < budget.maxModelCalls && state.usage.rounds <= budget.maxRounds &&
           state.usage.toolCalls <= budget.maxToolCalls && state.usage.elapsedMs < budget.maxElapsedMs && budget.maxOutputTokensPerCall > 0,
           'budget_exhausted', 'Update or observed tool budget exhausted');
@@ -417,20 +432,21 @@ export function createTombo(options: { adapter: GenerationAdapter; now?: () => D
         }
         requireCondition(!state.evidence.some(item => item.validity === 'current' && item.passageUnavailable), 'passage_unavailable', 'Reacquire current evidence passages before generation');
         const beforeProposal = structuredClone(state);
-        const output = await generate(state, { operation: 'update', task: state.task, state: beforeProposal, observations: unique });
+        const output = await generate(state, { operation: 'update', task: state.task, state: beforeProposal, observations: assessmentObservations });
         requireCondition(state.usage.elapsedMs < state.task.budget.maxElapsedMs, 'budget_exhausted', 'Generation elapsed budget exhausted');
         for (const resolution of output.proposal.resolutions ?? []) {
           const gap = state.gaps.find(item => item.id === resolution.gapId);
-          const observationsForGap = unique.filter(observation => gap?.probeIds.includes(observation.probeId));
+          const observationsForGap = assessmentObservations.filter(observation => gap?.probeIds.includes(observation.probeId));
           requireCondition(!observationsForGap.length || observationsForGap.some(observation => observation.outcome === 'completed' && observation.evidence.length > 0), 'invalid_model_output', 'Unsuccessful probe outcome cannot resolve a gap');
         }
         const candidate = structuredClone(state);
         applyProposal(candidate, output.proposal);
+        delete candidate.pendingAssessmentExecutionIds;
         state = candidate;
         state.revision = original.revision + 1;
         const changes = changesBetween(original, state, 'Evidence assessment proposal');
         const hasNewEvidence = state.evidence.some(item => !original.evidence.some(old => old.id === item.id));
-        if (!hasNewEvidence && !changes.length) state.stopReason = unique.some(item => item.outcome === 'unavailable' || item.outcome === 'error') ? 'capability_limit' : 'no_progress';
+        if (!hasNewEvidence && !changes.length) state.stopReason = assessmentObservations.some(item => item.outcome === 'unavailable' || item.outcome === 'error') ? 'capability_limit' : 'no_progress';
         return result(state, changes);
       } catch (error) {
         if (error instanceof TomboError) return stopped(validatedObservations ?? original, state.usage, error.code, validatedObservations?.appliedExecutions ?? original.appliedExecutions);
@@ -449,6 +465,10 @@ export function createTombo(options: { adapter: GenerationAdapter; now?: () => D
       for (const evidence of state.evidence) if (request.evidenceIds.includes(evidence.id) && evidence.validity === 'current') { evidence.validity = 'withdrawn'; changed = true; }
       if (!changed) return { state: original, changes: [], nextProbeIds: [], userQuestions: [] };
       recompute(state);
+      const pendingProbes = new Set(state.appliedExecutions.filter(item => state.pendingAssessmentExecutionIds?.includes(item.executionId)).map(item => item.probeId));
+      delete state.pendingAssessmentExecutionIds;
+      for (const probe of state.probes) if (pendingProbes.has(probe.id) && probe.status === 'complete' &&
+        probe.gapIds.some(id => state.gaps.find(gap => gap.id === id)!.status !== 'resolved')) probe.status = 'pending';
       state.revision++;
       checkState(state, 'invalid_input');
       return result(state, changesBetween(original, state, request.reason));
