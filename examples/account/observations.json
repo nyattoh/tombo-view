@@ -1,0 +1,24 @@
+[
+  {
+    "executionId": "execution-account-1",
+    "probeId": "p-account-contract",
+    "outcome": "completed",
+    "evidence": [
+      {
+        "id": "e-account-result",
+        "kind": "document",
+        "locator": "fixture:e-account-result",
+        "sourceGroup": "e-account-result",
+        "retrievedAt": "2026-10-14T00:00:00+09:00",
+        "version": "v1",
+        "scope": "synthetic-account-v1",
+        "passage": "架空規約 v1: CLOSE 409 は未完了の契約がある場合に返る。契約を完了または解約してから再度閉鎖する。",
+        "contentHash": "232c2e6efc007fcc310fed3ec17208534493192039bc621f1eb911a81b4c046f",
+        "validity": "current"
+      }
+    ],
+    "toolCalls": 1,
+    "elapsedMs": 10,
+    "costYen": 0
+  }
+]

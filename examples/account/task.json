@@ -1,0 +1,35 @@
+{
+  "schemaVersion": "0.1",
+  "taskId": "demo-account-close",
+  "goal": "架空アカウントの CLOSE 409 の原因を確認し、次の確認を選ぶ。",
+  "mode": "explain",
+  "successCriteria": [
+    "架空資料またはテストに基づき、回答の前提を確認する。"
+  ],
+  "evidence": [
+    {
+      "id": "e-procedure",
+      "kind": "document",
+      "locator": "fixture:e-procedure",
+      "sourceGroup": "e-procedure",
+      "retrievedAt": "2026-10-14T00:00:00+09:00",
+      "version": "v1",
+      "scope": "synthetic-account-v1",
+      "passage": "架空ヘルプ v1: 担当者は管理画面で閉鎖を実行する。",
+      "contentHash": "4854514ed60477675504ada11c306e6210cc4d9b6876aefa6ffcb5ff47582e9d",
+      "validity": "current"
+    }
+  ],
+  "proposedAnswer": "同じ閉鎖手順を再度実行すればよい。",
+  "capabilities": [
+    "read_document"
+  ],
+  "budget": {
+    "maxRounds": 2,
+    "maxModelCalls": 3,
+    "maxToolCalls": 6,
+    "maxElapsedMs": 120000,
+    "maxInputChars": 48000,
+    "maxOutputTokensPerCall": 4000
+  }
+}

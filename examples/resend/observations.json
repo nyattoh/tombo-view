@@ -1,0 +1,24 @@
+[
+  {
+    "executionId": "execution-resend-1",
+    "probeId": "p-event-resend",
+    "outcome": "completed",
+    "evidence": [
+      {
+        "id": "e-resend-result",
+        "kind": "test",
+        "locator": "fixture:e-resend-result",
+        "sourceGroup": "e-resend-result",
+        "retrievedAt": "2026-10-14T00:00:00+09:00",
+        "version": "v1",
+        "scope": "synthetic-event-v1",
+        "passage": "架空テスト v1: 同じイベント evt-1 を2回送信すると処理が2回行われ、重複処理が発生した。",
+        "contentHash": "e94a5ebace0094dbf0d8c94659c6d93a7e937bdc525e7631b3effcacd9b96ff4",
+        "validity": "current"
+      }
+    ],
+    "toolCalls": 1,
+    "elapsedMs": 10,
+    "costYen": 0
+  }
+]

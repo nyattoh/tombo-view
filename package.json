@@ -1,0 +1,43 @@
+{
+  "name": "tombo-understanding",
+  "version": "0.1.0",
+  "description": "Evidence-linked understanding checks for AI agents",
+  "type": "module",
+  "private": false,
+  "engines": {
+    "node": ">=22"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "bin": {
+    "tombo": "./dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "skills",
+    "examples",
+    "docs",
+    "evaluation",
+    "TOMBO_spec_v0.1_ja.md",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "npm run build && node --test test/*.test.mjs",
+    "demo": "npm run build && node scripts/demo.mjs"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "typescript": "^7.0.2"
+  }
+}

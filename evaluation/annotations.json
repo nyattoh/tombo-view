@@ -1,0 +1,290 @@
+[
+  {
+    "id": "development-01",
+    "control": false,
+    "requiredGap": "再送時の重複処理",
+    "suitableProbe": "同じイベントIDを再送する"
+  },
+  {
+    "id": "development-02",
+    "control": false,
+    "requiredGap": "日付境界の適用条件",
+    "suitableProbe": "境界前後の入力を比較する"
+  },
+  {
+    "id": "development-03",
+    "control": false,
+    "requiredGap": "検索範囲と結果なしの意味",
+    "suitableProbe": "検索条件とページ範囲を確認する"
+  },
+  {
+    "id": "development-04",
+    "control": false,
+    "requiredGap": "資料の版",
+    "suitableProbe": "移行先のスキーマを読む"
+  },
+  {
+    "id": "development-05",
+    "control": false,
+    "requiredGap": "権限の違い",
+    "suitableProbe": "閲覧者権限で更新結果を確認する"
+  },
+  {
+    "id": "development-06",
+    "control": false,
+    "requiredGap": "観測経路の独立性",
+    "suitableProbe": "キャッシュを介さない原データを読む"
+  },
+  {
+    "id": "development-07",
+    "control": false,
+    "requiredGap": "保存途中の中断",
+    "suitableProbe": "履歴追記後の中断を再現する"
+  },
+  {
+    "id": "development-08",
+    "control": false,
+    "requiredGap": "対象OSの違い",
+    "suitableProbe": "対象OSでビルドする"
+  },
+  {
+    "id": "development-09",
+    "control": false,
+    "requiredGap": "同時書込み",
+    "suitableProbe": "並行更新を再現する"
+  },
+  {
+    "id": "development-10",
+    "control": false,
+    "requiredGap": "参照先の存在",
+    "suitableProbe": "ビルドと参照検索を実行する"
+  },
+  {
+    "id": "development-11",
+    "control": false,
+    "requiredGap": "検証範囲",
+    "suitableProbe": "対象ブラウザーで表示を確認する"
+  },
+  {
+    "id": "development-12",
+    "control": false,
+    "requiredGap": "利用可能な能力",
+    "suitableProbe": "実行環境と測定記録を確認する"
+  },
+  {
+    "id": "development-13",
+    "control": true,
+    "requiredGap": null,
+    "suitableProbe": null
+  },
+  {
+    "id": "development-14",
+    "control": true,
+    "requiredGap": null,
+    "suitableProbe": null
+  },
+  {
+    "id": "development-15",
+    "control": true,
+    "requiredGap": null,
+    "suitableProbe": null
+  },
+  {
+    "id": "development-16",
+    "control": true,
+    "requiredGap": null,
+    "suitableProbe": null
+  },
+  {
+    "id": "automation-01",
+    "control": false,
+    "requiredGap": "通知の重複",
+    "suitableProbe": "再実行時の送信件数を確認する"
+  },
+  {
+    "id": "automation-02",
+    "control": false,
+    "requiredGap": "エラーの前提条件",
+    "suitableProbe": "架空規約のエラー条件を読む"
+  },
+  {
+    "id": "automation-03",
+    "control": false,
+    "requiredGap": "営業日の定義",
+    "suitableProbe": "対象組織の営業日規則を確認する"
+  },
+  {
+    "id": "automation-04",
+    "control": false,
+    "requiredGap": "金額の単位",
+    "suitableProbe": "通貨と換算条件を照合する"
+  },
+  {
+    "id": "automation-05",
+    "control": false,
+    "requiredGap": "同意の用途と時点",
+    "suitableProbe": "現在の同意範囲を確認する"
+  },
+  {
+    "id": "automation-06",
+    "control": false,
+    "requiredGap": "完了した対象の範囲",
+    "suitableProbe": "未送信IDと配送結果を照合する"
+  },
+  {
+    "id": "automation-07",
+    "control": false,
+    "requiredGap": "入力の重複",
+    "suitableProbe": "注文キーと出典を照合する"
+  },
+  {
+    "id": "automation-08",
+    "control": false,
+    "requiredGap": "実行失敗と結果なし",
+    "suitableProbe": "API応答コードを確認する"
+  },
+  {
+    "id": "automation-09",
+    "control": false,
+    "requiredGap": "本人の希望",
+    "suitableProbe": "保存期間の希望を確認する"
+  },
+  {
+    "id": "automation-10",
+    "control": false,
+    "requiredGap": "実行と配送の区別",
+    "suitableProbe": "実行IDと課金ログを照合する"
+  },
+  {
+    "id": "automation-11",
+    "control": false,
+    "requiredGap": "認証の有効時点",
+    "suitableProbe": "秘密値を表示せず接続確認する"
+  },
+  {
+    "id": "automation-12",
+    "control": false,
+    "requiredGap": "取得できない本人情報",
+    "suitableProbe": "契約番号の確認を求める"
+  },
+  {
+    "id": "automation-13",
+    "control": true,
+    "requiredGap": null,
+    "suitableProbe": null
+  },
+  {
+    "id": "automation-14",
+    "control": true,
+    "requiredGap": null,
+    "suitableProbe": null
+  },
+  {
+    "id": "automation-15",
+    "control": true,
+    "requiredGap": null,
+    "suitableProbe": null
+  },
+  {
+    "id": "automation-16",
+    "control": true,
+    "requiredGap": null,
+    "suitableProbe": null
+  },
+  {
+    "id": "research-01",
+    "control": false,
+    "requiredGap": "出典の依存関係",
+    "suitableProbe": "原資料と転載関係を確認する"
+  },
+  {
+    "id": "research-02",
+    "control": false,
+    "requiredGap": "情報の時点",
+    "suitableProbe": "現在の公式料金表を読む"
+  },
+  {
+    "id": "research-03",
+    "control": false,
+    "requiredGap": "対象集団の違い",
+    "suitableProbe": "対象集団と研究条件を照合する"
+  },
+  {
+    "id": "research-04",
+    "control": false,
+    "requiredGap": "未探索の検索範囲",
+    "suitableProbe": "別の索引と検索語で確認する"
+  },
+  {
+    "id": "research-05",
+    "control": false,
+    "requiredGap": "矛盾する証拠",
+    "suitableProbe": "版と対象を照合し矛盾を保持する"
+  },
+  {
+    "id": "research-06",
+    "control": false,
+    "requiredGap": "引用本文の取得",
+    "suitableProbe": "原文の該当部分を読む"
+  },
+  {
+    "id": "research-07",
+    "control": false,
+    "requiredGap": "測定方法",
+    "suitableProbe": "実験条件と実行記録を確認する"
+  },
+  {
+    "id": "research-08",
+    "control": false,
+    "requiredGap": "実験の適用条件",
+    "suitableProbe": "付録の条件を読む"
+  },
+  {
+    "id": "research-09",
+    "control": false,
+    "requiredGap": "因果推論の前提",
+    "suitableProbe": "研究デザインと交絡を確認する"
+  },
+  {
+    "id": "research-10",
+    "control": false,
+    "requiredGap": "指標の単位",
+    "suitableProbe": "単位と測定区間を照合する"
+  },
+  {
+    "id": "research-11",
+    "control": false,
+    "requiredGap": "評価情報の漏洩",
+    "suitableProbe": "モデルへ渡した入力を検査する"
+  },
+  {
+    "id": "research-12",
+    "control": false,
+    "requiredGap": "独立な測定単位",
+    "suitableProbe": "ケース単位の対応比較を行う"
+  },
+  {
+    "id": "research-13",
+    "control": true,
+    "requiredGap": null,
+    "suitableProbe": null
+  },
+  {
+    "id": "research-14",
+    "control": true,
+    "requiredGap": null,
+    "suitableProbe": null
+  },
+  {
+    "id": "research-15",
+    "control": true,
+    "requiredGap": null,
+    "suitableProbe": null
+  },
+  {
+    "id": "research-16",
+    "control": true,
+    "requiredGap": null,
+    "suitableProbe": null
+  }
+]

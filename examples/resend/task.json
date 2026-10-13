@@ -1,0 +1,35 @@
+{
+  "schemaVersion": "0.1",
+  "taskId": "demo-event-resend",
+  "goal": "架空イベント処理が再送時に重複しないか確認する。",
+  "mode": "explain",
+  "successCriteria": [
+    "架空資料またはテストに基づき、回答の前提を確認する。"
+  ],
+  "evidence": [
+    {
+      "id": "e-code",
+      "kind": "code",
+      "locator": "fixture:e-code",
+      "sourceGroup": "e-code",
+      "retrievedAt": "2026-10-14T00:00:00+09:00",
+      "version": "v1",
+      "scope": "synthetic-event-v1",
+      "passage": "架空実装 v1: 受信した各イベントを処理する。再送を区別する記録はない。",
+      "contentHash": "d9862fe586314d101ef0efda0954c3b4fb826d91d462b5a740d3dc5230dfb009",
+      "validity": "current"
+    }
+  ],
+  "proposedAnswer": "この処理は再送時にも重複しない。",
+  "capabilities": [
+    "run_test"
+  ],
+  "budget": {
+    "maxRounds": 2,
+    "maxModelCalls": 3,
+    "maxToolCalls": 6,
+    "maxElapsedMs": 120000,
+    "maxInputChars": 48000,
+    "maxOutputTokensPerCall": 4000
+  }
+}
