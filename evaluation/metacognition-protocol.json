@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "frozenBeforeResults": true,
+  "minimumRepeats": 3,
+  "arms": [
+    "baseline",
+    "tombo"
+  ],
+  "requested": {
+    "maxCalls": 6,
+    "maxOutputChars": 4000
+  },
+  "thresholds": {
+    "correctness": 0.9,
+    "recall": 0.85,
+    "falseClosure": 0,
+    "maxControlUnnecessaryProbe": 0.1,
+    "superiorityRecallGain": 0.1,
+    "minimumImprovedCases": 2,
+    "correctionAccuracy": 0.9
+  },
+  "pairedRule": "No case may regress in correctness, required-finding recall, false closure, correction accuracy or control unnecessary probing. Average repeats inside each case before comparing cases.",
+  "ordering": "Alternate baseline then tombo on odd repeats; tombo then baseline on even repeats.",
+  "judgeRule": "One independent blinded assessor rates both arms on identical criteria, binds every judgement to the output digest, cites output excerpts and source IDs. Schema checks are not semantic assessment.",
+  "boundary": "Public synthetic development and evaluation families. Not a secret held-out test or evidence about all unknowns. Actual model origin and assessor independence are attestations requiring transcript audit. Host token/cost UNKNOWN leaves G4 unproven.",
+  "caseDigest": "dbdefc98b0287ec9ac7619e043b9c54c75ba683311da1f6d83eaa182f8b57244",
+  "annotationDigest": "e8bcdecf3c71a8f678c31b3b910e24e15769f8c4130423cc3db133e587fb0645"
+}

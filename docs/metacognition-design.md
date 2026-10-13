@@ -26,4 +26,10 @@
 
 runUnderstandingCheckはinspect、必要なreflection、nextProbeIdsに対応する明示executor、updateを予算内で実行する。実行IDは実際の検査ごとに生成し、外部ツールの結果だけをObservationにする。利用不可や検査なしを成功した証拠にしない。中断と例外、再実行と再配送を区別する。
 
+実行ループの返却は `{status:'completed', result:InspectionResult}` と `{status:'stopped', reason:string, result:InspectionResult|null}` のunionとする。開始前の中断は状態を捏造せずnullを返す。ループの停止条件と理解状態を分け、停止したループが状態を書き換えて完了を装わない。実行完了はcompletedとコアのreadyが両方成立した場合だけである。
+
+外部検査を実行した後の中断や例外は、測った経過時間と実際の呼出しを `update(state, observations, {deferAssessment:true})` で記録する。この経路はモデル評価を実行せずassessment_pendingとして観測バッチを保持する。生成を止めるための架空の経過時間や証拠を作らない。
+
+比較の共通呼出し上限はモデルと検査を合わせて6回とする。初期候補・再考・検査・更新・最終再考の5回を許し、両条件へ同じ上限を与える。これは実モデル結果を見る前の設計に基づく設定である。
+
 型、公開操作、実行ループとホスト用reflection envelopeの結び付きを、製品コードより先に受入テストへ表す。回答の訂正は現在の主張への反証と必要な新しい主張・未確認事項として表し、証拠なしの言い換えを正しい回答へ昇格させない。
