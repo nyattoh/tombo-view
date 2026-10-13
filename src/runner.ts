@@ -121,5 +121,3 @@ export async function runUnderstandingCheck(options: RunUnderstandingOptions): P
     }
   }
 }
-
-

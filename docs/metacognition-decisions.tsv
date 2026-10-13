@@ -5,3 +5,4 @@ ts	phase	decision	why	evidence	result
 2026-10-13T18:13:39Z	correction	初期ログ2行の時刻は未計測の記述だったため正確な実行時刻として採用しない	時刻を推測で補わない	results/metacognition-development/capabilities.json	前2行の選択内容は有効だが時刻は未確認
 2026-10-13T18:55:54Z	pilot	通常再点検は反証、TOMBOは複合主張の更新拒否で停止した	失敗を保存し主張の分割契約を共通化する	results/metacognition-development/pilot-work01-tombo-r1/run.json	目的達成は未確認
 2026-10-13T19:04:43Z	pilot	主張分割の共通指示で開発用TOMBO再試行が反証と再考を完了	型の制約を明示し採点基準は変えない	results/metacognition-development/pilot-work01-tombo-r2/run.json	1開発例成功であり優位性は未確認
+2026-10-13T19:16:18Z	development-control	計算の対照例で両方式が支持、TOMBOは資料読取り0回、通常再点検は1回	開発例を評価成績に含めず固定条件を保持する	results/metacognition-development/pilot-work02-tombo-r1/run.json	評価用比較は未実施
