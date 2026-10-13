@@ -40,6 +40,8 @@ claimStatus と resolutionValid は同じ有効評価の判定を使用する。
 | 差分検査 | git diff --check 成功 | 作業時の出力 |
 | 独立コメント監査 | 指摘0、変更0 | correction_final_comments agent |
 
+失敗出力の空行に含まれていた末尾空白だけをログ保存後に除去した。assertion と件数は保持した。
+
 再実行コマンドは次のとおり。
 
 ```powershell

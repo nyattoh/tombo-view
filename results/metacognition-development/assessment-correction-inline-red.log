@@ -161,10 +161,10 @@ not ok 13 - SDK supplies existing assessment references and accepts an inline re
   error: |-
     Expected values to be strictly equal:
     + actual - expected
-    
+
     + 'supported'
     - 'unverified'
-    
+
   code: 'ERR_ASSERTION'
   name: 'AssertionError'
   expected: 'unverified'

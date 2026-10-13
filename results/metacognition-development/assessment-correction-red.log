@@ -9,10 +9,10 @@ not ok 1 - SDK reread correction reopens the required gap without withdrawing th
   error: |-
     Expected values to be strictly equal:
     + actual - expected
-    
+
     + 'supported'
     - 'unverified'
-    
+
   code: 'ERR_ASSERTION'
   name: 'AssertionError'
   expected: 'unverified'
@@ -33,10 +33,10 @@ not ok 2 - SDK accepts refuted resolution after correcting the mistaken support 
   error: |-
     Expected values to be strictly equal:
     + actual - expected
-    
+
     + 'supported'
     - 'contradicted'
-    
+
   code: 'ERR_ASSERTION'
   name: 'AssertionError'
   expected: 'contradicted'
@@ -57,10 +57,10 @@ not ok 3 - SDK preserves a real conflict and another claim correction cannot rem
   error: |-
     Expected values to be strictly equal:
     + actual - expected
-    
+
     + 'supported'
     - 'unverified'
-    
+
   code: 'ERR_ASSERTION'
   name: 'AssertionError'
   expected: 'unverified'
@@ -154,10 +154,10 @@ not ok 5 - SDK rejects double correction, cycles and an already corrected replac
   error: |-
     Expected values to be strictly equal:
     + actual - expected
-    
+
     + 'supported'
     - 'unverified'
-    
+
   code: 'ERR_ASSERTION'
   name: 'AssertionError'
   expected: 'unverified'
@@ -197,10 +197,10 @@ not ok 7 - SDK retries rejected proposals without carrying their partial correct
   error: |-
     Expected values to be strictly equal:
     + actual - expected
-    
+
     + 'supported'
     - 'unverified'
-    
+
   code: 'ERR_ASSERTION'
   name: 'AssertionError'
   expected: 'unverified'
@@ -221,10 +221,10 @@ not ok 8 - SDK duplicate observation delivery is idempotent but a newly emitted 
   error: |-
     Expected values to be strictly equal:
     + actual - expected
-    
+
     + 'supported'
     - 'unverified'
-    
+
   code: 'ERR_ASSERTION'
   name: 'AssertionError'
   expected: 'unverified'
@@ -245,10 +245,10 @@ not ok 9 - SDK rejects withdrawn grounding at application and never revives a co
   error: |-
     Expected values to be strictly equal:
     + actual - expected
-    
+
     + 'supported'
     - 'unverified'
-    
+
   code: 'ERR_ASSERTION'
   name: 'AssertionError'
   expected: 'unverified'
@@ -275,10 +275,10 @@ not ok 11 - SDK canonical assessment digest is exported, validates its input and
   error: |-
     Expected values to be strictly equal:
     + actual - expected
-    
+
     + 'undefined'
     - 'function'
-    
+
   code: 'ERR_ASSERTION'
   name: 'AssertionError'
   expected: 'function'
