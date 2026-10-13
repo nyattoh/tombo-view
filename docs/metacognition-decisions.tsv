@@ -6,3 +6,6 @@ ts	phase	decision	why	evidence	result
 2026-10-13T18:55:54Z	pilot	通常再点検は反証、TOMBOは複合主張の更新拒否で停止した	失敗を保存し主張の分割契約を共通化する	results/metacognition-development/pilot-work01-tombo-r1/run.json	目的達成は未確認
 2026-10-13T19:04:43Z	pilot	主張分割の共通指示で開発用TOMBO再試行が反証と再考を完了	型の制約を明示し採点基準は変えない	results/metacognition-development/pilot-work01-tombo-r2/run.json	1開発例成功であり優位性は未確認
 2026-10-13T19:16:18Z	development-control	計算の対照例で両方式が支持、TOMBOは資料読取り0回、通常再点検は1回	開発例を評価成績に含めず固定条件を保持する	results/metacognition-development/pilot-work02-tombo-r1/run.json	評価用比較は未実施
+2026-10-13T19:21:20Z	comparison	評価work-07の初回ペアを実行、両方式とも反証と未確認範囲を保持	独立採点前に合格や優位性を断定しない	results/metacognition-development/evaluation-epoch1/work-07	2/36試行完了、独立判定未完了
+2026-10-13T19:27:46Z	verification	評価器・製品のGLM静的レビューがpass、導入済みスキル4ファイルのhash一致とreflect準備を確認	静的検証と意味的な効果を分ける	results/metacognition-development/product-review-glm-r1.md	意味的独立採点は未完了
+2026-10-13T19:42:32Z	evaluation-failure	work-07の全6試行をGLMが匿名採点、TOMBOの1更新拒否で非退行条件を満たさない	失敗を保持して評価中の実装を変えない	results/metacognition-development/grading-partial-report-work-07.json	初回エポックの目的達成は不合格、残り比較を継続
