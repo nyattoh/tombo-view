@@ -1,4 +1,4 @@
-import { understandingHash } from './core.js';
+import { assessmentDigest, TomboError, understandingHash } from './core.js';
 import type { InspectionResult, UnderstandingState } from './types.js';
 
 const labels = {
@@ -35,7 +35,9 @@ export function renderMarkdownReport(input: InspectionResult | UnderstandingStat
   const inconclusiveReasons: string[] = [];
   for (const claim of state.claims) {
     if (claim.role !== 'answer_claim') continue;
-    const assessment = claim.assessments.at(-1);
+    const assessment = state.assessmentCorrections?.length
+      ? claim.assessments.filter(item => !state.assessmentCorrections?.some(correction => correction.targetDigest === assessmentDigest(item))).at(-1)
+      : claim.assessments.at(-1);
     if (assessment?.verdict !== 'inconclusive' || !assessment.scopeMatched) continue;
     const evidence = assessment.evidenceIds.map(id => state.evidence.find(item => item.id === id));
     if (!evidence.every(item => item?.validity === 'current' && item.scope === claim.scope)) continue;
@@ -44,6 +46,18 @@ export function renderMarkdownReport(input: InspectionResult | UnderstandingStat
   }
   if (inconclusiveReasons.length) {
     lines.push('', '## 証拠評価の理由（不明）', '', '以下は回答の主張を確定できない評価理由であり、検証済みの事実として扱わない。', '', ...inconclusiveReasons);
+  }
+  if (state.assessmentCorrections?.length) {
+    const verdicts = { supports: '支持', refutes: '反証', inconclusive: '不明' };
+    lines.push('', '## 証拠の解釈の訂正', '', '以下はモデルの解釈の訂正履歴であり、訂正の意味的な正しさや事実確認を保証しない。証拠本文とその有効性はこの訂正では変更しない。', '');
+    for (const correction of state.assessmentCorrections) {
+      const claim = state.claims.find(item => item.id === correction.claimId);
+      const before = claim?.assessments.find(item => assessmentDigest(item) === correction.targetDigest);
+      const after = claim?.assessments.find(item => assessmentDigest(item) === correction.replacementDigest);
+      if (!claim || !before || !after) throw new TomboError('invalid_input', 'Assessment correction history contains missing references.');
+      const saved = correction.groundingEvidenceIds.some(id => state.evidence.find(item => item.id === id)?.passageUnavailable) ? '保存時の訂正履歴。本文未取得・未再検証。' : '';
+      lines.push(`- ${safe(claim.text)}。${saved}訂正前: ${verdicts[before.verdict]}。${safe(before.reason)}。訂正後: ${verdicts[after.verdict]}。${safe(after.reason)}。訂正理由: ${safe(correction.reason)}。参照証拠: ${correction.groundingEvidenceIds.map(safe).join('、')}。`);
+    }
   }
   lines.push('', '## 次に行う確認', '');
   for (const id of next) {

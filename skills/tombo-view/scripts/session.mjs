@@ -10,7 +10,7 @@ const configuration = resolve(skillRoot, 'references/runtime.json');
 const configuredRoot = existsSync(configuration) ? JSON.parse(await readFile(configuration, 'utf8')).repositoryRoot : undefined;
 const repositoryRoot = resolve(process.env.TOMBO_ROOT ?? configuredRoot ?? resolve(skillRoot, '../..'));
 const sdk = await import(pathToFileURL(resolve(repositoryRoot, 'dist/index.js')).href);
-const { createTombo, proposalSchema, reflectionOutputSchema, understandingHash, taskPacketSchema, observationsSchema, validateState, FileJournal, renderMarkdownReport, TomboError } = sdk;
+const { createTombo, proposalSchema, reflectionOutputSchema, understandingHash, assessmentReferences, taskPacketSchema, observationsSchema, validateState, FileJournal, renderMarkdownReport, TomboError } = sdk;
 
 function canonical(value) {
   if (Array.isArray(value)) return `[${value.map(canonical).join(',')}]`;
@@ -61,6 +61,7 @@ async function main() {
       }
     }
     const request = operation === 'reflect' ? { operation, task, state, binding: { taskId: task.taskId, basedRevision: state.revision, understandingHash: understandingHash(state) }, maxOutputTokens: task.budget.maxOutputTokensPerCall } : state ? { state, observations } : { task };
+    if (state) request.assessmentReferences = assessmentReferences(state);
     if (state?.stopReason === 'invalid_model_output' && lastDiagnostic?.operation === operation) {
       const { code, message, rejectedAttempt, maxAttempts } = lastDiagnostic;
       request.validationFeedback = { code, message, rejectedAttempt, maxAttempts };

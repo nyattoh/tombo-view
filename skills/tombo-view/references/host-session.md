@@ -14,6 +14,38 @@
 
 prepareは追加モデル呼出しを行わない。bindingのハッシュが対象・状態・観測へ一致しない提案は拒否する。古い提案を新しいタスクや観測へ流用しない。
 
+## 誤った証拠評価を訂正する
+
+既存の評価が取得済み本文を誤解していた場合は、update の提案に `assessmentCorrections` を加える。AI自身が入力と提案を用意し、利用者へJSONの手作業を求めない。
+
+prepare の `request.assessmentReferences` は `{claimId, assessmentIndex, digest}` の表である。state の同じ claim の assessments を読み、誤った解釈の対象を特定する。対応する digest を targetDigest へそのまま使う。モデル自身でハッシュを計算しない。次の形を同じ update の proposal へ入れる。
+
+```json
+{
+  "assessmentCorrections": [{
+    "claimId": "対象の既存claim ID",
+    "targetDigest": "参照表の対象digest",
+    "replacement": {
+      "claimId": "対象の既存claim ID",
+      "evidenceIds": ["取得済み証拠ID"],
+      "verdict": "inconclusive",
+      "scopeMatched": false,
+      "reason": "本文が対象条件を測っていない理由"
+    },
+    "groundingEvidenceIds": ["取得済み証拠ID"],
+    "reason": "以前の解釈のどこを訂正するか"
+  }]
+}
+```
+
+groundingEvidenceIds は current で本文取得済みの証拠で、replacement.evidenceIds に含める。本文が保存時に伏せられている場合は、許可された元資料から同じハッシュとメタデータで再取得する。別資料の取得や再読取りを実施した場合は、その実行を新しい executionId の観測として記録する。既存の観測の配送を再試行するときは同じIDと内容を保つ。
+
+SDK は inline の replacement を履歴へ加え、置換先の digest を保存する。置換評価を先に追記して次の update で訂正する二段階にはしない。初回の追記だけでは進展なしとして停止する場合がある。新しい反証が得られた場合は同じ提案の assessments に反証評価を加え、根拠が満たす場合に限り resolutions で解決する。
+
+訂正対象と置換先は同じ主張に属する。無関係な評価や本物の対立資料は残す。unknown な参照、自己参照、二重訂正、循環は拒否される。証拠本文や validity を訂正提案で変更しない。訂正は update だけで受理され、reflect は評価を訂正しない。
+
+訂正で支持がなくなれば gap が再開する場合がある。以前の reflection は失効するため、訂正後の状態から prepare reflect を行う。完成した再考も訂正の意味を保証しない。report の訂正前と訂正後はモデルの解釈の履歴として示し、検証済みの事実と区別する。本文を伏せた履歴は保存時の内容であり、現在の再検証とは扱わない。
+
 同じexecutionIdの再配送は二重に適用しない。実際の再実行には新しいIDを使う。`no_result`、予算不足、能力不足を解決へ変換しない。検査も状態変更もない場合や予算上限では停止し、未確認事項を残す。
 
 updateが `invalid_model_output` で止まった場合は、その停止結果を保存する。適用前の状態へ戻すと取得済み証拠と利用量を失うため、回復に使わない。提案だけを修正するときは、停止結果を `--state`、失敗時の観測バッチ全体を同じIDと内容で `--observations` へ渡し、prepareから新しいbindingを作る。一部の観測だけを再送したり、新しい観測を混ぜたりしない。再評価はモデル適用とラウンドの残予算を消費するが、実施済みの外部検査の時間・費用・回数を再加算しない。成功した評価の同じ配送は再評価しない。prepareも評価待ちのexecutionIdと観測内容を照合し、不足・変更・別観測の混入を拒否する。

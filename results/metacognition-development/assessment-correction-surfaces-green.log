@@ -1,0 +1,46 @@
+TAP version 13
+# Subtest: helper publishes assessment references and accepts one inline correction with honest usage and journal replay
+ok 1 - helper publishes assessment references and accepts one inline correction with honest usage and journal replay
+  ---
+  duration_ms: 966.5312
+  type: 'test'
+  ...
+# Subtest: helper rejects a pre-correction request binding after the assessment table changes
+ok 2 - helper rejects a pre-correction request binding after the assessment table changes
+  ---
+  duration_ms: 340.5329
+  type: 'test'
+  ...
+# Subtest: public CLI adapter performs a correction and refutation in one update then journals it
+ok 3 - public CLI adapter performs a correction and refutation in one update then journals it
+  ---
+  duration_ms: 200.499
+  type: 'test'
+  ...
+# Subtest: report distinguishes corrected interpretations and escaped reasons from verified facts in redacted history
+ok 4 - report distinguishes corrected interpretations and escaped reasons from verified facts in redacted history
+  ---
+  duration_ms: 479.4748
+  type: 'test'
+  ...
+# Subtest: uncorrected legacy state keeps the same report when empty optional history is omitted
+ok 5 - uncorrected legacy state keeps the same report when empty optional history is omitted
+  ---
+  duration_ms: 185.5987
+  type: 'test'
+  ...
+# Subtest: report does not present a corrected historical inconclusive reason as a current unknown
+ok 6 - report does not present a corrected historical inconclusive reason as a current unknown
+  ---
+  duration_ms: 10.0422
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2354.6712

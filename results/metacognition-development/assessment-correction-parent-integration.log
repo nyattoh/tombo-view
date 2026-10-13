@@ -1,0 +1,67 @@
+✔ SDK correction-only changes invalidate reflection even when replacement already exists in history (18.0501ms)
+✔ journal preserves corrections through redaction, replay and rehydration with an unchanged prior event (33.8004ms)
+✔ saved redacted correction history is valid but new correction application requires available passages (7.4448ms)
+▶ state validation rejects forged correction histories including redacted false resolutions
+  ✔ 0 (0.5506ms)
+  ✔ 1 (0.2604ms)
+  ✔ 2 (0.3238ms)
+  ✔ 3 (0.2256ms)
+  ✔ 4 (0.3482ms)
+  ✔ 5 (0.3283ms)
+✔ state validation rejects forged correction histories including redacted false resolutions (4.1497ms)
+✔ journal accepts later source withdrawal without resurrecting the corrected target (13.8855ms)
+✔ SDK invalidation of a redacted corrected journal remains valid when another claim has unavailable current evidence (11.6817ms)
+✔ helper publishes assessment references and accepts one inline correction with honest usage and journal replay (1028.5112ms)
+✔ helper rejects a pre-correction request binding after the assessment table changes (342.9238ms)
+✔ public CLI adapter performs a correction and refutation in one update then journals it (192.1745ms)
+✔ report distinguishes corrected interpretations and escaped reasons from verified facts in redacted history (469.0823ms)
+✔ uncorrected legacy state keeps the same report when empty optional history is omitted (164.3722ms)
+✔ report does not present a corrected historical inconclusive reason as a current unknown (11.1719ms)
+✔ SDK reread correction reopens the required gap without withdrawing the source or erasing history (21.4498ms)
+✔ SDK accepts refuted resolution after correcting the mistaken support and requires fresh reflection (4.5995ms)
+✔ SDK preserves a real conflict and another claim correction cannot remove its refutation (2.529ms)
+▶ SDK rejects malformed correction references atomically and retains observed tool accounting
+  ✔ unknownTarget (1.6606ms)
+  ✔ referenceOnlyReplacement (1.9953ms)
+  ✔ wrongReplacementClaim (1.4851ms)
+  ✔ wrongClaim (1.3792ms)
+  ✔ sameTarget (1.8492ms)
+  ✔ unknownGrounding (1.5281ms)
+  ✔ unrelatedGrounding (2.1825ms)
+  ✔ emptyGrounding (1.4913ms)
+  ✔ duplicateGrounding (1.5394ms)
+  ✔ invalidDigest (1.2841ms)
+  ✔ blankReason (1.3116ms)
+  ✔ extraField (1.2149ms)
+✔ SDK rejects malformed correction references atomically and retains observed tool accounting (20.0584ms)
+✔ SDK rejects double correction, cycles and an already corrected replacement while allowing a chain (5.1132ms)
+▶ SDK rolls back the whole proposal if a later correction or resolution is invalid
+  ✔ correction (1.4904ms)
+  ✔ resolution (1.3055ms)
+✔ SDK rolls back the whole proposal if a later correction or resolution is invalid (3.0394ms)
+✔ SDK retries rejected proposals without carrying their partial corrections and charges each model attempt (2.2814ms)
+✔ SDK duplicate observation delivery is idempotent but a newly emitted duplicate correction is rejected (3.301ms)
+✔ SDK rejects withdrawn grounding at application and never revives a corrected assessment after withdrawal (2.9781ms)
+✔ SDK allows correction only in update proposals (1.7429ms)
+✔ SDK canonical assessment digest is exported, validates its input and preserves property-order independence (0.3077ms)
+✔ SDK legacy understanding hashes remain identical when corrections are absent (0.8388ms)
+✔ SDK supplies existing assessment references and accepts an inline replacement in one update (1.9416ms)
+✔ SDK corrections that preserve claim status still count as progress and invalidate the old receipt (2.2272ms)
+▶ SDK correction retries cannot exceed model, round, elapsed or monetary limits
+  ✔ {"maxModelCalls":3} (1.433ms)
+  ✔ {"maxRounds":2} (1.6036ms)
+  ✔ {"maxElapsedMs":2} (1.5136ms)
+  ✔ {"maxCostYen":7} (1.4548ms)
+✔ SDK correction retries cannot exceed model, round, elapsed or monetary limits (6.3517ms)
+▶ SDK rejects superseded grounding and unknown evidence in an inline replacement
+  ✔ superseded (1.045ms)
+  ✔ unknown (0.8966ms)
+✔ SDK rejects superseded grounding and unknown evidence in an inline replacement (2.143ms)
+ℹ tests 54
+ℹ suites 0
+ℹ pass 54
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2419.6452
