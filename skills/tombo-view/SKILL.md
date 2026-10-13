@@ -7,7 +7,7 @@ description: tombo-viewで点検して、回答の根拠を確認して、未確
 
 この会話のAIを提案作成役として使う。追加のLLM APIを呼ばない。利用者にアダプタやJSONの作成を求めず、点検対象からAI自身が入力を用意する。点検対象が会話にあればそれを使い、なければ対象だけを確認する。
 
-最初に [会話内の実行手順](references/host-session.md) を読む。`scripts/session.mjs` の prepare → inspect → 許可された検査 → prepare → update → report を使う。固定アダプタの結果を、任意入力の検査に流用しない。
+最初に [会話内の実行手順](references/host-session.md) を読む。新しいTaskPacketには `reflectionRequired: true` を指定する。`scripts/session.mjs` の prepare → inspect → 許可された検査 → prepare → update → prepare → reflect → report を、判定に応じて使う。固定アダプタの結果を、任意入力の検査に流用しない。
 
 会話側のモデル利用量は取得できないため、費用と総トークン数は不明とする。ヘルパーは提案ファイルを読むだけで、追加API呼出しは0件である。会話の生成時間・出力トークン・金額までSDKが制限したとは主張しない。金額上限の厳密な保証が必要なら、会話内モードで続行せず、その制約を説明する。
 
@@ -16,6 +16,10 @@ description: tombo-viewで点検して、回答の根拠を確認して、未確
 SDKの `createTombo({ adapter })` または CLI の `inspect --adapter file:...` で検査候補を取得する。生成アダプタと外部ツールは呼出し元が明示的に選ぶ。外部操作の権限をTOMBOの判定から推定しない。
 
 検査を実行する前に、支持、反証、不明の条件を確認する。目的に影響しない候補を採用しない。本人の希望が必要なら質問を返し、環境から調べられる事実は許可された検査で取得する。
+
+prepareのinstructionsに従う。一つの主張を一つの命題にし、観測、仮説、回答、過去の理解、不明の説明を一つのclaimへ混ぜない。unsupported_claimとconflicting_evidenceのgapは、同じ解決判定を適用できる対象だけをclaimIdsへ置く。原則として一つの対象claimを用い、関連する別の主張はtriggerRefsへ置く。
+
+`needs_reflection` は未完了である。現在の理解、目的、成功条件と証拠を別の再考として読み、見えていない条件や反例を探す。再考は現在のbindingと全claimの点検を記録し、候補のlenses・gaps・probesだけを提案する。批判を証拠や解決にしない。候補を追加したら必要な検査へ戻り、理解が変わった後に古い再考を使わない。完了した再考も、すべての盲点を発見した証明とは扱わない。
 
 各実行に `executionId` を付けて `update` へ観測を渡す。同じ実行結果の配送を再試行するときは同じIDを使う。実際に再実行した場合は別のIDを使い、利用量を記録する。
 

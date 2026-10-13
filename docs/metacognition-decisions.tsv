@@ -3,3 +3,5 @@ ts	phase	decision	why	evidence	result
 2026-10-14T03:08:00+09:00	baseline	マージ済みmainを基準に専用ブランチを作る	既存編集と以前の検証を保持する	f6db21e57542ba8d922dbe1ad1c0ed4bc1bb54d6	baseline frozen
 2026-10-14T03:10:00+09:00	design	コア拡張案とcoordinator案を独立比較する	状態と会計の正本を一つにする	results/metacognition-development/capabilities.json	running
 2026-10-13T18:13:39Z	correction	初期ログ2行の時刻は未計測の記述だったため正確な実行時刻として採用しない	時刻を推測で補わない	results/metacognition-development/capabilities.json	前2行の選択内容は有効だが時刻は未確認
+2026-10-13T18:55:54Z	pilot	通常再点検は反証、TOMBOは複合主張の更新拒否で停止した	失敗を保存し主張の分割契約を共通化する	results/metacognition-development/pilot-work01-tombo-r1/run.json	目的達成は未確認
+2026-10-13T19:04:43Z	pilot	主張分割の共通指示で開発用TOMBO再試行が反証と再考を完了	型の制約を明示し採点基準は変えない	results/metacognition-development/pilot-work01-tombo-r2/run.json	1開発例成功であり優位性は未確認
