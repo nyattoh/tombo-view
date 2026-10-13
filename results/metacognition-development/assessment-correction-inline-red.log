@@ -1,0 +1,186 @@
+TAP version 13
+# Subtest: SDK reread correction reopens the required gap without withdrawing the source or erasing history
+ok 1 - SDK reread correction reopens the required gap without withdrawing the source or erasing history
+  ---
+  duration_ms: 20.4357
+  type: 'test'
+  ...
+# Subtest: SDK accepts refuted resolution after correcting the mistaken support and requires fresh reflection
+ok 2 - SDK accepts refuted resolution after correcting the mistaken support and requires fresh reflection
+  ---
+  duration_ms: 3.9182
+  type: 'test'
+  ...
+# Subtest: SDK preserves a real conflict and another claim correction cannot remove its refutation
+ok 3 - SDK preserves a real conflict and another claim correction cannot remove its refutation
+  ---
+  duration_ms: 2.2151
+  type: 'test'
+  ...
+# Subtest: SDK rejects malformed correction references atomically and retains observed tool accounting
+    # Subtest: unknownTarget
+    ok 1 - unknownTarget
+      ---
+      duration_ms: 1.5517
+      type: 'test'
+      ...
+    # Subtest: unknownReplacement
+    ok 2 - unknownReplacement
+      ---
+      duration_ms: 1.3859
+      type: 'test'
+      ...
+    # Subtest: wrongClaim
+    ok 3 - wrongClaim
+      ---
+      duration_ms: 1.3189
+      type: 'test'
+      ...
+    # Subtest: sameTarget
+    ok 4 - sameTarget
+      ---
+      duration_ms: 1.2183
+      type: 'test'
+      ...
+    # Subtest: unknownGrounding
+    ok 5 - unknownGrounding
+      ---
+      duration_ms: 1.1683
+      type: 'test'
+      ...
+    # Subtest: unrelatedGrounding
+    ok 6 - unrelatedGrounding
+      ---
+      duration_ms: 1.3174
+      type: 'test'
+      ...
+    # Subtest: emptyGrounding
+    ok 7 - emptyGrounding
+      ---
+      duration_ms: 2.1847
+      type: 'test'
+      ...
+    # Subtest: duplicateGrounding
+    ok 8 - duplicateGrounding
+      ---
+      duration_ms: 1.3379
+      type: 'test'
+      ...
+    # Subtest: invalidDigest
+    ok 9 - invalidDigest
+      ---
+      duration_ms: 1.1595
+      type: 'test'
+      ...
+    # Subtest: blankReason
+    ok 10 - blankReason
+      ---
+      duration_ms: 1.1383
+      type: 'test'
+      ...
+    # Subtest: extraField
+    ok 11 - extraField
+      ---
+      duration_ms: 1.0579
+      type: 'test'
+      ...
+    1..11
+ok 4 - SDK rejects malformed correction references atomically and retains observed tool accounting
+  ---
+  duration_ms: 15.8084
+  type: 'test'
+  ...
+# Subtest: SDK rejects double correction, cycles and an already corrected replacement while allowing a chain
+ok 5 - SDK rejects double correction, cycles and an already corrected replacement while allowing a chain
+  ---
+  duration_ms: 4.0397
+  type: 'test'
+  ...
+# Subtest: SDK rolls back the whole proposal if a later correction or resolution is invalid
+    # Subtest: correction
+    ok 1 - correction
+      ---
+      duration_ms: 1.1322
+      type: 'test'
+      ...
+    # Subtest: resolution
+    ok 2 - resolution
+      ---
+      duration_ms: 1.128
+      type: 'test'
+      ...
+    1..2
+ok 6 - SDK rolls back the whole proposal if a later correction or resolution is invalid
+  ---
+  duration_ms: 2.4495
+  type: 'test'
+  ...
+# Subtest: SDK retries rejected proposals without carrying their partial corrections and charges each model attempt
+ok 7 - SDK retries rejected proposals without carrying their partial corrections and charges each model attempt
+  ---
+  duration_ms: 1.4311
+  type: 'test'
+  ...
+# Subtest: SDK duplicate observation delivery is idempotent but a newly emitted duplicate correction is rejected
+ok 8 - SDK duplicate observation delivery is idempotent but a newly emitted duplicate correction is rejected
+  ---
+  duration_ms: 2.9742
+  type: 'test'
+  ...
+# Subtest: SDK rejects withdrawn grounding at application and never revives a corrected assessment after withdrawal
+ok 9 - SDK rejects withdrawn grounding at application and never revives a corrected assessment after withdrawal
+  ---
+  duration_ms: 2.383
+  type: 'test'
+  ...
+# Subtest: SDK allows correction only in update proposals
+ok 10 - SDK allows correction only in update proposals
+  ---
+  duration_ms: 1.418
+  type: 'test'
+  ...
+# Subtest: SDK canonical assessment digest is exported, validates its input and preserves property-order independence
+ok 11 - SDK canonical assessment digest is exported, validates its input and preserves property-order independence
+  ---
+  duration_ms: 0.2937
+  type: 'test'
+  ...
+# Subtest: SDK legacy understanding hashes remain identical when corrections are absent
+ok 12 - SDK legacy understanding hashes remain identical when corrections are absent
+  ---
+  duration_ms: 0.7826
+  type: 'test'
+  ...
+# Subtest: SDK supplies existing assessment references and accepts an inline replacement in one update
+not ok 13 - SDK supplies existing assessment references and accepts an inline replacement in one update
+  ---
+  duration_ms: 2.2035
+  type: 'test'
+  location: 'D:\\develop\\works\\tombo-view\\.audit\\assessment-correction-worktree\\test\\assessment-correction.test.mjs:228:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'supported'
+    - 'unverified'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'unverified'
+  actual: 'supported'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/develop/works/tombo-view/.audit/assessment-correction-worktree/test/assessment-correction.test.mjs:235:10)
+    async Test.run (node:internal/test_runner/test:1113:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:788:7)
+  ...
+1..13
+# tests 26
+# suites 0
+# pass 25
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 259.6018

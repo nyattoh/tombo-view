@@ -1,0 +1,303 @@
+TAP version 13
+# Subtest: SDK correction-only changes invalidate reflection even when replacement already exists in history
+ok 1 - SDK correction-only changes invalidate reflection even when replacement already exists in history
+  ---
+  duration_ms: 19.6455
+  type: 'test'
+  ...
+# Subtest: journal preserves corrections through redaction, replay and rehydration with an unchanged prior event
+ok 2 - journal preserves corrections through redaction, replay and rehydration with an unchanged prior event
+  ---
+  duration_ms: 36.1727
+  type: 'test'
+  ...
+# Subtest: saved redacted correction history is valid but new correction application requires available passages
+ok 3 - saved redacted correction history is valid but new correction application requires available passages
+  ---
+  duration_ms: 8.9808
+  type: 'test'
+  ...
+# Subtest: state validation rejects forged correction histories including redacted false resolutions
+    # Subtest: 0
+    ok 1 - 0
+      ---
+      duration_ms: 0.5416
+      type: 'test'
+      ...
+    # Subtest: 1
+    ok 2 - 1
+      ---
+      duration_ms: 0.2593
+      type: 'test'
+      ...
+    # Subtest: 2
+    ok 3 - 2
+      ---
+      duration_ms: 0.3149
+      type: 'test'
+      ...
+    # Subtest: 3
+    ok 4 - 3
+      ---
+      duration_ms: 0.2166
+      type: 'test'
+      ...
+    # Subtest: 4
+    ok 5 - 4
+      ---
+      duration_ms: 0.2456
+      type: 'test'
+      ...
+    # Subtest: 5
+    ok 6 - 5
+      ---
+      duration_ms: 0.3204
+      type: 'test'
+      ...
+    1..6
+ok 4 - state validation rejects forged correction histories including redacted false resolutions
+  ---
+  duration_ms: 3.8946
+  type: 'test'
+  ...
+# Subtest: journal accepts later source withdrawal without resurrecting the corrected target
+ok 5 - journal accepts later source withdrawal without resurrecting the corrected target
+  ---
+  duration_ms: 16.1312
+  type: 'test'
+  ...
+# Subtest: SDK invalidation of a redacted corrected journal remains valid when another claim has unavailable current evidence
+ok 6 - SDK invalidation of a redacted corrected journal remains valid when another claim has unavailable current evidence
+  ---
+  duration_ms: 29.2638
+  type: 'test'
+  ...
+# Subtest: SDK reread correction reopens the required gap without withdrawing the source or erasing history
+ok 7 - SDK reread correction reopens the required gap without withdrawing the source or erasing history
+  ---
+  duration_ms: 20.6218
+  type: 'test'
+  ...
+# Subtest: SDK accepts refuted resolution after correcting the mistaken support and requires fresh reflection
+ok 8 - SDK accepts refuted resolution after correcting the mistaken support and requires fresh reflection
+  ---
+  duration_ms: 4.7537
+  type: 'test'
+  ...
+# Subtest: SDK preserves a real conflict and another claim correction cannot remove its refutation
+ok 9 - SDK preserves a real conflict and another claim correction cannot remove its refutation
+  ---
+  duration_ms: 2.5088
+  type: 'test'
+  ...
+# Subtest: SDK rejects malformed correction references atomically and retains observed tool accounting
+    # Subtest: unknownTarget
+    ok 1 - unknownTarget
+      ---
+      duration_ms: 1.6239
+      type: 'test'
+      ...
+    # Subtest: referenceOnlyReplacement
+    ok 2 - referenceOnlyReplacement
+      ---
+      duration_ms: 2.0195
+      type: 'test'
+      ...
+    # Subtest: wrongReplacementClaim
+    ok 3 - wrongReplacementClaim
+      ---
+      duration_ms: 1.5309
+      type: 'test'
+      ...
+    # Subtest: wrongClaim
+    ok 4 - wrongClaim
+      ---
+      duration_ms: 1.5
+      type: 'test'
+      ...
+    # Subtest: sameTarget
+    ok 5 - sameTarget
+      ---
+      duration_ms: 1.4218
+      type: 'test'
+      ...
+    # Subtest: unknownGrounding
+    ok 6 - unknownGrounding
+      ---
+      duration_ms: 1.3943
+      type: 'test'
+      ...
+    # Subtest: unrelatedGrounding
+    ok 7 - unrelatedGrounding
+      ---
+      duration_ms: 1.8626
+      type: 'test'
+      ...
+    # Subtest: emptyGrounding
+    ok 8 - emptyGrounding
+      ---
+      duration_ms: 1.3417
+      type: 'test'
+      ...
+    # Subtest: duplicateGrounding
+    ok 9 - duplicateGrounding
+      ---
+      duration_ms: 1.3207
+      type: 'test'
+      ...
+    # Subtest: invalidDigest
+    ok 10 - invalidDigest
+      ---
+      duration_ms: 1.1775
+      type: 'test'
+      ...
+    # Subtest: blankReason
+    ok 11 - blankReason
+      ---
+      duration_ms: 1.1822
+      type: 'test'
+      ...
+    # Subtest: extraField
+    ok 12 - extraField
+      ---
+      duration_ms: 1.1023
+      type: 'test'
+      ...
+    1..12
+ok 10 - SDK rejects malformed correction references atomically and retains observed tool accounting
+  ---
+  duration_ms: 18.4989
+  type: 'test'
+  ...
+# Subtest: SDK rejects double correction, cycles and an already corrected replacement while allowing a chain
+ok 11 - SDK rejects double correction, cycles and an already corrected replacement while allowing a chain
+  ---
+  duration_ms: 4.7377
+  type: 'test'
+  ...
+# Subtest: SDK rolls back the whole proposal if a later correction or resolution is invalid
+    # Subtest: correction
+    ok 1 - correction
+      ---
+      duration_ms: 1.3416
+      type: 'test'
+      ...
+    # Subtest: resolution
+    ok 2 - resolution
+      ---
+      duration_ms: 1.1807
+      type: 'test'
+      ...
+    1..2
+ok 12 - SDK rolls back the whole proposal if a later correction or resolution is invalid
+  ---
+  duration_ms: 2.735
+  type: 'test'
+  ...
+# Subtest: SDK retries rejected proposals without carrying their partial corrections and charges each model attempt
+ok 13 - SDK retries rejected proposals without carrying their partial corrections and charges each model attempt
+  ---
+  duration_ms: 2.0321
+  type: 'test'
+  ...
+# Subtest: SDK duplicate observation delivery is idempotent but a newly emitted duplicate correction is rejected
+ok 14 - SDK duplicate observation delivery is idempotent but a newly emitted duplicate correction is rejected
+  ---
+  duration_ms: 2.621
+  type: 'test'
+  ...
+# Subtest: SDK rejects withdrawn grounding at application and never revives a corrected assessment after withdrawal
+ok 15 - SDK rejects withdrawn grounding at application and never revives a corrected assessment after withdrawal
+  ---
+  duration_ms: 2.8867
+  type: 'test'
+  ...
+# Subtest: SDK allows correction only in update proposals
+ok 16 - SDK allows correction only in update proposals
+  ---
+  duration_ms: 1.6898
+  type: 'test'
+  ...
+# Subtest: SDK canonical assessment digest is exported, validates its input and preserves property-order independence
+ok 17 - SDK canonical assessment digest is exported, validates its input and preserves property-order independence
+  ---
+  duration_ms: 0.302
+  type: 'test'
+  ...
+# Subtest: SDK legacy understanding hashes remain identical when corrections are absent
+ok 18 - SDK legacy understanding hashes remain identical when corrections are absent
+  ---
+  duration_ms: 0.8382
+  type: 'test'
+  ...
+# Subtest: SDK supplies existing assessment references and accepts an inline replacement in one update
+ok 19 - SDK supplies existing assessment references and accepts an inline replacement in one update
+  ---
+  duration_ms: 1.8427
+  type: 'test'
+  ...
+# Subtest: SDK corrections that preserve claim status still count as progress and invalidate the old receipt
+ok 20 - SDK corrections that preserve claim status still count as progress and invalidate the old receipt
+  ---
+  duration_ms: 2.4064
+  type: 'test'
+  ...
+# Subtest: SDK correction retries cannot exceed model, round, elapsed or monetary limits
+    # Subtest: {"maxModelCalls":3}
+    ok 1 - {"maxModelCalls":3}
+      ---
+      duration_ms: 1.4434
+      type: 'test'
+      ...
+    # Subtest: {"maxRounds":2}
+    ok 2 - {"maxRounds":2}
+      ---
+      duration_ms: 1.4521
+      type: 'test'
+      ...
+    # Subtest: {"maxElapsedMs":2}
+    ok 3 - {"maxElapsedMs":2}
+      ---
+      duration_ms: 1.532
+      type: 'test'
+      ...
+    # Subtest: {"maxCostYen":7}
+    ok 4 - {"maxCostYen":7}
+      ---
+      duration_ms: 1.4782
+      type: 'test'
+      ...
+    1..4
+ok 21 - SDK correction retries cannot exceed model, round, elapsed or monetary limits
+  ---
+  duration_ms: 6.2442
+  type: 'test'
+  ...
+# Subtest: SDK rejects superseded grounding and unknown evidence in an inline replacement
+    # Subtest: superseded
+    ok 1 - superseded
+      ---
+      duration_ms: 1.0948
+      type: 'test'
+      ...
+    # Subtest: unknown
+    ok 2 - unknown
+      ---
+      duration_ms: 0.9051
+      type: 'test'
+      ...
+    1..2
+ok 22 - SDK rejects superseded grounding and unknown evidence in an inline replacement
+  ---
+  duration_ms: 2.1934
+  type: 'test'
+  ...
+1..22
+# tests 48
+# suites 0
+# pass 48
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 316.5622

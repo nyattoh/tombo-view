@@ -1,0 +1,96 @@
+TAP version 13
+# Subtest: SDK correction-only changes invalidate reflection even when replacement already exists in history
+ok 1 - SDK correction-only changes invalidate reflection even when replacement already exists in history
+  ---
+  duration_ms: 18.991
+  type: 'test'
+  ...
+# Subtest: journal preserves corrections through redaction, replay and rehydration with an unchanged prior event
+ok 2 - journal preserves corrections through redaction, replay and rehydration with an unchanged prior event
+  ---
+  duration_ms: 35.4775
+  type: 'test'
+  ...
+# Subtest: saved redacted correction history is valid but new correction application requires available passages
+ok 3 - saved redacted correction history is valid but new correction application requires available passages
+  ---
+  duration_ms: 11.3115
+  type: 'test'
+  ...
+# Subtest: state validation rejects forged correction histories including redacted false resolutions
+    # Subtest: 0
+    ok 1 - 0
+      ---
+      duration_ms: 0.6038
+      type: 'test'
+      ...
+    # Subtest: 1
+    ok 2 - 1
+      ---
+      duration_ms: 0.2732
+      type: 'test'
+      ...
+    # Subtest: 2
+    ok 3 - 2
+      ---
+      duration_ms: 0.2874
+      type: 'test'
+      ...
+    # Subtest: 3
+    ok 4 - 3
+      ---
+      duration_ms: 0.2377
+      type: 'test'
+      ...
+    # Subtest: 4
+    ok 5 - 4
+      ---
+      duration_ms: 0.2272
+      type: 'test'
+      ...
+    # Subtest: 5
+    ok 6 - 5
+      ---
+      duration_ms: 0.307
+      type: 'test'
+      ...
+    1..6
+ok 4 - state validation rejects forged correction histories including redacted false resolutions
+  ---
+  duration_ms: 3.875
+  type: 'test'
+  ...
+# Subtest: journal accepts later source withdrawal without resurrecting the corrected target
+ok 5 - journal accepts later source withdrawal without resurrecting the corrected target
+  ---
+  duration_ms: 11.4258
+  type: 'test'
+  ...
+# Subtest: SDK invalidation of a redacted corrected journal remains valid when another claim has unavailable current evidence
+not ok 6 - SDK invalidation of a redacted corrected journal remains valid when another claim has unavailable current evidence
+  ---
+  duration_ms: 8.0566
+  type: 'test'
+  location: 'D:\\develop\\works\\tombo-view\\.audit\\assessment-correction-worktree\\test\\assessment-correction-journal.test.mjs:131:1'
+  failureType: 'testCodeFailure'
+  error: 'Claim status does not follow evidence other'
+  code: 'invalid_input'
+  name: 'TomboError'
+  stack: |-
+    requireCondition (file:///D:/develop/works/tombo-view/.audit/assessment-correction-worktree/dist/core.js:54:15)
+    checkState (file:///D:/develop/works/tombo-view/.audit/assessment-correction-worktree/dist/core.js:161:13)
+    Object.invalidate (file:///D:/develop/works/tombo-view/.audit/assessment-correction-worktree/dist/core.js:669:13)
+    file:///D:/develop/works/tombo-view/.audit/assessment-correction-worktree/test/assessment-correction-journal.test.mjs:143:37
+    async temporary (file:///D:/develop/works/tombo-view/.audit/assessment-correction-worktree/test/assessment-correction-journal.test.mjs:33:9)
+    async Test.run (node:internal/test_runner/test:1113:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:788:7)
+  ...
+1..6
+# tests 12
+# suites 0
+# pass 11
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 265.0519

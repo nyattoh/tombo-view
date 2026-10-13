@@ -1,0 +1,310 @@
+TAP version 13
+# Subtest: SDK reread correction reopens the required gap without withdrawing the source or erasing history
+not ok 1 - SDK reread correction reopens the required gap without withdrawing the source or erasing history
+  ---
+  duration_ms: 20.2875
+  type: 'test'
+  location: 'D:\\develop\\works\\tombo-view\\.audit\\assessment-correction-worktree\\test\\assessment-correction.test.mjs:42:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'supported'
+    - 'unverified'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'unverified'
+  actual: 'supported'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/develop/works/tombo-view/.audit/assessment-correction-worktree/test/assessment-correction.test.mjs:48:10)
+    async Test.run (node:internal/test_runner/test:1113:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:358:3)
+  ...
+# Subtest: SDK accepts refuted resolution after correcting the mistaken support and requires fresh reflection
+not ok 2 - SDK accepts refuted resolution after correcting the mistaken support and requires fresh reflection
+  ---
+  duration_ms: 2.902
+  type: 'test'
+  location: 'D:\\develop\\works\\tombo-view\\.audit\\assessment-correction-worktree\\test\\assessment-correction.test.mjs:62:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'supported'
+    - 'contradicted'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'contradicted'
+  actual: 'supported'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/develop/works/tombo-view/.audit/assessment-correction-worktree/test/assessment-correction.test.mjs:68:10)
+    async Test.run (node:internal/test_runner/test:1113:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:788:7)
+  ...
+# Subtest: SDK preserves a real conflict and another claim correction cannot remove its refutation
+not ok 3 - SDK preserves a real conflict and another claim correction cannot remove its refutation
+  ---
+  duration_ms: 2.8426
+  type: 'test'
+  location: 'D:\\develop\\works\\tombo-view\\.audit\\assessment-correction-worktree\\test\\assessment-correction.test.mjs:77:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'supported'
+    - 'unverified'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'unverified'
+  actual: 'supported'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/develop/works/tombo-view/.audit/assessment-correction-worktree/test/assessment-correction.test.mjs:88:10)
+    async Test.run (node:internal/test_runner/test:1113:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:788:7)
+  ...
+# Subtest: SDK rejects malformed correction references atomically and retains observed tool accounting
+    # Subtest: unknownTarget
+    ok 1 - unknownTarget
+      ---
+      duration_ms: 2.2736
+      type: 'test'
+      ...
+    # Subtest: unknownReplacement
+    ok 2 - unknownReplacement
+      ---
+      duration_ms: 1.5175
+      type: 'test'
+      ...
+    # Subtest: wrongClaim
+    ok 3 - wrongClaim
+      ---
+      duration_ms: 1.3977
+      type: 'test'
+      ...
+    # Subtest: sameTarget
+    ok 4 - sameTarget
+      ---
+      duration_ms: 1.4396
+      type: 'test'
+      ...
+    # Subtest: unknownGrounding
+    ok 5 - unknownGrounding
+      ---
+      duration_ms: 1.3245
+      type: 'test'
+      ...
+    # Subtest: unrelatedGrounding
+    ok 6 - unrelatedGrounding
+      ---
+      duration_ms: 1.4353
+      type: 'test'
+      ...
+    # Subtest: emptyGrounding
+    ok 7 - emptyGrounding
+      ---
+      duration_ms: 1.5315
+      type: 'test'
+      ...
+    # Subtest: duplicateGrounding
+    ok 8 - duplicateGrounding
+      ---
+      duration_ms: 1.3197
+      type: 'test'
+      ...
+    # Subtest: invalidDigest
+    ok 9 - invalidDigest
+      ---
+      duration_ms: 1.298
+      type: 'test'
+      ...
+    # Subtest: blankReason
+    ok 10 - blankReason
+      ---
+      duration_ms: 1.279
+      type: 'test'
+      ...
+    # Subtest: extraField
+    ok 11 - extraField
+      ---
+      duration_ms: 1.8273
+      type: 'test'
+      ...
+    1..11
+ok 4 - SDK rejects malformed correction references atomically and retains observed tool accounting
+  ---
+  duration_ms: 17.7806
+  type: 'test'
+  ...
+# Subtest: SDK rejects double correction, cycles and an already corrected replacement while allowing a chain
+not ok 5 - SDK rejects double correction, cycles and an already corrected replacement while allowing a chain
+  ---
+  duration_ms: 1.2539
+  type: 'test'
+  location: 'D:\\develop\\works\\tombo-view\\.audit\\assessment-correction-worktree\\test\\assessment-correction.test.mjs:118:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'supported'
+    - 'unverified'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'unverified'
+  actual: 'supported'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/develop/works/tombo-view/.audit/assessment-correction-worktree/test/assessment-correction.test.mjs:122:10)
+    async Test.run (node:internal/test_runner/test:1113:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:788:7)
+  ...
+# Subtest: SDK rolls back the whole proposal if a later correction or resolution is invalid
+    # Subtest: correction
+    ok 1 - correction
+      ---
+      duration_ms: 1.1145
+      type: 'test'
+      ...
+    # Subtest: resolution
+    ok 2 - resolution
+      ---
+      duration_ms: 1.0903
+      type: 'test'
+      ...
+    1..2
+ok 6 - SDK rolls back the whole proposal if a later correction or resolution is invalid
+  ---
+  duration_ms: 2.4399
+  type: 'test'
+  ...
+# Subtest: SDK retries rejected proposals without carrying their partial corrections and charges each model attempt
+not ok 7 - SDK retries rejected proposals without carrying their partial corrections and charges each model attempt
+  ---
+  duration_ms: 1.3829
+  type: 'test'
+  location: 'D:\\develop\\works\\tombo-view\\.audit\\assessment-correction-worktree\\test\\assessment-correction.test.mjs:152:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'supported'
+    - 'unverified'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'unverified'
+  actual: 'supported'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/develop/works/tombo-view/.audit/assessment-correction-worktree/test/assessment-correction.test.mjs:157:10)
+    async Test.run (node:internal/test_runner/test:1113:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:788:7)
+  ...
+# Subtest: SDK duplicate observation delivery is idempotent but a newly emitted duplicate correction is rejected
+not ok 8 - SDK duplicate observation delivery is idempotent but a newly emitted duplicate correction is rejected
+  ---
+  duration_ms: 1.6167
+  type: 'test'
+  location: 'D:\\develop\\works\\tombo-view\\.audit\\assessment-correction-worktree\\test\\assessment-correction.test.mjs:166:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'supported'
+    - 'unverified'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'unverified'
+  actual: 'supported'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/develop/works/tombo-view/.audit/assessment-correction-worktree/test/assessment-correction.test.mjs:174:10)
+    async Test.run (node:internal/test_runner/test:1113:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:788:7)
+  ...
+# Subtest: SDK rejects withdrawn grounding at application and never revives a corrected assessment after withdrawal
+not ok 9 - SDK rejects withdrawn grounding at application and never revives a corrected assessment after withdrawal
+  ---
+  duration_ms: 2.6353
+  type: 'test'
+  location: 'D:\\develop\\works\\tombo-view\\.audit\\assessment-correction-worktree\\test\\assessment-correction.test.mjs:185:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'supported'
+    - 'unverified'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'unverified'
+  actual: 'supported'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/develop/works/tombo-view/.audit/assessment-correction-worktree/test/assessment-correction.test.mjs:196:10)
+    async Test.run (node:internal/test_runner/test:1113:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:788:7)
+  ...
+# Subtest: SDK allows correction only in update proposals
+ok 10 - SDK allows correction only in update proposals
+  ---
+  duration_ms: 1.6116
+  type: 'test'
+  ...
+# Subtest: SDK canonical assessment digest is exported, validates its input and preserves property-order independence
+not ok 11 - SDK canonical assessment digest is exported, validates its input and preserves property-order independence
+  ---
+  duration_ms: 0.1757
+  type: 'test'
+  location: 'D:\\develop\\works\\tombo-view\\.audit\\assessment-correction-worktree\\test\\assessment-correction.test.mjs:210:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'undefined'
+    - 'function'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'function'
+  actual: 'undefined'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/develop/works/tombo-view/.audit/assessment-correction-worktree/test/assessment-correction.test.mjs:211:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1106:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:788:18)
+    Test.postRun (node:internal/test_runner/test:1235:19)
+    Test.run (node:internal/test_runner/test:1163:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:788:7)
+  ...
+# Subtest: SDK legacy understanding hashes remain identical when corrections are absent
+ok 12 - SDK legacy understanding hashes remain identical when corrections are absent
+  ---
+  duration_ms: 0.8746
+  type: 'test'
+  ...
+1..12
+# tests 25
+# suites 0
+# pass 17
+# fail 8
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 236.6043
