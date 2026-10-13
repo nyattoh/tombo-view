@@ -47,7 +47,7 @@ test('TOMBO actual runner assesses counterevidence and requires reflection', asy
       gaps: [{ id: 'g1', kind: 'unsupported_claim', lensId: 'l1', question: 'Does replay preserve one fulfilment?', triggerRefs: ['c1'], whyItMatters: 'Readiness depends on replay.', importance: 'required', claimIds: ['c1'], probeIds: ['p1'] }],
       probes: [{ id: 'p1', gapIds: ['g1'], method: 'counterexample', question: 'Read replay evidence.', requiredCapability: 'read_record', sourceGroups: ['replay-report'], successCondition: 'One row.', refutationCondition: 'Two rows.', inconclusiveCondition: 'No evidence.' }]
     };
-    if (r.stage === 'update') return { assessments: [{ claimId: 'c1', evidenceIds: ['replay-report'], verdict: 'refutes', scopeMatched: true, reason: 'Two deliveries created two fulfilment rows.' }], resolutions: [{ gapId: 'g1', reason: 'refuted', evidenceIds: ['replay-report'], explanation: 'Replay duplicates fulfilment.' }] };
+    if (r.stage === 'update') return { assessments: [{ claimId: 'c1', evidenceIds: r.input.observations[0].evidence.map(evidence => evidence.id), verdict: 'refutes', scopeMatched: true, reason: 'Two deliveries created two fulfilment rows.' }], resolutions: [{ gapId: 'g1', reason: 'refuted', evidenceIds: r.input.observations[0].evidence.map(evidence => evidence.id), explanation: 'Replay duplicates fulfilment.' }] };
     return { binding: r.input.binding, reviewedClaimIds: ['c1'], completion: 'completed', limitations: [], proposal: {} };
   });
   assert.equal(result.run.status, 'success');

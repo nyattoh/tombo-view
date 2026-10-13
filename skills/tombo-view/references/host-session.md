@@ -38,7 +38,7 @@ prepare の `request.assessmentReferences` は `{claimId, assessmentIndex, diges
 }
 ```
 
-groundingEvidenceIds は current で本文取得済みの証拠で、replacement.evidenceIds に含める。本文が保存時に伏せられている場合は、許可された元資料から同じハッシュとメタデータで再取得する。別資料の取得や再読取りを実施した場合は、その実行を新しい executionId の観測として記録する。既存の観測の配送を再試行するときは同じIDと内容を保つ。
+groundingEvidenceIds は current で本文取得済みの証拠で、replacement.evidenceIds に含める。本文が保存時に伏せられている場合は、許可された元資料から同じハッシュとメタデータで再取得する。別資料の取得や同じレコードの再読取りを実施した場合は、新しい executionId と新しい Evidence ID を付けて観測を記録する。同じレコードなら sourceGroup と locator は元のレコードIDを保つ。証拠評価は observations または state.evidence にある実際の Evidence ID を使う。モデル自身でIDやハッシュを作らない。既存の観測の配送を再試行するときは、保存した同じIDと本文・取得日時・利用量を含む同じ内容を保つ。
 
 SDK は inline の replacement を履歴へ加え、置換先の digest を保存する。置換評価を先に追記して次の update で訂正する二段階にはしない。初回の追記だけでは進展なしとして停止する場合がある。新しい反証が得られた場合は同じ提案の assessments に反証評価を加え、根拠が満たす場合に限り resolutions で解決する。
 

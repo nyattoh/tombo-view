@@ -68,7 +68,7 @@ test('TOMBO repairs an update without replaying its physical source check', asyn
       probes: [{ id: 'p1', gapIds: ['g1'], method: 'counterexample', question: 'Read replay report.', requiredCapability: 'read_record', sourceGroups: ['replay-report'], successCondition: 'One row.', refutationCondition: 'Two rows.', inconclusiveCondition: 'Missing report.' }]
     };
     if (request.stage === 'update') {
-      const proposal = { assessments: [{ claimId: 'c1', evidenceIds: ['replay-report'], verdict: 'refutes', scopeMatched: true, reason: 'The same event produced two fulfilment rows.' }], resolutions: [{ gapId: 'g1', reason: 'refuted', evidenceIds: ['replay-report'], explanation: 'Replay creates duplicate rows.' }] };
+      const proposal = { assessments: [{ claimId: 'c1', evidenceIds: request.input.observations[0].evidence.map(evidence => evidence.id), verdict: 'refutes', scopeMatched: true, reason: 'The same event produced two fulfilment rows.' }], resolutions: [{ gapId: 'g1', reason: 'refuted', evidenceIds: request.input.observations[0].evidence.map(evidence => evidence.id), explanation: 'Replay creates duplicate rows.' }] };
       return request.input.validationFeedback ? proposal : { ...proposal, claims: [{ id: 'c1', role: 'answer_claim', text: 'The order service is ready for replay traffic.', scope: 'trial' }] };
     }
     return { binding: request.input.binding, reviewedClaimIds: ['c1'], completion: 'completed', limitations: [], proposal: {} };
