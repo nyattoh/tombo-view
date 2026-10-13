@@ -1,0 +1,5 @@
+ts	phase	decision	why	evidence	result
+2026-10-14T03:06:37+09:00	frame	継続開発の目的を比較可能な受入条件へ分ける	構造検証とメタ認識効果を混同しない	docs/metacognition-plan.md	active
+2026-10-14T03:08:00+09:00	baseline	マージ済みmainを基準に専用ブランチを作る	既存編集と以前の検証を保持する	f6db21e57542ba8d922dbe1ad1c0ed4bc1bb54d6	baseline frozen
+2026-10-14T03:10:00+09:00	design	コア拡張案とcoordinator案を独立比較する	状態と会計の正本を一つにする	results/metacognition-development/capabilities.json	running
+2026-10-13T18:13:39Z	correction	初期ログ2行の時刻は未計測の記述だったため正確な実行時刻として採用しない	時刻を推測で補わない	results/metacognition-development/capabilities.json	前2行の選択内容は有効だが時刻は未確認
