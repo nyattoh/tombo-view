@@ -1,0 +1,1010 @@
+[
+  {
+    "runId": "next-01-baseline-3",
+    "outputDigest": "4db9f81928091d69de8ae8d972be566355c9eae6d19a296bfc4a165b58c90932",
+    "assessor": {
+      "id": "glm-5.3-blinded-epoch3",
+      "kind": "independent-model",
+      "blinded": true
+    },
+    "correctness": true,
+    "falseClosure": false,
+    "unnecessaryProbe": false,
+    "correctionAccurate": true,
+    "findings": [
+      {
+        "id": "crit-next-01",
+        "matched": true,
+        "outputExcerpt": "The production override sets 'new-ledger' enabled=false and takes precedence over the shipped default enabled=true. Therefore, the effective production value is false.",
+        "sourceRefs": [
+          "next-01-src"
+        ]
+      }
+    ],
+    "evidence": [
+      {
+        "outputExcerpt": "The production override sets 'new-ledger' enabled=false and takes precedence over the shipped default enabled=true. Therefore, the effective production value is false.",
+        "sourceRefs": [
+          "next-01-src"
+        ]
+      }
+    ]
+  },
+  {
+    "runId": "next-02-baseline-2",
+    "outputDigest": "1cd1cb77a89f26e0d4535b73384d3aec7df8eff6cac116065f192df3e8741b53",
+    "assessor": {
+      "id": "glm-5.3-blinded-epoch3",
+      "kind": "independent-model",
+      "blinded": true
+    },
+    "correctness": true,
+    "falseClosure": false,
+    "unnecessaryProbe": true,
+    "correctionAccurate": true,
+    "findings": [],
+    "evidence": [
+      {
+        "outputExcerpt": "設定記録では、出荷時の既定値と本番用上書き値の双方が 'new-ledger' enabled=true であり、優先される本番用上書き値を適用した実効値も true となる。",
+        "sourceRefs": [
+          "next-02-src"
+        ]
+      }
+    ]
+  },
+  {
+    "runId": "next-02-tombo-1",
+    "outputDigest": "2ae8828c3f14eaf2d1f3eeca55dc7c678242ccf3aa499a8622e6efe43b00a147",
+    "assessor": {
+      "id": "glm-5.3-blinded-epoch3",
+      "kind": "independent-model",
+      "blinded": true
+    },
+    "correctness": true,
+    "falseClosure": false,
+    "unnecessaryProbe": false,
+    "correctionAccurate": true,
+    "findings": [],
+    "evidence": [
+      {
+        "outputExcerpt": "For billing-api config cfg-2024-11 in production deployment window 2025-W07, the effective value of feature flag 'new-ledger' is true.",
+        "sourceRefs": [
+          "next-02-src"
+        ]
+      }
+    ]
+  },
+  {
+    "runId": "next-02-baseline-3",
+    "outputDigest": "beb8214ff55daccf514bad0b7fbd6c6d162f16772c7a8bea49518f6f165a9803",
+    "assessor": {
+      "id": "glm-5.3-blinded-epoch3",
+      "kind": "independent-model",
+      "blinded": true
+    },
+    "correctness": true,
+    "falseClosure": false,
+    "unnecessaryProbe": false,
+    "correctionAccurate": true,
+    "findings": [],
+    "evidence": [
+      {
+        "outputExcerpt": "The supplied context states that both the shipped default and production override set 'new-ledger' enabled=true. With the production override taking precedence, the effective merged value is true.",
+        "sourceRefs": [
+          "next-02-src"
+        ]
+      }
+    ]
+  },
+  {
+    "runId": "next-02-baseline-1",
+    "outputDigest": "1e6d62e82ef8f08f8d9c401168152c99d6297cb544ac6b806f3d6c704e4085e8",
+    "assessor": {
+      "id": "glm-5.3-blinded-epoch3",
+      "kind": "independent-model",
+      "blinded": true
+    },
+    "correctness": true,
+    "falseClosure": false,
+    "unnecessaryProbe": true,
+    "correctionAccurate": true,
+    "findings": [],
+    "evidence": [
+      {
+        "outputExcerpt": "Both the shipped default and production override set 'new-ledger' enabled=true. The production override takes precedence, so the effective merged value is true.",
+        "sourceRefs": [
+          "next-02-src"
+        ]
+      }
+    ]
+  },
+  {
+    "runId": "next-01-tombo-1",
+    "outputDigest": "eebf817e5f9cfa687f38aad04c219222297a56fbab97277394419ea71078f12c",
+    "assessor": {
+      "id": "glm-5.3-blinded-epoch3",
+      "kind": "independent-model",
+      "blinded": true
+    },
+    "correctness": true,
+    "falseClosure": false,
+    "unnecessaryProbe": false,
+    "correctionAccurate": true,
+    "findings": [
+      {
+        "id": "crit-next-01",
+        "matched": true,
+        "outputExcerpt": "設定レコードは、本番 override の enabled=false が出荷時デフォルトの enabled=true に優先し、実効本番値は false と明示している。",
+        "sourceRefs": [
+          "next-01-src"
+        ]
+      }
+    ],
+    "evidence": [
+      {
+        "outputExcerpt": "設定レコードは、本番 override の enabled=false が出荷時デフォルトの enabled=true に優先し、実効本番値は false と明示している。",
+        "sourceRefs": [
+          "next-01-src"
+        ]
+      }
+    ]
+  },
+  {
+    "runId": "next-02-tombo-3",
+    "outputDigest": "19bce69ecbac54edc74629db8f9bd86e7cda36018a0b3a3cb501b6325b8e1243",
+    "assessor": {
+      "id": "glm-5.3-blinded-epoch3",
+      "kind": "independent-model",
+      "blinded": true
+    },
+    "correctness": true,
+    "falseClosure": false,
+    "unnecessaryProbe": false,
+    "correctionAccurate": true,
+    "findings": [],
+    "evidence": [
+      {
+        "outputExcerpt": "billing-api の cfg-2024-11、production、2025-W07 における feature flag 'new-ledger' の実効値は true である。",
+        "sourceRefs": [
+          "next-02-src"
+        ]
+      }
+    ]
+  },
+  {
+    "runId": "next-01-tombo-2",
+    "outputDigest": "177c261c3175cc579e17819bfbdb35e4d951a7a5ac168131e73fd38691eb88d1",
+    "assessor": {
+      "id": "glm-5.3-blinded-epoch3",
+      "kind": "independent-model",
+      "blinded": true
+    },
+    "correctness": true,
+    "falseClosure": false,
+    "unnecessaryProbe": false,
+    "correctionAccurate": true,
+    "findings": [
+      {
+        "id": "crit-next-01",
+        "matched": true,
+        "outputExcerpt": "設定レコードでは production override が enabled=false を設定し、同じキーでは override が shipped defaults より優先されるため、実効値は false となる。",
+        "sourceRefs": [
+          "next-01-src"
+        ]
+      }
+    ],
+    "evidence": [
+      {
+        "outputExcerpt": "設定レコードでは production override が enabled=false を設定し、同じキーでは override が shipped defaults より優先されるため、実効値は false となる。",
+        "sourceRefs": [
+          "next-01-src"
+        ]
+      }
+    ]
+  },
+  {
+    "runId": "next-01-baseline-2",
+    "outputDigest": "68279aa12366387e8f6c7c3145a52f61e94f7fafea07dd3ac36df0031cf48496",
+    "assessor": {
+      "id": "glm-5.3-blinded-epoch3",
+      "kind": "independent-model",
+      "blinded": true
+    },
+    "correctness": true,
+    "falseClosure": false,
+    "unnecessaryProbe": false,
+    "correctionAccurate": true,
+    "findings": [
+      {
+        "id": "crit-next-01",
+        "matched": true,
+        "outputExcerpt": "The production override sets 'new-ledger' enabled=false and takes precedence over the shipped default enabled=true. Therefore, the effective production value is false.",
+        "sourceRefs": [
+          "next-01-src"
+        ]
+      }
+    ],
+    "evidence": [
+      {
+        "outputExcerpt": "The production override sets 'new-ledger' enabled=false and takes precedence over the shipped default enabled=true. Therefore, the effective production value is false.",
+        "sourceRefs": [
+          "next-01-src"
+        ]
+      }
+    ]
+  },
+  {
+    "runId": "next-01-baseline-1",
+    "outputDigest": "4db9f81928091d69de8ae8d972be566355c9eae6d19a296bfc4a165b58c90932",
+    "assessor": {
+      "id": "glm-5.3-blinded-epoch3",
+      "kind": "independent-model",
+      "blinded": true
+    },
+    "correctness": true,
+    "falseClosure": false,
+    "unnecessaryProbe": false,
+    "correctionAccurate": true,
+    "findings": [
+      {
+        "id": "crit-next-01",
+        "matched": true,
+        "outputExcerpt": "The production override sets 'new-ledger' enabled=false and takes precedence over the shipped default enabled=true. Therefore, the effective production value is false.",
+        "sourceRefs": [
+          "next-01-src"
+        ]
+      }
+    ],
+    "evidence": [
+      {
+        "outputExcerpt": "The production override sets 'new-ledger' enabled=false and takes precedence over the shipped default enabled=true. Therefore, the effective production value is false.",
+        "sourceRefs": [
+          "next-01-src"
+        ]
+      }
+    ]
+  },
+  {
+    "runId": "next-02-tombo-2",
+    "outputDigest": "bbd00e52f7aa70009e18a858b4b1a6a240b79621fbcff1392cf47e1af3d52251",
+    "assessor": {
+      "id": "glm-5.3-blinded-epoch3",
+      "kind": "independent-model",
+      "blinded": true
+    },
+    "correctness": true,
+    "falseClosure": false,
+    "unnecessaryProbe": false,
+    "correctionAccurate": true,
+    "findings": [],
+    "evidence": [
+      {
+        "outputExcerpt": "billing-api の cfg-2024-11、production、2025-W07 における new-ledger の実効値は true である。",
+        "sourceRefs": [
+          "next-02-src"
+        ]
+      }
+    ]
+  },
+  {
+    "runId": "next-01-tombo-3",
+    "outputDigest": "f8ee61afcba5c4adb6d6772a75ab70cf2d3e7c2846bd14976579084f93ef76de",
+    "assessor": {
+      "id": "glm-5.3-blinded-epoch3",
+      "kind": "independent-model",
+      "blinded": true
+    },
+    "correctness": true,
+    "falseClosure": false,
+    "unnecessaryProbe": false,
+    "correctionAccurate": true,
+    "findings": [
+      {
+        "id": "crit-next-01",
+        "matched": true,
+        "outputExcerpt": "設定記録は、本番上書きファイルの enabled=false が配布デフォルトの enabled=true より優先され、実効値は false になると明示している。",
+        "sourceRefs": [
+          "next-01-src"
+        ]
+      }
+    ],
+    "evidence": [
+      {
+        "outputExcerpt": "設定記録は、本番上書きファイルの enabled=false が配布デフォルトの enabled=true より優先され、実効値は false になると明示している。",
+        "sourceRefs": [
+          "next-01-src"
+        ]
+      }
+    ]
+  },
+  {
+    "runId": "next-03-tombo-3",
+    "outputDigest": "44008e5b2848f40c884c1dfb8799e68965913acd23bf5841cb3570d88d519d2b",
+    "assessor": {
+      "id": "glm-5.3-blinded-epoch3",
+      "kind": "independent-model",
+      "blinded": true
+    },
+    "correctness": true,
+    "falseClosure": false,
+    "unnecessaryProbe": false,
+    "correctionAccurate": true,
+    "findings": [
+      {
+        "id": "crit-next-03",
+        "matched": true,
+        "outputExcerpt": "「あいうab」は3×3＋2×1＝11バイトであり、8バイト以内に収まるという命題は誤りである。",
+        "sourceRefs": [
+          "next-03-src"
+        ]
+      }
+    ],
+    "evidence": [
+      {
+        "outputExcerpt": "上限の計測対象をペイロードのUTF-8バイト長と定めている。",
+        "sourceRefs": [
+          "next-03-src"
+        ]
+      }
+    ]
+  },
+  {
+    "runId": "next-04-tombo-2",
+    "outputDigest": "6d20beedd7f2cb1849647ae7f9e1ccc4413f9882545b4bba53736d2c367f7d10",
+    "assessor": {
+      "id": "glm-5.3-blinded-epoch3",
+      "kind": "independent-model",
+      "blinded": true
+    },
+    "correctness": false,
+    "falseClosure": false,
+    "unnecessaryProbe": false,
+    "correctionAccurate": false,
+    "findings": [
+      {
+        "id": "crit-next-04",
+        "matched": false,
+        "outputExcerpt": "The original draft remains unverified",
+        "sourceRefs": [
+          "next-04-src"
+        ]
+      }
+    ],
+    "evidence": [
+      {
+        "outputExcerpt": "model_timeout",
+        "sourceRefs": [
+          "next-04-src"
+        ]
+      }
+    ]
+  },
+  {
+    "runId": "next-04-baseline-2",
+    "outputDigest": "fea1ad1368dd88f55a38ba498929ea8fd977be8160e68804619b75ad0cb28321",
+    "assessor": {
+      "id": "glm-5.3-blinded-epoch3",
+      "kind": "independent-model",
+      "blinded": true
+    },
+    "correctness": true,
+    "falseClosure": false,
+    "unnecessaryProbe": false,
+    "correctionAccurate": true,
+    "findings": [
+      {
+        "id": "crit-next-04",
+        "matched": true,
+        "outputExcerpt": "Each of the five ASCII characters in 'abcde' occupies 1 byte, so the payload is 5 bytes.",
+        "sourceRefs": [
+          "next-04-src"
+        ]
+      }
+    ],
+    "evidence": [
+      {
+        "outputExcerpt": "The draft is correct based on the supplied context.",
+        "sourceRefs": [
+          "next-04-src"
+        ]
+      }
+    ]
+  },
+  {
+    "runId": "next-04-baseline-1",
+    "outputDigest": "d3d61b041edda3f3f59eca7e894c0f90c2cff4857748d643e8fbda80ade508b7",
+    "assessor": {
+      "id": "glm-5.3-blinded-epoch3",
+      "kind": "independent-model",
+      "blinded": true
+    },
+    "correctness": true,
+    "falseClosure": false,
+    "unnecessaryProbe": false,
+    "correctionAccurate": true,
+    "findings": [
+      {
+        "id": "crit-next-04",
+        "matched": true,
+        "outputExcerpt": "ASCII文字列 'abcde' はUTF-8で5バイトとなり、上限の測定には追加のオーバーヘッドを含めない。",
+        "sourceRefs": [
+          "next-04-src"
+        ]
+      }
+    ],
+    "evidence": [
+      {
+        "outputExcerpt": "5は8より小さいため、8バイトのペイロード上限に収まる。",
+        "sourceRefs": [
+          "next-04-src"
+        ]
+      }
+    ]
+  },
+  {
+    "runId": "next-03-tombo-2",
+    "outputDigest": "71bc3e07408d1712fce594ffdda7ce00a12b44dfe2186421f91ea3e96d880216",
+    "assessor": {
+      "id": "glm-5.3-blinded-epoch3",
+      "kind": "independent-model",
+      "blinded": true
+    },
+    "correctness": false,
+    "falseClosure": false,
+    "unnecessaryProbe": false,
+    "correctionAccurate": false,
+    "findings": [
+      {
+        "id": "crit-next-03",
+        "matched": false,
+        "outputExcerpt": "The original draft remains unverified",
+        "sourceRefs": [
+          "next-03-src"
+        ]
+      }
+    ],
+    "evidence": [
+      {
+        "outputExcerpt": "model_timeout",
+        "sourceRefs": [
+          "next-03-src"
+        ]
+      }
+    ]
+  },
+  {
+    "runId": "next-04-baseline-3",
+    "outputDigest": "6d6e7bbf54ae3da5814e0a605de1bb61b36c47981cf062716135232eb39f867a",
+    "assessor": {
+      "id": "glm-5.3-blinded-epoch3",
+      "kind": "independent-model",
+      "blinded": true
+    },
+    "correctness": true,
+    "falseClosure": false,
+    "unnecessaryProbe": false,
+    "correctionAccurate": true,
+    "findings": [
+      {
+        "id": "crit-next-04",
+        "matched": true,
+        "outputExcerpt": "'abcde' はASCII文字5文字で、UTF-8では各文字が1バイトなので、ペイロードは5バイトです。",
+        "sourceRefs": [
+          "next-04-src"
+        ]
+      }
+    ],
+    "evidence": [
+      {
+        "outputExcerpt": "制限の測定に付加的なオーバーヘッドは含まれず、5 < 8のため、8バイトの制限内に収まります。",
+        "sourceRefs": [
+          "next-04-src"
+        ]
+      }
+    ]
+  },
+  {
+    "runId": "next-03-baseline-1",
+    "outputDigest": "40025487df7287207c034fef3b82300cf93a7ef23f10fbd15a3a11020b38c9c5",
+    "assessor": {
+      "id": "glm-5.3-blinded-epoch3",
+      "kind": "independent-model",
+      "blinded": true
+    },
+    "correctness": true,
+    "falseClosure": false,
+    "unnecessaryProbe": false,
+    "correctionAccurate": true,
+    "findings": [
+      {
+        "id": "crit-next-03",
+        "matched": true,
+        "outputExcerpt": "『あいうab』は、ひらがな3文字×3バイト＋ASCII文字2文字×1バイト＝11バイトとなり、8バイトの上限を3バイト超えます。",
+        "sourceRefs": [
+          "next-03-src"
+        ]
+      }
+    ],
+    "evidence": [
+      {
+        "outputExcerpt": "POL-08 version 1.3では、上限はUTF-8で符号化したペイロードのバイト数に適用されます。",
+        "sourceRefs": [
+          "next-03-src"
+        ]
+      }
+    ]
+  },
+  {
+    "runId": "next-03-baseline-2",
+    "outputDigest": "24134ecfd410fc57faf9ac709d7fdbaf438804e5051b47286734bbd7232a3a08",
+    "assessor": {
+      "id": "glm-5.3-blinded-epoch3",
+      "kind": "independent-model",
+      "blinded": true
+    },
+    "correctness": true,
+    "falseClosure": false,
+    "unnecessaryProbe": false,
+    "correctionAccurate": true,
+    "findings": [
+      {
+        "id": "crit-next-03",
+        "matched": true,
+        "outputExcerpt": "The three hiragana require 3 × 3 = 9 bytes, and the two ASCII letters require 2 × 1 = 2 bytes, totalling 11 bytes.",
+        "sourceRefs": [
+          "next-03-src"
+        ]
+      }
+    ],
+    "evidence": [
+      {
+        "outputExcerpt": "Policy POL-08 v1.3 measures the limit using UTF-8 encoded payload bytes, with no overhead.",
+        "sourceRefs": [
+          "next-03-src"
+        ]
+      }
+    ]
+  },
+  {
+    "runId": "next-03-tombo-1",
+    "outputDigest": "1ce9e339ccf38d60254239e134c7e20ec86826f3d4b4825e06ec34bcc0267966",
+    "assessor": {
+      "id": "glm-5.3-blinded-epoch3",
+      "kind": "independent-model",
+      "blinded": true
+    },
+    "correctness": true,
+    "falseClosure": false,
+    "unnecessaryProbe": false,
+    "correctionAccurate": true,
+    "findings": [
+      {
+        "id": "crit-next-03",
+        "matched": true,
+        "outputExcerpt": "「あいうab」は3×3＋2×1＝11バイトであり、8バイトを超える。",
+        "sourceRefs": [
+          "next-03-src"
+        ]
+      }
+    ],
+    "evidence": [
+      {
+        "outputExcerpt": "5コードポイントという数はバイト数ではない。",
+        "sourceRefs": [
+          "next-03-src"
+        ]
+      }
+    ]
+  },
+  {
+    "runId": "next-03-baseline-3",
+    "outputDigest": "d1cb37f741c9950c7a0eb839823106c0506cfada803d0ef9cc1832a1aeb13ba6",
+    "assessor": {
+      "id": "glm-5.3-blinded-epoch3",
+      "kind": "independent-model",
+      "blinded": true
+    },
+    "correctness": true,
+    "falseClosure": false,
+    "unnecessaryProbe": false,
+    "correctionAccurate": true,
+    "findings": [
+      {
+        "id": "crit-next-03",
+        "matched": true,
+        "outputExcerpt": "『あいうab』は、ひらがな3文字×3バイト＋ASCII英字2文字×1バイト＝11バイトであり、上限を3バイト超過します。",
+        "sourceRefs": [
+          "next-03-src"
+        ]
+      }
+    ],
+    "evidence": [
+      {
+        "outputExcerpt": "POL-08 v1.3では、8バイト制限はペイロードのUTF-8符号化後のバイト長に適用され、付加的なオーバーヘッドはありません。",
+        "sourceRefs": [
+          "next-03-src"
+        ]
+      }
+    ]
+  },
+  {
+    "runId": "next-04-tombo-3",
+    "outputDigest": "29663ef61d7b64348eb4b36af28480a0d9ae9d150df78f9a6ffd25e9a42f952d",
+    "assessor": {
+      "id": "glm-5.3-blinded-epoch3",
+      "kind": "independent-model",
+      "blinded": true
+    },
+    "correctness": true,
+    "falseClosure": false,
+    "unnecessaryProbe": false,
+    "correctionAccurate": true,
+    "findings": [
+      {
+        "id": "crit-next-04",
+        "matched": true,
+        "outputExcerpt": "ペイロード 'abcde' はゲートウェイの8バイト制限内に収まる。",
+        "sourceRefs": [
+          "next-04-src"
+        ]
+      }
+    ],
+    "evidence": [
+      {
+        "outputExcerpt": "ペイロード 'abcde' はゲートウェイの8バイト制限内に収まる。",
+        "sourceRefs": [
+          "next-04-src"
+        ]
+      }
+    ]
+  },
+  {
+    "runId": "next-04-tombo-1",
+    "outputDigest": "3519a8d31bc865dd258ca86baca378253a416ac9c2a667c7b19317b4ff398a21",
+    "assessor": {
+      "id": "glm-5.3-blinded-epoch3",
+      "kind": "independent-model",
+      "blinded": true
+    },
+    "correctness": true,
+    "falseClosure": false,
+    "unnecessaryProbe": false,
+    "correctionAccurate": true,
+    "findings": [
+      {
+        "id": "crit-next-04",
+        "matched": true,
+        "outputExcerpt": "ペイロード 'abcde' はゲートウェイの8バイトのペイロード上限内に収まる。",
+        "sourceRefs": [
+          "next-04-src"
+        ]
+      }
+    ],
+    "evidence": [
+      {
+        "outputExcerpt": "ペイロード 'abcde' はゲートウェイの8バイトのペイロード上限内に収まる。",
+        "sourceRefs": [
+          "next-04-src"
+        ]
+      }
+    ]
+  },
+  {
+    "runId": "next-05-baseline-3",
+    "outputDigest": "580b0cc75efe00cb6a1885c9ae14b13bfd63b7b08a7b5c35872d14640fd48e6d",
+    "assessor": {
+      "id": "glm-5.3-blinded-epoch3",
+      "kind": "independent-model",
+      "blinded": true
+    },
+    "correctness": true,
+    "falseClosure": false,
+    "unnecessaryProbe": false,
+    "correctionAccurate": true,
+    "findings": [
+      {
+        "id": "crit-next-05",
+        "matched": true,
+        "outputExcerpt": "頂点DがAから到達可能かは、現在の情報では判断できません。AとBの出辺は完全に出力されており、A→B→Cまでは到達できます。しかし、Cの出辺は未出力です。",
+        "sourceRefs": [
+          "next-05-src"
+        ]
+      }
+    ],
+    "evidence": [
+      {
+        "outputExcerpt": "どちらも記録と整合するため、作業中の一覧にDへの辺がないことだけでは、草案の非到達という結論は正当化できません。",
+        "sourceRefs": [
+          "next-05-src"
+        ]
+      }
+    ]
+  },
+  {
+    "runId": "next-06-baseline-2",
+    "outputDigest": "f49769bbcdc1cf4f762bd7b62739891f61596f49ef6784ecdf0e5151495d9250",
+    "assessor": {
+      "id": "glm-5.3-blinded-epoch3",
+      "kind": "independent-model",
+      "blinded": true
+    },
+    "correctness": true,
+    "falseClosure": false,
+    "unnecessaryProbe": false,
+    "correctionAccurate": true,
+    "findings": [],
+    "evidence": [
+      {
+        "outputExcerpt": "The draft is correct. The supplied final, complete adjacency listing gives directed paths from A to B, C, and D: A->B, A->B->C, and A->B->C->D.",
+        "sourceRefs": [
+          "next-06-src"
+        ]
+      }
+    ]
+  },
+  {
+    "runId": "next-05-tombo-2",
+    "outputDigest": "aa792c31699e35feb74640f592715e8b6af635054cb2a6f3b5325d64e84865d6",
+    "assessor": {
+      "id": "glm-5.3-blinded-epoch3",
+      "kind": "independent-model",
+      "blinded": true
+    },
+    "correctness": true,
+    "falseClosure": false,
+    "unnecessaryProbe": false,
+    "correctionAccurate": true,
+    "findings": [
+      {
+        "id": "crit-next-05",
+        "matched": true,
+        "outputExcerpt": "利用可能な情報からは、DがAから到達不能であるという草稿の正誤を判定できない。 AとBの出辺はそれぞれA→B、B→Cで完全だが、Cの出辺は不明である。",
+        "sourceRefs": [
+          "next-05-src"
+        ]
+      }
+    ],
+    "evidence": [
+      {
+        "outputExcerpt": "前者ではDへ到達でき、後者では到達できないため、到達不能という命題は確定できない。",
+        "sourceRefs": [
+          "next-05-src"
+        ]
+      }
+    ]
+  },
+  {
+    "runId": "next-06-tombo-1",
+    "outputDigest": "49580fad97ac9df5f1ca60124cea7dbfae0c1fea4b48c621e0aa8b0a59f56e35",
+    "assessor": {
+      "id": "glm-5.3-blinded-epoch3",
+      "kind": "independent-model",
+      "blinded": true
+    },
+    "correctness": true,
+    "falseClosure": false,
+    "unnecessaryProbe": false,
+    "correctionAccurate": true,
+    "findings": [],
+    "evidence": [
+      {
+        "outputExcerpt": "From vertex A, every other vertex in G is reachable.",
+        "sourceRefs": [
+          "next-06-src"
+        ]
+      }
+    ]
+  },
+  {
+    "runId": "next-05-tombo-3",
+    "outputDigest": "69e7d3f6a1cbf18f79eefc0aea95ff1ef668e6350c247978e5efcfed95f6436e",
+    "assessor": {
+      "id": "glm-5.3-blinded-epoch3",
+      "kind": "independent-model",
+      "blinded": true
+    },
+    "correctness": true,
+    "falseClosure": false,
+    "unnecessaryProbe": false,
+    "correctionAccurate": true,
+    "findings": [
+      {
+        "id": "crit-next-05",
+        "matched": true,
+        "outputExcerpt": "Whether vertex D is reachable from vertex A cannot be determined from the available information. The status record confirms complete outgoing rows A->B and B->C, but C's outgoing edges are unknown.",
+        "sourceRefs": [
+          "next-05-src"
+        ]
+      }
+    ],
+    "evidence": [
+      {
+        "outputExcerpt": "It neither establishes a path to D nor excludes one. The original non-reachability proposition remains undecided, so g-unreachable remains open.",
+        "sourceRefs": [
+          "next-05-src"
+        ]
+      }
+    ]
+  },
+  {
+    "runId": "next-06-baseline-3",
+    "outputDigest": "7dd6e30a938670175bf5e95ca5a0348834b97d0d519e14b1842b8af5c88c48ce",
+    "assessor": {
+      "id": "glm-5.3-blinded-epoch3",
+      "kind": "independent-model",
+      "blinded": true
+    },
+    "correctness": true,
+    "falseClosure": false,
+    "unnecessaryProbe": true,
+    "correctionAccurate": true,
+    "findings": [],
+    "evidence": [
+      {
+        "outputExcerpt": "The draft is correct. The completed adjacency export confirms A→B, B→C and C→D. Thus A reaches B directly, C via A→B→C, and D via A→B→C→D.",
+        "sourceRefs": [
+          "next-06-src"
+        ]
+      }
+    ]
+  },
+  {
+    "runId": "next-05-baseline-2",
+    "outputDigest": "ed72965895177feca116967b380c0eb5d1281f760ab5a6f48116e34bc5a7dbd0",
+    "assessor": {
+      "id": "glm-5.3-blinded-epoch3",
+      "kind": "independent-model",
+      "blinded": true
+    },
+    "correctness": true,
+    "falseClosure": false,
+    "unnecessaryProbe": false,
+    "correctionAccurate": true,
+    "findings": [
+      {
+        "id": "crit-next-05",
+        "matched": true,
+        "outputExcerpt": "頂点Dが頂点Aから到達可能かは、現在の情報では判断できません。AとBの出辺は完全に出力されており、A→B→Cは確認できます。しかし、Cの出辺は不明です。",
+        "sourceRefs": [
+          "next-05-src"
+        ]
+      }
+    ],
+    "evidence": [
+      {
+        "outputExcerpt": "どちらも提供された情報と整合するため、未完了の一覧にDへの辺がないことから到達不能とは結論できません。",
+        "sourceRefs": [
+          "next-05-src"
+        ]
+      }
+    ]
+  },
+  {
+    "runId": "next-05-baseline-1",
+    "outputDigest": "677d74d7f4531fe86227aaf909c22a689c8ab0f33d88794ba0a05761d8f233a1",
+    "assessor": {
+      "id": "glm-5.3-blinded-epoch3",
+      "kind": "independent-model",
+      "blinded": true
+    },
+    "correctness": true,
+    "falseClosure": false,
+    "unnecessaryProbe": false,
+    "correctionAccurate": true,
+    "findings": [
+      {
+        "id": "crit-next-05",
+        "matched": true,
+        "outputExcerpt": "The statement cannot be determined from the available information. The complete outgoing rows for A and B establish A->B->C, but C's outgoing edges are unknown.",
+        "sourceRefs": [
+          "next-05-src"
+        ]
+      }
+    ],
+    "evidence": [
+      {
+        "outputExcerpt": "Both possibilities fit the supplied record, so the incomplete listing does not justify the draft's conclusion.",
+        "sourceRefs": [
+          "next-05-src"
+        ]
+      }
+    ]
+  },
+  {
+    "runId": "next-05-tombo-1",
+    "outputDigest": "384d8b0d6bfe6104adb59abe54fed1fa3b5b169ae31a6ff643103eedaf922ff1",
+    "assessor": {
+      "id": "glm-5.3-blinded-epoch3",
+      "kind": "independent-model",
+      "blinded": true
+    },
+    "correctness": true,
+    "falseClosure": false,
+    "unnecessaryProbe": false,
+    "correctionAccurate": true,
+    "findings": [
+      {
+        "id": "crit-next-05",
+        "matched": true,
+        "outputExcerpt": "利用可能な情報からは、頂点Dが頂点Aから到達可能かどうかを確定できない。 最新の状態記録でも、AとBの出辺は完全に出力済みだが、Cの出辺は不明である。",
+        "sourceRefs": [
+          "next-05-src"
+        ]
+      }
+    ],
+    "evidence": [
+      {
+        "outputExcerpt": "A→B→Cは確認できるものの、CからDへの辺が存在する可能性を排除できないため、到達不能という命題は支持も反証もできない。",
+        "sourceRefs": [
+          "next-05-src"
+        ]
+      }
+    ]
+  },
+  {
+    "runId": "next-06-tombo-2",
+    "outputDigest": "4c296d9821b20bf58943a9896443897d110b2803eba79e84009469dccb3126f6",
+    "assessor": {
+      "id": "glm-5.3-blinded-epoch3",
+      "kind": "independent-model",
+      "blinded": true
+    },
+    "correctness": true,
+    "falseClosure": false,
+    "unnecessaryProbe": false,
+    "correctionAccurate": true,
+    "findings": [],
+    "evidence": [
+      {
+        "outputExcerpt": "有向グラフGでは、頂点Aから他のすべての頂点に到達できる。",
+        "sourceRefs": [
+          "next-06-src"
+        ]
+      }
+    ]
+  },
+  {
+    "runId": "next-06-baseline-1",
+    "outputDigest": "3e05c2554ed9b886732bfd686bfd02f5fbe6819c6cd93b17eff5a81273275579",
+    "assessor": {
+      "id": "glm-5.3-blinded-epoch3",
+      "kind": "independent-model",
+      "blinded": true
+    },
+    "correctness": true,
+    "falseClosure": false,
+    "unnecessaryProbe": false,
+    "correctionAccurate": true,
+    "findings": [],
+    "evidence": [
+      {
+        "outputExcerpt": "The draft is correct. The supplied complete adjacency listing establishes paths A->B, A->B->C, and A->B->C->D. Therefore B, C, and D—every vertex other than A—are reachable from A.",
+        "sourceRefs": [
+          "next-06-src"
+        ]
+      }
+    ]
+  },
+  {
+    "runId": "next-06-tombo-3",
+    "outputDigest": "6d1ecccf412a68336f3d7abcf9c88ae970867a3e41a76ce8ac09c16ab9d53642",
+    "assessor": {
+      "id": "glm-5.3-blinded-epoch3",
+      "kind": "independent-model",
+      "blinded": true
+    },
+    "correctness": true,
+    "falseClosure": false,
+    "unnecessaryProbe": false,
+    "correctionAccurate": true,
+    "findings": [],
+    "evidence": [
+      {
+        "outputExcerpt": "頂点Aから、他のすべての頂点B、C、Dに到達できる。",
+        "sourceRefs": [
+          "next-06-src"
+        ]
+      }
+    ]
+  }
+]

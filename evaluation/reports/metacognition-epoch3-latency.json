@@ -1,0 +1,2446 @@
+{
+  "schemaVersion": 1,
+  "epoch": 3,
+  "auditType": "frozen-runtime-latency-breakdown",
+  "auditedAt": "2026-10-14T03:12:31.909Z",
+  "protocolDigest": "13c656c2d153ebddbc8287693eb4ce81f3874553d294686b66b3da22eb8f87e4",
+  "newT3Reads": 0,
+  "newModelDispatches": 0,
+  "originalRunsPreserved": true,
+  "definitions": {
+    "bridgeRequestToT3Requested": "Trace request.at to the existing childRun recentRuns.requestedAt. It measures the observed interval before T3 recorded the request, not a known individual polling, approval or transport component.",
+    "t3RequestedToStarted": "T3 recentRun.requestedAt to startedAt. Scheduler and provider start wait are not separately observed.",
+    "providerRunStartedToCompleted": "T3 recentRun.startedAt to completedAt. Provider-run wall time is not provider internal computation or token generation time.",
+    "t3CompletedToTraceReply": "T3 recentRun.completedAt to actual trace reply.at. Missing actual reply is UNKNOWN, not zero.",
+    "clippedToTrialWindowMs": "Interval intersections with the first trace request.at through frozen trace done.at. Provider time after the frozen trial ended is excluded from this partition.",
+    "localTransitionsAndUnmappedRemainderMs": "Trial window minus observed partition intervals. No internal component is inferred.",
+    "p95": "Nearest-rank 95th percentile over known intervals."
+  },
+  "summary": {
+    "recordedAcceptedTasks": 82,
+    "knownT3RequestedStartedCompleted": 82,
+    "actualTraceReplies": 79,
+    "missingActualTraceReplies": 3,
+    "timeouts": 5,
+    "rejectedBeforeAcceptanceTimeouts": 2,
+    "requestRecordedAfterTrialDoneTimeouts": 2,
+    "acceptedProviderRunContinuingAfterTrialDoneTimeouts": 1
+  },
+  "allAcceptedTaskIntervalStatsMs": {
+    "bridgeRequestToT3Requested": {
+      "count": 82,
+      "unknown": 0,
+      "min": 5160,
+      "median": 18278.5,
+      "p95": 55856,
+      "max": 350092,
+      "total": 2419800
+    },
+    "t3RequestedToStarted": {
+      "count": 82,
+      "unknown": 0,
+      "min": 494,
+      "median": 876.5,
+      "p95": 1396,
+      "max": 30568,
+      "total": 106450
+    },
+    "providerRunStartedToCompleted": {
+      "count": 82,
+      "unknown": 0,
+      "min": 6938,
+      "median": 13707.5,
+      "p95": 24649,
+      "max": 276466,
+      "total": 1483185
+    },
+    "t3CompletedToTraceReply": {
+      "count": 79,
+      "unknown": 3,
+      "min": 7225,
+      "median": 14644,
+      "p95": 39287,
+      "max": 48919,
+      "total": 1471700
+    },
+    "bridgeRequestToTraceReply": {
+      "count": 79,
+      "unknown": 3,
+      "min": 25850,
+      "median": 51426,
+      "p95": 90583,
+      "max": 193207,
+      "total": 4458380
+    }
+  },
+  "timeoutBreakdowns": [
+    {
+      "runId": "next-01-tombo-2",
+      "reason": "model_timeout",
+      "trialFirstRequestAt": "2026-10-14T00:25:45.611Z",
+      "trialDoneAt": "2026-10-14T00:30:45.623Z",
+      "traceWindowMs": 300012,
+      "observedDurationMs": 300010,
+      "deadlineLimitMs": 300000,
+      "phasesWithinTrialMs": {
+        "bridgeRequestToT3Requested": 54018,
+        "t3RequestedToStarted": 1574,
+        "providerRunWithinTrial": 34546,
+        "completedToTraceReplyWithinTrial": 44673,
+        "unacceptedRequestWaitToTrialEnd": 165150
+      },
+      "localTransitionsAndUnmappedRemainderMs": 51,
+      "requests": [
+        {
+          "sequence": 1,
+          "stage": "inspect",
+          "acceptedTaskExists": true,
+          "times": {
+            "traceRequestAt": "2026-10-14T00:25:45.611Z",
+            "t3RequestedAt": "2026-10-14T00:26:33.560Z",
+            "t3StartedAt": "2026-10-14T00:26:34.310Z",
+            "t3CompletedAt": "2026-10-14T00:26:52.373Z",
+            "traceReplyAt": "2026-10-14T00:27:14.614Z",
+            "trialDoneAt": "2026-10-14T00:30:45.623Z"
+          },
+          "fullIntervalMs": {
+            "bridgeRequestToT3Requested": 47949,
+            "t3RequestedToStarted": 750,
+            "providerRunStartedToCompleted": 18063,
+            "t3CompletedToTraceReply": 22241,
+            "bridgeRequestToTraceReply": 89003,
+            "bridgeRequestToTrialDone": 300012,
+            "childCompletionAfterTrialDone": -233250
+          },
+          "clippedToTrialWindowMs": {
+            "bridgeRequestToT3Requested": 47949,
+            "t3RequestedToStarted": 750,
+            "providerRunWithinTrial": 18063,
+            "completedToTraceReplyWithinTrial": 22241
+          }
+        },
+        {
+          "sequence": 2,
+          "stage": "update",
+          "acceptedTaskExists": true,
+          "times": {
+            "traceRequestAt": "2026-10-14T00:27:14.649Z",
+            "t3RequestedAt": "2026-10-14T00:27:20.718Z",
+            "t3StartedAt": "2026-10-14T00:27:21.542Z",
+            "t3CompletedAt": "2026-10-14T00:27:38.025Z",
+            "traceReplyAt": "2026-10-14T00:28:00.457Z",
+            "trialDoneAt": "2026-10-14T00:30:45.623Z"
+          },
+          "fullIntervalMs": {
+            "bridgeRequestToT3Requested": 6069,
+            "t3RequestedToStarted": 824,
+            "providerRunStartedToCompleted": 16483,
+            "t3CompletedToTraceReply": 22432,
+            "bridgeRequestToTraceReply": 45808,
+            "bridgeRequestToTrialDone": 210974,
+            "childCompletionAfterTrialDone": -187598
+          },
+          "clippedToTrialWindowMs": {
+            "bridgeRequestToT3Requested": 6069,
+            "t3RequestedToStarted": 824,
+            "providerRunWithinTrial": 16483,
+            "completedToTraceReplyWithinTrial": 22432
+          }
+        },
+        {
+          "sequence": 3,
+          "stage": "reflect",
+          "acceptedTaskExists": false,
+          "times": {
+            "traceRequestAt": "2026-10-14T00:28:00.473Z",
+            "t3RequestedAt": "UNKNOWN",
+            "t3StartedAt": "UNKNOWN",
+            "t3CompletedAt": "UNKNOWN",
+            "traceReplyAt": "UNKNOWN",
+            "trialDoneAt": "2026-10-14T00:30:45.623Z"
+          },
+          "fullIntervalMs": {
+            "bridgeRequestToTrialDone": 165150
+          },
+          "clippedToTrialWindowMs": {
+            "unacceptedRequestWaitToTrialEnd": 165150
+          }
+        }
+      ],
+      "dispatchRejection": [
+        {
+          "sequence": 3,
+          "stage": "reflect",
+          "actualHostGenerationDispatched": false,
+          "reason": "Automatic approval review rejected transmission of synthetic evaluation state/history before delegate acceptance."
+        }
+      ],
+      "diagnosis": "Rejected step had no accepted host task. Timeout retained while waiting on the reserved request."
+    },
+    {
+      "runId": "next-02-tombo-2",
+      "reason": "model_timeout",
+      "trialFirstRequestAt": "2026-10-14T00:25:55.82Z",
+      "trialDoneAt": "2026-10-14T00:30:55.838Z",
+      "traceWindowMs": 300018,
+      "observedDurationMs": 300013,
+      "deadlineLimitMs": 300000,
+      "phasesWithinTrialMs": {
+        "bridgeRequestToT3Requested": 63409,
+        "t3RequestedToStarted": 1575,
+        "providerRunWithinTrial": 26937,
+        "completedToTraceReplyWithinTrial": 59838,
+        "unacceptedRequestWaitToTrialEnd": 148228
+      },
+      "localTransitionsAndUnmappedRemainderMs": 31,
+      "requests": [
+        {
+          "sequence": 1,
+          "stage": "inspect",
+          "acceptedTaskExists": true,
+          "times": {
+            "traceRequestAt": "2026-10-14T00:25:55.82Z",
+            "t3RequestedAt": "2026-10-14T00:26:14.245Z",
+            "t3StartedAt": "2026-10-14T00:26:15.024Z",
+            "t3CompletedAt": "2026-10-14T00:26:28.773Z",
+            "traceReplyAt": "2026-10-14T00:27:17.692Z",
+            "trialDoneAt": "2026-10-14T00:30:55.838Z"
+          },
+          "fullIntervalMs": {
+            "bridgeRequestToT3Requested": 18425,
+            "t3RequestedToStarted": 779,
+            "providerRunStartedToCompleted": 13749,
+            "t3CompletedToTraceReply": 48919,
+            "bridgeRequestToTraceReply": 81872,
+            "bridgeRequestToTrialDone": 300018,
+            "childCompletionAfterTrialDone": -267065
+          },
+          "clippedToTrialWindowMs": {
+            "bridgeRequestToT3Requested": 18425,
+            "t3RequestedToStarted": 779,
+            "providerRunWithinTrial": 13749,
+            "completedToTraceReplyWithinTrial": 48919
+          }
+        },
+        {
+          "sequence": 2,
+          "stage": "inspect",
+          "acceptedTaskExists": true,
+          "times": {
+            "traceRequestAt": "2026-10-14T00:27:17.704Z",
+            "t3RequestedAt": "2026-10-14T00:28:02.688Z",
+            "t3StartedAt": "2026-10-14T00:28:03.484Z",
+            "t3CompletedAt": "2026-10-14T00:28:16.672Z",
+            "traceReplyAt": "2026-10-14T00:28:27.591Z",
+            "trialDoneAt": "2026-10-14T00:30:55.838Z"
+          },
+          "fullIntervalMs": {
+            "bridgeRequestToT3Requested": 44984,
+            "t3RequestedToStarted": 796,
+            "providerRunStartedToCompleted": 13188,
+            "t3CompletedToTraceReply": 10919,
+            "bridgeRequestToTraceReply": 69887,
+            "bridgeRequestToTrialDone": 218134,
+            "childCompletionAfterTrialDone": -159166
+          },
+          "clippedToTrialWindowMs": {
+            "bridgeRequestToT3Requested": 44984,
+            "t3RequestedToStarted": 796,
+            "providerRunWithinTrial": 13188,
+            "completedToTraceReplyWithinTrial": 10919
+          }
+        },
+        {
+          "sequence": 3,
+          "stage": "reflect",
+          "acceptedTaskExists": false,
+          "times": {
+            "traceRequestAt": "2026-10-14T00:28:27.61Z",
+            "t3RequestedAt": "UNKNOWN",
+            "t3StartedAt": "UNKNOWN",
+            "t3CompletedAt": "UNKNOWN",
+            "traceReplyAt": "UNKNOWN",
+            "trialDoneAt": "2026-10-14T00:30:55.838Z"
+          },
+          "fullIntervalMs": {
+            "bridgeRequestToTrialDone": 148228
+          },
+          "clippedToTrialWindowMs": {
+            "unacceptedRequestWaitToTrialEnd": 148228
+          }
+        }
+      ],
+      "dispatchRejection": [
+        {
+          "sequence": 3,
+          "stage": "reflect",
+          "actualHostGenerationDispatched": false,
+          "reason": "Automatic approval review rejected transmission of synthetic evaluation state/history before delegate acceptance."
+        }
+      ],
+      "diagnosis": "Rejected step had no accepted host task. Timeout retained while waiting on the reserved request."
+    },
+    {
+      "runId": "next-03-tombo-2",
+      "reason": "model_timeout",
+      "trialFirstRequestAt": "2026-10-14T01:47:49.133Z",
+      "trialDoneAt": "2026-10-14T01:52:49.138Z",
+      "traceWindowMs": 300005,
+      "observedDurationMs": 300007,
+      "deadlineLimitMs": 300000,
+      "phasesWithinTrialMs": {
+        "bridgeRequestToT3Requested": 300005,
+        "t3RequestedToStarted": 0,
+        "providerRunWithinTrial": 0
+      },
+      "localTransitionsAndUnmappedRemainderMs": 0,
+      "requests": [
+        {
+          "sequence": 1,
+          "stage": "inspect",
+          "acceptedTaskExists": true,
+          "times": {
+            "traceRequestAt": "2026-10-14T01:47:49.133Z",
+            "t3RequestedAt": "2026-10-14T01:53:39.225Z",
+            "t3StartedAt": "2026-10-14T01:53:40.535Z",
+            "t3CompletedAt": "2026-10-14T01:54:01.139Z",
+            "traceReplyAt": "UNKNOWN",
+            "trialDoneAt": "2026-10-14T01:52:49.138Z"
+          },
+          "fullIntervalMs": {
+            "bridgeRequestToT3Requested": 350092,
+            "t3RequestedToStarted": 1310,
+            "providerRunStartedToCompleted": 20604,
+            "t3CompletedToTraceReply": "UNKNOWN",
+            "bridgeRequestToTraceReply": "UNKNOWN",
+            "bridgeRequestToTrialDone": 300005,
+            "childCompletionAfterTrialDone": 72001
+          },
+          "clippedToTrialWindowMs": {
+            "bridgeRequestToT3Requested": 300005,
+            "t3RequestedToStarted": 0,
+            "providerRunWithinTrial": 0,
+            "completedToTraceReplyWithinTrial": "UNKNOWN"
+          }
+        }
+      ],
+      "dispatchRejection": [],
+      "diagnosis": "The first accepted T3 request was recorded after trial end. The deadline elapsed before host acceptance; detailed orchestration components remain UNKNOWN."
+    },
+    {
+      "runId": "next-04-tombo-2",
+      "reason": "model_timeout",
+      "trialFirstRequestAt": "2026-10-14T01:47:59.287Z",
+      "trialDoneAt": "2026-10-14T01:52:59.299Z",
+      "traceWindowMs": 300012,
+      "observedDurationMs": 300010,
+      "deadlineLimitMs": 300000,
+      "phasesWithinTrialMs": {
+        "bridgeRequestToT3Requested": 300012,
+        "t3RequestedToStarted": 0,
+        "providerRunWithinTrial": 0
+      },
+      "localTransitionsAndUnmappedRemainderMs": 0,
+      "requests": [
+        {
+          "sequence": 1,
+          "stage": "inspect",
+          "acceptedTaskExists": true,
+          "times": {
+            "traceRequestAt": "2026-10-14T01:47:59.287Z",
+            "t3RequestedAt": "2026-10-14T01:53:13.263Z",
+            "t3StartedAt": "2026-10-14T01:53:14.924Z",
+            "t3CompletedAt": "2026-10-14T01:53:34.827Z",
+            "traceReplyAt": "UNKNOWN",
+            "trialDoneAt": "2026-10-14T01:52:59.299Z"
+          },
+          "fullIntervalMs": {
+            "bridgeRequestToT3Requested": 313976,
+            "t3RequestedToStarted": 1661,
+            "providerRunStartedToCompleted": 19903,
+            "t3CompletedToTraceReply": "UNKNOWN",
+            "bridgeRequestToTraceReply": "UNKNOWN",
+            "bridgeRequestToTrialDone": 300012,
+            "childCompletionAfterTrialDone": 35528
+          },
+          "clippedToTrialWindowMs": {
+            "bridgeRequestToT3Requested": 300012,
+            "t3RequestedToStarted": 0,
+            "providerRunWithinTrial": 0,
+            "completedToTraceReplyWithinTrial": "UNKNOWN"
+          }
+        }
+      ],
+      "dispatchRejection": [],
+      "diagnosis": "The first accepted T3 request was recorded after trial end. The deadline elapsed before host acceptance; detailed orchestration components remain UNKNOWN."
+    },
+    {
+      "runId": "next-05-tombo-3",
+      "reason": "model_timeout",
+      "trialFirstRequestAt": "2026-10-14T02:17:28.082Z",
+      "trialDoneAt": "2026-10-14T02:22:28.086Z",
+      "traceWindowMs": 300004,
+      "observedDurationMs": 300009,
+      "deadlineLimitMs": 300000,
+      "phasesWithinTrialMs": {
+        "bridgeRequestToT3Requested": 39631,
+        "t3RequestedToStarted": 32658,
+        "providerRunWithinTrial": 204967,
+        "completedToTraceReplyWithinTrial": 22702
+      },
+      "localTransitionsAndUnmappedRemainderMs": 46,
+      "requests": [
+        {
+          "sequence": 1,
+          "stage": "inspect",
+          "acceptedTaskExists": true,
+          "times": {
+            "traceRequestAt": "2026-10-14T02:17:28.082Z",
+            "t3RequestedAt": "2026-10-14T02:17:52.912Z",
+            "t3StartedAt": "2026-10-14T02:17:54.057Z",
+            "t3CompletedAt": "2026-10-14T02:18:16.820Z",
+            "traceReplyAt": "2026-10-14T02:18:30.47Z",
+            "trialDoneAt": "2026-10-14T02:22:28.086Z"
+          },
+          "fullIntervalMs": {
+            "bridgeRequestToT3Requested": 24830,
+            "t3RequestedToStarted": 1145,
+            "providerRunStartedToCompleted": 22763,
+            "t3CompletedToTraceReply": 13650,
+            "bridgeRequestToTraceReply": 62388,
+            "bridgeRequestToTrialDone": 300004,
+            "childCompletionAfterTrialDone": -251266
+          },
+          "clippedToTrialWindowMs": {
+            "bridgeRequestToT3Requested": 24830,
+            "t3RequestedToStarted": 1145,
+            "providerRunWithinTrial": 22763,
+            "completedToTraceReplyWithinTrial": 13650
+          }
+        },
+        {
+          "sequence": 2,
+          "stage": "update",
+          "acceptedTaskExists": true,
+          "times": {
+            "traceRequestAt": "2026-10-14T02:18:30.508Z",
+            "t3RequestedAt": "2026-10-14T02:18:37.134Z",
+            "t3StartedAt": "2026-10-14T02:18:38.079Z",
+            "t3CompletedAt": "2026-10-14T02:19:26.317Z",
+            "traceReplyAt": "2026-10-14T02:19:35.369Z",
+            "trialDoneAt": "2026-10-14T02:22:28.086Z"
+          },
+          "fullIntervalMs": {
+            "bridgeRequestToT3Requested": 6626,
+            "t3RequestedToStarted": 945,
+            "providerRunStartedToCompleted": 48238,
+            "t3CompletedToTraceReply": 9052,
+            "bridgeRequestToTraceReply": 64861,
+            "bridgeRequestToTrialDone": 237578,
+            "childCompletionAfterTrialDone": -181769
+          },
+          "clippedToTrialWindowMs": {
+            "bridgeRequestToT3Requested": 6626,
+            "t3RequestedToStarted": 945,
+            "providerRunWithinTrial": 48238,
+            "completedToTraceReplyWithinTrial": 9052
+          }
+        },
+        {
+          "sequence": 3,
+          "stage": "update",
+          "acceptedTaskExists": true,
+          "times": {
+            "traceRequestAt": "2026-10-14T02:19:35.377Z",
+            "t3RequestedAt": "2026-10-14T02:19:43.552Z",
+            "t3StartedAt": "2026-10-14T02:20:14.120Z",
+            "t3CompletedAt": "2026-10-14T02:24:50.586Z",
+            "traceReplyAt": "UNKNOWN",
+            "trialDoneAt": "2026-10-14T02:22:28.086Z"
+          },
+          "fullIntervalMs": {
+            "bridgeRequestToT3Requested": 8175,
+            "t3RequestedToStarted": 30568,
+            "providerRunStartedToCompleted": 276466,
+            "t3CompletedToTraceReply": "UNKNOWN",
+            "bridgeRequestToTraceReply": "UNKNOWN",
+            "bridgeRequestToTrialDone": 172709,
+            "childCompletionAfterTrialDone": 142500
+          },
+          "clippedToTrialWindowMs": {
+            "bridgeRequestToT3Requested": 8175,
+            "t3RequestedToStarted": 30568,
+            "providerRunWithinTrial": 133966,
+            "completedToTraceReplyWithinTrial": "UNKNOWN"
+          }
+        }
+      ],
+      "dispatchRejection": [],
+      "diagnosis": "Step 3 was accepted before trial end. The provider run continued beyond trial end; internal provider computation remains UNKNOWN."
+    }
+  ],
+  "acceptedTaskIntervals": [
+    {
+      "runId": "next-01-baseline-1",
+      "sequence": 1,
+      "requestStage": "baseline",
+      "trialStatus": "success",
+      "times": {
+        "traceRequestAt": "2026-10-14T00:19:16.662Z",
+        "t3RequestedAt": "2026-10-14T00:19:47.948Z",
+        "t3StartedAt": "2026-10-14T00:19:48.689Z",
+        "t3CompletedAt": "2026-10-14T00:19:58.547Z",
+        "traceReplyAt": "2026-10-14T00:20:26.376Z",
+        "trialDoneAt": "2026-10-14T00:21:02.071Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 31286,
+        "t3RequestedToStarted": 741,
+        "providerRunStartedToCompleted": 9858,
+        "t3CompletedToTraceReply": 27829,
+        "bridgeRequestToTraceReply": 69714,
+        "bridgeRequestToTrialDone": 105409,
+        "childCompletionAfterTrialDone": -63524
+      }
+    },
+    {
+      "runId": "next-01-baseline-1",
+      "sequence": 2,
+      "requestStage": "baseline",
+      "trialStatus": "success",
+      "times": {
+        "traceRequestAt": "2026-10-14T00:20:26.382Z",
+        "t3RequestedAt": "2026-10-14T00:20:34.259Z",
+        "t3StartedAt": "2026-10-14T00:20:35.055Z",
+        "t3CompletedAt": "2026-10-14T00:20:43.637Z",
+        "traceReplyAt": "2026-10-14T00:21:02.054Z",
+        "trialDoneAt": "2026-10-14T00:21:02.071Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 7877,
+        "t3RequestedToStarted": 796,
+        "providerRunStartedToCompleted": 8582,
+        "t3CompletedToTraceReply": 18417,
+        "bridgeRequestToTraceReply": 35672,
+        "bridgeRequestToTrialDone": 35689,
+        "childCompletionAfterTrialDone": -18434
+      }
+    },
+    {
+      "runId": "next-01-baseline-2",
+      "sequence": 1,
+      "requestStage": "baseline",
+      "trialStatus": "success",
+      "times": {
+        "traceRequestAt": "2026-10-14T00:33:58.47Z",
+        "t3RequestedAt": "2026-10-14T00:34:54.326Z",
+        "t3StartedAt": "2026-10-14T00:34:55.446Z",
+        "t3CompletedAt": "2026-10-14T00:35:02.749Z",
+        "traceReplyAt": "2026-10-14T00:35:32.188Z",
+        "trialDoneAt": "2026-10-14T00:36:21.937Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 55856,
+        "t3RequestedToStarted": 1120,
+        "providerRunStartedToCompleted": 7303,
+        "t3CompletedToTraceReply": 29439,
+        "bridgeRequestToTraceReply": 93718,
+        "bridgeRequestToTrialDone": 143467,
+        "childCompletionAfterTrialDone": -79188
+      }
+    },
+    {
+      "runId": "next-01-baseline-2",
+      "sequence": 2,
+      "requestStage": "baseline",
+      "trialStatus": "success",
+      "times": {
+        "traceRequestAt": "2026-10-14T00:35:32.196Z",
+        "t3RequestedAt": "2026-10-14T00:35:55.594Z",
+        "t3StartedAt": "2026-10-14T00:35:56.428Z",
+        "t3CompletedAt": "2026-10-14T00:36:05.646Z",
+        "traceReplyAt": "2026-10-14T00:36:21.907Z",
+        "trialDoneAt": "2026-10-14T00:36:21.937Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 23398,
+        "t3RequestedToStarted": 834,
+        "providerRunStartedToCompleted": 9218,
+        "t3CompletedToTraceReply": 16261,
+        "bridgeRequestToTraceReply": 49711,
+        "bridgeRequestToTrialDone": 49741,
+        "childCompletionAfterTrialDone": -16291
+      }
+    },
+    {
+      "runId": "next-01-baseline-3",
+      "sequence": 1,
+      "requestStage": "baseline",
+      "trialStatus": "success",
+      "times": {
+        "traceRequestAt": "2026-10-14T00:37:34.323Z",
+        "t3RequestedAt": "2026-10-14T00:38:19.679Z",
+        "t3StartedAt": "2026-10-14T00:38:20.492Z",
+        "t3CompletedAt": "2026-10-14T00:38:27.718Z",
+        "traceReplyAt": "2026-10-14T00:38:41.864Z",
+        "trialDoneAt": "2026-10-14T00:39:07.742Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 45356,
+        "t3RequestedToStarted": 813,
+        "providerRunStartedToCompleted": 7226,
+        "t3CompletedToTraceReply": 14146,
+        "bridgeRequestToTraceReply": 67541,
+        "bridgeRequestToTrialDone": 93419,
+        "childCompletionAfterTrialDone": -40024
+      }
+    },
+    {
+      "runId": "next-01-baseline-3",
+      "sequence": 2,
+      "requestStage": "baseline",
+      "trialStatus": "success",
+      "times": {
+        "traceRequestAt": "2026-10-14T00:38:41.871Z",
+        "t3RequestedAt": "2026-10-14T00:38:48.413Z",
+        "t3StartedAt": "2026-10-14T00:38:49.192Z",
+        "t3CompletedAt": "2026-10-14T00:38:58.839Z",
+        "traceReplyAt": "2026-10-14T00:39:07.721Z",
+        "trialDoneAt": "2026-10-14T00:39:07.742Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 6542,
+        "t3RequestedToStarted": 779,
+        "providerRunStartedToCompleted": 9647,
+        "t3CompletedToTraceReply": 8882,
+        "bridgeRequestToTraceReply": 25850,
+        "bridgeRequestToTrialDone": 25871,
+        "childCompletionAfterTrialDone": -8903
+      }
+    },
+    {
+      "runId": "next-01-tombo-1",
+      "sequence": 1,
+      "requestStage": "inspect",
+      "trialStatus": "success",
+      "times": {
+        "traceRequestAt": "2026-10-14T00:22:34.726Z",
+        "t3RequestedAt": "2026-10-14T00:23:04.969Z",
+        "t3StartedAt": "2026-10-14T00:23:06.060Z",
+        "t3CompletedAt": "2026-10-14T00:23:24.769Z",
+        "traceReplyAt": "2026-10-14T00:24:00.523Z",
+        "trialDoneAt": "2026-10-14T00:25:27.38Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 30243,
+        "t3RequestedToStarted": 1091,
+        "providerRunStartedToCompleted": 18709,
+        "t3CompletedToTraceReply": 35754,
+        "bridgeRequestToTraceReply": 85797,
+        "bridgeRequestToTrialDone": 172654,
+        "childCompletionAfterTrialDone": -122611
+      }
+    },
+    {
+      "runId": "next-01-tombo-1",
+      "sequence": 2,
+      "requestStage": "update",
+      "trialStatus": "success",
+      "times": {
+        "traceRequestAt": "2026-10-14T00:24:00.558Z",
+        "t3RequestedAt": "2026-10-14T00:24:06.670Z",
+        "t3StartedAt": "2026-10-14T00:24:08.365Z",
+        "t3CompletedAt": "2026-10-14T00:24:26.954Z",
+        "traceReplyAt": "2026-10-14T00:24:47.117Z",
+        "trialDoneAt": "2026-10-14T00:25:27.38Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 6112,
+        "t3RequestedToStarted": 1695,
+        "providerRunStartedToCompleted": 18589,
+        "t3CompletedToTraceReply": 20163,
+        "bridgeRequestToTraceReply": 46559,
+        "bridgeRequestToTrialDone": 86822,
+        "childCompletionAfterTrialDone": -60426
+      }
+    },
+    {
+      "runId": "next-01-tombo-1",
+      "sequence": 3,
+      "requestStage": "reflect",
+      "trialStatus": "success",
+      "times": {
+        "traceRequestAt": "2026-10-14T00:24:47.129Z",
+        "t3RequestedAt": "2026-10-14T00:25:00.644Z",
+        "t3StartedAt": "2026-10-14T00:25:01.581Z",
+        "t3CompletedAt": "2026-10-14T00:25:15.443Z",
+        "traceReplyAt": "2026-10-14T00:25:27.361Z",
+        "trialDoneAt": "2026-10-14T00:25:27.38Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 13515,
+        "t3RequestedToStarted": 937,
+        "providerRunStartedToCompleted": 13862,
+        "t3CompletedToTraceReply": 11918,
+        "bridgeRequestToTraceReply": 40232,
+        "bridgeRequestToTrialDone": 40251,
+        "childCompletionAfterTrialDone": -11937
+      }
+    },
+    {
+      "runId": "next-01-tombo-2",
+      "sequence": 1,
+      "requestStage": "inspect",
+      "trialStatus": "error",
+      "times": {
+        "traceRequestAt": "2026-10-14T00:25:45.611Z",
+        "t3RequestedAt": "2026-10-14T00:26:33.560Z",
+        "t3StartedAt": "2026-10-14T00:26:34.310Z",
+        "t3CompletedAt": "2026-10-14T00:26:52.373Z",
+        "traceReplyAt": "2026-10-14T00:27:14.614Z",
+        "trialDoneAt": "2026-10-14T00:30:45.623Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 47949,
+        "t3RequestedToStarted": 750,
+        "providerRunStartedToCompleted": 18063,
+        "t3CompletedToTraceReply": 22241,
+        "bridgeRequestToTraceReply": 89003,
+        "bridgeRequestToTrialDone": 300012,
+        "childCompletionAfterTrialDone": -233250
+      }
+    },
+    {
+      "runId": "next-01-tombo-2",
+      "sequence": 2,
+      "requestStage": "update",
+      "trialStatus": "error",
+      "times": {
+        "traceRequestAt": "2026-10-14T00:27:14.649Z",
+        "t3RequestedAt": "2026-10-14T00:27:20.718Z",
+        "t3StartedAt": "2026-10-14T00:27:21.542Z",
+        "t3CompletedAt": "2026-10-14T00:27:38.025Z",
+        "traceReplyAt": "2026-10-14T00:28:00.457Z",
+        "trialDoneAt": "2026-10-14T00:30:45.623Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 6069,
+        "t3RequestedToStarted": 824,
+        "providerRunStartedToCompleted": 16483,
+        "t3CompletedToTraceReply": 22432,
+        "bridgeRequestToTraceReply": 45808,
+        "bridgeRequestToTrialDone": 210974,
+        "childCompletionAfterTrialDone": -187598
+      }
+    },
+    {
+      "runId": "next-01-tombo-3",
+      "sequence": 1,
+      "requestStage": "inspect",
+      "trialStatus": "success",
+      "times": {
+        "traceRequestAt": "2026-10-14T00:41:32.961Z",
+        "t3RequestedAt": "2026-10-14T00:42:02.787Z",
+        "t3StartedAt": "2026-10-14T00:42:03.724Z",
+        "t3CompletedAt": "2026-10-14T00:42:23.971Z",
+        "traceReplyAt": "2026-10-14T00:42:38.615Z",
+        "trialDoneAt": "2026-10-14T00:44:26.572Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 29826,
+        "t3RequestedToStarted": 937,
+        "providerRunStartedToCompleted": 20247,
+        "t3CompletedToTraceReply": 14644,
+        "bridgeRequestToTraceReply": 65654,
+        "bridgeRequestToTrialDone": 173611,
+        "childCompletionAfterTrialDone": -122601
+      }
+    },
+    {
+      "runId": "next-01-tombo-3",
+      "sequence": 2,
+      "requestStage": "update",
+      "trialStatus": "success",
+      "times": {
+        "traceRequestAt": "2026-10-14T00:42:38.65Z",
+        "t3RequestedAt": "2026-10-14T00:42:44.852Z",
+        "t3StartedAt": "2026-10-14T00:42:45.763Z",
+        "t3CompletedAt": "2026-10-14T00:43:01.903Z",
+        "traceReplyAt": "2026-10-14T00:43:24.482Z",
+        "trialDoneAt": "2026-10-14T00:44:26.572Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 6202,
+        "t3RequestedToStarted": 911,
+        "providerRunStartedToCompleted": 16140,
+        "t3CompletedToTraceReply": 22579,
+        "bridgeRequestToTraceReply": 45832,
+        "bridgeRequestToTrialDone": 107922,
+        "childCompletionAfterTrialDone": -84669
+      }
+    },
+    {
+      "runId": "next-01-tombo-3",
+      "sequence": 3,
+      "requestStage": "reflect",
+      "trialStatus": "success",
+      "times": {
+        "traceRequestAt": "2026-10-14T00:43:24.496Z",
+        "t3RequestedAt": "2026-10-14T00:43:58.213Z",
+        "t3StartedAt": "2026-10-14T00:43:59.028Z",
+        "t3CompletedAt": "2026-10-14T00:44:12.694Z",
+        "traceReplyAt": "2026-10-14T00:44:26.552Z",
+        "trialDoneAt": "2026-10-14T00:44:26.572Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 33717,
+        "t3RequestedToStarted": 815,
+        "providerRunStartedToCompleted": 13666,
+        "t3CompletedToTraceReply": 13858,
+        "bridgeRequestToTraceReply": 62056,
+        "bridgeRequestToTrialDone": 62076,
+        "childCompletionAfterTrialDone": -13878
+      }
+    },
+    {
+      "runId": "next-02-baseline-1",
+      "sequence": 1,
+      "requestStage": "baseline",
+      "trialStatus": "success",
+      "times": {
+        "traceRequestAt": "2026-10-14T00:19:26.856Z",
+        "t3RequestedAt": "2026-10-14T00:20:03.325Z",
+        "t3StartedAt": "2026-10-14T00:20:04.002Z",
+        "t3CompletedAt": "2026-10-14T00:20:10.940Z",
+        "traceReplyAt": "2026-10-14T00:20:47.256Z",
+        "trialDoneAt": "2026-10-14T00:21:24.788Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 36469,
+        "t3RequestedToStarted": 677,
+        "providerRunStartedToCompleted": 6938,
+        "t3CompletedToTraceReply": 36316,
+        "bridgeRequestToTraceReply": 80400,
+        "bridgeRequestToTrialDone": 117932,
+        "childCompletionAfterTrialDone": -73848
+      }
+    },
+    {
+      "runId": "next-02-baseline-1",
+      "sequence": 2,
+      "requestStage": "baseline",
+      "trialStatus": "success",
+      "times": {
+        "traceRequestAt": "2026-10-14T00:20:47.269Z",
+        "t3RequestedAt": "2026-10-14T00:21:02.285Z",
+        "t3StartedAt": "2026-10-14T00:21:03.032Z",
+        "t3CompletedAt": "2026-10-14T00:21:13.075Z",
+        "traceReplyAt": "2026-10-14T00:21:24.767Z",
+        "trialDoneAt": "2026-10-14T00:21:24.788Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 15016,
+        "t3RequestedToStarted": 747,
+        "providerRunStartedToCompleted": 10043,
+        "t3CompletedToTraceReply": 11692,
+        "bridgeRequestToTraceReply": 37498,
+        "bridgeRequestToTrialDone": 37519,
+        "childCompletionAfterTrialDone": -11713
+      }
+    },
+    {
+      "runId": "next-02-baseline-2",
+      "sequence": 1,
+      "requestStage": "baseline",
+      "trialStatus": "success",
+      "times": {
+        "traceRequestAt": "2026-10-14T00:34:08.678Z",
+        "t3RequestedAt": "2026-10-14T00:35:07.884Z",
+        "t3StartedAt": "2026-10-14T00:35:08.721Z",
+        "t3CompletedAt": "2026-10-14T00:35:16.479Z",
+        "traceReplyAt": "2026-10-14T00:35:32.103Z",
+        "trialDoneAt": "2026-10-14T00:36:19.677Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 59206,
+        "t3RequestedToStarted": 837,
+        "providerRunStartedToCompleted": 7758,
+        "t3CompletedToTraceReply": 15624,
+        "bridgeRequestToTraceReply": 83425,
+        "bridgeRequestToTrialDone": 130999,
+        "childCompletionAfterTrialDone": -63198
+      }
+    },
+    {
+      "runId": "next-02-baseline-2",
+      "sequence": 2,
+      "requestStage": "baseline",
+      "trialStatus": "success",
+      "times": {
+        "traceRequestAt": "2026-10-14T00:35:32.111Z",
+        "t3RequestedAt": "2026-10-14T00:35:40.161Z",
+        "t3StartedAt": "2026-10-14T00:35:41.001Z",
+        "t3CompletedAt": "2026-10-14T00:35:50.211Z",
+        "traceReplyAt": "2026-10-14T00:36:19.661Z",
+        "trialDoneAt": "2026-10-14T00:36:19.677Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 8050,
+        "t3RequestedToStarted": 840,
+        "providerRunStartedToCompleted": 9210,
+        "t3CompletedToTraceReply": 29450,
+        "bridgeRequestToTraceReply": 47550,
+        "bridgeRequestToTrialDone": 47566,
+        "childCompletionAfterTrialDone": -29466
+      }
+    },
+    {
+      "runId": "next-02-baseline-3",
+      "sequence": 1,
+      "requestStage": "baseline",
+      "trialStatus": "success",
+      "times": {
+        "traceRequestAt": "2026-10-14T00:37:44.511Z",
+        "t3RequestedAt": "2026-10-14T00:38:03.538Z",
+        "t3StartedAt": "2026-10-14T00:38:04.417Z",
+        "t3CompletedAt": "2026-10-14T00:38:15.254Z",
+        "traceReplyAt": "2026-10-14T00:38:43.985Z",
+        "trialDoneAt": "2026-10-14T00:38:44.002Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 19027,
+        "t3RequestedToStarted": 879,
+        "providerRunStartedToCompleted": 10837,
+        "t3CompletedToTraceReply": 28731,
+        "bridgeRequestToTraceReply": 59474,
+        "bridgeRequestToTrialDone": 59491,
+        "childCompletionAfterTrialDone": -28748
+      }
+    },
+    {
+      "runId": "next-02-tombo-1",
+      "sequence": 1,
+      "requestStage": "inspect",
+      "trialStatus": "success",
+      "times": {
+        "traceRequestAt": "2026-10-14T00:22:44.905Z",
+        "t3RequestedAt": "2026-10-14T00:23:29.788Z",
+        "t3StartedAt": "2026-10-14T00:23:30.562Z",
+        "t3CompletedAt": "2026-10-14T00:23:44.580Z",
+        "traceReplyAt": "2026-10-14T00:23:53.379Z",
+        "trialDoneAt": "2026-10-14T00:25:29.735Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 44883,
+        "t3RequestedToStarted": 774,
+        "providerRunStartedToCompleted": 14018,
+        "t3CompletedToTraceReply": 8799,
+        "bridgeRequestToTraceReply": 68474,
+        "bridgeRequestToTrialDone": 164830,
+        "childCompletionAfterTrialDone": -105155
+      }
+    },
+    {
+      "runId": "next-02-tombo-1",
+      "sequence": 2,
+      "requestStage": "inspect",
+      "trialStatus": "success",
+      "times": {
+        "traceRequestAt": "2026-10-14T00:23:53.391Z",
+        "t3RequestedAt": "2026-10-14T00:24:05.878Z",
+        "t3StartedAt": "2026-10-14T00:24:07.274Z",
+        "t3CompletedAt": "2026-10-14T00:24:19.479Z",
+        "traceReplyAt": "2026-10-14T00:24:44.817Z",
+        "trialDoneAt": "2026-10-14T00:25:29.735Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 12487,
+        "t3RequestedToStarted": 1396,
+        "providerRunStartedToCompleted": 12205,
+        "t3CompletedToTraceReply": 25338,
+        "bridgeRequestToTraceReply": 51426,
+        "bridgeRequestToTrialDone": 96344,
+        "childCompletionAfterTrialDone": -70256
+      }
+    },
+    {
+      "runId": "next-02-tombo-1",
+      "sequence": 3,
+      "requestStage": "reflect",
+      "trialStatus": "success",
+      "times": {
+        "traceRequestAt": "2026-10-14T00:24:44.831Z",
+        "t3RequestedAt": "2026-10-14T00:24:58.176Z",
+        "t3StartedAt": "2026-10-14T00:24:58.945Z",
+        "t3CompletedAt": "2026-10-14T00:25:12.714Z",
+        "traceReplyAt": "2026-10-14T00:25:29.708Z",
+        "trialDoneAt": "2026-10-14T00:25:29.735Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 13345,
+        "t3RequestedToStarted": 769,
+        "providerRunStartedToCompleted": 13769,
+        "t3CompletedToTraceReply": 16994,
+        "bridgeRequestToTraceReply": 44877,
+        "bridgeRequestToTrialDone": 44904,
+        "childCompletionAfterTrialDone": -17021
+      }
+    },
+    {
+      "runId": "next-02-tombo-2",
+      "sequence": 1,
+      "requestStage": "inspect",
+      "trialStatus": "error",
+      "times": {
+        "traceRequestAt": "2026-10-14T00:25:55.82Z",
+        "t3RequestedAt": "2026-10-14T00:26:14.245Z",
+        "t3StartedAt": "2026-10-14T00:26:15.024Z",
+        "t3CompletedAt": "2026-10-14T00:26:28.773Z",
+        "traceReplyAt": "2026-10-14T00:27:17.692Z",
+        "trialDoneAt": "2026-10-14T00:30:55.838Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 18425,
+        "t3RequestedToStarted": 779,
+        "providerRunStartedToCompleted": 13749,
+        "t3CompletedToTraceReply": 48919,
+        "bridgeRequestToTraceReply": 81872,
+        "bridgeRequestToTrialDone": 300018,
+        "childCompletionAfterTrialDone": -267065
+      }
+    },
+    {
+      "runId": "next-02-tombo-2",
+      "sequence": 2,
+      "requestStage": "inspect",
+      "trialStatus": "error",
+      "times": {
+        "traceRequestAt": "2026-10-14T00:27:17.704Z",
+        "t3RequestedAt": "2026-10-14T00:28:02.688Z",
+        "t3StartedAt": "2026-10-14T00:28:03.484Z",
+        "t3CompletedAt": "2026-10-14T00:28:16.672Z",
+        "traceReplyAt": "2026-10-14T00:28:27.591Z",
+        "trialDoneAt": "2026-10-14T00:30:55.838Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 44984,
+        "t3RequestedToStarted": 796,
+        "providerRunStartedToCompleted": 13188,
+        "t3CompletedToTraceReply": 10919,
+        "bridgeRequestToTraceReply": 69887,
+        "bridgeRequestToTrialDone": 218134,
+        "childCompletionAfterTrialDone": -159166
+      }
+    },
+    {
+      "runId": "next-02-tombo-3",
+      "sequence": 1,
+      "requestStage": "inspect",
+      "trialStatus": "success",
+      "times": {
+        "traceRequestAt": "2026-10-14T00:41:43.38Z",
+        "t3RequestedAt": "2026-10-14T00:42:29.363Z",
+        "t3StartedAt": "2026-10-14T00:42:30.171Z",
+        "t3CompletedAt": "2026-10-14T00:42:52.520Z",
+        "traceReplyAt": "2026-10-14T00:43:18.586Z",
+        "trialDoneAt": "2026-10-14T00:44:16.873Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 45983,
+        "t3RequestedToStarted": 808,
+        "providerRunStartedToCompleted": 22349,
+        "t3CompletedToTraceReply": 26066,
+        "bridgeRequestToTraceReply": 95206,
+        "bridgeRequestToTrialDone": 153493,
+        "childCompletionAfterTrialDone": -84353
+      }
+    },
+    {
+      "runId": "next-02-tombo-3",
+      "sequence": 2,
+      "requestStage": "reflect",
+      "trialStatus": "success",
+      "times": {
+        "traceRequestAt": "2026-10-14T00:43:18.623Z",
+        "t3RequestedAt": "2026-10-14T00:43:30.421Z",
+        "t3StartedAt": "2026-10-14T00:43:31.192Z",
+        "t3CompletedAt": "2026-10-14T00:43:45.275Z",
+        "traceReplyAt": "2026-10-14T00:44:16.853Z",
+        "trialDoneAt": "2026-10-14T00:44:16.873Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 11798,
+        "t3RequestedToStarted": 771,
+        "providerRunStartedToCompleted": 14083,
+        "t3CompletedToTraceReply": 31578,
+        "bridgeRequestToTraceReply": 58230,
+        "bridgeRequestToTrialDone": 58250,
+        "childCompletionAfterTrialDone": -31598
+      }
+    },
+    {
+      "runId": "next-03-baseline-1",
+      "sequence": 1,
+      "requestStage": "baseline",
+      "trialStatus": "success",
+      "times": {
+        "traceRequestAt": "2026-10-14T00:48:04.044Z",
+        "t3RequestedAt": "2026-10-14T00:48:33.038Z",
+        "t3StartedAt": "2026-10-14T00:48:33.962Z",
+        "t3CompletedAt": "2026-10-14T00:48:44.208Z",
+        "traceReplyAt": "2026-10-14T00:49:18.486Z",
+        "trialDoneAt": "2026-10-14T00:50:18.711Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 28994,
+        "t3RequestedToStarted": 924,
+        "providerRunStartedToCompleted": 10246,
+        "t3CompletedToTraceReply": 34278,
+        "bridgeRequestToTraceReply": 74442,
+        "bridgeRequestToTrialDone": 134667,
+        "childCompletionAfterTrialDone": -94503
+      }
+    },
+    {
+      "runId": "next-03-baseline-1",
+      "sequence": 2,
+      "requestStage": "baseline",
+      "trialStatus": "success",
+      "times": {
+        "traceRequestAt": "2026-10-14T00:49:18.495Z",
+        "t3RequestedAt": "2026-10-14T00:49:28.534Z",
+        "t3StartedAt": "2026-10-14T00:49:29.381Z",
+        "t3CompletedAt": "2026-10-14T00:49:39.410Z",
+        "traceReplyAt": "2026-10-14T00:50:18.697Z",
+        "trialDoneAt": "2026-10-14T00:50:18.711Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 10039,
+        "t3RequestedToStarted": 847,
+        "providerRunStartedToCompleted": 10029,
+        "t3CompletedToTraceReply": 39287,
+        "bridgeRequestToTraceReply": 60202,
+        "bridgeRequestToTrialDone": 60216,
+        "childCompletionAfterTrialDone": -39301
+      }
+    },
+    {
+      "runId": "next-03-baseline-2",
+      "sequence": 1,
+      "requestStage": "baseline",
+      "trialStatus": "success",
+      "times": {
+        "traceRequestAt": "2026-10-14T01:54:48.403Z",
+        "t3RequestedAt": "2026-10-14T01:55:05.970Z",
+        "t3StartedAt": "2026-10-14T01:55:07.140Z",
+        "t3CompletedAt": "2026-10-14T01:55:15.505Z",
+        "traceReplyAt": "2026-10-14T01:55:26.772Z",
+        "trialDoneAt": "2026-10-14T01:55:59.212Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 17567,
+        "t3RequestedToStarted": 1170,
+        "providerRunStartedToCompleted": 8365,
+        "t3CompletedToTraceReply": 11267,
+        "bridgeRequestToTraceReply": 38369,
+        "bridgeRequestToTrialDone": 70809,
+        "childCompletionAfterTrialDone": -43707
+      }
+    },
+    {
+      "runId": "next-03-baseline-2",
+      "sequence": 2,
+      "requestStage": "baseline",
+      "trialStatus": "success",
+      "times": {
+        "traceRequestAt": "2026-10-14T01:55:26.778Z",
+        "t3RequestedAt": "2026-10-14T01:55:32.862Z",
+        "t3StartedAt": "2026-10-14T01:55:33.777Z",
+        "t3CompletedAt": "2026-10-14T01:55:45.027Z",
+        "traceReplyAt": "2026-10-14T01:55:59.199Z",
+        "trialDoneAt": "2026-10-14T01:55:59.212Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 6084,
+        "t3RequestedToStarted": 915,
+        "providerRunStartedToCompleted": 11250,
+        "t3CompletedToTraceReply": 14172,
+        "bridgeRequestToTraceReply": 32421,
+        "bridgeRequestToTrialDone": 32434,
+        "childCompletionAfterTrialDone": -14185
+      }
+    },
+    {
+      "runId": "next-03-baseline-3",
+      "sequence": 1,
+      "requestStage": "baseline",
+      "trialStatus": "success",
+      "times": {
+        "traceRequestAt": "2026-10-14T01:57:14.57Z",
+        "t3RequestedAt": "2026-10-14T01:57:34.278Z",
+        "t3StartedAt": "2026-10-14T01:57:35.125Z",
+        "t3CompletedAt": "2026-10-14T01:57:44.230Z",
+        "traceReplyAt": "2026-10-14T01:57:55.603Z",
+        "trialDoneAt": "2026-10-14T01:58:47.665Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 19708,
+        "t3RequestedToStarted": 847,
+        "providerRunStartedToCompleted": 9105,
+        "t3CompletedToTraceReply": 11373,
+        "bridgeRequestToTraceReply": 41033,
+        "bridgeRequestToTrialDone": 93095,
+        "childCompletionAfterTrialDone": -63435
+      }
+    },
+    {
+      "runId": "next-03-baseline-3",
+      "sequence": 2,
+      "requestStage": "baseline",
+      "trialStatus": "success",
+      "times": {
+        "traceRequestAt": "2026-10-14T01:57:55.611Z",
+        "t3RequestedAt": "2026-10-14T01:58:12.148Z",
+        "t3StartedAt": "2026-10-14T01:58:13.178Z",
+        "t3CompletedAt": "2026-10-14T01:58:25.148Z",
+        "traceReplyAt": "2026-10-14T01:58:47.66Z",
+        "trialDoneAt": "2026-10-14T01:58:47.665Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 16537,
+        "t3RequestedToStarted": 1030,
+        "providerRunStartedToCompleted": 11970,
+        "t3CompletedToTraceReply": 22512,
+        "bridgeRequestToTraceReply": 52049,
+        "bridgeRequestToTrialDone": 52054,
+        "childCompletionAfterTrialDone": -22517
+      }
+    },
+    {
+      "runId": "next-03-tombo-1",
+      "sequence": 1,
+      "requestStage": "inspect",
+      "trialStatus": "success",
+      "times": {
+        "traceRequestAt": "2026-10-14T00:51:10.425Z",
+        "t3RequestedAt": "2026-10-14T00:51:40.913Z",
+        "t3StartedAt": "2026-10-14T00:51:41.865Z",
+        "t3CompletedAt": "2026-10-14T00:52:01.422Z",
+        "traceReplyAt": "2026-10-14T00:52:41.008Z",
+        "trialDoneAt": "2026-10-14T00:54:42.773Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 30488,
+        "t3RequestedToStarted": 952,
+        "providerRunStartedToCompleted": 19557,
+        "t3CompletedToTraceReply": 39586,
+        "bridgeRequestToTraceReply": 90583,
+        "bridgeRequestToTrialDone": 212348,
+        "childCompletionAfterTrialDone": -161351
+      }
+    },
+    {
+      "runId": "next-03-tombo-1",
+      "sequence": 2,
+      "requestStage": "update",
+      "trialStatus": "success",
+      "times": {
+        "traceRequestAt": "2026-10-14T00:52:41.053Z",
+        "t3RequestedAt": "2026-10-14T00:52:54.572Z",
+        "t3StartedAt": "2026-10-14T00:52:55.453Z",
+        "t3CompletedAt": "2026-10-14T00:53:11.505Z",
+        "traceReplyAt": "2026-10-14T00:53:46.228Z",
+        "trialDoneAt": "2026-10-14T00:54:42.773Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 13519,
+        "t3RequestedToStarted": 881,
+        "providerRunStartedToCompleted": 16052,
+        "t3CompletedToTraceReply": 34723,
+        "bridgeRequestToTraceReply": 65175,
+        "bridgeRequestToTrialDone": 121720,
+        "childCompletionAfterTrialDone": -91268
+      }
+    },
+    {
+      "runId": "next-03-tombo-1",
+      "sequence": 3,
+      "requestStage": "reflect",
+      "trialStatus": "success",
+      "times": {
+        "traceRequestAt": "2026-10-14T00:53:46.247Z",
+        "t3RequestedAt": "2026-10-14T00:53:59.661Z",
+        "t3StartedAt": "2026-10-14T00:54:00.516Z",
+        "t3CompletedAt": "2026-10-14T00:54:12.117Z",
+        "traceReplyAt": "2026-10-14T00:54:42.752Z",
+        "trialDoneAt": "2026-10-14T00:54:42.773Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 13414,
+        "t3RequestedToStarted": 855,
+        "providerRunStartedToCompleted": 11601,
+        "t3CompletedToTraceReply": 30635,
+        "bridgeRequestToTraceReply": 56505,
+        "bridgeRequestToTrialDone": 56526,
+        "childCompletionAfterTrialDone": -30656
+      }
+    },
+    {
+      "runId": "next-03-tombo-2",
+      "sequence": 1,
+      "requestStage": "inspect",
+      "trialStatus": "error",
+      "times": {
+        "traceRequestAt": "2026-10-14T01:47:49.133Z",
+        "t3RequestedAt": "2026-10-14T01:53:39.225Z",
+        "t3StartedAt": "2026-10-14T01:53:40.535Z",
+        "t3CompletedAt": "2026-10-14T01:54:01.139Z",
+        "traceReplyAt": "UNKNOWN",
+        "trialDoneAt": "2026-10-14T01:52:49.138Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 350092,
+        "t3RequestedToStarted": 1310,
+        "providerRunStartedToCompleted": 20604,
+        "t3CompletedToTraceReply": "UNKNOWN",
+        "bridgeRequestToTraceReply": "UNKNOWN",
+        "bridgeRequestToTrialDone": 300005,
+        "childCompletionAfterTrialDone": 72001
+      }
+    },
+    {
+      "runId": "next-03-tombo-3",
+      "sequence": 1,
+      "requestStage": "inspect",
+      "trialStatus": "success",
+      "times": {
+        "traceRequestAt": "2026-10-14T01:59:01.409Z",
+        "t3RequestedAt": "2026-10-14T01:59:22.818Z",
+        "t3StartedAt": "2026-10-14T01:59:23.312Z",
+        "t3CompletedAt": "2026-10-14T01:59:45.110Z",
+        "traceReplyAt": "2026-10-14T01:59:55.157Z",
+        "trialDoneAt": "2026-10-14T02:01:03.031Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 21409,
+        "t3RequestedToStarted": 494,
+        "providerRunStartedToCompleted": 21798,
+        "t3CompletedToTraceReply": 10047,
+        "bridgeRequestToTraceReply": 53748,
+        "bridgeRequestToTrialDone": 121622,
+        "childCompletionAfterTrialDone": -77921
+      }
+    },
+    {
+      "runId": "next-03-tombo-3",
+      "sequence": 2,
+      "requestStage": "update",
+      "trialStatus": "success",
+      "times": {
+        "traceRequestAt": "2026-10-14T01:59:55.168Z",
+        "t3RequestedAt": "2026-10-14T02:00:01.566Z",
+        "t3StartedAt": "2026-10-14T02:00:02.075Z",
+        "t3CompletedAt": "2026-10-14T02:00:23.490Z",
+        "traceReplyAt": "2026-10-14T02:00:31.633Z",
+        "trialDoneAt": "2026-10-14T02:01:03.031Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 6398,
+        "t3RequestedToStarted": 509,
+        "providerRunStartedToCompleted": 21415,
+        "t3CompletedToTraceReply": 8143,
+        "bridgeRequestToTraceReply": 36465,
+        "bridgeRequestToTrialDone": 67863,
+        "childCompletionAfterTrialDone": -39541
+      }
+    },
+    {
+      "runId": "next-03-tombo-3",
+      "sequence": 3,
+      "requestStage": "reflect",
+      "trialStatus": "success",
+      "times": {
+        "traceRequestAt": "2026-10-14T02:00:31.645Z",
+        "t3RequestedAt": "2026-10-14T02:00:38.066Z",
+        "t3StartedAt": "2026-10-14T02:00:38.729Z",
+        "t3CompletedAt": "2026-10-14T02:00:55.795Z",
+        "traceReplyAt": "2026-10-14T02:01:03.02Z",
+        "trialDoneAt": "2026-10-14T02:01:03.031Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 6421,
+        "t3RequestedToStarted": 663,
+        "providerRunStartedToCompleted": 17066,
+        "t3CompletedToTraceReply": 7225,
+        "bridgeRequestToTraceReply": 31375,
+        "bridgeRequestToTrialDone": 31386,
+        "childCompletionAfterTrialDone": -7236
+      }
+    },
+    {
+      "runId": "next-04-baseline-1",
+      "sequence": 1,
+      "requestStage": "baseline",
+      "trialStatus": "success",
+      "times": {
+        "traceRequestAt": "2026-10-14T00:48:14.24Z",
+        "t3RequestedAt": "2026-10-14T00:48:49.536Z",
+        "t3StartedAt": "2026-10-14T00:48:50.480Z",
+        "t3CompletedAt": "2026-10-14T00:49:02.520Z",
+        "traceReplyAt": "2026-10-14T00:49:19.238Z",
+        "trialDoneAt": "2026-10-14T00:50:16.386Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 35296,
+        "t3RequestedToStarted": 944,
+        "providerRunStartedToCompleted": 12040,
+        "t3CompletedToTraceReply": 16718,
+        "bridgeRequestToTraceReply": 64998,
+        "bridgeRequestToTrialDone": 122146,
+        "childCompletionAfterTrialDone": -73866
+      }
+    },
+    {
+      "runId": "next-04-baseline-1",
+      "sequence": 2,
+      "requestStage": "baseline",
+      "trialStatus": "success",
+      "times": {
+        "traceRequestAt": "2026-10-14T00:49:19.244Z",
+        "t3RequestedAt": "2026-10-14T00:49:45.187Z",
+        "t3StartedAt": "2026-10-14T00:49:46.052Z",
+        "t3CompletedAt": "2026-10-14T00:50:00.146Z",
+        "traceReplyAt": "2026-10-14T00:50:16.372Z",
+        "trialDoneAt": "2026-10-14T00:50:16.386Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 25943,
+        "t3RequestedToStarted": 865,
+        "providerRunStartedToCompleted": 14094,
+        "t3CompletedToTraceReply": 16226,
+        "bridgeRequestToTraceReply": 57128,
+        "bridgeRequestToTrialDone": 57142,
+        "childCompletionAfterTrialDone": -16240
+      }
+    },
+    {
+      "runId": "next-04-baseline-2",
+      "sequence": 1,
+      "requestStage": "baseline",
+      "trialStatus": "success",
+      "times": {
+        "traceRequestAt": "2026-10-14T01:54:03.627Z",
+        "t3RequestedAt": "2026-10-14T01:54:23.099Z",
+        "t3StartedAt": "2026-10-14T01:54:24.298Z",
+        "t3CompletedAt": "2026-10-14T01:54:37.619Z",
+        "traceReplyAt": "2026-10-14T01:54:47.058Z",
+        "trialDoneAt": "2026-10-14T01:54:47.074Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 19472,
+        "t3RequestedToStarted": 1199,
+        "providerRunStartedToCompleted": 13321,
+        "t3CompletedToTraceReply": 9439,
+        "bridgeRequestToTraceReply": 43431,
+        "bridgeRequestToTrialDone": 43447,
+        "childCompletionAfterTrialDone": -9455
+      }
+    },
+    {
+      "runId": "next-04-baseline-3",
+      "sequence": 1,
+      "requestStage": "baseline",
+      "trialStatus": "success",
+      "times": {
+        "traceRequestAt": "2026-10-14T01:56:06.434Z",
+        "t3RequestedAt": "2026-10-14T01:56:24.566Z",
+        "t3StartedAt": "2026-10-14T01:56:25.626Z",
+        "t3CompletedAt": "2026-10-14T01:56:38.540Z",
+        "traceReplyAt": "2026-10-14T01:56:51.295Z",
+        "trialDoneAt": "2026-10-14T01:57:31.02Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 18132,
+        "t3RequestedToStarted": 1060,
+        "providerRunStartedToCompleted": 12914,
+        "t3CompletedToTraceReply": 12755,
+        "bridgeRequestToTraceReply": 44861,
+        "bridgeRequestToTrialDone": 84586,
+        "childCompletionAfterTrialDone": -52480
+      }
+    },
+    {
+      "runId": "next-04-baseline-3",
+      "sequence": 2,
+      "requestStage": "baseline",
+      "trialStatus": "success",
+      "times": {
+        "traceRequestAt": "2026-10-14T01:56:51.305Z",
+        "t3RequestedAt": "2026-10-14T01:56:57.968Z",
+        "t3StartedAt": "2026-10-14T01:56:59.150Z",
+        "t3CompletedAt": "2026-10-14T01:57:11.529Z",
+        "traceReplyAt": "2026-10-14T01:57:31.006Z",
+        "trialDoneAt": "2026-10-14T01:57:31.02Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 6663,
+        "t3RequestedToStarted": 1182,
+        "providerRunStartedToCompleted": 12379,
+        "t3CompletedToTraceReply": 19477,
+        "bridgeRequestToTraceReply": 39701,
+        "bridgeRequestToTrialDone": 39715,
+        "childCompletionAfterTrialDone": -19491
+      }
+    },
+    {
+      "runId": "next-04-tombo-1",
+      "sequence": 1,
+      "requestStage": "inspect",
+      "trialStatus": "success",
+      "times": {
+        "traceRequestAt": "2026-10-14T00:51:20.628Z",
+        "t3RequestedAt": "2026-10-14T00:52:06.615Z",
+        "t3StartedAt": "2026-10-14T00:52:07.413Z",
+        "t3CompletedAt": "2026-10-14T00:52:27.791Z",
+        "traceReplyAt": "2026-10-14T00:52:48.22Z",
+        "trialDoneAt": "2026-10-14T00:54:47.945Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 45987,
+        "t3RequestedToStarted": 798,
+        "providerRunStartedToCompleted": 20378,
+        "t3CompletedToTraceReply": 20429,
+        "bridgeRequestToTraceReply": 87592,
+        "bridgeRequestToTrialDone": 207317,
+        "childCompletionAfterTrialDone": -140154
+      }
+    },
+    {
+      "runId": "next-04-tombo-1",
+      "sequence": 2,
+      "requestStage": "inspect",
+      "trialStatus": "success",
+      "times": {
+        "traceRequestAt": "2026-10-14T00:52:48.235Z",
+        "t3RequestedAt": "2026-10-14T00:53:22.621Z",
+        "t3StartedAt": "2026-10-14T00:53:23.428Z",
+        "t3CompletedAt": "2026-10-14T00:53:41.843Z",
+        "traceReplyAt": "2026-10-14T00:53:55.364Z",
+        "trialDoneAt": "2026-10-14T00:54:47.945Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 34386,
+        "t3RequestedToStarted": 807,
+        "providerRunStartedToCompleted": 18415,
+        "t3CompletedToTraceReply": 13521,
+        "bridgeRequestToTraceReply": 67129,
+        "bridgeRequestToTrialDone": 119710,
+        "childCompletionAfterTrialDone": -66102
+      }
+    },
+    {
+      "runId": "next-04-tombo-1",
+      "sequence": 3,
+      "requestStage": "reflect",
+      "trialStatus": "success",
+      "times": {
+        "traceRequestAt": "2026-10-14T00:53:55.389Z",
+        "t3RequestedAt": "2026-10-14T00:54:24.889Z",
+        "t3StartedAt": "2026-10-14T00:54:25.935Z",
+        "t3CompletedAt": "2026-10-14T00:54:38.289Z",
+        "traceReplyAt": "2026-10-14T00:54:47.924Z",
+        "trialDoneAt": "2026-10-14T00:54:47.945Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 29500,
+        "t3RequestedToStarted": 1046,
+        "providerRunStartedToCompleted": 12354,
+        "t3CompletedToTraceReply": 9635,
+        "bridgeRequestToTraceReply": 52535,
+        "bridgeRequestToTrialDone": 52556,
+        "childCompletionAfterTrialDone": -9656
+      }
+    },
+    {
+      "runId": "next-04-tombo-2",
+      "sequence": 1,
+      "requestStage": "inspect",
+      "trialStatus": "error",
+      "times": {
+        "traceRequestAt": "2026-10-14T01:47:59.287Z",
+        "t3RequestedAt": "2026-10-14T01:53:13.263Z",
+        "t3StartedAt": "2026-10-14T01:53:14.924Z",
+        "t3CompletedAt": "2026-10-14T01:53:34.827Z",
+        "traceReplyAt": "UNKNOWN",
+        "trialDoneAt": "2026-10-14T01:52:59.299Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 313976,
+        "t3RequestedToStarted": 1661,
+        "providerRunStartedToCompleted": 19903,
+        "t3CompletedToTraceReply": "UNKNOWN",
+        "bridgeRequestToTraceReply": "UNKNOWN",
+        "bridgeRequestToTrialDone": 300012,
+        "childCompletionAfterTrialDone": 35528
+      }
+    },
+    {
+      "runId": "next-04-tombo-3",
+      "sequence": 1,
+      "requestStage": "inspect",
+      "trialStatus": "success",
+      "times": {
+        "traceRequestAt": "2026-10-14T01:57:58.329Z",
+        "t3RequestedAt": "2026-10-14T01:58:19.066Z",
+        "t3StartedAt": "2026-10-14T01:58:20.560Z",
+        "t3CompletedAt": "2026-10-14T01:58:39.479Z",
+        "traceReplyAt": "2026-10-14T01:58:48.364Z",
+        "trialDoneAt": "2026-10-14T01:59:17.346Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 20737,
+        "t3RequestedToStarted": 1494,
+        "providerRunStartedToCompleted": 18919,
+        "t3CompletedToTraceReply": 8885,
+        "bridgeRequestToTraceReply": 50035,
+        "bridgeRequestToTrialDone": 79017,
+        "childCompletionAfterTrialDone": -37867
+      }
+    },
+    {
+      "runId": "next-04-tombo-3",
+      "sequence": 2,
+      "requestStage": "reflect",
+      "trialStatus": "success",
+      "times": {
+        "traceRequestAt": "2026-10-14T01:58:48.372Z",
+        "t3RequestedAt": "2026-10-14T01:58:54.753Z",
+        "t3StartedAt": "2026-10-14T01:58:55.249Z",
+        "t3CompletedAt": "2026-10-14T01:59:07.603Z",
+        "traceReplyAt": "2026-10-14T01:59:17.337Z",
+        "trialDoneAt": "2026-10-14T01:59:17.346Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 6381,
+        "t3RequestedToStarted": 496,
+        "providerRunStartedToCompleted": 12354,
+        "t3CompletedToTraceReply": 9734,
+        "bridgeRequestToTraceReply": 28965,
+        "bridgeRequestToTrialDone": 28974,
+        "childCompletionAfterTrialDone": -9743
+      }
+    },
+    {
+      "runId": "next-05-baseline-1",
+      "sequence": 1,
+      "requestStage": "baseline",
+      "trialStatus": "success",
+      "times": {
+        "traceRequestAt": "2026-10-14T01:00:32.753Z",
+        "t3RequestedAt": "2026-10-14T01:01:20.458Z",
+        "t3StartedAt": "2026-10-14T01:01:21.313Z",
+        "t3CompletedAt": "2026-10-14T01:01:34.101Z",
+        "traceReplyAt": "2026-10-14T01:01:51.393Z",
+        "trialDoneAt": "2026-10-14T01:02:40.111Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 47705,
+        "t3RequestedToStarted": 855,
+        "providerRunStartedToCompleted": 12788,
+        "t3CompletedToTraceReply": 17292,
+        "bridgeRequestToTraceReply": 78640,
+        "bridgeRequestToTrialDone": 127358,
+        "childCompletionAfterTrialDone": -66010
+      }
+    },
+    {
+      "runId": "next-05-baseline-1",
+      "sequence": 2,
+      "requestStage": "baseline",
+      "trialStatus": "success",
+      "times": {
+        "traceRequestAt": "2026-10-14T01:01:51.404Z",
+        "t3RequestedAt": "2026-10-14T01:02:16.519Z",
+        "t3StartedAt": "2026-10-14T01:02:17.559Z",
+        "t3CompletedAt": "2026-10-14T01:02:27.485Z",
+        "traceReplyAt": "2026-10-14T01:02:40.09Z",
+        "trialDoneAt": "2026-10-14T01:02:40.111Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 25115,
+        "t3RequestedToStarted": 1040,
+        "providerRunStartedToCompleted": 9926,
+        "t3CompletedToTraceReply": 12605,
+        "bridgeRequestToTraceReply": 48686,
+        "bridgeRequestToTrialDone": 48707,
+        "childCompletionAfterTrialDone": -12626
+      }
+    },
+    {
+      "runId": "next-05-baseline-2",
+      "sequence": 1,
+      "requestStage": "baseline",
+      "trialStatus": "success",
+      "times": {
+        "traceRequestAt": "2026-10-14T02:04:37.932Z",
+        "t3RequestedAt": "2026-10-14T02:04:56.880Z",
+        "t3StartedAt": "2026-10-14T02:04:57.811Z",
+        "t3CompletedAt": "2026-10-14T02:05:05.095Z",
+        "traceReplyAt": "2026-10-14T02:05:15.641Z",
+        "trialDoneAt": "2026-10-14T02:05:46.484Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 18948,
+        "t3RequestedToStarted": 931,
+        "providerRunStartedToCompleted": 7284,
+        "t3CompletedToTraceReply": 10546,
+        "bridgeRequestToTraceReply": 37709,
+        "bridgeRequestToTrialDone": 68552,
+        "childCompletionAfterTrialDone": -41389
+      }
+    },
+    {
+      "runId": "next-05-baseline-2",
+      "sequence": 2,
+      "requestStage": "baseline",
+      "trialStatus": "success",
+      "times": {
+        "traceRequestAt": "2026-10-14T02:05:15.65Z",
+        "t3RequestedAt": "2026-10-14T02:05:21.784Z",
+        "t3StartedAt": "2026-10-14T02:05:22.909Z",
+        "t3CompletedAt": "2026-10-14T02:05:36.524Z",
+        "traceReplyAt": "2026-10-14T02:05:46.471Z",
+        "trialDoneAt": "2026-10-14T02:05:46.484Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 6134,
+        "t3RequestedToStarted": 1125,
+        "providerRunStartedToCompleted": 13615,
+        "t3CompletedToTraceReply": 9947,
+        "bridgeRequestToTraceReply": 30821,
+        "bridgeRequestToTrialDone": 30834,
+        "childCompletionAfterTrialDone": -9960
+      }
+    },
+    {
+      "runId": "next-05-baseline-3",
+      "sequence": 1,
+      "requestStage": "baseline",
+      "trialStatus": "success",
+      "times": {
+        "traceRequestAt": "2026-10-14T02:12:00.809Z",
+        "t3RequestedAt": "2026-10-14T02:12:20.551Z",
+        "t3StartedAt": "2026-10-14T02:12:21.411Z",
+        "t3CompletedAt": "2026-10-14T02:12:29.709Z",
+        "traceReplyAt": "2026-10-14T02:12:39.682Z",
+        "trialDoneAt": "2026-10-14T02:13:23.308Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 19742,
+        "t3RequestedToStarted": 860,
+        "providerRunStartedToCompleted": 8298,
+        "t3CompletedToTraceReply": 9973,
+        "bridgeRequestToTraceReply": 38873,
+        "bridgeRequestToTrialDone": 82499,
+        "childCompletionAfterTrialDone": -53599
+      }
+    },
+    {
+      "runId": "next-05-baseline-3",
+      "sequence": 2,
+      "requestStage": "baseline",
+      "trialStatus": "success",
+      "times": {
+        "traceRequestAt": "2026-10-14T02:12:39.69Z",
+        "t3RequestedAt": "2026-10-14T02:12:46.488Z",
+        "t3StartedAt": "2026-10-14T02:12:47.325Z",
+        "t3CompletedAt": "2026-10-14T02:13:00.929Z",
+        "traceReplyAt": "2026-10-14T02:13:23.289Z",
+        "trialDoneAt": "2026-10-14T02:13:23.308Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 6798,
+        "t3RequestedToStarted": 837,
+        "providerRunStartedToCompleted": 13604,
+        "t3CompletedToTraceReply": 22360,
+        "bridgeRequestToTraceReply": 43599,
+        "bridgeRequestToTrialDone": 43618,
+        "childCompletionAfterTrialDone": -22379
+      }
+    },
+    {
+      "runId": "next-05-tombo-1",
+      "sequence": 1,
+      "requestStage": "inspect",
+      "trialStatus": "error",
+      "times": {
+        "traceRequestAt": "2026-10-14T01:05:02.921Z",
+        "t3RequestedAt": "2026-10-14T01:05:33.447Z",
+        "t3StartedAt": "2026-10-14T01:05:34.242Z",
+        "t3CompletedAt": "2026-10-14T01:05:53.925Z",
+        "traceReplyAt": "2026-10-14T01:06:29.197Z",
+        "trialDoneAt": "2026-10-14T01:08:37.691Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 30526,
+        "t3RequestedToStarted": 795,
+        "providerRunStartedToCompleted": 19683,
+        "t3CompletedToTraceReply": 35272,
+        "bridgeRequestToTraceReply": 86276,
+        "bridgeRequestToTrialDone": 214770,
+        "childCompletionAfterTrialDone": -163766
+      }
+    },
+    {
+      "runId": "next-05-tombo-1",
+      "sequence": 2,
+      "requestStage": "update",
+      "trialStatus": "error",
+      "times": {
+        "traceRequestAt": "2026-10-14T01:06:29.228Z",
+        "t3RequestedAt": "2026-10-14T01:06:39.029Z",
+        "t3StartedAt": "2026-10-14T01:06:39.822Z",
+        "t3CompletedAt": "2026-10-14T01:06:56.851Z",
+        "traceReplyAt": "2026-10-14T01:07:45.103Z",
+        "trialDoneAt": "2026-10-14T01:08:37.691Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 9801,
+        "t3RequestedToStarted": 793,
+        "providerRunStartedToCompleted": 17029,
+        "t3CompletedToTraceReply": 48252,
+        "bridgeRequestToTraceReply": 75875,
+        "bridgeRequestToTrialDone": 128463,
+        "childCompletionAfterTrialDone": -100840
+      }
+    },
+    {
+      "runId": "next-05-tombo-1",
+      "sequence": 3,
+      "requestStage": "update",
+      "trialStatus": "error",
+      "times": {
+        "traceRequestAt": "2026-10-14T01:07:45.116Z",
+        "t3RequestedAt": "2026-10-14T01:07:56.262Z",
+        "t3StartedAt": "2026-10-14T01:07:57.378Z",
+        "t3CompletedAt": "2026-10-14T01:08:17.536Z",
+        "traceReplyAt": "2026-10-14T01:08:37.572Z",
+        "trialDoneAt": "2026-10-14T01:08:37.691Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 11146,
+        "t3RequestedToStarted": 1116,
+        "providerRunStartedToCompleted": 20158,
+        "t3CompletedToTraceReply": 20036,
+        "bridgeRequestToTraceReply": 52456,
+        "bridgeRequestToTrialDone": 52575,
+        "childCompletionAfterTrialDone": -20155
+      }
+    },
+    {
+      "runId": "next-05-tombo-2",
+      "sequence": 1,
+      "requestStage": "inspect",
+      "trialStatus": "error",
+      "times": {
+        "traceRequestAt": "2026-10-14T02:01:17.01Z",
+        "t3RequestedAt": "2026-10-14T02:01:40.699Z",
+        "t3StartedAt": "2026-10-14T02:01:41.317Z",
+        "t3CompletedAt": "2026-10-14T02:02:05.966Z",
+        "traceReplyAt": "2026-10-14T02:02:13.852Z",
+        "trialDoneAt": "2026-10-14T02:04:13.76Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 23689,
+        "t3RequestedToStarted": 618,
+        "providerRunStartedToCompleted": 24649,
+        "t3CompletedToTraceReply": 7886,
+        "bridgeRequestToTraceReply": 56842,
+        "bridgeRequestToTrialDone": 176750,
+        "childCompletionAfterTrialDone": -127794
+      }
+    },
+    {
+      "runId": "next-05-tombo-2",
+      "sequence": 2,
+      "requestStage": "inspect",
+      "trialStatus": "error",
+      "times": {
+        "traceRequestAt": "2026-10-14T02:02:13.865Z",
+        "t3RequestedAt": "2026-10-14T02:02:20.313Z",
+        "t3StartedAt": "2026-10-14T02:02:21.199Z",
+        "t3CompletedAt": "2026-10-14T02:02:46.203Z",
+        "traceReplyAt": "2026-10-14T02:02:56.274Z",
+        "trialDoneAt": "2026-10-14T02:04:13.76Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 6448,
+        "t3RequestedToStarted": 886,
+        "providerRunStartedToCompleted": 25004,
+        "t3CompletedToTraceReply": 10071,
+        "bridgeRequestToTraceReply": 42409,
+        "bridgeRequestToTrialDone": 119895,
+        "childCompletionAfterTrialDone": -87557
+      }
+    },
+    {
+      "runId": "next-05-tombo-2",
+      "sequence": 3,
+      "requestStage": "update",
+      "trialStatus": "error",
+      "times": {
+        "traceRequestAt": "2026-10-14T02:02:56.299Z",
+        "t3RequestedAt": "2026-10-14T02:03:02.123Z",
+        "t3StartedAt": "2026-10-14T02:03:03.000Z",
+        "t3CompletedAt": "2026-10-14T02:03:22.697Z",
+        "traceReplyAt": "2026-10-14T02:03:35.902Z",
+        "trialDoneAt": "2026-10-14T02:04:13.76Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 5824,
+        "t3RequestedToStarted": 877,
+        "providerRunStartedToCompleted": 19697,
+        "t3CompletedToTraceReply": 13205,
+        "bridgeRequestToTraceReply": 39603,
+        "bridgeRequestToTrialDone": 77461,
+        "childCompletionAfterTrialDone": -51063
+      }
+    },
+    {
+      "runId": "next-05-tombo-2",
+      "sequence": 4,
+      "requestStage": "update",
+      "trialStatus": "error",
+      "times": {
+        "traceRequestAt": "2026-10-14T02:03:35.917Z",
+        "t3RequestedAt": "2026-10-14T02:03:46.127Z",
+        "t3StartedAt": "2026-10-14T02:03:47.003Z",
+        "t3CompletedAt": "2026-10-14T02:04:05.156Z",
+        "traceReplyAt": "2026-10-14T02:04:13.744Z",
+        "trialDoneAt": "2026-10-14T02:04:13.76Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 10210,
+        "t3RequestedToStarted": 876,
+        "providerRunStartedToCompleted": 18153,
+        "t3CompletedToTraceReply": 8588,
+        "bridgeRequestToTraceReply": 37827,
+        "bridgeRequestToTrialDone": 37843,
+        "childCompletionAfterTrialDone": -8604
+      }
+    },
+    {
+      "runId": "next-05-tombo-3",
+      "sequence": 1,
+      "requestStage": "inspect",
+      "trialStatus": "error",
+      "times": {
+        "traceRequestAt": "2026-10-14T02:17:28.082Z",
+        "t3RequestedAt": "2026-10-14T02:17:52.912Z",
+        "t3StartedAt": "2026-10-14T02:17:54.057Z",
+        "t3CompletedAt": "2026-10-14T02:18:16.820Z",
+        "traceReplyAt": "2026-10-14T02:18:30.47Z",
+        "trialDoneAt": "2026-10-14T02:22:28.086Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 24830,
+        "t3RequestedToStarted": 1145,
+        "providerRunStartedToCompleted": 22763,
+        "t3CompletedToTraceReply": 13650,
+        "bridgeRequestToTraceReply": 62388,
+        "bridgeRequestToTrialDone": 300004,
+        "childCompletionAfterTrialDone": -251266
+      }
+    },
+    {
+      "runId": "next-05-tombo-3",
+      "sequence": 2,
+      "requestStage": "update",
+      "trialStatus": "error",
+      "times": {
+        "traceRequestAt": "2026-10-14T02:18:30.508Z",
+        "t3RequestedAt": "2026-10-14T02:18:37.134Z",
+        "t3StartedAt": "2026-10-14T02:18:38.079Z",
+        "t3CompletedAt": "2026-10-14T02:19:26.317Z",
+        "traceReplyAt": "2026-10-14T02:19:35.369Z",
+        "trialDoneAt": "2026-10-14T02:22:28.086Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 6626,
+        "t3RequestedToStarted": 945,
+        "providerRunStartedToCompleted": 48238,
+        "t3CompletedToTraceReply": 9052,
+        "bridgeRequestToTraceReply": 64861,
+        "bridgeRequestToTrialDone": 237578,
+        "childCompletionAfterTrialDone": -181769
+      }
+    },
+    {
+      "runId": "next-05-tombo-3",
+      "sequence": 3,
+      "requestStage": "update",
+      "trialStatus": "error",
+      "times": {
+        "traceRequestAt": "2026-10-14T02:19:35.377Z",
+        "t3RequestedAt": "2026-10-14T02:19:43.552Z",
+        "t3StartedAt": "2026-10-14T02:20:14.120Z",
+        "t3CompletedAt": "2026-10-14T02:24:50.586Z",
+        "traceReplyAt": "UNKNOWN",
+        "trialDoneAt": "2026-10-14T02:22:28.086Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 8175,
+        "t3RequestedToStarted": 30568,
+        "providerRunStartedToCompleted": 276466,
+        "t3CompletedToTraceReply": "UNKNOWN",
+        "bridgeRequestToTraceReply": "UNKNOWN",
+        "bridgeRequestToTrialDone": 172709,
+        "childCompletionAfterTrialDone": 142500
+      }
+    },
+    {
+      "runId": "next-06-baseline-1",
+      "sequence": 1,
+      "requestStage": "baseline",
+      "trialStatus": "success",
+      "times": {
+        "traceRequestAt": "2026-10-14T01:00:42.952Z",
+        "t3RequestedAt": "2026-10-14T01:01:04.369Z",
+        "t3StartedAt": "2026-10-14T01:01:05.215Z",
+        "t3CompletedAt": "2026-10-14T01:01:14.831Z",
+        "traceReplyAt": "2026-10-14T01:01:48.739Z",
+        "trialDoneAt": "2026-10-14T01:02:32.307Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 21417,
+        "t3RequestedToStarted": 846,
+        "providerRunStartedToCompleted": 9616,
+        "t3CompletedToTraceReply": 33908,
+        "bridgeRequestToTraceReply": 65787,
+        "bridgeRequestToTrialDone": 109355,
+        "childCompletionAfterTrialDone": -77476
+      }
+    },
+    {
+      "runId": "next-06-baseline-1",
+      "sequence": 2,
+      "requestStage": "baseline",
+      "trialStatus": "success",
+      "times": {
+        "traceRequestAt": "2026-10-14T01:01:48.746Z",
+        "t3RequestedAt": "2026-10-14T01:01:55.266Z",
+        "t3StartedAt": "2026-10-14T01:01:56.180Z",
+        "t3CompletedAt": "2026-10-14T01:02:04.704Z",
+        "traceReplyAt": "2026-10-14T01:02:32.285Z",
+        "trialDoneAt": "2026-10-14T01:02:32.307Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 6520,
+        "t3RequestedToStarted": 914,
+        "providerRunStartedToCompleted": 8524,
+        "t3CompletedToTraceReply": 27581,
+        "bridgeRequestToTraceReply": 43539,
+        "bridgeRequestToTrialDone": 43561,
+        "childCompletionAfterTrialDone": -27603
+      }
+    },
+    {
+      "runId": "next-06-baseline-2",
+      "sequence": 1,
+      "requestStage": "baseline",
+      "trialStatus": "success",
+      "times": {
+        "traceRequestAt": "2026-10-14T02:09:22.746Z",
+        "t3RequestedAt": "2026-10-14T02:09:40.263Z",
+        "t3StartedAt": "2026-10-14T02:09:41.100Z",
+        "t3CompletedAt": "2026-10-14T02:09:51.934Z",
+        "traceReplyAt": "2026-10-14T02:10:04.279Z",
+        "trialDoneAt": "2026-10-14T02:10:40.733Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 17517,
+        "t3RequestedToStarted": 837,
+        "providerRunStartedToCompleted": 10834,
+        "t3CompletedToTraceReply": 12345,
+        "bridgeRequestToTraceReply": 41533,
+        "bridgeRequestToTrialDone": 77987,
+        "childCompletionAfterTrialDone": -48799
+      }
+    },
+    {
+      "runId": "next-06-baseline-2",
+      "sequence": 2,
+      "requestStage": "baseline",
+      "trialStatus": "success",
+      "times": {
+        "traceRequestAt": "2026-10-14T02:10:04.289Z",
+        "t3RequestedAt": "2026-10-14T02:10:09.449Z",
+        "t3StartedAt": "2026-10-14T02:10:10.527Z",
+        "t3CompletedAt": "2026-10-14T02:10:24.106Z",
+        "traceReplyAt": "2026-10-14T02:10:40.718Z",
+        "trialDoneAt": "2026-10-14T02:10:40.733Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 5160,
+        "t3RequestedToStarted": 1078,
+        "providerRunStartedToCompleted": 13579,
+        "t3CompletedToTraceReply": 16612,
+        "bridgeRequestToTraceReply": 36429,
+        "bridgeRequestToTrialDone": 36444,
+        "childCompletionAfterTrialDone": -16627
+      }
+    },
+    {
+      "runId": "next-06-baseline-3",
+      "sequence": 1,
+      "requestStage": "baseline",
+      "trialStatus": "success",
+      "times": {
+        "traceRequestAt": "2026-10-14T02:14:29.488Z",
+        "t3RequestedAt": "2026-10-14T02:14:50.584Z",
+        "t3StartedAt": "2026-10-14T02:14:51.954Z",
+        "t3CompletedAt": "2026-10-14T02:15:06.567Z",
+        "traceReplyAt": "2026-10-14T02:15:17.64Z",
+        "trialDoneAt": "2026-10-14T02:16:48.74Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 21096,
+        "t3RequestedToStarted": 1370,
+        "providerRunStartedToCompleted": 14613,
+        "t3CompletedToTraceReply": 11073,
+        "bridgeRequestToTraceReply": 48152,
+        "bridgeRequestToTrialDone": 139252,
+        "childCompletionAfterTrialDone": -102173
+      }
+    },
+    {
+      "runId": "next-06-baseline-3",
+      "sequence": 2,
+      "requestStage": "baseline",
+      "trialStatus": "success",
+      "times": {
+        "traceRequestAt": "2026-10-14T02:15:17.649Z",
+        "t3RequestedAt": "2026-10-14T02:15:23.621Z",
+        "t3StartedAt": "2026-10-14T02:15:24.840Z",
+        "t3CompletedAt": "2026-10-14T02:15:34.627Z",
+        "traceReplyAt": "2026-10-14T02:15:46.874Z",
+        "trialDoneAt": "2026-10-14T02:16:48.74Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 5972,
+        "t3RequestedToStarted": 1219,
+        "providerRunStartedToCompleted": 9787,
+        "t3CompletedToTraceReply": 12247,
+        "bridgeRequestToTraceReply": 29225,
+        "bridgeRequestToTrialDone": 91091,
+        "childCompletionAfterTrialDone": -74113
+      }
+    },
+    {
+      "runId": "next-06-baseline-3",
+      "sequence": 3,
+      "requestStage": "baseline",
+      "trialStatus": "success",
+      "times": {
+        "traceRequestAt": "2026-10-14T02:15:46.884Z",
+        "t3RequestedAt": "2026-10-14T02:15:54.282Z",
+        "t3StartedAt": "2026-10-14T02:15:55.271Z",
+        "t3CompletedAt": "2026-10-14T02:16:07.961Z",
+        "traceReplyAt": "2026-10-14T02:16:20.15Z",
+        "trialDoneAt": "2026-10-14T02:16:48.74Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 7398,
+        "t3RequestedToStarted": 989,
+        "providerRunStartedToCompleted": 12690,
+        "t3CompletedToTraceReply": 12189,
+        "bridgeRequestToTraceReply": 33266,
+        "bridgeRequestToTrialDone": 61856,
+        "childCompletionAfterTrialDone": -40779
+      }
+    },
+    {
+      "runId": "next-06-baseline-3",
+      "sequence": 4,
+      "requestStage": "baseline",
+      "trialStatus": "success",
+      "times": {
+        "traceRequestAt": "2026-10-14T02:16:20.158Z",
+        "t3RequestedAt": "2026-10-14T02:16:26.474Z",
+        "t3StartedAt": "2026-10-14T02:16:27.337Z",
+        "t3CompletedAt": "2026-10-14T02:16:37.999Z",
+        "traceReplyAt": "2026-10-14T02:16:48.721Z",
+        "trialDoneAt": "2026-10-14T02:16:48.74Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 6316,
+        "t3RequestedToStarted": 863,
+        "providerRunStartedToCompleted": 10662,
+        "t3CompletedToTraceReply": 10722,
+        "bridgeRequestToTraceReply": 28563,
+        "bridgeRequestToTrialDone": 28582,
+        "childCompletionAfterTrialDone": -10741
+      }
+    },
+    {
+      "runId": "next-06-tombo-1",
+      "sequence": 1,
+      "requestStage": "inspect",
+      "trialStatus": "success",
+      "times": {
+        "traceRequestAt": "2026-10-14T01:05:13.191Z",
+        "t3RequestedAt": "2026-10-14T01:05:59.547Z",
+        "t3StartedAt": "2026-10-14T01:06:00.373Z",
+        "t3CompletedAt": "2026-10-14T01:06:12.008Z",
+        "traceReplyAt": "2026-10-14T01:06:30.545Z",
+        "trialDoneAt": "2026-10-14T01:07:47.321Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 46356,
+        "t3RequestedToStarted": 826,
+        "providerRunStartedToCompleted": 11635,
+        "t3CompletedToTraceReply": 18537,
+        "bridgeRequestToTraceReply": 77354,
+        "bridgeRequestToTrialDone": 154130,
+        "childCompletionAfterTrialDone": -95313
+      }
+    },
+    {
+      "runId": "next-06-tombo-1",
+      "sequence": 2,
+      "requestStage": "reflect",
+      "trialStatus": "success",
+      "times": {
+        "traceRequestAt": "2026-10-14T01:06:30.566Z",
+        "t3RequestedAt": "2026-10-14T01:07:01.263Z",
+        "t3StartedAt": "2026-10-14T01:07:02.084Z",
+        "t3CompletedAt": "2026-10-14T01:07:27.415Z",
+        "traceReplyAt": "2026-10-14T01:07:47.305Z",
+        "trialDoneAt": "2026-10-14T01:07:47.321Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 30697,
+        "t3RequestedToStarted": 821,
+        "providerRunStartedToCompleted": 25331,
+        "t3CompletedToTraceReply": 19890,
+        "bridgeRequestToTraceReply": 76739,
+        "bridgeRequestToTrialDone": 76755,
+        "childCompletionAfterTrialDone": -19906
+      }
+    },
+    {
+      "runId": "next-06-tombo-2",
+      "sequence": 1,
+      "requestStage": "inspect",
+      "trialStatus": "success",
+      "times": {
+        "traceRequestAt": "2026-10-14T02:05:59.653Z",
+        "t3RequestedAt": "2026-10-14T02:06:21.259Z",
+        "t3StartedAt": "2026-10-14T02:06:22.405Z",
+        "t3CompletedAt": "2026-10-14T02:06:42.023Z",
+        "traceReplyAt": "2026-10-14T02:06:53.568Z",
+        "trialDoneAt": "2026-10-14T02:08:24.612Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 21606,
+        "t3RequestedToStarted": 1146,
+        "providerRunStartedToCompleted": 19618,
+        "t3CompletedToTraceReply": 11545,
+        "bridgeRequestToTraceReply": 53915,
+        "bridgeRequestToTrialDone": 144959,
+        "childCompletionAfterTrialDone": -102589
+      }
+    },
+    {
+      "runId": "next-06-tombo-2",
+      "sequence": 2,
+      "requestStage": "inspect",
+      "trialStatus": "success",
+      "times": {
+        "traceRequestAt": "2026-10-14T02:06:53.581Z",
+        "t3RequestedAt": "2026-10-14T02:07:01.814Z",
+        "t3StartedAt": "2026-10-14T02:07:02.644Z",
+        "t3CompletedAt": "2026-10-14T02:07:21.454Z",
+        "traceReplyAt": "2026-10-14T02:07:35.052Z",
+        "trialDoneAt": "2026-10-14T02:08:24.612Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 8233,
+        "t3RequestedToStarted": 830,
+        "providerRunStartedToCompleted": 18810,
+        "t3CompletedToTraceReply": 13598,
+        "bridgeRequestToTraceReply": 41471,
+        "bridgeRequestToTrialDone": 91031,
+        "childCompletionAfterTrialDone": -63158
+      }
+    },
+    {
+      "runId": "next-06-tombo-2",
+      "sequence": 3,
+      "requestStage": "reflect",
+      "trialStatus": "success",
+      "times": {
+        "traceRequestAt": "2026-10-14T02:07:35.067Z",
+        "t3RequestedAt": "2026-10-14T02:07:49.220Z",
+        "t3StartedAt": "2026-10-14T02:07:50.357Z",
+        "t3CompletedAt": "2026-10-14T02:08:07.031Z",
+        "traceReplyAt": "2026-10-14T02:08:24.597Z",
+        "trialDoneAt": "2026-10-14T02:08:24.612Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 14153,
+        "t3RequestedToStarted": 1137,
+        "providerRunStartedToCompleted": 16674,
+        "t3CompletedToTraceReply": 17566,
+        "bridgeRequestToTraceReply": 49530,
+        "bridgeRequestToTrialDone": 49545,
+        "childCompletionAfterTrialDone": -17581
+      }
+    },
+    {
+      "runId": "next-06-tombo-3",
+      "sequence": 1,
+      "requestStage": "inspect",
+      "trialStatus": "success",
+      "times": {
+        "traceRequestAt": "2026-10-14T02:22:14.773Z",
+        "t3RequestedAt": "2026-10-14T02:24:57.947Z",
+        "t3StartedAt": "2026-10-14T02:24:59.029Z",
+        "t3CompletedAt": "2026-10-14T02:25:15.941Z",
+        "traceReplyAt": "2026-10-14T02:25:27.98Z",
+        "trialDoneAt": "2026-10-14T02:26:40.632Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 163174,
+        "t3RequestedToStarted": 1082,
+        "providerRunStartedToCompleted": 16912,
+        "t3CompletedToTraceReply": 12039,
+        "bridgeRequestToTraceReply": 193207,
+        "bridgeRequestToTrialDone": 265859,
+        "childCompletionAfterTrialDone": -84691
+      }
+    },
+    {
+      "runId": "next-06-tombo-3",
+      "sequence": 2,
+      "requestStage": "inspect",
+      "trialStatus": "success",
+      "times": {
+        "traceRequestAt": "2026-10-14T02:25:27.991Z",
+        "t3RequestedAt": "2026-10-14T02:25:33.619Z",
+        "t3StartedAt": "2026-10-14T02:25:34.626Z",
+        "t3CompletedAt": "2026-10-14T02:25:52.174Z",
+        "traceReplyAt": "2026-10-14T02:26:03.472Z",
+        "trialDoneAt": "2026-10-14T02:26:40.632Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 5628,
+        "t3RequestedToStarted": 1007,
+        "providerRunStartedToCompleted": 17548,
+        "t3CompletedToTraceReply": 11298,
+        "bridgeRequestToTraceReply": 35481,
+        "bridgeRequestToTrialDone": 72641,
+        "childCompletionAfterTrialDone": -48458
+      }
+    },
+    {
+      "runId": "next-06-tombo-3",
+      "sequence": 3,
+      "requestStage": "reflect",
+      "trialStatus": "success",
+      "times": {
+        "traceRequestAt": "2026-10-14T02:26:03.493Z",
+        "t3RequestedAt": "2026-10-14T02:26:09.569Z",
+        "t3StartedAt": "2026-10-14T02:26:10.722Z",
+        "t3CompletedAt": "2026-10-14T02:26:27.850Z",
+        "traceReplyAt": "2026-10-14T02:26:40.609Z",
+        "trialDoneAt": "2026-10-14T02:26:40.632Z"
+      },
+      "intervalMs": {
+        "bridgeRequestToT3Requested": 6076,
+        "t3RequestedToStarted": 1153,
+        "providerRunStartedToCompleted": 17128,
+        "t3CompletedToTraceReply": 12759,
+        "bridgeRequestToTraceReply": 37116,
+        "bridgeRequestToTrialDone": 37139,
+        "childCompletionAfterTrialDone": -12782
+      }
+    }
+  ],
+  "findings": [
+    {
+      "runs": [
+        "next-01-tombo-2",
+        "next-02-tombo-2"
+      ],
+      "classification": "unaccepted_step_wait",
+      "evidence": "Step 3 has no accepted task and an explicit automatic approval rejection record. The remaining frozen trial wait after that trace request was 165150 ms and 148228 ms respectively.",
+      "remainingCause": "Time between the approval rejection event and other individual orchestration operations is not recorded. Do not treat the reserved request as generation."
+    },
+    {
+      "runs": [
+        "next-03-tombo-2",
+        "next-04-tombo-2"
+      ],
+      "classification": "request_recorded_after_deadline",
+      "evidence": "The first bridge request to T3 requestedAt interval was 350092 ms and 313976 ms. T3 recorded each request after frozen trial done.at. The later provider runs lasted 20604 ms and 19903 ms.",
+      "remainingCause": "The detailed component responsible inside the pre-T3 orchestration interval is UNKNOWN."
+    },
+    {
+      "runs": [
+        "next-05-tombo-3"
+      ],
+      "classification": "accepted_run_outlasted_remaining_trial_budget",
+      "evidence": "Step 3 had 172709 ms until frozen trial done. Bridge-to-T3 was 8175 ms, start wait was 30568 ms, and provider-run wall time was 276466 ms. The provider run completed 142500 ms after trial done.",
+      "remainingCause": "Provider-internal computation, hidden retries and other work within provider-run wall time are UNKNOWN."
+    }
+  ],
+  "minimumExecutionPathRecommendations": [
+    {
+      "priority": 1,
+      "proposal": "Check the frozen trial deadline before requesting a new delegated task and suppress delegation for an expired trial.",
+      "supportedBy": [
+        "next-03-tombo-2",
+        "next-04-tombo-2"
+      ],
+      "acceptanceImpact": "Prevents unnecessary post-deadline model work. Does not change the frozen timeout classification or elapsed cap."
+    },
+    {
+      "priority": 2,
+      "proposal": "Dispatch each bridge request promptly and record request-ready, poll-observed, approval-returned, T3-requested, provider-started, completed and reply-delivered times.",
+      "supportedBy": [
+        "next-03-tombo-2",
+        "next-04-tombo-2"
+      ],
+      "acceptanceImpact": "Targets the observed pre-T3 interval and makes its components diagnosable. No claimed improvement until measured."
+    },
+    {
+      "priority": 3,
+      "proposal": "When approval rejects a request, record the rejection immediately and propagate an explicit transport failure to the driver instead of leaving a reserved request pending until timeout.",
+      "supportedBy": [
+        "next-01-tombo-2",
+        "next-02-tombo-2"
+      ],
+      "acceptanceImpact": "Needs implementation review for the next epoch. Do not rewrite the old model_timeout results or alter scoring criteria."
+    },
+    {
+      "priority": 4,
+      "proposal": "Retain the elapsed cap and separately record a child run that outlives the trial. A polling-only change cannot be claimed to solve the observed graph provider-run interval.",
+      "supportedBy": [
+        "next-05-tombo-3"
+      ],
+      "acceptanceImpact": "No change to model selection, protocol budget or acceptance criteria is proposed by this audit."
+    }
+  ],
+  "limitations": [
+    "All times were reused from saved trace metadata and the earlier authoritative T3 runtime audit. No API or new model request was made.",
+    "Actual provider computation, tokens, costs, hidden retries and hidden upstream activities remain UNKNOWN.",
+    "UTC timestamp differences assume the recorded host and trace clock domains are comparable. No independent clock synchronisation measurement exists.",
+    "A missing trace reply for a late child is preserved as UNKNOWN. The completed child is not substituted into the frozen trial."
+  ],
+  "sources": [
+    "results/metacognition-development/epoch3-runtime-audit.json",
+    "results/metacognition-development/epoch3-accounting-audit.json",
+    "results/metacognition-development/evaluation-epoch3/*/*/trace.json"
+  ]
+}
