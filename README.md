@@ -2,7 +2,7 @@
 
 AIが自分の理解を確かめる複眼ツール。回答案や操作予定を、主張、証拠、未確認事項、検査へ分け、追加証拠に応じて状態を更新します。
 
-**v0.1 は探索的な試作品です。** TypeScript SDK、CLI、会話内スキルで、証拠に応じた状態更新と再考を実行します。3回の実モデル比較はいずれも受入条件を満たしていません。第3回は36試行中29試行が正常終了しました。その後、保証された固定資料の再取得で情報が増えない場合に、未知を保持して停止する修正を追加しました。現在の全406試験と、停止機構・接続部の独立レビューは合格しています。第4回比較は進行中で、修正後の比較効果は未確認です。[最新の完了した比較結果と限界](docs/metacognition-evaluation-epoch3.md)を参照してください。未知をすべて発見する能力、完全な理解、幻覚の防止を保証しません。
+**v0.1 は探索的な試作品です。** TypeScript SDK、CLI、会話内スキルで、証拠に応じた状態更新と再考を実行します。3回の実モデル比較はいずれも受入条件を満たしていません。第3回は36試行中29試行が正常終了しました。その後、保証された固定資料の再取得で情報が増えない場合に、未知を保持して停止する修正を追加しました。現在の全407試験と、停止機構・接続部の対象範囲を限定した独立レビューは合格しています。異なるベンダーによる委任処理の最終レビューは待機中です。第4回比較は進行中で、修正後の比較効果は未確認です。[最新の完了した比較結果と限界](docs/metacognition-evaluation-epoch3.md)を参照してください。未知をすべて発見する能力、完全な理解、幻覚の防止を保証しません。
 
 [English](#english) · [仕様書](TOMBO_spec_v0.1_ja.md) · [比較実験の準備](evaluation/README.md)
 
@@ -129,7 +129,7 @@ Point the installed skill's `references/runtime.json` at the built repository wi
 
 TOMBO is an experimental tool for checking an AI agent's understanding. It separates draft answers and planned actions into claims, evidence, open questions, and probes. New evidence updates the external state of understanding.
 
-Version 0.1 provides a TypeScript SDK, a CLI, an agent skill, two synthetic replay examples, and 48 synthetic scenarios for preparing comparisons. All three real-model comparisons failed the acceptance criteria. The third completed 29 of 36 trials without execution errors. A later fix stops repeated reads of executor-guaranteed immutable snapshots when they add no information, while preserving unknowns. All 406 current tests and independent reviews of the stopping mechanism and transport passed. A fourth comparison is running; its effect remains unverified. See the [latest completed comparison and limitations](docs/metacognition-evaluation-epoch3.md). TOMBO does not guarantee complete understanding, discovery of every unknown, or prevention of hallucinations.
+Version 0.1 provides a TypeScript SDK, a CLI, an agent skill, two synthetic replay examples, and 48 synthetic scenarios for preparing comparisons. All three real-model comparisons failed the acceptance criteria. The third completed 29 of 36 trials without execution errors. A later fix stops repeated reads of executor-guaranteed immutable snapshots when they add no information, while preserving unknowns. All 407 current tests and scoped independent reviews of the stopping mechanism and transport passed. The final review of delegation by a different vendor is pending. A fourth comparison is running; its effect remains unverified. See the [latest completed comparison and limitations](docs/metacognition-evaluation-epoch3.md). TOMBO does not guarantee complete understanding, discovery of every unknown, or prevention of hallucinations.
 
 ### Run the replay examples
 
