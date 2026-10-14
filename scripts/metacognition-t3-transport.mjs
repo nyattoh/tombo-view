@@ -26,7 +26,6 @@ export function createT3Transport({ state, load, ready, deliver, tools, clientRe
   if (typeof clientRequestId !== 'string' || !clientRequestId.trim()) throw new Error('A stable clientRequestId is required.');
   if (!target?.providerInstanceId || !target.model) throw new Error('An explicit T3 target is required.');
   const events = [];
-  let completedResult;
   const guard = async bridge => {
     if (now() >= bridge.deadlineAt) throw new Error('Producer deadline expired.');
     if ((await ready()).terminal) throw new Error('Producer is terminal.');
@@ -69,11 +68,10 @@ export function createT3Transport({ state, load, ready, deliver, tools, clientRe
         error.acceptedTaskId = result.taskId;
         throw error;
       }
-      if (firstDelegateWaitMs > 0 && !result.waitTimedOut && result.status === 'completed' && result.workState === 'result_available' && result.hasPendingChildRuns === false) completedResult = result;
       return { taskId: result.taskId };
     },
     taskStatus: async taskId => {
-      const result = completedResult?.taskId === taskId ? completedResult : payload(await tools.task_status({ taskId }));
+      const result = payload(await tools.task_status({ taskId }));
       const mismatch = bindingError(result, taskId, target);
       if (mismatch) {
         await cancelKnown(taskId);
