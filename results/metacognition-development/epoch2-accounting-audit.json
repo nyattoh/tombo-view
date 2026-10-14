@@ -1,0 +1,260 @@
+{
+  "accounting": [
+    {
+      "runId": "fresh-01-baseline-1",
+      "status": "success",
+      "requests": 2,
+      "sourceChecks": 1,
+      "durationMs": 109019
+    },
+    {
+      "runId": "fresh-01-tombo-1",
+      "status": "success",
+      "requests": 3,
+      "sourceChecks": 1,
+      "durationMs": 151390
+    },
+    {
+      "runId": "fresh-01-baseline-2",
+      "status": "success",
+      "requests": 2,
+      "sourceChecks": 1,
+      "durationMs": 100671
+    },
+    {
+      "runId": "fresh-01-tombo-2",
+      "status": "success",
+      "requests": 3,
+      "sourceChecks": 1,
+      "durationMs": 182468
+    },
+    {
+      "runId": "fresh-01-baseline-3",
+      "status": "success",
+      "requests": 2,
+      "sourceChecks": 1,
+      "durationMs": 104088
+    },
+    {
+      "runId": "fresh-01-tombo-3",
+      "status": "success",
+      "requests": 3,
+      "sourceChecks": 1,
+      "durationMs": 110994
+    },
+    {
+      "runId": "fresh-02-baseline-1",
+      "status": "success",
+      "requests": 2,
+      "sourceChecks": 1,
+      "durationMs": 87036
+    },
+    {
+      "runId": "fresh-02-tombo-1",
+      "status": "success",
+      "requests": 2,
+      "sourceChecks": 0,
+      "durationMs": 153216
+    },
+    {
+      "runId": "fresh-02-baseline-2",
+      "status": "success",
+      "requests": 2,
+      "sourceChecks": 1,
+      "durationMs": 90055
+    },
+    {
+      "runId": "fresh-02-tombo-2",
+      "status": "success",
+      "requests": 3,
+      "sourceChecks": 1,
+      "durationMs": 161974
+    },
+    {
+      "runId": "fresh-02-baseline-3",
+      "status": "success",
+      "requests": 2,
+      "sourceChecks": 1,
+      "durationMs": 82420
+    },
+    {
+      "runId": "fresh-02-tombo-3",
+      "status": "success",
+      "requests": 2,
+      "sourceChecks": 0,
+      "durationMs": 95516
+    },
+    {
+      "runId": "fresh-03-baseline-1",
+      "status": "success",
+      "requests": 2,
+      "sourceChecks": 1,
+      "durationMs": 136340
+    },
+    {
+      "runId": "fresh-03-tombo-1",
+      "status": "error",
+      "requests": 1,
+      "sourceChecks": 0,
+      "durationMs": 300020
+    },
+    {
+      "runId": "fresh-03-baseline-2",
+      "status": "success",
+      "requests": 2,
+      "sourceChecks": 1,
+      "durationMs": 132273
+    },
+    {
+      "runId": "fresh-03-tombo-2",
+      "status": "success",
+      "requests": 3,
+      "sourceChecks": 1,
+      "durationMs": 146875
+    },
+    {
+      "runId": "fresh-03-baseline-3",
+      "status": "success",
+      "requests": 2,
+      "sourceChecks": 1,
+      "durationMs": 116117
+    },
+    {
+      "runId": "fresh-03-tombo-3",
+      "status": "success",
+      "requests": 3,
+      "sourceChecks": 1,
+      "durationMs": 158539
+    },
+    {
+      "runId": "fresh-04-baseline-1",
+      "status": "success",
+      "requests": 2,
+      "sourceChecks": 1,
+      "durationMs": 107340
+    },
+    {
+      "runId": "fresh-04-tombo-1",
+      "status": "error",
+      "requests": 2,
+      "sourceChecks": 0,
+      "durationMs": 300014
+    },
+    {
+      "runId": "fresh-04-baseline-2",
+      "status": "success",
+      "requests": 2,
+      "sourceChecks": 1,
+      "durationMs": 63929
+    },
+    {
+      "runId": "fresh-04-tombo-2",
+      "status": "success",
+      "requests": 2,
+      "sourceChecks": 0,
+      "durationMs": 108006
+    },
+    {
+      "runId": "fresh-04-baseline-3",
+      "status": "success",
+      "requests": 2,
+      "sourceChecks": 1,
+      "durationMs": 132929
+    },
+    {
+      "runId": "fresh-04-tombo-3",
+      "status": "success",
+      "requests": 2,
+      "sourceChecks": 0,
+      "durationMs": 105813
+    },
+    {
+      "runId": "fresh-05-baseline-1",
+      "status": "success",
+      "requests": 2,
+      "sourceChecks": 1,
+      "durationMs": 148824
+    },
+    {
+      "runId": "fresh-05-tombo-1",
+      "status": "error",
+      "requests": 2,
+      "sourceChecks": 2,
+      "durationMs": 108282
+    },
+    {
+      "runId": "fresh-05-baseline-2",
+      "status": "success",
+      "requests": 2,
+      "sourceChecks": 1,
+      "durationMs": 125718
+    },
+    {
+      "runId": "fresh-05-tombo-2",
+      "status": "error",
+      "requests": 2,
+      "sourceChecks": 2,
+      "durationMs": 144699
+    },
+    {
+      "runId": "fresh-05-baseline-3",
+      "status": "success",
+      "requests": 2,
+      "sourceChecks": 1,
+      "durationMs": 91383
+    },
+    {
+      "runId": "fresh-05-tombo-3",
+      "status": "error",
+      "requests": 2,
+      "sourceChecks": 2,
+      "durationMs": 141447
+    },
+    {
+      "runId": "fresh-06-baseline-1",
+      "status": "success",
+      "requests": 3,
+      "sourceChecks": 1,
+      "durationMs": 161287
+    },
+    {
+      "runId": "fresh-06-tombo-1",
+      "status": "success",
+      "requests": 2,
+      "sourceChecks": 0,
+      "durationMs": 131118
+    },
+    {
+      "runId": "fresh-06-baseline-2",
+      "status": "success",
+      "requests": 2,
+      "sourceChecks": 1,
+      "durationMs": 176850
+    },
+    {
+      "runId": "fresh-06-tombo-2",
+      "status": "success",
+      "requests": 2,
+      "sourceChecks": 0,
+      "durationMs": 116744
+    },
+    {
+      "runId": "fresh-06-baseline-3",
+      "status": "success",
+      "requests": 2,
+      "sourceChecks": 1,
+      "durationMs": 125151
+    },
+    {
+      "runId": "fresh-06-tombo-3",
+      "status": "success",
+      "requests": 2,
+      "sourceChecks": 0,
+      "durationMs": 76149
+    }
+  ],
+  "actualDispatches": 78,
+  "hiddenUpstreamCalls": "UNKNOWN",
+  "cost": "UNKNOWN",
+  "tokens": "UNKNOWN"
+}

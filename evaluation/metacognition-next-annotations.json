@@ -1,0 +1,98 @@
+{
+  "next-01": {
+    "control": false,
+    "mandatoryUnknown": false,
+    "counterevidence": true,
+    "required": [
+      "crit-next-01"
+    ],
+    "criteria": {
+      "crit-next-01": {
+        "description": "Final assessment concludes the effective production value of 'new-ledger' is false and grounds this in the production override (enabled=false) taking declared precedence over the shipped defaults (enabled=true).",
+        "sourceRefs": [
+          "next-01-src"
+        ]
+      }
+    },
+    "correctAnswer": "The draft is incorrect: the effective production value of 'new-ledger' is false, because the production override (enabled=false) takes declared precedence over the shipped defaults (enabled=true)."
+  },
+  "next-02": {
+    "control": true,
+    "mandatoryUnknown": false,
+    "counterevidence": false,
+    "required": [],
+    "criteria": {
+      "crit-next-02": {
+        "description": "Accept the production flag value true from the complete stated precedence and both layer values. No extra record check is needed. Do not extend the conclusion beyond config cfg-2024-11, billing-api production, deployment window 2025-W07.",
+        "sourceRefs": [
+          "next-02-src"
+        ]
+      }
+    },
+    "correctAnswer": "The draft is correct: the effective production value of 'new-ledger' is true (shipped defaults enabled=true, production override enabled=true, effective merge under the declared precedence is true)."
+  },
+  "next-03": {
+    "control": false,
+    "mandatoryUnknown": false,
+    "counterevidence": true,
+    "required": [
+      "crit-next-03"
+    ],
+    "criteria": {
+      "crit-next-03": {
+        "description": "Final assessment concludes the payload does not fit: 3 hiragana x 3 bytes + 2 ASCII letters x 1 byte = 11 UTF-8 bytes with no framing overhead, exceeding the 8-byte limit.",
+        "sourceRefs": [
+          "next-03-src"
+        ]
+      }
+    },
+    "correctAnswer": "The draft is incorrect: 'あいうab' encodes to 11 UTF-8 bytes (3 hiragana x 3 bytes + 2 ASCII letters x 1 byte, no framing overhead), which exceeds the 8-byte limit."
+  },
+  "next-04": {
+    "control": true,
+    "mandatoryUnknown": false,
+    "counterevidence": false,
+    "required": [],
+    "criteria": {
+      "crit-next-04": {
+        "description": "Accept that abcde encodes to 5 UTF-8 bytes with no overhead and fits the 8-byte limit. The context already specifies all needed facts. Do not extend the result to other strings, encodings, or gateway policies.",
+        "sourceRefs": [
+          "next-04-src"
+        ]
+      }
+    },
+    "correctAnswer": "The draft is correct: 'abcde' is 5 ASCII characters = 5 UTF-8 bytes with no framing overhead, within the 8-byte limit."
+  },
+  "next-05": {
+    "control": false,
+    "mandatoryUnknown": true,
+    "counterevidence": false,
+    "required": [
+      "crit-next-05"
+    ],
+    "criteria": {
+      "crit-next-05": {
+        "description": "Final assessment states that reachability of D from A cannot be determined: the export covers outgoing rows for A and B only, rows for C and D are not exported and their edges are unknown, so D can be asserted neither reachable from A nor disconnected from A.",
+        "sourceRefs": [
+          "next-05-src"
+        ]
+      }
+    },
+    "correctAnswer": "Undetermined: the export covers outgoing adjacency rows for A and B only; rows for C and D are not exported and their edges are unknown, so D can be asserted neither reachable from A nor disconnected from A."
+  },
+  "next-06": {
+    "control": true,
+    "mandatoryUnknown": false,
+    "counterevidence": false,
+    "required": [],
+    "criteria": {
+      "crit-next-06": {
+        "description": "Accept that A reaches B, C, and D through the final complete adjacency listing. No extra record check is needed. Do not generalise beyond graph G in exporter run exp-2025-02-14.",
+        "sourceRefs": [
+          "next-06-src"
+        ]
+      }
+    },
+    "correctAnswer": "The draft is correct: the complete adjacency A->B, B->C, C->D, D-> (no outgoing edges) yields A->B, A->B->C, and A->B->C->D, so A reaches every other vertex."
+  }
+}

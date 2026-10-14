@@ -1,0 +1,128 @@
+[
+  {
+    "id": "next-01",
+    "family": "configuration-inheritance",
+    "split": "evaluation",
+    "synthetic": true,
+    "task": "Assess the draft statement about the effective production value of the feature flag 'new-ledger' for service billing-api. Decide whether the statement is correct, incorrect, or cannot be determined from the available information, and justify your conclusion. A configuration record is available if you need it.",
+    "context": "Service billing-api uses layered configuration: a shipped defaults file plus an environment-specific override file for production. The shipped defaults set the feature flag 'new-ledger' to enabled=true. The current contents of the production override file, and the declared precedence between the layers, are maintained in the configuration record rather than restated here.",
+    "draft": "The effective production value of the feature flag 'new-ledger' is true, because the shipped defaults enable it.",
+    "capabilities": [
+      "read_record"
+    ],
+    "sources": [
+      {
+        "id": "next-01-src",
+        "capability": "read_record",
+        "description": "Layered configuration record for billing-api, config cfg-2024-11, production deployment window 2025-W07.",
+        "status": "ok",
+        "text": "Configuration record - service billing-api. Scope: production environment. Config version cfg-2024-11. Deployment window 2025-W07. Declared layering and precedence: (1) shipped defaults; (2) environment-specific override file. For the same key, the environment-specific override value takes precedence over the shipped default. Values in scope: shipped defaults set feature flag 'new-ledger' enabled=true. Production override file sets feature flag 'new-ledger' enabled=false. Effective production value under the declared precedence: 'new-ledger' = false."
+      }
+    ]
+  },
+  {
+    "id": "next-02",
+    "family": "configuration-inheritance",
+    "split": "evaluation",
+    "synthetic": true,
+    "task": "Assess the draft statement about the effective production value of the feature flag 'new-ledger' for service billing-api. Decide whether the statement is correct, incorrect, or cannot be determined from the available information, and justify your conclusion. A configuration record is available if you need it.",
+    "context": "Service billing-api uses layered configuration with declared precedence: shipped defaults first, then the environment-specific override file, and for the same key the environment-specific override value wins over the shipped default. For config version cfg-2024-11 (production scope, deployment window 2025-W07): the shipped defaults set feature flag 'new-ledger' enabled=true, and the production override file sets 'new-ledger' enabled=true. The effective merged production value of 'new-ledger' under the declared precedence is therefore true.",
+    "draft": "The effective production value of the feature flag 'new-ledger' is true.",
+    "capabilities": [
+      "read_record"
+    ],
+    "sources": [
+      {
+        "id": "next-02-src",
+        "capability": "read_record",
+        "description": "Layered configuration record for billing-api, config cfg-2024-11, production deployment window 2025-W07.",
+        "status": "ok",
+        "text": "Configuration record - service billing-api. Scope: production environment. Config version cfg-2024-11. Deployment window 2025-W07. Declared layering and precedence: (1) shipped defaults; (2) environment-specific override file. For the same key, the environment-specific override value takes precedence over the shipped default. Values in scope: shipped defaults set feature flag 'new-ledger' enabled=true. Production override file sets feature flag 'new-ledger' enabled=true. Effective production value under the declared precedence: 'new-ledger' = true."
+      }
+    ]
+  },
+  {
+    "id": "next-03",
+    "family": "utf8-byte-limit",
+    "split": "evaluation",
+    "synthetic": true,
+    "task": "Assess the draft statement about whether the payload 'あいうab' fits within the gateway's 8-byte payload limit. Decide whether the statement is correct, incorrect, or cannot be determined from the available information, and justify your conclusion. A policy record is available if you need it.",
+    "context": "A gateway enforces a hard limit of 8 bytes per message payload. The payload under review is the five-character string 'あいうab': three Japanese hiragana characters followed by the ASCII letters 'a' and 'b', i.e. 5 code points. The byte basis and encoding behind the gateway's byte limit are defined in the policy record and are not restated here.",
+    "draft": "The payload 'あいうab' fits within the 8-byte limit: it contains only 5 characters, and 5 is less than 8.",
+    "capabilities": [
+      "read_record"
+    ],
+    "sources": [
+      {
+        "id": "next-03-src",
+        "capability": "read_record",
+        "description": "Gateway ingress payload policy POL-08, version 1.3, for the current enforcement window.",
+        "status": "ok",
+        "text": "Policy record POL-08, version 1.3. Scope: gateway ingress payload limit, current enforcement window. The 8-byte limit is measured on the UTF-8 encoded byte length of the payload; there is no framing, header, or separator overhead. UTF-8 encoding byte sizes: each Japanese hiragana character encodes to 3 bytes; each ASCII letter encodes to 1 byte. Worked size for the payload 'あいうab': 3 hiragana x 3 bytes = 9 bytes, plus 2 ASCII letters x 1 byte = 2 bytes; total 11 UTF-8 bytes."
+      }
+    ]
+  },
+  {
+    "id": "next-04",
+    "family": "utf8-byte-limit",
+    "split": "evaluation",
+    "synthetic": true,
+    "task": "Assess the draft statement about whether the payload 'abcde' fits within the gateway's 8-byte payload limit. Decide whether the statement is correct, incorrect, or cannot be determined from the available information, and justify your conclusion. A policy record is available if you need it.",
+    "context": "A gateway enforces a hard limit of 8 bytes per message payload under policy POL-08 (version 1.3). The limit is measured on the UTF-8 encoded byte length of the payload with no framing, header, or separator overhead, and under UTF-8 each ASCII character encodes to exactly 1 byte. The payload under review is the five-character ASCII string 'abcde', which encodes to 5 x 1 = 5 UTF-8 bytes.",
+    "draft": "The payload 'abcde' fits within the 8-byte limit: it encodes to 5 UTF-8 bytes, and 5 is less than 8.",
+    "capabilities": [
+      "read_record"
+    ],
+    "sources": [
+      {
+        "id": "next-04-src",
+        "capability": "read_record",
+        "description": "Gateway ingress payload policy POL-08, version 1.3, for the current enforcement window.",
+        "status": "ok",
+        "text": "Policy record POL-08, version 1.3. Scope: gateway ingress payload limit, current enforcement window. The 8-byte limit is measured on the UTF-8 encoded byte length of the payload; there is no framing, header, or separator overhead. UTF-8 encoding byte sizes: each ASCII character encodes to 1 byte. Worked size for the payload 'abcde': 5 ASCII characters x 1 byte = 5 UTF-8 bytes."
+      }
+    ]
+  },
+  {
+    "id": "next-05",
+    "family": "directed-graph-reachability",
+    "split": "evaluation",
+    "synthetic": true,
+    "task": "Assess the draft statement about whether vertex D is reachable from vertex A in directed graph G. Decide whether the statement is correct, incorrect, or cannot be determined from the available information, and justify your conclusion. An exporter status record is available if you need it.",
+    "context": "Directed graph G has the complete vertex set {A, B, C, D}. The adjacency working copy currently lists the outgoing rows A->B and B->C. The adjacency data is produced by an incremental exporter whose run has not finished, so the working copy may be missing rows; the exporter's coverage so far is tracked in its status record.",
+    "draft": "Vertex D is not reachable from vertex A: the adjacency listing shows A->B and B->C and contains no edge into D.",
+    "capabilities": [
+      "read_record"
+    ],
+    "sources": [
+      {
+        "id": "next-05-src",
+        "capability": "read_record",
+        "description": "Adjacency export record for directed graph G, exporter run exp-2025-02-14.",
+        "status": "ok",
+        "text": "Exporter status record - directed graph G, run exp-2025-02-14. The vertex set {A, B, C, D} is complete and final. Export coverage: outgoing adjacency rows for vertices A and B are fully exported (A->B; B->C). Outgoing adjacency rows for vertices C and D have not been exported yet; their outgoing edges are unknown. Nothing about the rows of C or D can be asserted from this export."
+      }
+    ]
+  },
+  {
+    "id": "next-06",
+    "family": "directed-graph-reachability",
+    "split": "evaluation",
+    "synthetic": true,
+    "task": "Assess the draft statement about which vertices are reachable from vertex A in directed graph G. Decide whether the statement is correct, incorrect, or cannot be determined from the available information, and justify your conclusion. An adjacency export record is available if you need it.",
+    "context": "Directed graph G has the complete vertex set {A, B, C, D} and the final, complete adjacency listing (exporter run exp-2025-02-14 finished, all rows exported): A->B; B->C; C->D; D-> (no outgoing edges).",
+    "draft": "From vertex A, every other vertex is reachable: A->B, A->B->C, and A->B->C->D.",
+    "capabilities": [
+      "read_record"
+    ],
+    "sources": [
+      {
+        "id": "next-06-src",
+        "capability": "read_record",
+        "description": "Adjacency export record for directed graph G, exporter run exp-2025-02-14.",
+        "status": "ok",
+        "text": "Adjacency export record - directed graph G, run exp-2025-02-14, completed. Vertex set {A, B, C, D}. Full adjacency listing: A->B; B->C; C->D; D-> (no outgoing edges). All vertices' outgoing rows are exported and final."
+      }
+    ]
+  }
+]

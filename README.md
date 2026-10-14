@@ -2,7 +2,7 @@
 
 AIが自分の理解を確かめる複眼ツール。回答案や操作予定を、主張、証拠、未確認事項、検査へ分け、追加証拠に応じて状態を更新します。
 
-**v0.1 は探索的な試作品です。** TypeScript SDK、CLI、会話内スキルで、証拠に応じた状態更新と再考を実行します。最初の実モデル比較36試行は受入条件を満たしませんでした。訂正生成を追加した修正版の効果は未確認です。[比較結果と限界](docs/metacognition-evaluation-epoch1.md)を参照してください。未知をすべて発見する能力、完全な理解、幻覚の防止を保証しません。
+**v0.1 は探索的な試作品です。** TypeScript SDK、CLI、会話内スキルで、証拠に応じた状態更新と再考を実行します。第1回・第2回の実モデル比較は受入条件を満たしませんでした。第2回は36試行中31試行が正常終了し、その後に評価解釈の明示訂正機能を追加し、資料再取得時の状態更新不具合を修正しました。修正後の効果は未確認です。[最新の比較結果と限界](docs/metacognition-evaluation-epoch2.md)を参照してください。未知をすべて発見する能力、完全な理解、幻覚の防止を保証しません。
 
 [English](#english) · [仕様書](TOMBO_spec_v0.1_ja.md) · [比較実験の準備](evaluation/README.md)
 
@@ -127,7 +127,7 @@ Point the installed skill's `references/runtime.json` at the built repository wi
 
 TOMBO is an experimental tool for checking an AI agent's understanding. It separates draft answers and planned actions into claims, evidence, open questions, and probes. New evidence updates the external state of understanding.
 
-Version 0.1 provides a TypeScript SDK, a CLI, an agent skill, two synthetic replay examples, and 48 synthetic scenarios for preparing comparisons. An initial real-model comparison of 36 trials failed the acceptance criteria. The benefit of the subsequent bounded repair implementation remains untested. See the [comparison results and limits](docs/metacognition-evaluation-epoch1.md). TOMBO does not guarantee complete understanding, discovery of every unknown, or prevention of hallucinations.
+Version 0.1 provides a TypeScript SDK, a CLI, an agent skill, two synthetic replay examples, and 48 synthetic scenarios for preparing comparisons. Two real-model comparisons failed the acceptance criteria. The second completed 31 of 36 trials without execution errors. Observation identity and explicit assessment corrections were fixed afterwards; their effect remains unverified. See the [latest comparison and limitations](docs/metacognition-evaluation-epoch2.md). TOMBO does not guarantee complete understanding, discovery of every unknown, or prevention of hallucinations.
 
 ### Run the replay examples
 
@@ -165,6 +165,6 @@ Withdrawing evidence discards a pending assessment batch and reopens required pr
 
 ### Verification and limitations
 
-Tests cover state invariants, usage, budgets, replay, concurrency conflicts, and actual CLI calls. Structural validation does not prove semantic correctness. Compare TOMBO with a general recheck using the same model, evidence, tools, and budgets. Keep evaluation annotations away from model inputs and use independent human assessment. Real-provider integration, comparative experiments, and statistical effectiveness claims remain unverified.
+Tests cover state invariants, usage, budgets, replay, concurrency conflicts, and actual CLI calls. Structural validation does not prove semantic correctness. Compare TOMBO with a general recheck using the same model, evidence, tools, and budgets. Keep evaluation annotations away from model inputs and use independent human assessment. The two real-model comparisons failed readiness. Live HTTP-provider integration and statistical effectiveness remain unverified.
 
 The agent skill is in `skills/tombo-view/SKILL.md`. Development checks are `npm run typecheck`, `npm test`, and `npm run demo`. CI targets Linux and Windows with Node.js 22 and 24. The project uses the MIT licence. No third-party PDF or private conversation is distributed. Academic novelty has not been established.

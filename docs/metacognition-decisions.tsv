@@ -12,3 +12,6 @@ ts	phase	decision	why	evidence	result
 2026-10-13T19:59:41Z	checkpoint	3課題族18試行の匿名採点を保存し形式エラー0、現版のreadinessはFAIL	失敗・時間切れを除外せず原因を分ける	results/metacognition-development/grading-partial-report.json	初回比較と修復・新課題族の再評価を継続
 2026-10-13T21:36:40Z	epoch1-archive	36試行26成功10エラーを保持、独立採点完了、受入FAIL	修正版の効果と混同しない	docs/metacognition-evaluation-epoch1.md	実測費用と非公開再試行は不明
 2026-10-13T21:36:40Z	method-binding	GLM指摘の修復回数照合不足をREDで再現して修正、235全試験成功	凍結条件と実効値を採点時に照合する	results/metacognition-development/method-binding-handover.md	第2回独立レビューと新比較は未完了
+2026-10-14T00:10:20Z	epoch2-complete	36試行31正常終了5エラーを全件独立採点、受入FAIL・比較INCONCLUSIVE	失敗を除外せず修正版と比較時点を区別する	docs/metacognition-evaluation-epoch2.md	費用と非公開上流要求は不明
+2026-10-14T00:10:20Z	correction-integration	評価解釈の訂正と観測ID分離を統合、291試験成功、導入スキル4ファイル一致	実行不具合の根因を修正して意味効果と混同しない	results/metacognition-development/assessment-correction-root-integration.log	修正後の比較は未実施
+2026-10-14T00:10:20Z	next-data	未使用3課題族6ケースを5試験とGLM静的レビューで検証	新しい比較の資料整合と未知の両補完を確認する	results/metacognition-development/next-data-handover.md	次protocol未固定、low速度費用未実証
