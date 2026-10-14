@@ -24,12 +24,34 @@ const digest = value => outputDigest(JSON.stringify(value));
 if (digest(cases) !== protocol.caseDigest || !protocol.frozenBeforeResults) throw new Error('Frozen dataset mismatch');
 const selected = cases.find(c => c.id === caseId);
 if (!selected) throw new Error('Unknown case');
+const staticPolicySchema = z.object({
+  version: z.literal(1),
+  mode: z.literal('immutable_case_records'),
+  records: z.array(z.object({ caseId: z.string().min(1), sourceId: z.string().min(1), recordDigest: z.string().regex(/^[a-f0-9]{64}$/) }).strict()).min(1),
+}).strict();
+let staticSnapshotPolicy;
+const snapshots = new Map();
+if (protocol.staticSnapshotPolicy !== undefined) {
+  if (protocol.version !== 2 || protocol.frozenBeforeResults !== true) throw new Error('Static snapshot policy requires a new frozen version 2 protocol.');
+  staticSnapshotPolicy = staticPolicySchema.parse(protocol.staticSnapshotPolicy);
+  const declared = new Set();
+  for (const entry of staticSnapshotPolicy.records) {
+    const key = JSON.stringify([entry.caseId, entry.sourceId]);
+    const recordCases = cases.filter(c => c.id === entry.caseId);
+    const recordCase = recordCases[0];
+    const records = recordCase?.sources.filter(s => s.id === entry.sourceId) ?? [];
+    if (declared.has(key) || recordCases.length !== 1 || records.length !== 1 || records[0].capability !== 'read_record' || !recordCase.capabilities.includes('read_record') || !['ok', 'incomplete', 'conflict'].includes(records[0].status) || typeof records[0].text !== 'string' || !records[0].text.trim() || digest(records[0]) !== entry.recordDigest) throw new Error('Invalid immutable case record binding.');
+    declared.add(key);
+    Object.freeze(records[0]);
+    snapshots.set(key, `case-record:${digest([protocol.caseDigest, entry.caseId, entry.sourceId, entry.recordDigest])}`);
+  }
+}
 const packet = participantPacket(selected);
 const requested = { capabilities: packet.capabilities, ...protocol.requested, modelRepairAttempts: repairs, maximumElapsedMs: elapsedCap };
 const tracePath = join(out, 'trace.json'), runPath = join(out, 'run.json'), resultPath = join(out, 'result.json');
 const trace = { version: 1, origin, model, caseId, arm, repeat, packetDigest: digest(packet), datasetDigest: protocol.caseDigest, protocolDigest: digest(protocol), events: [], notes: ['Host task IDs attest delegated generations. Upstream API calls, billing, tokens and hidden retries are unknown.', 'SDK local apply metadata outputTokens=0 is an accounting placeholder. Actual output character caps are enforced at the bridge.', 'Synthetic source checks execute locally through executeTool. No paid API is called by this driver.'] };
 await mkdir(out, { recursive: true });
-trace.methodConfiguration = { modelValidationRepairs: repairs, maximumElapsedMs: elapsedCap, casesPath: String(casesPath), protocolPath: String(protocolPath) };
+trace.methodConfiguration = { modelValidationRepairs: repairs, maximumElapsedMs: elapsedCap, casesPath: String(casesPath), protocolPath: String(protocolPath), ...(staticSnapshotPolicy ? { staticSnapshotPolicy } : {}) };
 const save = (path, value) => writeFile(path, JSON.stringify(value, null, 2) + '\n');
 const log = async event => { trace.events.push({ at: new Date().toISOString(), ...event }); await save(tracePath, trace); };
 const input = createInterface({ input: process.stdin, terminal: false });
@@ -86,7 +108,8 @@ async function readSource(capability, sourceId, executionId) {
   const response = executeTool(selected, capability, sourceId);
   checks.push({ capability, sourceId, status: response.status, responseDigest: digest(response) });
   transcript.push({ kind: 'source', response });
-  await log({ kind: 'tool', executionId, capability, sourceId, response, responseDigest: digest(response) });
+  const staticSnapshot = snapshots.get(JSON.stringify([caseId, sourceId]));
+  await log({ kind: 'tool', executionId, capability, sourceId, response, responseDigest: digest(response), ...(staticSnapshot ? { staticSnapshot } : {}) });
   return response;
 }
 
@@ -150,7 +173,8 @@ try {
       const before = Date.now();
       if (input.probe.sourceGroups.length !== 1) throw fail('invalid_source_group', 'invalid_input');
       const response = await readSource(input.probe.requiredCapability, input.probe.sourceGroups[0], input.executionId);
-      return { executionId: input.executionId, probeId: input.probe.id, outcome: response.status === 'unavailable' ? 'unavailable' : 'completed', evidence: response.status === 'unavailable' ? [] : [{ id: `${response.id}:${input.executionId}`, kind: 'document', locator: response.id, sourceGroup: response.id, retrievedAt: new Date().toISOString(), version: null, scope: 'trial', passage: response.text, contentHash: hashPassage(response.text), validity: 'current' }], toolCalls: 1, elapsedMs: Date.now() - before, costYen: null };
+      const staticSnapshot = snapshots.get(JSON.stringify([caseId, response.id]));
+      return { executionId: input.executionId, probeId: input.probe.id, outcome: response.status === 'unavailable' ? 'unavailable' : 'completed', evidence: response.status === 'unavailable' ? [] : [{ id: `${response.id}:${input.executionId}`, kind: 'document', locator: response.id, sourceGroup: response.id, retrievedAt: new Date().toISOString(), version: null, scope: 'trial', passage: response.text, contentHash: hashPassage(response.text), validity: 'current' }], toolCalls: 1, elapsedMs: Date.now() - before, costYen: null, ...(staticSnapshot ? { staticSnapshot } : {}) };
     } };
     result = await runUnderstandingCheck({ tombo, task, critic, executor, maxCycles: 12 });
     await log({ kind: 'sdk_result', result });

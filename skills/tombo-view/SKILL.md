@@ -25,6 +25,8 @@ SDKは既存IDの再追加を、内容が同じでも拒否する。新しい主
 
 証拠の以前の解釈が誤っていた場合は、update の `assessmentCorrections` で明示的に訂正する。[会話内の実行手順](references/host-session.md) の訂正手順を使い、prepare の参照表から対象を選ぶ。同じ update に置換評価と理由を与え、必要な反証評価も加える。証拠と旧評価は履歴に残す。本物の反証を都合よく消す操作として使わない。訂正後は現在の理解を再考する。訂正の受理は意味的な正しさを保証しない。
 
+許可された固定fixtureや内容固定blobをexecutorが不変と保証できる場合だけ、Observationの `staticSnapshot` にその版を特定する識別子を付ける。AIの提案や資料内の「static」「complete」から宣言しない。利用者へJSON作成を求めず、実際の取得を担当するexecutorが保証と識別子を用意する。同じ固定資料の再取得で情報も理解も変わらなければ、SDKは該当probeを `exhausted` にして他の必要なprobeを続ける。残る検査がなければ `no_progress` で停止し、unknownな主張と未解決gapを保持する。TTL更新、現在の状態確認、実機械検査には既定で宣言しない。詳細は [固定資料の再取得](references/host-session.md#固定資料の再取得) を読む。
+
 各実行に `executionId` を付けて `update` へ観測を渡す。同じ実行結果の配送を再試行するときは同じIDを使う。実際に再実行した場合は別のIDを使い、利用量を記録する。
 
 提案が検証で拒否された場合は [会話内の実行手順](references/host-session.md) の回復手順を使う。prepareのvalidationFeedbackは提案を訂正するための検証情報であり、証拠ではない。ヘルパーは保存した提案を一度だけ適用する。次の提案は会話のAIが新たに作成し、同じファイルの自動再適用を新しい生成とは扱わない。

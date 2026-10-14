@@ -68,7 +68,7 @@ export const probeDefinitionSchema = z.strictObject({
   question: text, requiredCapability: text, sourceGroups: z.array(text),
   successCondition: text, refutationCondition: text, inconclusiveCondition: text,
 });
-export const probeSchema = probeDefinitionSchema.extend({ status: z.enum(['pending', 'running', 'complete', 'unavailable', 'error']) });
+export const probeSchema = probeDefinitionSchema.extend({ status: z.enum(['pending', 'running', 'complete', 'unavailable', 'error', 'exhausted']) });
 export const taskPacketSchema = z.strictObject({
   schemaVersion: z.literal('0.1'), taskId: id, goal: text, mode: z.enum(['explain', 'execute']),
   successCriteria: z.array(text).min(1), evidence: z.array(evidenceSchema),
@@ -77,11 +77,15 @@ export const taskPacketSchema = z.strictObject({
 export const observationSchema = z.strictObject({
   executionId: id, probeId: id, outcome: z.enum(['completed', 'no_result', 'unavailable', 'error']),
   evidence: z.array(evidenceSchema), toolCalls: count, elapsedMs: amount, costYen: amount.nullable(),
+  staticSnapshot: text.optional(),
+}).superRefine((value, ctx) => {
+  if (value.staticSnapshot !== undefined && (value.outcome !== 'completed' || !value.evidence.length)) ctx.addIssue({ code: 'custom', message: 'A static snapshot requires completed evidence' });
 });
 export const observationsSchema = z.array(observationSchema);
 export const appliedExecutionSchema = z.strictObject({
   executionId: id, payloadHash: z.string().regex(/^[a-f0-9]{64}$/), probeId: id,
   outcome: z.enum(['completed', 'no_result', 'unavailable', 'error']),
+  staticSnapshot: z.strictObject({ id: text, evidenceIds: ids.min(1) }).optional(),
 });
 export const reflectionBindingSchema = z.strictObject({
   taskId: id, basedRevision: count, understandingHash: z.string().regex(/^[a-f0-9]{64}$/),
