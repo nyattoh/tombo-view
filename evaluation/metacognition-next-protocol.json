@@ -1,0 +1,48 @@
+{
+  "version": 2,
+  "frozenBeforeResults": true,
+  "minimumRepeats": 3,
+  "arms": [
+    "baseline",
+    "tombo"
+  ],
+  "requested": {
+    "maxCalls": 6,
+    "maxOutputChars": 4000
+  },
+  "thresholds": {
+    "correctness": 0.9,
+    "recall": 0.85,
+    "falseClosure": 0,
+    "maxControlUnnecessaryProbe": 0.1,
+    "superiorityRecallGain": 0.1,
+    "minimumImprovedCases": 2,
+    "correctionAccuracy": 0.9
+  },
+  "pairedRule": "No case may regress in correctness, required-finding recall, false closure, correction accuracy or control unnecessary probing. Average repeats inside each case before comparing cases.",
+  "ordering": "Alternate baseline then tombo on odd repeats; tombo then baseline on even repeats.",
+  "judgeRule": "One independent blinded assessor rates both arms on identical criteria, binds every judgement to the output digest, cites output excerpts and source IDs. Schema checks are not semantic assessment.",
+  "boundary": "New public synthetic configuration inheritance, UTF-8 byte limits and directed graph coverage cases. Same acceptance thresholds, repeats, repair and call/output/time caps. Both methods use the same low participant effort; speed, cost and effectiveness unproven. Different cases and profile prevent attributing differences to effort alone. Host costs/tokens UNKNOWN; G4 cap unproven.",
+  "caseDigest": "c0212d25e9f9d7ab8a71527c0d2238cccd99f0a7de24dcd88eda4dc3430f33ef",
+  "annotationDigest": "b6a4d7c3fd22d5feb8bcde779885e215af903ce30e5599bbe3d8b3f464948336",
+  "maximumElapsedMs": 300000,
+  "maximumOutputCharsPerGeneration": 4000,
+  "freezeStatus": "FROZEN before participant results; data GLM r1 and method/profile GLM r2 passed",
+  "modelValidationRepairs": {
+    "baselineSyntax": 2,
+    "tomboProposal": 2,
+    "allRejectedGenerationsCount": true
+  },
+  "participantModel": {
+    "provider": "codex",
+    "name": "gpt-6.1-sol",
+    "effort": "low"
+  },
+  "callDefinition": "Actual generation requests plus scripted source checks, including rejected requests. Hidden upstream requests unknown.",
+  "independentReviews": [
+    "results/metacognition-development/next-data-review-glm-r1-tool-free.md",
+    "results/metacognition-development/participant-profile-review-glm-r2-tool-free.md"
+  ],
+  "frozenAt": "2026-10-14T00:18:57.824Z",
+  "frozenProductHead": "1b18616c8661fe0206340165913c3943d95d491a"
+}

@@ -17,3 +17,4 @@ ts	phase	decision	why	evidence	result
 2026-10-14T00:10:20Z	next-data	未使用3課題族6ケースを5試験とGLM静的レビューで検証	新しい比較の資料整合と未知の両補完を確認する	results/metacognition-development/next-data-handover.md	次protocol未固定、low速度費用未実証
 2026-10-14T00:12:51.442Z	participant-profile	protocol参加設定の境界検証と実CLI試験を追加し全300試験成功	次比較の設定と実効モデルを一致させる	results/metacognition-development/participant-profile-handover.md	GLM独立レビュー待ち、low効果未実証
 2026-10-14T00:18:37.497Z	profile-review	旧設定の試験を明示構成へ直しGLM第2回pass	過去プロトコルへの暗黙依存を除く	results/metacognition-development/participant-profile-review-glm-r2-tool-free.md	次比較の凍結前、実モデル効果は未実証
+2026-10-14T00:18:57.824Z	epoch3-freeze	未使用6ケース・low両方式を旧基準と同じ上限で結果前に固定	修正版の効果を失敗エポックと混同せず測定する	evaluation/metacognition-next-protocol.json	参加実験は未開始、速度費用は不明
