@@ -24,13 +24,13 @@ function fixture(firstDelegateWaitMs = 50000) {
   return { state, calls, replies, clock, hooks, target, request, bridge, result, options, transport };
 }
 
-test('bounded completion reuses the exact result with zero status RPCs and unchanged ready reads', async () => {
+test('bounded completion reads fresh status with the exact result and unchanged ready reads', async () => {
   const bounded = fixture(), asyncMode = fixture(0);
   await coordinateDispatch(bounded.state, bounded.transport.callbacks);
   await coordinateDispatch(asyncMode.state, asyncMode.transport.callbacks);
   assert.equal(bounded.state.phase, 'delivered');
   assert.deepEqual(bounded.replies, asyncMode.replies);
-  assert.equal(bounded.calls.status.length, 0);
+  assert.deepEqual(bounded.calls.status, [{ taskId: 'actual-third' }]);
   assert.equal(asyncMode.calls.status.length, 1);
   assert.equal(bounded.calls.reads, 6);
   assert.equal(asyncMode.calls.reads, 6);
@@ -94,7 +94,7 @@ for (const changed of [{ providerInstanceId: 'wrong' }, { model: 'wrong' }]) {
   });
 }
 
-test('a cache for a different handle cannot bypass status binding validation', async () => {
+test('a different accepted handle cannot bypass fresh status binding validation', async () => {
   const t = fixture();
   await t.transport.callbacks.delegate(t.request, t.bridge);
   t.state.bridge = t.bridge;
@@ -134,7 +134,7 @@ for (const stopped of ['deadline', 'terminal']) {
   });
 }
 
-test('transient producer read after wait resumes without duplicate generation or status RPC', async () => {
+test('transient producer read after wait resumes with fresh status and no duplicate generation', async () => {
   const t = fixture();
   t.hooks.ready = async () => {
     if (t.calls.delegate.length && t.calls.reads === 4) throw new Error('Transient producer read.');
@@ -146,11 +146,53 @@ test('transient producer read after wait resumes without duplicate generation or
   await coordinateDispatch(t.state, t.transport.callbacks);
   assert.equal(t.state.phase, 'delivered');
   assert.equal(t.calls.delegate.length, 1);
-  assert.equal(t.calls.status.length, 0);
-  assert.equal(t.replies[0].output, t.result.summary);
+  assert.deepEqual(t.calls.status, [{ taskId: 'actual-third' }]);
+  assert.equal(t.replies[0].output, '{"unknown":true,"newCandidate":"retained"}');
 });
 
-test('restored state loses the local cache but observes the same handle without delegation', async () => {
+for (const firstDelegateWaitMs of [20, 0]) {
+  test(`dynamic pending children after a transient fourth ready read block completion and cancel at deadline with wait ${firstDelegateWaitMs}`, async () => {
+    const t = fixture(firstDelegateWaitMs);
+    let pending = false;
+    t.hooks.ready = async () => {
+      if (t.calls.reads === 4) throw new Error('Transient ready read.');
+      return { terminal: false };
+    };
+    t.hooks.status = async () => ({ ...t.result, hasPendingChildRuns: pending });
+    await assert.rejects(coordinateDispatch(t.state, t.transport.callbacks), /Transient ready read/);
+    assert.equal(t.state.phase, 'active');
+    assert.equal(t.state.taskId, 'actual-third');
+    pending = true;
+    await coordinateDispatch(t.state, t.transport.callbacks);
+    assert.equal(t.state.phase, 'active');
+    assert.deepEqual(t.replies, []);
+    assert.deepEqual(t.calls.status, [{ taskId: 'actual-third' }]);
+    t.clock.at = 100;
+    await coordinateDispatch(t.state, t.transport.callbacks);
+    await coordinateDispatch(t.state, t.transport.callbacks);
+    assert.equal(t.state.phase, 'stopped');
+    assert.equal(t.state.reason, 'deadline_expired');
+    assert.deepEqual(t.calls.cancel, [{ taskId: 'actual-third', clientRequestId: 'bounded-cancel-3', reason: 'Producer stopped or its deadline expired.' }]);
+    assert.equal(t.calls.delegate.length, 1);
+    assert.equal(t.calls.delegate[0].clientRequestId, 'bounded-3');
+    assert.equal(t.calls.delegate[0].mode, firstDelegateWaitMs > 0 ? 'wait' : 'async');
+  });
+}
+
+for (const status of ['failed', 'cancelled', 'interrupted']) {
+  test(`fresh ${status} with pending children overrides a completed wait response`, async () => {
+    const t = fixture(20);
+    t.hooks.status = async () => ({ ...t.result, status, hasPendingChildRuns: true, summary: 'Later failure.' });
+    await coordinateDispatch(t.state, t.transport.callbacks);
+    assert.equal(t.state.phase, 'delivered');
+    assert.deepEqual(t.replies, [{ sequence: 3, model: t.bridge.model, taskId: 'actual-third', error: { code: 'model_error', message: 'Later failure.' } }]);
+    assert.deepEqual(t.calls.status, [{ taskId: 'actual-third' }]);
+    assert.deepEqual(t.calls.cancel, [{ taskId: 'actual-third', clientRequestId: 'bounded-cancel-3', reason: 'Producer stopped or its deadline expired.' }]);
+    assert.equal(t.state.terminalFailure.hasPendingChildRuns, true);
+  });
+}
+
+test('restored state observes the same handle without delegation', async () => {
   const t = fixture();
   t.hooks.ready = async () => {
     if (t.calls.delegate.length) throw new Error('Read failed.');
@@ -176,7 +218,7 @@ test('invalid wait options fail before any delegation or producer observation', 
 });
 
 test('host-session forwards the optional bound through its actual transport binding', async () => {
-  const submitted = [], replies = [], executions = [];
+  const submitted = [], statuses = [], replies = [], executions = [];
   const config = { repositoryRoot: 'D:\\prototype', directory: 'results/bounded', caseId: 'sample', arm: 'tombo', repeat: 1, casesPath: 'unused', protocolPath: 'unused', target: { providerInstanceId: 'codex', model: 'test-model' }, clientRequestId: 'host', firstDelegateWaitMs: 20 };
   const tools = {
     exec_command: async args => {
@@ -190,7 +232,7 @@ test('host-session forwards the optional bound through its actual transport bind
     },
     write_stdin: async args => { replies.push(JSON.parse(args.chars)); return { exit_code: 0, output: '' }; },
     mcp__t3_code__delegate_task: async args => { submitted.push(args); return { structuredContent: { taskId: 'host-actual', ...config.target, status: 'completed', workState: 'result_available', hasPendingChildRuns: false, summary: '{"unknown":true}' } }; },
-    mcp__t3_code__task_status: async () => { throw new Error('Completed wait requires no status RPC.'); },
+    mcp__t3_code__task_status: async args => { statuses.push(args); return { structuredContent: { taskId: 'host-actual', ...config.target, status: 'completed', workState: 'result_available', hasPendingChildRuns: false, summary: '{"unknown":true}' } }; },
     mcp__t3_code__task_cancel: async () => { throw new Error('On-time completion requires no cancellation.'); },
   };
   const run = await runGuardedHostSession({ tools, coordinateDispatch, createT3Transport, config });
@@ -200,6 +242,7 @@ test('host-session forwards the optional bound through its actual transport bind
   assert.equal(submitted[0].clientRequestId, 'host-1');
   assert.equal(replies[0].taskId, 'host-actual');
   assert.equal(replies[0].output, '{"unknown":true}');
+  assert.deepEqual(statuses, [{ taskId: 'host-actual' }]);
   assert.equal(executions.every(args => args.workdir === 'D:\\prototype' && args.sandbox_permissions === 'require_escalated'), true);
 });
 
