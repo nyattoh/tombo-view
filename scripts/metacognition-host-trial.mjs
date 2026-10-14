@@ -2,7 +2,7 @@ import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { resolve, join } from 'node:path';
 import { createInterface } from 'node:readline';
 import { z } from 'zod';
-import { createTombo, hashPassage, TomboError, proposalSchema, reflectionOutputSchema, runUnderstandingCheck, proposalGuidance, reflectionGuidance } from '../dist/index.js';
+import { createTombo, hashPassage, TomboError, proposalSchema, reflectionOutputSchema, runUnderstandingCheck, proposalGuidance, reflectionGuidance, assessmentDigest } from '../dist/index.js';
 import { RunSchema, participantPacket, executeTool, outputDigest } from '../evaluation/metacognition-runner.mjs';
 
 const argv = process.argv.slice(2);
@@ -142,21 +142,28 @@ async function readSource(capability, sourceId, executionId) {
 function renderUnderstanding(result) {
   const state = result?.state;
   if (!state) return { decision: 'unknown', answer: 'Understanding check did not produce a state.', uncertainties: [bridgeFailure ?? 'No state'], sourceRefs: [] };
-  const claims = state.claims.filter(c => c.role === 'answer_claim');
-  const refuted = claims.filter(c => c.status === 'contradicted');
-  const supported = claims.filter(c => c.status === 'supported');
+  const corrected = new Set((state.assessmentCorrections ?? []).map(item => item.targetDigest));
+  const claims = state.claims.filter(c => c.role === 'answer_claim').map(claim => ({
+    claim,
+    assessments: claim.assessments.filter(assessment => !corrected.has(assessmentDigest(assessment)) && assessment.scopeMatched && assessment.evidenceIds.every(id => {
+      const evidence = state.evidence.find(item => item.id === id);
+      return evidence?.validity === 'current' && evidence.scope === claim.scope && !evidence.passageUnavailable;
+    })),
+  }));
+  const refuted = claims.filter(c => c.claim.status === 'contradicted' && c.assessments.some(a => a.verdict === 'refutes'));
+  const supported = claims.filter(c => c.claim.status === 'supported' && c.assessments.some(a => a.verdict === 'supports'));
+  const unverified = claims.filter(c => !refuted.includes(c) && !supported.includes(c));
   const unresolved = state.gaps.filter(g => g.importance === 'required' && g.status !== 'resolved');
-  const ready = state.decision === 'ready_for_requested_step' && !unresolved.length && claims.length > 0 && claims.every(c => ['supported', 'contradicted'].includes(c.status));
-  const reasons = refuted.flatMap(c => c.assessments.filter(a => a.verdict === 'refutes').map(a => a.reason));
-  const unknownReasons = claims.filter(c => !['supported', 'contradicted'].includes(c.status)).flatMap(c => {
-    const assessment = c.assessments.at(-1);
-    return assessment?.verdict === 'inconclusive' && assessment.scopeMatched && assessment.evidenceIds.every(id => state.evidence.some(e => e.id === id && e.validity === 'current' && e.scope === c.scope && !e.passageUnavailable)) ? [assessment.reason] : [];
-  });
-  const answer = [...refuted.map(c => `Rejected claim: ${c.text}`), ...reasons, ...supported.map(c => c.text), ...unknownReasons].join(' ') || (state.task.proposedAnswer ? `The original draft remains unverified: ${state.task.proposedAnswer}` : 'No grounded final answer.');
-  const uncertainties = [...unresolved.map(g => g.question), ...claims.filter(c => !['supported', 'contradicted'].includes(c.status)).map(c => `Unverified: ${c.text}`), ...(state.reflection?.limitations ?? []), ...(state.stopReason ? [state.stopReason] : [])];
+  const ready = state.decision === 'ready_for_requested_step' && !unresolved.length && !state.pendingAssessmentExecutionIds?.length && claims.length > 0 && !unverified.length;
+  const answer = [
+    ...refuted.flatMap(c => [`Rejected claim: ${c.claim.text}`, ...c.assessments.filter(a => a.verdict === 'refutes').map(a => a.reason)]),
+    ...supported.flatMap(c => [c.claim.text, ...c.assessments.filter(a => a.verdict === 'supports').map(a => a.reason)]),
+    ...unverified.flatMap(c => c.assessments.map(a => a.reason)),
+  ].join(' ') || (state.task.proposedAnswer ? `The original draft remains unverified: ${state.task.proposedAnswer}` : 'No grounded final answer.');
+  const uncertainties = [...unresolved.map(g => g.question), ...unverified.map(c => `Unverified: ${c.claim.text}`), ...(state.reflection?.limitations ?? []), ...(state.pendingAssessmentExecutionIds?.length ? ['Evidence assessments are pending.'] : []), ...(state.stopReason ? [state.stopReason] : [])];
   if (!ready && !uncertainties.length) uncertainties.push('The understanding check is incomplete.');
-  const evidenceIds = claims.flatMap(c => c.assessments.flatMap(a => a.evidenceIds));
-  const sourceRefs = [...new Set(state.evidence.filter(e => evidenceIds.includes(e.id) && e.id !== 'e-context').map(e => e.sourceGroup))];
+  const evidenceIds = new Set(claims.flatMap(c => c.assessments.flatMap(a => a.evidenceIds)));
+  const sourceRefs = [...new Set(state.evidence.filter(e => evidenceIds.has(e.id)).map(e => e.sourceGroup))];
   return { decision: ready ? (refuted.length ? 'refuted' : 'supported') : 'unknown', answer, uncertainties, sourceRefs };
 }
 
