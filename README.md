@@ -2,7 +2,7 @@
 
 AIが自分の理解を確かめる複眼ツール。回答案や操作予定を、主張、証拠、未確認事項、検査へ分け、追加証拠に応じて状態を更新します。
 
-**v0.1 は探索的な試作品です。** TypeScript SDK、CLI、会話内スキルで、証拠に応じた状態更新と再考を実行します。第1回・第2回の実モデル比較は受入条件を満たしませんでした。第2回は36試行中31試行が正常終了し、その後に評価解釈の明示訂正機能を追加し、資料再取得時の状態更新不具合を修正しました。修正後の効果は未確認です。[最新の比較結果と限界](docs/metacognition-evaluation-epoch2.md)を参照してください。未知をすべて発見する能力、完全な理解、幻覚の防止を保証しません。
+**v0.1 は探索的な試作品です。** TypeScript SDK、CLI、会話内スキルで、証拠に応じた状態更新と再考を実行します。3回の実モデル比較はいずれも受入条件を満たしていません。第3回は36試行中29試行が正常終了しました。その後、保証された固定資料の再取得で情報が増えない場合に、未知を保持して停止する修正を追加しました。現在の全406試験と、停止機構・接続部の独立レビューは合格しています。第4回比較は進行中で、修正後の比較効果は未確認です。[最新の完了した比較結果と限界](docs/metacognition-evaluation-epoch3.md)を参照してください。未知をすべて発見する能力、完全な理解、幻覚の防止を保証しません。
 
 [English](#english) · [仕様書](TOMBO_spec_v0.1_ja.md) · [比較実験の準備](evaluation/README.md)
 
@@ -62,6 +62,8 @@ const reopened = tombo.invalidate(next.state, {
 開発版では `reflectionRequired: true` と `tombo.reflect(state, critic)` を使い、現在の理解を再考した記録がない状態を `needs_reflection` とします。criticは新しい観点・不足・検査の候補を作ります。批判だけで証拠や解決を追加できません。新しい証拠や候補で理解が変わると、古い再考記録は失効します。従来のTaskPacketは旧契約を維持し、過去のreadyを再考済みと読み替えません。
 
 `runUnderstandingCheck({tombo, task, critic, executor})` は、この再考と明示した検査の実行を予算内で繰り返します。返却は `{status: 'completed', result}` または `{status: 'stopped', reason, result}` です。開始前の中断ではresultはnullです。実行の停止と理解状態を分け、完了はcompletedかつreadyの場合だけです。各executor呼出しは一つの実検査を行い、実際の観測を返します。中断した観測を評価なしで保存する場合は `update(state, observations, {deferAssessment: true})` を使えます。
+
+executorが不変な資料を保証できる場合は、観測の `staticSnapshot` に固定版の識別子を付けられます。同じ固定資料を再取得して情報と理解が変わらなければ、そのprobeを休止し、残る必要な検査へ進みます。実行できる検査がなければ `no_progress` で停止し、未知と未解決項目を保持します。現在の状態確認や機械検査には自動で適用しません。資料本文の「固定」「完全」などの語句から、不変性を推定しないでください。
 
 CLIの再考は `node dist/cli.js reflect --state state.json --critic file:/absolute/path/critic.mjs --out reflected.json --ledger events.jsonl` で実行します。モジュールは `reflect(input)` を持つcriticを明示的にexportします。暗黙の提供者や有料生成接続は追加しません。
 
@@ -127,7 +129,7 @@ Point the installed skill's `references/runtime.json` at the built repository wi
 
 TOMBO is an experimental tool for checking an AI agent's understanding. It separates draft answers and planned actions into claims, evidence, open questions, and probes. New evidence updates the external state of understanding.
 
-Version 0.1 provides a TypeScript SDK, a CLI, an agent skill, two synthetic replay examples, and 48 synthetic scenarios for preparing comparisons. Two real-model comparisons failed the acceptance criteria. The second completed 31 of 36 trials without execution errors. Observation identity and explicit assessment corrections were fixed afterwards; their effect remains unverified. See the [latest comparison and limitations](docs/metacognition-evaluation-epoch2.md). TOMBO does not guarantee complete understanding, discovery of every unknown, or prevention of hallucinations.
+Version 0.1 provides a TypeScript SDK, a CLI, an agent skill, two synthetic replay examples, and 48 synthetic scenarios for preparing comparisons. All three real-model comparisons failed the acceptance criteria. The third completed 29 of 36 trials without execution errors. A later fix stops repeated reads of executor-guaranteed immutable snapshots when they add no information, while preserving unknowns. All 406 current tests and independent reviews of the stopping mechanism and transport passed. A fourth comparison is running; its effect remains unverified. See the [latest completed comparison and limitations](docs/metacognition-evaluation-epoch3.md). TOMBO does not guarantee complete understanding, discovery of every unknown, or prevention of hallucinations.
 
 ### Run the replay examples
 
@@ -142,6 +144,8 @@ Use `createTombo({ adapter })`, then `inspect(packet)`, `update(state, observati
 The development version supports `reflectionRequired: true` and `tombo.reflect(state, critic)`. A strict task needs a completed review of its current understanding before it can be ready. Critics propose lenses, gaps and probes; criticism cannot become evidence or a resolution. New observations or candidates invalidate an older review. Existing packets retain the previous contract.
 
 `runUnderstandingCheck({tombo, task, critic, executor})` runs reflection and explicit probes within the budget. Its result distinguishes `completed` from `stopped`; a pre-start cancellation returns no understanding state. Each executor call performs one probe. `update(state, observations, {deferAssessment: true})` records observations without generating an assessment. The CLI accepts an explicit critic module through `reflect --state state.json --critic file:/absolute/path/critic.mjs`.
+
+An executor may declare `Observation.staticSnapshot` only when it can guarantee an immutable source version. Repeated reads that add no information retire that probe while other required checks continue. With no remaining executable check, TOMBO stops with `no_progress` and preserves unknowns and open gaps. Do not infer immutability from source wording or apply it automatically to current-status checks or mechanical tests.
 
 The comparison harness and host driver separate regression tests, development pilots and evaluation results. A successful pilot is not evidence of general effectiveness. See the [development plan](docs/metacognition-plan.md).
 
@@ -165,6 +169,6 @@ Withdrawing evidence discards a pending assessment batch and reopens required pr
 
 ### Verification and limitations
 
-Tests cover state invariants, usage, budgets, replay, concurrency conflicts, and actual CLI calls. Structural validation does not prove semantic correctness. Compare TOMBO with a general recheck using the same model, evidence, tools, and budgets. Keep evaluation annotations away from model inputs and use independent human assessment. The two real-model comparisons failed readiness. Live HTTP-provider integration and statistical effectiveness remain unverified.
+Tests cover state invariants, usage, budgets, replay, concurrency conflicts, and actual CLI calls. Structural validation does not prove semantic correctness. Compare TOMBO with a general recheck using the same model, evidence, tools, and budgets. Keep evaluation annotations away from model inputs and use independent assessment. All three real-model comparisons failed readiness. Live HTTP-provider integration and statistical effectiveness remain unverified.
 
 The agent skill is in `skills/tombo-view/SKILL.md`. Development checks are `npm run typecheck`, `npm test`, and `npm run demo`. CI targets Linux and Windows with Node.js 22 and 24. The project uses the MIT licence. No third-party PDF or private conversation is distributed. Academic novelty has not been established.
