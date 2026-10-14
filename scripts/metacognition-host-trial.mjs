@@ -58,6 +58,7 @@ const input = createInterface({ input: process.stdin, terminal: false });
 const lines = input[Symbol.asyncIterator]();
 process.once('SIGINT', () => { bridgeFailure ??= 'host_cancelled'; input.close(); });
 const started = Date.now();
+const deadlineAt = started + elapsedCap;
 let modelCalls = 0, calls = 0, sequence = 0, bridgeFailure = null;
 const checks = [], transcript = [];
 const localUsage = { totalTokens: null, costYen: null, outputTokens: 0 };
@@ -70,7 +71,7 @@ const rejectModel = async (stage, reason, message = reason) => {
 };
 const schema = value => z.toJSONSchema(value, { unrepresentable: 'any' });
 const proposalContract = schema(proposalSchema), reflectionContract = schema(reflectionOutputSchema);
-const commonPrompt = 'Return one JSON object only, no Markdown or reasoning transcript. Use only the supplied packet and actual returned sources. Recheck your answer where needed. Each response must be at most 4000 characters. Final answers must state decision, answer, uncertainties and sourceRefs. Do not fabricate evidence. There is a shared maximum of 6 generation requests plus source checks.';
+const commonPrompt = 'Do not call tools, read files, browse, or delegate. Return one JSON object only, no Markdown or reasoning transcript. Use only the supplied packet and actual returned sources. Recheck your answer where needed. Each response must be at most 4000 characters. Final answers must state decision, answer, uncertainties and sourceRefs. Do not fabricate evidence. There is a shared maximum of 6 generation requests plus source checks.';
 const finalSchema = z.object({ decision: z.enum(['supported', 'refuted', 'unknown']), answer: z.string(), uncertainties: z.array(z.string()), sourceRefs: z.array(z.string()) }).strict();
 const baselineSchema = z.union([z.object({ action: z.literal('read'), sourceId: z.string() }).strict(), finalSchema.extend({ action: z.literal('finish') }).strict()]);
 
@@ -80,12 +81,15 @@ async function ask(stage, sdkInput) {
   const request = { sequence, stage, instructions: instructions + (stage === 'baseline' ? '' : `\n${stage === 'reflect' ? reflectionGuidance : proposalGuidance}`), packet, transcript: structuredClone(transcript), remainingCalls: requested.maxCalls - calls, input: sdkInput ?? null, responseSchema: stage === 'baseline' ? schema(baselineSchema) : stage === 'reflect' ? reflectionContract : proposalContract };
   if (JSON.stringify(request).length > 48000) throw fail('input_too_large', 'input_too_large');
   const path = join(out, `request-${sequence}.json`);
+  const bridgePath = join(out, `bridge-${sequence}.json`);
   await save(path, request);
+  await save(bridgePath, { version: 1, sequence, stage, startedAt: started, deadlineAt, model });
   await log({ kind: 'request', sequence, stage, path, request });
-  process.stdout.write(`REQUEST ${JSON.stringify({ sequence, stage, path })}\n`);
+  process.stdout.write(`REQUEST ${JSON.stringify({ sequence, stage, path, bridgePath, deadlineAt })}\n`);
   let timer;
   try {
     const line = await Promise.race([lines.next(), new Promise((_, reject) => { timer = setTimeout(() => reject(fail('trial_timeout', 'model_timeout')), Math.max(1, elapsedCap - (Date.now() - started))); })]);
+    if (Date.now() >= deadlineAt) throw fail('trial_timeout', 'model_timeout');
     if (line.done) throw fail('host_input_closed', 'invalid_input');
     await log({ kind: 'raw_reply', sequence, line: line.value });
     let reply;
@@ -93,6 +97,13 @@ async function ask(stage, sdkInput) {
     await log({ ...reply, kind: 'reply' });
     if (!reply || typeof reply !== 'object') throw fail('invalid_host_binding', 'invalid_input');
     const metadata = RunSchema.shape.model.safeParse(reply.model);
+    if (reply.error !== undefined) {
+      const validError = reply.error && typeof reply.error === 'object' && reply.error.code === 'model_error' && typeof reply.error.message === 'string' && reply.error.message.length > 0 && reply.error.message.length <= 512;
+      const validTask = reply.taskId === null || (typeof reply.taskId === 'string' && reply.taskId.trim() && !(origin === 'real-model' && reply.taskId.startsWith('fixture')));
+      if (reply.sequence !== sequence || !metadata.success || digest(metadata.data) !== digest(model) || !validError || !validTask || reply.output !== undefined) throw fail('invalid_host_binding', 'invalid_input');
+      await log({ kind: 'dispatch_failure', sequence, stage, taskId: reply.taskId, code: reply.error.code, message: reply.error.message });
+      throw fail(reply.error.code, reply.error.code);
+    }
     if (reply.sequence !== sequence || typeof reply.output !== 'string' || typeof reply.taskId !== 'string' || !reply.taskId.trim() || !metadata.success || digest(metadata.data) !== digest(model)) throw fail('invalid_host_binding', 'invalid_input');
     if (origin === 'real-model' && reply.taskId.startsWith('fixture')) throw fail('fixture_task_for_real_trial', 'invalid_input');
     if (reply.output.length > requested.maxOutputChars) throw await rejectModel(stage, 'response_character_cap', 'Response exceeds the 4000 character cap; return a shorter response.');
