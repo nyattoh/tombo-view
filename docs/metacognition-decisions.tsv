@@ -15,3 +15,5 @@ ts	phase	decision	why	evidence	result
 2026-10-14T00:10:20Z	epoch2-complete	36試行31正常終了5エラーを全件独立採点、受入FAIL・比較INCONCLUSIVE	失敗を除外せず修正版と比較時点を区別する	docs/metacognition-evaluation-epoch2.md	費用と非公開上流要求は不明
 2026-10-14T00:10:20Z	correction-integration	評価解釈の訂正と観測ID分離を統合、291試験成功、導入スキル4ファイル一致	実行不具合の根因を修正して意味効果と混同しない	results/metacognition-development/assessment-correction-root-integration.log	修正後の比較は未実施
 2026-10-14T00:10:20Z	next-data	未使用3課題族6ケースを5試験とGLM静的レビューで検証	新しい比較の資料整合と未知の両補完を確認する	results/metacognition-development/next-data-handover.md	次protocol未固定、low速度費用未実証
+2026-10-14T00:12:51.442Z	participant-profile	protocol参加設定の境界検証と実CLI試験を追加し全300試験成功	次比較の設定と実効モデルを一致させる	results/metacognition-development/participant-profile-handover.md	GLM独立レビュー待ち、low効果未実証
+2026-10-14T00:18:37.497Z	profile-review	旧設定の試験を明示構成へ直しGLM第2回pass	過去プロトコルへの暗黙依存を除く	results/metacognition-development/participant-profile-review-glm-r2-tool-free.md	次比較の凍結前、実モデル効果は未実証

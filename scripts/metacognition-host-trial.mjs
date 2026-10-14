@@ -15,6 +15,7 @@ const casesPath = option('cases', new URL('../evaluation/metacognition-cases.jso
 const protocolPath = option('protocol', new URL('../evaluation/metacognition-protocol.json', import.meta.url));
 const cases = JSON.parse(await readFile(casesPath, 'utf8'));
 const protocol = JSON.parse(await readFile(protocolPath, 'utf8'));
+const model = RunSchema.shape.model.parse(protocol.participantModel === undefined ? { provider: 'codex', name: 'gpt-6.1-sol', effort: 'medium' } : protocol.participantModel);
 const repairs = Number(option('model-repair-attempts', protocol.modelValidationRepairs?.[arm === 'baseline' ? 'baselineSyntax' : 'tomboProposal'] ?? 0));
 if (!Number.isInteger(repairs) || repairs < 0 || repairs > 2) throw new Error('Repair attempts must be 0, 1 or 2.');
 const elapsedCap = protocol.maximumElapsedMs ?? 300000;
@@ -24,7 +25,6 @@ if (digest(cases) !== protocol.caseDigest || !protocol.frozenBeforeResults) thro
 const selected = cases.find(c => c.id === caseId);
 if (!selected) throw new Error('Unknown case');
 const packet = participantPacket(selected);
-const model = { provider: 'codex', name: 'gpt-6.1-sol', effort: 'medium' };
 const requested = { capabilities: packet.capabilities, ...protocol.requested, modelRepairAttempts: repairs, maximumElapsedMs: elapsedCap };
 const tracePath = join(out, 'trace.json'), runPath = join(out, 'run.json'), resultPath = join(out, 'result.json');
 const trace = { version: 1, origin, model, caseId, arm, repeat, packetDigest: digest(packet), datasetDigest: protocol.caseDigest, protocolDigest: digest(protocol), events: [], notes: ['Host task IDs attest delegated generations. Upstream API calls, billing, tokens and hidden retries are unknown.', 'SDK local apply metadata outputTokens=0 is an accounting placeholder. Actual output character caps are enforced at the bridge.', 'Synthetic source checks execute locally through executeTool. No paid API is called by this driver.'] };
