@@ -41,7 +41,7 @@ export async function runGuardedHostSession({ tools, coordinateDispatch, createT
   };
   const persist = async () => {
     const json = JSON.stringify(dispatches);
-    await execute(`node --input-type=module -e ${quote(`import {writeFileSync} from 'node:fs'; writeFileSync(${JSON.stringify(out + '\\dispatch-events.json')}, ${JSON.stringify(json)} + '\\n');`)}`);
+    await execute(`node --input-type=module -e ${quote(`import {writeFileSync} from 'node:fs'; writeFileSync(${JSON.stringify(out + '\\dispatch-events.json')}, ${JSON.stringify(json)} + '\\n', {flag:'wx'});`)}`);
   };
   try { while (!terminal) {
     if ((await ready()).terminal) break;

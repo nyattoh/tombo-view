@@ -8,7 +8,7 @@ import { runGuardedHostSession } from '../scripts/metacognition-host-session.mjs
 import { coordinateDispatch } from '../scripts/metacognition-dispatch.mjs';
 import { createT3Transport } from '../scripts/metacognition-t3-transport.mjs';
 
-async function fixture({ terminal = false, expired = false, partial = false, existing = false, truncated = false } = {}) {
+async function fixture({ terminal = false, expired = false, partial = false, existing = false, truncated = false, auditCollision = false } = {}) {
   const root = mkdtempSync(join(tmpdir(), 'tombo-session-'));
   const out = join(root, 'results', 'framing', 'sample', 'tombo-r1');
   const replies = [], accepted = [], observations = [];
@@ -16,7 +16,7 @@ async function fixture({ terminal = false, expired = false, partial = false, exi
   let complete = terminal, polls = 0, truncatedOnce = false;
   const save = (name, value) => writeFileSync(join(out, name), JSON.stringify(value));
   const publish = sequence => {
-    save(`request-${sequence}.json`, { sequence, stage: sequence === 1 ? 'inspect' : 'update', instructions: truncated ? 'Š¿'.repeat(47000) : 'No tools. Return JSON.', marker: `exact-${sequence}` });
+    save(`request-${sequence}.json`, { sequence, stage: sequence === 1 ? 'inspect' : 'update', instructions: truncated ? 'ã‚'.repeat(47000) : 'No tools. Return JSON.', marker: `exact-${sequence}` });
     save(`bridge-${sequence}.json`, { version: 1, sequence, stage: sequence === 1 ? 'inspect' : 'update', startedAt: Date.now(), deadlineAt: expired ? Date.now() - 1 : Date.now() + 10000, model });
   };
   const finish = () => { complete = true; save('run.json', { status: 'finished', replies }); };
@@ -26,6 +26,7 @@ async function fixture({ terminal = false, expired = false, partial = false, exi
       if (cmd.startsWith('node scripts/')) {
         mkdirSync(out, { recursive: true });
         publish(1);
+        if (auditCollision) writeFileSync(join(out, 'dispatch-events.json'), Buffer.from([0, 255, 13, 10, 65]));
         if (partial) writeFileSync(join(out, 'bridge-1.json'), '{"sequence":');
         if (terminal) finish();
         return { session_id: 7, output: '\x1b[32mREQUEST {"sequence":1,"path":"wrapped\r\npath"}\x1b[0m\n' };
@@ -57,7 +58,7 @@ async function fixture({ terminal = false, expired = false, partial = false, exi
   const delegationTools = {
     delegate_task: async input => {
       const request = JSON.parse(input.task.slice(input.task.indexOf('\n') + 1));
-      if (truncated) assert.equal(request.instructions, 'Š¿'.repeat(47000));
+      if (truncated) assert.equal(request.instructions, 'ã‚'.repeat(47000));
       accepted.push({ id: input.clientRequestId, marker: request.marker });
       return { taskId: `actual-${request.sequence}`, providerInstanceId: 'codex', model: 'test-model' };
     },
@@ -67,6 +68,12 @@ async function fixture({ terminal = false, expired = false, partial = false, exi
   try {
     const run = await runGuardedHostSession({ tools, coordinateDispatch, createT3Transport, config: { repositoryRoot: root, directory: 'results/framing', caseId: 'sample', arm: 'tombo', repeat: 1, casesPath: 'unused', protocolPath: 'unused', target: { providerInstanceId: 'codex', model: 'test-model' }, clientRequestId: 'framing', delegationTools }, onEvent: event => observations.push(event) });
     return { run, accepted, observations, dispatches: JSON.parse(readFileSync(join(out, 'dispatch-events.json'), 'utf8')) };
+  } catch (error) {
+    if (auditCollision) {
+      error.retainedAudit = readFileSync(join(out, 'dispatch-events.json'));
+      error.finishedRun = JSON.parse(readFileSync(join(out, 'run.json'), 'utf8'));
+    }
+    throw error;
   } finally { rmSync(root, { recursive: true, force: true }); }
 }
 
@@ -105,4 +112,14 @@ test('truncated tool output is recovered from complete machine files before dele
   const value = await fixture({ truncated: true });
   assert.deepEqual(value.accepted, [{ id: 'framing-1', marker: 'exact-1' }, { id: 'framing-2', marker: 'exact-2' }]);
   assert.equal(value.run.replies[1].output, '{\"exact\":\"second\"}');
+});
+
+test('an audit file appearing after producer start is retained byte for byte', async () => {
+  await assert.rejects(fixture({ auditCollision: true }), error => {
+    assert.match(String(error.stderr ?? error.message), /EEXIST/);
+    assert.deepEqual(error.retainedAudit, Buffer.from([0, 255, 13, 10, 65]));
+    assert.equal(error.finishedRun.status, 'finished');
+    assert.equal(error.finishedRun.replies[1].output, '{"exact":"second"}');
+    return true;
+  });
 });
