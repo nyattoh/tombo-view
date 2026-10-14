@@ -72,13 +72,14 @@ const rejectModel = async (stage, reason, message = reason) => {
 const schema = value => z.toJSONSchema(value, { unrepresentable: 'any' });
 const proposalContract = schema(proposalSchema), reflectionContract = schema(reflectionOutputSchema);
 const commonPrompt = 'Do not call tools, read files, browse, or delegate. Return one JSON object only, no Markdown or reasoning transcript. Use only the supplied packet and actual returned sources. Recheck your answer where needed. Each response must be at most 4000 characters. Final answers must state decision, answer, uncertainties and sourceRefs. Do not fabricate evidence. There is a shared maximum of 6 generation requests plus source checks.';
+const recordProbeContract = ' A record probe requires read_record and sourceGroups containing exactly one packet.tools ID whose capability is read_record. Tool IDs identify executable sources. Evidence IDs and evidence sourceGroup values, including context, do not identify executable sources unless declared as matching tools. Do not substitute an undeclared ID automatically.';
 const finalSchema = z.object({ decision: z.enum(['supported', 'refuted', 'unknown']), answer: z.string(), uncertainties: z.array(z.string()), sourceRefs: z.array(z.string()) }).strict();
 const baselineSchema = z.union([z.object({ action: z.literal('read'), sourceId: z.string() }).strict(), finalSchema.extend({ action: z.literal('finish') }).strict()]);
 
 async function ask(stage, sdkInput) {
   reserve(); modelCalls++; sequence++;
-  const instructions = stage === 'baseline' ? commonPrompt + ' Choose {"action":"read","sourceId":"declared source ID"} to retrieve a record, or {"action":"finish","decision":"supported|refuted|unknown","answer":"text","uncertainties":[],"sourceRefs":[]}. You may review again after each response.' : commonPrompt + (stage === 'reflect' ? ' Return ReflectionOutput matching the schema. Echo the exact input.binding. Review all current claims when completion is completed. Propose candidate lenses, gaps and probes only. Use inconclusive with limitations if review is incomplete. Usage may be omitted and is ignored.' : ' Return the Proposal object itself, without a proposal envelope or usage. Claim role must be observation, assumption, hypothesis or answer_claim; scope is trial. Lenses carry origin initial or proposed and status candidate, active or retired. Gaps triggerRefs must reference actual claim/evidence IDs (initial evidence e-context) or task conditions. Gap/probe references must be reciprocal. A record probe requires read_record and sourceGroups containing exactly one declared tool ID. Record tool IDs identify sources, while evidence IDs identify individual observations. Copy evidence IDs from input.observations or input.state.evidence for assessments and resolutions, with scopeMatched. Do not invent IDs or calculate hashes. New supported answer_claim text can supply a corrected final answer. Do not change claims by assuming the desired verdict.');
-  const request = { sequence, stage, instructions: instructions + (stage === 'baseline' ? '' : `\n${stage === 'reflect' ? reflectionGuidance : proposalGuidance}`), packet, transcript: structuredClone(transcript), remainingCalls: requested.maxCalls - calls, input: sdkInput ?? null, responseSchema: stage === 'baseline' ? schema(baselineSchema) : stage === 'reflect' ? reflectionContract : proposalContract };
+  const instructions = stage === 'baseline' ? commonPrompt + ' Choose {"action":"read","sourceId":"declared source ID"} to retrieve a record, or {"action":"finish","decision":"supported|refuted|unknown","answer":"text","uncertainties":[],"sourceRefs":[]}. You may review again after each response.' : commonPrompt + (stage === 'reflect' ? ' Return ReflectionOutput matching the schema. Echo the exact input.binding. Review all current claims when completion is completed. Propose candidate lenses, gaps and probes only. Use inconclusive with limitations if review is incomplete. Usage may be omitted and is ignored.' : ' Return the Proposal object itself, without a proposal envelope or usage. Claim role must be observation, assumption, hypothesis or answer_claim; scope is trial. Lenses carry origin initial or proposed and status candidate, active or retired. Gaps triggerRefs must reference actual claim/evidence IDs (initial evidence e-context) or task conditions. Gap/probe references must be reciprocal. Copy evidence IDs from input.observations or input.state.evidence for assessments and resolutions, with scopeMatched. Do not invent IDs or calculate hashes. New supported answer_claim text can supply a corrected final answer. Do not change claims by assuming the desired verdict.');
+  const request = { sequence, stage, instructions: instructions + (stage === 'baseline' ? '' : recordProbeContract + `\n${stage === 'reflect' ? reflectionGuidance : proposalGuidance}`), packet, transcript: structuredClone(transcript), remainingCalls: requested.maxCalls - calls, input: sdkInput ?? null, responseSchema: stage === 'baseline' ? schema(baselineSchema) : stage === 'reflect' ? reflectionContract : proposalContract };
   if (JSON.stringify(request).length > 48000) throw fail('input_too_large', 'input_too_large');
   const path = join(out, `request-${sequence}.json`);
   const bridgePath = join(out, `bridge-${sequence}.json`);
@@ -108,7 +109,21 @@ async function ask(stage, sdkInput) {
     if (origin === 'real-model' && reply.taskId.startsWith('fixture')) throw fail('fixture_task_for_real_trial', 'invalid_input');
     if (reply.output.length > requested.maxOutputChars) throw await rejectModel(stage, 'response_character_cap', 'Response exceeds the 4000 character cap; return a shorter response.');
     transcript.push({ kind: 'model', stage, output: reply.output });
-    try { return JSON.parse(reply.output); } catch { throw await rejectModel(stage, 'invalid_response_json', 'Return a valid JSON object without Markdown.'); }
+    let output;
+    try { output = JSON.parse(reply.output); } catch { throw await rejectModel(stage, 'invalid_response_json', 'Return a valid JSON object without Markdown.'); }
+    if (stage !== 'baseline') {
+      const parsed = (stage === 'reflect' ? reflectionOutputSchema : proposalSchema).safeParse(stage === 'reflect' ? { ...output, usage: localUsage } : output);
+      if (parsed.success) {
+        const proposal = stage === 'reflect' ? parsed.data.proposal : parsed.data;
+        for (const probe of proposal.probes ?? []) {
+          if (probe.requiredCapability !== 'read_record') continue;
+          if (probe.sourceGroups.length !== 1 || !packet.tools.some(tool => tool.id === probe.sourceGroups[0] && tool.capability === 'read_record')) {
+            throw await rejectModel(stage, 'invalid_record_probe', 'Each read_record probe must have exactly one sourceGroups entry matching a packet.tools ID with capability read_record. Evidence IDs and context are not executable sources unless declared as matching tools. Submit a complete corrected response.');
+          }
+        }
+      }
+    }
+    return output;
   } finally { clearTimeout(timer); }
 }
 
