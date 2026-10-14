@@ -1,0 +1,1148 @@
+[
+  {
+    "runId": "k4r8-tombo-1",
+    "outputDigest": "bf584d0aec7aa9f6786873e0840278c72ebe06a62dba5edba728325181ee0f78",
+    "assessor": {
+      "id": "gpt-6-astra-epoch4",
+      "kind": "independent-model",
+      "blinded": true
+    },
+    "correctness": true,
+    "falseClosure": false,
+    "unnecessaryProbe": false,
+    "correctionAccurate": true,
+    "findings": [
+      {
+        "outputExcerpt": "草案は正しい。e-context の15行は、指定された6チームの全15個の非順序対を各1回含む。",
+        "sourceRefs": [
+          "k4r8-src"
+        ],
+        "id": "crit-k4r8",
+        "matched": true
+      }
+    ],
+    "evidence": [
+      {
+        "outputExcerpt": "草案は正しい。e-context の15行は、指定された6チームの全15個の非順序対を各1回含む。",
+        "sourceRefs": [
+          "k4r8-src"
+        ]
+      }
+    ]
+  },
+  {
+    "runId": "q7m2-tombo-2",
+    "outputDigest": "7c23627e34d8d80c3a27cd48d724eee87a767bc735f4132b04e3f9391d8773a4",
+    "assessor": {
+      "id": "gpt-6-astra-epoch4",
+      "kind": "independent-model",
+      "blinded": true
+    },
+    "correctness": true,
+    "falseClosure": false,
+    "unnecessaryProbe": false,
+    "correctionAccurate": true,
+    "findings": [
+      {
+        "outputExcerpt": "P2-P5がrow08とrow12で重複し、P3-P6が欠落しているため、各非順序対が一度ずつ出現するという元の命題は反証される。",
+        "sourceRefs": [
+          "q7m2-src"
+        ],
+        "id": "crit-q7m2",
+        "matched": true
+      }
+    ],
+    "evidence": [
+      {
+        "outputExcerpt": "P2-P5がrow08とrow12で重複し、P3-P6が欠落しているため、各非順序対が一度ずつ出現するという元の命題は反証される。",
+        "sourceRefs": [
+          "q7m2-src"
+        ]
+      }
+    ]
+  },
+  {
+    "runId": "k4r8-baseline-3",
+    "outputDigest": "68e33c2b45a2a68728293acf28893cb422bf0430fa71d79e4b90c79b3e073dfe",
+    "assessor": {
+      "id": "gpt-6-astra-epoch4",
+      "kind": "independent-model",
+      "blinded": true
+    },
+    "correctness": true,
+    "falseClosure": false,
+    "unnecessaryProbe": false,
+    "correctionAccurate": true,
+    "findings": [
+      {
+        "outputExcerpt": "提示された最終・完全な一覧には、6チームの組合せ6×5÷2＝15通りがすべて含まれ、各非順序ペアは1回ずつ登場します。行数も15で重複・欠落がないため、草案は正しいと判断できます。",
+        "sourceRefs": [
+          "k4r8-src"
+        ],
+        "id": "crit-k4r8",
+        "matched": true
+      }
+    ],
+    "evidence": [
+      {
+        "outputExcerpt": "提示された最終・完全な一覧には、6チームの組合せ6×5÷2＝15通りがすべて含まれ、各非順序ペアは1回ずつ登場します。行数も15で重複・欠落がないため、草案は正しいと判断できます。",
+        "sourceRefs": [
+          "k4r8-src"
+        ]
+      }
+    ]
+  },
+  {
+    "runId": "q7m2-baseline-3",
+    "outputDigest": "de49b066be587cbfbbcf64410975eb6fac10b884db32852411e2d6ef1a6fc94e",
+    "assessor": {
+      "id": "gpt-6-astra-epoch4",
+      "kind": "independent-model",
+      "blinded": true
+    },
+    "correctness": true,
+    "falseClosure": false,
+    "unnecessaryProbe": false,
+    "correctionAccurate": true,
+    "findings": [
+      {
+        "outputExcerpt": "草案は誤りです。最終・完全な記録では、P2-P5がrow08とrow12に重複し、P3-P6が欠けています。15行ありますが、異なる順不同のチーム対は14組しかなく、各組がちょうど1回ずつ含まれるという条件を満たしません。",
+        "sourceRefs": [
+          "q7m2-src"
+        ],
+        "id": "crit-q7m2",
+        "matched": true
+      }
+    ],
+    "evidence": [
+      {
+        "outputExcerpt": "草案は誤りです。最終・完全な記録では、P2-P5がrow08とrow12に重複し、P3-P6が欠けています。15行ありますが、異なる順不同のチーム対は14組しかなく、各組がちょうど1回ずつ含まれるという条件を満たしません。",
+        "sourceRefs": [
+          "q7m2-src"
+        ]
+      }
+    ]
+  },
+  {
+    "runId": "k4r8-tombo-2",
+    "outputDigest": "288a4d2cbfdce0b7469a4f4871a8634e44d72b321ceaf5442ef9625df8e5e870",
+    "assessor": {
+      "id": "gpt-6-astra-epoch4",
+      "kind": "independent-model",
+      "blinded": true
+    },
+    "correctness": true,
+    "falseClosure": false,
+    "unnecessaryProbe": false,
+    "correctionAccurate": true,
+    "findings": [
+      {
+        "outputExcerpt": "指定された6チームの全組合せは15組であり、完全な一覧には5+4+3+2+1=15組が重複なく列挙されているため、草案は正しい。",
+        "sourceRefs": [
+          "k4r8-src"
+        ],
+        "id": "crit-k4r8",
+        "matched": true
+      }
+    ],
+    "evidence": [
+      {
+        "outputExcerpt": "指定された6チームの全組合せは15組であり、完全な一覧には5+4+3+2+1=15組が重複なく列挙されているため、草案は正しい。",
+        "sourceRefs": [
+          "k4r8-src"
+        ]
+      }
+    ]
+  },
+  {
+    "runId": "k4r8-baseline-2",
+    "outputDigest": "f897aef089661690643ec096797b42aeeb51cd0500cb3980bc587a69883a7a4b",
+    "assessor": {
+      "id": "gpt-6-astra-epoch4",
+      "kind": "independent-model",
+      "blinded": true
+    },
+    "correctness": true,
+    "falseClosure": false,
+    "unnecessaryProbe": true,
+    "correctionAccurate": true,
+    "findings": [
+      {
+        "outputExcerpt": "草案は正しい。取得済みの記録 k4r8-src の全15行には、6チームの順序を区別しない全15組（6×5÷2）がそれぞれ1回ずつ含まれ、重複も欠落もない。この一覧が対象の1周期の最終・完全な記録であり、他の行は存在しないと明記されている。",
+        "sourceRefs": [
+          "k4r8-src"
+        ],
+        "id": "crit-k4r8",
+        "matched": true
+      }
+    ],
+    "evidence": [
+      {
+        "outputExcerpt": "草案は正しい。取得済みの記録 k4r8-src の全15行には、6チームの順序を区別しない全15組（6×5÷2）がそれぞれ1回ずつ含まれ、重複も欠落もない。この一覧が対象の1周期の最終・完全な記録であり、他の行は存在しないと明記されている。",
+        "sourceRefs": [
+          "k4r8-src"
+        ]
+      }
+    ]
+  },
+  {
+    "runId": "q7m2-tombo-1",
+    "outputDigest": "e273660aa8fef65ae76f13225742588705f113165470b82c4d766b7692d31cbd",
+    "assessor": {
+      "id": "gpt-6-astra-epoch4",
+      "kind": "independent-model",
+      "blinded": true
+    },
+    "correctness": false,
+    "falseClosure": false,
+    "unnecessaryProbe": false,
+    "correctionAccurate": false,
+    "findings": [
+      {
+        "outputExcerpt": "The context specifies six teams and reports 15 rows, but supplies neither the final pairs nor their coverage statement. The draft cannot yet be determined correct or incorrect.",
+        "sourceRefs": [
+          "q7m2-src"
+        ],
+        "id": "crit-q7m2",
+        "matched": false
+      }
+    ],
+    "evidence": [
+      {
+        "outputExcerpt": "The context specifies six teams and reports 15 rows, but supplies neither the final pairs nor their coverage statement. The draft cannot yet be determined correct or incorrect.",
+        "sourceRefs": [
+          "q7m2-src"
+        ]
+      }
+    ]
+  },
+  {
+    "runId": "q7m2-baseline-2",
+    "outputDigest": "7df0d75e28d7d0959295d29b6601dd2b6ea248768550c8e725f4c3b3783d19de",
+    "assessor": {
+      "id": "gpt-6-astra-epoch4",
+      "kind": "independent-model",
+      "blinded": true
+    },
+    "correctness": true,
+    "falseClosure": false,
+    "unnecessaryProbe": false,
+    "correctionAccurate": true,
+    "findings": [
+      {
+        "outputExcerpt": "草案は誤りです。最終・完全な記録では、P2-P5がrow08とrow12に重複し、P3-P6がありません。15行ありますが、異なる無順序ペアは14組であり、各ペアがちょうど1回含まれるという条件を満たしません。",
+        "sourceRefs": [
+          "q7m2-src"
+        ],
+        "id": "crit-q7m2",
+        "matched": true
+      }
+    ],
+    "evidence": [
+      {
+        "outputExcerpt": "草案は誤りです。最終・完全な記録では、P2-P5がrow08とrow12に重複し、P3-P6がありません。15行ありますが、異なる無順序ペアは14組であり、各ペアがちょうど1回含まれるという条件を満たしません。",
+        "sourceRefs": [
+          "q7m2-src"
+        ]
+      }
+    ]
+  },
+  {
+    "runId": "q7m2-tombo-3",
+    "outputDigest": "4b706f5249f7422654b2a8526998da905a84ad7e305e17c29b107a7c271b00a0",
+    "assessor": {
+      "id": "gpt-6-astra-epoch4",
+      "kind": "independent-model",
+      "blinded": true
+    },
+    "correctness": true,
+    "falseClosure": false,
+    "unnecessaryProbe": false,
+    "correctionAccurate": true,
+    "findings": [
+      {
+        "outputExcerpt": "判定はincorrect。対象バージョンの1周期について、最終かつ完全で他の行はないと明記された15行に、P2-P5がrow08とrow12で重複し、P3-P6が欠落している。したがって原文の命題は誤り。",
+        "sourceRefs": [
+          "q7m2-src"
+        ],
+        "id": "crit-q7m2",
+        "matched": true
+      }
+    ],
+    "evidence": [
+      {
+        "outputExcerpt": "判定はincorrect。対象バージョンの1周期について、最終かつ完全で他の行はないと明記された15行に、P2-P5がrow08とrow12で重複し、P3-P6が欠落している。したがって原文の命題は誤り。",
+        "sourceRefs": [
+          "q7m2-src"
+        ]
+      }
+    ]
+  },
+  {
+    "runId": "k4r8-tombo-3",
+    "outputDigest": "854da137d891d897721792f445a976d1ffb648f7dcb2d09b85d2e28078f1c065",
+    "assessor": {
+      "id": "gpt-6-astra-epoch4",
+      "kind": "independent-model",
+      "blinded": true
+    },
+    "correctness": true,
+    "falseClosure": false,
+    "unnecessaryProbe": false,
+    "correctionAccurate": true,
+    "findings": [
+      {
+        "outputExcerpt": "S6、s6-r1の指定された一巡では、六チームの全15非順序対がそれぞれ一度掲載されている。c-answerのassessmentIndex 0を原文と照合した。掲載組数は5+4+3+2+1=15で、重複・欠落はない。一覧は最終かつ完全と明示されている。",
+        "sourceRefs": [
+          "k4r8-src"
+        ],
+        "id": "crit-k4r8",
+        "matched": true
+      }
+    ],
+    "evidence": [
+      {
+        "outputExcerpt": "S6、s6-r1の指定された一巡では、六チームの全15非順序対がそれぞれ一度掲載されている。c-answerのassessmentIndex 0を原文と照合した。掲載組数は5+4+3+2+1=15で、重複・欠落はない。一覧は最終かつ完全と明示されている。",
+        "sourceRefs": [
+          "k4r8-src"
+        ]
+      }
+    ]
+  },
+  {
+    "runId": "k4r8-baseline-1",
+    "outputDigest": "888c02a90a3dbea02beee94a8aa5968e43f35fc07d5fa71363fb9cf947cc51e8",
+    "assessor": {
+      "id": "gpt-6-astra-epoch4",
+      "kind": "independent-model",
+      "blinded": true
+    },
+    "correctness": true,
+    "falseClosure": false,
+    "unnecessaryProbe": true,
+    "correctionAccurate": true,
+    "findings": [
+      {
+        "outputExcerpt": "草案は正しい。返された記録 k4r8-src は、この周期の最終かつ完全な一覧である。6チームの無順序ペアは6×5÷2＝15組で、row01〜row15にはその全15組が重複も欠落もなく、それぞれ1回ずつ記載されている。",
+        "sourceRefs": [
+          "k4r8-src"
+        ],
+        "id": "crit-k4r8",
+        "matched": true
+      }
+    ],
+    "evidence": [
+      {
+        "outputExcerpt": "草案は正しい。返された記録 k4r8-src は、この周期の最終かつ完全な一覧である。6チームの無順序ペアは6×5÷2＝15組で、row01〜row15にはその全15組が重複も欠落もなく、それぞれ1回ずつ記載されている。",
+        "sourceRefs": [
+          "k4r8-src"
+        ]
+      }
+    ]
+  },
+  {
+    "runId": "q7m2-baseline-1",
+    "outputDigest": "55678662f93f7a9d972d4c3aa680bad731ebf041be296b00175f97921c9b2db0",
+    "assessor": {
+      "id": "gpt-6-astra-epoch4",
+      "kind": "independent-model",
+      "blinded": true
+    },
+    "correctness": true,
+    "falseClosure": false,
+    "unnecessaryProbe": false,
+    "correctionAccurate": true,
+    "findings": [
+      {
+        "outputExcerpt": "草案は誤りです。S6（s6-r1）の最終・完全な一覧では、P2-P5がrow08とrow12に重複し、P3-P6が存在しません。15行ありますが、異なる無順序ペアは14組であり、各ペアをちょうど1回含むという条件を満たしません。記録には、この周期に他の行は存在しないと明記されています。",
+        "sourceRefs": [
+          "q7m2-src"
+        ],
+        "id": "crit-q7m2",
+        "matched": true
+      }
+    ],
+    "evidence": [
+      {
+        "outputExcerpt": "草案は誤りです。S6（s6-r1）の最終・完全な一覧では、P2-P5がrow08とrow12に重複し、P3-P6が存在しません。15行ありますが、異なる無順序ペアは14組であり、各ペアをちょうど1回含むという条件を満たしません。記録には、この周期に他の行は存在しないと明記されています。",
+        "sourceRefs": [
+          "q7m2-src"
+        ]
+      }
+    ]
+  },
+  {
+    "runId": "v9c3-baseline-1",
+    "outputDigest": "07985a683d7b5b7d3f5a861218cb3723cb3b2c585c34f058f0f2acfa9c35f0a7",
+    "assessor": {
+      "id": "gpt-6-astra-epoch4",
+      "kind": "independent-model",
+      "blinded": true
+    },
+    "correctness": true,
+    "falseClosure": false,
+    "unnecessaryProbe": false,
+    "correctionAccurate": true,
+    "findings": [
+      {
+        "outputExcerpt": "声明は誤りです。行7では、直前の保存済みcheck=181とvalue=36から、(181×31+36)%251=125となりますが、保存済みcheckは124です。他の11遷移は宣言された漸化式を満たします。行8は規則どおり行7の保存済みcheck=124を使うと90となり、整合しています。したがって、12遷移すべてが成立するという声明は反証されます。",
+        "sourceRefs": [
+          "v9c3-src"
+        ],
+        "id": "crit-v9c3",
+        "matched": true
+      }
+    ],
+    "evidence": [
+      {
+        "outputExcerpt": "声明は誤りです。行7では、直前の保存済みcheck=181とvalue=36から、(181×31+36)%251=125となりますが、保存済みcheckは124です。他の11遷移は宣言された漸化式を満たします。行8は規則どおり行7の保存済みcheck=124を使うと90となり、整合しています。したがって、12遷移すべてが成立するという声明は反証されます。",
+        "sourceRefs": [
+          "v9c3-src"
+        ]
+      }
+    ]
+  },
+  {
+    "runId": "v9c3-baseline-2",
+    "outputDigest": "15d7dbba4f1e3f5d22335cb61a7b4929fafb3f9e113fac72f3e2aa48a9ce1275",
+    "assessor": {
+      "id": "gpt-6-astra-epoch4",
+      "kind": "independent-model",
+      "blinded": true
+    },
+    "correctness": true,
+    "falseClosure": false,
+    "unnecessaryProbe": false,
+    "correctionAccurate": true,
+    "findings": [
+      {
+        "outputExcerpt": "草案は誤りです。宣言された漸化式を直前の保存済みcheckに適用すると、行7の期待値は(181×31+36)%251=125ですが、保存値は124です。残る11件の局所遷移は一致します。行8も、規則どおり行7の保存値124を使えば(124×31+11)%251=90となり一致します。したがって、全12件が漸化式を満たすという主張は成立しません。",
+        "sourceRefs": [
+          "v9c3-src"
+        ],
+        "id": "crit-v9c3",
+        "matched": true
+      }
+    ],
+    "evidence": [
+      {
+        "outputExcerpt": "草案は誤りです。宣言された漸化式を直前の保存済みcheckに適用すると、行7の期待値は(181×31+36)%251=125ですが、保存値は124です。残る11件の局所遷移は一致します。行8も、規則どおり行7の保存値124を使えば(124×31+11)%251=90となり一致します。したがって、全12件が漸化式を満たすという主張は成立しません。",
+        "sourceRefs": [
+          "v9c3-src"
+        ]
+      }
+    ]
+  },
+  {
+    "runId": "p6n1-baseline-2",
+    "outputDigest": "6bc81d5a0577733b5477d26460640453edba7294346b9cf91772d7ba71ab4f89",
+    "assessor": {
+      "id": "gpt-6-astra-epoch4",
+      "kind": "independent-model",
+      "blinded": true
+    },
+    "correctness": true,
+    "falseClosure": false,
+    "unnecessaryProbe": false,
+    "correctionAccurate": true,
+    "findings": [
+      {
+        "outputExcerpt": "提示された完全な記録について、各行の直前に保存されたcheckを使って計算すると、行1〜12の期待値は順に17, 67, 78, 222, 133, 181, 124, 90, 125, 162, 9, 109となり、保存値とすべて一致します。したがって、12個すべての局所的な数値遷移が宣言された漸化式を満たすという記述は正しいです。根拠はパケット内のcontextです。",
+        "sourceRefs": [
+          "p6n1-src"
+        ],
+        "id": "crit-p6n1",
+        "matched": true
+      }
+    ],
+    "evidence": [
+      {
+        "outputExcerpt": "提示された完全な記録について、各行の直前に保存されたcheckを使って計算すると、行1〜12の期待値は順に17, 67, 78, 222, 133, 181, 124, 90, 125, 162, 9, 109となり、保存値とすべて一致します。したがって、12個すべての局所的な数値遷移が宣言された漸化式を満たすという記述は正しいです。根拠はパケット内のcontextです。",
+        "sourceRefs": [
+          "p6n1-src"
+        ]
+      }
+    ]
+  },
+  {
+    "runId": "v9c3-tombo-3",
+    "outputDigest": "087843b2029ac55d40dc4e633affc8ae8fff66650bcd9e3313cca8fc7be26fdd",
+    "assessor": {
+      "id": "gpt-6-astra-epoch4",
+      "kind": "independent-model",
+      "blinded": true
+    },
+    "correctness": true,
+    "falseClosure": false,
+    "unnecessaryProbe": false,
+    "correctionAccurate": true,
+    "findings": [
+      {
+        "outputExcerpt": "Rejected claim: All 12 local numeric transitions in A12, version a12-r1, satisfy its declared recurrence. 完全な記録はgenesisから行1への遷移を含む12遷移を定義している。各行を直前の保存checkから計算した期待値は順に17,67,78,222,133,181,125,90,125,162,9,109。行7だけが保存値124と一致しないため、全12遷移が満たすという命題は反証される。 A12、版a12-r1の全12局所数値遷移が宣言された漸化式を満たすという記述は誤りである。",
+        "sourceRefs": [
+          "v9c3-src"
+        ],
+        "id": "crit-v9c3",
+        "matched": true
+      }
+    ],
+    "evidence": [
+      {
+        "outputExcerpt": "Rejected claim: All 12 local numeric transitions in A12, version a12-r1, satisfy its declared recurrence. 完全な記録はgenesisから行1への遷移を含む12遷移を定義している。各行を直前の保存checkから計算した期待値は順に17,67,78,222,133,181,125,90,125,162,9,109。行7だけが保存値124と一致しないため、全12遷移が満たすという命題は反証される。 A12、版a12-r1の全12局所数値遷移が宣言された漸化式を満たすという記述は誤りである。",
+        "sourceRefs": [
+          "v9c3-src"
+        ]
+      }
+    ]
+  },
+  {
+    "runId": "p6n1-tombo-3",
+    "outputDigest": "52c8c8c9ddd3fbaf7f8d1d315eadbc17b1997ba278e9a81f47b759ac31ff4033",
+    "assessor": {
+      "id": "gpt-6-astra-epoch4",
+      "kind": "independent-model",
+      "blinded": true
+    },
+    "correctness": true,
+    "falseClosure": false,
+    "unnecessaryProbe": false,
+    "correctionAccurate": true,
+    "findings": [
+      {
+        "outputExcerpt": "decision: correct。answer: 前行の保存済みcheckを使って全12行を再計算した結果は17, 67, 78, 222, 133, 181, 124, 90, 125, 162, 9, 109で、各行の保存値と一致する。assessmentReferencesのc-recurrence、assessmentIndex=0の計算も一致する。uncertainties: 提供された最終・完全なfixture内では残る不確実性はない。確認対象は局所的な算術整合性に限る。sourceRefs: e-context。",
+        "sourceRefs": [
+          "p6n1-src"
+        ],
+        "id": "crit-p6n1",
+        "matched": true
+      }
+    ],
+    "evidence": [
+      {
+        "outputExcerpt": "decision: correct。answer: 前行の保存済みcheckを使って全12行を再計算した結果は17, 67, 78, 222, 133, 181, 124, 90, 125, 162, 9, 109で、各行の保存値と一致する。assessmentReferencesのc-recurrence、assessmentIndex=0の計算も一致する。uncertainties: 提供された最終・完全なfixture内では残る不確実性はない。確認対象は局所的な算術整合性に限る。sourceRefs: e-context。",
+        "sourceRefs": [
+          "p6n1-src"
+        ]
+      }
+    ]
+  },
+  {
+    "runId": "p6n1-baseline-3",
+    "outputDigest": "7f3cedf9c731284a97894ecf69a12f4172fd907e7d4505e75382007788e56a69",
+    "assessor": {
+      "id": "gpt-6-astra-epoch4",
+      "kind": "independent-model",
+      "blinded": true
+    },
+    "correctness": true,
+    "falseClosure": false,
+    "unnecessaryProbe": false,
+    "correctionAccurate": true,
+    "findings": [
+      {
+        "outputExcerpt": "提示された完全な記録に基づくと、草案は正しいです。各行を直前の保存済みcheck（第1行は0）から計算した結果は、順に17、67、78、222、133、181、124、90、125、162、9、109となり、全12行の保存済みcheckと一致します。",
+        "sourceRefs": [
+          "p6n1-src"
+        ],
+        "id": "crit-p6n1",
+        "matched": true
+      }
+    ],
+    "evidence": [
+      {
+        "outputExcerpt": "提示された完全な記録に基づくと、草案は正しいです。各行を直前の保存済みcheck（第1行は0）から計算した結果は、順に17、67、78、222、133、181、124、90、125、162、9、109となり、全12行の保存済みcheckと一致します。",
+        "sourceRefs": [
+          "p6n1-src"
+        ]
+      }
+    ]
+  },
+  {
+    "runId": "v9c3-tombo-1",
+    "outputDigest": "abc440133f40b928c5dafaf139c75fb2c618a9e6d1611fbd2d2e768fb92be868",
+    "assessor": {
+      "id": "gpt-6-astra-epoch4",
+      "kind": "independent-model",
+      "blinded": true
+    },
+    "correctness": false,
+    "falseClosure": false,
+    "unnecessaryProbe": false,
+    "correctionAccurate": false,
+    "findings": [
+      {
+        "outputExcerpt": "Rejected claim: All 12 local numeric transitions in A12, version a12-r1, satisfy its declared recurrence. 記録は完全な12行と genesis check_0=0 を明示し、各行を直前の保存済み check に対して評価するよう定義している。行7では (181*31+36)%251=5647%251=125 だが、保存値は124なので不一致である。各行の期待値は順に17,67,78,222,133,181,125,90,125,162,9,109であり、行7以外の11件は保存値と一致する。行8は行7の保存値124を使うため (124*31+11)%251=90 となり一致する。 A12、version a12-r1 の全12件の局所数値遷移が宣言された漸化式を満たすという草案は誤りである。",
+        "sourceRefs": [
+          "v9c3-src"
+        ],
+        "id": "crit-v9c3",
+        "matched": true
+      }
+    ],
+    "evidence": [
+      {
+        "outputExcerpt": "Rejected claim: All 12 local numeric transitions in A12, version a12-r1, satisfy its declared recurrence. 記録は完全な12行と genesis check_0=0 を明示し、各行を直前の保存済み check に対して評価するよう定義している。行7では (181*31+36)%251=5647%251=125 だが、保存値は124なので不一致である。各行の期待値は順に17,67,78,222,133,181,125,90,125,162,9,109であり、行7以外の11件は保存値と一致する。行8は行7の保存値124を使うため (124*31+11)%251=90 となり一致する。 A12、version a12-r1 の全12件の局所数値遷移が宣言された漸化式を満たすという草案は誤りである。",
+        "sourceRefs": [
+          "v9c3-src"
+        ]
+      },
+      {
+        "outputExcerpt": "{\"decision\":\"unknown\",\"answer\":\"Rejected claim: All 12 local numeric transitions in A12, version a12-r1, satisfy its declared recurrence. 記録は完全な12行と genesis check_0=0 を明示し、各行を直前の保存済み check に対して評価するよう定義している。行7では (181*31+36)%251=5647%251=125 だが、保存値は124なので不一致である。各行の期待値は順に17,67,78,222,133,181,125,90,125,162,9,109であり、行7以外の11件は保存値と一致する。行8は行7の保存値124を使うため (124*31+11)%251=90 となり一致する。 A12、version a12-r1 の全12件の局所数値遷移が宣言された漸化式を満たすという草案は誤りである。\",\"uncertainties\":[\"model_timeout\"],\"sourceRefs\":[\"v9c3-src\"]}",
+        "sourceRefs": [
+          "v9c3-src"
+        ]
+      }
+    ]
+  },
+  {
+    "runId": "p6n1-tombo-1",
+    "outputDigest": "5d7b46074ed2f9d3234287c90dcd1efe931803454f67d925ce94f31b7221c0a4",
+    "assessor": {
+      "id": "gpt-6-astra-epoch4",
+      "kind": "independent-model",
+      "blinded": true
+    },
+    "correctness": false,
+    "falseClosure": false,
+    "unnecessaryProbe": false,
+    "correctionAccurate": false,
+    "findings": [
+      {
+        "outputExcerpt": "A12、バージョン a12-r1 の全12行の局所数値遷移は、宣言された漸化式を満たす。",
+        "sourceRefs": [
+          "p6n1-src"
+        ],
+        "id": "crit-p6n1",
+        "matched": false
+      }
+    ],
+    "evidence": [
+      {
+        "outputExcerpt": "A12、バージョン a12-r1 の全12行の局所数値遷移は、宣言された漸化式を満たす。",
+        "sourceRefs": [
+          "p6n1-src"
+        ]
+      },
+      {
+        "outputExcerpt": "{\"decision\":\"unknown\",\"answer\":\"A12、バージョン a12-r1 の全12行の局所数値遷移は、宣言された漸化式を満たす。\",\"uncertainties\":[\"model_timeout\"],\"sourceRefs\":[]}",
+        "sourceRefs": [
+          "p6n1-src"
+        ]
+      }
+    ]
+  },
+  {
+    "runId": "v9c3-baseline-3",
+    "outputDigest": "9639d0694ecf18e8d19ea3d19d4c59c11499f569e737d8085c28d4bcfcddf172",
+    "assessor": {
+      "id": "gpt-6-astra-epoch4",
+      "kind": "independent-model",
+      "blinded": true
+    },
+    "correctness": true,
+    "falseClosure": false,
+    "unnecessaryProbe": false,
+    "correctionAccurate": true,
+    "findings": [
+      {
+        "outputExcerpt": "草案は誤りです。12件の局所遷移のうち、行7だけが宣言された漸化式を満たしません。直前の保存済みcheck=181と行7のvalue=36から、(181×31+36)%251=125となりますが、保存値は124です。残り11件は一致します。行8も、規則どおり行7の保存値124を使うと(124×31+11)%251=90となり一致します。",
+        "sourceRefs": [
+          "v9c3-src"
+        ],
+        "id": "crit-v9c3",
+        "matched": true
+      }
+    ],
+    "evidence": [
+      {
+        "outputExcerpt": "草案は誤りです。12件の局所遷移のうち、行7だけが宣言された漸化式を満たしません。直前の保存済みcheck=181と行7のvalue=36から、(181×31+36)%251=125となりますが、保存値は124です。残り11件は一致します。行8も、規則どおり行7の保存値124を使うと(124×31+11)%251=90となり一致します。",
+        "sourceRefs": [
+          "v9c3-src"
+        ]
+      }
+    ]
+  },
+  {
+    "runId": "v9c3-tombo-2",
+    "outputDigest": "f671fded18b1608eb03e22f1419a3b0b4f2df735760a7f491dc687188150ed8b",
+    "assessor": {
+      "id": "gpt-6-astra-epoch4",
+      "kind": "independent-model",
+      "blinded": true
+    },
+    "correctness": false,
+    "falseClosure": false,
+    "unnecessaryProbe": false,
+    "correctionAccurate": false,
+    "findings": [
+      {
+        "outputExcerpt": "The original draft remains unverified: All 12 local numeric transitions in A12, version a12-r1, satisfy its declared recurrence.",
+        "sourceRefs": [
+          "v9c3-src"
+        ],
+        "id": "crit-v9c3",
+        "matched": false
+      }
+    ],
+    "evidence": [
+      {
+        "outputExcerpt": "The original draft remains unverified: All 12 local numeric transitions in A12, version a12-r1, satisfy its declared recurrence.",
+        "sourceRefs": [
+          "v9c3-src"
+        ]
+      },
+      {
+        "outputExcerpt": "{\"decision\":\"unknown\",\"answer\":\"The original draft remains unverified: All 12 local numeric transitions in A12, version a12-r1, satisfy its declared recurrence.\",\"uncertainties\":[\"model_timeout\"],\"sourceRefs\":[]}",
+        "sourceRefs": [
+          "v9c3-src"
+        ]
+      }
+    ]
+  },
+  {
+    "runId": "p6n1-tombo-2",
+    "outputDigest": "49f68c314c7b58ef102e5d612bdac6015c10a3ed1faf7b33c84c4d5279e2fe27",
+    "assessor": {
+      "id": "gpt-6-astra-epoch4",
+      "kind": "independent-model",
+      "blinded": true
+    },
+    "correctness": false,
+    "falseClosure": false,
+    "unnecessaryProbe": false,
+    "correctionAccurate": false,
+    "findings": [
+      {
+        "outputExcerpt": "Rejected claim: A12、version a12-r1 の全12行の局所的な数値遷移は、宣言された漸化式を満たす。 第11行では (162*31+7)%251=5029%251=0 となるが、保存チェック値は9である。 草案は誤りである。",
+        "sourceRefs": [
+          "p6n1-src"
+        ],
+        "id": "crit-p6n1",
+        "matched": false
+      }
+    ],
+    "evidence": [
+      {
+        "outputExcerpt": "Rejected claim: A12、version a12-r1 の全12行の局所的な数値遷移は、宣言された漸化式を満たす。 第11行では (162*31+7)%251=5029%251=0 となるが、保存チェック値は9である。 草案は誤りである。",
+        "sourceRefs": [
+          "p6n1-src"
+        ]
+      },
+      {
+        "outputExcerpt": "{\"decision\":\"unknown\",\"answer\":\"Rejected claim: A12、version a12-r1 の全12行の局所的な数値遷移は、宣言された漸化式を満たす。 第11行では (162*31+7)%251=5029%251=0 となるが、保存チェック値は9である。 草案は誤りである。\",\"uncertainties\":[\"第11行に関する assessmentIndex=0 の c-draft、c-row11、c-answer の評価は、5029を251で割った余りを正しく扱っているか。\",\"decision: 現在の誤り判定は再確認が必要。answer: 第11行を反例とする計算に疑義があり、下記の候補チェックで検証する。uncertainties: このレビューは候補の提案に限られ、既存の評価や解決状態は更新していない。sourceRefs: e-context。評価訂正の履歴は提示されていない。\",\"assessment_pending\"],\"sourceRefs\":[]}",
+        "sourceRefs": [
+          "p6n1-src"
+        ]
+      }
+    ]
+  },
+  {
+    "runId": "p6n1-baseline-1",
+    "outputDigest": "abbe6c0c4e2e17f4f466a70552c1d564ef3e70939663d0bd632c8d458aacafdc",
+    "assessor": {
+      "id": "gpt-6-astra-epoch4",
+      "kind": "independent-model",
+      "blinded": true
+    },
+    "correctness": true,
+    "falseClosure": false,
+    "unnecessaryProbe": false,
+    "correctionAccurate": true,
+    "findings": [
+      {
+        "outputExcerpt": "提示された完全な12行について、各行の直前に保存されたcheckを使って宣言された漸化式を計算すると、期待値は順に17, 67, 78, 222, 133, 181, 124, 90, 125, 162, 9, 109となり、すべて保存値と一致する。したがって、A12（a12-r1）の12個すべての局所数値遷移が漸化式を満たすという草案は正しい。この結論は提示された記録の局所算術整合性に限る。",
+        "sourceRefs": [
+          "p6n1-src"
+        ],
+        "id": "crit-p6n1",
+        "matched": true
+      }
+    ],
+    "evidence": [
+      {
+        "outputExcerpt": "提示された完全な12行について、各行の直前に保存されたcheckを使って宣言された漸化式を計算すると、期待値は順に17, 67, 78, 222, 133, 181, 124, 90, 125, 162, 9, 109となり、すべて保存値と一致する。したがって、A12（a12-r1）の12個すべての局所数値遷移が漸化式を満たすという草案は正しい。この結論は提示された記録の局所算術整合性に限る。",
+        "sourceRefs": [
+          "p6n1-src"
+        ]
+      }
+    ]
+  },
+  {
+    "runId": "h2w5-baseline-1",
+    "outputDigest": "d72c8ad3e86d64ada427ce9ee499a777540f326b018ec6a7fbac2f1093799176",
+    "assessor": {
+      "id": "gpt-6-astra-epoch4",
+      "kind": "independent-model",
+      "blinded": true
+    },
+    "correctness": true,
+    "falseClosure": false,
+    "unnecessaryProbe": false,
+    "correctionAccurate": true,
+    "findings": [
+      {
+        "outputExcerpt": "公開された票は賛成4票、反対3票で、V8とV9の2票は非公開です。可決には賛成5票以上が必要なため、非公開票の少なくとも1票が賛成なら可決、両方が反対なら否決となります。賛成票は4〜6票の範囲であり、記録が全9人分揃っていても非公開票の内容は分からないため、草案「M9、版m9-r1は可決された」の正誤は判断できません。",
+        "sourceRefs": [
+          "h2w5-src"
+        ],
+        "id": "crit-h2w5",
+        "matched": true
+      }
+    ],
+    "evidence": [
+      {
+        "outputExcerpt": "公開された票は賛成4票、反対3票で、V8とV9の2票は非公開です。可決には賛成5票以上が必要なため、非公開票の少なくとも1票が賛成なら可決、両方が反対なら否決となります。賛成票は4〜6票の範囲であり、記録が全9人分揃っていても非公開票の内容は分からないため、草案「M9、版m9-r1は可決された」の正誤は判断できません。",
+        "sourceRefs": [
+          "h2w5-src"
+        ]
+      }
+    ]
+  },
+  {
+    "runId": "b8s4-baseline-2",
+    "outputDigest": "846abdac423f9c352ea25bf39ce7194a190671adf6098381ec83c612c61ae906",
+    "assessor": {
+      "id": "gpt-6-astra-epoch4",
+      "kind": "independent-model",
+      "blinded": true
+    },
+    "correctness": true,
+    "falseClosure": false,
+    "unnecessaryProbe": true,
+    "correctionAccurate": true,
+    "findings": [
+      {
+        "outputExcerpt": "草案の記述は正しいです。M9、版m9-r1の最終・完全な投票記録では、V1、V2、V4、V5、V6、V8の6人が賛成し、残る3人が反対しています。賛成6票は可決要件の5票以上を満たすため、この動議は可決されました。",
+        "sourceRefs": [
+          "b8s4-src"
+        ],
+        "id": "crit-b8s4",
+        "matched": true
+      }
+    ],
+    "evidence": [
+      {
+        "outputExcerpt": "草案の記述は正しいです。M9、版m9-r1の最終・完全な投票記録では、V1、V2、V4、V5、V6、V8の6人が賛成し、残る3人が反対しています。賛成6票は可決要件の5票以上を満たすため、この動議は可決されました。",
+        "sourceRefs": [
+          "b8s4-src"
+        ]
+      }
+    ]
+  },
+  {
+    "runId": "b8s4-baseline-1",
+    "outputDigest": "fcb655a69d3495daa0b6fe218a8dfc5c62595e613da2c5d701138bf0d52e1176",
+    "assessor": {
+      "id": "gpt-6-astra-epoch4",
+      "kind": "independent-model",
+      "blinded": true
+    },
+    "correctness": true,
+    "falseClosure": false,
+    "unnecessaryProbe": true,
+    "correctionAccurate": true,
+    "findings": [
+      {
+        "outputExcerpt": "取得済みの投票記録 b8s4-src では、V1、V2、V4、V5、V6、V8の6名が賛成し、残る3名が反対しています。承認条件の賛成5票以上を満たすため、「Motion M9、version m9-r1は承認された」という草案は正しいです。記録は最終かつ完全で、非公開の票はありません。",
+        "sourceRefs": [
+          "b8s4-src"
+        ],
+        "id": "crit-b8s4",
+        "matched": true
+      }
+    ],
+    "evidence": [
+      {
+        "outputExcerpt": "取得済みの投票記録 b8s4-src では、V1、V2、V4、V5、V6、V8の6名が賛成し、残る3名が反対しています。承認条件の賛成5票以上を満たすため、「Motion M9、version m9-r1は承認された」という草案は正しいです。記録は最終かつ完全で、非公開の票はありません。",
+        "sourceRefs": [
+          "b8s4-src"
+        ]
+      }
+    ]
+  },
+  {
+    "runId": "h2w5-tombo-1",
+    "outputDigest": "3a694b4139d854e6f8245e856d6159da5d5028c67c2239a775598b1e31044bae",
+    "assessor": {
+      "id": "gpt-6-astra-epoch4",
+      "kind": "independent-model",
+      "blinded": true
+    },
+    "correctness": true,
+    "falseClosure": false,
+    "unnecessaryProbe": true,
+    "correctionAccurate": true,
+    "findings": [
+      {
+        "outputExcerpt": "利用可能な情報からは、Motion M9、version m9-r1が承認されたかどうかを確定できない。 対象版の記録には賛成4票（V1、V2、V4、V6）、反対3票（V3、V5、V7）、非開示2票（V8、V9）がある。賛成票総数は4〜6票で、承認基準の5票を満たす場合と満たさない場合があるため、原文を支持も反証もできない。",
+        "sourceRefs": [
+          "h2w5-src"
+        ],
+        "id": "crit-h2w5",
+        "matched": true
+      }
+    ],
+    "evidence": [
+      {
+        "outputExcerpt": "利用可能な情報からは、Motion M9、version m9-r1が承認されたかどうかを確定できない。 対象版の記録には賛成4票（V1、V2、V4、V6）、反対3票（V3、V5、V7）、非開示2票（V8、V9）がある。賛成票総数は4〜6票で、承認基準の5票を満たす場合と満たさない場合があるため、原文を支持も反証もできない。",
+        "sourceRefs": [
+          "h2w5-src"
+        ]
+      }
+    ]
+  },
+  {
+    "runId": "h2w5-tombo-2",
+    "outputDigest": "f0151ed650126217260528b759037e369cb2b32e89a65209b4de812812d4a717",
+    "assessor": {
+      "id": "gpt-6-astra-epoch4",
+      "kind": "independent-model",
+      "blinded": true
+    },
+    "correctness": true,
+    "falseClosure": false,
+    "unnecessaryProbe": true,
+    "correctionAccurate": true,
+    "findings": [
+      {
+        "outputExcerpt": "入手可能な情報からは、Motion M9、version m9-r1 が承認されたかどうかを判定できない。 記録では賛成4票（V1、V2、V4、V6）、反対3票（V3、V5、V7）、非公開2票（V8、V9）。賛成総数は4～6票で、承認に必要な5票を下回る場合と満たす場合の両方が可能である。元の承認命題は支持も反証もできず、g-approval は未解決のままとする。",
+        "sourceRefs": [
+          "h2w5-src"
+        ],
+        "id": "crit-h2w5",
+        "matched": true
+      }
+    ],
+    "evidence": [
+      {
+        "outputExcerpt": "入手可能な情報からは、Motion M9、version m9-r1 が承認されたかどうかを判定できない。 記録では賛成4票（V1、V2、V4、V6）、反対3票（V3、V5、V7）、非公開2票（V8、V9）。賛成総数は4～6票で、承認に必要な5票を下回る場合と満たす場合の両方が可能である。元の承認命題は支持も反証もできず、g-approval は未解決のままとする。",
+        "sourceRefs": [
+          "h2w5-src"
+        ]
+      }
+    ]
+  },
+  {
+    "runId": "b8s4-tombo-1",
+    "outputDigest": "1529e26d3cf4ff7f8a109dbcf954e701b39c425a6396c568d185349a9f4d7ce3",
+    "assessor": {
+      "id": "gpt-6-astra-epoch4",
+      "kind": "independent-model",
+      "blinded": true
+    },
+    "correctness": false,
+    "falseClosure": false,
+    "unnecessaryProbe": false,
+    "correctionAccurate": false,
+    "findings": [
+      {
+        "outputExcerpt": "Motion M9, version m9-r1, was approved.",
+        "sourceRefs": [
+          "b8s4-src"
+        ],
+        "id": "crit-b8s4",
+        "matched": false
+      }
+    ],
+    "evidence": [
+      {
+        "outputExcerpt": "Motion M9, version m9-r1, was approved.",
+        "sourceRefs": [
+          "b8s4-src"
+        ]
+      }
+    ]
+  },
+  {
+    "runId": "b8s4-tombo-3",
+    "outputDigest": "6871fb30987dbd8199840cf3cbfdca6c6d3915ec59a166a7503c547c1d2573ff",
+    "assessor": {
+      "id": "gpt-6-astra-epoch4",
+      "kind": "independent-model",
+      "blinded": true
+    },
+    "correctness": true,
+    "falseClosure": false,
+    "unnecessaryProbe": false,
+    "correctionAccurate": true,
+    "findings": [
+      {
+        "outputExcerpt": "M9、版m9-r1は賛成6票で承認基準の5票以上を満たす。",
+        "sourceRefs": [
+          "b8s4-src"
+        ],
+        "id": "crit-b8s4",
+        "matched": true
+      }
+    ],
+    "evidence": [
+      {
+        "outputExcerpt": "M9、版m9-r1は賛成6票で承認基準の5票以上を満たす。",
+        "sourceRefs": [
+          "b8s4-src"
+        ]
+      }
+    ]
+  },
+  {
+    "runId": "h2w5-tombo-3",
+    "outputDigest": "e6812909c14374a489fd7ca6bc8e7bb40f84a1f160073faef4ac769534987cc2",
+    "assessor": {
+      "id": "gpt-6-astra-epoch4",
+      "kind": "independent-model",
+      "blinded": true
+    },
+    "correctness": true,
+    "falseClosure": false,
+    "unnecessaryProbe": true,
+    "correctionAccurate": true,
+    "findings": [
+      {
+        "outputExcerpt": "利用可能な情報からは、Motion M9、version m9-r1 が承認されたか判断できない。 記録には賛成4票、反対3票、非公開2票がある。賛成総数は4〜6票で、承認に必要な5票を下回る場合と満たす場合の両方が可能である。したがって原案を正しいとも誤りとも確定できず、g-approval は未解決のままとする。",
+        "sourceRefs": [
+          "h2w5-src"
+        ],
+        "id": "crit-h2w5",
+        "matched": true
+      }
+    ],
+    "evidence": [
+      {
+        "outputExcerpt": "利用可能な情報からは、Motion M9、version m9-r1 が承認されたか判断できない。 記録には賛成4票、反対3票、非公開2票がある。賛成総数は4〜6票で、承認に必要な5票を下回る場合と満たす場合の両方が可能である。したがって原案を正しいとも誤りとも確定できず、g-approval は未解決のままとする。",
+        "sourceRefs": [
+          "h2w5-src"
+        ]
+      }
+    ]
+  },
+  {
+    "runId": "b8s4-tombo-2",
+    "outputDigest": "a5afe20577d99a22f490bccabb61f8a0b85d7ad306f5299c7f02f9e65eff26f7",
+    "assessor": {
+      "id": "gpt-6-astra-epoch4",
+      "kind": "independent-model",
+      "blinded": true
+    },
+    "correctness": false,
+    "falseClosure": false,
+    "unnecessaryProbe": false,
+    "correctionAccurate": false,
+    "findings": [
+      {
+        "outputExcerpt": "Motion M9, version m9-r1, was approved.",
+        "sourceRefs": [
+          "b8s4-src"
+        ],
+        "id": "crit-b8s4",
+        "matched": false
+      }
+    ],
+    "evidence": [
+      {
+        "outputExcerpt": "Motion M9, version m9-r1, was approved.",
+        "sourceRefs": [
+          "b8s4-src"
+        ]
+      }
+    ]
+  },
+  {
+    "runId": "h2w5-baseline-3",
+    "outputDigest": "65bd67b5e0ed910458498b3d14b05eac07269b2a2e769267a86ecf6c0bffcfa8",
+    "assessor": {
+      "id": "gpt-6-astra-epoch4",
+      "kind": "independent-model",
+      "blinded": true
+    },
+    "correctness": false,
+    "falseClosure": false,
+    "unnecessaryProbe": false,
+    "correctionAccurate": false,
+    "findings": [
+      {
+        "outputExcerpt": "The trial did not complete.",
+        "sourceRefs": [
+          "h2w5-src"
+        ],
+        "id": "crit-h2w5",
+        "matched": false
+      }
+    ],
+    "evidence": [
+      {
+        "outputExcerpt": "The trial did not complete.",
+        "sourceRefs": [
+          "h2w5-src"
+        ]
+      }
+    ]
+  },
+  {
+    "runId": "h2w5-baseline-2",
+    "outputDigest": "b8512bc574d3a1a5c3ceded83881caacd36c2985bd8fb22126efc97e0e2288c1",
+    "assessor": {
+      "id": "gpt-6-astra-epoch4",
+      "kind": "independent-model",
+      "blinded": true
+    },
+    "correctness": true,
+    "falseClosure": false,
+    "unnecessaryProbe": false,
+    "correctionAccurate": true,
+    "findings": [
+      {
+        "outputExcerpt": "動議M9（版m9-r1）が承認されたかは判断できません。公開された票は賛成4票、反対3票で、残る2票は封印されています。承認には賛成5票以上が必要です。封印された2票のうち少なくとも1票が賛成なら承認、両方が反対なら否決となるため、草案の断定は確認できません。",
+        "sourceRefs": [
+          "h2w5-src"
+        ],
+        "id": "crit-h2w5",
+        "matched": true
+      }
+    ],
+    "evidence": [
+      {
+        "outputExcerpt": "動議M9（版m9-r1）が承認されたかは判断できません。公開された票は賛成4票、反対3票で、残る2票は封印されています。承認には賛成5票以上が必要です。封印された2票のうち少なくとも1票が賛成なら承認、両方が反対なら否決となるため、草案の断定は確認できません。",
+        "sourceRefs": [
+          "h2w5-src"
+        ]
+      },
+      {
+        "outputExcerpt": "V8とV9の投票内容は非公開です。記録は完全かつ確定していますが、封印票の内容を明らかにする追加情報はありません。",
+        "sourceRefs": [
+          "h2w5-src"
+        ]
+      }
+    ]
+  },
+  {
+    "runId": "b8s4-baseline-3",
+    "outputDigest": "7c821dca2bf1f6378530961711732f7c8a0a0b406fc1b6111eb254e222afa540",
+    "assessor": {
+      "id": "gpt-6-astra-epoch4",
+      "kind": "independent-model",
+      "blinded": true
+    },
+    "correctness": true,
+    "falseClosure": false,
+    "unnecessaryProbe": true,
+    "correctionAccurate": true,
+    "findings": [
+      {
+        "outputExcerpt": "実際に返された投票記録では、V1、V2、V4、V5、V6、V8の6人が賛成、残る3人が反対しています。賛成6票は承認に必要な5票以上を満たすため、「Motion M9, version m9-r1, was approved.」は正しいと判断できます。",
+        "sourceRefs": [
+          "b8s4-src"
+        ],
+        "id": "crit-b8s4",
+        "matched": true
+      }
+    ],
+    "evidence": [
+      {
+        "outputExcerpt": "実際に返された投票記録では、V1、V2、V4、V5、V6、V8の6人が賛成、残る3人が反対しています。賛成6票は承認に必要な5票以上を満たすため、「Motion M9, version m9-r1, was approved.」は正しいと判断できます。",
+        "sourceRefs": [
+          "b8s4-src"
+        ]
+      }
+    ]
+  }
+]

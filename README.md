@@ -2,7 +2,7 @@
 
 AIが自分の理解を確かめる複眼ツール。回答案や操作予定を、主張、証拠、未確認事項、検査へ分け、追加証拠に応じて状態を更新します。
 
-**v0.1 は探索的な試作品です。** TypeScript SDK、CLI、会話内スキルで、証拠に応じた状態更新と再考を実行します。3回の実モデル比較はいずれも受入条件を満たしていません。第3回は36試行中29試行が正常終了しました。その後、保証された固定資料の再取得で情報が増えない場合に、未知を保持して停止する修正を追加しました。現在の全407試験と、停止機構・接続部の対象範囲を限定した独立レビューは合格しています。異なるベンダーによる委任処理の最終レビューは待機中です。第4回比較は進行中で、修正後の比較効果は未確認です。[最新の完了した比較結果と限界](docs/metacognition-evaluation-epoch3.md)を参照してください。未知をすべて発見する能力、完全な理解、幻覚の防止を保証しません。
+**v0.1 は探索的な試作品です。** TypeScript SDK、CLI、会話内スキルで、証拠に応じた状態更新と再考を実行します。4回の実モデル比較はいずれも受入条件を満たしていません。第4回は36試行中26試行が正常終了し、通常再点検は17/18、TOMBOは9/18でした。全件を別モデルで採点しましたが、採点者は同じOpenAI系列であり、異なるベンダーによる検証ではありません。比較終了後の修正を含む全466試験が親の環境で成功しました。修正後の効果は新規比較で未確認です。[最新の比較結果と限界](docs/metacognition-evaluation-epoch4.md)を参照してください。未知をすべて発見する能力、完全な理解、幻覚の防止を保証しません。
 
 [English](#english) · [仕様書](TOMBO_spec_v0.1_ja.md) · [比較実験の準備](evaluation/README.md)
 
@@ -129,7 +129,7 @@ Point the installed skill's `references/runtime.json` at the built repository wi
 
 TOMBO is an experimental tool for checking an AI agent's understanding. It separates draft answers and planned actions into claims, evidence, open questions, and probes. New evidence updates the external state of understanding.
 
-Version 0.1 provides a TypeScript SDK, a CLI, an agent skill, two synthetic replay examples, and 48 synthetic scenarios for preparing comparisons. All three real-model comparisons failed the acceptance criteria. The third completed 29 of 36 trials without execution errors. A later fix stops repeated reads of executor-guaranteed immutable snapshots when they add no information, while preserving unknowns. All 407 current tests and scoped independent reviews of the stopping mechanism and transport passed. The final review of delegation by a different vendor is pending. A fourth comparison is running; its effect remains unverified. See the [latest completed comparison and limitations](docs/metacognition-evaluation-epoch3.md). TOMBO does not guarantee complete understanding, discovery of every unknown, or prevention of hallucinations.
+Version 0.1 provides a TypeScript SDK, a CLI, an agent skill, two synthetic replay examples, and 48 synthetic scenarios for preparing comparisons. All four real-model comparisons failed the acceptance criteria. The fourth completed 26 of 36 trials without execution errors, with 17 of 18 for the general recheck and 9 of 18 for TOMBO. A different model assessed every trial, but the assessor belongs to the same OpenAI family. This is not verification by a different vendor. All 466 tests passed in the parent environment after subsequent fixes. Their effect remains unverified in a new comparison. See the [latest comparison and limitations](docs/metacognition-evaluation-epoch4.md). TOMBO does not guarantee complete understanding, discovery of every unknown, or prevention of hallucinations.
 
 ### Run the replay examples
 
@@ -169,6 +169,6 @@ Withdrawing evidence discards a pending assessment batch and reopens required pr
 
 ### Verification and limitations
 
-Tests cover state invariants, usage, budgets, replay, concurrency conflicts, and actual CLI calls. Structural validation does not prove semantic correctness. Compare TOMBO with a general recheck using the same model, evidence, tools, and budgets. Keep evaluation annotations away from model inputs and use independent assessment. All three real-model comparisons failed readiness. Live HTTP-provider integration and statistical effectiveness remain unverified.
+Tests cover state invariants, usage, budgets, replay, concurrency conflicts, and actual CLI calls. Structural validation does not prove semantic correctness. Compare TOMBO with a general recheck using the same model, evidence, tools, and budgets. Keep evaluation annotations away from model inputs and use independent assessment. All four real-model comparisons failed readiness. Live HTTP-provider integration and statistical effectiveness remain unverified.
 
 The agent skill is in `skills/tombo-view/SKILL.md`. Development checks are `npm run typecheck`, `npm test`, and `npm run demo`. CI targets Linux and Windows with Node.js 22 and 24. The project uses the MIT licence. No third-party PDF or private conversation is distributed. Academic novelty has not been established.
