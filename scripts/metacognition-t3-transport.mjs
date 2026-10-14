@@ -21,10 +21,12 @@ function bindingError(data, taskId, target) {
   return null;
 }
 
-export function createT3Transport({ state, load, ready, deliver, tools, clientRequestId, target, now = Date.now, sleep }) {
+export function createT3Transport({ state, load, ready, deliver, tools, clientRequestId, target, now = Date.now, sleep, firstDelegateWaitMs = 0 }) {
+  if (!Number.isInteger(firstDelegateWaitMs) || firstDelegateWaitMs < 0 || firstDelegateWaitMs > 50000) throw new Error('firstDelegateWaitMs must be an integer from 0 to 50000.');
   if (typeof clientRequestId !== 'string' || !clientRequestId.trim()) throw new Error('A stable clientRequestId is required.');
   if (!target?.providerInstanceId || !target.model) throw new Error('An explicit T3 target is required.');
   const events = [];
+  let completedResult;
   const guard = async bridge => {
     if (now() >= bridge.deadlineAt) throw new Error('Producer deadline expired.');
     if ((await ready()).terminal) throw new Error('Producer is terminal.');
@@ -41,15 +43,21 @@ export function createT3Transport({ state, load, ready, deliver, tools, clientRe
     ...(sleep ? { sleep } : {}),
     record: event => { events.push(JSON.parse(JSON.stringify(event))); },
     delegate: async (request, bridge) => {
+      let waitMs;
       try {
         if (bridge.model.provider !== target.providerInstanceId || bridge.model.name !== target.model) throw new Error('T3 target does not match the producer model.');
         await guard(bridge);
+        if (firstDelegateWaitMs > 0) {
+          waitMs = Math.min(firstDelegateWaitMs, bridge.deadlineAt - now());
+          if (waitMs <= 0) throw new Error('Producer deadline expired.');
+        }
       } catch (error) {
         error.rejectedBeforeAcceptance = true;
         throw error;
       }
       const result = payload(await tools.delegate_task({
-        mode: 'async', role: 'test', interactionMode: 'default',
+        mode: firstDelegateWaitMs > 0 ? 'wait' : 'async', role: 'test', interactionMode: 'default',
+        ...(firstDelegateWaitMs > 0 ? { timeoutMs: waitMs } : {}),
         clientRequestId: `${clientRequestId}-${bridge.sequence}`,
         target,
         task: `${request.instructions}\n${JSON.stringify(request)}`,
@@ -61,10 +69,11 @@ export function createT3Transport({ state, load, ready, deliver, tools, clientRe
         error.acceptedTaskId = result.taskId;
         throw error;
       }
+      if (firstDelegateWaitMs > 0 && !result.waitTimedOut && result.status === 'completed' && result.workState === 'result_available' && result.hasPendingChildRuns === false) completedResult = result;
       return { taskId: result.taskId };
     },
     taskStatus: async taskId => {
-      const result = payload(await tools.task_status({ taskId }));
+      const result = completedResult?.taskId === taskId ? completedResult : payload(await tools.task_status({ taskId }));
       const mismatch = bindingError(result, taskId, target);
       if (mismatch) {
         await cancelKnown(taskId);
