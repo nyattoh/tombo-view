@@ -1,0 +1,84 @@
+{
+  "version": 2,
+  "frozenBeforeResults": true,
+  "minimumRepeats": 3,
+  "arms": [
+    "baseline",
+    "tombo"
+  ],
+  "requested": {
+    "maxCalls": 6,
+    "maxOutputChars": 4000
+  },
+  "thresholds": {
+    "correctness": 0.9,
+    "recall": 0.85,
+    "falseClosure": 0,
+    "maxControlUnnecessaryProbe": 0.1,
+    "superiorityRecallGain": 0.1,
+    "minimumImprovedCases": 2,
+    "correctionAccuracy": 0.9
+  },
+  "pairedRule": "No case may regress in correctness, required-finding recall, false closure, correction accuracy or control unnecessary probing. Average repeats inside each case before comparing cases.",
+  "ordering": "Alternate baseline then tombo on odd repeats; tombo then baseline on even repeats.",
+  "judgeRule": "One independent blinded assessor rates both arms on identical criteria, binds every judgement to the output digest, cites output excerpts and source IDs. Schema checks are not semantic assessment.",
+  "boundary": "New public synthetic schedule coverage, local integer checksum and sealed-vote cases. Original thresholds, repeats, repair and call/output/time caps are retained. Immutable record declarations apply to this dataset only. New cases and transport changes prevent attributing differences to one fix alone. Host costs, tokens and hidden upstream calls UNKNOWN. General completeness unproven.",
+  "caseDigest": "2c400486f236699c87ef8e536fb7a2285b4505341e4ad77fed6465f4c7268e10",
+  "annotationDigest": "08f4d11255ede67e15ce4c04a0565dc666f1f0e2d0b13e9b8edac4af7aa64dc9",
+  "maximumElapsedMs": 300000,
+  "maximumOutputCharsPerGeneration": 4000,
+  "freezeStatus": "FROZEN before fourth participant results. Data independent GLM static review pass and local transport independent Astra r2 pass. Cross-vendor dispatch review remains pending.",
+  "modelValidationRepairs": {
+    "baselineSyntax": 2,
+    "tomboProposal": 2,
+    "allRejectedGenerationsCount": true
+  },
+  "participantModel": {
+    "provider": "codex",
+    "name": "gpt-6.1-sol",
+    "effort": "low"
+  },
+  "callDefinition": "Actual generation requests plus scripted source checks, including rejected requests. Hidden upstream requests unknown.",
+  "independentReviews": [
+    "results/metacognition-development/fourth-data-review-glm-r1.md",
+    "results/metacognition-development/t3-transport-review-astra-r2.md"
+  ],
+  "staticSnapshotPolicy": {
+    "version": 1,
+    "mode": "immutable_case_records",
+    "records": [
+      {
+        "caseId": "q7m2",
+        "sourceId": "q7m2-src",
+        "recordDigest": "b24c3b5c8b4adff9949bb0ce8a8afbbf4c58d15ab5d5b618bed2589ffcf2c2a0"
+      },
+      {
+        "caseId": "k4r8",
+        "sourceId": "k4r8-src",
+        "recordDigest": "ae9e79ccbda06732299ba002ec9c8817ce37914e96a21ecf22f9cedb47d0ee5f"
+      },
+      {
+        "caseId": "v9c3",
+        "sourceId": "v9c3-src",
+        "recordDigest": "26acdf0090bc8f534bade426c1717037785a543e62213d740c82c9a0575c6d73"
+      },
+      {
+        "caseId": "p6n1",
+        "sourceId": "p6n1-src",
+        "recordDigest": "9940a6635a709ef3118406db225b2e6a2a2b81cd0d5177be38e9658ebc86be3e"
+      },
+      {
+        "caseId": "h2w5",
+        "sourceId": "h2w5-src",
+        "recordDigest": "e9f3926df90543dca5637553a9f5cfd9dac0f2e324e1d8a6ee897719758a8891"
+      },
+      {
+        "caseId": "b8s4",
+        "sourceId": "b8s4-src",
+        "recordDigest": "a7bf47680e87da391b18fc4dbc380150a66bdce576cc5e6001266b79d716f4f8"
+      }
+    ]
+  },
+  "frozenAt": "2026-10-14T04:41:47.0459949Z",
+  "frozenProductHead": "e739bc8f6f3d29d8004da7f616e586ee176058a3"
+}
