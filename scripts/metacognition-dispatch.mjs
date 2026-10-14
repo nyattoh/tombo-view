@@ -108,12 +108,12 @@ export async function coordinateDispatch(state, callbacks, { maxPolls = 1, pollM
     catch (error) { await event('status_failed', { message: String(error.message ?? error).slice(0, 512) }); if (await live()) state.phase = 'active'; return state; }
     state.taskState = result.status;
     await event('task_observed', { status: result.status });
-    if (!await live()) return state;
     if (result.status === 'completed') {
       if (typeof result.output !== 'string') await failure(new Error('Completed task returned no output string.'));
       else await send({ sequence: state.bridge.sequence, model: state.bridge.model, taskId: state.taskId, output: result.output });
       return state;
     }
+    if (!await live()) return state;
     if (['failed', 'cancelled'].includes(result.status)) { await failure(new Error(result.error || `Task ${result.status}.`)); return state; }
     if (poll + 1 < maxPolls) {
       await sleep(Math.min(pollMs, Math.max(0, state.bridge.deadlineAt - now())));
