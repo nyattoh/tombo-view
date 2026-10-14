@@ -47,11 +47,13 @@ if (protocol.staticSnapshotPolicy !== undefined) {
   }
 }
 const packet = participantPacket(selected);
+let inputContextRef = 'context';
+for (let suffix = 2; packet.tools.some(tool => tool.id === inputContextRef); suffix++) inputContextRef = `context-${suffix}`;
 const requested = { capabilities: packet.capabilities, ...protocol.requested, modelRepairAttempts: repairs, maximumElapsedMs: elapsedCap };
 const tracePath = join(out, 'trace.json'), runPath = join(out, 'run.json'), resultPath = join(out, 'result.json');
 const trace = { version: 1, origin, model, caseId, arm, repeat, packetDigest: digest(packet), datasetDigest: protocol.caseDigest, protocolDigest: digest(protocol), events: [], notes: ['Host task IDs attest delegated generations. Upstream API calls, billing, tokens and hidden retries are unknown.', 'SDK local apply metadata outputTokens=0 is an accounting placeholder. Actual output character caps are enforced at the bridge.', 'Synthetic source checks execute locally through executeTool. No paid API is called by this driver.'] };
 await mkdir(out, { recursive: true });
-trace.methodConfiguration = { modelValidationRepairs: repairs, maximumElapsedMs: elapsedCap, casesPath: String(casesPath), protocolPath: String(protocolPath), ...(staticSnapshotPolicy ? { staticSnapshotPolicy } : {}) };
+trace.methodConfiguration = { modelValidationRepairs: repairs, maximumElapsedMs: elapsedCap, casesPath: String(casesPath), protocolPath: String(protocolPath), inputContextRef, ...(staticSnapshotPolicy ? { staticSnapshotPolicy } : {}) };
 const save = (path, value) => writeFile(path, JSON.stringify(value, null, 2) + '\n');
 const log = async event => { trace.events.push({ at: new Date().toISOString(), ...event }); await save(tracePath, trace); };
 const input = createInterface({ input: process.stdin, terminal: false });
@@ -71,7 +73,7 @@ const rejectModel = async (stage, reason, message = reason) => {
 };
 const schema = value => z.toJSONSchema(value, { unrepresentable: 'any' });
 const proposalContract = schema(proposalSchema), reflectionContract = schema(reflectionOutputSchema);
-const commonPrompt = 'Do not call tools, read files, browse, or delegate. Return one JSON object only, no Markdown or reasoning transcript. Use only the supplied packet and actual returned sources. Recheck your answer where needed. Each response must be at most 4000 characters. Final answers must state decision, answer, uncertainties and sourceRefs. Do not fabricate evidence. There is a shared maximum of 6 generation requests plus source checks.';
+const commonPrompt = 'Do not call tools, read files, browse, or delegate. Return one JSON object only, no Markdown or reasoning transcript. Use only the supplied packet and actual returned sources. Recheck your answer where needed. Each response must be at most 4000 characters. Final answers must state decision, answer, uncertainties and sourceRefs. Do not fabricate evidence. There is a shared maximum of 6 generation requests plus source checks.' + ` Provided packet.context may be cited in final sourceRefs as "${inputContextRef}". It is already supplied input, not a physical record read or an executable source. Other sourceRefs must name declared tool IDs whose records were actually retrieved.`;
 const recordProbeContract = ' A record probe requires read_record and sourceGroups containing exactly one packet.tools ID whose capability is read_record. Tool IDs identify executable sources. Evidence IDs and evidence sourceGroup values, including context, do not identify executable sources unless declared as matching tools. Do not substitute an undeclared ID automatically.';
 const finalSchema = z.object({ decision: z.enum(['supported', 'refuted', 'unknown']), answer: z.string(), uncertainties: z.array(z.string()), sourceRefs: z.array(z.string()) }).strict();
 const baselineSchema = z.union([z.object({ action: z.literal('read'), sourceId: z.string() }).strict(), finalSchema.extend({ action: z.literal('finish') }).strict()]);
@@ -179,7 +181,7 @@ try {
         const parsed = baselineSchema.safeParse(raw);
         if (!parsed.success) throw await rejectModel('baseline', 'invalid_baseline_response', parsed.error.issues.map(issue => issue.message).join('; '));
         response = parsed.data;
-        const refs = response.action === 'read' ? [response.sourceId] : response.sourceRefs;
+        const refs = response.action === 'read' ? [response.sourceId] : response.sourceRefs.filter(id => id !== inputContextRef);
         if (refs.some(id => !packet.tools.some(t => t.id === id))) throw await rejectModel('baseline', 'unknown_source', 'Use only declared source IDs.');
         if (response.action === 'finish' && refs.some(id => !checks.some(c => c.sourceId === id))) throw await rejectModel('baseline', 'unread_source', 'Do not cite a source that has not been retrieved.');
       } catch (error) {
@@ -191,14 +193,14 @@ try {
       feedback = undefined; rejected = 0;
       if (response.action === 'finish') {
         const { action, ...answer } = response;
-        if (answer.sourceRefs.some(id => !packet.tools.some(t => t.id === id))) throw fail('unknown_final_source');
+        if (answer.sourceRefs.some(id => id !== inputContextRef && !packet.tools.some(t => t.id === id))) throw fail('unknown_final_source');
         final = answer; result = answer; break;
       }
       const tool = packet.tools.find(t => t.id === response.sourceId);
       await readSource(tool?.capability, response.sourceId);
     }
   } else {
-    const task = { schemaVersion: '0.1', taskId: `trial-${caseId}-${repeat}`, goal: packet.task, proposedAnswer: packet.draft, mode: 'explain', successCriteria: ['Give a source-grounded final answer with any remaining uncertainty.'], evidence: [{ id: 'e-context', kind: 'document', locator: 'participant-context', sourceGroup: 'context', retrievedAt: new Date().toISOString(), version: null, scope: 'trial', passage: packet.context, contentHash: hashPassage(packet.context), validity: 'current' }], capabilities: packet.capabilities, budget: { maxRounds: 2, maxModelCalls: 6, maxToolCalls: 6, maxElapsedMs: 300000, maxInputChars: 48000, maxOutputTokensPerCall: 4000 } };
+    const task = { schemaVersion: '0.1', taskId: `trial-${caseId}-${repeat}`, goal: packet.task, proposedAnswer: packet.draft, mode: 'explain', successCriteria: ['Give a source-grounded final answer with any remaining uncertainty.'], evidence: [{ id: 'e-context', kind: 'document', locator: 'participant-context', sourceGroup: inputContextRef, retrievedAt: new Date().toISOString(), version: null, scope: 'trial', passage: packet.context, contentHash: hashPassage(packet.context), validity: 'current' }], capabilities: packet.capabilities, budget: { maxRounds: 2, maxModelCalls: 6, maxToolCalls: 6, maxElapsedMs: 300000, maxInputChars: 48000, maxOutputTokensPerCall: 4000 } };
     task.budget.maxElapsedMs = elapsedCap;
     const tombo = createTombo({ maxModelRepairAttempts: repairs, adapter: { async generate(input) { const proposal = await ask(input.operation, input); return { proposal, usage: localUsage }; } } });
     const critic = { async reflect(input) { const response = await ask('reflect', input); return { ...response, usage: localUsage }; } };

@@ -1,11 +1,12 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { spawn } from 'node:child_process';
-import { mkdtemp, readFile, rm } from 'node:fs/promises';
+import { mkdtemp, readFile, writeFile, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { createInterface } from 'node:readline';
 import { assessmentDigest, createTombo, hashPassage, validateState } from '../dist/index.js';
+import { outputDigest, participantPacket } from '../evaluation/metacognition-runner.mjs';
 
 const source = await readFile(new URL('../scripts/metacognition-host-trial.mjs', import.meta.url), 'utf8');
 const renderer = source.slice(source.indexOf('function renderUnderstanding('), source.indexOf("let status = 'success'"));
@@ -21,10 +22,18 @@ async function stateFor(assessments, items, extra = {}) {
   validateState(result.state);
   return { tombo, result };
 }
-async function trial(respond, caseId = 'work-01', fourth = false) {
+async function trial(respond, caseId = 'work-01', fourth = false, { arm = 'tombo', cases, repairs = 0 } = {}) {
   const out = await mkdtemp(join(tmpdir(), 'tombo-answer-current-'));
-  const child = spawn(process.execPath, ['scripts/metacognition-host-trial.mjs', '--case', caseId, ...(fourth ? ['--cases', 'evaluation/metacognition-fourth-cases.json', '--protocol', 'evaluation/metacognition-fourth-protocol.json'] : []), '--arm', 'tombo', '--origin', 'fixture', '--out', out]);
+  let inputs = fourth ? ['--cases', 'evaluation/metacognition-fourth-cases.json', '--protocol', 'evaluation/metacognition-fourth-protocol.json'] : [];
+  if (cases) {
+    const casesPath = join(out, 'cases.json'), protocolPath = join(out, 'protocol.json');
+    await writeFile(casesPath, JSON.stringify(cases));
+    await writeFile(protocolPath, JSON.stringify({ version: 1, frozenBeforeResults: true, caseDigest: outputDigest(JSON.stringify(cases)), requested: { maxCalls: 6, maxOutputChars: 4000 } }));
+    inputs = ['--cases', casesPath, '--protocol', protocolPath];
+  }
+  const child = spawn(process.execPath, ['scripts/metacognition-host-trial.mjs', '--case', caseId, ...inputs, '--arm', arm, '--model-repair-attempts', String(repairs), '--origin', 'fixture', '--out', out]);
   let stderr = '', done;
+  const requests = [];
   child.stderr.on('data', chunk => stderr += chunk);
   const exited = new Promise(resolve => child.on('close', code => resolve(code)));
   try {
@@ -32,13 +41,14 @@ async function trial(respond, caseId = 'work-01', fourth = false) {
       if (line.startsWith('REQUEST ')) {
         const frame = JSON.parse(line.slice(8));
         const request = JSON.parse(await readFile(frame.path, 'utf8'));
+        requests.push(request);
         const bridge = JSON.parse(await readFile(frame.bridgePath, 'utf8'));
         child.stdin.write(JSON.stringify({ sequence: frame.sequence, output: JSON.stringify(await respond(request)), taskId: `fixture-${frame.sequence}`, model: bridge.model }) + '\n');
       } else if (line.startsWith('DONE ')) done = JSON.parse(line.slice(5));
     }
     assert.equal(await exited, 0, stderr);
     assert.ok(done, stderr);
-    return { run: JSON.parse(await readFile(done.runPath, 'utf8')), result: JSON.parse(await readFile(done.resultPath, 'utf8')), trace: JSON.parse(await readFile(done.tracePath, 'utf8')) };
+    return { requests, run: JSON.parse(await readFile(done.runPath, 'utf8')), result: JSON.parse(await readFile(done.resultPath, 'utf8')), trace: JSON.parse(await readFile(done.tracePath, 'utf8')) };
   } finally { child.kill(); await rm(out, { recursive: true, force: true }); }
 }
 const lens = { id: 'l1', label: 'Replay', rationale: 'Check evidence.', origin: 'initial', status: 'active' };
@@ -160,3 +170,91 @@ test('real driver fails explicitly when complete current reasons exceed the fina
   assert.equal(result.result.state.claims[0].assessments[0].reason, 'Reason 1. ' + 'R'.repeat(1100));
 });
 
+const motionAnswer = 'Motion M9, version m9-r1, was approved.';
+const motionReason = 'Six yes votes meet the requirement of at least five.';
+const motionFinal = ref => ({ decision: 'supported', answer: `${motionAnswer} ${motionReason}`, uncertainties: [], sourceRefs: [ref] });
+const motionReply = (request, ref = 'context') => request.stage === 'baseline' ? { action: 'finish', ...motionFinal(ref) } : request.stage === 'inspect' ? { claims: [{ ...claim, text: motionAnswer }], assessments: [assessment('e-context', motionReason, { verdict: 'supports' })] } : reflection(request);
+const collisionCase = (ids = ['context']) => ({ id: 'collision', task: 'Assess approval and explain the conclusion.', context: 'Motion M9, version m9-r1. Six yes votes were cast. Approval requires at least five.', draft: motionAnswer, capabilities: ['read_record'], sources: ids.map(id => ({ id, capability: 'read_record', description: 'Voting record.', status: 'ok', text: 'Six yes votes were cast. Approval requires at least five.' })) });
+
+for (const arm of ['baseline', 'tombo']) test(`${arm} accepts the same supplied context citation without a physical check`, async () => {
+  const { run, result, trace, requests } = await trial(motionReply, 'b8s4', true, { arm });
+  assert.equal(run.status, 'success', run.output);
+  assert.deepEqual(JSON.parse(run.output), motionFinal('context'));
+  assert.deepEqual(run.checks, []);
+  assert.equal(run.observed.calls, arm === 'baseline' ? 1 : 2);
+  assert.equal(trace.methodConfiguration.inputContextRef, 'context');
+  assert.ok(requests.every(request => request.instructions.includes('Provided packet.context may be cited in final sourceRefs as "context".')));
+  if (arm === 'tombo') assert.equal(result.result.state.task.evidence[0].sourceGroup, 'context');
+});
+
+for (const [ids, alias] of [[['context'], 'context-2'], [['context', 'context-2'], 'context-3']]) {
+  for (const arm of ['baseline', 'tombo']) test(`${arm} separates supplied context ${alias} from registered record IDs`, async () => {
+    const selected = collisionCase(ids);
+    const { run, result, trace, requests } = await trial(request => motionReply(request, alias), 'collision', false, { arm, cases: [selected] });
+    assert.equal(run.status, 'success', run.output);
+    assert.deepEqual(JSON.parse(run.output), motionFinal(alias));
+    assert.deepEqual(run.checks, []);
+    assert.equal(trace.methodConfiguration.inputContextRef, alias);
+    assert.deepEqual(requests[0].packet, participantPacket(selected));
+    assert.equal(run.packetDigest, outputDigest(JSON.stringify(participantPacket(selected))));
+    assert.ok(requests.every(request => request.instructions.includes(`Provided packet.context may be cited in final sourceRefs as "${alias}".`)));
+    if (arm === 'tombo') assert.equal(result.result.state.task.evidence[0].sourceGroup, alias);
+  });
+}
+
+for (const [label, ref, reason] of [['unknown record', 'unknown-record', 'unknown_source'], ['unread record', 'b8s4-src', 'unread_source']]) {
+  test(`baseline still rejects ${label} citations`, async () => {
+    const { run, trace } = await trial(request => motionReply(request, ref), 'b8s4', true, { arm: 'baseline' });
+    assert.equal(run.status, 'error');
+    assert.equal(JSON.parse(run.output).decision, 'unknown');
+    assert.deepEqual(run.checks, []);
+    assert.equal(trace.events.find(e => e.kind === 'model_rejection').reason, reason);
+  });
+  test(`baseline repairs ${label} without treating supplied context as a record read`, async () => {
+    const { run, trace, requests } = await trial(request => motionReply(request, request.input?.validationFeedback ? 'context' : ref), 'b8s4', true, { arm: 'baseline', repairs: 1 });
+    assert.equal(run.status, 'success', run.output);
+    assert.deepEqual(JSON.parse(run.output), motionFinal('context'));
+    assert.deepEqual(run.checks, []);
+    assert.equal(run.observed.calls, 2);
+    assert.equal(requests[1].input.validationFeedback.rejectedAttempt, 1);
+    assert.equal(trace.events.find(e => e.kind === 'model_rejection').reason, reason);
+  });
+}
+
+for (const [ids, alias] of [[['context'], 'context-2'], [['record'], 'context']]) {
+  test(`baseline rejects a physical read of supplied context alias ${alias}`, async () => {
+    const { run, trace } = await trial(() => ({ action: 'read', sourceId: alias }), 'collision', false, { arm: 'baseline', cases: [collisionCase(ids)] });
+    assert.equal(run.status, 'error');
+    assert.deepEqual(run.checks, []);
+    assert.equal(trace.events.find(e => e.kind === 'model_rejection').reason, 'unknown_source');
+  });
+  test(`TOMBO rejects a record probe addressed only to supplied context alias ${alias}`, async () => {
+    const { run, trace } = await trial(() => ({ claims: [claim], lenses: [lens], gaps: [gap(1)], probes: [{ ...probe(1), sourceGroups: [alias] }] }), 'collision', false, { cases: [collisionCase(ids)] });
+    assert.equal(run.status, 'error');
+    assert.deepEqual(run.checks, []);
+    assert.equal(trace.events.find(e => e.kind === 'model_rejection').reason, 'invalid_record_probe');
+  });
+}
+
+for (const arm of ['baseline', 'tombo']) test(`${arm} executes a registered context record separately from provided context-2`, async () => {
+  const final = { decision: 'supported', answer: `${motionAnswer} ${motionReason} The record confirms six yes votes.`, uncertainties: [], sourceRefs: ['context-2', 'context'] };
+  const { run, result } = await trial(request => {
+    if (request.stage === 'baseline') return request.sequence === 1 ? { action: 'read', sourceId: 'context' } : { action: 'finish', ...final };
+    if (request.stage === 'inspect') return { ...motionReply(request, 'context-2'), lenses: [lens], gaps: [gap(1)], probes: [{ ...probe(1), sourceGroups: ['context'] }] };
+    if (request.stage === 'reflect') return reflection(request);
+    const evidenceIds = request.input.observations[0].evidence.map(item => item.id);
+    return { assessments: [assessment(evidenceIds[0], 'The record confirms six yes votes.', { verdict: 'supports' })], resolutions: [{ gapId: 'g1', reason: 'supported', evidenceIds, explanation: 'The record confirms approval.' }] };
+  }, 'collision', false, { arm, cases: [collisionCase()] });
+  assert.equal(run.status, 'success', run.output);
+  assert.deepEqual(JSON.parse(run.output), final);
+  assert.deepEqual(run.checks.map(check => [check.sourceId, check.capability]), [['context', 'read_record']]);
+  assert.equal(run.observed.calls, arm === 'baseline' ? 3 : 4);
+  if (arm === 'tombo') assert.deepEqual(result.result.state.evidence.map(e => e.sourceGroup), ['context-2', 'context']);
+});
+
+test('baseline cannot cite a registered context record before reading it when the input alias is context-2', async () => {
+  const { run, trace } = await trial(request => motionReply(request, 'context'), 'collision', false, { arm: 'baseline', cases: [collisionCase()] });
+  assert.equal(run.status, 'error');
+  assert.deepEqual(run.checks, []);
+  assert.equal(trace.events.find(e => e.kind === 'model_rejection').reason, 'unread_source');
+});
