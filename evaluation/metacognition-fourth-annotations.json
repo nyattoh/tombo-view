@@ -1,0 +1,98 @@
+{
+  "q7m2": {
+    "control": false,
+    "mandatoryUnknown": false,
+    "counterevidence": true,
+    "required": [
+      "crit-q7m2"
+    ],
+    "criteria": {
+      "crit-q7m2": {
+        "description": "Conclude that the statement is incorrect within S6 s6-r1. Compute unordered pair multiplicities from the final complete 15-row record, identify P2-P5 twice and P3-P6 absent, and correct the each-pair-once claim. The matching total of 15 rows does not establish pair coverage.",
+        "sourceRefs": [
+          "q7m2-src"
+        ]
+      }
+    },
+    "correctAnswer": "The statement is incorrect. The final 15-row cycle contains P2-P5 twice and omits P3-P6. Each unordered pair therefore does not occur exactly once."
+  },
+  "k4r8": {
+    "control": true,
+    "mandatoryUnknown": false,
+    "counterevidence": false,
+    "required": [],
+    "criteria": {
+      "crit-k4r8": {
+        "description": "Accept the each-pair-once statement for S6 s6-r1 from the complete context. All 15 canonical unordered pairs occur once, so an extra record read is unnecessary. Keep the conclusion within this cycle.",
+        "sourceRefs": [
+          "k4r8-src"
+        ]
+      }
+    },
+    "correctAnswer": "The statement is correct for S6 s6-r1. The complete listing contains all 15 unordered pairs exactly once."
+  },
+  "v9c3": {
+    "control": false,
+    "mandatoryUnknown": false,
+    "counterevidence": true,
+    "required": [
+      "crit-v9c3"
+    ],
+    "criteria": {
+      "crit-v9c3": {
+        "description": "Conclude that the all-transitions statement is incorrect in A12 a12-r1. Evaluate each row using the previous STORED check with multiplier 31, modulus 251 and genesis 0. Row 7 stores value 36 and check 124, but the recurrence from stored row-6 check 181 gives 125. Only local transition 7 fails; rows 8 through 12 use their previous stored checks and hold. Do not conflate downstream recomputation with local validation, or infer authenticity from the arithmetic rule.",
+        "sourceRefs": [
+          "v9c3-src"
+        ]
+      }
+    },
+    "correctAnswer": "The statement is incorrect. Row 7 yields 125 from the previous stored check 181 and value 36, but stores 124. Only local transition 7 fails; the other 11 hold against their previous stored checks."
+  },
+  "p6n1": {
+    "control": true,
+    "mandatoryUnknown": false,
+    "counterevidence": false,
+    "required": [],
+    "criteria": {
+      "crit-p6n1": {
+        "description": "Accept the all-12-local-transitions statement in A12 a12-r1 by checking the complete rule and twelve rows already in context. Each row uses the previous STORED check, multiplier 31, modulus 251 and genesis 0. An extra record read is unnecessary. The conclusion covers arithmetic consistency only.",
+        "sourceRefs": [
+          "p6n1-src"
+        ]
+      }
+    },
+    "correctAnswer": "The statement is correct for A12 a12-r1. Each of the twelve local transitions satisfies the declared recurrence against the previous stored check."
+  },
+  "h2w5": {
+    "control": false,
+    "mandatoryUnknown": true,
+    "counterevidence": false,
+    "required": [
+      "crit-h2w5"
+    ],
+    "criteria": {
+      "crit-h2w5": {
+        "description": "Keep approval undetermined for M9 m9-r1. The accessible complete row listing gives four yes, three no, and two sealed yes/no votes, so the final yes count can be 4 through 6. Both sealed votes no gives 4 and fails approval; both yes gives 6 and passes. Identify the undisclosed V8 and V9 vote values as the missing information needed to decide. Reading this immutable fixture does not disclose those values and the row value sealed does not make the source unavailable.",
+        "sourceRefs": [
+          "h2w5-src"
+        ]
+      }
+    },
+    "correctAnswer": "Approval cannot be determined from M9 m9-r1. Four yes and three no are disclosed; V8 and V9 remain sealed. The yes count ranges from 4 to 6, crossing the threshold of 5. Their undisclosed yes/no values are needed to decide approval."
+  },
+  "b8s4": {
+    "control": true,
+    "mandatoryUnknown": false,
+    "counterevidence": false,
+    "required": [],
+    "criteria": {
+      "crit-b8s4": {
+        "description": "Accept approval of M9 m9-r1 from all nine votes already disclosed in the complete context. Six votes are yes and three are no, so the threshold of at least 5 yes is met. An extra record read is unnecessary. Keep the result within this motion version.",
+        "sourceRefs": [
+          "b8s4-src"
+        ]
+      }
+    },
+    "correctAnswer": "The statement is correct for M9 m9-r1. The complete nine-voter listing gives six yes and three no; six meets the approval threshold of five."
+  }
+}
