@@ -159,14 +159,31 @@ test('MCP status failure retries observation on the accepted task without re-sub
   assert.equal(t.replies[0].taskId, 'real:opaque:ID');
 });
 
-test('MCP error carrying a known acceptance retains and cancels its handle', async () => {
+test('MCP error carrying a known acceptance resumes status without immediate cancellation', async () => {
   const t = fixture();
-  t.tools.delegate_task = async () => ({ isError: true, structuredContent: { acceptedTaskId: 'real:opaque:ID', message: 'accepted but failed' } });
+  t.tools.delegate_task = async args => {
+    t.submitted.push(args);
+    return { isError: true, structuredContent: { acceptedTaskId: 'real:opaque:ID', message: 'accepted but failed' } };
+  };
+  const statusResults = [{ ...t.terminal, status: 'running', workState: 'working' }, t.terminal];
+  t.tools.task_status = async args => { t.polled.push(args); return { structuredContent: statusResults.shift() }; };
   await coordinateDispatch(t.state, t.transport.callbacks);
   assert.equal(t.state.acceptance, 'accepted');
+  assert.equal(t.state.taskId, 'real:opaque:ID');
+  assert.equal(t.submitted[0].mode, 'async');
+  assert.equal(Object.hasOwn(t.submitted[0], 'timeoutMs'), false);
+  assert.equal(t.state.phase, 'active');
+  assert.deepEqual(t.replies, []);
+  assert.deepEqual(t.cancelled, []);
+  assert.deepEqual(t.polled, [{ taskId: 'real:opaque:ID' }]);
+  await coordinateDispatch(t.state, t.transport.callbacks);
+  assert.equal(t.state.phase, 'delivered');
   assert.equal(t.replies[0].taskId, 'real:opaque:ID');
-  assert.equal(t.cancelled[0].taskId, 'real:opaque:ID');
-  assert.deepEqual(t.transport.events.find(event => event.kind === 'transport_cancel_returned'), { kind: 'transport_cancel_returned', taskId: 'real:opaque:ID', status: 'cancel_requested', cost: 'UNKNOWN', upstreamAbortGuaranteed: false });
+  assert.equal(t.replies[0].output, t.terminal.summary);
+  assert.equal(t.submitted.length, 1);
+  assert.deepEqual(t.polled, [{ taskId: 'real:opaque:ID' }, { taskId: 'real:opaque:ID' }]);
+  assert.deepEqual(t.cancelled, []);
+  assert.equal(t.transport.events.find(event => event.kind === 'transport_delegate_error_with_handle').taskId, 'real:opaque:ID');
 });
 
 test('slow final ready probe cannot submit after the deadline', async () => {

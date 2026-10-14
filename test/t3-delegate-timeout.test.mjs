@@ -51,18 +51,25 @@ for (const identifier of ['taskId', 'acceptedTaskId']) {
   });
 }
 
-test('an error-shaped timeout without a task handle remains unknown and is not retried', async () => {
-  const t = setup({ isError: true, structuredContent: { waitTimedOut: true, message: 'Parent wait expired.' } }, []);
+for (const detail of [
+  { waitTimedOut: true, message: 'Parent wait expired.' },
+  { taskId: 'unconfirmed-handle', message: 'Tool result was interrupted.' },
+]) {
+  test(`an error without an explicit accepted handle remains unknown and is not retried ${JSON.stringify(detail)}`, async () => {
+    const t = setup({ isError: true, structuredContent: detail }, []);
 
-  await coordinateDispatch(t.state, t.transport.callbacks);
+    await coordinateDispatch(t.state, t.transport.callbacks);
 
-  assert.equal(t.state.acceptance, 'unknown');
-  assert.equal(t.state.taskId, undefined);
-  assert.equal(t.calls.delegate.length, 1);
-  assert.deepEqual(t.calls.status, []);
-  assert.deepEqual(t.calls.cancel, []);
-  assert.equal(t.calls.replies.length, 1);
-  assert.equal(t.calls.replies[0].taskId, null);
-  assert.equal(t.calls.replies[0].error.code, 'model_error');
-  assert.match(t.calls.replies[0].error.message, /Parent wait expired/);
-});
+    assert.equal(t.state.acceptance, 'unknown');
+    assert.equal(t.state.taskId, undefined);
+    assert.equal(t.calls.delegate.length, 1);
+    assert.deepEqual(t.calls.status, []);
+    assert.deepEqual(t.calls.cancel, []);
+    assert.equal(t.calls.replies.length, 1);
+    assert.equal(t.calls.replies[0].taskId, null);
+    assert.equal(t.calls.replies[0].error.code, 'model_error');
+    assert.match(t.calls.replies[0].error.message, /expired|interrupted/);
+    await coordinateDispatch(t.state, t.transport.callbacks);
+    assert.equal(t.calls.delegate.length, 1);
+  });
+}

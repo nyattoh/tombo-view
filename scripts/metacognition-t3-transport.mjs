@@ -8,6 +8,8 @@ function payload(result) {
   if (result?.isError) {
     const error = new Error(typeof data === 'string' ? data : data?.message ?? 'T3 tool returned an error.');
     if (typeof data?.acceptedTaskId === 'string' && data.acceptedTaskId.trim()) error.acceptedTaskId = data.acceptedTaskId;
+    else if (data?.waitTimedOut === true && typeof data?.taskId === 'string' && data.taskId.trim()) error.acceptedTaskId = data.taskId;
+    if (data?.waitTimedOut === true) error.waitTimedOut = true;
     throw error;
   }
   if (!data || typeof data !== 'object') throw new Error('Invalid T3 result.');
@@ -21,8 +23,8 @@ function bindingError(data, taskId, target) {
   return null;
 }
 
-export function createT3Transport({ state, load, ready, deliver, tools, clientRequestId, target, now = Date.now, sleep, firstDelegateWaitMs = 0 }) {
-  if (!Number.isInteger(firstDelegateWaitMs) || firstDelegateWaitMs < 0 || firstDelegateWaitMs > 50000) throw new Error('firstDelegateWaitMs must be an integer from 0 to 50000.');
+export function createT3Transport({ state, load, ready, deliver, tools, clientRequestId, target, now = Date.now, sleep, firstDelegateWaitMs }) {
+  if (firstDelegateWaitMs !== undefined) throw new Error('Synchronous T3 wait is unsupported; use async polling.');
   if (typeof clientRequestId !== 'string' || !clientRequestId.trim()) throw new Error('A stable clientRequestId is required.');
   if (!target?.providerInstanceId || !target.model) throw new Error('An explicit T3 target is required.');
   const events = [];
@@ -42,25 +44,28 @@ export function createT3Transport({ state, load, ready, deliver, tools, clientRe
     ...(sleep ? { sleep } : {}),
     record: event => { events.push(JSON.parse(JSON.stringify(event))); },
     delegate: async (request, bridge) => {
-      let waitMs;
       try {
         if (bridge.model.provider !== target.providerInstanceId || bridge.model.name !== target.model) throw new Error('T3 target does not match the producer model.');
         await guard(bridge);
-        if (firstDelegateWaitMs > 0) {
-          waitMs = Math.min(firstDelegateWaitMs, bridge.deadlineAt - now());
-          if (waitMs <= 0) throw new Error('Producer deadline expired.');
-        }
       } catch (error) {
         error.rejectedBeforeAcceptance = true;
         throw error;
       }
-      const result = payload(await tools.delegate_task({
-        mode: firstDelegateWaitMs > 0 ? 'wait' : 'async', role: 'test', interactionMode: 'default',
-        ...(firstDelegateWaitMs > 0 ? { timeoutMs: waitMs } : {}),
-        clientRequestId: `${clientRequestId}-${bridge.sequence}`,
-        target,
-        task: `${request.instructions}\n${JSON.stringify(request)}`,
-      }));
+      let result;
+      try {
+        result = payload(await tools.delegate_task({
+          mode: 'async', role: 'test', interactionMode: 'default',
+          clientRequestId: `${clientRequestId}-${bridge.sequence}`,
+          target,
+          task: `${request.instructions}\n${JSON.stringify(request)}`,
+        }));
+      } catch (error) {
+        if (typeof error.acceptedTaskId === 'string' && error.acceptedTaskId.trim()) {
+          events.push({ kind: 'transport_delegate_error_with_handle', taskId: error.acceptedTaskId, waitTimedOut: error.waitTimedOut === true, message: String(error.message ?? error).slice(0, 512), cost: 'UNKNOWN', upstreamAbortGuaranteed: false });
+          return { taskId: error.acceptedTaskId };
+        }
+        throw error;
+      }
       if (typeof result.taskId !== 'string' || !result.taskId.trim()) throw new Error('T3 returned no accepted task ID.');
       const mismatch = bindingError(result, result.taskId, target);
       if (mismatch) {

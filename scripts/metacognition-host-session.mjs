@@ -1,5 +1,5 @@
 export async function runGuardedHostSession({ tools, coordinateDispatch, createT3Transport, config, onEvent = () => {} }) {
-  if (config.firstDelegateWaitMs !== undefined && (!Number.isInteger(config.firstDelegateWaitMs) || config.firstDelegateWaitMs < 0 || config.firstDelegateWaitMs > 50000)) throw new Error('firstDelegateWaitMs must be an integer from 0 to 50000.');
+  if (Object.hasOwn(config, 'firstDelegateWaitMs')) throw new Error('Synchronous T3 wait is unsupported; use async polling.');
   const root = config.repositoryRoot ?? 'D:\\develop\\works\\tombo-view';
   const quote = value => "'" + String(value).replaceAll("'", "''") + "'";
   if (!/^[a-z0-9-]+$/.test(config.caseId) || !['baseline', 'tombo'].includes(config.arm) || !Number.isInteger(config.repeat) || config.repeat < 1) throw new Error('Invalid trial identity.');
@@ -60,7 +60,7 @@ export async function runGuardedHostSession({ tools, coordinateDispatch, createT
     if (loaded.request.sequence !== expectedSequence || loaded.bridge.sequence !== expectedSequence) throw new Error('Request file sequence does not match the expected sequence.');
     const frame = {sequence:expectedSequence}, state = {};
     const transport = createT3Transport({
-      state, target:config.target, clientRequestId:config.clientRequestId, firstDelegateWaitMs:config.firstDelegateWaitMs,
+      state, target:config.target, clientRequestId:config.clientRequestId,
       tools:config.delegationTools ?? {delegate_task:tools.mcp__t3_code__delegate_task,task_status:tools.mcp__t3_code__task_status,task_cancel:tools.mcp__t3_code__task_cancel},
       ready,
       load:() => loaded,
