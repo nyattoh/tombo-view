@@ -30,7 +30,8 @@
     "build": "tsc -p tsconfig.json",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "test": "npm run build && node --test test/*.test.mjs",
-    "demo": "npm run build && node scripts/demo.mjs"
+    "demo": "npm run build && node scripts/demo.mjs",
+    "hidden-side-demo": "npm run build && node scripts/hidden-side-experiment.mjs"
   },
   "license": "MIT",
   "dependencies": {

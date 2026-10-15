@@ -5,6 +5,18 @@ description: tombo-viewで点検して、回答の根拠を確認して、未確
 
 # TOMBO
 
+点検モードは `standard`（既存の多視点観測）、`hidden-side`（任意の検索順位比較）、`combined`（両方）として扱う。指定がなければ後方互換の `standard` を使う。Hidden-Sideは検索機能を置き換えず、主張や証拠の状態を直接変更しない。
+
+`hidden-side` / `combined` は、呼出し元から同一の許可済みEmbeddingモデルが使え、点検対象を含む検索候補群と出典ロケータが与えられる場合だけ実行する。組込みEmbeddingモデル、ベクトルDB、追加API接続はない。モデル、候補群、費用や権限が不明なら補って呼び出さず、`hidden-side unavailable` としてstandardを続ける。CrossRAGの方式をTOMBOの実装や性能証拠として扱わない。
+
+SDKの `compareHiddenSideMethods` へ、コンテキスト各項目・現在の視点・候補文の同一モデルベクトルを渡す。Similarity、Orthogonal、Reflected View、seedを固定したRandom Baselineの順位を比較する。結果は検索順位の観測で、`verification_status: unverified`、解釈は `null` のままにする。Reflected / Orthogonalで新しく上位に入った候補は、standardの別観点として独立の出典検索・コード読取り・テストなどで確認する。候補やスコアだけでclaim、evidence、resolutionを作らない。数学的定義、出力と限界は [Hidden-Side Observation](../../docs/hidden-side-observation.md) に従う。
+
+最小の固定例は `npm run hidden-side-demo` で実行できる。ローカル文字n-gram特徴ベクトルによる28件の架空候補比較であり、意味Embeddingの検索結果や有効性の証明ではない。Wedgeは未実装である。
+
+幾何学的解釈の注意: 単位視点 `v`、`p = P(v)`、`r = v - p` で `cos(r, v) = ||r||`、`cos(p - r, v) = 2||p||² - 1`。射影ノルムが `1/√2` 未満なら、Reflected Viewは現在の視点と逆向きになる（2026-10-16の1回の実Embedding実行では射影ノルム0.437、反射cosine約-0.62）。Reflected候補は「類似度が低い候補」であり、発見ではない。順位が低いことは根拠にならず、候補は未検証のprobe/視点候補として既存の証拠確認へ渡すだけにする。この実行は1回・合成コーパス・人手の関連性評価なしで、有効性や一般化の証拠ではない。詳細は [Hidden-Side Observation](../../docs/hidden-side-observation.md) を参照する。TOMBOの純粋なOrthogonal（射影残差のcosine）とCrossRAGの混合Orthogonalスコアは同等でなく、比較しない。TOMBOの候補は単一句であり順序付きペアではないため、Wedgeは未実装のままである。
+
+Geometry guard (English): for unit `v`, `p = P(v)`, `r = v - p`, `cos(r, v) = ||r||` and `cos(p - r, v) = 2||p||² - 1`. When the projection norm is below `1/√2`, Reflected View points opposite the current viewpoint (in the single live embedding run on 2026-10-16: projection norm 0.437, reflected cosine about -0.62). Reflected candidates are low-similarity candidates, not discoveries; low rank is not evidence. Pass them only as unverified probe/viewpoint suggestions into the existing evidence check. That run was one run on a synthetic corpus with no human relevance ratings, so it is not evidence of effectiveness or generalisation. See [Hidden-Side Observation](../../docs/hidden-side-observation.md). TOMBO's pure Orthogonal (projection-residual cosine) and CrossRAG's blended Orthogonal score are not equivalent and must not be compared. TOMBO candidates are single phrases, not ordered pairs, so Wedge remains unimplemented.
+
 この会話のAIを提案作成役として使う。追加のLLM APIを呼ばない。利用者にアダプタやJSONの作成を求めず、点検対象からAI自身が入力を用意する。点検対象が会話にあればそれを使い、なければ対象だけを確認する。
 
 最初に [会話内の実行手順](references/host-session.md) を読む。新しいTaskPacketには `reflectionRequired: true` を指定する。`scripts/session.mjs` の prepare → inspect → 許可された検査 → prepare → update → prepare → reflect → report を、判定に応じて使う。固定アダプタの結果を、任意入力の検査に流用しない。
