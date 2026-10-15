@@ -1,0 +1,47 @@
+{
+  "version": 2,
+  "frozenBeforeResults": true,
+  "minimumRepeats": 3,
+  "arms": [
+    "baseline",
+    "tombo"
+  ],
+  "requested": {
+    "maxCalls": 6,
+    "maxOutputChars": 4000
+  },
+  "thresholds": {
+    "correctness": 0.9,
+    "recall": 0.85,
+    "falseClosure": 0,
+    "maxControlUnnecessaryProbe": 0.1,
+    "superiorityRecallGain": 0.1,
+    "minimumImprovedCases": 2,
+    "correctionAccuracy": 0.9
+  },
+  "pairedRule": "No case may regress in correctness, required-finding recall, false closure, correction accuracy or control unnecessary probing. Average repeats inside each case before comparing cases.",
+  "ordering": "Alternate baseline then tombo on odd repeats; tombo then baseline on even repeats.",
+  "judgeRule": "One independent blinded assessor rates both arms on identical criteria, binds every judgement to the output digest, cites output excerpts and source IDs. Schema checks are not semantic assessment.",
+  "boundary": "New public synthetic cases across unit normalisation, cold-start performance and dependency inventory. Six cases in three paired families, three repeats per arm; descriptive comparison only. Not a secret holdout or proof about all unknowns. Old exposed cases remain diagnostic. Host costs/tokens UNKNOWN; G4 cost cap unproven.",
+  "caseDigest": "8035650377fca14615f8a6e18946472f7fb502d3cd40537969df1bd683850cc0",
+  "annotationDigest": "cc5aa4f2f58c3a5dafc967196fa2ed788c54f6aae730309c9d14e7752565237d",
+  "maximumElapsedMs": 300000,
+  "maximumOutputCharsPerGeneration": 4000,
+  "freezeStatus": "FROZEN before participant results; data GLM round2 and host method GLM round2 passed",
+  "modelValidationRepairs": {
+    "baselineSyntax": 2,
+    "tomboProposal": 2,
+    "allRejectedGenerationsCount": true
+  },
+  "participantModel": {
+    "provider": "codex",
+    "name": "gpt-6.1-sol",
+    "effort": "medium"
+  },
+  "callDefinition": "Actual generation requests plus scripted source checks, including rejected requests. Hidden upstream requests unknown.",
+  "frozenAt": "2026-10-13T21:42:47Z",
+  "independentReviews": [
+    "results/metacognition-development/fresh-data-review-glm-r2.md",
+    "results/metacognition-development/host-trial-repair-review-glm-r2.md"
+  ]
+}

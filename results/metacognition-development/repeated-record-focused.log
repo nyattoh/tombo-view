@@ -1,0 +1,19 @@
+✔ baseline syntax repair receives feedback and charges the rejected generation (212.9321ms)
+✔ oversized output is retained then corrected without lifting the cap (183.9422ms)
+✔ persistent malformed baseline stops at the declared repair bound (202.3842ms)
+✔ TOMBO repairs an update without replaying its physical source check (216.4292ms)
+✔ failed TOMBO inspection labels its draft unverified rather than affirming it (182.5622ms)
+✔ two physical reads of one record produce separate assessed observations and source references (259.5348ms)
+✔ repair reuses the saved observation and repeated reads still share the six-call cap (256.374ms)
+✔ baseline executes a requested source and records grounded final output (201.2379ms)
+✔ TOMBO actual runner assesses counterevidence and requires reflection (217.8453ms)
+✔ invalid model response is retained and cannot claim success (179.8971ms)
+✔ closed host input records cancellation (201.5339ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1098.6607

@@ -1,0 +1,254 @@
+[
+  {
+    "id": "work-01",
+    "family": "event-processing",
+    "split": "development",
+    "synthetic": true,
+    "task": "Review this claim and give a source-grounded final answer: The order service is ready for replay traffic.",
+    "context": "Handler inserts one fulfilment row for every delivered event. The event bus may redeliver an event with the same event_id.",
+    "draft": "Deployment note says the happy-path check produced one fulfilment row.",
+    "capabilities": [
+      "read_record"
+    ],
+    "sources": [
+      {
+        "id": "replay-report",
+        "capability": "read_record",
+        "description": "Read the replay report.",
+        "status": "ok",
+        "text": "Two deliveries of event_id e17 produced fulfilment rows f1 and f2."
+      }
+    ]
+  },
+  {
+    "id": "work-02",
+    "family": "event-processing",
+    "split": "development",
+    "synthetic": true,
+    "task": "Review this claim and give a source-grounded final answer: The receipt total is correct.",
+    "context": "Receipt rows are GBP 12, GBP 8 and GBP 5. All rows are included.",
+    "draft": "The total is GBP 25.",
+    "capabilities": [
+      "read_record"
+    ],
+    "sources": [
+      {
+        "id": "receipt-ledger",
+        "capability": "read_record",
+        "description": "Read the receipt ledger.",
+        "status": "ok",
+        "text": "Signed ledger lists 12 + 8 + 5 = 25; three entries, no omitted pages."
+      }
+    ]
+  },
+  {
+    "id": "work-03",
+    "family": "release-compatibility",
+    "split": "development",
+    "synthetic": true,
+    "task": "Review this claim and give a source-grounded final answer: The service can move to version 7.",
+    "context": "Deployment uses client SDK 5.2. Build notes cover client SDK 4.9.",
+    "draft": "Version 7 accepts this client.",
+    "capabilities": [
+      "read_record"
+    ],
+    "sources": [
+      {
+        "id": "compatibility-matrix",
+        "capability": "read_record",
+        "description": "Read the compatibility matrix.",
+        "status": "ok",
+        "text": "Version 7 accepts SDK 6.0 and newer. SDK 5.2 is unsupported."
+      }
+    ]
+  },
+  {
+    "id": "work-04",
+    "family": "release-compatibility",
+    "split": "development",
+    "synthetic": true,
+    "task": "Review this claim and give a source-grounded final answer: The configuration is valid.",
+    "context": "Schema requires port integer 1..65535 and debug boolean. Values are port 8080, debug false.",
+    "draft": "Both fields satisfy the schema.",
+    "capabilities": [
+      "read_record"
+    ],
+    "sources": [
+      {
+        "id": "schema-record",
+        "capability": "read_record",
+        "description": "Read the schema record.",
+        "status": "ok",
+        "text": "Schema revision R2 confirms these two constraints and no other mandatory fields."
+      }
+    ]
+  },
+  {
+    "id": "work-05",
+    "family": "document-coverage",
+    "split": "development",
+    "synthetic": true,
+    "task": "Review this claim and give a source-grounded final answer: There are no records for account A.",
+    "context": "Search returned page one with zero records and next_cursor c9.",
+    "draft": "No matching records exist.",
+    "capabilities": [
+      "read_record"
+    ],
+    "sources": [
+      {
+        "id": "search-page",
+        "capability": "read_record",
+        "description": "Read the search page.",
+        "status": "ok",
+        "text": "Page c9 contains account A record r22, next_cursor null."
+      }
+    ]
+  },
+  {
+    "id": "work-06",
+    "family": "document-coverage",
+    "split": "development",
+    "synthetic": true,
+    "task": "Review this claim and give a source-grounded final answer: The named invoice was paid.",
+    "context": "Invoice I19 has settlement row S19, GBP 70, final status paid.",
+    "draft": "I19 is settled.",
+    "capabilities": [
+      "read_record"
+    ],
+    "sources": [
+      {
+        "id": "settlement-record",
+        "capability": "read_record",
+        "description": "Read the settlement record.",
+        "status": "ok",
+        "text": "Final signed settlement S19 matches I19 and amount GBP 70."
+      }
+    ]
+  },
+  {
+    "id": "work-07",
+    "family": "access-audit",
+    "split": "evaluation",
+    "synthetic": true,
+    "task": "Review this claim and give a source-grounded final answer: The exported dataset contains no contact addresses.",
+    "context": "Exporter selects name and profile_note. The application accepts free text in profile_note.",
+    "draft": "The export excludes the contact_address column.",
+    "capabilities": [
+      "read_record"
+    ],
+    "sources": [
+      {
+        "id": "export-sample",
+        "capability": "read_record",
+        "description": "Read the export sample.",
+        "status": "incomplete",
+        "text": "Export row 18 has profile_note: send the note to alex@example.invalid."
+      }
+    ]
+  },
+  {
+    "id": "work-08",
+    "family": "access-audit",
+    "split": "evaluation",
+    "synthetic": true,
+    "task": "Review this claim and give a source-grounded final answer: The export has the expected three columns.",
+    "context": "Contract requires account_id, city and balance. Export header is account_id,city,balance and column count is 3.",
+    "draft": "Header conforms to the contract.",
+    "capabilities": [
+      "read_record"
+    ],
+    "sources": [
+      {
+        "id": "export-header",
+        "capability": "read_record",
+        "description": "Read the export header.",
+        "status": "ok",
+        "text": "Contract revision C3 and actual file header match exactly."
+      }
+    ]
+  },
+  {
+    "id": "work-09",
+    "family": "monthly-reporting",
+    "split": "evaluation",
+    "synthetic": true,
+    "task": "Review this claim and give a source-grounded final answer: All March transactions belong in the March Tokyo report.",
+    "context": "The current query selects UTC timestamps beginning 2026-03. Tokyo reporting boundaries use UTC+09:00.",
+    "draft": "The monthly total is complete.",
+    "capabilities": [
+      "read_record"
+    ],
+    "sources": [
+      {
+        "id": "boundary-ledger",
+        "capability": "read_record",
+        "description": "Read the boundary ledger.",
+        "status": "conflict",
+        "text": "2026-02-28T16:30Z is March 1 Tokyo and excluded. 2026-03-31T16:30Z is April 1 Tokyo and included."
+      }
+    ]
+  },
+  {
+    "id": "work-10",
+    "family": "monthly-reporting",
+    "split": "evaluation",
+    "synthetic": true,
+    "task": "Review this claim and give a source-grounded final answer: The February total is GBP 40.",
+    "context": "The complete February ledger has credits GBP 15 and GBP 25, no debits, both in the stated timezone.",
+    "draft": "Net February receipts are GBP 40.",
+    "capabilities": [
+      "read_record"
+    ],
+    "sources": [
+      {
+        "id": "monthly-ledger",
+        "capability": "read_record",
+        "description": "Read the monthly ledger.",
+        "status": "ok",
+        "text": "Final ledger revision F2 confirms both entries and reporting timezone; no other entries."
+      }
+    ]
+  },
+  {
+    "id": "work-11",
+    "family": "supplier-attestation",
+    "split": "evaluation",
+    "synthetic": true,
+    "task": "Review this claim and give a source-grounded final answer: This shipment meets the temperature contract.",
+    "context": "Contract requires 2..8 Celsius throughout transit. Manifest reports departure 5 Celsius and arrival 6 Celsius. Continuous logger L8 is listed separately.",
+    "draft": "Endpoints establish compliance for the whole trip.",
+    "capabilities": [
+      "read_record"
+    ],
+    "sources": [
+      {
+        "id": "temperature-log",
+        "capability": "read_record",
+        "description": "Read the temperature log.",
+        "status": "unavailable",
+        "text": "Logger L8 could not be retrieved. Endpoint readings do not establish the interval maximum."
+      }
+    ]
+  },
+  {
+    "id": "work-12",
+    "family": "supplier-attestation",
+    "split": "evaluation",
+    "synthetic": true,
+    "task": "Review this claim and give a source-grounded final answer: The shipment arrived on 12 May.",
+    "context": "Signed delivery slip D9 gives arrival 12 May, local timezone explicitly stated. The claim concerns arrival date only.",
+    "draft": "The delivery date is 12 May.",
+    "capabilities": [
+      "read_record"
+    ],
+    "sources": [
+      {
+        "id": "delivery-slip",
+        "capability": "read_record",
+        "description": "Read the delivery slip.",
+        "status": "ok",
+        "text": "Signed D9 confirms 12 May. Warehouse summary draft W1 says 11 May; W1 was superseded by D9."
+      }
+    ]
+  }
+]

@@ -1,0 +1,180 @@
+{
+  "readiness": "FAIL",
+  "comparison": "INCONCLUSIVE",
+  "independentCases": 6,
+  "repeatPairs": 18,
+  "statusCounts": {
+    "success": 26,
+    "error": 10,
+    "cancelled": 0,
+    "not_run": 0,
+    "missing": 0
+  },
+  "invalidJudgements": 0,
+  "invalidTranscripts": 8,
+  "unjudged": 0,
+  "fixtures": 0,
+  "unmatchedPairs": 0,
+  "nonRegression": false,
+  "independentAssessorConsistent": true,
+  "models": [
+    {
+      "provider": "codex",
+      "name": "gpt-6.1-sol",
+      "effort": "low"
+    }
+  ],
+  "modelIdentityConsistent": true,
+  "callsAndOriginAttestationOnly": true,
+  "independentAssessorAttestationOnly": true,
+  "improvedCases": 0,
+  "arms": {
+    "baseline": {
+      "correctness": 0.9444444444444445,
+      "recall": 0.8888888888888888,
+      "falseClosure": 0.1111111111111111,
+      "correctionAccuracy": 0.9444444444444445,
+      "controlUnnecessaryProbe": 0.5555555555555555,
+      "performedCheckCount": 0.7222222222222222
+    },
+    "tombo": {
+      "correctness": 0.4444444444444444,
+      "recall": 0.3333333333333333,
+      "falseClosure": 0.6666666666666666,
+      "correctionAccuracy": 0.4444444444444444,
+      "controlUnnecessaryProbe": 0.3333333333333333,
+      "performedCheckCount": 0.611111111111111
+    }
+  },
+  "cases": [
+    {
+      "caseId": "q7m2",
+      "control": false,
+      "mandatorySuite": true,
+      "baseline": {
+        "correctness": 1,
+        "recall": 1,
+        "falseClosure": 0,
+        "correctionAccuracy": 1,
+        "controlUnnecessaryProbe": 0,
+        "performedCheckCount": 1
+      },
+      "tombo": {
+        "correctness": 0.6666666666666666,
+        "recall": 0.6666666666666666,
+        "falseClosure": 0.3333333333333333,
+        "correctionAccuracy": 0.6666666666666666,
+        "controlUnnecessaryProbe": 0,
+        "performedCheckCount": 1
+      }
+    },
+    {
+      "caseId": "k4r8",
+      "control": true,
+      "mandatorySuite": false,
+      "baseline": {
+        "correctness": 1,
+        "recall": 1,
+        "falseClosure": 0,
+        "correctionAccuracy": 1,
+        "controlUnnecessaryProbe": 0.6666666666666666,
+        "performedCheckCount": 0.6666666666666666
+      },
+      "tombo": {
+        "correctness": 1,
+        "recall": 1,
+        "falseClosure": 0,
+        "correctionAccuracy": 1,
+        "controlUnnecessaryProbe": 0,
+        "performedCheckCount": 0
+      }
+    },
+    {
+      "caseId": "v9c3",
+      "control": false,
+      "mandatorySuite": true,
+      "baseline": {
+        "correctness": 1,
+        "recall": 1,
+        "falseClosure": 0,
+        "correctionAccuracy": 1,
+        "controlUnnecessaryProbe": 0,
+        "performedCheckCount": 1
+      },
+      "tombo": {
+        "correctness": 0.3333333333333333,
+        "recall": 0.3333333333333333,
+        "falseClosure": 0.6666666666666666,
+        "correctionAccuracy": 0.3333333333333333,
+        "controlUnnecessaryProbe": 0,
+        "performedCheckCount": 0.6666666666666666
+      }
+    },
+    {
+      "caseId": "p6n1",
+      "control": true,
+      "mandatorySuite": false,
+      "baseline": {
+        "correctness": 1,
+        "recall": 1,
+        "falseClosure": 0,
+        "correctionAccuracy": 1,
+        "controlUnnecessaryProbe": 0,
+        "performedCheckCount": 0
+      },
+      "tombo": {
+        "correctness": 0.3333333333333333,
+        "recall": 0.3333333333333333,
+        "falseClosure": 0.6666666666666666,
+        "correctionAccuracy": 0.3333333333333333,
+        "controlUnnecessaryProbe": 0.6666666666666666,
+        "performedCheckCount": 0
+      }
+    },
+    {
+      "caseId": "h2w5",
+      "control": false,
+      "mandatorySuite": true,
+      "baseline": {
+        "correctness": 0.6666666666666666,
+        "recall": 0.6666666666666666,
+        "falseClosure": 0.3333333333333333,
+        "correctionAccuracy": 0.6666666666666666,
+        "controlUnnecessaryProbe": 0,
+        "performedCheckCount": 0.6666666666666666
+      },
+      "tombo": {
+        "correctness": 0,
+        "recall": 0,
+        "falseClosure": 1,
+        "correctionAccuracy": 0,
+        "controlUnnecessaryProbe": 0,
+        "performedCheckCount": 2
+      }
+    },
+    {
+      "caseId": "b8s4",
+      "control": true,
+      "mandatorySuite": false,
+      "baseline": {
+        "correctness": 1,
+        "recall": 1,
+        "falseClosure": 0,
+        "correctionAccuracy": 1,
+        "controlUnnecessaryProbe": 1,
+        "performedCheckCount": 1
+      },
+      "tombo": {
+        "correctness": 0.3333333333333333,
+        "recall": 0.3333333333333333,
+        "falseClosure": 0.3333333333333333,
+        "correctionAccuracy": 0.3333333333333333,
+        "controlUnnecessaryProbe": 0.3333333333333333,
+        "performedCheckCount": 0
+      }
+    }
+  ],
+  "g4CostProven": false,
+  "boundary": "New public synthetic schedule coverage, local integer checksum and sealed-vote cases. Original thresholds, repeats, repair and call/output/time caps are retained. Immutable record declarations apply to this dataset only. New cases and transport changes prevent attributing differences to one fix alone. Host costs, tokens and hidden upstream calls UNKNOWN. General completeness unproven.",
+  "protocolDigest": "96d541f4a3687aff6b1bca34ea9f1669ec3ecfd09cc08a935621d751965ef160"
+}

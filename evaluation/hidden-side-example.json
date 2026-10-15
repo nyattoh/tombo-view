@@ -1,0 +1,911 @@
+{
+  "schema_version": "hidden-side-observation/1",
+  "input_context": "犬、カレー、夕暮れ、帰宅",
+  "viewpoint": "家庭での食事",
+  "embedding_model": "local-char-ngram-1-3-deterministic-v1",
+  "dimension": 512,
+  "context_surface_rank": 4,
+  "context_aggregation": "equal_weight_mean_of_unit_vectors",
+  "projection_norm": 0,
+  "orthogonal_residual_norm": 0.9999999999999999,
+  "reflected_vector_norm": 0.9999999999999999,
+  "context_digest": "aa5178c18aaa57c7c9f8988b05f39050b9d8cea624e715dcb4ff2abd122046e0",
+  "top_k": 10,
+  "random_seed": 20261016,
+  "methods": [
+    {
+      "method": "similarity",
+      "viewpoint": "current_context",
+      "candidates": [
+        {
+          "id": "candidate-14",
+          "concept": "家庭料理",
+          "context_rank": 25,
+          "context_score": 0,
+          "baseline_rank": 1,
+          "hidden_rank": 1,
+          "score": 0.2581988897471611,
+          "score_type": "cosine_similarity",
+          "source": "synthetic:hidden-side-corpus-v1#14",
+          "interpretation": null,
+          "verification_status": "unverified"
+        },
+        {
+          "id": "candidate-18",
+          "concept": "猫の夕食",
+          "context_rank": 17,
+          "context_score": 0.06804138174397717,
+          "baseline_rank": 2,
+          "hidden_rank": 2,
+          "score": 0.2581988897471611,
+          "score_type": "cosine_similarity",
+          "source": "synthetic:hidden-side-corpus-v1#18",
+          "interpretation": null,
+          "verification_status": "unverified"
+        },
+        {
+          "id": "candidate-28",
+          "concept": "犬と家族の食卓",
+          "context_rank": 15,
+          "context_score": 0.11785113019775793,
+          "baseline_rank": 3,
+          "hidden_rank": 3,
+          "score": 0.24343224778007383,
+          "score_type": "cosine_similarity",
+          "source": "synthetic:hidden-side-corpus-v1#28",
+          "interpretation": null,
+          "verification_status": "unverified"
+        },
+        {
+          "id": "candidate-07",
+          "concept": "食卓の準備",
+          "context_rank": 28,
+          "context_score": -0.08333333333333336,
+          "baseline_rank": 4,
+          "hidden_rank": 4,
+          "score": 0.223606797749979,
+          "score_type": "cosine_similarity",
+          "source": "synthetic:hidden-side-corpus-v1#7",
+          "interpretation": null,
+          "verification_status": "unverified"
+        },
+        {
+          "id": "candidate-22",
+          "concept": "夕食の献立",
+          "context_rank": 19,
+          "context_score": 0.058925565098878974,
+          "baseline_rank": 5,
+          "hidden_rank": 5,
+          "score": 0.223606797749979,
+          "score_type": "cosine_similarity",
+          "source": "synthetic:hidden-side-corpus-v1#22",
+          "interpretation": null,
+          "verification_status": "unverified"
+        },
+        {
+          "id": "candidate-24",
+          "concept": "公園の夕焼け",
+          "context_rank": 21,
+          "context_score": 0.05270462766947299,
+          "baseline_rank": 6,
+          "hidden_rank": 6,
+          "score": 0.19999999999999996,
+          "score_type": "cosine_similarity",
+          "source": "synthetic:hidden-side-corpus-v1#24",
+          "interpretation": null,
+          "verification_status": "unverified"
+        },
+        {
+          "id": "candidate-01",
+          "concept": "家族で囲む夕食",
+          "context_rank": 22,
+          "context_score": 0.04811252243246882,
+          "baseline_rank": 7,
+          "hidden_rank": 7,
+          "score": 0.18257418583505536,
+          "score_type": "cosine_similarity",
+          "source": "synthetic:hidden-side-corpus-v1#1",
+          "interpretation": null,
+          "verification_status": "unverified"
+        },
+        {
+          "id": "candidate-02",
+          "concept": "スパイスカレーの夕食",
+          "context_rank": 9,
+          "context_score": 0.23570226039551584,
+          "baseline_rank": 8,
+          "hidden_rank": 8,
+          "score": 0.14907119849998599,
+          "score_type": "cosine_similarity",
+          "source": "synthetic:hidden-side-corpus-v1#2",
+          "interpretation": null,
+          "verification_status": "unverified"
+        },
+        {
+          "id": "candidate-17",
+          "concept": "家族の会話",
+          "context_rank": 18,
+          "context_score": 0.058925565098878974,
+          "baseline_rank": 9,
+          "hidden_rank": 9,
+          "score": 0.14907119849998599,
+          "score_type": "cosine_similarity",
+          "source": "synthetic:hidden-side-corpus-v1#17",
+          "interpretation": null,
+          "verification_status": "unverified"
+        },
+        {
+          "id": "candidate-11",
+          "concept": "食後の片付け",
+          "context_rank": 27,
+          "context_score": -0.056613851707229795,
+          "baseline_rank": 10,
+          "hidden_rank": 10,
+          "score": 0.14322297480788657,
+          "score_type": "cosine_similarity",
+          "source": "synthetic:hidden-side-corpus-v1#11",
+          "interpretation": null,
+          "verification_status": "unverified"
+        }
+      ]
+    },
+    {
+      "method": "orthogonal",
+      "viewpoint": "orthogonal_residual",
+      "candidates": [
+        {
+          "id": "candidate-14",
+          "concept": "家庭料理",
+          "context_rank": 25,
+          "context_score": 0,
+          "baseline_rank": 1,
+          "hidden_rank": 1,
+          "score": 0.2581988897471611,
+          "score_type": "cosine_similarity",
+          "source": "synthetic:hidden-side-corpus-v1#14",
+          "interpretation": null,
+          "verification_status": "unverified"
+        },
+        {
+          "id": "candidate-18",
+          "concept": "猫の夕食",
+          "context_rank": 17,
+          "context_score": 0.06804138174397717,
+          "baseline_rank": 2,
+          "hidden_rank": 2,
+          "score": 0.2581988897471611,
+          "score_type": "cosine_similarity",
+          "source": "synthetic:hidden-side-corpus-v1#18",
+          "interpretation": null,
+          "verification_status": "unverified"
+        },
+        {
+          "id": "candidate-28",
+          "concept": "犬と家族の食卓",
+          "context_rank": 15,
+          "context_score": 0.11785113019775793,
+          "baseline_rank": 3,
+          "hidden_rank": 3,
+          "score": 0.24343224778007383,
+          "score_type": "cosine_similarity",
+          "source": "synthetic:hidden-side-corpus-v1#28",
+          "interpretation": null,
+          "verification_status": "unverified"
+        },
+        {
+          "id": "candidate-07",
+          "concept": "食卓の準備",
+          "context_rank": 28,
+          "context_score": -0.08333333333333336,
+          "baseline_rank": 4,
+          "hidden_rank": 4,
+          "score": 0.223606797749979,
+          "score_type": "cosine_similarity",
+          "source": "synthetic:hidden-side-corpus-v1#7",
+          "interpretation": null,
+          "verification_status": "unverified"
+        },
+        {
+          "id": "candidate-22",
+          "concept": "夕食の献立",
+          "context_rank": 19,
+          "context_score": 0.058925565098878974,
+          "baseline_rank": 5,
+          "hidden_rank": 5,
+          "score": 0.223606797749979,
+          "score_type": "cosine_similarity",
+          "source": "synthetic:hidden-side-corpus-v1#22",
+          "interpretation": null,
+          "verification_status": "unverified"
+        },
+        {
+          "id": "candidate-24",
+          "concept": "公園の夕焼け",
+          "context_rank": 21,
+          "context_score": 0.05270462766947299,
+          "baseline_rank": 6,
+          "hidden_rank": 6,
+          "score": 0.19999999999999996,
+          "score_type": "cosine_similarity",
+          "source": "synthetic:hidden-side-corpus-v1#24",
+          "interpretation": null,
+          "verification_status": "unverified"
+        },
+        {
+          "id": "candidate-01",
+          "concept": "家族で囲む夕食",
+          "context_rank": 22,
+          "context_score": 0.04811252243246882,
+          "baseline_rank": 7,
+          "hidden_rank": 7,
+          "score": 0.18257418583505536,
+          "score_type": "cosine_similarity",
+          "source": "synthetic:hidden-side-corpus-v1#1",
+          "interpretation": null,
+          "verification_status": "unverified"
+        },
+        {
+          "id": "candidate-02",
+          "concept": "スパイスカレーの夕食",
+          "context_rank": 9,
+          "context_score": 0.23570226039551584,
+          "baseline_rank": 8,
+          "hidden_rank": 8,
+          "score": 0.14907119849998599,
+          "score_type": "cosine_similarity",
+          "source": "synthetic:hidden-side-corpus-v1#2",
+          "interpretation": null,
+          "verification_status": "unverified"
+        },
+        {
+          "id": "candidate-17",
+          "concept": "家族の会話",
+          "context_rank": 18,
+          "context_score": 0.058925565098878974,
+          "baseline_rank": 9,
+          "hidden_rank": 9,
+          "score": 0.14907119849998599,
+          "score_type": "cosine_similarity",
+          "source": "synthetic:hidden-side-corpus-v1#17",
+          "interpretation": null,
+          "verification_status": "unverified"
+        },
+        {
+          "id": "candidate-11",
+          "concept": "食後の片付け",
+          "context_rank": 27,
+          "context_score": -0.056613851707229795,
+          "baseline_rank": 10,
+          "hidden_rank": 10,
+          "score": 0.14322297480788657,
+          "score_type": "cosine_similarity",
+          "source": "synthetic:hidden-side-corpus-v1#11",
+          "interpretation": null,
+          "verification_status": "unverified"
+        }
+      ]
+    },
+    {
+      "method": "reflected_view",
+      "viewpoint": "reflected_view",
+      "candidates": [
+        {
+          "id": "candidate-05",
+          "concept": "帰宅後に犬が迎える",
+          "context_rank": 3,
+          "context_score": 0.3205054345792694,
+          "baseline_rank": 24,
+          "hidden_rank": 1,
+          "score": 0,
+          "score_type": "cosine_similarity",
+          "source": "synthetic:hidden-side-corpus-v1#5",
+          "interpretation": null,
+          "verification_status": "unverified"
+        },
+        {
+          "id": "candidate-10",
+          "concept": "朝食を作る",
+          "context_rank": 24,
+          "context_score": 0,
+          "baseline_rank": 25,
+          "hidden_rank": 2,
+          "score": 0,
+          "score_type": "cosine_similarity",
+          "source": "synthetic:hidden-side-corpus-v1#10",
+          "interpretation": null,
+          "verification_status": "unverified"
+        },
+        {
+          "id": "candidate-12",
+          "concept": "夕暮れに帰宅",
+          "context_rank": 1,
+          "context_score": 0.5398345637668169,
+          "baseline_rank": 26,
+          "hidden_rank": 3,
+          "score": 0,
+          "score_type": "cosine_similarity",
+          "source": "synthetic:hidden-side-corpus-v1#12",
+          "interpretation": null,
+          "verification_status": "unverified"
+        },
+        {
+          "id": "candidate-19",
+          "concept": "カレー皿",
+          "context_rank": 2,
+          "context_score": 0.408248290463863,
+          "baseline_rank": 27,
+          "hidden_rank": 4,
+          "score": 0,
+          "score_type": "cosine_similarity",
+          "source": "synthetic:hidden-side-corpus-v1#19",
+          "interpretation": null,
+          "verification_status": "unverified"
+        },
+        {
+          "id": "candidate-25",
+          "concept": "スープを温める",
+          "context_rank": 23,
+          "context_score": 0.04811252243246882,
+          "baseline_rank": 28,
+          "hidden_rank": 5,
+          "score": 0,
+          "score_type": "cosine_similarity",
+          "source": "synthetic:hidden-side-corpus-v1#25",
+          "interpretation": null,
+          "verification_status": "unverified"
+        },
+        {
+          "id": "candidate-08",
+          "concept": "夕方の散歩後にカレーを作る",
+          "context_rank": 8,
+          "context_score": 0.2381448361039201,
+          "baseline_rank": 23,
+          "hidden_rank": 6,
+          "score": -0.043033148291193514,
+          "score_type": "cosine_similarity",
+          "source": "synthetic:hidden-side-corpus-v1#8",
+          "interpretation": null,
+          "verification_status": "unverified"
+        },
+        {
+          "id": "candidate-06",
+          "concept": "カレーの買い出し",
+          "context_rank": 10,
+          "context_score": 0.2341464528954235,
+          "baseline_rank": 22,
+          "hidden_rank": 7,
+          "score": -0.059234887775909226,
+          "score_type": "cosine_similarity",
+          "source": "synthetic:hidden-side-corpus-v1#6",
+          "interpretation": null,
+          "verification_status": "unverified"
+        },
+        {
+          "id": "candidate-21",
+          "concept": "犬と過ごす休日",
+          "context_rank": 13,
+          "context_score": 0.16596365263022675,
+          "baseline_rank": 21,
+          "hidden_rank": 8,
+          "score": -0.06085806194501846,
+          "score_type": "cosine_similarity",
+          "source": "synthetic:hidden-side-corpus-v1#21",
+          "interpretation": null,
+          "verification_status": "unverified"
+        },
+        {
+          "id": "candidate-04",
+          "concept": "夕暮れの散歩",
+          "context_rank": 4,
+          "context_score": 0.31622776601683794,
+          "baseline_rank": 19,
+          "hidden_rank": 9,
+          "score": -0.06666666666666665,
+          "score_type": "cosine_similarity",
+          "source": "synthetic:hidden-side-corpus-v1#4",
+          "interpretation": null,
+          "verification_status": "unverified"
+        },
+        {
+          "id": "candidate-26",
+          "concept": "帰宅時の玄関",
+          "context_rank": 11,
+          "context_score": 0.223606797749979,
+          "baseline_rank": 20,
+          "hidden_rank": 10,
+          "score": -0.06666666666666665,
+          "score_type": "cosine_similarity",
+          "source": "synthetic:hidden-side-corpus-v1#26",
+          "interpretation": null,
+          "verification_status": "unverified"
+        }
+      ]
+    },
+    {
+      "method": "random_baseline",
+      "viewpoint": "random",
+      "candidates": [
+        {
+          "id": "candidate-21",
+          "concept": "犬と過ごす休日",
+          "context_rank": 13,
+          "context_score": 0.16596365263022675,
+          "baseline_rank": 21,
+          "hidden_rank": 1,
+          "score": null,
+          "score_type": "random_order",
+          "source": "synthetic:hidden-side-corpus-v1#21",
+          "interpretation": null,
+          "verification_status": "unverified"
+        },
+        {
+          "id": "candidate-25",
+          "concept": "スープを温める",
+          "context_rank": 23,
+          "context_score": 0.04811252243246882,
+          "baseline_rank": 28,
+          "hidden_rank": 2,
+          "score": null,
+          "score_type": "random_order",
+          "source": "synthetic:hidden-side-corpus-v1#25",
+          "interpretation": null,
+          "verification_status": "unverified"
+        },
+        {
+          "id": "candidate-17",
+          "concept": "家族の会話",
+          "context_rank": 18,
+          "context_score": 0.058925565098878974,
+          "baseline_rank": 9,
+          "hidden_rank": 3,
+          "score": null,
+          "score_type": "random_order",
+          "source": "synthetic:hidden-side-corpus-v1#17",
+          "interpretation": null,
+          "verification_status": "unverified"
+        },
+        {
+          "id": "candidate-03",
+          "concept": "犬の散歩から帰宅",
+          "context_rank": 6,
+          "context_score": 0.29809118162260984,
+          "baseline_rank": 15,
+          "hidden_rank": 4,
+          "score": null,
+          "score_type": "random_order",
+          "source": "synthetic:hidden-side-corpus-v1#3",
+          "interpretation": null,
+          "verification_status": "unverified"
+        },
+        {
+          "id": "candidate-18",
+          "concept": "猫の夕食",
+          "context_rank": 17,
+          "context_score": 0.06804138174397717,
+          "baseline_rank": 2,
+          "hidden_rank": 5,
+          "score": null,
+          "score_type": "random_order",
+          "source": "synthetic:hidden-side-corpus-v1#18",
+          "interpretation": null,
+          "verification_status": "unverified"
+        },
+        {
+          "id": "candidate-07",
+          "concept": "食卓の準備",
+          "context_rank": 28,
+          "context_score": -0.08333333333333336,
+          "baseline_rank": 4,
+          "hidden_rank": 6,
+          "score": null,
+          "score_type": "random_order",
+          "source": "synthetic:hidden-side-corpus-v1#7",
+          "interpretation": null,
+          "verification_status": "unverified"
+        },
+        {
+          "id": "candidate-09",
+          "concept": "外食でカレー",
+          "context_rank": 5,
+          "context_score": 0.31622776601683794,
+          "baseline_rank": 12,
+          "hidden_rank": 7,
+          "score": null,
+          "score_type": "random_order",
+          "source": "synthetic:hidden-side-corpus-v1#9",
+          "interpretation": null,
+          "verification_status": "unverified"
+        },
+        {
+          "id": "candidate-05",
+          "concept": "帰宅後に犬が迎える",
+          "context_rank": 3,
+          "context_score": 0.3205054345792694,
+          "baseline_rank": 24,
+          "hidden_rank": 8,
+          "score": null,
+          "score_type": "random_order",
+          "source": "synthetic:hidden-side-corpus-v1#5",
+          "interpretation": null,
+          "verification_status": "unverified"
+        },
+        {
+          "id": "candidate-02",
+          "concept": "スパイスカレーの夕食",
+          "context_rank": 9,
+          "context_score": 0.23570226039551584,
+          "baseline_rank": 8,
+          "hidden_rank": 9,
+          "score": null,
+          "score_type": "random_order",
+          "source": "synthetic:hidden-side-corpus-v1#2",
+          "interpretation": null,
+          "verification_status": "unverified"
+        },
+        {
+          "id": "candidate-04",
+          "concept": "夕暮れの散歩",
+          "context_rank": 4,
+          "context_score": 0.31622776601683794,
+          "baseline_rank": 19,
+          "hidden_rank": 10,
+          "score": null,
+          "score_type": "random_order",
+          "source": "synthetic:hidden-side-corpus-v1#4",
+          "interpretation": null,
+          "verification_status": "unverified"
+        }
+      ]
+    }
+  ],
+  "comparisons": [
+    {
+      "method": "orthogonal",
+      "baseline_method": "similarity",
+      "baseline_top_k": [
+        "candidate-14",
+        "candidate-18",
+        "candidate-28",
+        "candidate-07",
+        "candidate-22",
+        "candidate-24",
+        "candidate-01",
+        "candidate-02",
+        "candidate-17",
+        "candidate-11"
+      ],
+      "method_top_k": [
+        "candidate-14",
+        "candidate-18",
+        "candidate-28",
+        "candidate-07",
+        "candidate-22",
+        "candidate-24",
+        "candidate-01",
+        "candidate-02",
+        "candidate-17",
+        "candidate-11"
+      ],
+      "intersection_count": 10,
+      "overlap_ratio": 1,
+      "candidates": [
+        {
+          "id": "candidate-14",
+          "baseline_scored": true,
+          "baseline_rank": 1,
+          "method_rank": 1,
+          "rank_gain": 0,
+          "entered_top_k": false
+        },
+        {
+          "id": "candidate-18",
+          "baseline_scored": true,
+          "baseline_rank": 2,
+          "method_rank": 2,
+          "rank_gain": 0,
+          "entered_top_k": false
+        },
+        {
+          "id": "candidate-28",
+          "baseline_scored": true,
+          "baseline_rank": 3,
+          "method_rank": 3,
+          "rank_gain": 0,
+          "entered_top_k": false
+        },
+        {
+          "id": "candidate-07",
+          "baseline_scored": true,
+          "baseline_rank": 4,
+          "method_rank": 4,
+          "rank_gain": 0,
+          "entered_top_k": false
+        },
+        {
+          "id": "candidate-22",
+          "baseline_scored": true,
+          "baseline_rank": 5,
+          "method_rank": 5,
+          "rank_gain": 0,
+          "entered_top_k": false
+        },
+        {
+          "id": "candidate-24",
+          "baseline_scored": true,
+          "baseline_rank": 6,
+          "method_rank": 6,
+          "rank_gain": 0,
+          "entered_top_k": false
+        },
+        {
+          "id": "candidate-01",
+          "baseline_scored": true,
+          "baseline_rank": 7,
+          "method_rank": 7,
+          "rank_gain": 0,
+          "entered_top_k": false
+        },
+        {
+          "id": "candidate-02",
+          "baseline_scored": true,
+          "baseline_rank": 8,
+          "method_rank": 8,
+          "rank_gain": 0,
+          "entered_top_k": false
+        },
+        {
+          "id": "candidate-17",
+          "baseline_scored": true,
+          "baseline_rank": 9,
+          "method_rank": 9,
+          "rank_gain": 0,
+          "entered_top_k": false
+        },
+        {
+          "id": "candidate-11",
+          "baseline_scored": true,
+          "baseline_rank": 10,
+          "method_rank": 10,
+          "rank_gain": 0,
+          "entered_top_k": false
+        }
+      ]
+    },
+    {
+      "method": "reflected_view",
+      "baseline_method": "similarity",
+      "baseline_top_k": [
+        "candidate-14",
+        "candidate-18",
+        "candidate-28",
+        "candidate-07",
+        "candidate-22",
+        "candidate-24",
+        "candidate-01",
+        "candidate-02",
+        "candidate-17",
+        "candidate-11"
+      ],
+      "method_top_k": [
+        "candidate-05",
+        "candidate-10",
+        "candidate-12",
+        "candidate-19",
+        "candidate-25",
+        "candidate-08",
+        "candidate-06",
+        "candidate-21",
+        "candidate-04",
+        "candidate-26"
+      ],
+      "intersection_count": 0,
+      "overlap_ratio": 0,
+      "candidates": [
+        {
+          "id": "candidate-05",
+          "baseline_scored": true,
+          "baseline_rank": 24,
+          "method_rank": 1,
+          "rank_gain": 23,
+          "entered_top_k": true
+        },
+        {
+          "id": "candidate-10",
+          "baseline_scored": true,
+          "baseline_rank": 25,
+          "method_rank": 2,
+          "rank_gain": 23,
+          "entered_top_k": true
+        },
+        {
+          "id": "candidate-12",
+          "baseline_scored": true,
+          "baseline_rank": 26,
+          "method_rank": 3,
+          "rank_gain": 23,
+          "entered_top_k": true
+        },
+        {
+          "id": "candidate-19",
+          "baseline_scored": true,
+          "baseline_rank": 27,
+          "method_rank": 4,
+          "rank_gain": 23,
+          "entered_top_k": true
+        },
+        {
+          "id": "candidate-25",
+          "baseline_scored": true,
+          "baseline_rank": 28,
+          "method_rank": 5,
+          "rank_gain": 23,
+          "entered_top_k": true
+        },
+        {
+          "id": "candidate-08",
+          "baseline_scored": true,
+          "baseline_rank": 23,
+          "method_rank": 6,
+          "rank_gain": 17,
+          "entered_top_k": true
+        },
+        {
+          "id": "candidate-06",
+          "baseline_scored": true,
+          "baseline_rank": 22,
+          "method_rank": 7,
+          "rank_gain": 15,
+          "entered_top_k": true
+        },
+        {
+          "id": "candidate-21",
+          "baseline_scored": true,
+          "baseline_rank": 21,
+          "method_rank": 8,
+          "rank_gain": 13,
+          "entered_top_k": true
+        },
+        {
+          "id": "candidate-04",
+          "baseline_scored": true,
+          "baseline_rank": 19,
+          "method_rank": 9,
+          "rank_gain": 10,
+          "entered_top_k": true
+        },
+        {
+          "id": "candidate-26",
+          "baseline_scored": true,
+          "baseline_rank": 20,
+          "method_rank": 10,
+          "rank_gain": 10,
+          "entered_top_k": true
+        }
+      ]
+    },
+    {
+      "method": "random_baseline",
+      "baseline_method": "similarity",
+      "baseline_top_k": [
+        "candidate-14",
+        "candidate-18",
+        "candidate-28",
+        "candidate-07",
+        "candidate-22",
+        "candidate-24",
+        "candidate-01",
+        "candidate-02",
+        "candidate-17",
+        "candidate-11"
+      ],
+      "method_top_k": [
+        "candidate-21",
+        "candidate-25",
+        "candidate-17",
+        "candidate-03",
+        "candidate-18",
+        "candidate-07",
+        "candidate-09",
+        "candidate-05",
+        "candidate-02",
+        "candidate-04"
+      ],
+      "intersection_count": 4,
+      "overlap_ratio": 0.4,
+      "candidates": [
+        {
+          "id": "candidate-21",
+          "baseline_scored": true,
+          "baseline_rank": 21,
+          "method_rank": 1,
+          "rank_gain": 20,
+          "entered_top_k": true
+        },
+        {
+          "id": "candidate-25",
+          "baseline_scored": true,
+          "baseline_rank": 28,
+          "method_rank": 2,
+          "rank_gain": 26,
+          "entered_top_k": true
+        },
+        {
+          "id": "candidate-17",
+          "baseline_scored": true,
+          "baseline_rank": 9,
+          "method_rank": 3,
+          "rank_gain": 6,
+          "entered_top_k": false
+        },
+        {
+          "id": "candidate-03",
+          "baseline_scored": true,
+          "baseline_rank": 15,
+          "method_rank": 4,
+          "rank_gain": 11,
+          "entered_top_k": true
+        },
+        {
+          "id": "candidate-18",
+          "baseline_scored": true,
+          "baseline_rank": 2,
+          "method_rank": 5,
+          "rank_gain": -3,
+          "entered_top_k": false
+        },
+        {
+          "id": "candidate-07",
+          "baseline_scored": true,
+          "baseline_rank": 4,
+          "method_rank": 6,
+          "rank_gain": -2,
+          "entered_top_k": false
+        },
+        {
+          "id": "candidate-09",
+          "baseline_scored": true,
+          "baseline_rank": 12,
+          "method_rank": 7,
+          "rank_gain": 5,
+          "entered_top_k": true
+        },
+        {
+          "id": "candidate-05",
+          "baseline_scored": true,
+          "baseline_rank": 24,
+          "method_rank": 8,
+          "rank_gain": 16,
+          "entered_top_k": true
+        },
+        {
+          "id": "candidate-02",
+          "baseline_scored": true,
+          "baseline_rank": 8,
+          "method_rank": 9,
+          "rank_gain": -1,
+          "entered_top_k": false
+        },
+        {
+          "id": "candidate-04",
+          "baseline_scored": true,
+          "baseline_rank": 19,
+          "method_rank": 10,
+          "rank_gain": 9,
+          "entered_top_k": true
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "A rank change is retrieval behaviour, not proof of a hidden fact or useful discovery.",
+    "Candidate meaning, source quality and verification remain unverified until checked independently.",
+    "All vectors must come from the same embedding model and version; this function does not create embeddings or search an external corpus.",
+    "Random baseline is a deterministic random ordering, not a diversity-optimising baseline."
+  ],
+  "experiment": {
+    "kind": "deterministic local character n-gram feature baseline",
+    "corpus": "small synthetic fixed corpus; 28 manually written candidates",
+    "actualSemanticEmbedding": false,
+    "paidOrExternalCalls": 0
+  }
+}

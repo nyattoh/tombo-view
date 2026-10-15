@@ -1,0 +1,128 @@
+[
+  {
+    "id": "fresh-01",
+    "family": "unit-normalisation",
+    "split": "evaluation",
+    "synthetic": true,
+    "task": "A draft answer makes a quantitative claim about a sensor pipeline. Decide whether the claim is grounded in the available evidence, reading the linked record if needed, and give one verdict with the supporting facts.",
+    "context": "Project Aster aggregates flow inputs in litres per minute. Feed A recorded a steady 40 L/min for 12 February 14:00-15:00. Feed B recorded a steady 40 native units/min for the same complete hour. The pipeline assumes native units mean litres unless the channel has a conversion flag. The shift summary does not state feed B's unit.",
+    "draft": "Combined throughput for the window is 4,800 L/h ((40 + 40) L/min x 60 min), since both feeds report in litres per minute.",
+    "capabilities": [
+      "read_record"
+    ],
+    "sources": [
+      {
+        "id": "fresh-01-src",
+        "capability": "read_record",
+        "description": "Device export record for the stated one-hour monitoring window.",
+        "status": "ok",
+        "text": "Export for 12 February 14:00-15:00, complete window: feed B reports calibrated pulses per minute; one pulse represents 0.5 litres. Its steady rate was 40 pulses/min; no conversion flag was set."
+      }
+    ]
+  },
+  {
+    "id": "fresh-02",
+    "family": "unit-normalisation",
+    "split": "evaluation",
+    "synthetic": true,
+    "task": "A draft answer makes a quantitative claim about a sensor pipeline. Decide whether the claim is grounded in the stated evidence, reading the linked record if needed, and give one verdict.",
+    "context": "Project Aster feed check, 12 March, 14:00-15:00 window. Calibration certificates C-118 and C-119 (quoted in the shift log) confirm both feeds A and B were configured to output in L/min for this window. Logged steady rates: feed A 40.0 L/min, feed B 38.2 L/min, both continuous for the full hour. No unit flags or config changes are recorded for the window.",
+    "draft": "For the 12 March 14:00-15:00 window, combined throughput was 4,692 L ((40.0 + 38.2) L/min x 60 min).",
+    "capabilities": [
+      "read_record"
+    ],
+    "sources": [
+      {
+        "id": "fresh-02-src",
+        "capability": "read_record",
+        "description": "Routine device export record for the 12 March monitoring window.",
+        "status": "ok",
+        "text": "Export for 12 March 14:00-15:00: feed A unit L/min rate 40.0; feed B unit L/min rate 38.2; complete hour, no gaps or configuration changes."
+      }
+    ]
+  },
+  {
+    "id": "fresh-03",
+    "family": "cold-start-performance",
+    "split": "evaluation",
+    "synthetic": true,
+    "task": "A draft answer claims a service meets its startup latency budget. Decide whether the claim is grounded in the available evidence, reading the linked record if needed, and give one verdict with the supporting facts.",
+    "context": "Service Brindle has a startup latency budget of p95 <= 800 ms for both warm and cold starts. The performance notebook reports 40 warm restarts over 3-7 June with p95 = 610 ms. The release summary cites that table. Cold starts with process and cache fully cold are a separate test-plan scenario, but the notebook contains no cold-run rows.",
+    "draft": "Brindle meets its p95 startup budget of 800 ms, so the service is within budget at startup.",
+    "capabilities": [
+      "read_record"
+    ],
+    "sources": [
+      {
+        "id": "fresh-03-src",
+        "capability": "read_record",
+        "description": "Scenario measurement log from the June performance test cycle.",
+        "status": "ok",
+        "text": "Cold-run log, 8 June: 12 cold starts after host replacement, cache empty; latencies (ms): 1620, 1710, 1580, 1890, 2010, 1740, 1660, 1950, 1820, 1700, 1680, 2130. Nearest-rank p95 sorts N values and takes rank ceil(0.95*N); p95 = 2130 ms. Warm-run p95 remains 610 ms."
+      }
+    ]
+  },
+  {
+    "id": "fresh-04",
+    "family": "cold-start-performance",
+    "split": "evaluation",
+    "synthetic": true,
+    "task": "A draft answer claims a service meets its startup latency budget for a stated scenario. Decide whether the claim is grounded in the stated evidence, reading the linked record if needed, and give one verdict.",
+    "context": "Service Brindle warm-start check for 3-7 June. The complete 40-run warm table with cache retained has 36 runs at 600 ms, two at 610 ms, one at 620 ms and one at 630 ms. Nearest-rank p95 takes rank ceil(0.95*N) in sorted values, yielding 610 ms. The stated warm-start budget is p95 <= 800 ms. The draft is scoped to warm starts in that window only.",
+    "draft": "For warm starts in the 3-7 June window, Brindle's p95 was 610 ms, within the 800 ms warm-start budget.",
+    "capabilities": [
+      "read_record"
+    ],
+    "sources": [
+      {
+        "id": "fresh-04-src",
+        "capability": "read_record",
+        "description": "Scenario measurement log from the June performance test cycle.",
+        "status": "ok",
+        "text": "Complete warm-run log, 3-7 June: 36 runs at 600 ms, two at 610 ms, one at 620 ms and one at 630 ms, cache retained; nearest-rank p95 = 610 ms. All 40 runs accounted for; warm scenario only."
+      }
+    ]
+  },
+  {
+    "id": "fresh-05",
+    "family": "dependency-inventory",
+    "split": "evaluation",
+    "synthetic": true,
+    "task": "A draft answer claims a dependency inventory is complete for a service. Decide whether the claim is grounded in the available evidence, reading the linked record if needed, and give one verdict with the supporting facts.",
+    "context": "Service Cindral has 18 direct dependencies declared in its application manifest. The latest inventory lists exactly those 18 components with matching versions. The application may also load optional native plugins from its configured extension directory, but the deployment contents and whether any plugins are present are unreported. The release note only says the standard inventory tool was run.",
+    "draft": "The inventory lists all runtime dependencies of Cindral, so the dependency inventory is complete.",
+    "capabilities": [
+      "read_record"
+    ],
+    "sources": [
+      {
+        "id": "fresh-05-src",
+        "capability": "read_record",
+        "description": "Inventory tool run report for the latest Cindral inventory.",
+        "status": "ok",
+        "text": "Run report, 9 June: scan scope = application manifest directory only. The configured extension directory was outside scan scope. Its contents were not checked, and no record establishes whether it contains zero plugins or any additional runtime components. 18 manifest components inventoried."
+      }
+    ]
+  },
+  {
+    "id": "fresh-06",
+    "family": "dependency-inventory",
+    "split": "evaluation",
+    "synthetic": true,
+    "task": "A draft answer makes a scoped claim about a dependency inventory. Decide whether the claim is grounded in the stated evidence, reading the linked record if needed, and give one verdict.",
+    "context": "Service Cindral inventory check, 9 June. The inventory tool run report states scope = the full application manifest, and the manifest declares 12 direct dependencies. The inventory output table, reproduced in full in the release note, lists exactly those 12 declared dependencies with versions; the manifest itself is quoted alongside and the two listings correspond one-to-one. The draft is explicitly scoped to direct dependencies declared in the manifest.",
+    "draft": "The 9 June inventory lists all 12 direct dependencies declared in Cindral's application manifest.",
+    "capabilities": [
+      "read_record"
+    ],
+    "sources": [
+      {
+        "id": "fresh-06-src",
+        "capability": "read_record",
+        "description": "Inventory tool run report for the 9 June Cindral inventory.",
+        "status": "ok",
+        "text": "Run report, 9 June: scope = application manifest (full). Manifest declares 12 direct dependencies; inventory output lists the same 12 with matching names and versions; no discrepancies flagged."
+      }
+    ]
+  }
+]

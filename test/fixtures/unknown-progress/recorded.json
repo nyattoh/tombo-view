@@ -1,0 +1,228 @@
+{
+  "origin": "Unchanged synthetic next-05 proposals and observations from epoch3 tombo-r1. No private conversation or reasoning transcript.",
+  "task": {
+    "schemaVersion": "0.1",
+    "taskId": "trial-next-05-1",
+    "goal": "Assess the draft statement about whether vertex D is reachable from vertex A in directed graph G. Decide whether the statement is correct, incorrect, or cannot be determined from the available information, and justify your conclusion. An exporter status record is available if you need it.",
+    "mode": "explain",
+    "successCriteria": [
+      "Give a source-grounded final answer with any remaining uncertainty."
+    ],
+    "evidence": [
+      {
+        "id": "e-context",
+        "kind": "document",
+        "locator": "participant-context",
+        "sourceGroup": "context",
+        "retrievedAt": "2026-10-14T01:05:02.916Z",
+        "version": null,
+        "scope": "trial",
+        "passage": "Directed graph G has the complete vertex set {A, B, C, D}. The adjacency working copy currently lists the outgoing rows A->B and B->C. The adjacency data is produced by an incremental exporter whose run has not finished, so the working copy may be missing rows; the exporter's coverage so far is tracked in its status record.",
+        "contentHash": "5c97d8ea0d9684c87b2ce0808e1ebba5eabb423e6b115966dd6841531caa0240",
+        "validity": "current"
+      }
+    ],
+    "reflectionRequired": true,
+    "proposedAnswer": "Vertex D is not reachable from vertex A: the adjacency listing shows A->B and B->C and contains no edge into D.",
+    "capabilities": [
+      "read_record"
+    ],
+    "budget": {
+      "maxRounds": 2,
+      "maxModelCalls": 6,
+      "maxToolCalls": 6,
+      "maxElapsedMs": 300000,
+      "maxInputChars": 48000,
+      "maxOutputTokensPerCall": 4000
+    }
+  },
+  "proposals": [
+    {
+      "claims": [
+        {
+          "id": "c-unreachable",
+          "role": "answer_claim",
+          "text": "有向グラフGで頂点Dは頂点Aから到達不能である。",
+          "scope": "trial"
+        }
+      ],
+      "lenses": [
+        {
+          "id": "l-coverage",
+          "label": "到達可能性と出力範囲",
+          "rationale": "未完了の隣接データで辺が見つからないことから到達不能を判断するには、Aから到達する頂点の出辺が完全に出力されているか確認する必要がある。",
+          "origin": "initial",
+          "status": "active"
+        }
+      ],
+      "gaps": [
+        {
+          "id": "g-unreachable",
+          "kind": "unsupported_claim",
+          "lensId": "l-coverage",
+          "question": "exporterの出力範囲は、AからDへの経路の存在または不存在を確定するのに十分か。",
+          "triggerRefs": [
+            "c-unreachable",
+            "e-context"
+          ],
+          "whyItMatters": "現在の判定は確定不能である。A→B→Cは示されているが、未出力の辺がDへの経路を形成する可能性が残る。実際の出力範囲が未確認なので、草稿の命題を正しいとも誤りとも確定できない。",
+          "importance": "required",
+          "claimIds": [
+            "c-unreachable"
+          ],
+          "probeIds": [
+            "p-export"
+          ]
+        }
+      ],
+      "probes": [
+        {
+          "id": "p-export",
+          "gapIds": [
+            "g-unreachable"
+          ],
+          "method": "dependency",
+          "question": "run exp-2025-02-14の状態記録を確認し、どの頂点の出辺が完全に出力済みか、出力済みの辺と合わせてAからDへの到達可能性を確定できるか調べる。",
+          "requiredCapability": "read_record",
+          "sourceGroups": [
+            "next-05-src"
+          ],
+          "successCondition": "Aからの到達集合にDが含まれず、その集合内の全頂点について出辺の出力が完全であると記録から確認できる。",
+          "refutationCondition": "記録からAからDへの有向経路が確認できる。",
+          "inconclusiveCondition": "Dへの経路が確認できず、Aから到達可能な頂点の出辺の完全性も確認できない。"
+        }
+      ],
+      "assessments": [
+        {
+          "claimId": "c-unreachable",
+          "evidenceIds": [
+            "e-context"
+          ],
+          "verdict": "inconclusive",
+          "scopeMatched": true,
+          "reason": "出典e-contextは隣接データが未完了で行が欠け得ると明示している。掲載されたA→BとB→CだけではDへの到達不能を証明できず、Dへの経路も示されていない。未確認事項はexporterの出力範囲である。"
+        }
+      ],
+      "resolutions": []
+    },
+    {
+      "claims": [
+        {
+          "id": "c-undetermined",
+          "role": "answer_claim",
+          "text": "利用可能な情報からは、頂点Dが頂点Aから到達可能かどうかを確定できない。",
+          "scope": "trial"
+        }
+      ],
+      "lenses": [],
+      "gaps": [],
+      "probes": [],
+      "assessments": [
+        {
+          "claimId": "c-unreachable",
+          "evidenceIds": [
+            "next-05-src:d10a1ef5-2e2d-4f1b-89c3-61f571818286"
+          ],
+          "verdict": "inconclusive",
+          "scopeMatched": true,
+          "reason": "状態記録によればAとBの出辺は完全に出力済みで、A→B→Cが確認できる。しかしCの出辺は未出力であり、C→Dの有無は不明である。したがって草稿の到達不能という命題は支持も反証もできず、g-unreachableは未解決のままとする。"
+        },
+        {
+          "claimId": "c-undetermined",
+          "evidenceIds": [
+            "e-context",
+            "next-05-src:d10a1ef5-2e2d-4f1b-89c3-61f571818286"
+          ],
+          "verdict": "supports",
+          "scopeMatched": true,
+          "reason": "判定：確定不能。回答：草稿の到達不能という断定は、利用可能な情報では正当化できない。A→B→Cに加えてC→Dが存在する場合はDへ到達でき、Cの出辺が空の場合は到達できない。この二つは未出力部分に対する仮定上の補完例であり、どちらも状態記録と矛盾しない。不確実性：Cの出辺が不明である。D自身の出辺が不明であることは、Dへ初めて到達できるかの判定を左右しない。sourceRefs: e-context, next-05-src:d10a1ef5-2e2d-4f1b-89c3-61f571818286。"
+        }
+      ],
+      "assessmentCorrections": [],
+      "resolutions": []
+    },
+    {
+      "claims": [],
+      "lenses": [],
+      "gaps": [],
+      "probes": [],
+      "assessments": [
+        {
+          "claimId": "c-unreachable",
+          "evidenceIds": [
+            "next-05-src:067aaabe-0462-4117-b535-4e5f0a3fd93d"
+          ],
+          "verdict": "inconclusive",
+          "scopeMatched": true,
+          "reason": "最新の状態記録でも、AとBの出辺は完全に出力済みだが、Cの出辺は不明である。A→B→Cは確認できるものの、CからDへの辺が存在する可能性を排除できないため、到達不能という命題は支持も反証もできない。g-unreachableの解消条件は満たされていない。"
+        },
+        {
+          "claimId": "c-undetermined",
+          "evidenceIds": [
+            "next-05-src:067aaabe-0462-4117-b535-4e5f0a3fd93d"
+          ],
+          "verdict": "supports",
+          "scopeMatched": true,
+          "reason": "decision: cannot be determined。answer: 草稿の「DはAから到達不能」という命題の真偽は、利用可能な情報から確定できない。AとBの出辺はそれぞれA→B、B→Cで確定している。仮にC→DがあればDへ到達でき、仮にCの出辺が空ならDへ到達できない。これらは観測された辺ではなく、どちらも記録と矛盾しない補完例である。uncertainties: Cの出辺が未出力であり、Dへ至る辺の有無が不明である。D自身の出辺は、Dへの初回到達の可否を左右しない。sourceRefs: next-05-src:067aaabe-0462-4117-b535-4e5f0a3fd93d。"
+        }
+      ],
+      "assessmentCorrections": [],
+      "resolutions": []
+    }
+  ],
+  "proposalDigests": [
+    "ec111d4de52c5832c5cdb10012ee109f26a82140bd2ca0e572acf28559fb193d",
+    "b36768370cb6f716ab7159f6c188a947d52cb0736a2a7a5d0af545d62b9ca193",
+    "65f4554afcb9916f8aaa5163db2c2daf82ffd9d990e24417d0d0cf05f861c6c5"
+  ],
+  "observations": [
+    [
+      {
+        "executionId": "d10a1ef5-2e2d-4f1b-89c3-61f571818286",
+        "probeId": "p-export",
+        "outcome": "completed",
+        "evidence": [
+          {
+            "id": "next-05-src:d10a1ef5-2e2d-4f1b-89c3-61f571818286",
+            "kind": "document",
+            "locator": "next-05-src",
+            "sourceGroup": "next-05-src",
+            "retrievedAt": "2026-10-14T01:06:29.216Z",
+            "version": null,
+            "scope": "trial",
+            "passage": "Exporter status record - directed graph G, run exp-2025-02-14. The vertex set {A, B, C, D} is complete and final. Export coverage: outgoing adjacency rows for vertices A and B are fully exported (A->B; B->C). Outgoing adjacency rows for vertices C and D have not been exported yet; their outgoing edges are unknown. Nothing about the rows of C or D can be asserted from this export.",
+            "contentHash": "56c0511e0befa79b8b667b015425d27959aca015af350d0854d7ecfd8fd5aca8",
+            "validity": "current"
+          }
+        ],
+        "toolCalls": 1,
+        "elapsedMs": 4,
+        "costYen": null
+      }
+    ],
+    [
+      {
+        "executionId": "067aaabe-0462-4117-b535-4e5f0a3fd93d",
+        "probeId": "p-export",
+        "outcome": "completed",
+        "evidence": [
+          {
+            "id": "next-05-src:067aaabe-0462-4117-b535-4e5f0a3fd93d",
+            "kind": "document",
+            "locator": "next-05-src",
+            "sourceGroup": "next-05-src",
+            "retrievedAt": "2026-10-14T01:07:45.111Z",
+            "version": null,
+            "scope": "trial",
+            "passage": "Exporter status record - directed graph G, run exp-2025-02-14. The vertex set {A, B, C, D} is complete and final. Export coverage: outgoing adjacency rows for vertices A and B are fully exported (A->B; B->C). Outgoing adjacency rows for vertices C and D have not been exported yet; their outgoing edges are unknown. Nothing about the rows of C or D can be asserted from this export.",
+            "contentHash": "56c0511e0befa79b8b667b015425d27959aca015af350d0854d7ecfd8fd5aca8",
+            "validity": "current"
+          }
+        ],
+        "toolCalls": 1,
+        "elapsedMs": 1,
+        "costYen": null
+      }
+    ]
+  ]
+}

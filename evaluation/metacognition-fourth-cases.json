@@ -1,0 +1,128 @@
+[
+  {
+    "id": "q7m2",
+    "family": "round-robin-schedule",
+    "split": "evaluation",
+    "synthetic": true,
+    "task": "Assess the draft statement about schedule S6, version s6-r1, for its one round-robin cycle. Decide whether the statement is correct, incorrect, or cannot be determined from the available information, and justify your conclusion. A schedule record is available if you need it.",
+    "context": "This is a fictional exercise record. Schedule S6, version s6-r1, concerns exactly six teams {P1, P2, P3, P4, P5, P6}. The rule is one match for each unordered pair, so 15 match rows are expected. The summary reports 15 rows. The final rows and their coverage statement are maintained in the schedule record rather than restated here.",
+    "draft": "Schedule S6, version s6-r1, contains each unordered team pair exactly once.",
+    "capabilities": [
+      "read_record"
+    ],
+    "sources": [
+      {
+        "id": "q7m2-src",
+        "capability": "read_record",
+        "description": "Schedule S6, version s6-r1, for one six-team round-robin cycle.",
+        "status": "ok",
+        "text": "Schedule S6, version s6-r1. Scope: one round-robin cycle for exactly the six teams {P1, P2, P3, P4, P5, P6}. Each unordered pair must occur exactly once. The expected number of rows is 15. The listing below is final and complete for this cycle. No other rows exist.\nrow01 P1-P2\nrow02 P1-P3\nrow03 P1-P4\nrow04 P1-P5\nrow05 P1-P6\nrow06 P2-P3\nrow07 P2-P4\nrow08 P2-P5\nrow09 P2-P6\nrow10 P3-P4\nrow11 P3-P5\nrow12 P2-P5\nrow13 P4-P5\nrow14 P4-P6\nrow15 P5-P6"
+      }
+    ]
+  },
+  {
+    "id": "k4r8",
+    "family": "round-robin-schedule",
+    "split": "evaluation",
+    "synthetic": true,
+    "task": "Assess the draft statement about schedule S6, version s6-r1, for its one round-robin cycle. Decide whether the statement is correct, incorrect, or cannot be determined from the available information, and justify your conclusion. A schedule record is available if you need it.",
+    "context": "This is a fictional exercise record. Schedule S6, version s6-r1. Scope: one round-robin cycle for exactly the six teams {P1, P2, P3, P4, P5, P6}. Each unordered pair must occur exactly once. The expected number of rows is 15. The listing below is final and complete for this cycle. No other rows exist.\nrow01 P1-P2\nrow02 P1-P3\nrow03 P1-P4\nrow04 P1-P5\nrow05 P1-P6\nrow06 P2-P3\nrow07 P2-P4\nrow08 P2-P5\nrow09 P2-P6\nrow10 P3-P4\nrow11 P3-P5\nrow12 P3-P6\nrow13 P4-P5\nrow14 P4-P6\nrow15 P5-P6",
+    "draft": "Schedule S6, version s6-r1, contains each unordered team pair exactly once.",
+    "capabilities": [
+      "read_record"
+    ],
+    "sources": [
+      {
+        "id": "k4r8-src",
+        "capability": "read_record",
+        "description": "Schedule S6, version s6-r1, for one six-team round-robin cycle.",
+        "status": "ok",
+        "text": "Schedule S6, version s6-r1. Scope: one round-robin cycle for exactly the six teams {P1, P2, P3, P4, P5, P6}. Each unordered pair must occur exactly once. The expected number of rows is 15. The listing below is final and complete for this cycle. No other rows exist.\nrow01 P1-P2\nrow02 P1-P3\nrow03 P1-P4\nrow04 P1-P5\nrow05 P1-P6\nrow06 P2-P3\nrow07 P2-P4\nrow08 P2-P5\nrow09 P2-P6\nrow10 P3-P4\nrow11 P3-P5\nrow12 P3-P6\nrow13 P4-P5\nrow14 P4-P6\nrow15 P5-P6"
+      }
+    ]
+  },
+  {
+    "id": "v9c3",
+    "family": "integer-audit-chain",
+    "split": "evaluation",
+    "synthetic": true,
+    "task": "Assess the draft statement about the numeric transitions in integer audit record A12, version a12-r1. Decide whether the statement is correct, incorrect, or cannot be determined from the available information, and justify your conclusion. An integer audit record is available if you need it.",
+    "context": "This is a fictional exercise record. Integer audit record A12, version a12-r1, has 12 numbered rows and a recorded numeric recurrence. The summary says the row sequence runs from 1 through 12. The recurrence, saved values and checks, and row coverage statement are maintained in the captured record rather than restated here.",
+    "draft": "All 12 local numeric transitions in A12, version a12-r1, satisfy its declared recurrence.",
+    "capabilities": [
+      "read_record"
+    ],
+    "sources": [
+      {
+        "id": "v9c3-src",
+        "capability": "read_record",
+        "description": "Integer audit record A12, version a12-r1, for its twelve numbered rows.",
+        "status": "ok",
+        "text": "Integer audit record A12, version a12-r1. Scope: the 12 numbered rows in this captured fixture. The listing is final and complete. Genesis check_0=0. For each row i, check_i=(previousStoredCheck*31+value_i)%251, where previousStoredCheck is the check saved in row i-1, or the genesis check for row 1. Values and checks are integers at least zero. Evaluate every local transition against the previous saved check. This rule measures local arithmetic consistency.\nseq=1 value=17 check=17\nseq=2 value=42 check=67\nseq=3 value=9 check=78\nseq=4 value=63 check=222\nseq=5 value=28 check=133\nseq=6 value=74 check=181\nseq=7 value=36 check=124\nseq=8 value=11 check=90\nseq=9 value=96 check=125\nseq=10 value=52 check=162\nseq=11 value=7 check=9\nseq=12 value=81 check=109"
+      }
+    ]
+  },
+  {
+    "id": "p6n1",
+    "family": "integer-audit-chain",
+    "split": "evaluation",
+    "synthetic": true,
+    "task": "Assess the draft statement about the numeric transitions in integer audit record A12, version a12-r1. Decide whether the statement is correct, incorrect, or cannot be determined from the available information, and justify your conclusion. An integer audit record is available if you need it.",
+    "context": "This is a fictional exercise record. Integer audit record A12, version a12-r1. Scope: the 12 numbered rows in this captured fixture. The listing is final and complete. Genesis check_0=0. For each row i, check_i=(previousStoredCheck*31+value_i)%251, where previousStoredCheck is the check saved in row i-1, or the genesis check for row 1. Values and checks are integers at least zero. Evaluate every local transition against the previous saved check. This rule measures local arithmetic consistency.\nseq=1 value=17 check=17\nseq=2 value=42 check=67\nseq=3 value=9 check=78\nseq=4 value=63 check=222\nseq=5 value=28 check=133\nseq=6 value=74 check=181\nseq=7 value=35 check=124\nseq=8 value=11 check=90\nseq=9 value=96 check=125\nseq=10 value=52 check=162\nseq=11 value=7 check=9\nseq=12 value=81 check=109",
+    "draft": "All 12 local numeric transitions in A12, version a12-r1, satisfy its declared recurrence.",
+    "capabilities": [
+      "read_record"
+    ],
+    "sources": [
+      {
+        "id": "p6n1-src",
+        "capability": "read_record",
+        "description": "Integer audit record A12, version a12-r1, for its twelve numbered rows.",
+        "status": "ok",
+        "text": "Integer audit record A12, version a12-r1. Scope: the 12 numbered rows in this captured fixture. The listing is final and complete. Genesis check_0=0. For each row i, check_i=(previousStoredCheck*31+value_i)%251, where previousStoredCheck is the check saved in row i-1, or the genesis check for row 1. Values and checks are integers at least zero. Evaluate every local transition against the previous saved check. This rule measures local arithmetic consistency.\nseq=1 value=17 check=17\nseq=2 value=42 check=67\nseq=3 value=9 check=78\nseq=4 value=63 check=222\nseq=5 value=28 check=133\nseq=6 value=74 check=181\nseq=7 value=35 check=124\nseq=8 value=11 check=90\nseq=9 value=96 check=125\nseq=10 value=52 check=162\nseq=11 value=7 check=9\nseq=12 value=81 check=109"
+      }
+    ]
+  },
+  {
+    "id": "h2w5",
+    "family": "motion-vote-tally",
+    "split": "evaluation",
+    "synthetic": true,
+    "task": "Assess the draft statement about approval of motion M9, version m9-r1. Decide whether the statement is correct, incorrect, or cannot be determined from the available information, and justify your conclusion. A voting record is available if you need it.",
+    "context": "This is a fictional exercise record. Motion M9, version m9-r1, has exactly nine registered voters. Approval requires at least 5 yes votes out of nine; each voter casts yes or no with no abstentions. The summary lists nine voter rows. The row values and their disclosure coverage are maintained in the captured voting record rather than restated here.",
+    "draft": "Motion M9, version m9-r1, was approved.",
+    "capabilities": [
+      "read_record"
+    ],
+    "sources": [
+      {
+        "id": "h2w5-src",
+        "capability": "read_record",
+        "description": "Voting record for motion M9, version m9-r1, with nine registered voters.",
+        "status": "ok",
+        "text": "Voting record M9, version m9-r1. Scope: one motion with exactly nine registered voters {V1, V2, V3, V4, V5, V6, V7, V8, V9}. Approval requires at least 5 yes votes out of these nine. Each voter casts exactly one vote, yes or no; there are no abstentions. The listing contains one row for every voter and is final and complete as a captured immutable fixture. A row value sealed conceals that voter's cast yes/no vote and does not disclose which. This fixture supplies no later disclosure.\nmember=V1 vote=yes\nmember=V2 vote=yes\nmember=V3 vote=no\nmember=V4 vote=yes\nmember=V5 vote=no\nmember=V6 vote=yes\nmember=V7 vote=no\nmember=V8 vote=sealed\nmember=V9 vote=sealed"
+      }
+    ]
+  },
+  {
+    "id": "b8s4",
+    "family": "motion-vote-tally",
+    "split": "evaluation",
+    "synthetic": true,
+    "task": "Assess the draft statement about approval of motion M9, version m9-r1. Decide whether the statement is correct, incorrect, or cannot be determined from the available information, and justify your conclusion. A voting record is available if you need it.",
+    "context": "This is a fictional exercise record. Voting record M9, version m9-r1. Scope: one motion with exactly nine registered voters {V1, V2, V3, V4, V5, V6, V7, V8, V9}. Approval requires at least 5 yes votes out of these nine. Each voter casts exactly one vote, yes or no; there are no abstentions. The listing contains one row for every voter and is final and complete as a captured immutable fixture. A row value sealed conceals that voter's cast yes/no vote and does not disclose which. This fixture supplies no later disclosure.\nmember=V1 vote=yes\nmember=V2 vote=yes\nmember=V3 vote=no\nmember=V4 vote=yes\nmember=V5 vote=yes\nmember=V6 vote=yes\nmember=V7 vote=no\nmember=V8 vote=yes\nmember=V9 vote=no",
+    "draft": "Motion M9, version m9-r1, was approved.",
+    "capabilities": [
+      "read_record"
+    ],
+    "sources": [
+      {
+        "id": "b8s4-src",
+        "capability": "read_record",
+        "description": "Voting record for motion M9, version m9-r1, with nine registered voters.",
+        "status": "ok",
+        "text": "Voting record M9, version m9-r1. Scope: one motion with exactly nine registered voters {V1, V2, V3, V4, V5, V6, V7, V8, V9}. Approval requires at least 5 yes votes out of these nine. Each voter casts exactly one vote, yes or no; there are no abstentions. The listing contains one row for every voter and is final and complete as a captured immutable fixture. A row value sealed conceals that voter's cast yes/no vote and does not disclose which. This fixture supplies no later disclosure.\nmember=V1 vote=yes\nmember=V2 vote=yes\nmember=V3 vote=no\nmember=V4 vote=yes\nmember=V5 vote=yes\nmember=V6 vote=yes\nmember=V7 vote=no\nmember=V8 vote=yes\nmember=V9 vote=no"
+      }
+    ]
+  }
+]

@@ -1,0 +1,1384 @@
+[
+  {
+    "id": "next-01-baseline-1",
+    "caseId": "next-01",
+    "arm": "baseline",
+    "repeat": 1,
+    "status": "success",
+    "origin": "real-model",
+    "model": {
+      "provider": "codex",
+      "name": "gpt-6.1-sol",
+      "effort": "low"
+    },
+    "requested": {
+      "capabilities": [
+        "read_record"
+      ],
+      "maxCalls": 6,
+      "maxOutputChars": 4000,
+      "modelRepairAttempts": 2,
+      "maximumElapsedMs": 300000
+    },
+    "observed": {
+      "calls": 3,
+      "modelCalls": 2,
+      "inputTokens": "UNKNOWN",
+      "outputTokens": "UNKNOWN",
+      "cost": "UNKNOWN",
+      "durationMs": 105405
+    },
+    "checks": [
+      {
+        "capability": "read_record",
+        "sourceId": "next-01-src",
+        "status": "ok",
+        "responseDigest": "9687f20e3c212973b309a9590c11f1032ce8b15c74672c7ae2684ea4b5438a14"
+      }
+    ],
+    "output": "{\"decision\":\"refuted\",\"answer\":\"The draft is incorrect for configuration cfg-2024-11 in production deployment window 2025-W07. The production override sets 'new-ledger' enabled=false and takes precedence over the shipped default enabled=true. Therefore, the effective production value is false.\",\"uncertainties\":[],\"sourceRefs\":[\"next-01-src\"]}",
+    "packetDigest": "f12602aa29a5641dd54d6d7a4b580205ee1c2ace2e262abfbf44daf96bfb1255",
+    "protocolDigest": "13c656c2d153ebddbc8287693eb4ce81f3874553d294686b66b3da22eb8f87e4"
+  },
+  {
+    "id": "next-01-tombo-1",
+    "caseId": "next-01",
+    "arm": "tombo",
+    "repeat": 1,
+    "status": "success",
+    "origin": "real-model",
+    "model": {
+      "provider": "codex",
+      "name": "gpt-6.1-sol",
+      "effort": "low"
+    },
+    "requested": {
+      "capabilities": [
+        "read_record"
+      ],
+      "maxCalls": 6,
+      "maxOutputChars": 4000,
+      "modelRepairAttempts": 2,
+      "maximumElapsedMs": 300000
+    },
+    "observed": {
+      "calls": 4,
+      "modelCalls": 3,
+      "inputTokens": "UNKNOWN",
+      "outputTokens": "UNKNOWN",
+      "cost": "UNKNOWN",
+      "durationMs": 172657
+    },
+    "checks": [
+      {
+        "capability": "read_record",
+        "sourceId": "next-01-src",
+        "status": "ok",
+        "responseDigest": "9687f20e3c212973b309a9590c11f1032ce8b15c74672c7ae2684ea4b5438a14"
+      }
+    ],
+    "output": "{\"decision\":\"refuted\",\"answer\":\"Rejected claim: billing-api の feature flag 'new-ledger' の実効本番値は true である。 判定は incorrect。設定レコードは、本番 override の enabled=false が出荷時デフォルトの enabled=true に優先し、実効本番値は false と明示している。対象の設定版・デプロイ期間内では、判定を妨げる不確実性は残らない。sourceRefs: next-01-src:d41daf3a-fa5b-4871-81f8-79f11edadc19。 cfg-2024-11、2025-W07 の billing-api における feature flag 'new-ledger' の実効本番値は false である。\",\"uncertainties\":[\"結論の適用範囲は cfg-2024-11、2025-W07 の本番設定であり、他の設定版・期間の値は判断できない。sourceRefs: next-01-src:d41daf3a-fa5b-4871-81f8-79f11edadc19。\",\"指定された全 assessmentReferences を対応する評価と照合した。訂正履歴は提示されておらず、現在の反証は保持されている。レビュー完了は、すべての盲点の発見を保証しない。\"],\"sourceRefs\":[\"next-01-src\"]}",
+    "packetDigest": "f12602aa29a5641dd54d6d7a4b580205ee1c2ace2e262abfbf44daf96bfb1255",
+    "protocolDigest": "13c656c2d153ebddbc8287693eb4ce81f3874553d294686b66b3da22eb8f87e4"
+  },
+  {
+    "id": "next-01-baseline-2",
+    "caseId": "next-01",
+    "arm": "baseline",
+    "repeat": 2,
+    "status": "success",
+    "origin": "real-model",
+    "model": {
+      "provider": "codex",
+      "name": "gpt-6.1-sol",
+      "effort": "low"
+    },
+    "requested": {
+      "capabilities": [
+        "read_record"
+      ],
+      "maxCalls": 6,
+      "maxOutputChars": 4000,
+      "modelRepairAttempts": 2,
+      "maximumElapsedMs": 300000
+    },
+    "observed": {
+      "calls": 3,
+      "modelCalls": 2,
+      "inputTokens": "UNKNOWN",
+      "outputTokens": "UNKNOWN",
+      "cost": "UNKNOWN",
+      "durationMs": 143453
+    },
+    "checks": [
+      {
+        "capability": "read_record",
+        "sourceId": "next-01-src",
+        "status": "ok",
+        "responseDigest": "9687f20e3c212973b309a9590c11f1032ce8b15c74672c7ae2684ea4b5438a14"
+      }
+    ],
+    "output": "{\"decision\":\"refuted\",\"answer\":\"The draft is incorrect for config cfg-2024-11 in production deployment window 2025-W07. The production override sets 'new-ledger' enabled=false and takes precedence over the shipped default enabled=true. Therefore, the effective production value is false.\",\"uncertainties\":[\"The record establishes the value for the specified configuration and deployment window; it does not establish the value for later deployments.\"],\"sourceRefs\":[\"next-01-src\"]}",
+    "packetDigest": "f12602aa29a5641dd54d6d7a4b580205ee1c2ace2e262abfbf44daf96bfb1255",
+    "protocolDigest": "13c656c2d153ebddbc8287693eb4ce81f3874553d294686b66b3da22eb8f87e4"
+  },
+  {
+    "id": "next-01-tombo-2",
+    "caseId": "next-01",
+    "arm": "tombo",
+    "repeat": 2,
+    "status": "error",
+    "origin": "real-model",
+    "model": {
+      "provider": "codex",
+      "name": "gpt-6.1-sol",
+      "effort": "low"
+    },
+    "requested": {
+      "capabilities": [
+        "read_record"
+      ],
+      "maxCalls": 6,
+      "maxOutputChars": 4000,
+      "modelRepairAttempts": 2,
+      "maximumElapsedMs": 300000
+    },
+    "observed": {
+      "calls": 4,
+      "modelCalls": 3,
+      "inputTokens": "UNKNOWN",
+      "outputTokens": "UNKNOWN",
+      "cost": "UNKNOWN",
+      "durationMs": 300010
+    },
+    "checks": [
+      {
+        "capability": "read_record",
+        "sourceId": "next-01-src",
+        "status": "ok",
+        "responseDigest": "9687f20e3c212973b309a9590c11f1032ce8b15c74672c7ae2684ea4b5438a14"
+      }
+    ],
+    "output": "{\"decision\":\"unknown\",\"answer\":\"Rejected claim: Service billing-api の feature flag 'new-ledger' の実効的な production 値は true である。 判定：草案は incorrect。設定レコードでは production override が enabled=false を設定し、同じキーでは override が shipped defaults より優先されるため、実効値は false となる。defaults が true という観察は正しいが、実効値が true という結論は成立しない。sourceRefs: next-01-src。対象レコードの範囲では判定に必要な不確実性は残っていない。 設定 cfg-2024-11、deployment window 2025-W07 における billing-api の feature flag 'new-ledger' の実効的な production 値は false である。\",\"uncertainties\":[\"model_timeout\"],\"sourceRefs\":[\"next-01-src\"]}",
+    "packetDigest": "f12602aa29a5641dd54d6d7a4b580205ee1c2ace2e262abfbf44daf96bfb1255",
+    "protocolDigest": "13c656c2d153ebddbc8287693eb4ce81f3874553d294686b66b3da22eb8f87e4"
+  },
+  {
+    "id": "next-01-baseline-3",
+    "caseId": "next-01",
+    "arm": "baseline",
+    "repeat": 3,
+    "status": "success",
+    "origin": "real-model",
+    "model": {
+      "provider": "codex",
+      "name": "gpt-6.1-sol",
+      "effort": "low"
+    },
+    "requested": {
+      "capabilities": [
+        "read_record"
+      ],
+      "maxCalls": 6,
+      "maxOutputChars": 4000,
+      "modelRepairAttempts": 2,
+      "maximumElapsedMs": 300000
+    },
+    "observed": {
+      "calls": 3,
+      "modelCalls": 2,
+      "inputTokens": "UNKNOWN",
+      "outputTokens": "UNKNOWN",
+      "cost": "UNKNOWN",
+      "durationMs": 93412
+    },
+    "checks": [
+      {
+        "capability": "read_record",
+        "sourceId": "next-01-src",
+        "status": "ok",
+        "responseDigest": "9687f20e3c212973b309a9590c11f1032ce8b15c74672c7ae2684ea4b5438a14"
+      }
+    ],
+    "output": "{\"decision\":\"refuted\",\"answer\":\"The draft is incorrect for configuration cfg-2024-11 in production deployment window 2025-W07. The production override sets 'new-ledger' enabled=false and takes precedence over the shipped default enabled=true. Therefore, the effective production value is false.\",\"uncertainties\":[],\"sourceRefs\":[\"next-01-src\"]}",
+    "packetDigest": "f12602aa29a5641dd54d6d7a4b580205ee1c2ace2e262abfbf44daf96bfb1255",
+    "protocolDigest": "13c656c2d153ebddbc8287693eb4ce81f3874553d294686b66b3da22eb8f87e4"
+  },
+  {
+    "id": "next-01-tombo-3",
+    "caseId": "next-01",
+    "arm": "tombo",
+    "repeat": 3,
+    "status": "success",
+    "origin": "real-model",
+    "model": {
+      "provider": "codex",
+      "name": "gpt-6.1-sol",
+      "effort": "low"
+    },
+    "requested": {
+      "capabilities": [
+        "read_record"
+      ],
+      "maxCalls": 6,
+      "maxOutputChars": 4000,
+      "modelRepairAttempts": 2,
+      "maximumElapsedMs": 300000
+    },
+    "observed": {
+      "calls": 4,
+      "modelCalls": 3,
+      "inputTokens": "UNKNOWN",
+      "outputTokens": "UNKNOWN",
+      "cost": "UNKNOWN",
+      "durationMs": 173611
+    },
+    "checks": [
+      {
+        "capability": "read_record",
+        "sourceId": "next-01-src",
+        "status": "ok",
+        "responseDigest": "9687f20e3c212973b309a9590c11f1032ce8b15c74672c7ae2684ea4b5438a14"
+      }
+    ],
+    "output": "{\"decision\":\"refuted\",\"answer\":\"Rejected claim: billing-api の機能フラグ 'new-ledger' の実効的な本番値は true である。 判定は incorrect。設定記録は、本番上書きファイルの enabled=false が配布デフォルトの enabled=true より優先され、実効値は false になると明示している。記録の対象は billing-api、cfg-2024-11、本番デプロイ期間 2025-W07 であり、提示された試行の対象範囲と一致する。この範囲では結論に残る不確実性はないが、他の設定版や期間の値は判断していない。sourceRefs: next-01-src。 billing-api の機能フラグ 'new-ledger' の実効的な本番値は false である。\",\"uncertainties\":[\"判定と回答の適用範囲は、設定記録 next-01-src が示す billing-api、cfg-2024-11、2025-W07 の本番環境に限る。この範囲では草案は incorrect、実効値は false。本番上書きの enabled=false が配布デフォルトの enabled=true より優先される。対象範囲内で未解決の矛盾はなく、他の設定版や期間の実効値は未確認。sourceRefs: next-01-src。\"],\"sourceRefs\":[\"next-01-src\"]}",
+    "packetDigest": "f12602aa29a5641dd54d6d7a4b580205ee1c2ace2e262abfbf44daf96bfb1255",
+    "protocolDigest": "13c656c2d153ebddbc8287693eb4ce81f3874553d294686b66b3da22eb8f87e4"
+  },
+  {
+    "id": "next-02-baseline-1",
+    "caseId": "next-02",
+    "arm": "baseline",
+    "repeat": 1,
+    "status": "success",
+    "origin": "real-model",
+    "model": {
+      "provider": "codex",
+      "name": "gpt-6.1-sol",
+      "effort": "low"
+    },
+    "requested": {
+      "capabilities": [
+        "read_record"
+      ],
+      "maxCalls": 6,
+      "maxOutputChars": 4000,
+      "modelRepairAttempts": 2,
+      "maximumElapsedMs": 300000
+    },
+    "observed": {
+      "calls": 3,
+      "modelCalls": 2,
+      "inputTokens": "UNKNOWN",
+      "outputTokens": "UNKNOWN",
+      "cost": "UNKNOWN",
+      "durationMs": 117919
+    },
+    "checks": [
+      {
+        "capability": "read_record",
+        "sourceId": "next-02-src",
+        "status": "ok",
+        "responseDigest": "d099be51ce4cdb63ece474b981f5d997c80331e4074b0ac5dfd422902ce43962"
+      }
+    ],
+    "output": "{\"decision\":\"supported\",\"answer\":\"The draft is correct for billing-api config cfg-2024-11 in production during deployment window 2025-W07. Both the shipped default and production override set 'new-ledger' enabled=true. The production override takes precedence, so the effective merged value is true.\",\"uncertainties\":[],\"sourceRefs\":[\"next-02-src\"]}",
+    "packetDigest": "fc75130803557ef8eeee8ea5042b113b183ff57739a0da99c0d8c7359bfcc96b",
+    "protocolDigest": "13c656c2d153ebddbc8287693eb4ce81f3874553d294686b66b3da22eb8f87e4"
+  },
+  {
+    "id": "next-02-tombo-1",
+    "caseId": "next-02",
+    "arm": "tombo",
+    "repeat": 1,
+    "status": "success",
+    "origin": "real-model",
+    "model": {
+      "provider": "codex",
+      "name": "gpt-6.1-sol",
+      "effort": "low"
+    },
+    "requested": {
+      "capabilities": [
+        "read_record"
+      ],
+      "maxCalls": 6,
+      "maxOutputChars": 4000,
+      "modelRepairAttempts": 2,
+      "maximumElapsedMs": 300000
+    },
+    "observed": {
+      "calls": 3,
+      "modelCalls": 3,
+      "inputTokens": "UNKNOWN",
+      "outputTokens": "UNKNOWN",
+      "cost": "UNKNOWN",
+      "durationMs": 164822
+    },
+    "checks": [],
+    "output": "{\"decision\":\"supported\",\"answer\":\"For billing-api config cfg-2024-11 in production deployment window 2025-W07, the effective value of feature flag 'new-ledger' is true.\",\"uncertainties\":[\"Review used the supplied passage e-context and assessmentIndex 0 for c-effective-value. The optional configuration record was not retrieved.\",\"The review covers cfg-2024-11 in production deployment window 2025-W07 under the declared precedence. Other versions, windows and runtime behaviour are outside the supplied scope.\",\"The supplied history contains a rejected inspect attempt, but no applied assessment correction or contrary assessment; no removal of a relevant refutation is shown.\"],\"sourceRefs\":[]}",
+    "packetDigest": "fc75130803557ef8eeee8ea5042b113b183ff57739a0da99c0d8c7359bfcc96b",
+    "protocolDigest": "13c656c2d153ebddbc8287693eb4ce81f3874553d294686b66b3da22eb8f87e4"
+  },
+  {
+    "id": "next-02-baseline-2",
+    "caseId": "next-02",
+    "arm": "baseline",
+    "repeat": 2,
+    "status": "success",
+    "origin": "real-model",
+    "model": {
+      "provider": "codex",
+      "name": "gpt-6.1-sol",
+      "effort": "low"
+    },
+    "requested": {
+      "capabilities": [
+        "read_record"
+      ],
+      "maxCalls": 6,
+      "maxOutputChars": 4000,
+      "modelRepairAttempts": 2,
+      "maximumElapsedMs": 300000
+    },
+    "observed": {
+      "calls": 3,
+      "modelCalls": 2,
+      "inputTokens": "UNKNOWN",
+      "outputTokens": "UNKNOWN",
+      "cost": "UNKNOWN",
+      "durationMs": 130994
+    },
+    "checks": [
+      {
+        "capability": "read_record",
+        "sourceId": "next-02-src",
+        "status": "ok",
+        "responseDigest": "d099be51ce4cdb63ece474b981f5d997c80331e4074b0ac5dfd422902ce43962"
+      }
+    ],
+    "output": "{\"decision\":\"supported\",\"answer\":\"草案は、cfg-2024-11・本番環境・2025-W07の範囲で正しい。設定記録では、出荷時の既定値と本番用上書き値の双方が 'new-ledger' enabled=true であり、優先される本番用上書き値を適用した実効値も true となる。\",\"uncertainties\":[],\"sourceRefs\":[\"next-02-src\"]}",
+    "packetDigest": "fc75130803557ef8eeee8ea5042b113b183ff57739a0da99c0d8c7359bfcc96b",
+    "protocolDigest": "13c656c2d153ebddbc8287693eb4ce81f3874553d294686b66b3da22eb8f87e4"
+  },
+  {
+    "id": "next-02-tombo-2",
+    "caseId": "next-02",
+    "arm": "tombo",
+    "repeat": 2,
+    "status": "error",
+    "origin": "real-model",
+    "model": {
+      "provider": "codex",
+      "name": "gpt-6.1-sol",
+      "effort": "low"
+    },
+    "requested": {
+      "capabilities": [
+        "read_record"
+      ],
+      "maxCalls": 6,
+      "maxOutputChars": 4000,
+      "modelRepairAttempts": 2,
+      "maximumElapsedMs": 300000
+    },
+    "observed": {
+      "calls": 3,
+      "modelCalls": 3,
+      "inputTokens": "UNKNOWN",
+      "outputTokens": "UNKNOWN",
+      "cost": "UNKNOWN",
+      "durationMs": 300013
+    },
+    "checks": [],
+    "output": "{\"decision\":\"unknown\",\"answer\":\"billing-api の cfg-2024-11、production、2025-W07 における new-ledger の実効値は true である。\",\"uncertainties\":[\"model_timeout\"],\"sourceRefs\":[]}",
+    "packetDigest": "fc75130803557ef8eeee8ea5042b113b183ff57739a0da99c0d8c7359bfcc96b",
+    "protocolDigest": "13c656c2d153ebddbc8287693eb4ce81f3874553d294686b66b3da22eb8f87e4"
+  },
+  {
+    "id": "next-02-baseline-3",
+    "caseId": "next-02",
+    "arm": "baseline",
+    "repeat": 3,
+    "status": "success",
+    "origin": "real-model",
+    "model": {
+      "provider": "codex",
+      "name": "gpt-6.1-sol",
+      "effort": "low"
+    },
+    "requested": {
+      "capabilities": [
+        "read_record"
+      ],
+      "maxCalls": 6,
+      "maxOutputChars": 4000,
+      "modelRepairAttempts": 2,
+      "maximumElapsedMs": 300000
+    },
+    "observed": {
+      "calls": 1,
+      "modelCalls": 1,
+      "inputTokens": "UNKNOWN",
+      "outputTokens": "UNKNOWN",
+      "cost": "UNKNOWN",
+      "durationMs": 59483
+    },
+    "checks": [],
+    "output": "{\"decision\":\"supported\",\"answer\":\"The draft is correct for billing-api config cfg-2024-11, production deployment window 2025-W07. The supplied context states that both the shipped default and production override set 'new-ledger' enabled=true. With the production override taking precedence, the effective merged value is true.\",\"uncertainties\":[\"The configuration record has not been retrieved; this conclusion relies on the supplied packet and applies only to its specified configuration and deployment window.\"],\"sourceRefs\":[]}",
+    "packetDigest": "fc75130803557ef8eeee8ea5042b113b183ff57739a0da99c0d8c7359bfcc96b",
+    "protocolDigest": "13c656c2d153ebddbc8287693eb4ce81f3874553d294686b66b3da22eb8f87e4"
+  },
+  {
+    "id": "next-02-tombo-3",
+    "caseId": "next-02",
+    "arm": "tombo",
+    "repeat": 3,
+    "status": "success",
+    "origin": "real-model",
+    "model": {
+      "provider": "codex",
+      "name": "gpt-6.1-sol",
+      "effort": "low"
+    },
+    "requested": {
+      "capabilities": [
+        "read_record"
+      ],
+      "maxCalls": 6,
+      "maxOutputChars": 4000,
+      "modelRepairAttempts": 2,
+      "maximumElapsedMs": 300000
+    },
+    "observed": {
+      "calls": 2,
+      "modelCalls": 2,
+      "inputTokens": "UNKNOWN",
+      "outputTokens": "UNKNOWN",
+      "cost": "UNKNOWN",
+      "durationMs": 153491
+    },
+    "checks": [],
+    "output": "{\"decision\":\"supported\",\"answer\":\"billing-api の cfg-2024-11、production、2025-W07 における feature flag 'new-ledger' の実効値は true である。\",\"uncertainties\":[\"レビューは提供された e-context と、assessmentReferences が指定する c-effective の assessmentIndex=0 に限定した。設定レコードの取得結果はなく、独立確認は未実施である。この確認は既存の g-record と p-record に含まれるため重複提案しない。\",\"対象は billing-api、cfg-2024-11、production、2025-W07 の宣言された設定マージ結果である。他の期間や設定バージョン、稼働環境での実際の読込み状態は確認していない。\",\"提供された状態には訂正履歴や反対の assessment がなく、関連する反証が訂正によって除去されたかどうかを検査する対象はない。レビュー完了は、すべての盲点が発見されたことを保証しない。\"],\"sourceRefs\":[]}",
+    "packetDigest": "fc75130803557ef8eeee8ea5042b113b183ff57739a0da99c0d8c7359bfcc96b",
+    "protocolDigest": "13c656c2d153ebddbc8287693eb4ce81f3874553d294686b66b3da22eb8f87e4"
+  },
+  {
+    "id": "next-03-baseline-1",
+    "caseId": "next-03",
+    "arm": "baseline",
+    "repeat": 1,
+    "status": "success",
+    "origin": "real-model",
+    "model": {
+      "provider": "codex",
+      "name": "gpt-6.1-sol",
+      "effort": "low"
+    },
+    "requested": {
+      "capabilities": [
+        "read_record"
+      ],
+      "maxCalls": 6,
+      "maxOutputChars": 4000,
+      "modelRepairAttempts": 2,
+      "maximumElapsedMs": 300000
+    },
+    "observed": {
+      "calls": 3,
+      "modelCalls": 2,
+      "inputTokens": "UNKNOWN",
+      "outputTokens": "UNKNOWN",
+      "cost": "UNKNOWN",
+      "durationMs": 134662
+    },
+    "checks": [
+      {
+        "capability": "read_record",
+        "sourceId": "next-03-src",
+        "status": "ok",
+        "responseDigest": "a018c23e4006e367f0f7377f7caaa40f955c91adb0e03ec81c75a7390d7bbbb2"
+      }
+    ],
+    "output": "{\"decision\":\"refuted\",\"answer\":\"草案は誤りです。POL-08 version 1.3では、上限はUTF-8で符号化したペイロードのバイト数に適用されます。『あいうab』は、ひらがな3文字×3バイト＋ASCII文字2文字×1バイト＝11バイトとなり、8バイトの上限を3バイト超えます。5コードポイントという文字数をバイト上限と比較することはできません。\",\"uncertainties\":[],\"sourceRefs\":[\"next-03-src\"]}",
+    "packetDigest": "c91680a3667d3c18752698307cfa025cf8ebb2a7cc5d176155e9303b8f8750a7",
+    "protocolDigest": "13c656c2d153ebddbc8287693eb4ce81f3874553d294686b66b3da22eb8f87e4"
+  },
+  {
+    "id": "next-03-tombo-1",
+    "caseId": "next-03",
+    "arm": "tombo",
+    "repeat": 1,
+    "status": "success",
+    "origin": "real-model",
+    "model": {
+      "provider": "codex",
+      "name": "gpt-6.1-sol",
+      "effort": "low"
+    },
+    "requested": {
+      "capabilities": [
+        "read_record"
+      ],
+      "maxCalls": 6,
+      "maxOutputChars": 4000,
+      "modelRepairAttempts": 2,
+      "maximumElapsedMs": 300000
+    },
+    "observed": {
+      "calls": 4,
+      "modelCalls": 3,
+      "inputTokens": "UNKNOWN",
+      "outputTokens": "UNKNOWN",
+      "cost": "UNKNOWN",
+      "durationMs": 212349
+    },
+    "checks": [
+      {
+        "capability": "read_record",
+        "sourceId": "next-03-src",
+        "status": "ok",
+        "responseDigest": "a018c23e4006e367f0f7377f7caaa40f955c91adb0e03ec81c75a7390d7bbbb2"
+      }
+    ],
+    "output": "{\"decision\":\"refuted\",\"answer\":\"Rejected claim: ペイロード「あいうab」はゲートウェイの8バイト制限内に収まる。 現在の適用期間のPOL-08 version 1.3では、制限は付加情報を含まないペイロードのUTF-8バイト数に適用される。「あいうab」は3×3＋2×1＝11バイトであり、8バイトを超える。したがって草案は誤りである。5コードポイントという数はバイト数ではない。提示された現在のポリシーと対象ペイロードについて、判定に残る不確実性はない。 ペイロード「あいうab」はゲートウェイの8バイト制限を超える。\",\"uncertainties\":[],\"sourceRefs\":[\"next-03-src\"]}",
+    "packetDigest": "c91680a3667d3c18752698307cfa025cf8ebb2a7cc5d176155e9303b8f8750a7",
+    "protocolDigest": "13c656c2d153ebddbc8287693eb4ce81f3874553d294686b66b3da22eb8f87e4"
+  },
+  {
+    "id": "next-03-baseline-2",
+    "caseId": "next-03",
+    "arm": "baseline",
+    "repeat": 2,
+    "status": "success",
+    "origin": "real-model",
+    "model": {
+      "provider": "codex",
+      "name": "gpt-6.1-sol",
+      "effort": "low"
+    },
+    "requested": {
+      "capabilities": [
+        "read_record"
+      ],
+      "maxCalls": 6,
+      "maxOutputChars": 4000,
+      "modelRepairAttempts": 2,
+      "maximumElapsedMs": 300000
+    },
+    "observed": {
+      "calls": 3,
+      "modelCalls": 2,
+      "inputTokens": "UNKNOWN",
+      "outputTokens": "UNKNOWN",
+      "cost": "UNKNOWN",
+      "durationMs": 70805
+    },
+    "checks": [
+      {
+        "capability": "read_record",
+        "sourceId": "next-03-src",
+        "status": "ok",
+        "responseDigest": "a018c23e4006e367f0f7377f7caaa40f955c91adb0e03ec81c75a7390d7bbbb2"
+      }
+    ],
+    "output": "{\"decision\":\"refuted\",\"answer\":\"The draft is incorrect. Policy POL-08 v1.3 measures the limit using UTF-8 encoded payload bytes, with no overhead. The three hiragana require 3 × 3 = 9 bytes, and the two ASCII letters require 2 × 1 = 2 bytes, totalling 11 bytes. This exceeds the 8-byte limit by 3 bytes. The five-code-point character count does not establish the byte length.\",\"uncertainties\":[],\"sourceRefs\":[\"next-03-src\"]}",
+    "packetDigest": "c91680a3667d3c18752698307cfa025cf8ebb2a7cc5d176155e9303b8f8750a7",
+    "protocolDigest": "13c656c2d153ebddbc8287693eb4ce81f3874553d294686b66b3da22eb8f87e4"
+  },
+  {
+    "id": "next-03-tombo-2",
+    "caseId": "next-03",
+    "arm": "tombo",
+    "repeat": 2,
+    "status": "error",
+    "origin": "real-model",
+    "model": {
+      "provider": "codex",
+      "name": "gpt-6.1-sol",
+      "effort": "low"
+    },
+    "requested": {
+      "capabilities": [
+        "read_record"
+      ],
+      "maxCalls": 6,
+      "maxOutputChars": 4000,
+      "modelRepairAttempts": 2,
+      "maximumElapsedMs": 300000
+    },
+    "observed": {
+      "calls": 1,
+      "modelCalls": 1,
+      "inputTokens": "UNKNOWN",
+      "outputTokens": "UNKNOWN",
+      "cost": "UNKNOWN",
+      "durationMs": 300007
+    },
+    "checks": [],
+    "output": "{\"decision\":\"unknown\",\"answer\":\"The original draft remains unverified: The payload 'あいうab' fits within the 8-byte limit: it contains only 5 characters, and 5 is less than 8.\",\"uncertainties\":[\"model_timeout\"],\"sourceRefs\":[]}",
+    "packetDigest": "c91680a3667d3c18752698307cfa025cf8ebb2a7cc5d176155e9303b8f8750a7",
+    "protocolDigest": "13c656c2d153ebddbc8287693eb4ce81f3874553d294686b66b3da22eb8f87e4"
+  },
+  {
+    "id": "next-03-baseline-3",
+    "caseId": "next-03",
+    "arm": "baseline",
+    "repeat": 3,
+    "status": "success",
+    "origin": "real-model",
+    "model": {
+      "provider": "codex",
+      "name": "gpt-6.1-sol",
+      "effort": "low"
+    },
+    "requested": {
+      "capabilities": [
+        "read_record"
+      ],
+      "maxCalls": 6,
+      "maxOutputChars": 4000,
+      "modelRepairAttempts": 2,
+      "maximumElapsedMs": 300000
+    },
+    "observed": {
+      "calls": 3,
+      "modelCalls": 2,
+      "inputTokens": "UNKNOWN",
+      "outputTokens": "UNKNOWN",
+      "cost": "UNKNOWN",
+      "durationMs": 93095
+    },
+    "checks": [
+      {
+        "capability": "read_record",
+        "sourceId": "next-03-src",
+        "status": "ok",
+        "responseDigest": "a018c23e4006e367f0f7377f7caaa40f955c91adb0e03ec81c75a7390d7bbbb2"
+      }
+    ],
+    "output": "{\"decision\":\"refuted\",\"answer\":\"草案は誤りです。POL-08 v1.3では、8バイト制限はペイロードのUTF-8符号化後のバイト長に適用され、付加的なオーバーヘッドはありません。『あいうab』は、ひらがな3文字×3バイト＋ASCII英字2文字×1バイト＝11バイトであり、上限を3バイト超過します。5コードポイントという文字数だけでは、8バイト以内とは判断できません。\",\"uncertainties\":[],\"sourceRefs\":[\"next-03-src\"]}",
+    "packetDigest": "c91680a3667d3c18752698307cfa025cf8ebb2a7cc5d176155e9303b8f8750a7",
+    "protocolDigest": "13c656c2d153ebddbc8287693eb4ce81f3874553d294686b66b3da22eb8f87e4"
+  },
+  {
+    "id": "next-03-tombo-3",
+    "caseId": "next-03",
+    "arm": "tombo",
+    "repeat": 3,
+    "status": "success",
+    "origin": "real-model",
+    "model": {
+      "provider": "codex",
+      "name": "gpt-6.1-sol",
+      "effort": "low"
+    },
+    "requested": {
+      "capabilities": [
+        "read_record"
+      ],
+      "maxCalls": 6,
+      "maxOutputChars": 4000,
+      "modelRepairAttempts": 2,
+      "maximumElapsedMs": 300000
+    },
+    "observed": {
+      "calls": 4,
+      "modelCalls": 3,
+      "inputTokens": "UNKNOWN",
+      "outputTokens": "UNKNOWN",
+      "cost": "UNKNOWN",
+      "durationMs": 121626
+    },
+    "checks": [
+      {
+        "capability": "read_record",
+        "sourceId": "next-03-src",
+        "status": "ok",
+        "responseDigest": "a018c23e4006e367f0f7377f7caaa40f955c91adb0e03ec81c75a7390d7bbbb2"
+      }
+    ],
+    "output": "{\"decision\":\"refuted\",\"answer\":\"Rejected claim: ペイロード「あいうab」はゲートウェイの8バイト制限内に収まる。 現行のPOL-08 version 1.3は、上限の計測対象をペイロードのUTF-8バイト長と定めている。「あいうab」は3×3＋2×1＝11バイトであり、8バイト以内に収まるという命題は誤りである。 ペイロード「あいうab」はゲートウェイの8バイト制限を超える。\",\"uncertainties\":[\"レビューは提供された現行ポリシーと全3件のassessmentReferencesに限定した。訂正履歴はなく、関連する反証の削除もない。判定：草案は誤り。回答：「あいうab」はUTF-8で3×3＋2×1＝11バイトとなり、8バイト上限を3バイト超える。宣言された範囲で判断に必要な未解決の不確実性はない。sourceRefs：next-03-src:53ad65d1-437f-4e06-ab6b-51e1f28bfa08（POL-08 version 1.3）。レビュー完了は、すべての盲点の発見を保証しない。\"],\"sourceRefs\":[\"next-03-src\"]}",
+    "packetDigest": "c91680a3667d3c18752698307cfa025cf8ebb2a7cc5d176155e9303b8f8750a7",
+    "protocolDigest": "13c656c2d153ebddbc8287693eb4ce81f3874553d294686b66b3da22eb8f87e4"
+  },
+  {
+    "id": "next-04-baseline-1",
+    "caseId": "next-04",
+    "arm": "baseline",
+    "repeat": 1,
+    "status": "success",
+    "origin": "real-model",
+    "model": {
+      "provider": "codex",
+      "name": "gpt-6.1-sol",
+      "effort": "low"
+    },
+    "requested": {
+      "capabilities": [
+        "read_record"
+      ],
+      "maxCalls": 6,
+      "maxOutputChars": 4000,
+      "modelRepairAttempts": 2,
+      "maximumElapsedMs": 300000
+    },
+    "observed": {
+      "calls": 2,
+      "modelCalls": 2,
+      "inputTokens": "UNKNOWN",
+      "outputTokens": "UNKNOWN",
+      "cost": "UNKNOWN",
+      "durationMs": 122141
+    },
+    "checks": [],
+    "output": "{\"decision\":\"supported\",\"answer\":\"提示された情報に基づき、草案は正しい。ASCII文字列 'abcde' はUTF-8で5バイトとなり、上限の測定には追加のオーバーヘッドを含めない。5は8より小さいため、8バイトのペイロード上限に収まる。\",\"uncertainties\":[],\"sourceRefs\":[]}",
+    "packetDigest": "b3d9b7d959a987885982cf5fd94ae8b80b74c5d9985dee346b9e317f92849244",
+    "protocolDigest": "13c656c2d153ebddbc8287693eb4ce81f3874553d294686b66b3da22eb8f87e4"
+  },
+  {
+    "id": "next-04-tombo-1",
+    "caseId": "next-04",
+    "arm": "tombo",
+    "repeat": 1,
+    "status": "success",
+    "origin": "real-model",
+    "model": {
+      "provider": "codex",
+      "name": "gpt-6.1-sol",
+      "effort": "low"
+    },
+    "requested": {
+      "capabilities": [
+        "read_record"
+      ],
+      "maxCalls": 6,
+      "maxOutputChars": 4000,
+      "modelRepairAttempts": 2,
+      "maximumElapsedMs": 300000
+    },
+    "observed": {
+      "calls": 3,
+      "modelCalls": 3,
+      "inputTokens": "UNKNOWN",
+      "outputTokens": "UNKNOWN",
+      "cost": "UNKNOWN",
+      "durationMs": 207315
+    },
+    "checks": [],
+    "output": "{\"decision\":\"supported\",\"answer\":\"ペイロード 'abcde' はゲートウェイの8バイトのペイロード上限内に収まる。\",\"uncertainties\":[\"decision: correct。answer: 提供資料に基づく草案の結論は正しい。ASCII文字列 'abcde' は5 UTF-8バイトで、オーバーヘッドを含まない8バイト上限に対して5 < 8となる。uncertainties: ポリシー記録そのものと実際のゲートウェイ動作は独立確認していないが、提供資料内では結論を左右する不足や矛盾はない。sourceRefs: [e-context]。\",\"assessmentReferencesで指定された各claimIdのassessmentIndex 0を提供資料と照合した。提示された履歴には適用済みの評価訂正や反対評価はなく、関連する反証が訂正によって除去された形跡もない。レビュー完了は、すべての盲点の発見を保証するものではない。\"],\"sourceRefs\":[]}",
+    "packetDigest": "b3d9b7d959a987885982cf5fd94ae8b80b74c5d9985dee346b9e317f92849244",
+    "protocolDigest": "13c656c2d153ebddbc8287693eb4ce81f3874553d294686b66b3da22eb8f87e4"
+  },
+  {
+    "id": "next-04-baseline-2",
+    "caseId": "next-04",
+    "arm": "baseline",
+    "repeat": 2,
+    "status": "success",
+    "origin": "real-model",
+    "model": {
+      "provider": "codex",
+      "name": "gpt-6.1-sol",
+      "effort": "low"
+    },
+    "requested": {
+      "capabilities": [
+        "read_record"
+      ],
+      "maxCalls": 6,
+      "maxOutputChars": 4000,
+      "modelRepairAttempts": 2,
+      "maximumElapsedMs": 300000
+    },
+    "observed": {
+      "calls": 1,
+      "modelCalls": 1,
+      "inputTokens": "UNKNOWN",
+      "outputTokens": "UNKNOWN",
+      "cost": "UNKNOWN",
+      "durationMs": 43443
+    },
+    "checks": [],
+    "output": "{\"decision\":\"supported\",\"answer\":\"The draft is correct based on the supplied context. The limit applies solely to the UTF-8 encoded payload, with no overhead. Each of the five ASCII characters in 'abcde' occupies 1 byte, so the payload is 5 bytes. Since 5 < 8, it fits within the gateway's limit.\",\"uncertainties\":[],\"sourceRefs\":[]}",
+    "packetDigest": "b3d9b7d959a987885982cf5fd94ae8b80b74c5d9985dee346b9e317f92849244",
+    "protocolDigest": "13c656c2d153ebddbc8287693eb4ce81f3874553d294686b66b3da22eb8f87e4"
+  },
+  {
+    "id": "next-04-tombo-2",
+    "caseId": "next-04",
+    "arm": "tombo",
+    "repeat": 2,
+    "status": "error",
+    "origin": "real-model",
+    "model": {
+      "provider": "codex",
+      "name": "gpt-6.1-sol",
+      "effort": "low"
+    },
+    "requested": {
+      "capabilities": [
+        "read_record"
+      ],
+      "maxCalls": 6,
+      "maxOutputChars": 4000,
+      "modelRepairAttempts": 2,
+      "maximumElapsedMs": 300000
+    },
+    "observed": {
+      "calls": 1,
+      "modelCalls": 1,
+      "inputTokens": "UNKNOWN",
+      "outputTokens": "UNKNOWN",
+      "cost": "UNKNOWN",
+      "durationMs": 300010
+    },
+    "checks": [],
+    "output": "{\"decision\":\"unknown\",\"answer\":\"The original draft remains unverified: The payload 'abcde' fits within the 8-byte limit: it encodes to 5 UTF-8 bytes, and 5 is less than 8.\",\"uncertainties\":[\"model_timeout\"],\"sourceRefs\":[]}",
+    "packetDigest": "b3d9b7d959a987885982cf5fd94ae8b80b74c5d9985dee346b9e317f92849244",
+    "protocolDigest": "13c656c2d153ebddbc8287693eb4ce81f3874553d294686b66b3da22eb8f87e4"
+  },
+  {
+    "id": "next-04-baseline-3",
+    "caseId": "next-04",
+    "arm": "baseline",
+    "repeat": 3,
+    "status": "success",
+    "origin": "real-model",
+    "model": {
+      "provider": "codex",
+      "name": "gpt-6.1-sol",
+      "effort": "low"
+    },
+    "requested": {
+      "capabilities": [
+        "read_record"
+      ],
+      "maxCalls": 6,
+      "maxOutputChars": 4000,
+      "modelRepairAttempts": 2,
+      "maximumElapsedMs": 300000
+    },
+    "observed": {
+      "calls": 2,
+      "modelCalls": 2,
+      "inputTokens": "UNKNOWN",
+      "outputTokens": "UNKNOWN",
+      "cost": "UNKNOWN",
+      "durationMs": 84579
+    },
+    "checks": [],
+    "output": "{\"decision\":\"supported\",\"answer\":\"提示された情報に基づくと、草案は正しいです。'abcde' はASCII文字5文字で、UTF-8では各文字が1バイトなので、ペイロードは5バイトです。制限の測定に付加的なオーバーヘッドは含まれず、5 < 8のため、8バイトの制限内に収まります。\",\"uncertainties\":[],\"sourceRefs\":[]}",
+    "packetDigest": "b3d9b7d959a987885982cf5fd94ae8b80b74c5d9985dee346b9e317f92849244",
+    "protocolDigest": "13c656c2d153ebddbc8287693eb4ce81f3874553d294686b66b3da22eb8f87e4"
+  },
+  {
+    "id": "next-04-tombo-3",
+    "caseId": "next-04",
+    "arm": "tombo",
+    "repeat": 3,
+    "status": "success",
+    "origin": "real-model",
+    "model": {
+      "provider": "codex",
+      "name": "gpt-6.1-sol",
+      "effort": "low"
+    },
+    "requested": {
+      "capabilities": [
+        "read_record"
+      ],
+      "maxCalls": 6,
+      "maxOutputChars": 4000,
+      "modelRepairAttempts": 2,
+      "maximumElapsedMs": 300000
+    },
+    "observed": {
+      "calls": 2,
+      "modelCalls": 2,
+      "inputTokens": "UNKNOWN",
+      "outputTokens": "UNKNOWN",
+      "cost": "UNKNOWN",
+      "durationMs": 79022
+    },
+    "checks": [],
+    "output": "{\"decision\":\"supported\",\"answer\":\"ペイロード 'abcde' はゲートウェイの8バイト制限内に収まる。\",\"uncertainties\":[\"レビューは提供された現在有効の資料 e-context と各主張の assessmentIndex 0 に基づく。独立した政策記録は取得していない。訂正履歴や反対評価は提示されていない。宣言された範囲では、5 UTF-8バイトが8バイト未満であるという草案の判断を左右する未解決事項や追加チェックの必要性は見当たらない。sourceRefs: e-context。\"],\"sourceRefs\":[]}",
+    "packetDigest": "b3d9b7d959a987885982cf5fd94ae8b80b74c5d9985dee346b9e317f92849244",
+    "protocolDigest": "13c656c2d153ebddbc8287693eb4ce81f3874553d294686b66b3da22eb8f87e4"
+  },
+  {
+    "id": "next-05-baseline-1",
+    "caseId": "next-05",
+    "arm": "baseline",
+    "repeat": 1,
+    "status": "success",
+    "origin": "real-model",
+    "model": {
+      "provider": "codex",
+      "name": "gpt-6.1-sol",
+      "effort": "low"
+    },
+    "requested": {
+      "capabilities": [
+        "read_record"
+      ],
+      "maxCalls": 6,
+      "maxOutputChars": 4000,
+      "modelRepairAttempts": 2,
+      "maximumElapsedMs": 300000
+    },
+    "observed": {
+      "calls": 3,
+      "modelCalls": 2,
+      "inputTokens": "UNKNOWN",
+      "outputTokens": "UNKNOWN",
+      "cost": "UNKNOWN",
+      "durationMs": 127349
+    },
+    "checks": [
+      {
+        "capability": "read_record",
+        "sourceId": "next-05-src",
+        "status": "ok",
+        "responseDigest": "1436f647b2f8413effcd57605c340a2dfeb6081decb43090a5a66ab073f91157"
+      }
+    ],
+    "output": "{\"decision\":\"unknown\",\"answer\":\"The statement cannot be determined from the available information. The complete outgoing rows for A and B establish A->B->C, but C's outgoing edges are unknown. If C->D exists, D is reachable from A; if C has no outgoing edges, D is unreachable. Both possibilities fit the supplied record, so the incomplete listing does not justify the draft's conclusion.\",\"uncertainties\":[\"C's outgoing adjacency row has not been exported, so whether a path continues from C to D is unknown.\"],\"sourceRefs\":[\"next-05-src\"]}",
+    "packetDigest": "65fbdb62c0b20c293d7d8c9c0ee7cebb8c8b85d1d799531c0571edb6e80537a6",
+    "protocolDigest": "13c656c2d153ebddbc8287693eb4ce81f3874553d294686b66b3da22eb8f87e4"
+  },
+  {
+    "id": "next-05-tombo-1",
+    "caseId": "next-05",
+    "arm": "tombo",
+    "repeat": 1,
+    "status": "error",
+    "origin": "real-model",
+    "model": {
+      "provider": "codex",
+      "name": "gpt-6.1-sol",
+      "effort": "low"
+    },
+    "requested": {
+      "capabilities": [
+        "read_record"
+      ],
+      "maxCalls": 6,
+      "maxOutputChars": 4000,
+      "modelRepairAttempts": 2,
+      "maximumElapsedMs": 300000
+    },
+    "observed": {
+      "calls": 5,
+      "modelCalls": 3,
+      "inputTokens": "UNKNOWN",
+      "outputTokens": "UNKNOWN",
+      "cost": "UNKNOWN",
+      "durationMs": 214772
+    },
+    "checks": [
+      {
+        "capability": "read_record",
+        "sourceId": "next-05-src",
+        "status": "ok",
+        "responseDigest": "1436f647b2f8413effcd57605c340a2dfeb6081decb43090a5a66ab073f91157"
+      },
+      {
+        "capability": "read_record",
+        "sourceId": "next-05-src",
+        "status": "ok",
+        "responseDigest": "1436f647b2f8413effcd57605c340a2dfeb6081decb43090a5a66ab073f91157"
+      }
+    ],
+    "output": "{\"decision\":\"unknown\",\"answer\":\"利用可能な情報からは、頂点Dが頂点Aから到達可能かどうかを確定できない。 最新の状態記録でも、AとBの出辺は完全に出力済みだが、Cの出辺は不明である。A→B→Cは確認できるものの、CからDへの辺が存在する可能性を排除できないため、到達不能という命題は支持も反証もできない。g-unreachableの解消条件は満たされていない。\",\"uncertainties\":[\"exporterの出力範囲は、AからDへの経路の存在または不存在を確定するのに十分か。\",\"Unverified: 有向グラフGで頂点Dは頂点Aから到達不能である。\",\"budget_exhausted\"],\"sourceRefs\":[\"next-05-src\"]}",
+    "packetDigest": "65fbdb62c0b20c293d7d8c9c0ee7cebb8c8b85d1d799531c0571edb6e80537a6",
+    "protocolDigest": "13c656c2d153ebddbc8287693eb4ce81f3874553d294686b66b3da22eb8f87e4"
+  },
+  {
+    "id": "next-05-baseline-2",
+    "caseId": "next-05",
+    "arm": "baseline",
+    "repeat": 2,
+    "status": "success",
+    "origin": "real-model",
+    "model": {
+      "provider": "codex",
+      "name": "gpt-6.1-sol",
+      "effort": "low"
+    },
+    "requested": {
+      "capabilities": [
+        "read_record"
+      ],
+      "maxCalls": 6,
+      "maxOutputChars": 4000,
+      "modelRepairAttempts": 2,
+      "maximumElapsedMs": 300000
+    },
+    "observed": {
+      "calls": 3,
+      "modelCalls": 2,
+      "inputTokens": "UNKNOWN",
+      "outputTokens": "UNKNOWN",
+      "cost": "UNKNOWN",
+      "durationMs": 68552
+    },
+    "checks": [
+      {
+        "capability": "read_record",
+        "sourceId": "next-05-src",
+        "status": "ok",
+        "responseDigest": "1436f647b2f8413effcd57605c340a2dfeb6081decb43090a5a66ab073f91157"
+      }
+    ],
+    "output": "{\"decision\":\"unknown\",\"answer\":\"頂点Dが頂点Aから到達可能かは、現在の情報では判断できません。AとBの出辺は完全に出力されており、A→B→Cは確認できます。しかし、Cの出辺は不明です。C→Dが存在すればDに到達でき、Cの出辺がなければ到達できません。どちらも提供された情報と整合するため、未完了の一覧にDへの辺がないことから到達不能とは結論できません。\",\"uncertainties\":[\"Cの出辺が未出力であり、C→Dの有無が不明です。\",\"Dの出辺も不明ですが、AからDに到達できるかを決めるにはC→Dの有無が必要です。\"],\"sourceRefs\":[\"next-05-src\"]}",
+    "packetDigest": "65fbdb62c0b20c293d7d8c9c0ee7cebb8c8b85d1d799531c0571edb6e80537a6",
+    "protocolDigest": "13c656c2d153ebddbc8287693eb4ce81f3874553d294686b66b3da22eb8f87e4"
+  },
+  {
+    "id": "next-05-tombo-2",
+    "caseId": "next-05",
+    "arm": "tombo",
+    "repeat": 2,
+    "status": "error",
+    "origin": "real-model",
+    "model": {
+      "provider": "codex",
+      "name": "gpt-6.1-sol",
+      "effort": "low"
+    },
+    "requested": {
+      "capabilities": [
+        "read_record"
+      ],
+      "maxCalls": 6,
+      "maxOutputChars": 4000,
+      "modelRepairAttempts": 2,
+      "maximumElapsedMs": 300000
+    },
+    "observed": {
+      "calls": 6,
+      "modelCalls": 4,
+      "inputTokens": "UNKNOWN",
+      "outputTokens": "UNKNOWN",
+      "cost": "UNKNOWN",
+      "durationMs": 176757
+    },
+    "checks": [
+      {
+        "capability": "read_record",
+        "sourceId": "next-05-src",
+        "status": "ok",
+        "responseDigest": "1436f647b2f8413effcd57605c340a2dfeb6081decb43090a5a66ab073f91157"
+      },
+      {
+        "capability": "read_record",
+        "sourceId": "next-05-src",
+        "status": "ok",
+        "responseDigest": "1436f647b2f8413effcd57605c340a2dfeb6081decb43090a5a66ab073f91157"
+      }
+    ],
+    "output": "{\"decision\":\"unknown\",\"answer\":\"利用可能な情報からは、DがAから到達不能であるという草稿の正誤を判定できない。 AとBの出辺はそれぞれA→B、B→Cで完全だが、Cの出辺は不明である。C→Dがあるグラフと、Cの出辺が空のグラフは、いずれも記録と両立する。前者ではDへ到達でき、後者では到達できないため、到達不能という命題は確定できない。g-unreachableは未解決のままとする。\",\"uncertainties\":[\"収録済みの出辺と収録範囲は、AからDへの経路の不存在を確定するのに十分か。\",\"Unverified: グラフGで頂点Dは頂点Aから到達不能である。\",\"budget_exhausted\"],\"sourceRefs\":[\"next-05-src\"]}",
+    "packetDigest": "65fbdb62c0b20c293d7d8c9c0ee7cebb8c8b85d1d799531c0571edb6e80537a6",
+    "protocolDigest": "13c656c2d153ebddbc8287693eb4ce81f3874553d294686b66b3da22eb8f87e4"
+  },
+  {
+    "id": "next-05-baseline-3",
+    "caseId": "next-05",
+    "arm": "baseline",
+    "repeat": 3,
+    "status": "success",
+    "origin": "real-model",
+    "model": {
+      "provider": "codex",
+      "name": "gpt-6.1-sol",
+      "effort": "low"
+    },
+    "requested": {
+      "capabilities": [
+        "read_record"
+      ],
+      "maxCalls": 6,
+      "maxOutputChars": 4000,
+      "modelRepairAttempts": 2,
+      "maximumElapsedMs": 300000
+    },
+    "observed": {
+      "calls": 3,
+      "modelCalls": 2,
+      "inputTokens": "UNKNOWN",
+      "outputTokens": "UNKNOWN",
+      "cost": "UNKNOWN",
+      "durationMs": 82492
+    },
+    "checks": [
+      {
+        "capability": "read_record",
+        "sourceId": "next-05-src",
+        "status": "ok",
+        "responseDigest": "1436f647b2f8413effcd57605c340a2dfeb6081decb43090a5a66ab073f91157"
+      }
+    ],
+    "output": "{\"decision\":\"unknown\",\"answer\":\"頂点DがAから到達可能かは、現在の情報では判断できません。AとBの出辺は完全に出力されており、A→B→Cまでは到達できます。しかし、Cの出辺は未出力です。C→DがあればDへ到達でき、Cの出辺がなければ到達できません。どちらも記録と整合するため、作業中の一覧にDへの辺がないことだけでは、草案の非到達という結論は正当化できません。\",\"uncertainties\":[\"Cの出辺が不明であり、C→Dの有無を確認できません。\",\"Dの出辺も未出力ですが、AからDに初めて到達できるかの判定には影響しません。\"],\"sourceRefs\":[\"next-05-src\"]}",
+    "packetDigest": "65fbdb62c0b20c293d7d8c9c0ee7cebb8c8b85d1d799531c0571edb6e80537a6",
+    "protocolDigest": "13c656c2d153ebddbc8287693eb4ce81f3874553d294686b66b3da22eb8f87e4"
+  },
+  {
+    "id": "next-05-tombo-3",
+    "caseId": "next-05",
+    "arm": "tombo",
+    "repeat": 3,
+    "status": "error",
+    "origin": "real-model",
+    "model": {
+      "provider": "codex",
+      "name": "gpt-6.1-sol",
+      "effort": "low"
+    },
+    "requested": {
+      "capabilities": [
+        "read_record"
+      ],
+      "maxCalls": 6,
+      "maxOutputChars": 4000,
+      "modelRepairAttempts": 2,
+      "maximumElapsedMs": 300000
+    },
+    "observed": {
+      "calls": 5,
+      "modelCalls": 3,
+      "inputTokens": "UNKNOWN",
+      "outputTokens": "UNKNOWN",
+      "cost": "UNKNOWN",
+      "durationMs": 300009
+    },
+    "checks": [
+      {
+        "capability": "read_record",
+        "sourceId": "next-05-src",
+        "status": "ok",
+        "responseDigest": "1436f647b2f8413effcd57605c340a2dfeb6081decb43090a5a66ab073f91157"
+      },
+      {
+        "capability": "read_record",
+        "sourceId": "next-05-src",
+        "status": "ok",
+        "responseDigest": "1436f647b2f8413effcd57605c340a2dfeb6081decb43090a5a66ab073f91157"
+      }
+    ],
+    "output": "{\"decision\":\"unknown\",\"answer\":\"Whether vertex D is reachable from vertex A cannot be determined from the available information. The status record confirms complete outgoing rows A->B and B->C, but C's outgoing edges are unknown. It neither establishes a path to D nor excludes one. The original non-reachability proposition remains undecided, so g-unreachable remains open.\",\"uncertainties\":[\"Does the exporter status establish sufficient adjacency coverage to decide whether D is reachable from A?\",\"Unverified: Vertex D is not reachable from vertex A in directed graph G.\",\"model_timeout\"],\"sourceRefs\":[\"next-05-src\"]}",
+    "packetDigest": "65fbdb62c0b20c293d7d8c9c0ee7cebb8c8b85d1d799531c0571edb6e80537a6",
+    "protocolDigest": "13c656c2d153ebddbc8287693eb4ce81f3874553d294686b66b3da22eb8f87e4"
+  },
+  {
+    "id": "next-06-baseline-1",
+    "caseId": "next-06",
+    "arm": "baseline",
+    "repeat": 1,
+    "status": "success",
+    "origin": "real-model",
+    "model": {
+      "provider": "codex",
+      "name": "gpt-6.1-sol",
+      "effort": "low"
+    },
+    "requested": {
+      "capabilities": [
+        "read_record"
+      ],
+      "maxCalls": 6,
+      "maxOutputChars": 4000,
+      "modelRepairAttempts": 2,
+      "maximumElapsedMs": 300000
+    },
+    "observed": {
+      "calls": 2,
+      "modelCalls": 2,
+      "inputTokens": "UNKNOWN",
+      "outputTokens": "UNKNOWN",
+      "cost": "UNKNOWN",
+      "durationMs": 109345
+    },
+    "checks": [],
+    "output": "{\"decision\":\"supported\",\"answer\":\"The draft is correct. The supplied complete adjacency listing establishes paths A->B, A->B->C, and A->B->C->D. Therefore B, C, and D—every vertex other than A—are reachable from A.\",\"uncertainties\":[],\"sourceRefs\":[]}",
+    "packetDigest": "427cd74133a69fc61d49c3e536767a1abb40f5d81c2c280adadc7e73f1b7d609",
+    "protocolDigest": "13c656c2d153ebddbc8287693eb4ce81f3874553d294686b66b3da22eb8f87e4"
+  },
+  {
+    "id": "next-06-tombo-1",
+    "caseId": "next-06",
+    "arm": "tombo",
+    "repeat": 1,
+    "status": "success",
+    "origin": "real-model",
+    "model": {
+      "provider": "codex",
+      "name": "gpt-6.1-sol",
+      "effort": "low"
+    },
+    "requested": {
+      "capabilities": [
+        "read_record"
+      ],
+      "maxCalls": 6,
+      "maxOutputChars": 4000,
+      "modelRepairAttempts": 2,
+      "maximumElapsedMs": 300000
+    },
+    "observed": {
+      "calls": 2,
+      "modelCalls": 2,
+      "inputTokens": "UNKNOWN",
+      "outputTokens": "UNKNOWN",
+      "cost": "UNKNOWN",
+      "durationMs": 154132
+    },
+    "checks": [],
+    "output": "{\"decision\":\"supported\",\"answer\":\"From vertex A, every other vertex in G is reachable.\",\"uncertainties\":[],\"sourceRefs\":[]}",
+    "packetDigest": "427cd74133a69fc61d49c3e536767a1abb40f5d81c2c280adadc7e73f1b7d609",
+    "protocolDigest": "13c656c2d153ebddbc8287693eb4ce81f3874553d294686b66b3da22eb8f87e4"
+  },
+  {
+    "id": "next-06-baseline-2",
+    "caseId": "next-06",
+    "arm": "baseline",
+    "repeat": 2,
+    "status": "success",
+    "origin": "real-model",
+    "model": {
+      "provider": "codex",
+      "name": "gpt-6.1-sol",
+      "effort": "low"
+    },
+    "requested": {
+      "capabilities": [
+        "read_record"
+      ],
+      "maxCalls": 6,
+      "maxOutputChars": 4000,
+      "modelRepairAttempts": 2,
+      "maximumElapsedMs": 300000
+    },
+    "observed": {
+      "calls": 2,
+      "modelCalls": 2,
+      "inputTokens": "UNKNOWN",
+      "outputTokens": "UNKNOWN",
+      "cost": "UNKNOWN",
+      "durationMs": 77980
+    },
+    "checks": [],
+    "output": "{\"decision\":\"supported\",\"answer\":\"The draft is correct. The supplied final, complete adjacency listing gives directed paths from A to B, C, and D: A->B, A->B->C, and A->B->C->D. These are all other vertices in the complete vertex set {A, B, C, D}.\",\"uncertainties\":[],\"sourceRefs\":[]}",
+    "packetDigest": "427cd74133a69fc61d49c3e536767a1abb40f5d81c2c280adadc7e73f1b7d609",
+    "protocolDigest": "13c656c2d153ebddbc8287693eb4ce81f3874553d294686b66b3da22eb8f87e4"
+  },
+  {
+    "id": "next-06-tombo-2",
+    "caseId": "next-06",
+    "arm": "tombo",
+    "repeat": 2,
+    "status": "success",
+    "origin": "real-model",
+    "model": {
+      "provider": "codex",
+      "name": "gpt-6.1-sol",
+      "effort": "low"
+    },
+    "requested": {
+      "capabilities": [
+        "read_record"
+      ],
+      "maxCalls": 6,
+      "maxOutputChars": 4000,
+      "modelRepairAttempts": 2,
+      "maximumElapsedMs": 300000
+    },
+    "observed": {
+      "calls": 3,
+      "modelCalls": 3,
+      "inputTokens": "UNKNOWN",
+      "outputTokens": "UNKNOWN",
+      "cost": "UNKNOWN",
+      "durationMs": 144962
+    },
+    "checks": [],
+    "output": "{\"decision\":\"supported\",\"answer\":\"有向グラフGでは、頂点Aから他のすべての頂点に到達できる。\",\"uncertainties\":[\"レビュー対象は提供されたe-context、c-reachabilityのassessmentIndex=0、および提示された履歴に限る。別途の隣接エクスポート記録は取得していない。\",\"提示された履歴には、適用済みの評価訂正や残存する反対評価はない。レビュー完了は、すべての盲点を発見した保証ではない。\"],\"sourceRefs\":[]}",
+    "packetDigest": "427cd74133a69fc61d49c3e536767a1abb40f5d81c2c280adadc7e73f1b7d609",
+    "protocolDigest": "13c656c2d153ebddbc8287693eb4ce81f3874553d294686b66b3da22eb8f87e4"
+  },
+  {
+    "id": "next-06-baseline-3",
+    "caseId": "next-06",
+    "arm": "baseline",
+    "repeat": 3,
+    "status": "success",
+    "origin": "real-model",
+    "model": {
+      "provider": "codex",
+      "name": "gpt-6.1-sol",
+      "effort": "low"
+    },
+    "requested": {
+      "capabilities": [
+        "read_record"
+      ],
+      "maxCalls": 6,
+      "maxOutputChars": 4000,
+      "modelRepairAttempts": 2,
+      "maximumElapsedMs": 300000
+    },
+    "observed": {
+      "calls": 5,
+      "modelCalls": 4,
+      "inputTokens": "UNKNOWN",
+      "outputTokens": "UNKNOWN",
+      "cost": "UNKNOWN",
+      "durationMs": 139244
+    },
+    "checks": [
+      {
+        "capability": "read_record",
+        "sourceId": "next-06-src",
+        "status": "ok",
+        "responseDigest": "8f00fdfd8b4619a86554caf905c0da1425a4cfe4593d705b19c10eebd4e74f17"
+      }
+    ],
+    "output": "{\"decision\":\"supported\",\"answer\":\"The draft is correct. The completed adjacency export confirms A→B, B→C and C→D. Thus A reaches B directly, C via A→B→C, and D via A→B→C→D. Since the complete vertex set is {A, B, C, D}, every other vertex is reachable from A.\",\"uncertainties\":[],\"sourceRefs\":[\"next-06-src\"]}",
+    "packetDigest": "427cd74133a69fc61d49c3e536767a1abb40f5d81c2c280adadc7e73f1b7d609",
+    "protocolDigest": "13c656c2d153ebddbc8287693eb4ce81f3874553d294686b66b3da22eb8f87e4"
+  },
+  {
+    "id": "next-06-tombo-3",
+    "caseId": "next-06",
+    "arm": "tombo",
+    "repeat": 3,
+    "status": "success",
+    "origin": "real-model",
+    "model": {
+      "provider": "codex",
+      "name": "gpt-6.1-sol",
+      "effort": "low"
+    },
+    "requested": {
+      "capabilities": [
+        "read_record"
+      ],
+      "maxCalls": 6,
+      "maxOutputChars": 4000,
+      "modelRepairAttempts": 2,
+      "maximumElapsedMs": 300000
+    },
+    "observed": {
+      "calls": 3,
+      "modelCalls": 3,
+      "inputTokens": "UNKNOWN",
+      "outputTokens": "UNKNOWN",
+      "cost": "UNKNOWN",
+      "durationMs": 265861
+    },
+    "checks": [],
+    "output": "{\"decision\":\"supported\",\"answer\":\"頂点Aから、他のすべての頂点B、C、Dに到達できる。\",\"uncertainties\":[],\"sourceRefs\":[]}",
+    "packetDigest": "427cd74133a69fc61d49c3e536767a1abb40f5d81c2c280adadc7e73f1b7d609",
+    "protocolDigest": "13c656c2d153ebddbc8287693eb4ce81f3874553d294686b66b3da22eb8f87e4"
+  }
+]

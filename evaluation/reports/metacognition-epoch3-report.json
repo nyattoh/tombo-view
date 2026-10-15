@@ -1,0 +1,182 @@
+{
+  "readiness": "FAIL",
+  "comparison": "INCONCLUSIVE",
+  "independentCases": 6,
+  "repeatPairs": 18,
+  "statusCounts": {
+    "success": 29,
+    "error": 7,
+    "cancelled": 0,
+    "not_run": 0,
+    "missing": 0
+  },
+  "invalidJudgements": 0,
+  "invalidTranscripts": 5,
+  "unjudged": 0,
+  "fixtures": 0,
+  "unmatchedPairs": 0,
+  "nonRegression": false,
+  "independentAssessorConsistent": true,
+  "models": [
+    {
+      "provider": "codex",
+      "name": "gpt-6.1-sol",
+      "effort": "low"
+    }
+  ],
+  "modelIdentityConsistent": true,
+  "callsAndOriginAttestationOnly": true,
+  "independentAssessorAttestationOnly": true,
+  "improvedCases": 0,
+  "arms": {
+    "baseline": {
+      "correctness": 1,
+      "recall": 1,
+      "falseClosure": 0,
+      "correctionAccuracy": 1,
+      "controlUnnecessaryProbe": 0.3333333333333333,
+      "performedCheckCount": 0.6666666666666666
+    },
+    "tombo": {
+      "correctness": 0.611111111111111,
+      "recall": 0.4444444444444444,
+      "falseClosure": 0.5555555555555555,
+      "correctionAccuracy": 0.611111111111111,
+      "controlUnnecessaryProbe": 0.2222222222222222,
+      "performedCheckCount": 0.611111111111111
+    }
+  },
+  "cases": [
+    {
+      "caseId": "next-01",
+      "control": false,
+      "mandatorySuite": true,
+      "baseline": {
+        "correctness": 1,
+        "recall": 1,
+        "falseClosure": 0,
+        "correctionAccuracy": 1,
+        "controlUnnecessaryProbe": 0,
+        "performedCheckCount": 1
+      },
+      "tombo": {
+        "correctness": 0.6666666666666666,
+        "recall": 0.6666666666666666,
+        "falseClosure": 0.3333333333333333,
+        "correctionAccuracy": 0.6666666666666666,
+        "controlUnnecessaryProbe": 0,
+        "performedCheckCount": 1
+      }
+    },
+    {
+      "caseId": "next-02",
+      "control": true,
+      "mandatorySuite": false,
+      "baseline": {
+        "correctness": 1,
+        "recall": 1,
+        "falseClosure": 0,
+        "correctionAccuracy": 1,
+        "controlUnnecessaryProbe": 0.6666666666666666,
+        "performedCheckCount": 0.6666666666666666
+      },
+      "tombo": {
+        "correctness": 0.6666666666666666,
+        "recall": 0.6666666666666666,
+        "falseClosure": 0.3333333333333333,
+        "correctionAccuracy": 0.6666666666666666,
+        "controlUnnecessaryProbe": 0.3333333333333333,
+        "performedCheckCount": 0
+      }
+    },
+    {
+      "caseId": "next-03",
+      "control": false,
+      "mandatorySuite": true,
+      "baseline": {
+        "correctness": 1,
+        "recall": 1,
+        "falseClosure": 0,
+        "correctionAccuracy": 1,
+        "controlUnnecessaryProbe": 0,
+        "performedCheckCount": 1
+      },
+      "tombo": {
+        "correctness": 0.6666666666666666,
+        "recall": 0.6666666666666666,
+        "falseClosure": 0.3333333333333333,
+        "correctionAccuracy": 0.6666666666666666,
+        "controlUnnecessaryProbe": 0,
+        "performedCheckCount": 0.6666666666666666
+      }
+    },
+    {
+      "caseId": "next-04",
+      "control": true,
+      "mandatorySuite": false,
+      "baseline": {
+        "correctness": 1,
+        "recall": 1,
+        "falseClosure": 0,
+        "correctionAccuracy": 1,
+        "controlUnnecessaryProbe": 0,
+        "performedCheckCount": 0
+      },
+      "tombo": {
+        "correctness": 0.6666666666666666,
+        "recall": 0.6666666666666666,
+        "falseClosure": 0.3333333333333333,
+        "correctionAccuracy": 0.6666666666666666,
+        "controlUnnecessaryProbe": 0.3333333333333333,
+        "performedCheckCount": 0
+      }
+    },
+    {
+      "caseId": "next-05",
+      "control": false,
+      "mandatorySuite": true,
+      "baseline": {
+        "correctness": 1,
+        "recall": 1,
+        "falseClosure": 0,
+        "correctionAccuracy": 1,
+        "controlUnnecessaryProbe": 0,
+        "performedCheckCount": 1
+      },
+      "tombo": {
+        "correctness": 0,
+        "recall": 0,
+        "falseClosure": 1,
+        "correctionAccuracy": 0,
+        "controlUnnecessaryProbe": 0,
+        "performedCheckCount": 2
+      }
+    },
+    {
+      "caseId": "next-06",
+      "control": true,
+      "mandatorySuite": false,
+      "baseline": {
+        "correctness": 1,
+        "recall": 1,
+        "falseClosure": 0,
+        "correctionAccuracy": 1,
+        "controlUnnecessaryProbe": 0.3333333333333333,
+        "performedCheckCount": 0.3333333333333333
+      },
+      "tombo": {
+        "correctness": 1,
+        "recall": 1,
+        "falseClosure": 0,
+        "correctionAccuracy": 1,
+        "controlUnnecessaryProbe": 0,
+        "performedCheckCount": 0
+      }
+    }
+  ],
+  "g4CostProven": false,
+  "boundary": "Public synthetic configuration inheritance, UTF-8 byte limit and directed graph coverage cases. Descriptive comparison. Missing, errors and unjudged trials retained. Host costs/tokens and hidden upstream requests unknown.",
+  "protocolDigest": "13c656c2d153ebddbc8287693eb4ce81f3874553d294686b66b3da22eb8f87e4",
+  "partial": false,
+  "frozenProductHead": "be0411b1a06f7d55c8a5f64816b22c7caf533105"
+}

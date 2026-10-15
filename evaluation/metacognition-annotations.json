@@ -1,0 +1,194 @@
+{
+  "work-01": {
+    "control": false,
+    "mandatoryUnknown": false,
+    "counterevidence": true,
+    "required": [
+      "criterion-1"
+    ],
+    "criteria": {
+      "criterion-1": {
+        "description": "Counterevidence disproves replay safety. Deduplicate by event_id and rerun.",
+        "sourceRefs": [
+          "replay-report"
+        ]
+      }
+    },
+    "correctAnswer": "Counterevidence disproves replay safety. Deduplicate by event_id and rerun."
+  },
+  "work-02": {
+    "control": true,
+    "mandatoryUnknown": false,
+    "counterevidence": false,
+    "required": [],
+    "criteria": {
+      "criterion-2": {
+        "description": "Accept the arithmetic without inventing an unobservable blocker.",
+        "sourceRefs": [
+          "receipt-ledger"
+        ]
+      }
+    },
+    "correctAnswer": "Accept the arithmetic without inventing an unobservable blocker."
+  },
+  "work-03": {
+    "control": false,
+    "mandatoryUnknown": false,
+    "counterevidence": true,
+    "required": [
+      "criterion-3"
+    ],
+    "criteria": {
+      "criterion-3": {
+        "description": "Correct the claim using the current compatibility matrix.",
+        "sourceRefs": [
+          "compatibility-matrix"
+        ]
+      }
+    },
+    "correctAnswer": "Correct the claim using the current compatibility matrix."
+  },
+  "work-04": {
+    "control": true,
+    "mandatoryUnknown": false,
+    "counterevidence": false,
+    "required": [],
+    "criteria": {
+      "criterion-4": {
+        "description": "Accept the supplied complete configuration.",
+        "sourceRefs": [
+          "schema-record"
+        ]
+      }
+    },
+    "correctAnswer": "Accept the supplied complete configuration."
+  },
+  "work-05": {
+    "control": false,
+    "mandatoryUnknown": false,
+    "counterevidence": true,
+    "required": [
+      "criterion-5"
+    ],
+    "criteria": {
+      "criterion-5": {
+        "description": "Continue pagination and revise the zero-record assertion.",
+        "sourceRefs": [
+          "search-page"
+        ]
+      }
+    },
+    "correctAnswer": "Continue pagination and revise the zero-record assertion."
+  },
+  "work-06": {
+    "control": true,
+    "mandatoryUnknown": false,
+    "counterevidence": false,
+    "required": [],
+    "criteria": {
+      "criterion-6": {
+        "description": "Confirm the complete settlement without additional speculative checks.",
+        "sourceRefs": [
+          "settlement-record"
+        ]
+      }
+    },
+    "correctAnswer": "Confirm the complete settlement without additional speculative checks."
+  },
+  "work-07": {
+    "control": false,
+    "mandatoryUnknown": false,
+    "counterevidence": true,
+    "required": [
+      "criterion-7"
+    ],
+    "criteria": {
+      "criterion-7": {
+        "description": "The selected free text leaks an address; correct the safety conclusion.",
+        "sourceRefs": [
+          "export-sample"
+        ]
+      }
+    },
+    "correctAnswer": "The selected free text leaks an address; correct the safety conclusion."
+  },
+  "work-08": {
+    "control": true,
+    "mandatoryUnknown": false,
+    "counterevidence": false,
+    "required": [],
+    "criteria": {
+      "criterion-8": {
+        "description": "Confirm this narrowly stated header claim.",
+        "sourceRefs": [
+          "export-header"
+        ]
+      }
+    },
+    "correctAnswer": "Confirm this narrowly stated header claim."
+  },
+  "work-09": {
+    "control": false,
+    "mandatoryUnknown": false,
+    "counterevidence": true,
+    "required": [
+      "criterion-9"
+    ],
+    "criteria": {
+      "criterion-9": {
+        "description": "Correct both boundary errors and request recomputation.",
+        "sourceRefs": [
+          "boundary-ledger"
+        ]
+      }
+    },
+    "correctAnswer": "Correct both boundary errors and request recomputation."
+  },
+  "work-10": {
+    "control": true,
+    "mandatoryUnknown": false,
+    "counterevidence": false,
+    "required": [],
+    "criteria": {
+      "criterion-10": {
+        "description": "Accept the complete total, without blanket uncertainty.",
+        "sourceRefs": [
+          "monthly-ledger"
+        ]
+      }
+    },
+    "correctAnswer": "Accept the complete total, without blanket uncertainty."
+  },
+  "work-11": {
+    "control": false,
+    "mandatoryUnknown": true,
+    "counterevidence": false,
+    "required": [
+      "criterion-11"
+    ],
+    "criteria": {
+      "criterion-11": {
+        "description": "Preserve missing transit coverage as unresolved, without asserting noncompliance or compliance.",
+        "sourceRefs": [
+          "temperature-log"
+        ]
+      }
+    },
+    "correctAnswer": "Preserve missing transit coverage as unresolved, without asserting noncompliance or compliance."
+  },
+  "work-12": {
+    "control": true,
+    "mandatoryUnknown": false,
+    "counterevidence": false,
+    "required": [],
+    "criteria": {
+      "criterion-12": {
+        "description": "Use the explicit supersession, accept 12 May and avoid treating the resolved draft difference as unknown.",
+        "sourceRefs": [
+          "delivery-slip"
+        ]
+      }
+    },
+    "correctAnswer": "Use the explicit supersession, accept 12 May and avoid treating the resolved draft difference as unknown."
+  }
+}

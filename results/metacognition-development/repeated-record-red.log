@@ -1,0 +1,52 @@
+✖ two physical reads of one record produce separate assessed observations and source references (238.667ms)
+✖ repair reuses the saved observation and repeated reads still share the six-call cap (251.4794ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 0
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 584.844
+
+✖ failing tests:
+
+test at test\host-trial-repeated-source.test.mjs:53:1
+✖ two physical reads of one record produce separate assessed observations and source references (238.667ms)
+  AssertionError [ERR_ASSERTION]: {"reason":"invalid_probe_output","stopReason":"assessment_pending","pending":["04478357-d16e-4d5e-abea-42956b75f731"],"calls":4,"physicalChecks":2}
+  + actual - expected
+  
+    [
+      'inspect',
+      'update',
+  -   'update',
+  -   'reflect'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/develop/works/tombo-view/.audit/assessment-correction-worktree/test/host-trial-repeated-source.test.mjs:55:10)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:358:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'inspect', 'update' ],
+    expected: [ 'inspect', 'update', 'update', 'reflect' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at test\host-trial-repeated-source.test.mjs:94:1
+✖ repair reuses the saved observation and repeated reads still share the six-call cap (251.4794ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  5 !== 6
+  
+      at TestContext.<anonymous> (file:///D:/develop/works/tombo-view/.audit/assessment-correction-worktree/test/host-trial-repeated-source.test.mjs:97:10)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 5,
+    expected: 6,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

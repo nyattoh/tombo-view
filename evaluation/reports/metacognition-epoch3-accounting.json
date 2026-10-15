@@ -1,0 +1,992 @@
+{
+  "schemaVersion": 1,
+  "epoch": 3,
+  "auditType": "frozen-trial-accounting",
+  "auditedAt": "2026-10-14T03:05:21.93Z",
+  "protocolDigest": "13c656c2d153ebddbc8287693eb4ce81f3874553d294686b66b3da22eb8f87e4",
+  "frozenTrialsPreserved": true,
+  "originalReadiness": "FAIL",
+  "totals": {
+    "slots": 36,
+    "success": 29,
+    "error": 7,
+    "observedCalls": 107,
+    "reservedBridgeModelRequests": 84,
+    "actualHostDispatches": 82,
+    "sourceChecks": 23,
+    "receivedTrialReplies": 79
+  },
+  "byArm": {
+    "baseline": {
+      "slots": 18,
+      "success": 18,
+      "error": 0,
+      "observedCalls": 48,
+      "reservedBridgeModelRequests": 36,
+      "actualHostDispatches": 36,
+      "sourceChecks": 12,
+      "receivedTrialReplies": 36
+    },
+    "tombo": {
+      "slots": 18,
+      "success": 11,
+      "error": 7,
+      "observedCalls": 59,
+      "reservedBridgeModelRequests": 48,
+      "actualHostDispatches": 46,
+      "sourceChecks": 11,
+      "receivedTrialReplies": 43
+    }
+  },
+  "counterSemantics": {
+    "observedCalls": "Reserved bridge model requests plus executed local synthetic source checks.",
+    "observedModelCalls": "Reserved bridge requests. Two rejected requests did not create a host task.",
+    "actualHostDispatches": "Distinct accepted taskId handles in dispatch-N.json, confirmed by task_status.",
+    "sourceChecks": "Local synthetic read_record events. Not model generations.",
+    "receivedTrialReplies": "Trace reply events received before the frozen trial ended."
+  },
+  "accounting": [
+    {
+      "runId": "next-01-baseline-1",
+      "status": "success",
+      "observedCalls": 3,
+      "reservedBridgeModelRequests": 2,
+      "traceRequestEvents": 2,
+      "actualHostDispatches": 2,
+      "receivedTrialReplies": 2,
+      "sourceChecks": 1,
+      "traceSourceEvents": 1,
+      "durationMs": 105405,
+      "model": {
+        "provider": "codex",
+        "name": "gpt-6.1-sol",
+        "effort": "low"
+      }
+    },
+    {
+      "runId": "next-01-baseline-2",
+      "status": "success",
+      "observedCalls": 3,
+      "reservedBridgeModelRequests": 2,
+      "traceRequestEvents": 2,
+      "actualHostDispatches": 2,
+      "receivedTrialReplies": 2,
+      "sourceChecks": 1,
+      "traceSourceEvents": 1,
+      "durationMs": 143453,
+      "model": {
+        "provider": "codex",
+        "name": "gpt-6.1-sol",
+        "effort": "low"
+      }
+    },
+    {
+      "runId": "next-01-baseline-3",
+      "status": "success",
+      "observedCalls": 3,
+      "reservedBridgeModelRequests": 2,
+      "traceRequestEvents": 2,
+      "actualHostDispatches": 2,
+      "receivedTrialReplies": 2,
+      "sourceChecks": 1,
+      "traceSourceEvents": 1,
+      "durationMs": 93412,
+      "model": {
+        "provider": "codex",
+        "name": "gpt-6.1-sol",
+        "effort": "low"
+      }
+    },
+    {
+      "runId": "next-01-tombo-1",
+      "status": "success",
+      "observedCalls": 4,
+      "reservedBridgeModelRequests": 3,
+      "traceRequestEvents": 3,
+      "actualHostDispatches": 3,
+      "receivedTrialReplies": 3,
+      "sourceChecks": 1,
+      "traceSourceEvents": 1,
+      "durationMs": 172657,
+      "model": {
+        "provider": "codex",
+        "name": "gpt-6.1-sol",
+        "effort": "low"
+      }
+    },
+    {
+      "runId": "next-01-tombo-2",
+      "status": "error",
+      "observedCalls": 4,
+      "reservedBridgeModelRequests": 3,
+      "traceRequestEvents": 3,
+      "actualHostDispatches": 2,
+      "receivedTrialReplies": 2,
+      "sourceChecks": 1,
+      "traceSourceEvents": 1,
+      "durationMs": 300010,
+      "model": {
+        "provider": "codex",
+        "name": "gpt-6.1-sol",
+        "effort": "low"
+      }
+    },
+    {
+      "runId": "next-01-tombo-3",
+      "status": "success",
+      "observedCalls": 4,
+      "reservedBridgeModelRequests": 3,
+      "traceRequestEvents": 3,
+      "actualHostDispatches": 3,
+      "receivedTrialReplies": 3,
+      "sourceChecks": 1,
+      "traceSourceEvents": 1,
+      "durationMs": 173611,
+      "model": {
+        "provider": "codex",
+        "name": "gpt-6.1-sol",
+        "effort": "low"
+      }
+    },
+    {
+      "runId": "next-02-baseline-1",
+      "status": "success",
+      "observedCalls": 3,
+      "reservedBridgeModelRequests": 2,
+      "traceRequestEvents": 2,
+      "actualHostDispatches": 2,
+      "receivedTrialReplies": 2,
+      "sourceChecks": 1,
+      "traceSourceEvents": 1,
+      "durationMs": 117919,
+      "model": {
+        "provider": "codex",
+        "name": "gpt-6.1-sol",
+        "effort": "low"
+      }
+    },
+    {
+      "runId": "next-02-baseline-2",
+      "status": "success",
+      "observedCalls": 3,
+      "reservedBridgeModelRequests": 2,
+      "traceRequestEvents": 2,
+      "actualHostDispatches": 2,
+      "receivedTrialReplies": 2,
+      "sourceChecks": 1,
+      "traceSourceEvents": 1,
+      "durationMs": 130994,
+      "model": {
+        "provider": "codex",
+        "name": "gpt-6.1-sol",
+        "effort": "low"
+      }
+    },
+    {
+      "runId": "next-02-baseline-3",
+      "status": "success",
+      "observedCalls": 1,
+      "reservedBridgeModelRequests": 1,
+      "traceRequestEvents": 1,
+      "actualHostDispatches": 1,
+      "receivedTrialReplies": 1,
+      "sourceChecks": 0,
+      "traceSourceEvents": 0,
+      "durationMs": 59483,
+      "model": {
+        "provider": "codex",
+        "name": "gpt-6.1-sol",
+        "effort": "low"
+      }
+    },
+    {
+      "runId": "next-02-tombo-1",
+      "status": "success",
+      "observedCalls": 3,
+      "reservedBridgeModelRequests": 3,
+      "traceRequestEvents": 3,
+      "actualHostDispatches": 3,
+      "receivedTrialReplies": 3,
+      "sourceChecks": 0,
+      "traceSourceEvents": 0,
+      "durationMs": 164822,
+      "model": {
+        "provider": "codex",
+        "name": "gpt-6.1-sol",
+        "effort": "low"
+      }
+    },
+    {
+      "runId": "next-02-tombo-2",
+      "status": "error",
+      "observedCalls": 3,
+      "reservedBridgeModelRequests": 3,
+      "traceRequestEvents": 3,
+      "actualHostDispatches": 2,
+      "receivedTrialReplies": 2,
+      "sourceChecks": 0,
+      "traceSourceEvents": 0,
+      "durationMs": 300013,
+      "model": {
+        "provider": "codex",
+        "name": "gpt-6.1-sol",
+        "effort": "low"
+      }
+    },
+    {
+      "runId": "next-02-tombo-3",
+      "status": "success",
+      "observedCalls": 2,
+      "reservedBridgeModelRequests": 2,
+      "traceRequestEvents": 2,
+      "actualHostDispatches": 2,
+      "receivedTrialReplies": 2,
+      "sourceChecks": 0,
+      "traceSourceEvents": 0,
+      "durationMs": 153491,
+      "model": {
+        "provider": "codex",
+        "name": "gpt-6.1-sol",
+        "effort": "low"
+      }
+    },
+    {
+      "runId": "next-03-baseline-1",
+      "status": "success",
+      "observedCalls": 3,
+      "reservedBridgeModelRequests": 2,
+      "traceRequestEvents": 2,
+      "actualHostDispatches": 2,
+      "receivedTrialReplies": 2,
+      "sourceChecks": 1,
+      "traceSourceEvents": 1,
+      "durationMs": 134662,
+      "model": {
+        "provider": "codex",
+        "name": "gpt-6.1-sol",
+        "effort": "low"
+      }
+    },
+    {
+      "runId": "next-03-baseline-2",
+      "status": "success",
+      "observedCalls": 3,
+      "reservedBridgeModelRequests": 2,
+      "traceRequestEvents": 2,
+      "actualHostDispatches": 2,
+      "receivedTrialReplies": 2,
+      "sourceChecks": 1,
+      "traceSourceEvents": 1,
+      "durationMs": 70805,
+      "model": {
+        "provider": "codex",
+        "name": "gpt-6.1-sol",
+        "effort": "low"
+      }
+    },
+    {
+      "runId": "next-03-baseline-3",
+      "status": "success",
+      "observedCalls": 3,
+      "reservedBridgeModelRequests": 2,
+      "traceRequestEvents": 2,
+      "actualHostDispatches": 2,
+      "receivedTrialReplies": 2,
+      "sourceChecks": 1,
+      "traceSourceEvents": 1,
+      "durationMs": 93095,
+      "model": {
+        "provider": "codex",
+        "name": "gpt-6.1-sol",
+        "effort": "low"
+      }
+    },
+    {
+      "runId": "next-03-tombo-1",
+      "status": "success",
+      "observedCalls": 4,
+      "reservedBridgeModelRequests": 3,
+      "traceRequestEvents": 3,
+      "actualHostDispatches": 3,
+      "receivedTrialReplies": 3,
+      "sourceChecks": 1,
+      "traceSourceEvents": 1,
+      "durationMs": 212349,
+      "model": {
+        "provider": "codex",
+        "name": "gpt-6.1-sol",
+        "effort": "low"
+      }
+    },
+    {
+      "runId": "next-03-tombo-2",
+      "status": "error",
+      "observedCalls": 1,
+      "reservedBridgeModelRequests": 1,
+      "traceRequestEvents": 1,
+      "actualHostDispatches": 1,
+      "receivedTrialReplies": 0,
+      "sourceChecks": 0,
+      "traceSourceEvents": 0,
+      "durationMs": 300007,
+      "model": {
+        "provider": "codex",
+        "name": "gpt-6.1-sol",
+        "effort": "low"
+      }
+    },
+    {
+      "runId": "next-03-tombo-3",
+      "status": "success",
+      "observedCalls": 4,
+      "reservedBridgeModelRequests": 3,
+      "traceRequestEvents": 3,
+      "actualHostDispatches": 3,
+      "receivedTrialReplies": 3,
+      "sourceChecks": 1,
+      "traceSourceEvents": 1,
+      "durationMs": 121626,
+      "model": {
+        "provider": "codex",
+        "name": "gpt-6.1-sol",
+        "effort": "low"
+      }
+    },
+    {
+      "runId": "next-04-baseline-1",
+      "status": "success",
+      "observedCalls": 2,
+      "reservedBridgeModelRequests": 2,
+      "traceRequestEvents": 2,
+      "actualHostDispatches": 2,
+      "receivedTrialReplies": 2,
+      "sourceChecks": 0,
+      "traceSourceEvents": 0,
+      "durationMs": 122141,
+      "model": {
+        "provider": "codex",
+        "name": "gpt-6.1-sol",
+        "effort": "low"
+      }
+    },
+    {
+      "runId": "next-04-baseline-2",
+      "status": "success",
+      "observedCalls": 1,
+      "reservedBridgeModelRequests": 1,
+      "traceRequestEvents": 1,
+      "actualHostDispatches": 1,
+      "receivedTrialReplies": 1,
+      "sourceChecks": 0,
+      "traceSourceEvents": 0,
+      "durationMs": 43443,
+      "model": {
+        "provider": "codex",
+        "name": "gpt-6.1-sol",
+        "effort": "low"
+      }
+    },
+    {
+      "runId": "next-04-baseline-3",
+      "status": "success",
+      "observedCalls": 2,
+      "reservedBridgeModelRequests": 2,
+      "traceRequestEvents": 2,
+      "actualHostDispatches": 2,
+      "receivedTrialReplies": 2,
+      "sourceChecks": 0,
+      "traceSourceEvents": 0,
+      "durationMs": 84579,
+      "model": {
+        "provider": "codex",
+        "name": "gpt-6.1-sol",
+        "effort": "low"
+      }
+    },
+    {
+      "runId": "next-04-tombo-1",
+      "status": "success",
+      "observedCalls": 3,
+      "reservedBridgeModelRequests": 3,
+      "traceRequestEvents": 3,
+      "actualHostDispatches": 3,
+      "receivedTrialReplies": 3,
+      "sourceChecks": 0,
+      "traceSourceEvents": 0,
+      "durationMs": 207315,
+      "model": {
+        "provider": "codex",
+        "name": "gpt-6.1-sol",
+        "effort": "low"
+      }
+    },
+    {
+      "runId": "next-04-tombo-2",
+      "status": "error",
+      "observedCalls": 1,
+      "reservedBridgeModelRequests": 1,
+      "traceRequestEvents": 1,
+      "actualHostDispatches": 1,
+      "receivedTrialReplies": 0,
+      "sourceChecks": 0,
+      "traceSourceEvents": 0,
+      "durationMs": 300010,
+      "model": {
+        "provider": "codex",
+        "name": "gpt-6.1-sol",
+        "effort": "low"
+      }
+    },
+    {
+      "runId": "next-04-tombo-3",
+      "status": "success",
+      "observedCalls": 2,
+      "reservedBridgeModelRequests": 2,
+      "traceRequestEvents": 2,
+      "actualHostDispatches": 2,
+      "receivedTrialReplies": 2,
+      "sourceChecks": 0,
+      "traceSourceEvents": 0,
+      "durationMs": 79022,
+      "model": {
+        "provider": "codex",
+        "name": "gpt-6.1-sol",
+        "effort": "low"
+      }
+    },
+    {
+      "runId": "next-05-baseline-1",
+      "status": "success",
+      "observedCalls": 3,
+      "reservedBridgeModelRequests": 2,
+      "traceRequestEvents": 2,
+      "actualHostDispatches": 2,
+      "receivedTrialReplies": 2,
+      "sourceChecks": 1,
+      "traceSourceEvents": 1,
+      "durationMs": 127349,
+      "model": {
+        "provider": "codex",
+        "name": "gpt-6.1-sol",
+        "effort": "low"
+      }
+    },
+    {
+      "runId": "next-05-baseline-2",
+      "status": "success",
+      "observedCalls": 3,
+      "reservedBridgeModelRequests": 2,
+      "traceRequestEvents": 2,
+      "actualHostDispatches": 2,
+      "receivedTrialReplies": 2,
+      "sourceChecks": 1,
+      "traceSourceEvents": 1,
+      "durationMs": 68552,
+      "model": {
+        "provider": "codex",
+        "name": "gpt-6.1-sol",
+        "effort": "low"
+      }
+    },
+    {
+      "runId": "next-05-baseline-3",
+      "status": "success",
+      "observedCalls": 3,
+      "reservedBridgeModelRequests": 2,
+      "traceRequestEvents": 2,
+      "actualHostDispatches": 2,
+      "receivedTrialReplies": 2,
+      "sourceChecks": 1,
+      "traceSourceEvents": 1,
+      "durationMs": 82492,
+      "model": {
+        "provider": "codex",
+        "name": "gpt-6.1-sol",
+        "effort": "low"
+      }
+    },
+    {
+      "runId": "next-05-tombo-1",
+      "status": "error",
+      "observedCalls": 5,
+      "reservedBridgeModelRequests": 3,
+      "traceRequestEvents": 3,
+      "actualHostDispatches": 3,
+      "receivedTrialReplies": 3,
+      "sourceChecks": 2,
+      "traceSourceEvents": 2,
+      "durationMs": 214772,
+      "model": {
+        "provider": "codex",
+        "name": "gpt-6.1-sol",
+        "effort": "low"
+      }
+    },
+    {
+      "runId": "next-05-tombo-2",
+      "status": "error",
+      "observedCalls": 6,
+      "reservedBridgeModelRequests": 4,
+      "traceRequestEvents": 4,
+      "actualHostDispatches": 4,
+      "receivedTrialReplies": 4,
+      "sourceChecks": 2,
+      "traceSourceEvents": 2,
+      "durationMs": 176757,
+      "model": {
+        "provider": "codex",
+        "name": "gpt-6.1-sol",
+        "effort": "low"
+      }
+    },
+    {
+      "runId": "next-05-tombo-3",
+      "status": "error",
+      "observedCalls": 5,
+      "reservedBridgeModelRequests": 3,
+      "traceRequestEvents": 3,
+      "actualHostDispatches": 3,
+      "receivedTrialReplies": 2,
+      "sourceChecks": 2,
+      "traceSourceEvents": 2,
+      "durationMs": 300009,
+      "model": {
+        "provider": "codex",
+        "name": "gpt-6.1-sol",
+        "effort": "low"
+      }
+    },
+    {
+      "runId": "next-06-baseline-1",
+      "status": "success",
+      "observedCalls": 2,
+      "reservedBridgeModelRequests": 2,
+      "traceRequestEvents": 2,
+      "actualHostDispatches": 2,
+      "receivedTrialReplies": 2,
+      "sourceChecks": 0,
+      "traceSourceEvents": 0,
+      "durationMs": 109345,
+      "model": {
+        "provider": "codex",
+        "name": "gpt-6.1-sol",
+        "effort": "low"
+      }
+    },
+    {
+      "runId": "next-06-baseline-2",
+      "status": "success",
+      "observedCalls": 2,
+      "reservedBridgeModelRequests": 2,
+      "traceRequestEvents": 2,
+      "actualHostDispatches": 2,
+      "receivedTrialReplies": 2,
+      "sourceChecks": 0,
+      "traceSourceEvents": 0,
+      "durationMs": 77980,
+      "model": {
+        "provider": "codex",
+        "name": "gpt-6.1-sol",
+        "effort": "low"
+      }
+    },
+    {
+      "runId": "next-06-baseline-3",
+      "status": "success",
+      "observedCalls": 5,
+      "reservedBridgeModelRequests": 4,
+      "traceRequestEvents": 4,
+      "actualHostDispatches": 4,
+      "receivedTrialReplies": 4,
+      "sourceChecks": 1,
+      "traceSourceEvents": 1,
+      "durationMs": 139244,
+      "model": {
+        "provider": "codex",
+        "name": "gpt-6.1-sol",
+        "effort": "low"
+      }
+    },
+    {
+      "runId": "next-06-tombo-1",
+      "status": "success",
+      "observedCalls": 2,
+      "reservedBridgeModelRequests": 2,
+      "traceRequestEvents": 2,
+      "actualHostDispatches": 2,
+      "receivedTrialReplies": 2,
+      "sourceChecks": 0,
+      "traceSourceEvents": 0,
+      "durationMs": 154132,
+      "model": {
+        "provider": "codex",
+        "name": "gpt-6.1-sol",
+        "effort": "low"
+      }
+    },
+    {
+      "runId": "next-06-tombo-2",
+      "status": "success",
+      "observedCalls": 3,
+      "reservedBridgeModelRequests": 3,
+      "traceRequestEvents": 3,
+      "actualHostDispatches": 3,
+      "receivedTrialReplies": 3,
+      "sourceChecks": 0,
+      "traceSourceEvents": 0,
+      "durationMs": 144962,
+      "model": {
+        "provider": "codex",
+        "name": "gpt-6.1-sol",
+        "effort": "low"
+      }
+    },
+    {
+      "runId": "next-06-tombo-3",
+      "status": "success",
+      "observedCalls": 3,
+      "reservedBridgeModelRequests": 3,
+      "traceRequestEvents": 3,
+      "actualHostDispatches": 3,
+      "receivedTrialReplies": 3,
+      "sourceChecks": 0,
+      "traceSourceEvents": 0,
+      "durationMs": 265861,
+      "model": {
+        "provider": "codex",
+        "name": "gpt-6.1-sol",
+        "effort": "low"
+      }
+    }
+  ],
+  "errors": [
+    {
+      "runId": "next-01-tombo-2",
+      "status": "error",
+      "resultStatus": "stopped",
+      "reason": "model_timeout",
+      "stateStopReason": "model_timeout",
+      "traceSdk": [
+        {
+          "status": "stopped",
+          "reason": "model_timeout",
+          "at": "2026-10-14T00:30:45.61Z"
+        }
+      ],
+      "durationMs": 300010,
+      "sdkUsage": {
+        "rounds": 1,
+        "modelCalls": 3,
+        "toolCalls": 1,
+        "elapsedMs": 300000,
+        "totalTokens": null,
+        "costYen": null
+      },
+      "sdkBudget": {
+        "maxRounds": 2,
+        "maxModelCalls": 6,
+        "maxToolCalls": 6,
+        "maxElapsedMs": 300000,
+        "maxInputChars": 48000,
+        "maxOutputTokensPerCall": 4000
+      },
+      "modelRepairDiagnostics": [],
+      "actualHostDispatches": 2,
+      "receivedReplies": 2,
+      "dispatchRejection": [
+        {
+          "sequence": 3,
+          "stage": "reflect",
+          "acceptedTaskId": null,
+          "actualHostGenerationDispatched": false,
+          "reason": "Automatic approval review rejected transmission of synthetic evaluation state/history before delegate acceptance.",
+          "recordedAt": "2026-10-14T00:39:15.644Z"
+        }
+      ],
+      "childrenCompletedAfterTrialEnd": []
+    },
+    {
+      "runId": "next-02-tombo-2",
+      "status": "error",
+      "resultStatus": "stopped",
+      "reason": "model_timeout",
+      "stateStopReason": "model_timeout",
+      "traceSdk": [
+        {
+          "status": "stopped",
+          "reason": "model_timeout",
+          "at": "2026-10-14T00:30:55.821Z"
+        }
+      ],
+      "durationMs": 300013,
+      "sdkUsage": {
+        "rounds": 0,
+        "modelCalls": 3,
+        "toolCalls": 0,
+        "elapsedMs": 300003,
+        "totalTokens": null,
+        "costYen": null
+      },
+      "sdkBudget": {
+        "maxRounds": 2,
+        "maxModelCalls": 6,
+        "maxToolCalls": 6,
+        "maxElapsedMs": 300000,
+        "maxInputChars": 48000,
+        "maxOutputTokensPerCall": 4000
+      },
+      "modelRepairDiagnostics": [
+        {
+          "code": "invalid_model_output",
+          "message": "Assessment corrections require update",
+          "rejectedAttempt": 1,
+          "maxAttempts": 3,
+          "operation": "inspect"
+        }
+      ],
+      "actualHostDispatches": 2,
+      "receivedReplies": 2,
+      "dispatchRejection": [
+        {
+          "sequence": 3,
+          "stage": "reflect",
+          "acceptedTaskId": null,
+          "actualHostGenerationDispatched": false,
+          "reason": "Automatic approval review rejected transmission of synthetic evaluation state/history before delegate acceptance.",
+          "recordedAt": "2026-10-14T00:39:15.649Z"
+        }
+      ],
+      "childrenCompletedAfterTrialEnd": []
+    },
+    {
+      "runId": "next-03-tombo-2",
+      "status": "error",
+      "resultStatus": "stopped",
+      "reason": "model_timeout",
+      "stateStopReason": "model_timeout",
+      "traceSdk": [
+        {
+          "status": "stopped",
+          "reason": "model_timeout",
+          "at": "2026-10-14T01:52:49.13Z"
+        }
+      ],
+      "durationMs": 300007,
+      "sdkUsage": {
+        "rounds": 0,
+        "modelCalls": 1,
+        "toolCalls": 0,
+        "elapsedMs": 300000,
+        "totalTokens": null,
+        "costYen": null
+      },
+      "sdkBudget": {
+        "maxRounds": 2,
+        "maxModelCalls": 6,
+        "maxToolCalls": 6,
+        "maxElapsedMs": 300000,
+        "maxInputChars": 48000,
+        "maxOutputTokensPerCall": 4000
+      },
+      "modelRepairDiagnostics": [],
+      "actualHostDispatches": 1,
+      "receivedReplies": 0,
+      "dispatchRejection": [],
+      "childrenCompletedAfterTrialEnd": [
+        {
+          "sequence": 1,
+          "childCompletedAt": "2026-10-14T01:54:01.139Z",
+          "trialDoneAt": "2026-10-14T01:52:49.138Z"
+        }
+      ]
+    },
+    {
+      "runId": "next-04-tombo-2",
+      "status": "error",
+      "resultStatus": "stopped",
+      "reason": "model_timeout",
+      "stateStopReason": "model_timeout",
+      "traceSdk": [
+        {
+          "status": "stopped",
+          "reason": "model_timeout",
+          "at": "2026-10-14T01:52:59.287Z"
+        }
+      ],
+      "durationMs": 300010,
+      "sdkUsage": {
+        "rounds": 0,
+        "modelCalls": 1,
+        "toolCalls": 0,
+        "elapsedMs": 300002,
+        "totalTokens": null,
+        "costYen": null
+      },
+      "sdkBudget": {
+        "maxRounds": 2,
+        "maxModelCalls": 6,
+        "maxToolCalls": 6,
+        "maxElapsedMs": 300000,
+        "maxInputChars": 48000,
+        "maxOutputTokensPerCall": 4000
+      },
+      "modelRepairDiagnostics": [],
+      "actualHostDispatches": 1,
+      "receivedReplies": 0,
+      "dispatchRejection": [],
+      "childrenCompletedAfterTrialEnd": [
+        {
+          "sequence": 1,
+          "childCompletedAt": "2026-10-14T01:53:34.827Z",
+          "trialDoneAt": "2026-10-14T01:52:59.299Z"
+        }
+      ]
+    },
+    {
+      "runId": "next-05-tombo-1",
+      "status": "error",
+      "resultStatus": "stopped",
+      "reason": "budget_exhausted",
+      "stateStopReason": "budget_exhausted",
+      "traceSdk": [
+        {
+          "status": "stopped",
+          "reason": "budget_exhausted",
+          "at": "2026-10-14T01:08:37.589Z"
+        }
+      ],
+      "durationMs": 214772,
+      "sdkUsage": {
+        "rounds": 2,
+        "modelCalls": 3,
+        "toolCalls": 2,
+        "elapsedMs": 214668,
+        "totalTokens": null,
+        "costYen": null
+      },
+      "sdkBudget": {
+        "maxRounds": 2,
+        "maxModelCalls": 6,
+        "maxToolCalls": 6,
+        "maxElapsedMs": 300000,
+        "maxInputChars": 48000,
+        "maxOutputTokensPerCall": 4000
+      },
+      "modelRepairDiagnostics": [],
+      "actualHostDispatches": 3,
+      "receivedReplies": 3,
+      "dispatchRejection": [],
+      "childrenCompletedAfterTrialEnd": []
+    },
+    {
+      "runId": "next-05-tombo-2",
+      "status": "error",
+      "resultStatus": "stopped",
+      "reason": "budget_exhausted",
+      "stateStopReason": "budget_exhausted",
+      "traceSdk": [
+        {
+          "status": "stopped",
+          "reason": "budget_exhausted",
+          "at": "2026-10-14T02:04:13.748Z"
+        }
+      ],
+      "durationMs": 176757,
+      "sdkUsage": {
+        "rounds": 2,
+        "modelCalls": 4,
+        "toolCalls": 2,
+        "elapsedMs": 176739,
+        "totalTokens": null,
+        "costYen": null
+      },
+      "sdkBudget": {
+        "maxRounds": 2,
+        "maxModelCalls": 6,
+        "maxToolCalls": 6,
+        "maxElapsedMs": 300000,
+        "maxInputChars": 48000,
+        "maxOutputTokensPerCall": 4000
+      },
+      "modelRepairDiagnostics": [
+        {
+          "code": "invalid_model_output",
+          "message": "Assessment corrections require update",
+          "rejectedAttempt": 1,
+          "maxAttempts": 3,
+          "operation": "inspect"
+        }
+      ],
+      "actualHostDispatches": 4,
+      "receivedReplies": 4,
+      "dispatchRejection": [],
+      "childrenCompletedAfterTrialEnd": []
+    },
+    {
+      "runId": "next-05-tombo-3",
+      "status": "error",
+      "resultStatus": "stopped",
+      "reason": "model_timeout",
+      "stateStopReason": "model_timeout",
+      "traceSdk": [
+        {
+          "status": "stopped",
+          "reason": "model_timeout",
+          "at": "2026-10-14T02:22:28.082Z"
+        }
+      ],
+      "durationMs": 300009,
+      "sdkUsage": {
+        "rounds": 2,
+        "modelCalls": 3,
+        "toolCalls": 2,
+        "elapsedMs": 300001,
+        "totalTokens": null,
+        "costYen": null
+      },
+      "sdkBudget": {
+        "maxRounds": 2,
+        "maxModelCalls": 6,
+        "maxToolCalls": 6,
+        "maxElapsedMs": 300000,
+        "maxInputChars": 48000,
+        "maxOutputTokensPerCall": 4000
+      },
+      "modelRepairDiagnostics": [],
+      "actualHostDispatches": 3,
+      "receivedReplies": 2,
+      "dispatchRejection": [],
+      "childrenCompletedAfterTrialEnd": [
+        {
+          "sequence": 3,
+          "childCompletedAt": "2026-10-14T02:24:50.586Z",
+          "trialDoneAt": "2026-10-14T02:22:28.086Z"
+        }
+      ]
+    }
+  ],
+  "checks": {
+    "slots36": true,
+    "allProtocolDigestsMatch": true,
+    "rawModelCallsMatchTraceRequests": true,
+    "sourceChecksMatchTraceToolEvents": true,
+    "observedCallsReconcile": true,
+    "distinctTaskIds": 82
+  },
+  "unknowns": {
+    "inputTokens": "UNKNOWN",
+    "outputTokens": "UNKNOWN",
+    "cost": "UNKNOWN",
+    "hiddenUpstreamRequests": "UNKNOWN",
+    "hiddenUpstreamRetries": "UNKNOWN"
+  },
+  "sources": [
+    "results/metacognition-development/evaluation-epoch3/*/*/run.json",
+    "results/metacognition-development/evaluation-epoch3/*/*/trace.json",
+    "results/metacognition-development/evaluation-epoch3/*/*/result.json",
+    "results/metacognition-development/evaluation-epoch3/*/*/dispatch-N.json",
+    "results/metacognition-development/evaluation-epoch3/next-01/tombo-r2/dispatch-rejection-3.json",
+    "results/metacognition-development/evaluation-epoch3/next-02/tombo-r2/dispatch-rejection-3.json"
+  ],
+  "originalComparison": "INCONCLUSIVE"
+}

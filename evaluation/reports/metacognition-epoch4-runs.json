@@ -1,0 +1,1391 @@
+[
+  {
+    "id": "q7m2-baseline-1",
+    "caseId": "q7m2",
+    "arm": "baseline",
+    "repeat": 1,
+    "status": "success",
+    "origin": "real-model",
+    "model": {
+      "provider": "codex",
+      "name": "gpt-6.1-sol",
+      "effort": "low"
+    },
+    "requested": {
+      "capabilities": [
+        "read_record"
+      ],
+      "maxCalls": 6,
+      "maxOutputChars": 4000,
+      "modelRepairAttempts": 2,
+      "maximumElapsedMs": 300000
+    },
+    "observed": {
+      "calls": 3,
+      "modelCalls": 2,
+      "inputTokens": "UNKNOWN",
+      "outputTokens": "UNKNOWN",
+      "cost": "UNKNOWN",
+      "durationMs": 90425
+    },
+    "checks": [
+      {
+        "capability": "read_record",
+        "sourceId": "q7m2-src",
+        "status": "ok",
+        "responseDigest": "0638d58ad308a9e48ca44c5a9460dea78021ffafb31f0f56c3f8722a34928fc6"
+      }
+    ],
+    "output": "{\"decision\":\"refuted\",\"answer\":\"草案は誤りです。S6（s6-r1）の最終・完全な一覧では、P2-P5がrow08とrow12に重複し、P3-P6が存在しません。15行ありますが、異なる無順序ペアは14組であり、各ペアをちょうど1回含むという条件を満たしません。記録には、この周期に他の行は存在しないと明記されています。\",\"uncertainties\":[],\"sourceRefs\":[\"q7m2-src\"]}",
+    "packetDigest": "47a29f84d94ae3aaddde0c2f17c230ba9ff17f2de5f84ddd43842e5c4cb71e47",
+    "protocolDigest": "96d541f4a3687aff6b1bca34ea9f1669ec3ecfd09cc08a935621d751965ef160"
+  },
+  {
+    "id": "q7m2-tombo-1",
+    "caseId": "q7m2",
+    "arm": "tombo",
+    "repeat": 1,
+    "status": "error",
+    "origin": "real-model",
+    "model": {
+      "provider": "codex",
+      "name": "gpt-6.1-sol",
+      "effort": "low"
+    },
+    "requested": {
+      "capabilities": [
+        "read_record"
+      ],
+      "maxCalls": 6,
+      "maxOutputChars": 4000,
+      "modelRepairAttempts": 2,
+      "maximumElapsedMs": 300000
+    },
+    "observed": {
+      "calls": 3,
+      "modelCalls": 2,
+      "inputTokens": "UNKNOWN",
+      "outputTokens": "UNKNOWN",
+      "cost": "UNKNOWN",
+      "durationMs": 300008
+    },
+    "checks": [
+      {
+        "capability": "read_record",
+        "sourceId": "q7m2-src",
+        "status": "ok",
+        "responseDigest": "0638d58ad308a9e48ca44c5a9460dea78021ffafb31f0f56c3f8722a34928fc6"
+      }
+    ],
+    "output": "{\"decision\":\"unknown\",\"answer\":\"The context specifies six teams and reports 15 rows, but supplies neither the final pairs nor their coverage statement. The draft cannot yet be determined correct or incorrect.\",\"uncertainties\":[\"Do the final rows of S6, version s6-r1, contain all 15 unordered pairs exactly once?\",\"Unverified: Schedule S6, version s6-r1, contains each unordered team pair exactly once.\",\"model_timeout\"],\"sourceRefs\":[]}",
+    "packetDigest": "47a29f84d94ae3aaddde0c2f17c230ba9ff17f2de5f84ddd43842e5c4cb71e47",
+    "protocolDigest": "96d541f4a3687aff6b1bca34ea9f1669ec3ecfd09cc08a935621d751965ef160"
+  },
+  {
+    "id": "q7m2-baseline-2",
+    "caseId": "q7m2",
+    "arm": "baseline",
+    "repeat": 2,
+    "status": "success",
+    "origin": "real-model",
+    "model": {
+      "provider": "codex",
+      "name": "gpt-6.1-sol",
+      "effort": "low"
+    },
+    "requested": {
+      "capabilities": [
+        "read_record"
+      ],
+      "maxCalls": 6,
+      "maxOutputChars": 4000,
+      "modelRepairAttempts": 2,
+      "maximumElapsedMs": 300000
+    },
+    "observed": {
+      "calls": 3,
+      "modelCalls": 2,
+      "inputTokens": "UNKNOWN",
+      "outputTokens": "UNKNOWN",
+      "cost": "UNKNOWN",
+      "durationMs": 130490
+    },
+    "checks": [
+      {
+        "capability": "read_record",
+        "sourceId": "q7m2-src",
+        "status": "ok",
+        "responseDigest": "0638d58ad308a9e48ca44c5a9460dea78021ffafb31f0f56c3f8722a34928fc6"
+      }
+    ],
+    "output": "{\"decision\":\"refuted\",\"answer\":\"草案は誤りです。最終・完全な記録では、P2-P5がrow08とrow12に重複し、P3-P6がありません。15行ありますが、異なる無順序ペアは14組であり、各ペアがちょうど1回含まれるという条件を満たしません。\",\"uncertainties\":[],\"sourceRefs\":[\"q7m2-src\"]}",
+    "packetDigest": "47a29f84d94ae3aaddde0c2f17c230ba9ff17f2de5f84ddd43842e5c4cb71e47",
+    "protocolDigest": "96d541f4a3687aff6b1bca34ea9f1669ec3ecfd09cc08a935621d751965ef160"
+  },
+  {
+    "id": "q7m2-tombo-2",
+    "caseId": "q7m2",
+    "arm": "tombo",
+    "repeat": 2,
+    "status": "success",
+    "origin": "real-model",
+    "model": {
+      "provider": "codex",
+      "name": "gpt-6.1-sol",
+      "effort": "low"
+    },
+    "requested": {
+      "capabilities": [
+        "read_record"
+      ],
+      "maxCalls": 6,
+      "maxOutputChars": 4000,
+      "modelRepairAttempts": 2,
+      "maximumElapsedMs": 300000
+    },
+    "observed": {
+      "calls": 4,
+      "modelCalls": 3,
+      "inputTokens": "UNKNOWN",
+      "outputTokens": "UNKNOWN",
+      "cost": "UNKNOWN",
+      "durationMs": 222610
+    },
+    "checks": [
+      {
+        "capability": "read_record",
+        "sourceId": "q7m2-src",
+        "status": "ok",
+        "responseDigest": "0638d58ad308a9e48ca44c5a9460dea78021ffafb31f0f56c3f8722a34928fc6"
+      }
+    ],
+    "output": "{\"decision\":\"refuted\",\"answer\":\"Rejected claim: Schedule S6, version s6-r1, contains each unordered team pair exactly once. 記録はS6、s6-r1、対象の一周期の最終行が完全であり、他の行は存在しないと明示する。P2-P5がrow08とrow12で重複し、P3-P6が欠落しているため、各非順序対が一度ずつ出現するという元の命題は反証される。 Schedule S6, version s6-r1, does not contain each unordered team pair exactly once.\",\"uncertainties\":[\"decision: incorrect。answer: 草案は誤り。対象版・一周期の完全な15行ではP2-P5がrow08とrow12に重複し、P3-P6が欠落している。uncertainties: 提供された架空記録の範囲では、判定に影響する未解決事項はない。sourceRefs: q7m2-src:18a674ba-4829-4101-badb-aa8bf641ccf6。\",\"assessmentReferencesで指定された全5評価を原文と照合した。初回のinconclusiveは当時の情報不足に対応し、後続のrefutes及び三つのsupportsは完全な行一覧と一致する。評価訂正によって関連する反証を除去した履歴は提示されていない。追加候補は不要と判断したが、この完了記録は全ての盲点が発見されたことを保証しない。\"],\"sourceRefs\":[\"q7m2-src\"]}",
+    "packetDigest": "47a29f84d94ae3aaddde0c2f17c230ba9ff17f2de5f84ddd43842e5c4cb71e47",
+    "protocolDigest": "96d541f4a3687aff6b1bca34ea9f1669ec3ecfd09cc08a935621d751965ef160"
+  },
+  {
+    "id": "q7m2-baseline-3",
+    "caseId": "q7m2",
+    "arm": "baseline",
+    "repeat": 3,
+    "status": "success",
+    "origin": "real-model",
+    "model": {
+      "provider": "codex",
+      "name": "gpt-6.1-sol",
+      "effort": "low"
+    },
+    "requested": {
+      "capabilities": [
+        "read_record"
+      ],
+      "maxCalls": 6,
+      "maxOutputChars": 4000,
+      "modelRepairAttempts": 2,
+      "maximumElapsedMs": 300000
+    },
+    "observed": {
+      "calls": 3,
+      "modelCalls": 2,
+      "inputTokens": "UNKNOWN",
+      "outputTokens": "UNKNOWN",
+      "cost": "UNKNOWN",
+      "durationMs": 162276
+    },
+    "checks": [
+      {
+        "capability": "read_record",
+        "sourceId": "q7m2-src",
+        "status": "ok",
+        "responseDigest": "0638d58ad308a9e48ca44c5a9460dea78021ffafb31f0f56c3f8722a34928fc6"
+      }
+    ],
+    "output": "{\"decision\":\"refuted\",\"answer\":\"草案は誤りです。最終・完全な記録では、P2-P5がrow08とrow12に重複し、P3-P6が欠けています。15行ありますが、異なる順不同のチーム対は14組しかなく、各組がちょうど1回ずつ含まれるという条件を満たしません。\",\"uncertainties\":[],\"sourceRefs\":[\"q7m2-src\"]}",
+    "packetDigest": "47a29f84d94ae3aaddde0c2f17c230ba9ff17f2de5f84ddd43842e5c4cb71e47",
+    "protocolDigest": "96d541f4a3687aff6b1bca34ea9f1669ec3ecfd09cc08a935621d751965ef160"
+  },
+  {
+    "id": "q7m2-tombo-3",
+    "caseId": "q7m2",
+    "arm": "tombo",
+    "repeat": 3,
+    "status": "success",
+    "origin": "real-model",
+    "model": {
+      "provider": "codex",
+      "name": "gpt-6.1-sol",
+      "effort": "low"
+    },
+    "requested": {
+      "capabilities": [
+        "read_record"
+      ],
+      "maxCalls": 6,
+      "maxOutputChars": 4000,
+      "modelRepairAttempts": 2,
+      "maximumElapsedMs": 300000
+    },
+    "observed": {
+      "calls": 4,
+      "modelCalls": 3,
+      "inputTokens": "UNKNOWN",
+      "outputTokens": "UNKNOWN",
+      "cost": "UNKNOWN",
+      "durationMs": 247391
+    },
+    "checks": [
+      {
+        "capability": "read_record",
+        "sourceId": "q7m2-src",
+        "status": "ok",
+        "responseDigest": "0638d58ad308a9e48ca44c5a9460dea78021ffafb31f0f56c3f8722a34928fc6"
+      }
+    ],
+    "output": "{\"decision\":\"refuted\",\"answer\":\"Rejected claim: Schedule S6, version s6-r1, contains each unordered team pair exactly once. 判定はincorrect。対象バージョンの1周期について、最終かつ完全で他の行はないと明記された15行に、P2-P5がrow08とrow12で重複し、P3-P6が欠落している。したがって原文の命題は誤り。提示された記録の範囲では判定に残る不確実性はない。sourceRefs: q7m2-src（row08、row12及び完全な最終一覧）。 Schedule S6, version s6-r1, の1周期は、各非順序チームペアを正確に1回ずつ含むという条件を満たさない。\",\"uncertainties\":[\"decision: incorrect。answer: S6、s6-r1の1周期について、P2-P5はrow08とrow12に重複し、P3-P6は完全な最終一覧に存在しないため、原文は誤り。uncertainties: 提示された架空記録の対象範囲では、判定を左右する未確認事項はない。sourceRefs: q7m2-src:e6acbcfc-6caa-41eb-8dd1-95fd7c1148a6（row08、row12、全15行及び最終・完全で他の行がないという記述）。\",\"指定されたclaimIdとassessmentIndexで全5件の評価を確認した。初期のinconclusiveは行数のみを扱い、後続のrefutesは取得された最終一覧を扱うため整合する。評価訂正の履歴は提示されておらず、原文への反証は現在も保持されている。レビュー完了は、すべての盲点の発見を保証するものではない。\"],\"sourceRefs\":[\"q7m2-src\"]}",
+    "packetDigest": "47a29f84d94ae3aaddde0c2f17c230ba9ff17f2de5f84ddd43842e5c4cb71e47",
+    "protocolDigest": "96d541f4a3687aff6b1bca34ea9f1669ec3ecfd09cc08a935621d751965ef160"
+  },
+  {
+    "id": "k4r8-baseline-1",
+    "caseId": "k4r8",
+    "arm": "baseline",
+    "repeat": 1,
+    "status": "success",
+    "origin": "real-model",
+    "model": {
+      "provider": "codex",
+      "name": "gpt-6.1-sol",
+      "effort": "low"
+    },
+    "requested": {
+      "capabilities": [
+        "read_record"
+      ],
+      "maxCalls": 6,
+      "maxOutputChars": 4000,
+      "modelRepairAttempts": 2,
+      "maximumElapsedMs": 300000
+    },
+    "observed": {
+      "calls": 4,
+      "modelCalls": 3,
+      "inputTokens": "UNKNOWN",
+      "outputTokens": "UNKNOWN",
+      "cost": "UNKNOWN",
+      "durationMs": 186821
+    },
+    "checks": [
+      {
+        "capability": "read_record",
+        "sourceId": "k4r8-src",
+        "status": "ok",
+        "responseDigest": "5061e19d51eb1ce705839c1bcb22e3e32234bac5d7fb9e00f638aa22e2babfe9"
+      }
+    ],
+    "output": "{\"decision\":\"supported\",\"answer\":\"草案は正しい。返された記録 k4r8-src は、この周期の最終かつ完全な一覧である。6チームの無順序ペアは6×5÷2＝15組で、row01〜row15にはその全15組が重複も欠落もなく、それぞれ1回ずつ記載されている。\",\"uncertainties\":[],\"sourceRefs\":[\"k4r8-src\"]}",
+    "packetDigest": "9c81a767dcac87c09283ba0664a6bc6538f288665ae2b2d11a28c8b5d78ac9b3",
+    "protocolDigest": "96d541f4a3687aff6b1bca34ea9f1669ec3ecfd09cc08a935621d751965ef160"
+  },
+  {
+    "id": "k4r8-tombo-1",
+    "caseId": "k4r8",
+    "arm": "tombo",
+    "repeat": 1,
+    "status": "success",
+    "origin": "real-model",
+    "model": {
+      "provider": "codex",
+      "name": "gpt-6.1-sol",
+      "effort": "low"
+    },
+    "requested": {
+      "capabilities": [
+        "read_record"
+      ],
+      "maxCalls": 6,
+      "maxOutputChars": 4000,
+      "modelRepairAttempts": 2,
+      "maximumElapsedMs": 300000
+    },
+    "observed": {
+      "calls": 3,
+      "modelCalls": 3,
+      "inputTokens": "UNKNOWN",
+      "outputTokens": "UNKNOWN",
+      "cost": "UNKNOWN",
+      "durationMs": 223886
+    },
+    "checks": [],
+    "output": "{\"decision\":\"supported\",\"answer\":\"Schedule S6, version s6-r1, contains each unordered team pair exactly once.\",\"uncertainties\":[\"decision: correct。answer: 草案は正しい。e-context の15行は、指定された6チームの全15個の非順序対を各1回含む。c-s6-pairs の assessmentIndex 0 はこの列挙と整合する。適用済みの訂正履歴と残る反対評価はなく、拒否された出力を訂正の適用として扱っていない。uncertainties: 指定された架空の1サイクル内では結論に影響する未解決事項はない。判断は提供された記録の範囲に限定され、このレビューの完了は全盲点の発見を保証しない。sourceRefs: [e-context]。\"],\"sourceRefs\":[]}",
+    "packetDigest": "9c81a767dcac87c09283ba0664a6bc6538f288665ae2b2d11a28c8b5d78ac9b3",
+    "protocolDigest": "96d541f4a3687aff6b1bca34ea9f1669ec3ecfd09cc08a935621d751965ef160"
+  },
+  {
+    "id": "k4r8-baseline-2",
+    "caseId": "k4r8",
+    "arm": "baseline",
+    "repeat": 2,
+    "status": "success",
+    "origin": "real-model",
+    "model": {
+      "provider": "codex",
+      "name": "gpt-6.1-sol",
+      "effort": "low"
+    },
+    "requested": {
+      "capabilities": [
+        "read_record"
+      ],
+      "maxCalls": 6,
+      "maxOutputChars": 4000,
+      "modelRepairAttempts": 2,
+      "maximumElapsedMs": 300000
+    },
+    "observed": {
+      "calls": 4,
+      "modelCalls": 3,
+      "inputTokens": "UNKNOWN",
+      "outputTokens": "UNKNOWN",
+      "cost": "UNKNOWN",
+      "durationMs": 181259
+    },
+    "checks": [
+      {
+        "capability": "read_record",
+        "sourceId": "k4r8-src",
+        "status": "ok",
+        "responseDigest": "5061e19d51eb1ce705839c1bcb22e3e32234bac5d7fb9e00f638aa22e2babfe9"
+      }
+    ],
+    "output": "{\"decision\":\"supported\",\"answer\":\"草案は正しい。取得済みの記録 k4r8-src の全15行には、6チームの順序を区別しない全15組（6×5÷2）がそれぞれ1回ずつ含まれ、重複も欠落もない。この一覧が対象の1周期の最終・完全な記録であり、他の行は存在しないと明記されている。\",\"uncertainties\":[],\"sourceRefs\":[\"k4r8-src\"]}",
+    "packetDigest": "9c81a767dcac87c09283ba0664a6bc6538f288665ae2b2d11a28c8b5d78ac9b3",
+    "protocolDigest": "96d541f4a3687aff6b1bca34ea9f1669ec3ecfd09cc08a935621d751965ef160"
+  },
+  {
+    "id": "k4r8-tombo-2",
+    "caseId": "k4r8",
+    "arm": "tombo",
+    "repeat": 2,
+    "status": "success",
+    "origin": "real-model",
+    "model": {
+      "provider": "codex",
+      "name": "gpt-6.1-sol",
+      "effort": "low"
+    },
+    "requested": {
+      "capabilities": [
+        "read_record"
+      ],
+      "maxCalls": 6,
+      "maxOutputChars": 4000,
+      "modelRepairAttempts": 2,
+      "maximumElapsedMs": 300000
+    },
+    "observed": {
+      "calls": 2,
+      "modelCalls": 2,
+      "inputTokens": "UNKNOWN",
+      "outputTokens": "UNKNOWN",
+      "cost": "UNKNOWN",
+      "durationMs": 158604
+    },
+    "checks": [],
+    "output": "{\"decision\":\"supported\",\"answer\":\"Schedule S6, version s6-r1, contains each unordered team pair exactly once.\",\"uncertainties\":[\"decision: correct。answer: c-answerとassessmentIndex=0を確認した。指定された6チームの全組合せは15組であり、完全な一覧には5+4+3+2+1=15組が重複なく列挙されているため、草案は正しい。訂正履歴と反対評価は提示されておらず、追加候補を必要とする欠落は認められない。uncertainties: 指定された架空の記録と1巡の範囲内では残る不確実性はない。このレビューの完了は、あらゆる盲点の不存在を保証しない。sourceRefs: [e-context]。\"],\"sourceRefs\":[]}",
+    "packetDigest": "9c81a767dcac87c09283ba0664a6bc6538f288665ae2b2d11a28c8b5d78ac9b3",
+    "protocolDigest": "96d541f4a3687aff6b1bca34ea9f1669ec3ecfd09cc08a935621d751965ef160"
+  },
+  {
+    "id": "k4r8-baseline-3",
+    "caseId": "k4r8",
+    "arm": "baseline",
+    "repeat": 3,
+    "status": "success",
+    "origin": "real-model",
+    "model": {
+      "provider": "codex",
+      "name": "gpt-6.1-sol",
+      "effort": "low"
+    },
+    "requested": {
+      "capabilities": [
+        "read_record"
+      ],
+      "maxCalls": 6,
+      "maxOutputChars": 4000,
+      "modelRepairAttempts": 2,
+      "maximumElapsedMs": 300000
+    },
+    "observed": {
+      "calls": 1,
+      "modelCalls": 1,
+      "inputTokens": "UNKNOWN",
+      "outputTokens": "UNKNOWN",
+      "cost": "UNKNOWN",
+      "durationMs": 58289
+    },
+    "checks": [],
+    "output": "{\"decision\":\"supported\",\"answer\":\"提示された最終・完全な一覧には、6チームの組合せ6×5÷2＝15通りがすべて含まれ、各非順序ペアは1回ずつ登場します。行数も15で重複・欠落がないため、草案は正しいと判断できます。\",\"uncertainties\":[],\"sourceRefs\":[]}",
+    "packetDigest": "9c81a767dcac87c09283ba0664a6bc6538f288665ae2b2d11a28c8b5d78ac9b3",
+    "protocolDigest": "96d541f4a3687aff6b1bca34ea9f1669ec3ecfd09cc08a935621d751965ef160"
+  },
+  {
+    "id": "k4r8-tombo-3",
+    "caseId": "k4r8",
+    "arm": "tombo",
+    "repeat": 3,
+    "status": "success",
+    "origin": "real-model",
+    "model": {
+      "provider": "codex",
+      "name": "gpt-6.1-sol",
+      "effort": "low"
+    },
+    "requested": {
+      "capabilities": [
+        "read_record"
+      ],
+      "maxCalls": 6,
+      "maxOutputChars": 4000,
+      "modelRepairAttempts": 2,
+      "maximumElapsedMs": 300000
+    },
+    "observed": {
+      "calls": 2,
+      "modelCalls": 2,
+      "inputTokens": "UNKNOWN",
+      "outputTokens": "UNKNOWN",
+      "cost": "UNKNOWN",
+      "durationMs": 164398
+    },
+    "checks": [],
+    "output": "{\"decision\":\"supported\",\"answer\":\"Schedule S6, version s6-r1, contains each unordered team pair exactly once in its one round-robin cycle.\",\"uncertainties\":[\"decision: correct。answer: S6、s6-r1の指定された一巡では、六チームの全15非順序対がそれぞれ一度掲載されている。c-answerのassessmentIndex 0を原文と照合した。掲載組数は5+4+3+2+1=15で、重複・欠落はない。一覧は最終かつ完全と明示されている。訂正履歴および反対評価は提示されていない。uncertainties: 提供された架空記録と指定範囲内では残る不確実性はない。このレビューの完了は、あらゆる盲点の不存在を保証するものではない。sourceRefs: e-context。\"],\"sourceRefs\":[]}",
+    "packetDigest": "9c81a767dcac87c09283ba0664a6bc6538f288665ae2b2d11a28c8b5d78ac9b3",
+    "protocolDigest": "96d541f4a3687aff6b1bca34ea9f1669ec3ecfd09cc08a935621d751965ef160"
+  },
+  {
+    "id": "v9c3-baseline-1",
+    "caseId": "v9c3",
+    "arm": "baseline",
+    "repeat": 1,
+    "status": "success",
+    "origin": "real-model",
+    "model": {
+      "provider": "codex",
+      "name": "gpt-6.1-sol",
+      "effort": "low"
+    },
+    "requested": {
+      "capabilities": [
+        "read_record"
+      ],
+      "maxCalls": 6,
+      "maxOutputChars": 4000,
+      "modelRepairAttempts": 2,
+      "maximumElapsedMs": 300000
+    },
+    "observed": {
+      "calls": 3,
+      "modelCalls": 2,
+      "inputTokens": "UNKNOWN",
+      "outputTokens": "UNKNOWN",
+      "cost": "UNKNOWN",
+      "durationMs": 142787
+    },
+    "checks": [
+      {
+        "capability": "read_record",
+        "sourceId": "v9c3-src",
+        "status": "ok",
+        "responseDigest": "e4646c17209565532403bdd0cf6d1580789b78a9d46634711fa2c1a4d89eac59"
+      }
+    ],
+    "output": "{\"decision\":\"refuted\",\"answer\":\"声明は誤りです。行7では、直前の保存済みcheck=181とvalue=36から、(181×31+36)%251=125となりますが、保存済みcheckは124です。他の11遷移は宣言された漸化式を満たします。行8は規則どおり行7の保存済みcheck=124を使うと90となり、整合しています。したがって、12遷移すべてが成立するという声明は反証されます。\",\"uncertainties\":[],\"sourceRefs\":[\"v9c3-src\"]}",
+    "packetDigest": "a00815b496135d5bf97d2fc30fe9dea69c27f91b6bcae7be6579e5d4039e9c26",
+    "protocolDigest": "96d541f4a3687aff6b1bca34ea9f1669ec3ecfd09cc08a935621d751965ef160"
+  },
+  {
+    "id": "v9c3-tombo-1",
+    "caseId": "v9c3",
+    "arm": "tombo",
+    "repeat": 1,
+    "status": "error",
+    "origin": "real-model",
+    "model": {
+      "provider": "codex",
+      "name": "gpt-6.1-sol",
+      "effort": "low"
+    },
+    "requested": {
+      "capabilities": [
+        "read_record"
+      ],
+      "maxCalls": 6,
+      "maxOutputChars": 4000,
+      "modelRepairAttempts": 2,
+      "maximumElapsedMs": 300000
+    },
+    "observed": {
+      "calls": 4,
+      "modelCalls": 3,
+      "inputTokens": "UNKNOWN",
+      "outputTokens": "UNKNOWN",
+      "cost": "UNKNOWN",
+      "durationMs": 300020
+    },
+    "checks": [
+      {
+        "capability": "read_record",
+        "sourceId": "v9c3-src",
+        "status": "ok",
+        "responseDigest": "e4646c17209565532403bdd0cf6d1580789b78a9d46634711fa2c1a4d89eac59"
+      }
+    ],
+    "output": "{\"decision\":\"unknown\",\"answer\":\"Rejected claim: All 12 local numeric transitions in A12, version a12-r1, satisfy its declared recurrence. 記録は完全な12行と genesis check_0=0 を明示し、各行を直前の保存済み check に対して評価するよう定義している。行7では (181*31+36)%251=5647%251=125 だが、保存値は124なので不一致である。各行の期待値は順に17,67,78,222,133,181,125,90,125,162,9,109であり、行7以外の11件は保存値と一致する。行8は行7の保存値124を使うため (124*31+11)%251=90 となり一致する。 A12、version a12-r1 の全12件の局所数値遷移が宣言された漸化式を満たすという草案は誤りである。\",\"uncertainties\":[\"model_timeout\"],\"sourceRefs\":[\"v9c3-src\"]}",
+    "packetDigest": "a00815b496135d5bf97d2fc30fe9dea69c27f91b6bcae7be6579e5d4039e9c26",
+    "protocolDigest": "96d541f4a3687aff6b1bca34ea9f1669ec3ecfd09cc08a935621d751965ef160"
+  },
+  {
+    "id": "v9c3-baseline-2",
+    "caseId": "v9c3",
+    "arm": "baseline",
+    "repeat": 2,
+    "status": "success",
+    "origin": "real-model",
+    "model": {
+      "provider": "codex",
+      "name": "gpt-6.1-sol",
+      "effort": "low"
+    },
+    "requested": {
+      "capabilities": [
+        "read_record"
+      ],
+      "maxCalls": 6,
+      "maxOutputChars": 4000,
+      "modelRepairAttempts": 2,
+      "maximumElapsedMs": 300000
+    },
+    "observed": {
+      "calls": 3,
+      "modelCalls": 2,
+      "inputTokens": "UNKNOWN",
+      "outputTokens": "UNKNOWN",
+      "cost": "UNKNOWN",
+      "durationMs": 146116
+    },
+    "checks": [
+      {
+        "capability": "read_record",
+        "sourceId": "v9c3-src",
+        "status": "ok",
+        "responseDigest": "e4646c17209565532403bdd0cf6d1580789b78a9d46634711fa2c1a4d89eac59"
+      }
+    ],
+    "output": "{\"decision\":\"refuted\",\"answer\":\"草案は誤りです。宣言された漸化式を直前の保存済みcheckに適用すると、行7の期待値は(181×31+36)%251=125ですが、保存値は124です。残る11件の局所遷移は一致します。行8も、規則どおり行7の保存値124を使えば(124×31+11)%251=90となり一致します。したがって、全12件が漸化式を満たすという主張は成立しません。\",\"uncertainties\":[],\"sourceRefs\":[\"v9c3-src\"]}",
+    "packetDigest": "a00815b496135d5bf97d2fc30fe9dea69c27f91b6bcae7be6579e5d4039e9c26",
+    "protocolDigest": "96d541f4a3687aff6b1bca34ea9f1669ec3ecfd09cc08a935621d751965ef160"
+  },
+  {
+    "id": "v9c3-tombo-2",
+    "caseId": "v9c3",
+    "arm": "tombo",
+    "repeat": 2,
+    "status": "error",
+    "origin": "real-model",
+    "model": {
+      "provider": "codex",
+      "name": "gpt-6.1-sol",
+      "effort": "low"
+    },
+    "requested": {
+      "capabilities": [
+        "read_record"
+      ],
+      "maxCalls": 6,
+      "maxOutputChars": 4000,
+      "modelRepairAttempts": 2,
+      "maximumElapsedMs": 300000
+    },
+    "observed": {
+      "calls": 1,
+      "modelCalls": 1,
+      "inputTokens": "UNKNOWN",
+      "outputTokens": "UNKNOWN",
+      "cost": "UNKNOWN",
+      "durationMs": 300007
+    },
+    "checks": [],
+    "output": "{\"decision\":\"unknown\",\"answer\":\"The original draft remains unverified: All 12 local numeric transitions in A12, version a12-r1, satisfy its declared recurrence.\",\"uncertainties\":[\"model_timeout\"],\"sourceRefs\":[]}",
+    "packetDigest": "a00815b496135d5bf97d2fc30fe9dea69c27f91b6bcae7be6579e5d4039e9c26",
+    "protocolDigest": "96d541f4a3687aff6b1bca34ea9f1669ec3ecfd09cc08a935621d751965ef160"
+  },
+  {
+    "id": "v9c3-baseline-3",
+    "caseId": "v9c3",
+    "arm": "baseline",
+    "repeat": 3,
+    "status": "success",
+    "origin": "real-model",
+    "model": {
+      "provider": "codex",
+      "name": "gpt-6.1-sol",
+      "effort": "low"
+    },
+    "requested": {
+      "capabilities": [
+        "read_record"
+      ],
+      "maxCalls": 6,
+      "maxOutputChars": 4000,
+      "modelRepairAttempts": 2,
+      "maximumElapsedMs": 300000
+    },
+    "observed": {
+      "calls": 3,
+      "modelCalls": 2,
+      "inputTokens": "UNKNOWN",
+      "outputTokens": "UNKNOWN",
+      "cost": "UNKNOWN",
+      "durationMs": 146529
+    },
+    "checks": [
+      {
+        "capability": "read_record",
+        "sourceId": "v9c3-src",
+        "status": "ok",
+        "responseDigest": "e4646c17209565532403bdd0cf6d1580789b78a9d46634711fa2c1a4d89eac59"
+      }
+    ],
+    "output": "{\"decision\":\"refuted\",\"answer\":\"草案は誤りです。12件の局所遷移のうち、行7だけが宣言された漸化式を満たしません。直前の保存済みcheck=181と行7のvalue=36から、(181×31+36)%251=125となりますが、保存値は124です。残り11件は一致します。行8も、規則どおり行7の保存値124を使うと(124×31+11)%251=90となり一致します。\",\"uncertainties\":[],\"sourceRefs\":[\"v9c3-src\"]}",
+    "packetDigest": "a00815b496135d5bf97d2fc30fe9dea69c27f91b6bcae7be6579e5d4039e9c26",
+    "protocolDigest": "96d541f4a3687aff6b1bca34ea9f1669ec3ecfd09cc08a935621d751965ef160"
+  },
+  {
+    "id": "v9c3-tombo-3",
+    "caseId": "v9c3",
+    "arm": "tombo",
+    "repeat": 3,
+    "status": "success",
+    "origin": "real-model",
+    "model": {
+      "provider": "codex",
+      "name": "gpt-6.1-sol",
+      "effort": "low"
+    },
+    "requested": {
+      "capabilities": [
+        "read_record"
+      ],
+      "maxCalls": 6,
+      "maxOutputChars": 4000,
+      "modelRepairAttempts": 2,
+      "maximumElapsedMs": 300000
+    },
+    "observed": {
+      "calls": 4,
+      "modelCalls": 3,
+      "inputTokens": "UNKNOWN",
+      "outputTokens": "UNKNOWN",
+      "cost": "UNKNOWN",
+      "durationMs": 267864
+    },
+    "checks": [
+      {
+        "capability": "read_record",
+        "sourceId": "v9c3-src",
+        "status": "ok",
+        "responseDigest": "e4646c17209565532403bdd0cf6d1580789b78a9d46634711fa2c1a4d89eac59"
+      }
+    ],
+    "output": "{\"decision\":\"refuted\",\"answer\":\"Rejected claim: All 12 local numeric transitions in A12, version a12-r1, satisfy its declared recurrence. 完全な記録はgenesisから行1への遷移を含む12遷移を定義している。各行を直前の保存checkから計算した期待値は順に17,67,78,222,133,181,125,90,125,162,9,109。行7だけが保存値124と一致しないため、全12遷移が満たすという命題は反証される。 A12、版a12-r1の全12局所数値遷移が宣言された漸化式を満たすという記述は誤りである。\",\"uncertainties\":[\"decision: incorrect。answer: 全12局所数値遷移が漸化式を満たすという記述は誤り。行7では(181*31+36)%251=125となり、保存checkの124と異なる。他の11遷移は直前の保存checkを使う規則に一致する。uncertainties: 提供された確定版の局所算術整合性について未解決事項はない。sourceRefs: v9c3-src:f1bd7949-1c8f-436a-b398-72f82bc60579。\",\"レビューは提供された記録と全4件のassessmentReferencesに対応する評価に限定した。評価の訂正履歴は提示されておらず、元の主張への反証は保持されている。追加の候補チェックを必要とする根拠は見つからなかったが、completedは全ての盲点の不存在を保証しない。\"],\"sourceRefs\":[\"v9c3-src\"]}",
+    "packetDigest": "a00815b496135d5bf97d2fc30fe9dea69c27f91b6bcae7be6579e5d4039e9c26",
+    "protocolDigest": "96d541f4a3687aff6b1bca34ea9f1669ec3ecfd09cc08a935621d751965ef160"
+  },
+  {
+    "id": "p6n1-baseline-1",
+    "caseId": "p6n1",
+    "arm": "baseline",
+    "repeat": 1,
+    "status": "success",
+    "origin": "real-model",
+    "model": {
+      "provider": "codex",
+      "name": "gpt-6.1-sol",
+      "effort": "low"
+    },
+    "requested": {
+      "capabilities": [
+        "read_record"
+      ],
+      "maxCalls": 6,
+      "maxOutputChars": 4000,
+      "modelRepairAttempts": 2,
+      "maximumElapsedMs": 300000
+    },
+    "observed": {
+      "calls": 1,
+      "modelCalls": 1,
+      "inputTokens": "UNKNOWN",
+      "outputTokens": "UNKNOWN",
+      "cost": "UNKNOWN",
+      "durationMs": 78760
+    },
+    "checks": [],
+    "output": "{\"decision\":\"supported\",\"answer\":\"提示された完全な12行について、各行の直前に保存されたcheckを使って宣言された漸化式を計算すると、期待値は順に17, 67, 78, 222, 133, 181, 124, 90, 125, 162, 9, 109となり、すべて保存値と一致する。したがって、A12（a12-r1）の12個すべての局所数値遷移が漸化式を満たすという草案は正しい。この結論は提示された記録の局所算術整合性に限る。\",\"uncertainties\":[],\"sourceRefs\":[]}",
+    "packetDigest": "dc0f63178f581dfcb2575bdeda33a26a06bda6a441a953161022598303f913d9",
+    "protocolDigest": "96d541f4a3687aff6b1bca34ea9f1669ec3ecfd09cc08a935621d751965ef160"
+  },
+  {
+    "id": "p6n1-tombo-1",
+    "caseId": "p6n1",
+    "arm": "tombo",
+    "repeat": 1,
+    "status": "error",
+    "origin": "real-model",
+    "model": {
+      "provider": "codex",
+      "name": "gpt-6.1-sol",
+      "effort": "low"
+    },
+    "requested": {
+      "capabilities": [
+        "read_record"
+      ],
+      "maxCalls": 6,
+      "maxOutputChars": 4000,
+      "modelRepairAttempts": 2,
+      "maximumElapsedMs": 300000
+    },
+    "observed": {
+      "calls": 2,
+      "modelCalls": 2,
+      "inputTokens": "UNKNOWN",
+      "outputTokens": "UNKNOWN",
+      "cost": "UNKNOWN",
+      "durationMs": 300012
+    },
+    "checks": [],
+    "output": "{\"decision\":\"unknown\",\"answer\":\"A12、バージョン a12-r1 の全12行の局所数値遷移は、宣言された漸化式を満たす。\",\"uncertainties\":[\"model_timeout\"],\"sourceRefs\":[]}",
+    "packetDigest": "dc0f63178f581dfcb2575bdeda33a26a06bda6a441a953161022598303f913d9",
+    "protocolDigest": "96d541f4a3687aff6b1bca34ea9f1669ec3ecfd09cc08a935621d751965ef160"
+  },
+  {
+    "id": "p6n1-baseline-2",
+    "caseId": "p6n1",
+    "arm": "baseline",
+    "repeat": 2,
+    "status": "success",
+    "origin": "real-model",
+    "model": {
+      "provider": "codex",
+      "name": "gpt-6.1-sol",
+      "effort": "low"
+    },
+    "requested": {
+      "capabilities": [
+        "read_record"
+      ],
+      "maxCalls": 6,
+      "maxOutputChars": 4000,
+      "modelRepairAttempts": 2,
+      "maximumElapsedMs": 300000
+    },
+    "observed": {
+      "calls": 1,
+      "modelCalls": 1,
+      "inputTokens": "UNKNOWN",
+      "outputTokens": "UNKNOWN",
+      "cost": "UNKNOWN",
+      "durationMs": 77726
+    },
+    "checks": [],
+    "output": "{\"decision\":\"supported\",\"answer\":\"提示された完全な記録について、各行の直前に保存されたcheckを使って計算すると、行1〜12の期待値は順に17, 67, 78, 222, 133, 181, 124, 90, 125, 162, 9, 109となり、保存値とすべて一致します。したがって、12個すべての局所的な数値遷移が宣言された漸化式を満たすという記述は正しいです。根拠はパケット内のcontextです。\",\"uncertainties\":[],\"sourceRefs\":[]}",
+    "packetDigest": "dc0f63178f581dfcb2575bdeda33a26a06bda6a441a953161022598303f913d9",
+    "protocolDigest": "96d541f4a3687aff6b1bca34ea9f1669ec3ecfd09cc08a935621d751965ef160"
+  },
+  {
+    "id": "p6n1-tombo-2",
+    "caseId": "p6n1",
+    "arm": "tombo",
+    "repeat": 2,
+    "status": "error",
+    "origin": "real-model",
+    "model": {
+      "provider": "codex",
+      "name": "gpt-6.1-sol",
+      "effort": "low"
+    },
+    "requested": {
+      "capabilities": [
+        "read_record"
+      ],
+      "maxCalls": 6,
+      "maxOutputChars": 4000,
+      "modelRepairAttempts": 2,
+      "maximumElapsedMs": 300000
+    },
+    "observed": {
+      "calls": 2,
+      "modelCalls": 2,
+      "inputTokens": "UNKNOWN",
+      "outputTokens": "UNKNOWN",
+      "cost": "UNKNOWN",
+      "durationMs": 173435
+    },
+    "checks": [],
+    "output": "{\"decision\":\"unknown\",\"answer\":\"Rejected claim: A12、version a12-r1 の全12行の局所的な数値遷移は、宣言された漸化式を満たす。 第11行では (162*31+7)%251=5029%251=0 となるが、保存チェック値は9である。 草案は誤りである。\",\"uncertainties\":[\"第11行に関する assessmentIndex=0 の c-draft、c-row11、c-answer の評価は、5029を251で割った余りを正しく扱っているか。\",\"decision: 現在の誤り判定は再確認が必要。answer: 第11行を反例とする計算に疑義があり、下記の候補チェックで検証する。uncertainties: このレビューは候補の提案に限られ、既存の評価や解決状態は更新していない。sourceRefs: e-context。評価訂正の履歴は提示されていない。\",\"assessment_pending\"],\"sourceRefs\":[]}",
+    "packetDigest": "dc0f63178f581dfcb2575bdeda33a26a06bda6a441a953161022598303f913d9",
+    "protocolDigest": "96d541f4a3687aff6b1bca34ea9f1669ec3ecfd09cc08a935621d751965ef160"
+  },
+  {
+    "id": "p6n1-baseline-3",
+    "caseId": "p6n1",
+    "arm": "baseline",
+    "repeat": 3,
+    "status": "success",
+    "origin": "real-model",
+    "model": {
+      "provider": "codex",
+      "name": "gpt-6.1-sol",
+      "effort": "low"
+    },
+    "requested": {
+      "capabilities": [
+        "read_record"
+      ],
+      "maxCalls": 6,
+      "maxOutputChars": 4000,
+      "modelRepairAttempts": 2,
+      "maximumElapsedMs": 300000
+    },
+    "observed": {
+      "calls": 1,
+      "modelCalls": 1,
+      "inputTokens": "UNKNOWN",
+      "outputTokens": "UNKNOWN",
+      "cost": "UNKNOWN",
+      "durationMs": 80548
+    },
+    "checks": [],
+    "output": "{\"decision\":\"supported\",\"answer\":\"提示された完全な記録に基づくと、草案は正しいです。各行を直前の保存済みcheck（第1行は0）から計算した結果は、順に17、67、78、222、133、181、124、90、125、162、9、109となり、全12行の保存済みcheckと一致します。\",\"uncertainties\":[],\"sourceRefs\":[]}",
+    "packetDigest": "dc0f63178f581dfcb2575bdeda33a26a06bda6a441a953161022598303f913d9",
+    "protocolDigest": "96d541f4a3687aff6b1bca34ea9f1669ec3ecfd09cc08a935621d751965ef160"
+  },
+  {
+    "id": "p6n1-tombo-3",
+    "caseId": "p6n1",
+    "arm": "tombo",
+    "repeat": 3,
+    "status": "success",
+    "origin": "real-model",
+    "model": {
+      "provider": "codex",
+      "name": "gpt-6.1-sol",
+      "effort": "low"
+    },
+    "requested": {
+      "capabilities": [
+        "read_record"
+      ],
+      "maxCalls": 6,
+      "maxOutputChars": 4000,
+      "modelRepairAttempts": 2,
+      "maximumElapsedMs": 300000
+    },
+    "observed": {
+      "calls": 2,
+      "modelCalls": 2,
+      "inputTokens": "UNKNOWN",
+      "outputTokens": "UNKNOWN",
+      "cost": "UNKNOWN",
+      "durationMs": 187223
+    },
+    "checks": [],
+    "output": "{\"decision\":\"supported\",\"answer\":\"All 12 local numeric transitions in A12, version a12-r1, satisfy its declared recurrence.\",\"uncertainties\":[\"decision: correct。answer: 前行の保存済みcheckを使って全12行を再計算した結果は17, 67, 78, 222, 133, 181, 124, 90, 125, 162, 9, 109で、各行の保存値と一致する。assessmentReferencesのc-recurrence、assessmentIndex=0の計算も一致する。uncertainties: 提供された最終・完全なfixture内では残る不確実性はない。確認対象は局所的な算術整合性に限る。sourceRefs: e-context。\",\"提供された状態にはassessmentの訂正履歴や反対assessmentはない。このレビューの完了は、あらゆる盲点の不存在を保証するものではない。\"],\"sourceRefs\":[]}",
+    "packetDigest": "dc0f63178f581dfcb2575bdeda33a26a06bda6a441a953161022598303f913d9",
+    "protocolDigest": "96d541f4a3687aff6b1bca34ea9f1669ec3ecfd09cc08a935621d751965ef160"
+  },
+  {
+    "id": "h2w5-baseline-1",
+    "caseId": "h2w5",
+    "arm": "baseline",
+    "repeat": 1,
+    "status": "success",
+    "origin": "real-model",
+    "model": {
+      "provider": "codex",
+      "name": "gpt-6.1-sol",
+      "effort": "low"
+    },
+    "requested": {
+      "capabilities": [
+        "read_record"
+      ],
+      "maxCalls": 6,
+      "maxOutputChars": 4000,
+      "modelRepairAttempts": 2,
+      "maximumElapsedMs": 300000
+    },
+    "observed": {
+      "calls": 3,
+      "modelCalls": 2,
+      "inputTokens": "UNKNOWN",
+      "outputTokens": "UNKNOWN",
+      "cost": "UNKNOWN",
+      "durationMs": 161166
+    },
+    "checks": [
+      {
+        "capability": "read_record",
+        "sourceId": "h2w5-src",
+        "status": "ok",
+        "responseDigest": "c19053e897fc75c520d19b476cad505f83243cbdc0a1d7c6145a1467fa5b81eb"
+      }
+    ],
+    "output": "{\"decision\":\"unknown\",\"answer\":\"公開された票は賛成4票、反対3票で、V8とV9の2票は非公開です。可決には賛成5票以上が必要なため、非公開票の少なくとも1票が賛成なら可決、両方が反対なら否決となります。賛成票は4〜6票の範囲であり、記録が全9人分揃っていても非公開票の内容は分からないため、草案「M9、版m9-r1は可決された」の正誤は判断できません。\",\"uncertainties\":[\"V8とV9がそれぞれ賛成・反対のどちらを投じたかは開示されておらず、この記録からの後続開示もありません。\"],\"sourceRefs\":[\"h2w5-src\"]}",
+    "packetDigest": "62009c561f6fb48e3ed2ebbcaa54a36172c6b493e327e0c2e9d124d042362192",
+    "protocolDigest": "96d541f4a3687aff6b1bca34ea9f1669ec3ecfd09cc08a935621d751965ef160"
+  },
+  {
+    "id": "h2w5-tombo-1",
+    "caseId": "h2w5",
+    "arm": "tombo",
+    "repeat": 1,
+    "status": "error",
+    "origin": "real-model",
+    "model": {
+      "provider": "codex",
+      "name": "gpt-6.1-sol",
+      "effort": "low"
+    },
+    "requested": {
+      "capabilities": [
+        "read_record"
+      ],
+      "maxCalls": 6,
+      "maxOutputChars": 4000,
+      "modelRepairAttempts": 2,
+      "maximumElapsedMs": 300000
+    },
+    "observed": {
+      "calls": 5,
+      "modelCalls": 3,
+      "inputTokens": "UNKNOWN",
+      "outputTokens": "UNKNOWN",
+      "cost": "UNKNOWN",
+      "durationMs": 300010
+    },
+    "checks": [
+      {
+        "capability": "read_record",
+        "sourceId": "h2w5-src",
+        "status": "ok",
+        "responseDigest": "c19053e897fc75c520d19b476cad505f83243cbdc0a1d7c6145a1467fa5b81eb"
+      },
+      {
+        "capability": "read_record",
+        "sourceId": "h2w5-src",
+        "status": "ok",
+        "responseDigest": "c19053e897fc75c520d19b476cad505f83243cbdc0a1d7c6145a1467fa5b81eb"
+      }
+    ],
+    "output": "{\"decision\":\"unknown\",\"answer\":\"利用可能な情報からは、Motion M9、version m9-r1が承認されたかどうかを確定できない。 対象版の記録には賛成4票（V1、V2、V4、V6）、反対3票（V3、V5、V7）、非開示2票（V8、V9）がある。賛成票総数は4〜6票で、承認基準の5票を満たす場合と満たさない場合があるため、原文を支持も反証もできない。\",\"uncertainties\":[\"対象の投票記録から、賛成票が5票以上あると確定できるか。\",\"Unverified: Motion M9, version m9-r1, was approved.\",\"model_timeout\"],\"sourceRefs\":[\"h2w5-src\"]}",
+    "packetDigest": "62009c561f6fb48e3ed2ebbcaa54a36172c6b493e327e0c2e9d124d042362192",
+    "protocolDigest": "96d541f4a3687aff6b1bca34ea9f1669ec3ecfd09cc08a935621d751965ef160"
+  },
+  {
+    "id": "h2w5-baseline-2",
+    "caseId": "h2w5",
+    "arm": "baseline",
+    "repeat": 2,
+    "status": "success",
+    "origin": "real-model",
+    "model": {
+      "provider": "codex",
+      "name": "gpt-6.1-sol",
+      "effort": "low"
+    },
+    "requested": {
+      "capabilities": [
+        "read_record"
+      ],
+      "maxCalls": 6,
+      "maxOutputChars": 4000,
+      "modelRepairAttempts": 2,
+      "maximumElapsedMs": 300000
+    },
+    "observed": {
+      "calls": 3,
+      "modelCalls": 2,
+      "inputTokens": "UNKNOWN",
+      "outputTokens": "UNKNOWN",
+      "cost": "UNKNOWN",
+      "durationMs": 171684
+    },
+    "checks": [
+      {
+        "capability": "read_record",
+        "sourceId": "h2w5-src",
+        "status": "ok",
+        "responseDigest": "c19053e897fc75c520d19b476cad505f83243cbdc0a1d7c6145a1467fa5b81eb"
+      }
+    ],
+    "output": "{\"decision\":\"unknown\",\"answer\":\"動議M9（版m9-r1）が承認されたかは判断できません。公開された票は賛成4票、反対3票で、残る2票は封印されています。承認には賛成5票以上が必要です。封印された2票のうち少なくとも1票が賛成なら承認、両方が反対なら否決となるため、草案の断定は確認できません。\",\"uncertainties\":[\"V8とV9の投票内容は非公開です。記録は完全かつ確定していますが、封印票の内容を明らかにする追加情報はありません。\"],\"sourceRefs\":[\"h2w5-src\"]}",
+    "packetDigest": "62009c561f6fb48e3ed2ebbcaa54a36172c6b493e327e0c2e9d124d042362192",
+    "protocolDigest": "96d541f4a3687aff6b1bca34ea9f1669ec3ecfd09cc08a935621d751965ef160"
+  },
+  {
+    "id": "h2w5-tombo-2",
+    "caseId": "h2w5",
+    "arm": "tombo",
+    "repeat": 2,
+    "status": "error",
+    "origin": "real-model",
+    "model": {
+      "provider": "codex",
+      "name": "gpt-6.1-sol",
+      "effort": "low"
+    },
+    "requested": {
+      "capabilities": [
+        "read_record"
+      ],
+      "maxCalls": 6,
+      "maxOutputChars": 4000,
+      "modelRepairAttempts": 2,
+      "maximumElapsedMs": 300000
+    },
+    "observed": {
+      "calls": 5,
+      "modelCalls": 3,
+      "inputTokens": "UNKNOWN",
+      "outputTokens": "UNKNOWN",
+      "cost": "UNKNOWN",
+      "durationMs": 300017
+    },
+    "checks": [
+      {
+        "capability": "read_record",
+        "sourceId": "h2w5-src",
+        "status": "ok",
+        "responseDigest": "c19053e897fc75c520d19b476cad505f83243cbdc0a1d7c6145a1467fa5b81eb"
+      },
+      {
+        "capability": "read_record",
+        "sourceId": "h2w5-src",
+        "status": "ok",
+        "responseDigest": "c19053e897fc75c520d19b476cad505f83243cbdc0a1d7c6145a1467fa5b81eb"
+      }
+    ],
+    "output": "{\"decision\":\"unknown\",\"answer\":\"入手可能な情報からは、Motion M9、version m9-r1 が承認されたかどうかを判定できない。 記録では賛成4票（V1、V2、V4、V6）、反対3票（V3、V5、V7）、非公開2票（V8、V9）。賛成総数は4～6票で、承認に必要な5票を下回る場合と満たす場合の両方が可能である。元の承認命題は支持も反証もできず、g-approval は未解決のままとする。\",\"uncertainties\":[\"Does the captured voting record establish that motion M9, version m9-r1, received at least five yes votes?\",\"Unverified: Motion M9, version m9-r1, was approved.\",\"model_timeout\"],\"sourceRefs\":[\"h2w5-src\"]}",
+    "packetDigest": "62009c561f6fb48e3ed2ebbcaa54a36172c6b493e327e0c2e9d124d042362192",
+    "protocolDigest": "96d541f4a3687aff6b1bca34ea9f1669ec3ecfd09cc08a935621d751965ef160"
+  },
+  {
+    "id": "h2w5-baseline-3",
+    "caseId": "h2w5",
+    "arm": "baseline",
+    "repeat": 3,
+    "status": "error",
+    "origin": "real-model",
+    "model": {
+      "provider": "codex",
+      "name": "gpt-6.1-sol",
+      "effort": "low"
+    },
+    "requested": {
+      "capabilities": [
+        "read_record"
+      ],
+      "maxCalls": 6,
+      "maxOutputChars": 4000,
+      "modelRepairAttempts": 2,
+      "maximumElapsedMs": 300000
+    },
+    "observed": {
+      "calls": 1,
+      "modelCalls": 1,
+      "inputTokens": "UNKNOWN",
+      "outputTokens": "UNKNOWN",
+      "cost": "UNKNOWN",
+      "durationMs": 156491
+    },
+    "checks": [],
+    "output": "{\"decision\":\"unknown\",\"answer\":\"The trial did not complete.\",\"uncertainties\":[\"model_error\"],\"sourceRefs\":[]}",
+    "packetDigest": "62009c561f6fb48e3ed2ebbcaa54a36172c6b493e327e0c2e9d124d042362192",
+    "protocolDigest": "96d541f4a3687aff6b1bca34ea9f1669ec3ecfd09cc08a935621d751965ef160"
+  },
+  {
+    "id": "h2w5-tombo-3",
+    "caseId": "h2w5",
+    "arm": "tombo",
+    "repeat": 3,
+    "status": "error",
+    "origin": "real-model",
+    "model": {
+      "provider": "codex",
+      "name": "gpt-6.1-sol",
+      "effort": "low"
+    },
+    "requested": {
+      "capabilities": [
+        "read_record"
+      ],
+      "maxCalls": 6,
+      "maxOutputChars": 4000,
+      "modelRepairAttempts": 2,
+      "maximumElapsedMs": 300000
+    },
+    "observed": {
+      "calls": 5,
+      "modelCalls": 3,
+      "inputTokens": "UNKNOWN",
+      "outputTokens": "UNKNOWN",
+      "cost": "UNKNOWN",
+      "durationMs": 300016
+    },
+    "checks": [
+      {
+        "capability": "read_record",
+        "sourceId": "h2w5-src",
+        "status": "ok",
+        "responseDigest": "c19053e897fc75c520d19b476cad505f83243cbdc0a1d7c6145a1467fa5b81eb"
+      },
+      {
+        "capability": "read_record",
+        "sourceId": "h2w5-src",
+        "status": "ok",
+        "responseDigest": "c19053e897fc75c520d19b476cad505f83243cbdc0a1d7c6145a1467fa5b81eb"
+      }
+    ],
+    "output": "{\"decision\":\"unknown\",\"answer\":\"利用可能な情報からは、Motion M9、version m9-r1 が承認されたか判断できない。 記録には賛成4票、反対3票、非公開2票がある。賛成総数は4〜6票で、承認に必要な5票を下回る場合と満たす場合の両方が可能である。したがって原案を正しいとも誤りとも確定できず、g-approval は未解決のままとする。\",\"uncertainties\":[\"Does the captured voting record establish approval of motion M9, version m9-r1?\",\"Unverified: Motion M9, version m9-r1, was approved.\",\"model_timeout\"],\"sourceRefs\":[\"h2w5-src\"]}",
+    "packetDigest": "62009c561f6fb48e3ed2ebbcaa54a36172c6b493e327e0c2e9d124d042362192",
+    "protocolDigest": "96d541f4a3687aff6b1bca34ea9f1669ec3ecfd09cc08a935621d751965ef160"
+  },
+  {
+    "id": "b8s4-baseline-1",
+    "caseId": "b8s4",
+    "arm": "baseline",
+    "repeat": 1,
+    "status": "success",
+    "origin": "real-model",
+    "model": {
+      "provider": "codex",
+      "name": "gpt-6.1-sol",
+      "effort": "low"
+    },
+    "requested": {
+      "capabilities": [
+        "read_record"
+      ],
+      "maxCalls": 6,
+      "maxOutputChars": 4000,
+      "modelRepairAttempts": 2,
+      "maximumElapsedMs": 300000
+    },
+    "observed": {
+      "calls": 4,
+      "modelCalls": 3,
+      "inputTokens": "UNKNOWN",
+      "outputTokens": "UNKNOWN",
+      "cost": "UNKNOWN",
+      "durationMs": 202454
+    },
+    "checks": [
+      {
+        "capability": "read_record",
+        "sourceId": "b8s4-src",
+        "status": "ok",
+        "responseDigest": "1e2bb355e676e97bcd6f47ad65ec0527566574e33020953f7285c4535da47d0e"
+      }
+    ],
+    "output": "{\"decision\":\"supported\",\"answer\":\"取得済みの投票記録 b8s4-src では、V1、V2、V4、V5、V6、V8の6名が賛成し、残る3名が反対しています。承認条件の賛成5票以上を満たすため、「Motion M9、version m9-r1は承認された」という草案は正しいです。記録は最終かつ完全で、非公開の票はありません。\",\"uncertainties\":[],\"sourceRefs\":[\"b8s4-src\"]}",
+    "packetDigest": "29d261bb172307adcda7d077cf542a71410612388b8ead5b36430bd5c54310e0",
+    "protocolDigest": "96d541f4a3687aff6b1bca34ea9f1669ec3ecfd09cc08a935621d751965ef160"
+  },
+  {
+    "id": "b8s4-tombo-1",
+    "caseId": "b8s4",
+    "arm": "tombo",
+    "repeat": 1,
+    "status": "error",
+    "origin": "real-model",
+    "model": {
+      "provider": "codex",
+      "name": "gpt-6.1-sol",
+      "effort": "low"
+    },
+    "requested": {
+      "capabilities": [
+        "read_record"
+      ],
+      "maxCalls": 6,
+      "maxOutputChars": 4000,
+      "modelRepairAttempts": 2,
+      "maximumElapsedMs": 300000
+    },
+    "observed": {
+      "calls": 2,
+      "modelCalls": 2,
+      "inputTokens": "UNKNOWN",
+      "outputTokens": "UNKNOWN",
+      "cost": "UNKNOWN",
+      "durationMs": 300016
+    },
+    "checks": [],
+    "output": "{\"decision\":\"unknown\",\"answer\":\"Motion M9, version m9-r1, was approved.\",\"uncertainties\":[\"model_timeout\"],\"sourceRefs\":[]}",
+    "packetDigest": "29d261bb172307adcda7d077cf542a71410612388b8ead5b36430bd5c54310e0",
+    "protocolDigest": "96d541f4a3687aff6b1bca34ea9f1669ec3ecfd09cc08a935621d751965ef160"
+  },
+  {
+    "id": "b8s4-baseline-2",
+    "caseId": "b8s4",
+    "arm": "baseline",
+    "repeat": 2,
+    "status": "success",
+    "origin": "real-model",
+    "model": {
+      "provider": "codex",
+      "name": "gpt-6.1-sol",
+      "effort": "low"
+    },
+    "requested": {
+      "capabilities": [
+        "read_record"
+      ],
+      "maxCalls": 6,
+      "maxOutputChars": 4000,
+      "modelRepairAttempts": 2,
+      "maximumElapsedMs": 300000
+    },
+    "observed": {
+      "calls": 4,
+      "modelCalls": 3,
+      "inputTokens": "UNKNOWN",
+      "outputTokens": "UNKNOWN",
+      "cost": "UNKNOWN",
+      "durationMs": 245278
+    },
+    "checks": [
+      {
+        "capability": "read_record",
+        "sourceId": "b8s4-src",
+        "status": "ok",
+        "responseDigest": "1e2bb355e676e97bcd6f47ad65ec0527566574e33020953f7285c4535da47d0e"
+      }
+    ],
+    "output": "{\"decision\":\"supported\",\"answer\":\"草案の記述は正しいです。M9、版m9-r1の最終・完全な投票記録では、V1、V2、V4、V5、V6、V8の6人が賛成し、残る3人が反対しています。賛成6票は可決要件の5票以上を満たすため、この動議は可決されました。\",\"uncertainties\":[],\"sourceRefs\":[\"b8s4-src\"]}",
+    "packetDigest": "29d261bb172307adcda7d077cf542a71410612388b8ead5b36430bd5c54310e0",
+    "protocolDigest": "96d541f4a3687aff6b1bca34ea9f1669ec3ecfd09cc08a935621d751965ef160"
+  },
+  {
+    "id": "b8s4-tombo-2",
+    "caseId": "b8s4",
+    "arm": "tombo",
+    "repeat": 2,
+    "status": "success",
+    "origin": "real-model",
+    "model": {
+      "provider": "codex",
+      "name": "gpt-6.1-sol",
+      "effort": "low"
+    },
+    "requested": {
+      "capabilities": [
+        "read_record"
+      ],
+      "maxCalls": 6,
+      "maxOutputChars": 4000,
+      "modelRepairAttempts": 2,
+      "maximumElapsedMs": 300000
+    },
+    "observed": {
+      "calls": 2,
+      "modelCalls": 2,
+      "inputTokens": "UNKNOWN",
+      "outputTokens": "UNKNOWN",
+      "cost": "UNKNOWN",
+      "durationMs": 262996
+    },
+    "checks": [],
+    "output": "{\"decision\":\"supported\",\"answer\":\"Motion M9, version m9-r1, was approved.\",\"uncertainties\":[],\"sourceRefs\":[]}",
+    "packetDigest": "29d261bb172307adcda7d077cf542a71410612388b8ead5b36430bd5c54310e0",
+    "protocolDigest": "96d541f4a3687aff6b1bca34ea9f1669ec3ecfd09cc08a935621d751965ef160"
+  },
+  {
+    "id": "b8s4-baseline-3",
+    "caseId": "b8s4",
+    "arm": "baseline",
+    "repeat": 3,
+    "status": "success",
+    "origin": "real-model",
+    "model": {
+      "provider": "codex",
+      "name": "gpt-6.1-sol",
+      "effort": "low"
+    },
+    "requested": {
+      "capabilities": [
+        "read_record"
+      ],
+      "maxCalls": 6,
+      "maxOutputChars": 4000,
+      "modelRepairAttempts": 2,
+      "maximumElapsedMs": 300000
+    },
+    "observed": {
+      "calls": 4,
+      "modelCalls": 3,
+      "inputTokens": "UNKNOWN",
+      "outputTokens": "UNKNOWN",
+      "cost": "UNKNOWN",
+      "durationMs": 286223
+    },
+    "checks": [
+      {
+        "capability": "read_record",
+        "sourceId": "b8s4-src",
+        "status": "ok",
+        "responseDigest": "1e2bb355e676e97bcd6f47ad65ec0527566574e33020953f7285c4535da47d0e"
+      }
+    ],
+    "output": "{\"decision\":\"supported\",\"answer\":\"実際に返された投票記録では、V1、V2、V4、V5、V6、V8の6人が賛成、残る3人が反対しています。賛成6票は承認に必要な5票以上を満たすため、「Motion M9, version m9-r1, was approved.」は正しいと判断できます。\",\"uncertainties\":[],\"sourceRefs\":[\"b8s4-src\"]}",
+    "packetDigest": "29d261bb172307adcda7d077cf542a71410612388b8ead5b36430bd5c54310e0",
+    "protocolDigest": "96d541f4a3687aff6b1bca34ea9f1669ec3ecfd09cc08a935621d751965ef160"
+  },
+  {
+    "id": "b8s4-tombo-3",
+    "caseId": "b8s4",
+    "arm": "tombo",
+    "repeat": 3,
+    "status": "success",
+    "origin": "real-model",
+    "model": {
+      "provider": "codex",
+      "name": "gpt-6.1-sol",
+      "effort": "low"
+    },
+    "requested": {
+      "capabilities": [
+        "read_record"
+      ],
+      "maxCalls": 6,
+      "maxOutputChars": 4000,
+      "modelRepairAttempts": 2,
+      "maximumElapsedMs": 300000
+    },
+    "observed": {
+      "calls": 2,
+      "modelCalls": 2,
+      "inputTokens": "UNKNOWN",
+      "outputTokens": "UNKNOWN",
+      "cost": "UNKNOWN",
+      "durationMs": 165916
+    },
+    "checks": [],
+    "output": "{\"decision\":\"supported\",\"answer\":\"Motion M9, version m9-r1, was approved.\",\"uncertainties\":[\"decision: correct。answer: M9、版m9-r1は賛成6票で承認基準の5票以上を満たす。uncertainties: 提供された架空の固定記録の範囲では残る不確実性はない。sourceRefs: e-context。レビューは提供された資料に限定され、すべての盲点の発見を保証しない。\"],\"sourceRefs\":[]}",
+    "packetDigest": "29d261bb172307adcda7d077cf542a71410612388b8ead5b36430bd5c54310e0",
+    "protocolDigest": "96d541f4a3687aff6b1bca34ea9f1669ec3ecfd09cc08a935621d751965ef160"
+  }
+]

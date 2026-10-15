@@ -1,0 +1,173 @@
+TAP version 13
+# Subtest: helper publishes assessment references and accepts one inline correction with honest usage and journal replay
+not ok 1 - helper publishes assessment references and accepts one inline correction with honest usage and journal replay
+  ---
+  duration_ms: 197.072
+  type: 'test'
+  location: 'D:\\develop\\works\\tombo-view\\.audit\\assessment-correction-worktree\\test\\assessment-correction-surfaces.test.mjs:47:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+
+    + undefined
+    - [
+    -   {
+    -     assessmentIndex: 0,
+    -     claimId: 'answer',
+    -     digest: 'b05da011596e49adc3bbae117019c5225741b5ec7f718a5cc40d5421644378b7'
+    -   }
+    - ]
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    0:
+      claimId: 'answer'
+      assessmentIndex: 0
+      digest: 'b05da011596e49adc3bbae117019c5225741b5ec7f718a5cc40d5421644378b7'
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/develop/works/tombo-view/.audit/assessment-correction-worktree/test/assessment-correction-surfaces.test.mjs:52:10)
+    async Test.run (node:internal/test_runner/test:1113:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:358:3)
+  ...
+# Subtest: helper rejects a pre-correction request binding after the assessment table changes
+not ok 2 - helper rejects a pre-correction request binding after the assessment table changes
+  ---
+  duration_ms: 374.5968
+  type: 'test'
+  location: 'D:\\develop\\works\\tombo-view\\.audit\\assessment-correction-worktree\\test\\assessment-correction-surfaces.test.mjs:84:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    0 !== 1
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/develop/works/tombo-view/.audit/assessment-correction-worktree/test/assessment-correction-surfaces.test.mjs:94:10)
+    async Test.run (node:internal/test_runner/test:1113:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:788:7)
+  ...
+# Subtest: public CLI adapter performs a correction and refutation in one update then journals it
+ok 3 - public CLI adapter performs a correction and refutation in one update then journals it
+  ---
+  duration_ms: 192.5445
+  type: 'test'
+  ...
+# Subtest: report distinguishes corrected interpretations and escaped reasons from verified facts in redacted history
+not ok 4 - report distinguishes corrected interpretations and escaped reasons from verified facts in redacted history
+  ---
+  duration_ms: 317.9011
+  type: 'test'
+  location: 'D:\\develop\\works\\tombo-view\\.audit\\assessment-correction-worktree\\test\\assessment-correction-surfaces.test.mjs:114:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The input did not match the regular expression /## 証拠の解釈の訂正/. Input:
+
+    '# TOMBO 検査レポート\n' +
+      '\n' +
+      '目的: Check both conditions.\n' +
+      '\n' +
+      '判定: 追加の確認が必要\n' +
+      '\n' +
+      '## 理解の再考\n' +
+      '\n' +
+      '現在の理解への再考は未完了。\n' +
+      '再考の完了は、意味の正しさや未知の不存在を保証しない。\n' +
+      '\n' +
+      '## 証拠で確かめたこと\n' +
+      '\n' +
+      '現在の範囲で証拠により確かめた主張はまだない。\n' +
+      '\n' +
+      '## 目的に影響する未確認事項\n' +
+      '\n' +
+      '- Are both conditions covered? The answer includes both.\n' +
+      '\n' +
+      '## 次に行う確認\n' +
+      '\n' +
+      '- Read the report. 判定条件: Both at most 800 ms.\n' +
+      '\n' +
+      '## 前回から変わった箇所\n' +
+      '\n' +
+      'このレポートに変更差分は渡されていない。\n' +
+      '\n' +
+      '## 適用範囲と利用量\n' +
+      '\n' +
+      '判定は今回の目的、登録された証拠、明示された適用範囲に限る。外部操作の承認を代行しない。\n' +
+      '\n' +
+      '- 追加ラウンド: 2\n' +
+      '- モデル呼出し: 3\n' +
+      '- ツール呼出し: 2\n' +
+      '- 経過時間: 290ms\n' +
+      '- 合計トークン: 未取得\n' +
+      '- 費用: 未取得\n'
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual: |-
+    # TOMBO 検査レポート
+
+    目的: Check both conditions.
+
+    判定: 追加の確認が必要
+
+    ## 理解の再考
+
+    現在の理解への再考は未完了。
+    再考の完了は、意味の正しさや未知の不存在を保証しない。
+
+    ## 証拠で確かめたこと
+
+    現在の範囲で証拠により確かめた主張はまだない。
+
+    ## 目的に影響する未確認事項
+
+    - Are both conditions covered? The answer includes both.
+
+    ## 次に行う確認
+
+    - Read the report. 判定条件: Both at most 800 ms.
+
+    ## 前回から変わった箇所
+
+    このレポートに変更差分は渡されていない。
+
+    ## 適用範囲と利用量
+
+    判定は今回の目的、登録された証拠、明示された適用範囲に限る。外部操作の承認を代行しない。
+
+    - 追加ラウンド: 2
+    - モデル呼出し: 3
+    - ツール呼出し: 2
+    - 経過時間: 290ms
+    - 合計トークン: 未取得
+    - 費用: 未取得
+
+  operator: 'match'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/develop/works/tombo-view/.audit/assessment-correction-worktree/test/assessment-correction-surfaces.test.mjs:120:10)
+    async Test.run (node:internal/test_runner/test:1113:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:788:7)
+  ...
+# Subtest: uncorrected legacy state keeps the same report when empty optional history is omitted
+ok 5 - uncorrected legacy state keeps the same report when empty optional history is omitted
+  ---
+  duration_ms: 177.1641
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 2
+# fail 3
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1428.681

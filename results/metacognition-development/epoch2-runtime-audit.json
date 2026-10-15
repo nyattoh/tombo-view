@@ -1,0 +1,2300 @@
+{
+  "audit": [
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh01-baseline-r1-step1-20261014",
+      "caseId": "fresh-01",
+      "arm": "baseline",
+      "repeat": 1,
+      "sequence": 1,
+      "sessionId": 46816,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T21:44:00.840Z",
+          "startedAt": "2026-10-13T21:44:01.479Z",
+          "completedAt": "2026-10-13T21:44:08.281Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh01-baseline-r1-step2-20261014",
+      "caseId": "fresh-01",
+      "arm": "baseline",
+      "repeat": 1,
+      "sequence": 2,
+      "sessionId": 46816,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T21:45:06.739Z",
+          "startedAt": "2026-10-13T21:45:07.415Z",
+          "completedAt": "2026-10-13T21:45:17.640Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh01-tombo-r1-step1-20261014",
+      "caseId": "fresh-01",
+      "arm": "tombo",
+      "repeat": 1,
+      "sequence": 1,
+      "sessionId": 37493,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "reasoning",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T21:46:08.253Z",
+          "startedAt": "2026-10-13T21:46:08.883Z",
+          "completedAt": "2026-10-13T21:46:35.214Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh01-tombo-r1-step2-20261014",
+      "caseId": "fresh-01",
+      "arm": "tombo",
+      "repeat": 1,
+      "sequence": 2,
+      "sessionId": 37493,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T21:46:57.252Z",
+          "startedAt": "2026-10-13T21:46:58.148Z",
+          "completedAt": "2026-10-13T21:47:18.578Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh01-tombo-r1-step3-20261014",
+      "caseId": "fresh-01",
+      "arm": "tombo",
+      "repeat": 1,
+      "sequence": 3,
+      "sessionId": 37493,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T21:47:36.318Z",
+          "startedAt": "2026-10-13T21:47:37.960Z",
+          "completedAt": "2026-10-13T21:47:50.323Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh01-baseline-r2-step1-20261014",
+      "caseId": "fresh-01",
+      "arm": "baseline",
+      "repeat": 2,
+      "sequence": 1,
+      "sessionId": 73479,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T21:51:35.536Z",
+          "startedAt": "2026-10-13T21:51:36.346Z",
+          "completedAt": "2026-10-13T21:51:43.005Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh01-baseline-r2-step2-20261014",
+      "caseId": "fresh-01",
+      "arm": "baseline",
+      "repeat": 2,
+      "sequence": 2,
+      "sessionId": 73479,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T21:52:13.782Z",
+          "startedAt": "2026-10-13T21:52:15.491Z",
+          "completedAt": "2026-10-13T21:52:25.171Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh01-tombo-r2-step1-20261014",
+      "caseId": "fresh-01",
+      "arm": "tombo",
+      "repeat": 2,
+      "sequence": 1,
+      "sessionId": 56402,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "reasoning",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T21:48:56.007Z",
+          "startedAt": "2026-10-13T21:48:56.734Z",
+          "completedAt": "2026-10-13T21:49:25.623Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh01-tombo-r2-step2-20261014",
+      "caseId": "fresh-01",
+      "arm": "tombo",
+      "repeat": 2,
+      "sequence": 2,
+      "sessionId": 56402,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T21:49:57.801Z",
+          "startedAt": "2026-10-13T21:49:58.522Z",
+          "completedAt": "2026-10-13T21:50:21.407Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh01-tombo-r2-step3-20261014",
+      "caseId": "fresh-01",
+      "arm": "tombo",
+      "repeat": 2,
+      "sequence": 3,
+      "sessionId": 56402,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "reasoning",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T21:50:49.300Z",
+          "startedAt": "2026-10-13T21:50:50.585Z",
+          "completedAt": "2026-10-13T21:51:03.364Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh01-baseline-r3-step1-20261014",
+      "caseId": "fresh-01",
+      "arm": "baseline",
+      "repeat": 3,
+      "sequence": 1,
+      "sessionId": 33638,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T21:53:35.502Z",
+          "startedAt": "2026-10-13T21:53:36.481Z",
+          "completedAt": "2026-10-13T21:53:43.590Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh01-baseline-r3-step2-20261014",
+      "caseId": "fresh-01",
+      "arm": "baseline",
+      "repeat": 3,
+      "sequence": 2,
+      "sessionId": 33638,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T21:54:31.779Z",
+          "startedAt": "2026-10-13T21:54:32.412Z",
+          "completedAt": "2026-10-13T21:54:42.724Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh01-tombo-r3-step1-20261014",
+      "caseId": "fresh-01",
+      "arm": "tombo",
+      "repeat": 3,
+      "sequence": 1,
+      "sessionId": 29893,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T21:55:30.014Z",
+          "startedAt": "2026-10-13T21:55:30.672Z",
+          "completedAt": "2026-10-13T21:55:56.520Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh01-tombo-r3-step2-20261014",
+      "caseId": "fresh-01",
+      "arm": "tombo",
+      "repeat": 3,
+      "sequence": 2,
+      "sessionId": 29893,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T21:56:15.403Z",
+          "startedAt": "2026-10-13T21:56:16.194Z",
+          "completedAt": "2026-10-13T21:56:37.457Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh01-tombo-r3-step3-20261014",
+      "caseId": "fresh-01",
+      "arm": "tombo",
+      "repeat": 3,
+      "sequence": 3,
+      "sessionId": 29893,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "reasoning",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T21:56:52.018Z",
+          "startedAt": "2026-10-13T21:56:52.712Z",
+          "completedAt": "2026-10-13T21:57:03.685Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh02-baseline-r1-step1-20261014",
+      "caseId": "fresh-02",
+      "arm": "baseline",
+      "repeat": 1,
+      "sequence": 1,
+      "sessionId": 13145,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "reasoning",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T21:44:12.105Z",
+          "startedAt": "2026-10-13T21:44:12.778Z",
+          "completedAt": "2026-10-13T21:44:21.326Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh02-baseline-r1-step2-20261014",
+      "caseId": "fresh-02",
+      "arm": "baseline",
+      "repeat": 1,
+      "sequence": 2,
+      "sessionId": 13145,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T21:44:52.450Z",
+          "startedAt": "2026-10-13T21:44:53.306Z",
+          "completedAt": "2026-10-13T21:45:03.347Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh02-tombo-r1-step1-20261014",
+      "caseId": "fresh-02",
+      "arm": "tombo",
+      "repeat": 1,
+      "sequence": 1,
+      "sessionId": 44452,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T21:45:37.988Z",
+          "startedAt": "2026-10-13T21:45:38.982Z",
+          "completedAt": "2026-10-13T21:45:56.222Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh02-tombo-r1-step2-20261014",
+      "caseId": "fresh-02",
+      "arm": "tombo",
+      "repeat": 1,
+      "sequence": 2,
+      "sessionId": 44452,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "reasoning",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T21:47:22.609Z",
+          "startedAt": "2026-10-13T21:47:23.503Z",
+          "completedAt": "2026-10-13T21:47:39.126Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh02-baseline-r2-step1-20261014",
+      "caseId": "fresh-02",
+      "arm": "baseline",
+      "repeat": 2,
+      "sequence": 1,
+      "sessionId": 84212,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T21:50:51.805Z",
+          "startedAt": "2026-10-13T21:50:52.605Z",
+          "completedAt": "2026-10-13T21:51:00.876Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh02-baseline-r2-step2-20261014",
+      "caseId": "fresh-02",
+      "arm": "baseline",
+      "repeat": 2,
+      "sequence": 2,
+      "sessionId": 84212,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T21:51:31.403Z",
+          "startedAt": "2026-10-13T21:51:32.107Z",
+          "completedAt": "2026-10-13T21:51:42.860Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh02-tombo-r2-step1-20261014",
+      "caseId": "fresh-02",
+      "arm": "tombo",
+      "repeat": 2,
+      "sequence": 1,
+      "sessionId": 75247,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T21:48:25.817Z",
+          "startedAt": "2026-10-13T21:48:26.507Z",
+          "completedAt": "2026-10-13T21:48:47.185Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh02-tombo-r2-step2-20261014",
+      "caseId": "fresh-02",
+      "arm": "tombo",
+      "repeat": 2,
+      "sequence": 2,
+      "sessionId": 75247,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T21:49:38.469Z",
+          "startedAt": "2026-10-13T21:49:39.154Z",
+          "completedAt": "2026-10-13T21:49:54.390Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh02-tombo-r2-step3-20261014",
+      "caseId": "fresh-02",
+      "arm": "tombo",
+      "repeat": 2,
+      "sequence": 3,
+      "sessionId": 75247,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T21:50:08.466Z",
+          "startedAt": "2026-10-13T21:50:09.342Z",
+          "completedAt": "2026-10-13T21:50:19.321Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh02-baseline-r3-step1-20261014",
+      "caseId": "fresh-02",
+      "arm": "baseline",
+      "repeat": 3,
+      "sequence": 1,
+      "sessionId": 32616,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "reasoning",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T21:52:25.596Z",
+          "startedAt": "2026-10-13T21:52:27.735Z",
+          "completedAt": "2026-10-13T21:52:38.145Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh02-baseline-r3-step2-20261014",
+      "caseId": "fresh-02",
+      "arm": "baseline",
+      "repeat": 3,
+      "sequence": 2,
+      "sessionId": 32616,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T21:53:13.894Z",
+          "startedAt": "2026-10-13T21:53:14.832Z",
+          "completedAt": "2026-10-13T21:53:23.703Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh02-tombo-r3-step1-20261014",
+      "caseId": "fresh-02",
+      "arm": "tombo",
+      "repeat": 3,
+      "sequence": 1,
+      "sessionId": 74009,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "reasoning",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T21:54:01.434Z",
+          "startedAt": "2026-10-13T21:54:02.143Z",
+          "completedAt": "2026-10-13T21:54:22.122Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh02-tombo-r3-step2-20261014",
+      "caseId": "fresh-02",
+      "arm": "tombo",
+      "repeat": 3,
+      "sequence": 2,
+      "sessionId": 74009,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T21:54:40.141Z",
+          "startedAt": "2026-10-13T21:54:41.241Z",
+          "completedAt": "2026-10-13T21:54:52.582Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh03-baseline-r1-step1-20261014",
+      "caseId": "fresh-03",
+      "arm": "baseline",
+      "repeat": 1,
+      "sequence": 1,
+      "sessionId": 5398,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T21:59:48.776Z",
+          "startedAt": "2026-10-13T21:59:49.440Z",
+          "completedAt": "2026-10-13T21:59:56.490Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh03-baseline-r1-step2-20261014",
+      "caseId": "fresh-03",
+      "arm": "baseline",
+      "repeat": 1,
+      "sequence": 2,
+      "sessionId": 5398,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T22:00:37.288Z",
+          "startedAt": "2026-10-13T22:00:38.213Z",
+          "completedAt": "2026-10-13T22:00:48.730Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh03-tombo-r1-step1-20261014",
+      "caseId": "fresh-03",
+      "arm": "tombo",
+      "repeat": 1,
+      "sequence": 1,
+      "sessionId": 43472,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "reasoning",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T22:09:55.836Z",
+          "startedAt": "2026-10-13T22:09:56.515Z",
+          "completedAt": "2026-10-13T22:14:18.285Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh03-baseline-r2-step1-20261014",
+      "caseId": "fresh-03",
+      "arm": "baseline",
+      "repeat": 2,
+      "sequence": 1,
+      "sessionId": 99525,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T22:27:43.784Z",
+          "startedAt": "2026-10-13T22:27:44.968Z",
+          "completedAt": "2026-10-13T22:27:52.618Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh03-baseline-r2-step2-20261014",
+      "caseId": "fresh-03",
+      "arm": "baseline",
+      "repeat": 2,
+      "sequence": 2,
+      "sessionId": 99525,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T22:28:54.191Z",
+          "startedAt": "2026-10-13T22:28:55.136Z",
+          "completedAt": "2026-10-13T22:29:06.487Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh03-tombo-r2-step1-20261014",
+      "caseId": "fresh-03",
+      "arm": "tombo",
+      "repeat": 2,
+      "sequence": 1,
+      "sessionId": 38789,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "reasoning",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T22:16:47.832Z",
+          "startedAt": "2026-10-13T22:16:48.793Z",
+          "completedAt": "2026-10-13T22:17:13.982Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh03-tombo-r2-step2-20261014",
+      "caseId": "fresh-03",
+      "arm": "tombo",
+      "repeat": 2,
+      "sequence": 2,
+      "sessionId": 38789,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T22:17:41.426Z",
+          "startedAt": "2026-10-13T22:17:42.306Z",
+          "completedAt": "2026-10-13T22:18:05.813Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh03-tombo-r2-step3-20261014",
+      "caseId": "fresh-03",
+      "arm": "tombo",
+      "repeat": 2,
+      "sequence": 3,
+      "sessionId": 38789,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "reasoning",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T22:18:26.834Z",
+          "startedAt": "2026-10-13T22:18:27.572Z",
+          "completedAt": "2026-10-13T22:18:39.992Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh03-baseline-r3-step1-20261014",
+      "caseId": "fresh-03",
+      "arm": "baseline",
+      "repeat": 3,
+      "sequence": 1,
+      "sessionId": 1896,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T22:32:15.352Z",
+          "startedAt": "2026-10-13T22:32:16.146Z",
+          "completedAt": "2026-10-13T22:32:22.051Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh03-baseline-r3-step2-20261014",
+      "caseId": "fresh-03",
+      "arm": "baseline",
+      "repeat": 3,
+      "sequence": 2,
+      "sessionId": 1896,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T22:32:55.062Z",
+          "startedAt": "2026-10-13T22:32:55.875Z",
+          "completedAt": "2026-10-13T22:33:05.729Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh03-tombo-r3-step1-20261014",
+      "caseId": "fresh-03",
+      "arm": "tombo",
+      "repeat": 3,
+      "sequence": 1,
+      "sessionId": 75114,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "reasoning",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T22:35:34.925Z",
+          "startedAt": "2026-10-13T22:35:35.674Z",
+          "completedAt": "2026-10-13T22:36:01.345Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh03-tombo-r3-step2-20261014",
+      "caseId": "fresh-03",
+      "arm": "tombo",
+      "repeat": 3,
+      "sequence": 2,
+      "sessionId": 75114,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "reasoning",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T22:36:16.352Z",
+          "startedAt": "2026-10-13T22:36:17.238Z",
+          "completedAt": "2026-10-13T22:36:36.708Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh03-tombo-r3-step3-20261014",
+      "caseId": "fresh-03",
+      "arm": "tombo",
+      "repeat": 3,
+      "sequence": 3,
+      "sessionId": 75114,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "reasoning",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T22:37:13.635Z",
+          "startedAt": "2026-10-13T22:37:14.469Z",
+          "completedAt": "2026-10-13T22:37:26.089Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh04-baseline-r1-step1-20261014",
+      "caseId": "fresh-04",
+      "arm": "baseline",
+      "repeat": 1,
+      "sequence": 1,
+      "sessionId": 34023,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "reasoning",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T22:00:06.590Z",
+          "startedAt": "2026-10-13T22:00:07.265Z",
+          "completedAt": "2026-10-13T22:00:16.551Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh04-baseline-r1-step2-20261014",
+      "caseId": "fresh-04",
+      "arm": "baseline",
+      "repeat": 1,
+      "sequence": 2,
+      "sessionId": 34023,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T22:00:53.910Z",
+          "startedAt": "2026-10-13T22:00:54.535Z",
+          "completedAt": "2026-10-13T22:01:02.849Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh04-tombo-r1-step1-20261014",
+      "caseId": "fresh-04",
+      "arm": "tombo",
+      "repeat": 1,
+      "sequence": 1,
+      "sessionId": 58822,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "reasoning",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T22:09:34.368Z",
+          "startedAt": "2026-10-13T22:09:35.275Z",
+          "completedAt": "2026-10-13T22:09:51.978Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh04-tombo-r1-step2-20261014",
+      "caseId": "fresh-04",
+      "arm": "tombo",
+      "repeat": 1,
+      "sequence": 2,
+      "sessionId": 58822,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "reasoning",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T22:10:41.762Z",
+          "startedAt": "2026-10-13T22:11:12.681Z",
+          "completedAt": "2026-10-13T22:14:26.482Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh04-baseline-r2-step1-20261014",
+      "caseId": "fresh-04",
+      "arm": "baseline",
+      "repeat": 2,
+      "sequence": 1,
+      "sessionId": 4878,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "reasoning",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T22:20:36.508Z",
+          "startedAt": "2026-10-13T22:20:37.529Z",
+          "completedAt": "2026-10-13T22:20:46.713Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh04-baseline-r2-step2-20261014",
+      "caseId": "fresh-04",
+      "arm": "baseline",
+      "repeat": 2,
+      "sequence": 2,
+      "sessionId": 4878,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T22:21:07.233Z",
+          "startedAt": "2026-10-13T22:21:07.987Z",
+          "completedAt": "2026-10-13T22:21:16.109Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh04-tombo-r2-step1-20261014",
+      "caseId": "fresh-04",
+      "arm": "tombo",
+      "repeat": 2,
+      "sequence": 1,
+      "sessionId": 46409,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T22:17:18.447Z",
+          "startedAt": "2026-10-13T22:17:19.339Z",
+          "completedAt": "2026-10-13T22:17:37.633Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh04-tombo-r2-step2-20261014",
+      "caseId": "fresh-04",
+      "arm": "tombo",
+      "repeat": 2,
+      "sequence": 2,
+      "sessionId": 46409,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T22:17:54.155Z",
+          "startedAt": "2026-10-13T22:17:55.017Z",
+          "completedAt": "2026-10-13T22:18:07.749Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh04-baseline-r3-step1-20261014",
+      "caseId": "fresh-04",
+      "arm": "baseline",
+      "repeat": 3,
+      "sequence": 1,
+      "sessionId": 30159,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "reasoning",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T22:27:58.855Z",
+          "startedAt": "2026-10-13T22:27:59.620Z",
+          "completedAt": "2026-10-13T22:28:07.808Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh04-baseline-r3-step2-20261014",
+      "caseId": "fresh-04",
+      "arm": "baseline",
+      "repeat": 3,
+      "sequence": 2,
+      "sessionId": 30159,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T22:28:26.573Z",
+          "startedAt": "2026-10-13T22:28:27.325Z",
+          "completedAt": "2026-10-13T22:28:37.100Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh04-tombo-r3-step1-20261014",
+      "caseId": "fresh-04",
+      "arm": "tombo",
+      "repeat": 3,
+      "sequence": 1,
+      "sessionId": 65684,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "reasoning",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T22:31:54.327Z",
+          "startedAt": "2026-10-13T22:31:55.361Z",
+          "completedAt": "2026-10-13T22:32:11.244Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh04-tombo-r3-step2-20261014",
+      "caseId": "fresh-04",
+      "arm": "tombo",
+      "repeat": 3,
+      "sequence": 2,
+      "sessionId": 65684,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "reasoning",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T22:32:39.092Z",
+          "startedAt": "2026-10-13T22:32:39.866Z",
+          "completedAt": "2026-10-13T22:32:51.214Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh05-baseline-r1-step1-20261014",
+      "caseId": "fresh-05",
+      "arm": "baseline",
+      "repeat": 1,
+      "sequence": 1,
+      "sessionId": 22623,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T22:36:05.583Z",
+          "startedAt": "2026-10-13T22:36:06.673Z",
+          "completedAt": "2026-10-13T22:36:13.216Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh05-baseline-r1-step2-20261014",
+      "caseId": "fresh-05",
+      "arm": "baseline",
+      "repeat": 1,
+      "sequence": 2,
+      "sessionId": 22623,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T22:36:59.946Z",
+          "startedAt": "2026-10-13T22:37:00.644Z",
+          "completedAt": "2026-10-13T22:37:09.550Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh05-tombo-r1-step1-20261014",
+      "caseId": "fresh-05",
+      "arm": "tombo",
+      "repeat": 1,
+      "sequence": 1,
+      "sessionId": 46451,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "reasoning",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T22:44:38.417Z",
+          "startedAt": "2026-10-13T22:44:39.209Z",
+          "completedAt": "2026-10-13T22:45:01.769Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh05-tombo-r1-step2-20261014",
+      "caseId": "fresh-05",
+      "arm": "tombo",
+      "repeat": 1,
+      "sequence": 2,
+      "sessionId": 46451,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T22:45:16.909Z",
+          "startedAt": "2026-10-13T22:45:17.819Z",
+          "completedAt": "2026-10-13T22:45:36.688Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh05-baseline-r2-step1-20261014",
+      "caseId": "fresh-05",
+      "arm": "baseline",
+      "repeat": 2,
+      "sequence": 1,
+      "sessionId": 47017,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T23:39:18.174Z",
+          "startedAt": "2026-10-13T23:39:19.006Z",
+          "completedAt": "2026-10-13T23:39:26.406Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh05-baseline-r2-step2-20261014",
+      "caseId": "fresh-05",
+      "arm": "baseline",
+      "repeat": 2,
+      "sequence": 2,
+      "sessionId": 47017,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T23:40:07.308Z",
+          "startedAt": "2026-10-13T23:40:08.050Z",
+          "completedAt": "2026-10-13T23:40:17.397Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh05-tombo-r2-step1-20261014",
+      "caseId": "fresh-05",
+      "arm": "tombo",
+      "repeat": 2,
+      "sequence": 1,
+      "sessionId": 8949,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "reasoning",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T23:00:28.882Z",
+          "startedAt": "2026-10-13T23:00:29.626Z",
+          "completedAt": "2026-10-13T23:00:49.938Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh05-tombo-r2-step2-20261014",
+      "caseId": "fresh-05",
+      "arm": "tombo",
+      "repeat": 2,
+      "sequence": 2,
+      "sessionId": 8949,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T23:01:45.806Z",
+          "startedAt": "2026-10-13T23:01:46.566Z",
+          "completedAt": "2026-10-13T23:02:06.033Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh05-baseline-r3-step1-20261014",
+      "caseId": "fresh-05",
+      "arm": "baseline",
+      "repeat": 3,
+      "sequence": 1,
+      "sessionId": 65512,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T23:46:26.043Z",
+          "startedAt": "2026-10-13T23:46:26.813Z",
+          "completedAt": "2026-10-13T23:46:34.067Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh05-baseline-r3-step2-20261014",
+      "caseId": "fresh-05",
+      "arm": "baseline",
+      "repeat": 3,
+      "sequence": 2,
+      "sessionId": 65512,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T23:47:02.790Z",
+          "startedAt": "2026-10-13T23:47:03.788Z",
+          "completedAt": "2026-10-13T23:47:13.303Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh05-tombo-r3-step1-20261014",
+      "caseId": "fresh-05",
+      "arm": "tombo",
+      "repeat": 3,
+      "sequence": 1,
+      "sessionId": 98620,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "reasoning",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T23:57:51.462Z",
+          "startedAt": "2026-10-13T23:57:52.243Z",
+          "completedAt": "2026-10-13T23:58:18.588Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh05-tombo-r3-step2-20261014",
+      "caseId": "fresh-05",
+      "arm": "tombo",
+      "repeat": 3,
+      "sequence": 2,
+      "sessionId": 98620,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T23:59:13.340Z",
+          "startedAt": "2026-10-13T23:59:14.401Z",
+          "completedAt": "2026-10-13T23:59:32.277Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh06-baseline-r1-step1-20261014",
+      "caseId": "fresh-06",
+      "arm": "baseline",
+      "repeat": 1,
+      "sequence": 1,
+      "sessionId": 33078,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "reasoning",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T22:45:06.211Z",
+          "startedAt": "2026-10-13T22:45:06.949Z",
+          "completedAt": "2026-10-13T22:45:17.846Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh06-baseline-r1-step2-20261014",
+      "caseId": "fresh-06",
+      "arm": "baseline",
+      "repeat": 1,
+      "sequence": 2,
+      "sessionId": 33078,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T22:46:13.412Z",
+          "startedAt": "2026-10-13T22:46:14.113Z",
+          "completedAt": "2026-10-13T22:46:21.290Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh06-baseline-r1-step3-20261014",
+      "caseId": "fresh-06",
+      "arm": "baseline",
+      "repeat": 1,
+      "sequence": 3,
+      "sessionId": 33078,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T22:46:40.349Z",
+          "startedAt": "2026-10-13T22:46:41.124Z",
+          "completedAt": "2026-10-13T22:46:48.693Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh06-tombo-r1-step1-20261014",
+      "caseId": "fresh-06",
+      "arm": "tombo",
+      "repeat": 1,
+      "sequence": 1,
+      "sessionId": 38055,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "reasoning",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T23:00:53.802Z",
+          "startedAt": "2026-10-13T23:00:54.560Z",
+          "completedAt": "2026-10-13T23:01:09.897Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh06-tombo-r1-step2-20261014",
+      "caseId": "fresh-06",
+      "arm": "tombo",
+      "repeat": 1,
+      "sequence": 2,
+      "sessionId": 38055,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "reasoning",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T23:01:28.213Z",
+          "startedAt": "2026-10-13T23:01:29.096Z",
+          "completedAt": "2026-10-13T23:01:41.682Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh06-baseline-r2-step1-20261014",
+      "caseId": "fresh-06",
+      "arm": "baseline",
+      "repeat": 2,
+      "sequence": 1,
+      "sessionId": 21927,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T23:46:38.730Z",
+          "startedAt": "2026-10-13T23:46:39.499Z",
+          "completedAt": "2026-10-13T23:46:48.095Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh06-baseline-r2-step2-20261014",
+      "caseId": "fresh-06",
+      "arm": "baseline",
+      "repeat": 2,
+      "sequence": 2,
+      "sessionId": 21927,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T23:47:29.643Z",
+          "startedAt": "2026-10-13T23:47:30.444Z",
+          "completedAt": "2026-10-13T23:48:36.994Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh06-tombo-r2-step1-20261014",
+      "caseId": "fresh-06",
+      "arm": "tombo",
+      "repeat": 2,
+      "sequence": 1,
+      "sessionId": 71006,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "reasoning",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T23:39:31.230Z",
+          "startedAt": "2026-10-13T23:39:32.025Z",
+          "completedAt": "2026-10-13T23:39:44.077Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh06-tombo-r2-step2-20261014",
+      "caseId": "fresh-06",
+      "arm": "tombo",
+      "repeat": 2,
+      "sequence": 2,
+      "sessionId": 71006,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T23:40:23.183Z",
+          "startedAt": "2026-10-13T23:40:23.993Z",
+          "completedAt": "2026-10-13T23:40:35.763Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh06-baseline-r3-step1-20261014",
+      "caseId": "fresh-06",
+      "arm": "baseline",
+      "repeat": 3,
+      "sequence": 1,
+      "sessionId": 49310,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "reasoning",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T23:58:23.894Z",
+          "startedAt": "2026-10-13T23:58:24.677Z",
+          "completedAt": "2026-10-13T23:58:34.211Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh06-baseline-r3-step2-20261014",
+      "caseId": "fresh-06",
+      "arm": "baseline",
+      "repeat": 3,
+      "sequence": 2,
+      "sessionId": 49310,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-13T23:58:49.592Z",
+          "startedAt": "2026-10-13T23:58:50.862Z",
+          "completedAt": "2026-10-13T23:58:59.357Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh06-tombo-r3-step1-20261014",
+      "caseId": "fresh-06",
+      "arm": "tombo",
+      "repeat": 3,
+      "sequence": 1,
+      "sessionId": 98613,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "reasoning",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-14T00:00:17.344Z",
+          "startedAt": "2026-10-14T00:00:18.110Z",
+          "completedAt": "2026-10-14T00:00:32.112Z"
+        }
+      ],
+      "visibleToolActivity": false
+    },
+    {
+      "taskId": "node:delegated-task:command%3Amcp%3A56ff5b4a-8f90-4a30-a414-55fb9454e9a6%3Adelegate-task%3Atombo-eval-epoch2-fresh06-tombo-r3-step2-20261014",
+      "caseId": "fresh-06",
+      "arm": "tombo",
+      "repeat": 3,
+      "sequence": 2,
+      "sessionId": 98613,
+      "status": "completed",
+      "hasPendingChildRuns": false,
+      "provider": "codex",
+      "model": "gpt-6.1-sol",
+      "activityHasMore": false,
+      "activityTypes": [
+        "user_message",
+        "reasoning",
+        "assistant_message",
+        "checkpoint"
+      ],
+      "recentRuns": [
+        {
+          "status": "completed",
+          "provider": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-14T00:00:53.862Z",
+          "startedAt": "2026-10-14T00:00:54.602Z",
+          "completedAt": "2026-10-14T00:01:05.096Z"
+        }
+      ],
+      "visibleToolActivity": false
+    }
+  ],
+  "hiddenUpstream": "UNKNOWN",
+  "cost": "UNKNOWN",
+  "tokens": "UNKNOWN"
+}

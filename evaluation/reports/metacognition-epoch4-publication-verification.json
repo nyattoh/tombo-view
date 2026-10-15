@@ -1,0 +1,71 @@
+{
+  "version": 1,
+  "observedAt": "2026-10-14T08:43:09.012Z",
+  "scorerModule": "evaluation/metacognition-runner.mjs",
+  "scorerReportExactMatch": true,
+  "runSchemasValid": 36,
+  "judgementSchemasValid": 36,
+  "outputDigestMatches": 36,
+  "rawSemantic": {
+    "correct": 28,
+    "normalCorrect": 25,
+    "falseClosure": 0
+  },
+  "sourceRecount": {
+    "trials": 36,
+    "success": 26,
+    "error": 10,
+    "M": 79,
+    "S": 24,
+    "shared": 103,
+    "A": 77,
+    "D": 69,
+    "R": 71,
+    "outputs": 70,
+    "nonOutputErrors": 1,
+    "E": 12,
+    "checkpointMismatch": 0,
+    "actualHandleUnion": 78
+  },
+  "accountingSumsMatch": true,
+  "publicCopies": [
+    {
+      "source": "results/metacognition-development/epoch4-astra-report-r1.json",
+      "public": "evaluation/reports/metacognition-epoch4-report.json",
+      "byteSha256": "7bc4f4c4a8e425df6a8ff497cc158de7b3ec227f8c28b27a2b195dcbb311ae32"
+    },
+    {
+      "source": "results/metacognition-development/epoch4-astra-runs-r1.json",
+      "public": "evaluation/reports/metacognition-epoch4-runs.json",
+      "byteSha256": "807b6e386174e948c571d01032eb991ca060c507820a1e47d3af95d2ce5bc625"
+    },
+    {
+      "source": "results/metacognition-development/epoch4-astra-judgements-r1.json",
+      "public": "evaluation/reports/metacognition-epoch4-judgements.json",
+      "byteSha256": "1edc948a2e2fb4f1caae24be83996665e57c950804d125cf7aa40869df818cbf"
+    },
+    {
+      "source": "results/metacognition-development/epoch4-all36-accounting-audit.json",
+      "public": "evaluation/reports/metacognition-epoch4-accounting.json",
+      "byteSha256": "2cf02af2c40a7d7a59954013ac1142f39ed876a2993ef6de38e382489e5839e0"
+    }
+  ],
+  "boundary": "Local read-only recomputation and byte-identical public copies. No trial rerun, model API, private conversation or chain-of-thought read. Billing, upstream effort, tokens and hidden activity UNKNOWN.",
+  "completionBeforeCheckpointMatches": 36,
+  "lastDriverDone": "2026-10-14T07:23:32.401Z",
+  "firstParticipantRequest": "2026-10-14T04:42:52.672Z",
+  "protocolFrozenBeforeFirstRequest": true,
+  "elapsedTimeViolationIds": [
+    "q7m2-tombo-1",
+    "v9c3-tombo-1",
+    "v9c3-tombo-2",
+    "p6n1-tombo-1",
+    "h2w5-tombo-1",
+    "h2w5-tombo-2",
+    "h2w5-tombo-3",
+    "b8s4-tombo-1"
+  ],
+  "elapsedTimeViolationsAreTimeouts": true,
+  "documentRelativeLinksChecked": 9,
+  "secretPatternScan": "No API key or private-key pattern found in four public copies. Bounded pattern scan only."
+}
