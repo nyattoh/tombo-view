@@ -161,3 +161,18 @@ test('report does not present a corrected historical inconclusive reason as a cu
   assert.match(report, /訂正前: 不明/);
   assert.match(report, /訂正後: 支持/);
 });
+
+test('report preserves an earlier current inconclusive reason when a later assessment evidence is withdrawn', async () => {
+  let proposal = initialProposal;
+  const tombo = createTombo({ adapter: { async generate() { return { proposal, usage: { totalTokens: null, outputTokens: 0, costYen: null } }; } } });
+  const packet = { schemaVersion: '0.1', taskId: 'report-current-reason', mode: 'explain', goal: 'Check both conditions.', successCriteria: ['Both at most 800 ms.'], proposedAnswer: 'Both below 800 ms.', reflectionRequired: true, evidence: [], capabilities: ['read_document'], budget: { maxRounds: 10, maxModelCalls: 15, maxToolCalls: 10, maxElapsedMs: 120000, maxInputChars: 100000, maxOutputTokensPerCall: 4000 } };
+  const first = await tombo.inspect(packet);
+  proposal = { assessments: [{ ...wrong, verdict: 'inconclusive', reason: 'Earlier current reason.' }] };
+  const assessed = await tombo.update(first.state, [observation('warm-read')]);
+  proposal = { assessments: [{ ...wrong, evidenceIds: ['cold'], verdict: 'inconclusive', reason: 'Later withdrawn reason.' }] };
+  const later = await tombo.update(assessed.state, [observation('cold-read', [cold])]);
+  const withdrawn = tombo.invalidate(later.state, { evidenceIds: ['cold'], reason: 'The later report was withdrawn.' });
+  const report = renderMarkdownReport(withdrawn.state);
+  assert.match(report, /Earlier current reason\./);
+  assert.doesNotMatch(report, /Later withdrawn reason\./);
+});

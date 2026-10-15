@@ -165,15 +165,20 @@ test('report shows the latest bounded inconclusive reason without turning it int
   assert.equal(state.claims[0].status, 'unverified');
 });
 
-for (const [name, options] of [['withdrawn', { validity: 'withdrawn' }], ['superseded', { validity: 'superseded' }], ['mismatched evidence scope', { scope: 'different-range' }], ['unmatched assessment scope', { scopeMatched: false }], ['newer support', { latestVerdict: 'supports' }]]) test(`report does not show outdated inconclusive reasons after ${name}`, async () => {
+for (const [name, options] of [['withdrawn', { validity: 'withdrawn' }], ['superseded', { validity: 'superseded' }], ['mismatched evidence scope', { scope: 'different-range' }], ['unmatched assessment scope', { scopeMatched: false }]]) test(`report keeps an earlier current inconclusive reason after a later ${name} assessment`, async () => {
   const state = await inconclusiveReportState(options);
+  const report = renderMarkdownReport(state);
+  assert.match(report, /証拠評価の理由（不明）/);
+  assert.match(report, /Old no-record-yet explanation/);
+  assert.doesNotMatch(report, /The current record does not identify the boundary/);
+});
+
+test('report does not show an earlier inconclusive reason after a later current support assessment', async () => {
+  const state = await inconclusiveReportState({ latestVerdict: 'supports' });
   const report = renderMarkdownReport(state);
   assert.doesNotMatch(report, /証拠評価の理由（不明）/);
   assert.doesNotMatch(report, /Old no-record-yet explanation/);
   assert.doesNotMatch(report, /The current record does not identify the boundary/);
-  const withoutReasons = structuredClone(state);
-  withoutReasons.claims[0].assessments = [];
-  assert.equal(renderMarkdownReport(withoutReasons), report);
 });
 
 test('report labels an inconclusive cached assessment as saved and not revalidated', async () => {

@@ -127,6 +127,36 @@ test('already aborted execution returns no understanding state', async () => {
   const result = await runUnderstandingCheck({ tombo: tombo(), task: packet(), critic, executor: executor(), signal: controller.signal });
   assert.deepEqual(result, { status: 'stopped', reason: 'runner_aborted', result: null });
 });
+test('abort returns promptly while initial inspect is pending', async () => {
+  const controller = new AbortController();
+  let started;
+  const inspectionStarted = new Promise(resolve => { started = resolve; });
+  const sdk = tombo();
+  const pendingTombo = { ...sdk, inspect() { started(); return new Promise(() => {}); } };
+  const run = runUnderstandingCheck({ tombo: pendingTombo, task: packet(), critic, executor: executor(), signal: controller.signal });
+  await inspectionStarted;
+  controller.abort();
+  const result = await Promise.race([run, new Promise(resolve => setTimeout(() => resolve('abort_timeout'), 100))]);
+  assert.notEqual(result, 'abort_timeout', 'runner should not wait for inspect to settle after cancellation');
+  assert.deepEqual(result, { status: 'stopped', reason: 'runner_aborted', result: null });
+});
+test('abort returns the current state promptly while reflection is pending', async () => {
+  const controller = new AbortController();
+  let started;
+  const reflectionStarted = new Promise(resolve => { started = resolve; });
+  const sdk = tombo();
+  const current = structuredClone(await sdk.inspect({ ...packet(), reflectionRequired: true }));
+  current.state.decision = 'needs_reflection';
+  const pendingTombo = { ...sdk, inspect: async () => current, reflect() { started(); return new Promise(() => {}); } };
+  const run = runUnderstandingCheck({ tombo: pendingTombo, task: packet(), critic, executor: executor(), signal: controller.signal });
+  await reflectionStarted;
+  controller.abort();
+  const result = await Promise.race([run, new Promise(resolve => setTimeout(() => resolve('abort_timeout'), 100))]);
+  assert.notEqual(result, 'abort_timeout', 'runner should not wait for reflection to settle after cancellation');
+  assert.equal(result.status, 'stopped');
+  assert.equal(result.reason, 'runner_aborted');
+  assert.equal(result.result, current);
+});
 test('bounded cycles stop before a physical probe and keep initial understanding', async () => {
   const result = await runUnderstandingCheck({ tombo: tombo(), task: packet(), critic, executor: executor(), maxCycles: 0 });
   assert.equal(result.status, 'stopped');

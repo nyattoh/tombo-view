@@ -35,12 +35,16 @@ export function renderMarkdownReport(input: InspectionResult | UnderstandingStat
   const inconclusiveReasons: string[] = [];
   for (const claim of state.claims) {
     if (claim.role !== 'answer_claim') continue;
-    const assessment = state.assessmentCorrections?.length
-      ? claim.assessments.filter(item => !state.assessmentCorrections?.some(correction => correction.targetDigest === assessmentDigest(item))).at(-1)
-      : claim.assessments.at(-1);
-    if (assessment?.verdict !== 'inconclusive' || !assessment.scopeMatched) continue;
+    const assessment = claim.assessments.filter(item => {
+      if (state.assessmentCorrections?.some(correction => correction.targetDigest === assessmentDigest(item))) return false;
+      if (!item.scopeMatched) return false;
+      return item.evidenceIds.every(id => {
+        const evidence = state.evidence.find(candidate => candidate.id === id);
+        return evidence?.validity === 'current' && evidence.scope === claim.scope;
+      });
+    }).at(-1);
+    if (assessment?.verdict !== 'inconclusive') continue;
     const evidence = assessment.evidenceIds.map(id => state.evidence.find(item => item.id === id));
-    if (!evidence.every(item => item?.validity === 'current' && item.scope === claim.scope)) continue;
     const saved = evidence.some(item => item?.passageUnavailable) ? '保存時の評価。本文未取得・未再検証。' : '';
     inconclusiveReasons.push(`- ${safe(claim.text)}。${saved}理由: ${safe(assessment.reason)}。参照証拠: ${assessment.evidenceIds.map(safe).join('、')}。範囲: ${safe(claim.scope)}`);
   }

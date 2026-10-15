@@ -52,7 +52,15 @@ export async function runUnderstandingCheck(options: RunUnderstandingOptions): P
   if (!Number.isSafeInteger(maxCycles) || maxCycles < 0) throw new TomboError('invalid_input', 'maxCycles must be a nonnegative integer');
   if (signal?.aborted) return { status: 'stopped', reason: 'runner_aborted', result: null };
   const task = taskPacketSchema.parse({ ...options.task, reflectionRequired: true });
-  let current = await tombo.inspect(task);
+  let current: InspectionResult;
+  try {
+    current = await bounded(() => tombo.inspect(task), signal ?? new AbortController().signal, task.budget.maxElapsedMs);
+  } catch (error) {
+    if (error instanceof TomboError && ['runner_aborted', 'runner_timeout'].includes(error.message)) {
+      return { status: 'stopped', reason: error.message, result: null };
+    }
+    throw error;
+  }
   const stop = (reason: string): RunUnderstandingResult => ({ status: 'stopped', reason, result: current });
   const attempted = new Set<string>();
   for (let cycle = 0; ; cycle++) {
@@ -62,7 +70,17 @@ export async function runUnderstandingCheck(options: RunUnderstandingOptions): P
     if (current.state.decision !== 'needs_check' && current.state.decision !== 'needs_reflection') return stop(current.state.stopReason ?? current.state.decision);
     if (cycle >= maxCycles) return stop('cycle_limit');
     if (current.state.decision === 'needs_reflection') {
-      current = await tombo.reflect(current.state, critic);
+      const remaining = current.state.task.budget.maxElapsedMs - Math.max(
+        current.state.usage.elapsedMs,
+        Date.now() - Date.parse(current.state.startedAt),
+      );
+      if (remaining <= 0) return stop('budget_exhausted');
+      try {
+        current = await bounded(() => tombo.reflect(current.state, critic), signal ?? new AbortController().signal, remaining);
+      } catch (error) {
+        if (error instanceof TomboError && ['runner_aborted', 'runner_timeout'].includes(error.message)) return stop(error.message);
+        throw error;
+      }
       continue;
     }
     const state = current.state;
