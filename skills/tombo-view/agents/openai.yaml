@@ -1,4 +1,4 @@
 interface:
   display_name: "tombo-view"
-  short_description: "回答案の根拠と未確認の前提を証拠・検査・状態更新で点検する"
-  default_prompt: "$tombo-view 直前の回答の根拠と未確認の前提を点検して。"
+  short_description: "回答や行動案の理解・根拠・未知を点検し、人に聞く次の一手も判断する"
+  default_prompt: "$tombo-view この回答や行動案が何に依存し、何を確認すべきか点検して。必要なら、本人に聞く理由も示して。"

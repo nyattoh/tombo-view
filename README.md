@@ -1,6 +1,6 @@
 # TOMBO
 
-AIが自分の理解を確かめる複眼ツール。回答案や操作予定を、主張、証拠、未確認事項、検査へ分け、追加証拠に応じて状態を更新します。
+TOMBOは、AIが回答案や実行計画の根拠・未確認事項・次に確かめることを見える形にする点検手順です。事実は許可された能力で調べ、本人の意図や希望で結論が変わるときは理由を添えて尋ね、解けない未知は残します。
 
 **v0.1 は探索的な試作品です。** TypeScript SDK、CLI、会話内スキルで、証拠に応じた状態更新と再考を実行します。4回の実モデル比較はいずれも受入条件を満たしていません。第4回は36試行中26試行が正常終了し、通常再点検は17/18、TOMBOは9/18でした。全件を別モデルで採点しましたが、採点者は同じOpenAI系列であり、異なるベンダーによる検証ではありません。比較終了後の修正を含む全494試験が親の環境で成功しました。修正後の効果は新規比較で未確認です。[最新の比較結果と限界](docs/metacognition-evaluation-epoch4.md)を参照してください。未知をすべて発見する能力、完全な理解、幻覚の防止を保証しません。
 
@@ -8,7 +8,7 @@ AIが自分の理解を確かめる複眼ツール。回答案や操作予定を
 
 ## 会話で使う
 
-スキルの呼び出し名は `tombo-view` です。Codexでは `$tombo-view この回答の根拠と未確認の前提を点検して` と依頼します。`skills/tombo-view` をエージェントのスキル配置先へ入れると、会話中のAIが検査候補を作り、同梱の `scripts/session.mjs` がSDKで状態を検証します。追加のLLM APIキーや生成サービスは不要です。
+スキル名は tombo-view です。対応ホストで、回答や操作予定の根拠、未確認事項、次に確かめること、人に聞くべき点を依頼します。会話中のAIが検査候補を作り、同梱ヘルパーがSDKで状態を検証します。追加のLLM APIキーや生成サービスは不要です。
 
 固定デモに限定せず、許可された資料やコードを使って点検できます。利用者がJSONやアダプタを書く必要はありません。AIが入力、検査、証拠評価を用意します。SDKは参照や状態の整合性を確認しますが、AIの証拠評価の意味まで保証しません。
 
@@ -105,7 +105,46 @@ node --env-file=.env dist/cli.js inspect --input your-task.json --adapter file:e
 
 ## エージェント用スキル
 
-`skills/tombo-view` ディレクトリ全体を利用するエージェントのスキル配置先へコピーし、上記のSDK配置設定を行います。会話内モードではAIが提案を作り、同梱ヘルパーが適用します。スキルを読むだけで検査成功を保証しません。
+### 導入前の共通準備
+
+Node.js 22以上を使います。TOMBOのリポジトリルートで、先に依存関係を復元してSDKをビルドします。
+
+```sh
+npm ci
+npm run build
+```
+
+`npm run build` が `dist/index.js` を生成します。`skills/tombo-view` の**ディレクトリ全体**をコピーしてください。`SKILL.md` だけでは、同梱の `scripts/` と `references/` がなく、会話内ヘルパーを実行できません。
+
+### 製品ごとの配置先
+
+ユーザー単位の配置はそのユーザーの全プロジェクトで使うとき、プロジェクト単位の配置はリポジトリで共有するときに選びます。`<repo>` はTOMBOをビルドしたリポジトリのルートです。Windowsでは `~` は `%USERPROFILE%` に相当します。
+
+| 製品 | ユーザー単位 | プロジェクト単位 | 呼び出し・発見の確認 |
+| --- | --- | --- | --- |
+| [Codex](https://developers.openai.com/codex/skills) | <code>~/.agents/skills/tombo-view/</code> | <code>&lt;repo&gt;/.agents/skills/tombo-view/</code> | <code>$tombo-view</code> |
+| [Claude Code](https://code.claude.com/docs/en/skills) | <code>~/.claude/skills/tombo-view/</code> | <code>&lt;repo&gt;/.claude/skills/tombo-view/</code> | <code>/tombo-view</code> |
+| [Gemini CLI](https://geminicli.com/docs/cli/using-agent-skills/) | <code>~/.gemini/skills/tombo-view/</code> または <code>~/.agents/skills/tombo-view/</code> | <code>&lt;repo&gt;/.gemini/skills/tombo-view/</code> または <code>&lt;repo&gt;/.agents/skills/tombo-view/</code> | 自然文で依頼。<code>/skills list</code> で発見を確認 |
+| [Grok Build](https://docs.x.ai/build/features/skills-plugins-marketplaces) | <code>~/.grok/skills/tombo-view/</code> | <code>&lt;repo&gt;/.grok/skills/tombo-view/</code> | <code>/tombo-view</code> |
+| [Pi](https://pi.dev/docs/latest/skills) | <code>~/.agents/skills/tombo-view/</code> | <code>&lt;repo&gt;/.agents/skills/tombo-view/</code> | <code>/skill:tombo-view</code> |
+
+各ホストのユーザー単位またはプロジェクト単位の場所へ、skills/tombo-view ディレクトリ全体をコピーします。Gemini CLIとPiでもAgent Skills形式のSKILL.mdと付属ファイルを読み込めます。Grokの説明はGrok Build向けで、一般のGrokチャットやWeb版全般の対応を意味しません。
+
+### SDKの場所を指定する
+
+コピー先はリポジトリ内の `skills/tombo-view/` と階層が異なるため、各コピー先の `references/runtime.json` にビルド済みリポジトリの絶対パスを設定してください。
+
+```json
+{
+  "repositoryRoot": "D:/path/to/tombo-view"
+}
+```
+
+`<配置先>/references/runtime.json` を作成または編集します。代わりに、エージェントを起動する環境で `TOMBO_ROOT` を設定できます。たとえばPowerShellでは `$env:TOMBO_ROOT = "D:\path\to\tombo-view"`、macOS/Linuxでは `export TOMBO_ROOT=/path/to/tombo-view` とします。`TOMBO_ROOT` は `runtime.json` より優先されます。ユーザー単位のスキルを複数のTOMBOリポジトリで使う場合は、プロセスごとに `TOMBO_ROOT` を設定するか、各リポジトリにプロジェクト単位で配置してください。
+
+### 確認の範囲
+
+`npm test` と `npm run typecheck` はTOMBO本体のテストです。各製品でのスキル発見、スラッシュコマンド、会話内ヘルパーのライブ動作は別の確認です。現時点でCodex、Claude Code、Gemini CLI、Grok Build、Piの実機統合テストは行っていません。スキルを配置しただけで検査成功が保証されるわけではありません。
 
 ## Hidden-Side Observation（任意）
 
@@ -302,3 +341,31 @@ Withdrawing evidence discards a pending assessment batch and reopens required pr
 Tests cover state invariants, usage, budgets, replay, concurrency conflicts, and actual CLI calls. Structural validation does not prove semantic correctness. Compare TOMBO with a general recheck using the same model, evidence, tools, and budgets. Keep evaluation annotations away from model inputs and use independent assessment. All four real-model comparisons failed readiness. Live HTTP-provider integration and statistical effectiveness remain unverified.
 
 The agent skill is in `skills/tombo-view/SKILL.md`. Development checks are `npm run typecheck`, `npm test`, and `npm run demo`. CI targets Linux and Windows with Node.js 22 and 24. The project uses the MIT licence. No third-party PDF or private conversation is distributed. Academic novelty has not been established.
+
+### Install the skill in Codex, Claude Code, Gemini CLI, Grok Build, or Pi
+
+Use Node.js 22 or later. From the TOMBO repository root, run `npm ci` and `npm run build` first; the skill helper imports the resulting `dist/index.js`. Copy the **entire** `skills/tombo-view/` directory, including `SKILL.md`, `scripts/`, and `references/`, into one of the locations below. Here, `<repo>` is the root of the built TOMBO repository. On Windows, `~` means `%USERPROFILE%`.
+
+| Product | User scope | Project scope | Invocation or discovery check |
+| --- | --- | --- | --- |
+| [Codex](https://developers.openai.com/codex/skills) | <code>~/.agents/skills/tombo-view/</code> | <code>&lt;repo&gt;/.agents/skills/tombo-view/</code> | <code>$tombo-view</code> |
+| [Claude Code](https://code.claude.com/docs/en/skills) | <code>~/.claude/skills/tombo-view/</code> | <code>&lt;repo&gt;/.claude/skills/tombo-view/</code> | <code>/tombo-view</code> |
+| [Gemini CLI](https://geminicli.com/docs/cli/using-agent-skills/) | <code>~/.gemini/skills/tombo-view/</code> or <code>~/.agents/skills/tombo-view/</code> | <code>&lt;repo&gt;/.gemini/skills/tombo-view/</code> or <code>&lt;repo&gt;/.agents/skills/tombo-view/</code> | Ask naturally; check discovery with <code>/skills list</code> |
+| [Grok Build](https://docs.x.ai/build/features/skills-plugins-marketplaces) | <code>~/.grok/skills/tombo-view/</code> | <code>&lt;repo&gt;/.grok/skills/tombo-view/</code> | <code>/tombo-view</code> |
+| [Pi](https://pi.dev/docs/latest/skills) | <code>~/.agents/skills/tombo-view/</code> | <code>&lt;repo&gt;/.agents/skills/tombo-view/</code> | <code>/skill:tombo-view</code> |
+
+Copy the complete skills/tombo-view/ directory to one of the listed paths. Gemini CLI and Pi accept this Agent Skills directory format; use /skills list in Gemini CLI and /skill:tombo-view in Pi. Grok instructions apply to Grok Build only, not general Grok chat or the Grok website.
+
+#### Point the skill at the built SDK
+
+Because each host-specific folder is outside `skills/tombo-view/`, create or edit `<skill destination>/references/runtime.json` to set the SDK repository root:
+
+```json
+{
+  "repositoryRoot": "D:/path/to/tombo-view"
+}
+```
+
+Alternatively, set `TOMBO_ROOT` in the environment that starts the agent (`$env:TOMBO_ROOT = "D:\path\to\tombo-view"` in PowerShell, or `export TOMBO_ROOT=/path/to/tombo-view` on macOS/Linux). `TOMBO_ROOT` takes precedence over `runtime.json`. For a user-scope skill used with several repositories, set `TOMBO_ROOT` for each agent process or install a project-scope copy in each repository.
+
+`npm test` and `npm run typecheck` verify TOMBO itself. They do not confirm skill discovery, slash-command handling, or the live session helper in any host. Live integration with Codex, Claude Code, Gemini CLI, Grok Build, and Pi has not been verified.
