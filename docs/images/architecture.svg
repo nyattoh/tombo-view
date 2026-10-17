@@ -1,0 +1,211 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1120" viewBox="0 0 1200 1120" role="img" aria-labelledby="title desc">
+<title id="title">TOMBO: compound-eye inspiration, evidence-driven checking</title>
+<desc id="desc">A stylized dragonfly and magnified faceted eye illustrate multiple viewpoints as a metaphor. The actual implementation takes a task and evidence, obtains proposals from a generation adapter, validates evidence-linked state and selects probes, and reports decisions and unresolved gaps. The caller executes authorized probes and returns observations. Optional Hidden-Side geometry supplies unverified candidates only; it cannot create evidence or resolve claims.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#3058c9"/></marker><marker id="teal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#147c78"/></marker><clipPath id="eye"><ellipse cx="476" cy="244" rx="102" ry="102"/></clipPath></defs>
+<rect width="1200" height="1120" rx="24" fill="#f8f7f2"/>
+<style>text{font-family:DejaVu Sans,Arial,sans-serif;fill:#172a3a}.title{font-size:34px;font-weight:700}.sub{font-size:18px;fill:#506374}.eyebrow{font-size:13px;font-weight:700;letter-spacing:1.6px;fill:#3058c9}.head{font-size:20px;font-weight:700}.body{font-size:16px}.small{font-size:14px;fill:#506374}.code{font-family:DejaVu Sans Mono,monospace;font-size:14px;fill:#3058c9}.line{fill:none;stroke:#3058c9;stroke-width:2.5;marker-end:url(#arrow)}.dash{fill:none;stroke:#147c78;stroke-width:2.3;stroke-dasharray:6 5;marker-end:url(#teal)}</style>
+<text x="40" y="54" class="title">TOMBO</text>
+<text x="195" y="54" class="head">Many viewpoints. Evidence-linked understanding.</text>
+<text x="40" y="88" class="sub">A compound-eye metaphor for checking a draft, its assumptions, and what remains unknown.</text>
+<rect x="40" y="115" width="1120" height="264" rx="16" fill="#eeF2f6" stroke="#e2e6e9"/>
+<text x="62" y="145" class="eyebrow">01  /  INSPIRATION</text>
+<g stroke="#476b92" stroke-width="2" fill="#dbe7ee">
+<path d="M208 228 C125 141 62 165 84 202 C105 226 163 234 208 242Z"/>
+<path d="M216 228 C292 140 349 163 331 199 C310 225 262 233 216 242Z"/>
+<path d="M206 244 C125 215 71 245 94 270 C118 289 171 265 208 254Z"/>
+<path d="M218 244 C292 213 346 241 324 268 C300 288 256 266 218 254Z"/>
+<path d="M212 240L89 184" fill="none" opacity=".45"/>
+<path d="M212 240L108 204" fill="none" opacity=".45"/>
+<path d="M212 240L136 184" fill="none" opacity=".45"/>
+<path d="M212 240L96 253" fill="none" opacity=".45"/>
+<path d="M212 240L135 250" fill="none" opacity=".45"/>
+<path d="M212 240L329 184" fill="none" opacity=".45"/>
+<path d="M212 240L307 202" fill="none" opacity=".45"/>
+<path d="M212 240L280 184" fill="none" opacity=".45"/>
+<path d="M212 240L320 251" fill="none" opacity=".45"/>
+<path d="M212 240L282 249" fill="none" opacity=".45"/>
+</g><path d="M202 244 Q212 234 222 244 L218 319 L212 348 L206 319Z" fill="#3058c9"/>
+<path d="M206 263H218" stroke="#9fb7ee" stroke-width="2"/>
+<path d="M206 275H218" stroke="#9fb7ee" stroke-width="2"/>
+<path d="M206 287H218" stroke="#9fb7ee" stroke-width="2"/>
+<path d="M206 299H218" stroke="#9fb7ee" stroke-width="2"/>
+<path d="M206 311H218" stroke="#9fb7ee" stroke-width="2"/>
+<path d="M206 323H218" stroke="#9fb7ee" stroke-width="2"/>
+<ellipse cx="212" cy="236" rx="15" ry="23" fill="#172a3a"/><ellipse cx="199" cy="207" rx="19" ry="20" fill="#147c78"/><ellipse cx="225" cy="207" rx="19" ry="20" fill="#147c78"/>
+<circle cx="192" cy="198" r="4" fill="#98d5cf"/>
+<circle cx="204" cy="198" r="4" fill="#98d5cf"/>
+<circle cx="187" cy="209" r="4" fill="#98d5cf"/>
+<circle cx="199" cy="211" r="4" fill="#98d5cf"/>
+<circle cx="211" cy="208" r="4" fill="#98d5cf"/>
+<circle cx="219" cy="197" r="4" fill="#98d5cf"/>
+<circle cx="230" cy="200" r="4" fill="#98d5cf"/>
+<circle cx="219" cy="211" r="4" fill="#98d5cf"/>
+<circle cx="232" cy="212" r="4" fill="#98d5cf"/>
+<path d="M243 204 L375 171 M243 216 L375 319" fill="none" stroke="#a4b4c7" stroke-width="1.5" stroke-dasharray="4 4"/>
+<ellipse cx="476" cy="244" rx="104" ry="104" fill="#d9e6f5" stroke="#3058c9" stroke-width="2"/><g clip-path="url(#eye)">
+<polygon points="370.0,98.4 360.0,115.7 340.0,115.7 330.0,98.4 340.0,81.1 360.0,81.1" fill="#d4e3fa" stroke="#fff" stroke-width="2"/>
+<polygon points="370.0,134.8 360.0,152.1 340.0,152.1 330.0,134.8 340.0,117.5 360.0,117.5" fill="#acc9f1" stroke="#fff" stroke-width="2"/>
+<polygon points="370.0,171.2 360.0,188.5 340.0,188.5 330.0,171.2 340.0,153.9 360.0,153.9" fill="#73bcb9" stroke="#fff" stroke-width="2"/>
+<polygon points="370.0,207.6 360.0,224.9 340.0,224.9 330.0,207.6 340.0,190.3 360.0,190.3" fill="#e8f1fc" stroke="#fff" stroke-width="2"/>
+<polygon points="370.0,244.0 360.0,261.3 340.0,261.3 330.0,244.0 340.0,226.7 360.0,226.7" fill="#d4e3fa" stroke="#fff" stroke-width="2"/>
+<polygon points="370.0,280.4 360.0,297.7 340.0,297.7 330.0,280.4 340.0,263.1 360.0,263.1" fill="#acc9f1" stroke="#fff" stroke-width="2"/>
+<polygon points="370.0,316.8 360.0,334.1 340.0,334.1 330.0,316.8 340.0,299.5 360.0,299.5" fill="#73bcb9" stroke="#fff" stroke-width="2"/>
+<polygon points="370.0,353.2 360.0,370.5 340.0,370.5 330.0,353.2 340.0,335.9 360.0,335.9" fill="#e8f1fc" stroke="#fff" stroke-width="2"/>
+<polygon points="370.0,389.6 360.0,406.9 340.0,406.9 330.0,389.6 340.0,372.3 360.0,372.3" fill="#d4e3fa" stroke="#fff" stroke-width="2"/>
+<polygon points="401.5,116.6 391.5,133.9 371.5,133.9 361.5,116.6 371.5,99.3 391.5,99.3" fill="#acc9f1" stroke="#fff" stroke-width="2"/>
+<polygon points="401.5,153.0 391.5,170.3 371.5,170.3 361.5,153.0 371.5,135.7 391.5,135.7" fill="#73bcb9" stroke="#fff" stroke-width="2"/>
+<polygon points="401.5,189.4 391.5,206.7 371.5,206.7 361.5,189.4 371.5,172.1 391.5,172.1" fill="#e8f1fc" stroke="#fff" stroke-width="2"/>
+<polygon points="401.5,225.8 391.5,243.1 371.5,243.1 361.5,225.8 371.5,208.5 391.5,208.5" fill="#d4e3fa" stroke="#fff" stroke-width="2"/>
+<polygon points="401.5,262.2 391.5,279.5 371.5,279.5 361.5,262.2 371.5,244.9 391.5,244.9" fill="#acc9f1" stroke="#fff" stroke-width="2"/>
+<polygon points="401.5,298.6 391.5,315.9 371.5,315.9 361.5,298.6 371.5,281.3 391.5,281.3" fill="#73bcb9" stroke="#fff" stroke-width="2"/>
+<polygon points="401.5,335.0 391.5,352.3 371.5,352.3 361.5,335.0 371.5,317.7 391.5,317.7" fill="#e8f1fc" stroke="#fff" stroke-width="2"/>
+<polygon points="401.5,371.4 391.5,388.7 371.5,388.7 361.5,371.4 371.5,354.1 391.5,354.1" fill="#d4e3fa" stroke="#fff" stroke-width="2"/>
+<polygon points="401.5,407.8 391.5,425.1 371.5,425.1 361.5,407.8 371.5,390.5 391.5,390.5" fill="#acc9f1" stroke="#fff" stroke-width="2"/>
+<polygon points="433.0,98.4 423.0,115.7 403.0,115.7 393.0,98.4 403.0,81.1 423.0,81.1" fill="#73bcb9" stroke="#fff" stroke-width="2"/>
+<polygon points="433.0,134.8 423.0,152.1 403.0,152.1 393.0,134.8 403.0,117.5 423.0,117.5" fill="#e8f1fc" stroke="#fff" stroke-width="2"/>
+<polygon points="433.0,171.2 423.0,188.5 403.0,188.5 393.0,171.2 403.0,153.9 423.0,153.9" fill="#d4e3fa" stroke="#fff" stroke-width="2"/>
+<polygon points="433.0,207.6 423.0,224.9 403.0,224.9 393.0,207.6 403.0,190.3 423.0,190.3" fill="#acc9f1" stroke="#fff" stroke-width="2"/>
+<polygon points="433.0,244.0 423.0,261.3 403.0,261.3 393.0,244.0 403.0,226.7 423.0,226.7" fill="#73bcb9" stroke="#fff" stroke-width="2"/>
+<polygon points="433.0,280.4 423.0,297.7 403.0,297.7 393.0,280.4 403.0,263.1 423.0,263.1" fill="#e8f1fc" stroke="#fff" stroke-width="2"/>
+<polygon points="433.0,316.8 423.0,334.1 403.0,334.1 393.0,316.8 403.0,299.5 423.0,299.5" fill="#d4e3fa" stroke="#fff" stroke-width="2"/>
+<polygon points="433.0,353.2 423.0,370.5 403.0,370.5 393.0,353.2 403.0,335.9 423.0,335.9" fill="#acc9f1" stroke="#fff" stroke-width="2"/>
+<polygon points="433.0,389.6 423.0,406.9 403.0,406.9 393.0,389.6 403.0,372.3 423.0,372.3" fill="#73bcb9" stroke="#fff" stroke-width="2"/>
+<polygon points="464.5,116.6 454.5,133.9 434.5,133.9 424.5,116.6 434.5,99.3 454.5,99.3" fill="#e8f1fc" stroke="#fff" stroke-width="2"/>
+<polygon points="464.5,153.0 454.5,170.3 434.5,170.3 424.5,153.0 434.5,135.7 454.5,135.7" fill="#d4e3fa" stroke="#fff" stroke-width="2"/>
+<polygon points="464.5,189.4 454.5,206.7 434.5,206.7 424.5,189.4 434.5,172.1 454.5,172.1" fill="#acc9f1" stroke="#fff" stroke-width="2"/>
+<polygon points="464.5,225.8 454.5,243.1 434.5,243.1 424.5,225.8 434.5,208.5 454.5,208.5" fill="#73bcb9" stroke="#fff" stroke-width="2"/>
+<polygon points="464.5,262.2 454.5,279.5 434.5,279.5 424.5,262.2 434.5,244.9 454.5,244.9" fill="#e8f1fc" stroke="#fff" stroke-width="2"/>
+<polygon points="464.5,298.6 454.5,315.9 434.5,315.9 424.5,298.6 434.5,281.3 454.5,281.3" fill="#d4e3fa" stroke="#fff" stroke-width="2"/>
+<polygon points="464.5,335.0 454.5,352.3 434.5,352.3 424.5,335.0 434.5,317.7 454.5,317.7" fill="#acc9f1" stroke="#fff" stroke-width="2"/>
+<polygon points="464.5,371.4 454.5,388.7 434.5,388.7 424.5,371.4 434.5,354.1 454.5,354.1" fill="#73bcb9" stroke="#fff" stroke-width="2"/>
+<polygon points="464.5,407.8 454.5,425.1 434.5,425.1 424.5,407.8 434.5,390.5 454.5,390.5" fill="#e8f1fc" stroke="#fff" stroke-width="2"/>
+<polygon points="496.0,98.4 486.0,115.7 466.0,115.7 456.0,98.4 466.0,81.1 486.0,81.1" fill="#d4e3fa" stroke="#fff" stroke-width="2"/>
+<polygon points="496.0,134.8 486.0,152.1 466.0,152.1 456.0,134.8 466.0,117.5 486.0,117.5" fill="#acc9f1" stroke="#fff" stroke-width="2"/>
+<polygon points="496.0,171.2 486.0,188.5 466.0,188.5 456.0,171.2 466.0,153.9 486.0,153.9" fill="#73bcb9" stroke="#fff" stroke-width="2"/>
+<polygon points="496.0,207.6 486.0,224.9 466.0,224.9 456.0,207.6 466.0,190.3 486.0,190.3" fill="#e8f1fc" stroke="#fff" stroke-width="2"/>
+<polygon points="496.0,244.0 486.0,261.3 466.0,261.3 456.0,244.0 466.0,226.7 486.0,226.7" fill="#d4e3fa" stroke="#fff" stroke-width="2"/>
+<polygon points="496.0,280.4 486.0,297.7 466.0,297.7 456.0,280.4 466.0,263.1 486.0,263.1" fill="#acc9f1" stroke="#fff" stroke-width="2"/>
+<polygon points="496.0,316.8 486.0,334.1 466.0,334.1 456.0,316.8 466.0,299.5 486.0,299.5" fill="#73bcb9" stroke="#fff" stroke-width="2"/>
+<polygon points="496.0,353.2 486.0,370.5 466.0,370.5 456.0,353.2 466.0,335.9 486.0,335.9" fill="#e8f1fc" stroke="#fff" stroke-width="2"/>
+<polygon points="496.0,389.6 486.0,406.9 466.0,406.9 456.0,389.6 466.0,372.3 486.0,372.3" fill="#d4e3fa" stroke="#fff" stroke-width="2"/>
+<polygon points="527.5,116.6 517.5,133.9 497.5,133.9 487.5,116.6 497.5,99.3 517.5,99.3" fill="#acc9f1" stroke="#fff" stroke-width="2"/>
+<polygon points="527.5,153.0 517.5,170.3 497.5,170.3 487.5,153.0 497.5,135.7 517.5,135.7" fill="#73bcb9" stroke="#fff" stroke-width="2"/>
+<polygon points="527.5,189.4 517.5,206.7 497.5,206.7 487.5,189.4 497.5,172.1 517.5,172.1" fill="#e8f1fc" stroke="#fff" stroke-width="2"/>
+<polygon points="527.5,225.8 517.5,243.1 497.5,243.1 487.5,225.8 497.5,208.5 517.5,208.5" fill="#d4e3fa" stroke="#fff" stroke-width="2"/>
+<polygon points="527.5,262.2 517.5,279.5 497.5,279.5 487.5,262.2 497.5,244.9 517.5,244.9" fill="#acc9f1" stroke="#fff" stroke-width="2"/>
+<polygon points="527.5,298.6 517.5,315.9 497.5,315.9 487.5,298.6 497.5,281.3 517.5,281.3" fill="#73bcb9" stroke="#fff" stroke-width="2"/>
+<polygon points="527.5,335.0 517.5,352.3 497.5,352.3 487.5,335.0 497.5,317.7 517.5,317.7" fill="#e8f1fc" stroke="#fff" stroke-width="2"/>
+<polygon points="527.5,371.4 517.5,388.7 497.5,388.7 487.5,371.4 497.5,354.1 517.5,354.1" fill="#d4e3fa" stroke="#fff" stroke-width="2"/>
+<polygon points="527.5,407.8 517.5,425.1 497.5,425.1 487.5,407.8 497.5,390.5 517.5,390.5" fill="#acc9f1" stroke="#fff" stroke-width="2"/>
+<polygon points="559.0,98.4 549.0,115.7 529.0,115.7 519.0,98.4 529.0,81.1 549.0,81.1" fill="#73bcb9" stroke="#fff" stroke-width="2"/>
+<polygon points="559.0,134.8 549.0,152.1 529.0,152.1 519.0,134.8 529.0,117.5 549.0,117.5" fill="#e8f1fc" stroke="#fff" stroke-width="2"/>
+<polygon points="559.0,171.2 549.0,188.5 529.0,188.5 519.0,171.2 529.0,153.9 549.0,153.9" fill="#d4e3fa" stroke="#fff" stroke-width="2"/>
+<polygon points="559.0,207.6 549.0,224.9 529.0,224.9 519.0,207.6 529.0,190.3 549.0,190.3" fill="#acc9f1" stroke="#fff" stroke-width="2"/>
+<polygon points="559.0,244.0 549.0,261.3 529.0,261.3 519.0,244.0 529.0,226.7 549.0,226.7" fill="#73bcb9" stroke="#fff" stroke-width="2"/>
+<polygon points="559.0,280.4 549.0,297.7 529.0,297.7 519.0,280.4 529.0,263.1 549.0,263.1" fill="#e8f1fc" stroke="#fff" stroke-width="2"/>
+<polygon points="559.0,316.8 549.0,334.1 529.0,334.1 519.0,316.8 529.0,299.5 549.0,299.5" fill="#d4e3fa" stroke="#fff" stroke-width="2"/>
+<polygon points="559.0,353.2 549.0,370.5 529.0,370.5 519.0,353.2 529.0,335.9 549.0,335.9" fill="#acc9f1" stroke="#fff" stroke-width="2"/>
+<polygon points="559.0,389.6 549.0,406.9 529.0,406.9 519.0,389.6 529.0,372.3 549.0,372.3" fill="#73bcb9" stroke="#fff" stroke-width="2"/>
+<polygon points="590.5,116.6 580.5,133.9 560.5,133.9 550.5,116.6 560.5,99.3 580.5,99.3" fill="#e8f1fc" stroke="#fff" stroke-width="2"/>
+<polygon points="590.5,153.0 580.5,170.3 560.5,170.3 550.5,153.0 560.5,135.7 580.5,135.7" fill="#d4e3fa" stroke="#fff" stroke-width="2"/>
+<polygon points="590.5,189.4 580.5,206.7 560.5,206.7 550.5,189.4 560.5,172.1 580.5,172.1" fill="#acc9f1" stroke="#fff" stroke-width="2"/>
+<polygon points="590.5,225.8 580.5,243.1 560.5,243.1 550.5,225.8 560.5,208.5 580.5,208.5" fill="#73bcb9" stroke="#fff" stroke-width="2"/>
+<polygon points="590.5,262.2 580.5,279.5 560.5,279.5 550.5,262.2 560.5,244.9 580.5,244.9" fill="#e8f1fc" stroke="#fff" stroke-width="2"/>
+<polygon points="590.5,298.6 580.5,315.9 560.5,315.9 550.5,298.6 560.5,281.3 580.5,281.3" fill="#d4e3fa" stroke="#fff" stroke-width="2"/>
+<polygon points="590.5,335.0 580.5,352.3 560.5,352.3 550.5,335.0 560.5,317.7 580.5,317.7" fill="#acc9f1" stroke="#fff" stroke-width="2"/>
+<polygon points="590.5,371.4 580.5,388.7 560.5,388.7 550.5,371.4 560.5,354.1 580.5,354.1" fill="#73bcb9" stroke="#fff" stroke-width="2"/>
+<polygon points="590.5,407.8 580.5,425.1 560.5,425.1 550.5,407.8 560.5,390.5 580.5,390.5" fill="#e8f1fc" stroke="#fff" stroke-width="2"/>
+<polygon points="622.0,98.4 612.0,115.7 592.0,115.7 582.0,98.4 592.0,81.1 612.0,81.1" fill="#d4e3fa" stroke="#fff" stroke-width="2"/>
+<polygon points="622.0,134.8 612.0,152.1 592.0,152.1 582.0,134.8 592.0,117.5 612.0,117.5" fill="#acc9f1" stroke="#fff" stroke-width="2"/>
+<polygon points="622.0,171.2 612.0,188.5 592.0,188.5 582.0,171.2 592.0,153.9 612.0,153.9" fill="#73bcb9" stroke="#fff" stroke-width="2"/>
+<polygon points="622.0,207.6 612.0,224.9 592.0,224.9 582.0,207.6 592.0,190.3 612.0,190.3" fill="#e8f1fc" stroke="#fff" stroke-width="2"/>
+<polygon points="622.0,244.0 612.0,261.3 592.0,261.3 582.0,244.0 592.0,226.7 612.0,226.7" fill="#d4e3fa" stroke="#fff" stroke-width="2"/>
+<polygon points="622.0,280.4 612.0,297.7 592.0,297.7 582.0,280.4 592.0,263.1 612.0,263.1" fill="#acc9f1" stroke="#fff" stroke-width="2"/>
+<polygon points="622.0,316.8 612.0,334.1 592.0,334.1 582.0,316.8 592.0,299.5 612.0,299.5" fill="#73bcb9" stroke="#fff" stroke-width="2"/>
+<polygon points="622.0,353.2 612.0,370.5 592.0,370.5 582.0,353.2 592.0,335.9 612.0,335.9" fill="#e8f1fc" stroke="#fff" stroke-width="2"/>
+<polygon points="622.0,389.6 612.0,406.9 592.0,406.9 582.0,389.6 592.0,372.3 612.0,372.3" fill="#d4e3fa" stroke="#fff" stroke-width="2"/>
+</g>
+<text x="628" y="171" class="head">Facets → viewpoints</text>
+<text x="628" y="204" class="body">Different lenses suggest different questions.</text>
+<text x="628" y="241" class="small">Examples of probe methods in the SDK:</text>
+<rect x="628" y="255" width="150" height="35" rx="9" fill="#fff" stroke="#cfdae9"/>
+<text x="640" y="278" class="small">Counterexample</text>
+<rect x="790" y="255" width="115" height="35" rx="9" fill="#fff" stroke="#cfdae9"/>
+<text x="802" y="278" class="small">Boundary</text>
+<rect x="917" y="255" width="155" height="35" rx="9" fill="#fff" stroke="#cfdae9"/>
+<text x="929" y="278" class="small">Corroboration</text>
+<text x="628" y="324" class="small">Conceptual inspiration, not a biological simulation.</text>
+<text x="628" y="348" class="small">Multiple views do not guarantee complete coverage.</text>
+<text x="40" y="420" class="eyebrow">02  /  ACTUAL IMPLEMENTATION</text>
+<text x="835" y="420" class="small">TypeScript SDK · CLI · agent skill</text>
+<rect x="40" y="445" width="235" height="235" rx="16" fill="#fff" stroke="#d5dce2"/>
+<text x="58" y="475" class="eyebrow">1</text>
+<text x="58" y="508" class="head">Task packet</text>
+<rect x="300" y="445" width="255" height="235" rx="16" fill="#fff" stroke="#d5dce2"/>
+<text x="318" y="475" class="eyebrow">2</text>
+<text x="318" y="508" class="head">Propose checks</text>
+<rect x="580" y="445" width="280" height="235" rx="16" fill="#fff" stroke="#d5dce2"/>
+<text x="598" y="475" class="eyebrow">3</text>
+<text x="598" y="508" class="head">Validate state</text>
+<rect x="885" y="445" width="275" height="235" rx="16" fill="#fff" stroke="#d5dce2"/>
+<text x="903" y="475" class="eyebrow">4</text>
+<text x="903" y="508" class="head">Report understanding</text>
+<text x="58" y="544" class="body">Goal and success criteria</text>
+<text x="58" y="571" class="body">Draft / planned actions</text>
+<text x="58" y="598" class="body">Scope and capabilities</text>
+<text x="58" y="625" class="body">Budget and evidence</text>
+<text x="58" y="656" class="code">TaskPacket</text>
+<text x="318" y="544" class="body">Claims · lenses · gaps</text>
+<text x="318" y="571" class="body">Probes and assessments</text>
+<text x="318" y="605" class="small">Generation adapter</text>
+<text x="318" y="629" class="small">Critic: new checks only</text>
+<text x="318" y="656" class="code">inspect / update / reflect</text>
+<text x="598" y="544" class="body">Check IDs, hashes and scope</text>
+<text x="598" y="571" class="body">Track support and refutation</text>
+<text x="598" y="598" class="body">Keep unresolved gaps visible</text>
+<text x="598" y="625" class="body">Select ≤ 3 available probes</text>
+<text x="598" y="656" class="code">core.ts + types.ts</text>
+<text x="903" y="544" class="body">Decision and claim status</text>
+<text x="903" y="571" class="body">Evidence references</text>
+<text x="903" y="598" class="body">Gaps and next checks</text>
+<text x="903" y="625" class="body">Changes and usage</text>
+<text x="903" y="656" class="code">report.ts</text>
+<path d="M275 557H297" class="line"/>
+<path d="M555 557H577" class="line"/>
+<path d="M860 557H882" class="line"/>
+<path d="M720 680V750" class="line"/>
+<text x="738" y="717" class="small">Selected probes</text>
+<rect x="580" y="750" width="280" height="110" rx="16" fill="#e7f3f0" stroke="#9acbc4"/>
+<text x="598" y="783" class="head">Host / executor</text>
+<text x="598" y="811" class="body">Run authorized checks</text>
+<text x="598" y="837" class="body">Return observations + evidence</text>
+<path d="M580 805H427V684" class="line"/>
+<text x="440" y="731" class="small">Observations</text>
+<text x="440" y="753" class="small">for update</text>
+<text x="890" y="732" class="small">The host owns tool execution.</text>
+<text x="890" y="756" class="small">The SDK does not search or</text>
+<text x="890" y="780" class="small">run external actions implicitly.</text>
+<text x="890" y="822" class="small">“Ready” is a scoped decision,</text>
+<text x="890" y="846" class="small">not permission to take action.</text>
+<text x="58" y="724" class="body">Reconsider as evidence changes</text>
+<text x="58" y="753" class="small">Evidence withdrawal can reopen checks.</text>
+<text x="58" y="780" class="small">A stale reflection must be repeated</text>
+<text x="58" y="803" class="small">when reflection is required.</text>
+<rect x="40" y="900" width="1120" height="132" rx="16" fill="#edf5f2" stroke="#a6cfc6"/>
+<text x="60" y="929" class="eyebrow">03  /  OPTIONAL HIDDEN-SIDE BRANCH</text>
+<text x="60" y="960" class="head">Caller-supplied vectors</text>
+<text x="60" y="987" class="small">Context · viewpoint · candidate set</text>
+<text x="60" y="1011" class="small">Same embedding model and version</text>
+<path d="M365 972H402" class="dash"/>
+<text x="419" y="960" class="head">Compare geometric rankings</text>
+<text x="419" y="987" class="small">Similarity · orthogonal · reflected</text>
+<text x="419" y="1011" class="small">Deterministic random baseline</text>
+<path d="M756 972H793" class="dash"/>
+<text x="810" y="960" class="head">Unverified candidates only</text>
+<text x="810" y="987" class="small">Host may propose lenses / probes</text>
+<text x="810" y="1011" class="small">Cannot create evidence or resolve claims</text>
+<path d="M1128 900V880H541V682" class="dash"/>
+<text x="60" y="879" class="small">Dashed: optional proposal input</text>
+<text x="40" y="1071" class="small">Exploratory prototype. Structural validation does not establish semantic correctness or improved task outcomes.</text>
+<text x="40" y="1097" class="small">Architecture at 39a1538 · nyattoh/tombo-view · Compound-eye visual is illustrative.</text>
+</svg>
