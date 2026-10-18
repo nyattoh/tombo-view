@@ -1,0 +1,1 @@
+{"annotations":[{"caseId":"dev-record-16","action":"check","reasonPath":"p1"},{"caseId":"dev-record-17","action":"ask","reasonPath":"g2"},{"caseId":"dev-record-18","action":"reframe","reasonPath":"l2"},{"caseId":"dev-record-19","action":"blocked","reasonPath":"state.usage.modelCalls"},{"caseId":"dev-record-20","action":"proceed","reasonPath":"g1"}]}

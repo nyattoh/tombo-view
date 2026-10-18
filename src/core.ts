@@ -116,7 +116,7 @@ function resolutionValid(state: UnderstandingState, gap: Gap, allowRedacted = fa
   });
 }
 
-function checkState(state: UnderstandingState, code: TomboErrorCode, derived = true): void {
+function checkState(state: UnderstandingState, code: TomboErrorCode, derived = true, policyMetadata = true): void {
   requireCondition(state.taskId === state.task.taskId, code, 'Task ID mismatch');
   checkEvidence(state.task.evidence, code, true);
   checkEvidence(state.evidence, code, true);
@@ -165,6 +165,14 @@ function checkState(state: UnderstandingState, code: TomboErrorCode, derived = t
   }
   requireCondition(state.pendingAssessmentExecutionIds?.every(id => state.appliedExecutions.some(item => item.executionId === id)) ?? true, code, 'Unknown pending assessment execution');
   if (state.reflection) requireCondition(state.reflection.binding.taskId === state.taskId && state.reflection.binding.basedRevision < state.revision, code, 'Invalid reflection receipt binding');
+  if (policyMetadata) {
+    const history = state.policyHistory;
+    if (history) {
+      requireCondition(history.lastUnderstandingHash !== null && history.lastUnderstandingHash === understandingHash(state), code, 'Policy history understanding hash mismatch');
+      requireCondition(history.lastProgressAtRevision <= state.revision && history.consecutiveNoProgressRounds <= state.revision - history.lastProgressAtRevision, code, 'Invalid policy history revisions');
+    }
+    requireCondition(reflectionEffectsValid(state), code, 'Invalid reflection effects references or binding');
+  }
   if (!derived) return;
   requireCondition(state.gaps.length <= 8, code, 'Candidate cap exceeded');
   for (const claim of state.claims) {
@@ -200,6 +208,34 @@ function availableProbe(state: UnderstandingState, probe: UnderstandingState['pr
     probe.gapIds.some(id => state.gaps.find(gap => gap.id === id)!.status !== 'resolved');
 }
 
+function reflectionEffectsValid(state: UnderstandingState): boolean {
+  const effects = state.reflectionEffects;
+  return !effects || (!!state.reflection && canonical(effects.binding) === canonical(state.reflection.binding) &&
+    effects.appliedRevision === effects.binding.basedRevision + 1 && effects.appliedRevision <= state.revision &&
+    effects.addedGoalGapIds.every(id => state.gaps.some(gap => gap.id === id && gap.importance === 'required' && gap.triggerRefs.includes('task:goal'))) &&
+    effects.addedLensIds.every(id => state.lenses.some(lens => lens.id === id && lens.origin === 'proposed' && lens.status !== 'retired')));
+}
+
+function refreshPolicyMetadata(state: UnderstandingState): void {
+  if (state.policyHistory) state.policyHistory.lastUnderstandingHash = understandingHash(state);
+  if (!reflectionEffectsValid(state) || state.reflectionEffects?.addedGoalGapIds.some(id => state.gaps.some(gap => gap.id === id && gap.status === 'resolved'))) delete state.reflectionEffects;
+}
+
+function recordPolicyOutcome(original: UnderstandingState, state: UnderstandingState, outcome: 'progress' | 'no_result' | 'unavailable' | 'error' | 'deferred' | null): void {
+  const history = original.policyHistory ?? { consecutiveNoProgressRounds: 0, lastUnderstandingHash: null, recentOutcomes: [], lastProgressAtRevision: original.revision };
+  state.policyHistory = {
+    consecutiveNoProgressRounds: outcome === 'progress' ? 0 : history.consecutiveNoProgressRounds + (outcome && outcome !== 'deferred' ? 1 : 0),
+    lastUnderstandingHash: understandingHash(state),
+    recentOutcomes: outcome ? [...history.recentOutcomes, outcome].slice(-10) : [...history.recentOutcomes],
+    lastProgressAtRevision: outcome === 'progress' ? state.revision : history.lastProgressAtRevision,
+  };
+  refreshPolicyMetadata(state);
+}
+
+export function evaluatePolicy(inputState: UnderstandingState): InspectionResult {
+  return result(validateState(structuredClone(inputState)), []);
+}
+
 function result(state: UnderstandingState, changes: UnderstandingChange[] = []): InspectionResult {
   const needed = state.gaps.filter(gap => gap.importance === 'required' && gap.status !== 'resolved');
   const next = state.probes.filter(probe => availableProbe(state, probe) && probe.gapIds.some(id => needed.some(gap => gap.id === id)))
@@ -209,10 +245,33 @@ function result(state: UnderstandingState, changes: UnderstandingChange[] = []):
       const rank = (gap: Gap) => gap.kind === 'conflicting_evidence' ? 0 : gap.kind === 'unsupported_claim' ? 1 : 2;
       return rank(aGap) - rank(bGap) || a.id.localeCompare(b.id);
     }).slice(0, 3);
-  const userQuestions = needed.filter(gap => gap.kind === 'ambiguous_intent').map(gap => gap.question);
+  const human = needed.filter(gap => gap.kind === 'ambiguous_intent');
+  const early = human.filter(gap => gap.triggerRefs.includes('task:goal') || gap.humanRole !== undefined);
+  const contradictions = state.claims.filter(claim => claim.status === 'disputed' &&
+    (claim.role === 'answer_claim' || needed.some(gap => gap.claimIds.includes(claim.id))) &&
+    !state.probes.some(probe => availableProbe(state, probe) && probe.gapIds.some(id => needed.some(gap => gap.id === id && gap.claimIds.includes(claim.id)))));
+  const questionFor = (gap: Gap) => {
+    const actions = state.task.proposedActions?.length ? state.task.proposedActions :
+      state.probes.filter(probe => gap.probeIds.includes(probe.id)).map(probe => probe.question);
+    return `${gap.question} ${gap.whyItMatters} 目的: ${state.task.goal} 回答に基づき、次の行動「${actions.length ? actions.join(' / ') : state.task.goal}」の選択・実施条件を確定します。`;
+  };
+  const arbitration = () => contradictions.map(claim => {
+    const linked = needed.find(gap => gap.claimIds.includes(claim.id));
+    return linked ? `${questionFor(linked)} 対立する主張「${claim.text}」の採用すべき根拠を指定してください。` :
+      `主張「${claim.text}」の証拠が対立しています。目的「${state.task.goal}」に対し、どの根拠を採用しますか。回答に基づき、次の実行案または確認対象を選択します。`;
+  });
+  let userQuestions: string[] = [];
+  const ask = (gaps: Gap[], includeContradictions = false) => {
+    state.decision = 'needs_user_input'; state.stopReason = null;
+    userQuestions = [...new Set([...gaps.map(questionFor), ...(includeContradictions ? arbitration() : [])])];
+  };
+  const noProgress = (state.policyHistory?.consecutiveNoProgressRounds ?? 0) >= 2;
+  const stoppedPolicy = state.stopReason !== null && (state.stopReason !== 'no_progress' || !noProgress);
+  const effectGaps = needed.filter(gap => state.reflectionEffects?.addedGoalGapIds.includes(gap.id));
   if (state.excludedCandidates?.some(item => item.importance === 'required')) { state.decision = 'blocked'; state.stopReason = 'candidate_limit'; }
-  else if (state.task.reflectionRequired && state.stopReason) state.decision = 'blocked';
-  else if (!needed.length && !state.pendingAssessmentExecutionIds) {
+  else if (state.task.reflectionRequired && stoppedPolicy) state.decision = 'blocked';
+  else if (state.pendingAssessmentExecutionIds?.length) state.decision = 'blocked';
+  else if (!needed.length && !state.pendingAssessmentExecutionIds && !contradictions.length) {
     if (state.task.reflectionRequired && state.task.proposedAnswer && !state.claims.length) { state.decision = 'blocked'; state.stopReason = 'no_progress'; }
     else if (state.task.reflectionRequired && !reflectionFresh(state)) {
       const budget = state.task.budget;
@@ -223,12 +282,19 @@ function result(state: UnderstandingState, changes: UnderstandingChange[] = []):
       } else state.decision = 'needs_reflection';
     } else { state.decision = 'ready_for_requested_step'; state.stopReason = null; }
   }
-  else if (state.stopReason) state.decision = 'blocked';
+  else if (stoppedPolicy) state.decision = 'blocked';
   else if (exhausted(state, true)) { state.decision = 'blocked'; state.stopReason = 'budget_exhausted'; }
-  else if (next.length) state.decision = 'needs_check';
-  else if (userQuestions.length && needed.every(gap => gap.kind === 'ambiguous_intent')) state.decision = 'needs_user_input';
+  else if (noProgress) {
+    if (human.length || contradictions.length) ask(human, true);
+    else { state.decision = 'blocked'; state.stopReason = 'no_progress'; }
+  }
+  else if (effectGaps.some(gap => gap.kind === 'ambiguous_intent')) ask(effectGaps.filter(gap => gap.kind === 'ambiguous_intent'));
+  else if (early.length) ask(early);
+  else if (effectGaps.some(gap => gap.kind !== 'ambiguous_intent' && gap.probeIds.some(id => next.some(probe => probe.id === id))) || next.length) { state.decision = 'needs_check'; state.stopReason = null; }
+  else if (contradictions.length) ask([], true);
+  else if (human.length) ask(human);
   else { state.decision = 'blocked'; state.stopReason = needed.some(gap => gap.probeIds.some(id => state.probes.find(probe => probe.id === id)?.status === 'exhausted')) ? 'no_progress' : 'capability_limit'; }
-  return { state, changes, nextProbeIds: state.decision === 'needs_check' ? next.map(probe => probe.id) : [], userQuestions };
+  return { state: parse(stateSchema, state, 'invalid_input'), changes, nextProbeIds: state.decision === 'needs_check' ? next.map(probe => probe.id) : [], userQuestions };
 }
 
 function stopped(original: UnderstandingState, usage: Usage, code: TomboErrorCode, executions = original.appliedExecutions, diagnostics = original.modelRepairDiagnostics): InspectionResult {
@@ -239,7 +305,8 @@ function stopped(original: UnderstandingState, usage: Usage, code: TomboErrorCod
   state.revision++;
   state.stopReason = code;
   state.decision = 'blocked';
-  return { state, changes: [], nextProbeIds: [], userQuestions: [] };
+  recordPolicyOutcome(original, state, null);
+  return { state: parse(stateSchema, state, 'invalid_input'), changes: [], nextProbeIds: [], userQuestions: [] };
 }
 
 function changesBetween(before: UnderstandingState, after: UnderstandingState, reason: string): UnderstandingChange[] {
@@ -297,7 +364,7 @@ function applyProposal(state: UnderstandingState, proposal: Proposal, operation:
     const { replacement, ...record } = correction;
     state.assessmentCorrections.push({ ...record, replacementDigest: assessmentDigest(replacement) });
   }
-  checkState(state, 'invalid_model_output', false);
+  checkState(state, 'invalid_model_output', false, false);
   recompute(state);
   const resolved = new Set<string>();
   for (const resolution of proposal.resolutions ?? []) {
@@ -325,7 +392,7 @@ function applyProposal(state: UnderstandingState, proposal: Proposal, operation:
     }
     if (!gap.probeIds.some(id => state.probes.some(probe => probe.id === id && (availableProbe(state, probe) || probe.status === 'exhausted')))) gap.status = 'blocked';
   }
-  checkState(state, 'invalid_model_output');
+  checkState(state, 'invalid_model_output', true, false);
 }
 
 function evidenceMeaning(evidence: Evidence): string {
@@ -468,6 +535,7 @@ export function createTombo(options: { adapter: GenerationAdapter; now?: () => D
         const candidate = await propose(state, { operation: 'inspect', task }, options.adapter, generationOutputSchema,
           (candidate, output) => applyProposal(candidate, output.proposal, 'inspect'));
         candidate.revision = 1;
+        recordPolicyOutcome(original, candidate, 'progress');
         return result(candidate, changesBetween(original, candidate, 'Initial inspection proposal'));
       } catch (error) {
         if (maxRepairs && error instanceof TomboError) return stopped(original, state.usage, error.code, original.appliedExecutions, state.modelRepairDiagnostics);
@@ -504,9 +572,17 @@ export function createTombo(options: { adapter: GenerationAdapter; now?: () => D
         const changes = changesBetween(original, candidate, 'Reflection proposed additional checks');
         if (changes.length || candidate.probes.some(probe => !original.probes.some(old => old.id === probe.id))) reopenExhaustedProbes(candidate);
         if (candidate.reflection!.completion === 'inconclusive') {
+          delete candidate.reflectionEffects;
+          recordPolicyOutcome(original, candidate, null);
           candidate.decision = 'blocked'; candidate.stopReason = 'reflection_inconclusive';
-          return { state: candidate, changes, nextProbeIds: [], userQuestions: [] };
+          return { state: parse(stateSchema, candidate, 'invalid_input'), changes, nextProbeIds: [], userQuestions: [] };
         }
+        candidate.reflectionEffects = {
+          binding: structuredClone(candidate.reflection!.binding), appliedRevision: candidate.revision,
+          addedGoalGapIds: candidate.gaps.filter(gap => !original.gaps.some(old => old.id === gap.id) && gap.importance === 'required' && gap.triggerRefs.includes('task:goal')).map(gap => gap.id),
+          addedLensIds: candidate.lenses.filter(lens => !original.lenses.some(old => old.id === lens.id) && lens.origin === 'proposed' && lens.status !== 'retired').map(lens => lens.id),
+        };
+        recordPolicyOutcome(original, candidate, changes.length > 0 || reflectionFresh(candidate) ? 'progress' : 'no_result');
         return result(candidate, changes);
       } catch (error) {
         if (error instanceof TomboError) return stopped(original, state.usage, error.code, original.appliedExecutions, state.modelRepairDiagnostics);
@@ -574,7 +650,7 @@ export function createTombo(options: { adapter: GenerationAdapter; now?: () => D
             if (gap.status !== 'resolved') gap.status = observation.outcome === 'unavailable' || observation.outcome === 'error' ? 'blocked' : 'open';
           }
         }
-        checkState(state, 'invalid_input');
+        checkState(state, 'invalid_input', true, false);
         state.pendingAssessmentExecutionIds = assessmentObservations.map(item => item.executionId);
         state.decision = 'blocked';
         if (!mode.deferAssessment) state.usage.rounds++;
@@ -582,7 +658,11 @@ export function createTombo(options: { adapter: GenerationAdapter; now?: () => D
         state.usage.elapsedMs = Math.max(original.usage.elapsedMs + toolTime, state.usage.elapsedMs);
         for (const observation of unique) state.usage.costYen = sumKnown(state.usage.costYen, observation.costYen);
         validatedObservations = structuredClone(state);
-        if (mode.deferAssessment) return stopped(state, state.usage, 'assessment_pending');
+        if (mode.deferAssessment) {
+          const deferred = stopped(state, state.usage, 'assessment_pending');
+          recordPolicyOutcome(original, deferred.state, 'deferred');
+          return deferred;
+        }
         requireCondition(state.usage.modelCalls < budget.maxModelCalls && state.usage.rounds <= budget.maxRounds &&
           state.usage.toolCalls <= budget.maxToolCalls && state.usage.elapsedMs < budget.maxElapsedMs && budget.maxOutputTokensPerCall > 0,
           'budget_exhausted', 'Update or observed tool budget exhausted');
@@ -610,7 +690,8 @@ export function createTombo(options: { adapter: GenerationAdapter; now?: () => D
           observation.evidence.some(item => !original.evidence.some(old => old.id === item.id)));
         const hasCorrection = (state.assessmentCorrections?.length ?? 0) > (original.assessmentCorrections?.length ?? 0);
         const hasNewProbe = state.probes.some(probe => !original.probes.some(old => old.id === probe.id));
-        if (hasNewEvidence || hasCorrection || changes.length || hasNewProbe) reopenExhaustedProbes(state);
+        const progress = hasNewEvidence || hasCorrection || changes.length > 0 || hasNewProbe;
+        if (progress) reopenExhaustedProbes(state);
         else if (repeated.size) {
           for (const observation of assessmentObservations) if (repeated.has(observation.executionId) || observation.outcome === 'no_result') {
             state.probes.find(probe => probe.id === observation.probeId)!.status = 'exhausted';
@@ -618,6 +699,9 @@ export function createTombo(options: { adapter: GenerationAdapter; now?: () => D
           const canContinue = state.probes.some(probe => availableProbe(state, probe) && probe.gapIds.some(id => state.gaps.some(gap => gap.id === id && gap.importance === 'required' && gap.status !== 'resolved')));
           if (!canContinue) state.stopReason = 'no_progress';
         } else state.stopReason = assessmentObservations.some(item => item.outcome === 'unavailable' || item.outcome === 'error') ? 'capability_limit' : 'no_progress';
+        if (understandingHash(original) !== understandingHash(state)) delete state.reflectionEffects;
+        recordPolicyOutcome(original, state, progress ? 'progress' : assessmentObservations.some(item => item.outcome === 'error') ? 'error' :
+          assessmentObservations.some(item => item.outcome === 'unavailable') ? 'unavailable' : 'no_result');
         return result(state, changes);
       } catch (error) {
         if (error instanceof TomboError) return stopped(validatedObservations ?? original, state.usage, error.code, validatedObservations?.appliedExecutions ?? original.appliedExecutions, state.modelRepairDiagnostics);
@@ -642,6 +726,8 @@ export function createTombo(options: { adapter: GenerationAdapter; now?: () => D
       for (const probe of state.probes) if (pendingProbes.has(probe.id) && probe.status === 'complete' &&
         probe.gapIds.some(id => state.gaps.find(gap => gap.id === id)!.status !== 'resolved')) probe.status = 'pending';
       state.revision++;
+      if (understandingHash(original) !== understandingHash(state)) delete state.reflectionEffects;
+      recordPolicyOutcome(original, state, 'progress');
       checkState(state, 'invalid_input');
       return result(state, changesBetween(original, state, request.reason));
     },

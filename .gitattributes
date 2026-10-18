@@ -1,1 +1,7 @@
 * text=auto eol=lf
+docs/ask-policy.md -text whitespace=cr-at-eol
+docs/ask-policy-work/** -text whitespace=cr-at-eol
+docs/ask-policy-work/**/*.log whitespace=cr-at-eol,-blank-at-eol
+evaluation/ask-policy-*.json -text whitespace=cr-at-eol
+evaluation/ask-policy-*/** -text whitespace=cr-at-eol
+evaluation/reports/ask-policy-compare.json -text whitespace=cr-at-eol

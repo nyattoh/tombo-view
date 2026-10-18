@@ -1,0 +1,164 @@
+[
+  {
+    "caseId": "auto-05",
+    "votes": {
+      "openai": "blocked",
+      "google": "blocked",
+      "nvidia": "check"
+    },
+    "reason": "Votes differ: openai=blocked (state.appliedExecutions[0].outcome); google=blocked (execution-05); nvidia=check (probe-05). No unanimous consensus."
+  },
+  {
+    "caseId": "auto-06",
+    "votes": {
+      "openai": "blocked",
+      "google": "blocked",
+      "nvidia": "check"
+    },
+    "reason": "Votes differ: openai=blocked (state.appliedExecutions[0].outcome); google=blocked (execution-06); nvidia=check (probe-06). No unanimous consensus."
+  },
+  {
+    "caseId": "auto-07",
+    "votes": {
+      "openai": "blocked",
+      "google": "blocked",
+      "nvidia": "check"
+    },
+    "reason": "Votes differ: openai=blocked (state.appliedExecutions[0].outcome); google=blocked (execution-07); nvidia=check (probe-07). No unanimous consensus."
+  },
+  {
+    "caseId": "auto-08",
+    "votes": {
+      "openai": "blocked",
+      "google": "blocked",
+      "nvidia": "check"
+    },
+    "reason": "Votes differ: openai=blocked (state.appliedExecutions[0].outcome); google=blocked (execution-08); nvidia=check (probe-08). No unanimous consensus."
+  },
+  {
+    "caseId": "dev-record-03",
+    "votes": {
+      "openai": "ask",
+      "google": "ask",
+      "nvidia": "reframe"
+    },
+    "reason": "Votes differ: openai=ask (g1); google=ask (g1); nvidia=reframe (g1). No unanimous consensus."
+  },
+  {
+    "caseId": "dev-record-04",
+    "votes": {
+      "openai": "reframe",
+      "google": "proceed",
+      "nvidia": "proceed"
+    },
+    "reason": "Votes differ: openai=reframe (packet.reflectionRequired); google=proceed (c1); nvidia=proceed (g1). No unanimous consensus."
+  },
+  {
+    "caseId": "dev-record-05",
+    "votes": {
+      "openai": "blocked",
+      "google": "blocked",
+      "nvidia": "check"
+    },
+    "reason": "Votes differ: openai=blocked (state.excludedCandidates[0]); google=blocked (g9); nvidia=check (p1). No unanimous consensus."
+  },
+  {
+    "caseId": "dev-record-08",
+    "votes": {
+      "openai": "ask",
+      "google": "reframe",
+      "nvidia": "ask"
+    },
+    "reason": "Votes differ: openai=ask (g2); google=reframe (g2); nvidia=ask (g2). No unanimous consensus."
+  },
+  {
+    "caseId": "dev-record-10",
+    "votes": {
+      "openai": "check",
+      "google": "blocked",
+      "nvidia": "check"
+    },
+    "reason": "Votes differ: openai=check (p1); google=blocked (policyHistory); nvidia=check (p1). No unanimous consensus."
+  },
+  {
+    "caseId": "dev-record-13",
+    "votes": {
+      "openai": "ask",
+      "google": "check",
+      "nvidia": "check"
+    },
+    "reason": "Votes differ: openai=ask (g1); google=check (p1); nvidia=check (p1). No unanimous consensus."
+  },
+  {
+    "caseId": "dev-record-14",
+    "votes": {
+      "openai": "reframe",
+      "google": "reframe",
+      "nvidia": "proceed"
+    },
+    "reason": "Votes differ: openai=reframe (l2); google=reframe (l2); nvidia=proceed (g1). No unanimous consensus."
+  },
+  {
+    "caseId": "dev-record-18",
+    "votes": {
+      "openai": "reframe",
+      "google": "reframe",
+      "nvidia": "proceed"
+    },
+    "reason": "Votes differ: openai=reframe (l2); google=reframe (l2); nvidia=proceed (g1). No unanimous consensus."
+  },
+  {
+    "caseId": "dev-record-19",
+    "votes": {
+      "openai": "blocked",
+      "google": "blocked",
+      "nvidia": "check"
+    },
+    "reason": "Votes differ: openai=blocked (state.usage.modelCalls); google=blocked (state.usage.modelCalls); nvidia=check (p1). No unanimous consensus."
+  },
+  {
+    "caseId": "dev-record-20",
+    "votes": {
+      "openai": "reframe",
+      "google": "proceed",
+      "nvidia": "proceed"
+    },
+    "reason": "Votes differ: openai=reframe (c1); google=proceed (g1); nvidia=proceed (g1). No unanimous consensus."
+  },
+  {
+    "caseId": "res-03",
+    "votes": {
+      "openai": "check",
+      "google": "proceed",
+      "nvidia": "check"
+    },
+    "reason": "Votes differ: openai=check (probe-03-main); google=proceed (claim-03-main); nvidia=check (probe-03-main). No unanimous consensus."
+  },
+  {
+    "caseId": "res-04",
+    "votes": {
+      "openai": "reframe",
+      "google": "reframe",
+      "nvidia": "proceed"
+    },
+    "reason": "Votes differ: openai=reframe (lens-04-proposed); google=reframe (lens-04-proposed); nvidia=proceed (claim-04-main). No unanimous consensus."
+  },
+  {
+    "caseId": "res-15",
+    "votes": {
+      "openai": "reframe",
+      "google": "proceed",
+      "nvidia": "check"
+    },
+    "reason": "Votes differ: openai=reframe (packet.reflectionRequired); google=proceed (claim-15-main); nvidia=check (probe-15-main). No unanimous consensus."
+  },
+  {
+    "caseId": "res-20",
+    "votes": {
+      "openai": "blocked",
+      "google": "blocked",
+      "nvidia": "check"
+    },
+    "reason": "Votes differ: openai=blocked (candidate-20-excluded); google=blocked (candidate-20-excluded); nvidia=check (probe-20-main). No unanimous consensus."
+  }
+]

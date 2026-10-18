@@ -1,0 +1,21 @@
+{
+  "dispatch": {
+    "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-google-batch01-20261018",
+    "messageId": "message:mcp:ba73bf88-9745-4fef-b9be-3589412d1465:thread-send:tombo-ask-policy-blind-google-batch10-20261018",
+    "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-google-batch01-20261018:ordinal:10",
+    "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-google-batch10-20261018",
+    "status": "queued",
+    "delivery": "queued"
+  },
+  "vendor": "google",
+  "prompt": "docs/ask-policy-work/annotation-runs/batch-10-prompt.json",
+  "caseIds": [
+    "res-06",
+    "res-07",
+    "res-08",
+    "res-09",
+    "res-10"
+  ],
+  "sourceOnly": true,
+  "repoExploration": false
+}

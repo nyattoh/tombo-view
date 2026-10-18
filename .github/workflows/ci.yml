@@ -11,6 +11,10 @@ jobs:
         node: [22, 24]
     steps:
       - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - name: Fetch frozen ask-policy baseline
+        run: git fetch --no-tags origin f2ecc2e4ccbfe109596d9e156095fff7af76ea6a
       - uses: actions/setup-node@v7
         with:
           node-version: ${{ matrix.node }}

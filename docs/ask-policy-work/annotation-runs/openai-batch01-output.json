@@ -1,0 +1,1 @@
+{"annotations":[{"caseId":"auto-01","action":"proceed","reasonPath":"evidence-01"},{"caseId":"auto-02","action":"proceed","reasonPath":"evidence-02"},{"caseId":"auto-03","action":"proceed","reasonPath":"evidence-03"},{"caseId":"auto-04","action":"proceed","reasonPath":"evidence-04"},{"caseId":"auto-05","action":"blocked","reasonPath":"state.appliedExecutions[0].outcome"}]}

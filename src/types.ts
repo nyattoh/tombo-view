@@ -57,8 +57,10 @@ export const gapDefinitionSchema = z.strictObject({
   id, kind: z.enum(['missing_fact', 'ambiguous_intent', 'unsupported_claim', 'conflicting_evidence', 'unexplored_view', 'capability_limit']),
   lensId: id, question: text, triggerRefs: z.array(text).min(1), whyItMatters: text,
   importance: z.enum(['required', 'optional']), claimIds: ids, probeIds: ids,
-});
-export const gapSchema = gapDefinitionSchema.extend({
+  humanRole: z.enum(['goal', 'priority', 'value', 'permission']).optional(),
+}).refine(value => value.humanRole === undefined || value.kind === 'ambiguous_intent', 'Human role requires ambiguous intent');
+export const humanRoleSchema = gapDefinitionSchema.shape.humanRole;
+export const gapSchema = gapDefinitionSchema.safeExtend({
   status: z.enum(['open', 'checking', 'resolved', 'blocked']), resolution: resolutionSchema.optional(),
 }).superRefine((value, ctx) => {
   if ((value.status === 'resolved') !== (value.resolution !== undefined)) ctx.addIssue({ code: 'custom', message: 'Only resolved gaps require resolution' });
@@ -93,6 +95,15 @@ export const reflectionBindingSchema = z.strictObject({
 export const reflectionReceiptSchema = z.strictObject({
   binding: reflectionBindingSchema, reviewedClaimIds: ids, completion: z.enum(['completed', 'inconclusive']), limitations: z.array(text),
 });
+export const policyOutcomeSchema = z.enum(['progress', 'no_result', 'unavailable', 'error', 'deferred', 'invalid_output']);
+export const policyHistorySchema = z.strictObject({
+  consecutiveNoProgressRounds: count,
+  lastUnderstandingHash: z.string().regex(/^[a-f0-9]{64}$/).nullable(),
+  recentOutcomes: z.array(policyOutcomeSchema).max(10), lastProgressAtRevision: count,
+});
+export const reflectionEffectsSchema = z.strictObject({
+  binding: reflectionBindingSchema, appliedRevision: count, addedGoalGapIds: ids, addedLensIds: ids,
+});
 export const decisionSchema = z.enum(['ready_for_requested_step', 'needs_reflection', 'needs_check', 'needs_user_input', 'blocked']);
 export const modelValidationFeedbackSchema = z.strictObject({
   code: z.literal('invalid_model_output'), message: text.max(512),
@@ -109,6 +120,7 @@ export const stateSchema = z.strictObject({
   modelRepairDiagnostics: z.array(modelRepairDiagnosticSchema).optional(),
   assessmentCorrections: z.array(assessmentCorrectionSchema).optional(),
   pendingAssessmentExecutionIds: ids.min(1).optional(), reflection: reflectionReceiptSchema.optional(),
+  policyHistory: policyHistorySchema.optional(), reflectionEffects: reflectionEffectsSchema.optional(),
   excludedCandidates: z.array(z.strictObject({ id, reason: text, importance: z.enum(['required', 'optional']) })).optional(),
 });
 export const proposalSchema = z.strictObject({
@@ -155,6 +167,8 @@ export type Proposal = z.infer<typeof proposalSchema>;
 export type GenerationOutput = z.infer<typeof generationOutputSchema>;
 export type ReflectionBinding = z.infer<typeof reflectionBindingSchema>;
 export type ReflectionReceipt = z.infer<typeof reflectionReceiptSchema>;
+export type PolicyHistory = z.infer<typeof policyHistorySchema>;
+export type ReflectionEffects = z.infer<typeof reflectionEffectsSchema>;
 export type ReflectionProposal = z.infer<typeof reflectionProposalSchema>;
 export type ReflectionOutput = z.infer<typeof reflectionOutputSchema>;
 export type Decision = z.infer<typeof decisionSchema>;

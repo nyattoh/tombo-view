@@ -1,0 +1,122 @@
+[
+  {
+    "caseId": "res-01",
+    "authorIntentAction": "proceed",
+    "isControl": false,
+    "rationale": "The requested scope is satisfied by current, traceable evidence; no unresolved required decision remains."
+  },
+  {
+    "caseId": "res-02",
+    "authorIntentAction": "proceed",
+    "isControl": false,
+    "rationale": "The requested scope is satisfied by current, traceable evidence; no unresolved required decision remains."
+  },
+  {
+    "caseId": "res-03",
+    "authorIntentAction": "proceed",
+    "isControl": true,
+    "rationale": "The requested scope is satisfied by current, traceable evidence; no unresolved required decision remains."
+  },
+  {
+    "caseId": "res-04",
+    "authorIntentAction": "proceed",
+    "isControl": false,
+    "rationale": "The requested scope is satisfied by current, traceable evidence; no unresolved required decision remains."
+  },
+  {
+    "caseId": "res-05",
+    "authorIntentAction": "check",
+    "isControl": true,
+    "rationale": "A required factual detail is missing and a capable public-record probe can retrieve or distinguish it."
+  },
+  {
+    "caseId": "res-06",
+    "authorIntentAction": "check",
+    "isControl": true,
+    "rationale": "A required factual detail is missing and a capable public-record probe can retrieve or distinguish it."
+  },
+  {
+    "caseId": "res-07",
+    "authorIntentAction": "check",
+    "isControl": true,
+    "rationale": "A required factual detail is missing and a capable public-record probe can retrieve or distinguish it."
+  },
+  {
+    "caseId": "res-08",
+    "authorIntentAction": "check",
+    "isControl": true,
+    "rationale": "A required factual detail is missing and a capable public-record probe can retrieve or distinguish it."
+  },
+  {
+    "caseId": "res-09",
+    "authorIntentAction": "ask",
+    "isControl": false,
+    "rationale": "The unresolved criterion concerns a person-owned purpose, priority, value, or permission choice."
+  },
+  {
+    "caseId": "res-10",
+    "authorIntentAction": "ask",
+    "isControl": false,
+    "rationale": "The unresolved criterion concerns a person-owned purpose, priority, value, or permission choice."
+  },
+  {
+    "caseId": "res-11",
+    "authorIntentAction": "ask",
+    "isControl": false,
+    "rationale": "The unresolved criterion concerns a person-owned purpose, priority, value, or permission choice."
+  },
+  {
+    "caseId": "res-12",
+    "authorIntentAction": "ask",
+    "isControl": false,
+    "rationale": "The unresolved criterion concerns a person-owned purpose, priority, value, or permission choice."
+  },
+  {
+    "caseId": "res-13",
+    "authorIntentAction": "reframe",
+    "isControl": false,
+    "rationale": "The current interpretation is not a stable basis for the requested synthesis and merits reconsideration."
+  },
+  {
+    "caseId": "res-14",
+    "authorIntentAction": "reframe",
+    "isControl": false,
+    "rationale": "The current interpretation is not a stable basis for the requested synthesis and merits reconsideration."
+  },
+  {
+    "caseId": "res-15",
+    "authorIntentAction": "reframe",
+    "isControl": true,
+    "rationale": "The current interpretation is not a stable basis for the requested synthesis and merits reconsideration."
+  },
+  {
+    "caseId": "res-16",
+    "authorIntentAction": "reframe",
+    "isControl": false,
+    "rationale": "The current interpretation is not a stable basis for the requested synthesis and merits reconsideration."
+  },
+  {
+    "caseId": "res-17",
+    "authorIntentAction": "blocked",
+    "isControl": false,
+    "rationale": "A required condition cannot advance under the recorded capability, budget, progress, or candidate limits."
+  },
+  {
+    "caseId": "res-18",
+    "authorIntentAction": "blocked",
+    "isControl": false,
+    "rationale": "A required condition cannot advance under the recorded capability, budget, progress, or candidate limits."
+  },
+  {
+    "caseId": "res-19",
+    "authorIntentAction": "blocked",
+    "isControl": false,
+    "rationale": "A required condition cannot advance under the recorded capability, budget, progress, or candidate limits."
+  },
+  {
+    "caseId": "res-20",
+    "authorIntentAction": "blocked",
+    "isControl": false,
+    "rationale": "A required condition cannot advance under the recorded capability, budget, progress, or candidate limits."
+  }
+]

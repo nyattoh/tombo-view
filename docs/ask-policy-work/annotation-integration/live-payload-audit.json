@@ -1,0 +1,1637 @@
+{
+  "method": "Live t3_thread_read view=activity, limit=40, maxCharsPerItem=50000, runLimit=12 with pagination for NVIDIA; original prompt/summary compared in memory; no conversation or reasoning text copied.",
+  "audit": [
+    {
+      "vendor": "openai",
+      "thread": {
+        "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-openai-batch01-20261018",
+        "projectId": "0992fdab-7d2e-4c48-8b57-ea69011f8ccd",
+        "title": "TOMBO blind annotation openai batch01",
+        "createdBy": "agent",
+        "creationSource": "mcp",
+        "status": "completed",
+        "latestRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:12",
+        "activeRunId": null,
+        "providerInstanceId": "codex",
+        "model": "gpt-6.1-sol",
+        "runtimeMode": "auto",
+        "interactionMode": "default",
+        "linkedPullRequest": null,
+        "titleRegeneration": null,
+        "branch": "feat/ask-policy-20261018",
+        "worktreePath": "D:\\develop\\works\\tombo-view-ask-policy",
+        "parentThreadId": "thread:delegated-task:command%3Amcp%3Afe76df42-f019-4e5c-8090-20e8c7a3de09%3Adelegate-task%3Atombo-ask-policy-20261018-goal-pm-resume-r2",
+        "relationshipToParent": "subagent",
+        "runCount": 12,
+        "itemCount": 36,
+        "pendingRequestCount": 0,
+        "archived": false,
+        "settled": false,
+        "settledAt": null,
+        "snoozed": false,
+        "snoozedUntil": null,
+        "createdAt": "2026-10-18T00:50:04.352Z",
+        "updatedAt": "2026-10-18T01:02:19.313Z"
+      },
+      "hasMore": false,
+      "nextPosition": 35,
+      "itemTypes": [
+        {
+          "position": 0,
+          "type": "user_message",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:1"
+        },
+        {
+          "position": 1,
+          "type": "assistant_message",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:1"
+        },
+        {
+          "position": 2,
+          "type": "checkpoint",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:1"
+        },
+        {
+          "position": 3,
+          "type": "user_message",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:2"
+        },
+        {
+          "position": 4,
+          "type": "assistant_message",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:2"
+        },
+        {
+          "position": 5,
+          "type": "checkpoint",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:2"
+        },
+        {
+          "position": 6,
+          "type": "user_message",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:3"
+        },
+        {
+          "position": 7,
+          "type": "assistant_message",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:3"
+        },
+        {
+          "position": 8,
+          "type": "checkpoint",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:3"
+        },
+        {
+          "position": 9,
+          "type": "user_message",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:4"
+        },
+        {
+          "position": 10,
+          "type": "assistant_message",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:4"
+        },
+        {
+          "position": 11,
+          "type": "checkpoint",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:4"
+        },
+        {
+          "position": 12,
+          "type": "user_message",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:5"
+        },
+        {
+          "position": 13,
+          "type": "assistant_message",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:5"
+        },
+        {
+          "position": 14,
+          "type": "checkpoint",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:5"
+        },
+        {
+          "position": 15,
+          "type": "user_message",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:6"
+        },
+        {
+          "position": 16,
+          "type": "assistant_message",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:6"
+        },
+        {
+          "position": 17,
+          "type": "checkpoint",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:6"
+        },
+        {
+          "position": 18,
+          "type": "user_message",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:7"
+        },
+        {
+          "position": 19,
+          "type": "assistant_message",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:7"
+        },
+        {
+          "position": 20,
+          "type": "checkpoint",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:7"
+        },
+        {
+          "position": 21,
+          "type": "user_message",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:8"
+        },
+        {
+          "position": 22,
+          "type": "assistant_message",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:8"
+        },
+        {
+          "position": 23,
+          "type": "checkpoint",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:8"
+        },
+        {
+          "position": 24,
+          "type": "user_message",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:9"
+        },
+        {
+          "position": 25,
+          "type": "assistant_message",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:9"
+        },
+        {
+          "position": 26,
+          "type": "checkpoint",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:9"
+        },
+        {
+          "position": 27,
+          "type": "user_message",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:10"
+        },
+        {
+          "position": 28,
+          "type": "assistant_message",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:10"
+        },
+        {
+          "position": 29,
+          "type": "checkpoint",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:10"
+        },
+        {
+          "position": 30,
+          "type": "user_message",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:11"
+        },
+        {
+          "position": 31,
+          "type": "assistant_message",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:11"
+        },
+        {
+          "position": 32,
+          "type": "checkpoint",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:11"
+        },
+        {
+          "position": 33,
+          "type": "user_message",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:12"
+        },
+        {
+          "position": 34,
+          "type": "assistant_message",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:12"
+        },
+        {
+          "position": 35,
+          "type": "checkpoint",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:12"
+        }
+      ],
+      "toolItems": [],
+      "checks": [
+        {
+          "vendor": "openai",
+          "batch": 1,
+          "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-openai-batch01-20261018",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:1",
+          "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-openai-batch01-20261018",
+          "promptPath": "docs/ask-policy-work/annotation-runs/batch-01-prompt.json",
+          "promptHash": "7142175ff211a53b16f01df526dd902665b37a770dd154f3df88a511aec2e5d9",
+          "actualUserItemId": "turn-item:message:message%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018",
+          "actualUserItemPosition": 0,
+          "actualPromptNotTruncated": true,
+          "promptJsonStructureMatches": true,
+          "assistantItemId": "turn-item:provider:codex:native-item:msg_0a9650683caa3881016ad417c39b208191b904bed7ac50ed91",
+          "assistantNotTruncated": true,
+          "summaryExactMatch": true,
+          "actualRunStatus": "completed",
+          "actualProvider": "codex",
+          "actualModel": "gpt-6.1-sol",
+          "actualRunRequestedAt": "2026-10-18T00:50:04.353Z",
+          "actualRunStartedAt": "2026-10-18T00:50:05.163Z",
+          "actualRunCompletedAt": "2026-10-18T00:50:13.724Z"
+        },
+        {
+          "vendor": "openai",
+          "batch": 2,
+          "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-openai-batch02-20261018",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:2",
+          "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-openai-batch01-20261018",
+          "promptPath": "docs/ask-policy-work/annotation-runs/batch-02-prompt.json",
+          "promptHash": "53007898ccdf2aae6a4d379b47755928fd97d541c8448d2eb5e791865425c264",
+          "actualUserItemId": "turn-item:message:message%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-openai-batch02-20261018",
+          "actualUserItemPosition": 3,
+          "actualPromptNotTruncated": true,
+          "promptJsonStructureMatches": true,
+          "assistantItemId": "turn-item:provider:codex:native-item:msg_0a9650683caa3881016ad41812bd64819190d032abc86d388b",
+          "assistantNotTruncated": true,
+          "summaryExactMatch": true,
+          "actualRunStatus": "completed",
+          "actualProvider": "codex",
+          "actualModel": "gpt-6.1-sol",
+          "actualRunRequestedAt": "2026-10-18T00:51:26.947Z",
+          "actualRunStartedAt": "2026-10-18T00:51:27.037Z",
+          "actualRunCompletedAt": "2026-10-18T00:51:32.400Z"
+        },
+        {
+          "vendor": "openai",
+          "batch": 3,
+          "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-openai-batch03-20261018",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:3",
+          "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-openai-batch01-20261018",
+          "promptPath": "docs/ask-policy-work/annotation-runs/batch-03-prompt.json",
+          "promptHash": "b805e09de02ba9581a32c60b8a4b8131edf81990e56106493c350af971575736",
+          "actualUserItemId": "turn-item:message:message%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-openai-batch03-20261018",
+          "actualUserItemPosition": 6,
+          "actualPromptNotTruncated": true,
+          "promptJsonStructureMatches": true,
+          "assistantItemId": "turn-item:provider:codex:native-item:msg_0a9650683caa3881016ad41859409c81918a2b29519de259a8",
+          "assistantNotTruncated": true,
+          "summaryExactMatch": true,
+          "actualRunStatus": "completed",
+          "actualProvider": "codex",
+          "actualModel": "gpt-6.1-sol",
+          "actualRunRequestedAt": "2026-10-18T00:52:31.370Z",
+          "actualRunStartedAt": "2026-10-18T00:52:37.908Z",
+          "actualRunCompletedAt": "2026-10-18T00:52:43.254Z"
+        },
+        {
+          "vendor": "openai",
+          "batch": 4,
+          "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-openai-batch04-20261018",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:4",
+          "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-openai-batch01-20261018",
+          "promptPath": "docs/ask-policy-work/annotation-runs/batch-04-prompt.json",
+          "promptHash": "01b79d4f860eceb45ff181a9cf60c877a5717437adefede9c6595fd7ea480114",
+          "actualUserItemId": "turn-item:message:message%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-openai-batch04-20261018",
+          "actualUserItemPosition": 9,
+          "actualPromptNotTruncated": true,
+          "promptJsonStructureMatches": true,
+          "assistantItemId": "turn-item:provider:codex:native-item:msg_0a9650683caa3881016ad4189bd59c8191a19b32cd2bd24946",
+          "assistantNotTruncated": true,
+          "summaryExactMatch": true,
+          "actualRunStatus": "completed",
+          "actualProvider": "codex",
+          "actualModel": "gpt-6.1-sol",
+          "actualRunRequestedAt": "2026-10-18T00:53:45.448Z",
+          "actualRunStartedAt": "2026-10-18T00:53:45.550Z",
+          "actualRunCompletedAt": "2026-10-18T00:53:49.821Z"
+        },
+        {
+          "vendor": "openai",
+          "batch": 5,
+          "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-openai-batch05-20261018",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:5",
+          "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-openai-batch01-20261018",
+          "promptPath": "docs/ask-policy-work/annotation-runs/batch-05-prompt.json",
+          "promptHash": "f04131d16204870f0293e2f7277755fc12df242002fd9a94af857c314eab9b55",
+          "actualUserItemId": "turn-item:message:message%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-openai-batch05-20261018",
+          "actualUserItemPosition": 12,
+          "actualPromptNotTruncated": true,
+          "promptJsonStructureMatches": true,
+          "assistantItemId": "turn-item:provider:codex:native-item:msg_0a9650683caa3881016ad418f9fb8c81919db26c3c51db0062",
+          "assistantNotTruncated": true,
+          "summaryExactMatch": true,
+          "actualRunStatus": "completed",
+          "actualProvider": "codex",
+          "actualModel": "gpt-6.1-sol",
+          "actualRunRequestedAt": "2026-10-18T00:55:16.850Z",
+          "actualRunStartedAt": "2026-10-18T00:55:16.881Z",
+          "actualRunCompletedAt": "2026-10-18T00:55:24.209Z"
+        },
+        {
+          "vendor": "openai",
+          "batch": 6,
+          "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-openai-batch06-20261018",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:6",
+          "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-openai-batch01-20261018",
+          "promptPath": "docs/ask-policy-work/annotation-runs/batch-06-prompt.json",
+          "promptHash": "1d73fdbd87ba0939d21c8bc50a5af8d0c5cc54d31f39bb439a86bdf0177eded0",
+          "actualUserItemId": "turn-item:message:message%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-openai-batch06-20261018",
+          "actualUserItemPosition": 15,
+          "actualPromptNotTruncated": true,
+          "promptJsonStructureMatches": true,
+          "assistantItemId": "turn-item:provider:codex:native-item:msg_0a9650683caa3881016ad41908926c8191817331ab69a1a490",
+          "assistantNotTruncated": true,
+          "summaryExactMatch": true,
+          "actualRunStatus": "completed",
+          "actualProvider": "codex",
+          "actualModel": "gpt-6.1-sol",
+          "actualRunRequestedAt": "2026-10-18T00:55:29.236Z",
+          "actualRunStartedAt": "2026-10-18T00:55:29.279Z",
+          "actualRunCompletedAt": "2026-10-18T00:55:38.170Z"
+        },
+        {
+          "vendor": "openai",
+          "batch": 7,
+          "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-openai-batch07-20261018",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:7",
+          "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-openai-batch01-20261018",
+          "promptPath": "docs/ask-policy-work/annotation-runs/batch-07-prompt.json",
+          "promptHash": "76dcd49da3f68328aa0bba853c474c0f1c014278315d12961a0e556940cc1ebc",
+          "actualUserItemId": "turn-item:message:message%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-openai-batch07-20261018",
+          "actualUserItemPosition": 18,
+          "actualPromptNotTruncated": true,
+          "promptJsonStructureMatches": true,
+          "assistantItemId": "turn-item:provider:codex:native-item:msg_0a9650683caa3881016ad41952316c8191bbe54ea514f97e92",
+          "assistantNotTruncated": true,
+          "summaryExactMatch": true,
+          "actualRunStatus": "completed",
+          "actualProvider": "codex",
+          "actualModel": "gpt-6.1-sol",
+          "actualRunRequestedAt": "2026-10-18T00:56:47.418Z",
+          "actualRunStartedAt": "2026-10-18T00:56:47.460Z",
+          "actualRunCompletedAt": "2026-10-18T00:56:52.320Z"
+        },
+        {
+          "vendor": "openai",
+          "batch": 8,
+          "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-openai-batch08-20261018",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:8",
+          "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-openai-batch01-20261018",
+          "promptPath": "docs/ask-policy-work/annotation-runs/batch-08-prompt.json",
+          "promptHash": "d47decc67992466fdb25c3cda5666ea40960f6138e68d9d4eb6ff7a0ba52ebf8",
+          "actualUserItemId": "turn-item:message:message%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-openai-batch08-20261018",
+          "actualUserItemPosition": 21,
+          "actualPromptNotTruncated": true,
+          "promptJsonStructureMatches": true,
+          "assistantItemId": "turn-item:provider:codex:native-item:msg_0a9650683caa3881016ad4195ac3b08191a8c30e4977165150",
+          "assistantNotTruncated": true,
+          "summaryExactMatch": true,
+          "actualRunStatus": "completed",
+          "actualProvider": "codex",
+          "actualModel": "gpt-6.1-sol",
+          "actualRunRequestedAt": "2026-10-18T00:56:55.986Z",
+          "actualRunStartedAt": "2026-10-18T00:56:56.023Z",
+          "actualRunCompletedAt": "2026-10-18T00:57:00.351Z"
+        },
+        {
+          "vendor": "openai",
+          "batch": 9,
+          "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-openai-batch09-20261018",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:9",
+          "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-openai-batch01-20261018",
+          "promptPath": "docs/ask-policy-work/annotation-runs/batch-09-prompt.json",
+          "promptHash": "50c1db94918bfa5ef8846097472bdcb1bd3a9f84571215d06efcf3bc637c9a9b",
+          "actualUserItemId": "turn-item:message:message%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-openai-batch09-20261018",
+          "actualUserItemPosition": 24,
+          "actualPromptNotTruncated": true,
+          "promptJsonStructureMatches": true,
+          "assistantItemId": "turn-item:provider:codex:native-item:msg_0a9650683caa3881016ad419f945888191807ef132c23c20c6",
+          "assistantNotTruncated": true,
+          "summaryExactMatch": true,
+          "actualRunStatus": "completed",
+          "actualProvider": "codex",
+          "actualModel": "gpt-6.1-sol",
+          "actualRunRequestedAt": "2026-10-18T00:59:28.050Z",
+          "actualRunStartedAt": "2026-10-18T00:59:28.462Z",
+          "actualRunCompletedAt": "2026-10-18T00:59:40.122Z"
+        },
+        {
+          "vendor": "openai",
+          "batch": 10,
+          "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-openai-batch10-20261018",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:10",
+          "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-openai-batch01-20261018",
+          "promptPath": "docs/ask-policy-work/annotation-runs/batch-10-prompt.json",
+          "promptHash": "b09b3578141d76316f7ea5401b8a5ef52f76ba818d4c6f8791467479029b6c97",
+          "actualUserItemId": "turn-item:message:message%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-openai-batch10-20261018",
+          "actualUserItemPosition": 27,
+          "actualPromptNotTruncated": true,
+          "promptJsonStructureMatches": true,
+          "assistantItemId": "turn-item:provider:codex:native-item:msg_0a9650683caa3881016ad41a019a9c8191b31deb0c7feb5455",
+          "assistantNotTruncated": true,
+          "summaryExactMatch": true,
+          "actualRunStatus": "completed",
+          "actualProvider": "codex",
+          "actualModel": "gpt-6.1-sol",
+          "actualRunRequestedAt": "2026-10-18T00:59:43.371Z",
+          "actualRunStartedAt": "2026-10-18T00:59:43.503Z",
+          "actualRunCompletedAt": "2026-10-18T00:59:47.534Z"
+        },
+        {
+          "vendor": "openai",
+          "batch": 11,
+          "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-openai-batch11-20261018",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:11",
+          "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-openai-batch01-20261018",
+          "promptPath": "docs/ask-policy-work/annotation-runs/batch-11-prompt.json",
+          "promptHash": "dc6310ccc8efa260fe8241480f445d6a6dd14f66b89a1a129113b44ffe3170e2",
+          "actualUserItemId": "turn-item:message:message%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-openai-batch11-20261018",
+          "actualUserItemPosition": 30,
+          "actualPromptNotTruncated": true,
+          "promptJsonStructureMatches": true,
+          "assistantItemId": "turn-item:provider:codex:native-item:msg_0a9650683caa3881016ad41a8dd6d0819189fab6bbd87297a7",
+          "assistantNotTruncated": true,
+          "summaryExactMatch": true,
+          "actualRunStatus": "completed",
+          "actualProvider": "codex",
+          "actualModel": "gpt-6.1-sol",
+          "actualRunRequestedAt": "2026-10-18T01:02:01.630Z",
+          "actualRunStartedAt": "2026-10-18T01:02:01.677Z",
+          "actualRunCompletedAt": "2026-10-18T01:02:07.546Z"
+        },
+        {
+          "vendor": "openai",
+          "batch": 12,
+          "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-openai-batch12-20261018",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:12",
+          "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-openai-batch01-20261018",
+          "promptPath": "docs/ask-policy-work/annotation-runs/batch-12-prompt.json",
+          "promptHash": "d4f69b853494595d8a2389b503dbd34db0970728540a1331537e7c5f0fc9f119",
+          "actualUserItemId": "turn-item:message:message%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-openai-batch12-20261018",
+          "actualUserItemPosition": 33,
+          "actualPromptNotTruncated": true,
+          "promptJsonStructureMatches": true,
+          "assistantItemId": "turn-item:provider:codex:native-item:msg_0a9650683caa3881016ad41a99a2708191b9fe67649d7596e8",
+          "assistantNotTruncated": true,
+          "summaryExactMatch": true,
+          "actualRunStatus": "completed",
+          "actualProvider": "codex",
+          "actualModel": "gpt-6.1-sol",
+          "actualRunRequestedAt": "2026-10-18T01:02:14.452Z",
+          "actualRunStartedAt": "2026-10-18T01:02:14.527Z",
+          "actualRunCompletedAt": "2026-10-18T01:02:19.313Z"
+        }
+      ]
+    },
+    {
+      "vendor": "google",
+      "thread": {
+        "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-google-batch01-20261018",
+        "projectId": "0992fdab-7d2e-4c48-8b57-ea69011f8ccd",
+        "title": "TOMBO blind annotation google batch01",
+        "createdBy": "agent",
+        "creationSource": "mcp",
+        "status": "completed",
+        "latestRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-google-batch01-20261018:ordinal:12",
+        "activeRunId": null,
+        "providerInstanceId": "antigravity",
+        "model": "gemini-3.8-flash-medium",
+        "runtimeMode": "auto",
+        "interactionMode": "default",
+        "linkedPullRequest": null,
+        "titleRegeneration": null,
+        "branch": "feat/ask-policy-20261018",
+        "worktreePath": "D:\\develop\\works\\tombo-view-ask-policy",
+        "parentThreadId": "thread:delegated-task:command%3Amcp%3Afe76df42-f019-4e5c-8090-20e8c7a3de09%3Adelegate-task%3Atombo-ask-policy-20261018-goal-pm-resume-r2",
+        "relationshipToParent": "subagent",
+        "runCount": 12,
+        "itemCount": 36,
+        "pendingRequestCount": 0,
+        "archived": false,
+        "settled": false,
+        "settledAt": null,
+        "snoozed": false,
+        "snoozedUntil": null,
+        "createdAt": "2026-10-18T00:50:07.951Z",
+        "updatedAt": "2026-10-18T01:04:18.801Z"
+      },
+      "hasMore": false,
+      "nextPosition": 35,
+      "itemTypes": [
+        {
+          "position": 0,
+          "type": "user_message",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-google-batch01-20261018:ordinal:1"
+        },
+        {
+          "position": 1,
+          "type": "assistant_message",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-google-batch01-20261018:ordinal:1"
+        },
+        {
+          "position": 2,
+          "type": "checkpoint",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-google-batch01-20261018:ordinal:1"
+        },
+        {
+          "position": 3,
+          "type": "user_message",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-google-batch01-20261018:ordinal:2"
+        },
+        {
+          "position": 4,
+          "type": "assistant_message",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-google-batch01-20261018:ordinal:2"
+        },
+        {
+          "position": 5,
+          "type": "checkpoint",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-google-batch01-20261018:ordinal:2"
+        },
+        {
+          "position": 6,
+          "type": "user_message",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-google-batch01-20261018:ordinal:3"
+        },
+        {
+          "position": 7,
+          "type": "assistant_message",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-google-batch01-20261018:ordinal:3"
+        },
+        {
+          "position": 8,
+          "type": "checkpoint",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-google-batch01-20261018:ordinal:3"
+        },
+        {
+          "position": 9,
+          "type": "user_message",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-google-batch01-20261018:ordinal:4"
+        },
+        {
+          "position": 10,
+          "type": "assistant_message",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-google-batch01-20261018:ordinal:4"
+        },
+        {
+          "position": 11,
+          "type": "checkpoint",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-google-batch01-20261018:ordinal:4"
+        },
+        {
+          "position": 12,
+          "type": "user_message",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-google-batch01-20261018:ordinal:5"
+        },
+        {
+          "position": 13,
+          "type": "assistant_message",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-google-batch01-20261018:ordinal:5"
+        },
+        {
+          "position": 14,
+          "type": "checkpoint",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-google-batch01-20261018:ordinal:5"
+        },
+        {
+          "position": 15,
+          "type": "user_message",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-google-batch01-20261018:ordinal:6"
+        },
+        {
+          "position": 16,
+          "type": "assistant_message",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-google-batch01-20261018:ordinal:6"
+        },
+        {
+          "position": 17,
+          "type": "checkpoint",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-google-batch01-20261018:ordinal:6"
+        },
+        {
+          "position": 18,
+          "type": "user_message",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-google-batch01-20261018:ordinal:7"
+        },
+        {
+          "position": 19,
+          "type": "assistant_message",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-google-batch01-20261018:ordinal:7"
+        },
+        {
+          "position": 20,
+          "type": "checkpoint",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-google-batch01-20261018:ordinal:7"
+        },
+        {
+          "position": 21,
+          "type": "user_message",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-google-batch01-20261018:ordinal:8"
+        },
+        {
+          "position": 22,
+          "type": "assistant_message",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-google-batch01-20261018:ordinal:8"
+        },
+        {
+          "position": 23,
+          "type": "checkpoint",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-google-batch01-20261018:ordinal:8"
+        },
+        {
+          "position": 24,
+          "type": "user_message",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-google-batch01-20261018:ordinal:9"
+        },
+        {
+          "position": 25,
+          "type": "assistant_message",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-google-batch01-20261018:ordinal:9"
+        },
+        {
+          "position": 26,
+          "type": "checkpoint",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-google-batch01-20261018:ordinal:9"
+        },
+        {
+          "position": 27,
+          "type": "user_message",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-google-batch01-20261018:ordinal:10"
+        },
+        {
+          "position": 28,
+          "type": "assistant_message",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-google-batch01-20261018:ordinal:10"
+        },
+        {
+          "position": 29,
+          "type": "checkpoint",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-google-batch01-20261018:ordinal:10"
+        },
+        {
+          "position": 30,
+          "type": "user_message",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-google-batch01-20261018:ordinal:11"
+        },
+        {
+          "position": 31,
+          "type": "assistant_message",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-google-batch01-20261018:ordinal:11"
+        },
+        {
+          "position": 32,
+          "type": "checkpoint",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-google-batch01-20261018:ordinal:11"
+        },
+        {
+          "position": 33,
+          "type": "user_message",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-google-batch01-20261018:ordinal:12"
+        },
+        {
+          "position": 34,
+          "type": "assistant_message",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-google-batch01-20261018:ordinal:12"
+        },
+        {
+          "position": 35,
+          "type": "checkpoint",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-google-batch01-20261018:ordinal:12"
+        }
+      ],
+      "toolItems": [],
+      "checks": [
+        {
+          "vendor": "google",
+          "batch": 1,
+          "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-google-batch01-20261018",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-google-batch01-20261018:ordinal:1",
+          "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-google-batch01-20261018",
+          "promptPath": "docs/ask-policy-work/annotation-runs/batch-01-prompt.json",
+          "promptHash": "7142175ff211a53b16f01df526dd902665b37a770dd154f3df88a511aec2e5d9",
+          "actualUserItemId": "turn-item:message:message%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-google-batch01-20261018",
+          "actualUserItemPosition": 0,
+          "actualPromptNotTruncated": true,
+          "promptJsonStructureMatches": true,
+          "assistantItemId": "turn-item:provider:antigravity:native-item:provider-instance%3Aantigravity%3A321bfd35-63bd-46bd-bf93-e3325f1090ba%3Aturn%3A1%3Aassistant%3A0",
+          "assistantNotTruncated": true,
+          "summaryExactMatch": true,
+          "actualRunStatus": "completed",
+          "actualProvider": "antigravity",
+          "actualModel": "gemini-3.8-flash-medium",
+          "actualRunRequestedAt": "2026-10-18T00:50:07.951Z",
+          "actualRunStartedAt": "2026-10-18T00:50:22.310Z",
+          "actualRunCompletedAt": "2026-10-18T00:50:50.133Z"
+        },
+        {
+          "vendor": "google",
+          "batch": 2,
+          "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-google-batch02-20261018",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-google-batch01-20261018:ordinal:2",
+          "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-google-batch01-20261018",
+          "promptPath": "docs/ask-policy-work/annotation-runs/batch-02-prompt.json",
+          "promptHash": "53007898ccdf2aae6a4d379b47755928fd97d541c8448d2eb5e791865425c264",
+          "actualUserItemId": "turn-item:message:message%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-google-batch02-20261018",
+          "actualUserItemPosition": 3,
+          "actualPromptNotTruncated": true,
+          "promptJsonStructureMatches": true,
+          "assistantItemId": "turn-item:provider:antigravity:native-item:provider-instance%3Aantigravity%3A321bfd35-63bd-46bd-bf93-e3325f1090ba%3Aturn%3A2%3Aassistant%3A0",
+          "assistantNotTruncated": true,
+          "summaryExactMatch": true,
+          "actualRunStatus": "completed",
+          "actualProvider": "antigravity",
+          "actualModel": "gemini-3.8-flash-medium",
+          "actualRunRequestedAt": "2026-10-18T00:51:28.881Z",
+          "actualRunStartedAt": "2026-10-18T00:51:28.957Z",
+          "actualRunCompletedAt": "2026-10-18T00:51:36.759Z"
+        },
+        {
+          "vendor": "google",
+          "batch": 3,
+          "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-google-batch03-20261018",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-google-batch01-20261018:ordinal:3",
+          "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-google-batch01-20261018",
+          "promptPath": "docs/ask-policy-work/annotation-runs/batch-03-prompt.json",
+          "promptHash": "b805e09de02ba9581a32c60b8a4b8131edf81990e56106493c350af971575736",
+          "actualUserItemId": "turn-item:message:message%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-google-batch03-20261018",
+          "actualUserItemPosition": 6,
+          "actualPromptNotTruncated": true,
+          "promptJsonStructureMatches": true,
+          "assistantItemId": "turn-item:provider:antigravity:native-item:provider-instance%3Aantigravity%3A321bfd35-63bd-46bd-bf93-e3325f1090ba%3Aturn%3A3%3Aassistant%3A0",
+          "assistantNotTruncated": true,
+          "summaryExactMatch": true,
+          "actualRunStatus": "completed",
+          "actualProvider": "antigravity",
+          "actualModel": "gemini-3.8-flash-medium",
+          "actualRunRequestedAt": "2026-10-18T00:52:38.393Z",
+          "actualRunStartedAt": "2026-10-18T00:52:38.455Z",
+          "actualRunCompletedAt": "2026-10-18T00:53:03.265Z"
+        },
+        {
+          "vendor": "google",
+          "batch": 4,
+          "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-google-batch04-20261018",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-google-batch01-20261018:ordinal:4",
+          "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-google-batch01-20261018",
+          "promptPath": "docs/ask-policy-work/annotation-runs/batch-04-prompt.json",
+          "promptHash": "01b79d4f860eceb45ff181a9cf60c877a5717437adefede9c6595fd7ea480114",
+          "actualUserItemId": "turn-item:message:message%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-google-batch04-20261018",
+          "actualUserItemPosition": 9,
+          "actualPromptNotTruncated": true,
+          "promptJsonStructureMatches": true,
+          "assistantItemId": "turn-item:provider:antigravity:native-item:provider-instance%3Aantigravity%3A321bfd35-63bd-46bd-bf93-e3325f1090ba%3Aturn%3A4%3Aassistant%3A0",
+          "assistantNotTruncated": true,
+          "summaryExactMatch": true,
+          "actualRunStatus": "completed",
+          "actualProvider": "antigravity",
+          "actualModel": "gemini-3.8-flash-medium",
+          "actualRunRequestedAt": "2026-10-18T00:53:48.927Z",
+          "actualRunStartedAt": "2026-10-18T00:53:49.034Z",
+          "actualRunCompletedAt": "2026-10-18T00:53:57.651Z"
+        },
+        {
+          "vendor": "google",
+          "batch": 5,
+          "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-google-batch05-20261018",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-google-batch01-20261018:ordinal:5",
+          "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-google-batch01-20261018",
+          "promptPath": "docs/ask-policy-work/annotation-runs/batch-05-prompt.json",
+          "promptHash": "f04131d16204870f0293e2f7277755fc12df242002fd9a94af857c314eab9b55",
+          "actualUserItemId": "turn-item:message:message%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-google-batch05-20261018",
+          "actualUserItemPosition": 12,
+          "actualPromptNotTruncated": true,
+          "promptJsonStructureMatches": true,
+          "assistantItemId": "turn-item:provider:antigravity:native-item:provider-instance%3Aantigravity%3A321bfd35-63bd-46bd-bf93-e3325f1090ba%3Aturn%3A5%3Aassistant%3A0",
+          "assistantNotTruncated": true,
+          "summaryExactMatch": true,
+          "actualRunStatus": "completed",
+          "actualProvider": "antigravity",
+          "actualModel": "gemini-3.8-flash-medium",
+          "actualRunRequestedAt": "2026-10-18T00:55:23.112Z",
+          "actualRunStartedAt": "2026-10-18T00:55:23.160Z",
+          "actualRunCompletedAt": "2026-10-18T00:56:19.711Z"
+        },
+        {
+          "vendor": "google",
+          "batch": 6,
+          "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-google-batch06-20261018",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-google-batch01-20261018:ordinal:6",
+          "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-google-batch01-20261018",
+          "promptPath": "docs/ask-policy-work/annotation-runs/batch-06-prompt.json",
+          "promptHash": "1d73fdbd87ba0939d21c8bc50a5af8d0c5cc54d31f39bb439a86bdf0177eded0",
+          "actualUserItemId": "turn-item:message:message%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-google-batch06-20261018",
+          "actualUserItemPosition": 15,
+          "actualPromptNotTruncated": true,
+          "promptJsonStructureMatches": true,
+          "assistantItemId": "turn-item:provider:antigravity:native-item:provider-instance%3Aantigravity%3A321bfd35-63bd-46bd-bf93-e3325f1090ba%3Aturn%3A6%3Aassistant%3A0",
+          "assistantNotTruncated": true,
+          "summaryExactMatch": true,
+          "actualRunStatus": "completed",
+          "actualProvider": "antigravity",
+          "actualModel": "gemini-3.8-flash-medium",
+          "actualRunRequestedAt": "2026-10-18T00:55:38.596Z",
+          "actualRunStartedAt": "2026-10-18T00:56:22.157Z",
+          "actualRunCompletedAt": "2026-10-18T00:56:57.071Z"
+        },
+        {
+          "vendor": "google",
+          "batch": 7,
+          "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-google-batch07-20261018",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-google-batch01-20261018:ordinal:7",
+          "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-google-batch01-20261018",
+          "promptPath": "docs/ask-policy-work/annotation-runs/batch-07-prompt.json",
+          "promptHash": "76dcd49da3f68328aa0bba853c474c0f1c014278315d12961a0e556940cc1ebc",
+          "actualUserItemId": "turn-item:message:message%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-google-batch07-20261018",
+          "actualUserItemPosition": 18,
+          "actualPromptNotTruncated": true,
+          "promptJsonStructureMatches": true,
+          "assistantItemId": "turn-item:provider:antigravity:native-item:provider-instance%3Aantigravity%3A321bfd35-63bd-46bd-bf93-e3325f1090ba%3Aturn%3A7%3Aassistant%3A0",
+          "assistantNotTruncated": true,
+          "summaryExactMatch": true,
+          "actualRunStatus": "completed",
+          "actualProvider": "antigravity",
+          "actualModel": "gemini-3.8-flash-medium",
+          "actualRunRequestedAt": "2026-10-18T00:59:35.029Z",
+          "actualRunStartedAt": "2026-10-18T00:59:35.131Z",
+          "actualRunCompletedAt": "2026-10-18T01:00:23.821Z"
+        },
+        {
+          "vendor": "google",
+          "batch": 8,
+          "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-google-batch08-20261018",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-google-batch01-20261018:ordinal:8",
+          "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-google-batch01-20261018",
+          "promptPath": "docs/ask-policy-work/annotation-runs/batch-08-prompt.json",
+          "promptHash": "d47decc67992466fdb25c3cda5666ea40960f6138e68d9d4eb6ff7a0ba52ebf8",
+          "actualUserItemId": "turn-item:message:message%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-google-batch08-20261018",
+          "actualUserItemPosition": 21,
+          "actualPromptNotTruncated": true,
+          "promptJsonStructureMatches": true,
+          "assistantItemId": "turn-item:provider:antigravity:native-item:provider-instance%3Aantigravity%3A321bfd35-63bd-46bd-bf93-e3325f1090ba%3Aturn%3A8%3Aassistant%3A0",
+          "assistantNotTruncated": true,
+          "summaryExactMatch": true,
+          "actualRunStatus": "completed",
+          "actualProvider": "antigravity",
+          "actualModel": "gemini-3.8-flash-medium",
+          "actualRunRequestedAt": "2026-10-18T00:59:52.953Z",
+          "actualRunStartedAt": "2026-10-18T01:00:25.708Z",
+          "actualRunCompletedAt": "2026-10-18T01:00:47.646Z"
+        },
+        {
+          "vendor": "google",
+          "batch": 9,
+          "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-google-batch09-20261018",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-google-batch01-20261018:ordinal:9",
+          "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-google-batch01-20261018",
+          "promptPath": "docs/ask-policy-work/annotation-runs/batch-09-prompt.json",
+          "promptHash": "50c1db94918bfa5ef8846097472bdcb1bd3a9f84571215d06efcf3bc637c9a9b",
+          "actualUserItemId": "turn-item:message:message%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-google-batch09-20261018",
+          "actualUserItemPosition": 24,
+          "actualPromptNotTruncated": true,
+          "promptJsonStructureMatches": true,
+          "assistantItemId": "turn-item:provider:antigravity:native-item:provider-instance%3Aantigravity%3A321bfd35-63bd-46bd-bf93-e3325f1090ba%3Aturn%3A9%3Aassistant%3A0",
+          "assistantNotTruncated": true,
+          "summaryExactMatch": true,
+          "actualRunStatus": "completed",
+          "actualProvider": "antigravity",
+          "actualModel": "gemini-3.8-flash-medium",
+          "actualRunRequestedAt": "2026-10-18T01:02:13.744Z",
+          "actualRunStartedAt": "2026-10-18T01:02:13.806Z",
+          "actualRunCompletedAt": "2026-10-18T01:02:34.642Z"
+        },
+        {
+          "vendor": "google",
+          "batch": 10,
+          "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-google-batch10-20261018",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-google-batch01-20261018:ordinal:10",
+          "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-google-batch01-20261018",
+          "promptPath": "docs/ask-policy-work/annotation-runs/batch-10-prompt.json",
+          "promptHash": "b09b3578141d76316f7ea5401b8a5ef52f76ba818d4c6f8791467479029b6c97",
+          "actualUserItemId": "turn-item:message:message%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-google-batch10-20261018",
+          "actualUserItemPosition": 27,
+          "actualPromptNotTruncated": true,
+          "promptJsonStructureMatches": true,
+          "assistantItemId": "turn-item:provider:antigravity:native-item:provider-instance%3Aantigravity%3A321bfd35-63bd-46bd-bf93-e3325f1090ba%3Aturn%3A10%3Aassistant%3A0",
+          "assistantNotTruncated": true,
+          "summaryExactMatch": true,
+          "actualRunStatus": "completed",
+          "actualProvider": "antigravity",
+          "actualModel": "gemini-3.8-flash-medium",
+          "actualRunRequestedAt": "2026-10-18T01:02:25.198Z",
+          "actualRunStartedAt": "2026-10-18T01:02:36.381Z",
+          "actualRunCompletedAt": "2026-10-18T01:02:47.661Z"
+        },
+        {
+          "vendor": "google",
+          "batch": 11,
+          "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-google-batch11-20261018",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-google-batch01-20261018:ordinal:11",
+          "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-google-batch01-20261018",
+          "promptPath": "docs/ask-policy-work/annotation-runs/batch-11-prompt.json",
+          "promptHash": "dc6310ccc8efa260fe8241480f445d6a6dd14f66b89a1a129113b44ffe3170e2",
+          "actualUserItemId": "turn-item:message:message%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-google-batch11-20261018",
+          "actualUserItemPosition": 30,
+          "actualPromptNotTruncated": true,
+          "promptJsonStructureMatches": true,
+          "assistantItemId": "turn-item:provider:antigravity:native-item:provider-instance%3Aantigravity%3A321bfd35-63bd-46bd-bf93-e3325f1090ba%3Aturn%3A11%3Aassistant%3A0",
+          "assistantNotTruncated": true,
+          "summaryExactMatch": true,
+          "actualRunStatus": "completed",
+          "actualProvider": "antigravity",
+          "actualModel": "gemini-3.8-flash-medium",
+          "actualRunRequestedAt": "2026-10-18T01:03:45.613Z",
+          "actualRunStartedAt": "2026-10-18T01:03:45.744Z",
+          "actualRunCompletedAt": "2026-10-18T01:03:58.390Z"
+        },
+        {
+          "vendor": "google",
+          "batch": 12,
+          "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-google-batch12-20261018",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-google-batch01-20261018:ordinal:12",
+          "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-google-batch01-20261018",
+          "promptPath": "docs/ask-policy-work/annotation-runs/batch-12-prompt.json",
+          "promptHash": "d4f69b853494595d8a2389b503dbd34db0970728540a1331537e7c5f0fc9f119",
+          "actualUserItemId": "turn-item:message:message%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-google-batch12-20261018",
+          "actualUserItemPosition": 33,
+          "actualPromptNotTruncated": true,
+          "promptJsonStructureMatches": true,
+          "assistantItemId": "turn-item:provider:antigravity:native-item:provider-instance%3Aantigravity%3A321bfd35-63bd-46bd-bf93-e3325f1090ba%3Aturn%3A12%3Aassistant%3A0",
+          "assistantNotTruncated": true,
+          "summaryExactMatch": true,
+          "actualRunStatus": "completed",
+          "actualProvider": "antigravity",
+          "actualModel": "gemini-3.8-flash-medium",
+          "actualRunRequestedAt": "2026-10-18T01:04:06.291Z",
+          "actualRunStartedAt": "2026-10-18T01:04:06.352Z",
+          "actualRunCompletedAt": "2026-10-18T01:04:18.801Z"
+        }
+      ]
+    },
+    {
+      "vendor": "nvidia",
+      "thread": {
+        "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-nvidia-batch01-20261018",
+        "projectId": "0992fdab-7d2e-4c48-8b57-ea69011f8ccd",
+        "title": "TOMBO blind annotation nvidia batch01",
+        "createdBy": "agent",
+        "creationSource": "mcp",
+        "status": "completed",
+        "latestRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:12",
+        "activeRunId": null,
+        "providerInstanceId": "pi",
+        "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b",
+        "runtimeMode": "auto-accept-edits",
+        "interactionMode": "default",
+        "linkedPullRequest": null,
+        "titleRegeneration": null,
+        "branch": "feat/ask-policy-20261018",
+        "worktreePath": "D:\\develop\\works\\tombo-view-ask-policy",
+        "parentThreadId": "thread:delegated-task:command%3Amcp%3Afe76df42-f019-4e5c-8090-20e8c7a3de09%3Adelegate-task%3Atombo-ask-policy-20261018-goal-pm-resume-r2",
+        "relationshipToParent": "subagent",
+        "runCount": 12,
+        "itemCount": 48,
+        "pendingRequestCount": 0,
+        "archived": false,
+        "settled": false,
+        "settledAt": null,
+        "snoozed": false,
+        "snoozedUntil": null,
+        "createdAt": "2026-10-18T00:50:10.392Z",
+        "updatedAt": "2026-10-18T01:05:37.948Z"
+      },
+      "hasMore": false,
+      "nextPosition": 47,
+      "itemTypes": [
+        {
+          "position": 0,
+          "type": "user_message",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:1"
+        },
+        {
+          "position": 1,
+          "type": "reasoning",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:1"
+        },
+        {
+          "position": 2,
+          "type": "assistant_message",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:1"
+        },
+        {
+          "position": 3,
+          "type": "checkpoint",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:1"
+        },
+        {
+          "position": 4,
+          "type": "user_message",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:2"
+        },
+        {
+          "position": 5,
+          "type": "reasoning",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:2"
+        },
+        {
+          "position": 6,
+          "type": "assistant_message",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:2"
+        },
+        {
+          "position": 7,
+          "type": "checkpoint",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:2"
+        },
+        {
+          "position": 8,
+          "type": "user_message",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:3"
+        },
+        {
+          "position": 9,
+          "type": "reasoning",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:3"
+        },
+        {
+          "position": 10,
+          "type": "assistant_message",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:3"
+        },
+        {
+          "position": 11,
+          "type": "checkpoint",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:3"
+        },
+        {
+          "position": 12,
+          "type": "user_message",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:4"
+        },
+        {
+          "position": 13,
+          "type": "reasoning",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:4"
+        },
+        {
+          "position": 14,
+          "type": "assistant_message",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:4"
+        },
+        {
+          "position": 15,
+          "type": "checkpoint",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:4"
+        },
+        {
+          "position": 16,
+          "type": "user_message",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:5"
+        },
+        {
+          "position": 17,
+          "type": "reasoning",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:5"
+        },
+        {
+          "position": 18,
+          "type": "assistant_message",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:5"
+        },
+        {
+          "position": 19,
+          "type": "checkpoint",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:5"
+        },
+        {
+          "position": 20,
+          "type": "user_message",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:6"
+        },
+        {
+          "position": 21,
+          "type": "reasoning",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:6"
+        },
+        {
+          "position": 22,
+          "type": "assistant_message",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:6"
+        },
+        {
+          "position": 23,
+          "type": "checkpoint",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:6"
+        },
+        {
+          "position": 24,
+          "type": "user_message",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:7"
+        },
+        {
+          "position": 25,
+          "type": "reasoning",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:7"
+        },
+        {
+          "position": 26,
+          "type": "assistant_message",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:7"
+        },
+        {
+          "position": 27,
+          "type": "checkpoint",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:7"
+        },
+        {
+          "position": 28,
+          "type": "user_message",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:8"
+        },
+        {
+          "position": 29,
+          "type": "reasoning",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:8"
+        },
+        {
+          "position": 30,
+          "type": "assistant_message",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:8"
+        },
+        {
+          "position": 31,
+          "type": "checkpoint",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:8"
+        },
+        {
+          "position": 32,
+          "type": "user_message",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:9"
+        },
+        {
+          "position": 33,
+          "type": "reasoning",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:9"
+        },
+        {
+          "position": 34,
+          "type": "assistant_message",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:9"
+        },
+        {
+          "position": 35,
+          "type": "checkpoint",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:9"
+        },
+        {
+          "position": 36,
+          "type": "user_message",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:10"
+        },
+        {
+          "position": 37,
+          "type": "reasoning",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:10"
+        },
+        {
+          "position": 38,
+          "type": "assistant_message",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:10"
+        },
+        {
+          "position": 39,
+          "type": "checkpoint",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:10"
+        },
+        {
+          "position": 40,
+          "type": "user_message",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:11"
+        },
+        {
+          "position": 41,
+          "type": "reasoning",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:11"
+        },
+        {
+          "position": 42,
+          "type": "assistant_message",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:11"
+        },
+        {
+          "position": 43,
+          "type": "checkpoint",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:11"
+        },
+        {
+          "position": 44,
+          "type": "user_message",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:12"
+        },
+        {
+          "position": 45,
+          "type": "reasoning",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:12"
+        },
+        {
+          "position": 46,
+          "type": "assistant_message",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:12"
+        },
+        {
+          "position": 47,
+          "type": "checkpoint",
+          "status": "completed",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:12"
+        }
+      ],
+      "toolItems": [],
+      "checks": [
+        {
+          "vendor": "nvidia",
+          "batch": 1,
+          "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-nvidia-batch01-20261018",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:1",
+          "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-nvidia-batch01-20261018",
+          "promptPath": "docs/ask-policy-work/annotation-runs/batch-01-prompt.json",
+          "promptHash": "7142175ff211a53b16f01df526dd902665b37a770dd154f3df88a511aec2e5d9",
+          "actualUserItemId": "turn-item:message:message%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018",
+          "actualUserItemPosition": 0,
+          "actualPromptNotTruncated": true,
+          "promptJsonStructureMatches": true,
+          "assistantItemId": "turn-item:provider:pi:native-item:provider-turn%3Aprovider%3Api%3Anative-turn%3Aprovider-thread%253Aprovider%253Api%253Anative-thread%253Apending%25253Arun%25253Athread%25253Athread%2525253Adelegated-task%2525253Acommand%252525253Amcp%252525253Aba73bf88-9745-4fef-b9be-3589412d1465%252525253Adelegate-task%252525253Atombo-ask-policy-blind-nvidia-batch01-20261018%25253Aordinal%25253A1%253Aattempt%253Arun-attempt%253Arun%253Arun%25253Athread%25253Athread%2525253Adelegated-task%2525253Acommand%252525253Amcp%252525253Aba73bf88-9745-4fef-b9be-3589412d1465%252525253Adelegate-task%252525253Atombo-ask-policy-blind-nvidia-batch01-20261018%25253Aordinal%25253A1%253Aattempt%253A1%3Am1%3Ac1",
+          "assistantNotTruncated": true,
+          "summaryExactMatch": true,
+          "actualRunStatus": "completed",
+          "actualProvider": "pi",
+          "actualModel": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "actualRunRequestedAt": "2026-10-18T00:50:10.393Z",
+          "actualRunStartedAt": "2026-10-18T00:50:23.232Z",
+          "actualRunCompletedAt": "2026-10-18T00:51:39.755Z"
+        },
+        {
+          "vendor": "nvidia",
+          "batch": 2,
+          "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-nvidia-batch02-20261018",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:2",
+          "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-nvidia-batch01-20261018",
+          "promptPath": "docs/ask-policy-work/annotation-runs/batch-02-prompt.json",
+          "promptHash": "53007898ccdf2aae6a4d379b47755928fd97d541c8448d2eb5e791865425c264",
+          "actualUserItemId": "turn-item:message:message%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-nvidia-batch02-20261018",
+          "actualUserItemPosition": 4,
+          "actualPromptNotTruncated": true,
+          "promptJsonStructureMatches": true,
+          "assistantItemId": "turn-item:provider:pi:native-item:provider-turn%3Aprovider%3Api%3Anative-turn%3Aprovider-thread%253Aprovider%253Api%253Anative-thread%253Apending%25253Arun%25253Athread%25253Athread%2525253Adelegated-task%2525253Acommand%252525253Amcp%252525253Aba73bf88-9745-4fef-b9be-3589412d1465%252525253Adelegate-task%252525253Atombo-ask-policy-blind-nvidia-batch01-20261018%25253Aordinal%25253A1%253Aattempt%253Arun-attempt%253Arun%253Arun%25253Athread%25253Athread%2525253Adelegated-task%2525253Acommand%252525253Amcp%252525253Aba73bf88-9745-4fef-b9be-3589412d1465%252525253Adelegate-task%252525253Atombo-ask-policy-blind-nvidia-batch01-20261018%25253Aordinal%25253A2%253Aattempt%253A1%3Am1%3Ac1",
+          "assistantNotTruncated": true,
+          "summaryExactMatch": true,
+          "actualRunStatus": "completed",
+          "actualProvider": "pi",
+          "actualModel": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "actualRunRequestedAt": "2026-10-18T00:52:17.996Z",
+          "actualRunStartedAt": "2026-10-18T00:52:18.048Z",
+          "actualRunCompletedAt": "2026-10-18T00:52:32.956Z"
+        },
+        {
+          "vendor": "nvidia",
+          "batch": 3,
+          "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-nvidia-batch03-20261018",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:3",
+          "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-nvidia-batch01-20261018",
+          "promptPath": "docs/ask-policy-work/annotation-runs/batch-03-prompt.json",
+          "promptHash": "b805e09de02ba9581a32c60b8a4b8131edf81990e56106493c350af971575736",
+          "actualUserItemId": "turn-item:message:message%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-nvidia-batch03-20261018",
+          "actualUserItemPosition": 8,
+          "actualPromptNotTruncated": true,
+          "promptJsonStructureMatches": true,
+          "assistantItemId": "turn-item:provider:pi:native-item:provider-turn%3Aprovider%3Api%3Anative-turn%3Aprovider-thread%253Aprovider%253Api%253Anative-thread%253Apending%25253Arun%25253Athread%25253Athread%2525253Adelegated-task%2525253Acommand%252525253Amcp%252525253Aba73bf88-9745-4fef-b9be-3589412d1465%252525253Adelegate-task%252525253Atombo-ask-policy-blind-nvidia-batch01-20261018%25253Aordinal%25253A1%253Aattempt%253Arun-attempt%253Arun%253Arun%25253Athread%25253Athread%2525253Adelegated-task%2525253Acommand%252525253Amcp%252525253Aba73bf88-9745-4fef-b9be-3589412d1465%252525253Adelegate-task%252525253Atombo-ask-policy-blind-nvidia-batch01-20261018%25253Aordinal%25253A3%253Aattempt%253A1%3Am1%3Ac1",
+          "assistantNotTruncated": true,
+          "summaryExactMatch": true,
+          "actualRunStatus": "completed",
+          "actualProvider": "pi",
+          "actualModel": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "actualRunRequestedAt": "2026-10-18T00:53:51.380Z",
+          "actualRunStartedAt": "2026-10-18T00:53:51.491Z",
+          "actualRunCompletedAt": "2026-10-18T00:55:32.166Z"
+        },
+        {
+          "vendor": "nvidia",
+          "batch": 4,
+          "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-nvidia-batch04-20261018",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:4",
+          "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-nvidia-batch01-20261018",
+          "promptPath": "docs/ask-policy-work/annotation-runs/batch-04-prompt.json",
+          "promptHash": "01b79d4f860eceb45ff181a9cf60c877a5717437adefede9c6595fd7ea480114",
+          "actualUserItemId": "turn-item:message:message%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-nvidia-batch04-20261018",
+          "actualUserItemPosition": 12,
+          "actualPromptNotTruncated": true,
+          "promptJsonStructureMatches": true,
+          "assistantItemId": "turn-item:provider:pi:native-item:provider-turn%3Aprovider%3Api%3Anative-turn%3Aprovider-thread%253Aprovider%253Api%253Anative-thread%253Apending%25253Arun%25253Athread%25253Athread%2525253Adelegated-task%2525253Acommand%252525253Amcp%252525253Aba73bf88-9745-4fef-b9be-3589412d1465%252525253Adelegate-task%252525253Atombo-ask-policy-blind-nvidia-batch01-20261018%25253Aordinal%25253A1%253Aattempt%253Arun-attempt%253Arun%253Arun%25253Athread%25253Athread%2525253Adelegated-task%2525253Acommand%252525253Amcp%252525253Aba73bf88-9745-4fef-b9be-3589412d1465%252525253Adelegate-task%252525253Atombo-ask-policy-blind-nvidia-batch01-20261018%25253Aordinal%25253A4%253Aattempt%253A1%3Am1%3Ac1",
+          "assistantNotTruncated": true,
+          "summaryExactMatch": true,
+          "actualRunStatus": "completed",
+          "actualProvider": "pi",
+          "actualModel": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "actualRunRequestedAt": "2026-10-18T00:55:18.988Z",
+          "actualRunStartedAt": "2026-10-18T00:55:33.810Z",
+          "actualRunCompletedAt": "2026-10-18T00:55:41.394Z"
+        },
+        {
+          "vendor": "nvidia",
+          "batch": 5,
+          "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-nvidia-batch05-20261018",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:5",
+          "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-nvidia-batch01-20261018",
+          "promptPath": "docs/ask-policy-work/annotation-runs/batch-05-prompt.json",
+          "promptHash": "f04131d16204870f0293e2f7277755fc12df242002fd9a94af857c314eab9b55",
+          "actualUserItemId": "turn-item:message:message%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-nvidia-batch05-20261018",
+          "actualUserItemPosition": 16,
+          "actualPromptNotTruncated": true,
+          "promptJsonStructureMatches": true,
+          "assistantItemId": "turn-item:provider:pi:native-item:provider-turn%3Aprovider%3Api%3Anative-turn%3Aprovider-thread%253Aprovider%253Api%253Anative-thread%253Apending%25253Arun%25253Athread%25253Athread%2525253Adelegated-task%2525253Acommand%252525253Amcp%252525253Aba73bf88-9745-4fef-b9be-3589412d1465%252525253Adelegate-task%252525253Atombo-ask-policy-blind-nvidia-batch01-20261018%25253Aordinal%25253A1%253Aattempt%253Arun-attempt%253Arun%253Arun%25253Athread%25253Athread%2525253Adelegated-task%2525253Acommand%252525253Amcp%252525253Aba73bf88-9745-4fef-b9be-3589412d1465%252525253Adelegate-task%252525253Atombo-ask-policy-blind-nvidia-batch01-20261018%25253Aordinal%25253A5%253Aattempt%253A1%3Am1%3Ac1",
+          "assistantNotTruncated": true,
+          "summaryExactMatch": true,
+          "actualRunStatus": "completed",
+          "actualProvider": "pi",
+          "actualModel": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "actualRunRequestedAt": "2026-10-18T00:56:42.206Z",
+          "actualRunStartedAt": "2026-10-18T00:56:42.254Z",
+          "actualRunCompletedAt": "2026-10-18T00:57:33.585Z"
+        },
+        {
+          "vendor": "nvidia",
+          "batch": 6,
+          "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-nvidia-batch06-20261018",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:6",
+          "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-nvidia-batch01-20261018",
+          "promptPath": "docs/ask-policy-work/annotation-runs/batch-06-prompt.json",
+          "promptHash": "1d73fdbd87ba0939d21c8bc50a5af8d0c5cc54d31f39bb439a86bdf0177eded0",
+          "actualUserItemId": "turn-item:message:message%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-nvidia-batch06-20261018",
+          "actualUserItemPosition": 20,
+          "actualPromptNotTruncated": true,
+          "promptJsonStructureMatches": true,
+          "assistantItemId": "turn-item:provider:pi:native-item:provider-turn%3Aprovider%3Api%3Anative-turn%3Aprovider-thread%253Aprovider%253Api%253Anative-thread%253Apending%25253Arun%25253Athread%25253Athread%2525253Adelegated-task%2525253Acommand%252525253Amcp%252525253Aba73bf88-9745-4fef-b9be-3589412d1465%252525253Adelegate-task%252525253Atombo-ask-policy-blind-nvidia-batch01-20261018%25253Aordinal%25253A1%253Aattempt%253Arun-attempt%253Arun%253Arun%25253Athread%25253Athread%2525253Adelegated-task%2525253Acommand%252525253Amcp%252525253Aba73bf88-9745-4fef-b9be-3589412d1465%252525253Adelegate-task%252525253Atombo-ask-policy-blind-nvidia-batch01-20261018%25253Aordinal%25253A6%253Aattempt%253A1%3Am1%3Ac1",
+          "assistantNotTruncated": true,
+          "summaryExactMatch": true,
+          "actualRunStatus": "completed",
+          "actualProvider": "pi",
+          "actualModel": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "actualRunRequestedAt": "2026-10-18T00:56:52.608Z",
+          "actualRunStartedAt": "2026-10-18T00:57:35.201Z",
+          "actualRunCompletedAt": "2026-10-18T01:00:28.125Z"
+        },
+        {
+          "vendor": "nvidia",
+          "batch": 7,
+          "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-nvidia-batch07-20261018",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:7",
+          "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-nvidia-batch01-20261018",
+          "promptPath": "docs/ask-policy-work/annotation-runs/batch-07-prompt.json",
+          "promptHash": "76dcd49da3f68328aa0bba853c474c0f1c014278315d12961a0e556940cc1ebc",
+          "actualUserItemId": "turn-item:message:message%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-nvidia-batch07-20261018",
+          "actualUserItemPosition": 24,
+          "actualPromptNotTruncated": true,
+          "promptJsonStructureMatches": true,
+          "assistantItemId": "turn-item:provider:pi:native-item:provider-turn%3Aprovider%3Api%3Anative-turn%3Aprovider-thread%253Aprovider%253Api%253Anative-thread%253Apending%25253Arun%25253Athread%25253Athread%2525253Adelegated-task%2525253Acommand%252525253Amcp%252525253Aba73bf88-9745-4fef-b9be-3589412d1465%252525253Adelegate-task%252525253Atombo-ask-policy-blind-nvidia-batch01-20261018%25253Aordinal%25253A1%253Aattempt%253Arun-attempt%253Arun%253Arun%25253Athread%25253Athread%2525253Adelegated-task%2525253Acommand%252525253Amcp%252525253Aba73bf88-9745-4fef-b9be-3589412d1465%252525253Adelegate-task%252525253Atombo-ask-policy-blind-nvidia-batch01-20261018%25253Aordinal%25253A7%253Aattempt%253A1%3Am1%3Ac1",
+          "assistantNotTruncated": true,
+          "summaryExactMatch": true,
+          "actualRunStatus": "completed",
+          "actualProvider": "pi",
+          "actualModel": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "actualRunRequestedAt": "2026-10-18T00:59:40.789Z",
+          "actualRunStartedAt": "2026-10-18T01:00:29.923Z",
+          "actualRunCompletedAt": "2026-10-18T01:00:36.679Z"
+        },
+        {
+          "vendor": "nvidia",
+          "batch": 8,
+          "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-nvidia-batch08-20261018",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:8",
+          "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-nvidia-batch01-20261018",
+          "promptPath": "docs/ask-policy-work/annotation-runs/batch-08-prompt.json",
+          "promptHash": "d47decc67992466fdb25c3cda5666ea40960f6138e68d9d4eb6ff7a0ba52ebf8",
+          "actualUserItemId": "turn-item:message:message%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-nvidia-batch08-20261018",
+          "actualUserItemPosition": 28,
+          "actualPromptNotTruncated": true,
+          "promptJsonStructureMatches": true,
+          "assistantItemId": "turn-item:provider:pi:native-item:provider-turn%3Aprovider%3Api%3Anative-turn%3Aprovider-thread%253Aprovider%253Api%253Anative-thread%253Apending%25253Arun%25253Athread%25253Athread%2525253Adelegated-task%2525253Acommand%252525253Amcp%252525253Aba73bf88-9745-4fef-b9be-3589412d1465%252525253Adelegate-task%252525253Atombo-ask-policy-blind-nvidia-batch01-20261018%25253Aordinal%25253A1%253Aattempt%253Arun-attempt%253Arun%253Arun%25253Athread%25253Athread%2525253Adelegated-task%2525253Acommand%252525253Amcp%252525253Aba73bf88-9745-4fef-b9be-3589412d1465%252525253Adelegate-task%252525253Atombo-ask-policy-blind-nvidia-batch01-20261018%25253Aordinal%25253A8%253Aattempt%253A1%3Am1%3Ac1",
+          "assistantNotTruncated": true,
+          "summaryExactMatch": true,
+          "actualRunStatus": "completed",
+          "actualProvider": "pi",
+          "actualModel": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "actualRunRequestedAt": "2026-10-18T01:02:16.274Z",
+          "actualRunStartedAt": "2026-10-18T01:02:16.347Z",
+          "actualRunCompletedAt": "2026-10-18T01:02:49.219Z"
+        },
+        {
+          "vendor": "nvidia",
+          "batch": 9,
+          "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-nvidia-batch09-20261018",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:9",
+          "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-nvidia-batch01-20261018",
+          "promptPath": "docs/ask-policy-work/annotation-runs/batch-09-prompt.json",
+          "promptHash": "50c1db94918bfa5ef8846097472bdcb1bd3a9f84571215d06efcf3bc637c9a9b",
+          "actualUserItemId": "turn-item:message:message%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-nvidia-batch09-20261018",
+          "actualUserItemPosition": 32,
+          "actualPromptNotTruncated": true,
+          "promptJsonStructureMatches": true,
+          "assistantItemId": "turn-item:provider:pi:native-item:provider-turn%3Aprovider%3Api%3Anative-turn%3Aprovider-thread%253Aprovider%253Api%253Anative-thread%253Apending%25253Arun%25253Athread%25253Athread%2525253Adelegated-task%2525253Acommand%252525253Amcp%252525253Aba73bf88-9745-4fef-b9be-3589412d1465%252525253Adelegate-task%252525253Atombo-ask-policy-blind-nvidia-batch01-20261018%25253Aordinal%25253A1%253Aattempt%253Arun-attempt%253Arun%253Arun%25253Athread%25253Athread%2525253Adelegated-task%2525253Acommand%252525253Amcp%252525253Aba73bf88-9745-4fef-b9be-3589412d1465%252525253Adelegate-task%252525253Atombo-ask-policy-blind-nvidia-batch01-20261018%25253Aordinal%25253A9%253Aattempt%253A1%3Am1%3Ac1",
+          "assistantNotTruncated": true,
+          "summaryExactMatch": true,
+          "actualRunStatus": "completed",
+          "actualProvider": "pi",
+          "actualModel": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "actualRunRequestedAt": "2026-10-18T01:02:27.651Z",
+          "actualRunStartedAt": "2026-10-18T01:02:50.870Z",
+          "actualRunCompletedAt": "2026-10-18T01:03:13.974Z"
+        },
+        {
+          "vendor": "nvidia",
+          "batch": 10,
+          "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-nvidia-batch10-20261018",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:10",
+          "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-nvidia-batch01-20261018",
+          "promptPath": "docs/ask-policy-work/annotation-runs/batch-10-prompt.json",
+          "promptHash": "b09b3578141d76316f7ea5401b8a5ef52f76ba818d4c6f8791467479029b6c97",
+          "actualUserItemId": "turn-item:message:message%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-nvidia-batch10-20261018",
+          "actualUserItemPosition": 36,
+          "actualPromptNotTruncated": true,
+          "promptJsonStructureMatches": true,
+          "assistantItemId": "turn-item:provider:pi:native-item:provider-turn%3Aprovider%3Api%3Anative-turn%3Aprovider-thread%253Aprovider%253Api%253Anative-thread%253Apending%25253Arun%25253Athread%25253Athread%2525253Adelegated-task%2525253Acommand%252525253Amcp%252525253Aba73bf88-9745-4fef-b9be-3589412d1465%252525253Adelegate-task%252525253Atombo-ask-policy-blind-nvidia-batch01-20261018%25253Aordinal%25253A1%253Aattempt%253Arun-attempt%253Arun%253Arun%25253Athread%25253Athread%2525253Adelegated-task%2525253Acommand%252525253Amcp%252525253Aba73bf88-9745-4fef-b9be-3589412d1465%252525253Adelegate-task%252525253Atombo-ask-policy-blind-nvidia-batch01-20261018%25253Aordinal%25253A10%253Aattempt%253A1%3Am1%3Ac1",
+          "assistantNotTruncated": true,
+          "summaryExactMatch": true,
+          "actualRunStatus": "completed",
+          "actualProvider": "pi",
+          "actualModel": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "actualRunRequestedAt": "2026-10-18T01:03:47.932Z",
+          "actualRunStartedAt": "2026-10-18T01:03:48.051Z",
+          "actualRunCompletedAt": "2026-10-18T01:04:00.786Z"
+        },
+        {
+          "vendor": "nvidia",
+          "batch": 11,
+          "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-nvidia-batch11-20261018",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:11",
+          "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-nvidia-batch01-20261018",
+          "promptPath": "docs/ask-policy-work/annotation-runs/batch-11-prompt.json",
+          "promptHash": "dc6310ccc8efa260fe8241480f445d6a6dd14f66b89a1a129113b44ffe3170e2",
+          "actualUserItemId": "turn-item:message:message%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-nvidia-batch11-20261018",
+          "actualUserItemPosition": 40,
+          "actualPromptNotTruncated": true,
+          "promptJsonStructureMatches": true,
+          "assistantItemId": "turn-item:provider:pi:native-item:provider-turn%3Aprovider%3Api%3Anative-turn%3Aprovider-thread%253Aprovider%253Api%253Anative-thread%253Apending%25253Arun%25253Athread%25253Athread%2525253Adelegated-task%2525253Acommand%252525253Amcp%252525253Aba73bf88-9745-4fef-b9be-3589412d1465%252525253Adelegate-task%252525253Atombo-ask-policy-blind-nvidia-batch01-20261018%25253Aordinal%25253A1%253Aattempt%253Arun-attempt%253Arun%253Arun%25253Athread%25253Athread%2525253Adelegated-task%2525253Acommand%252525253Amcp%252525253Aba73bf88-9745-4fef-b9be-3589412d1465%252525253Adelegate-task%252525253Atombo-ask-policy-blind-nvidia-batch01-20261018%25253Aordinal%25253A11%253Aattempt%253A1%3Am1%3Ac1",
+          "assistantNotTruncated": true,
+          "summaryExactMatch": true,
+          "actualRunStatus": "completed",
+          "actualProvider": "pi",
+          "actualModel": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "actualRunRequestedAt": "2026-10-18T01:04:08.941Z",
+          "actualRunStartedAt": "2026-10-18T01:04:08.989Z",
+          "actualRunCompletedAt": "2026-10-18T01:04:22.307Z"
+        },
+        {
+          "vendor": "nvidia",
+          "batch": 12,
+          "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-nvidia-batch12-20261018",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:12",
+          "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-nvidia-batch01-20261018",
+          "promptPath": "docs/ask-policy-work/annotation-runs/batch-12-prompt.json",
+          "promptHash": "d4f69b853494595d8a2389b503dbd34db0970728540a1331537e7c5f0fc9f119",
+          "actualUserItemId": "turn-item:message:message%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-nvidia-batch12-20261018",
+          "actualUserItemPosition": 44,
+          "actualPromptNotTruncated": true,
+          "promptJsonStructureMatches": true,
+          "assistantItemId": "turn-item:provider:pi:native-item:provider-turn%3Aprovider%3Api%3Anative-turn%3Aprovider-thread%253Aprovider%253Api%253Anative-thread%253Apending%25253Arun%25253Athread%25253Athread%2525253Adelegated-task%2525253Acommand%252525253Amcp%252525253Aba73bf88-9745-4fef-b9be-3589412d1465%252525253Adelegate-task%252525253Atombo-ask-policy-blind-nvidia-batch01-20261018%25253Aordinal%25253A1%253Aattempt%253Arun-attempt%253Arun%253Arun%25253Athread%25253Athread%2525253Adelegated-task%2525253Acommand%252525253Amcp%252525253Aba73bf88-9745-4fef-b9be-3589412d1465%252525253Adelegate-task%252525253Atombo-ask-policy-blind-nvidia-batch01-20261018%25253Aordinal%25253A12%253Aattempt%253A1%3Am1%3Ac1",
+          "assistantNotTruncated": true,
+          "summaryExactMatch": true,
+          "actualRunStatus": "completed",
+          "actualProvider": "pi",
+          "actualModel": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "actualRunRequestedAt": "2026-10-18T01:05:03.559Z",
+          "actualRunStartedAt": "2026-10-18T01:05:03.621Z",
+          "actualRunCompletedAt": "2026-10-18T01:05:37.948Z"
+        }
+      ]
+    }
+  ]
+}

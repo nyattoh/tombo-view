@@ -3,7 +3,7 @@ import { readFile, mkdir, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { parseArgs } from 'node:util';
-import { createTombo, fixtureAdapter, renderMarkdownReport, TomboError, validateState } from './index.js';
+import { createTombo, fixtureAdapter, renderMarkdownReport, TomboError, validateState, stateSchema } from './index.js';
 import type { CriticAdapter, GenerationAdapter } from './index.js';
 import { FileJournal, replayJournal } from './journal.js';
 
@@ -70,9 +70,12 @@ async function main(): Promise<void> {
   if (command === 'reflect' && values.adapter) throw new TomboError('invalid_input', 'Reflect uses --critic; --adapter is not used.');
   let output: string;
   if (command === 'inspect' || command === 'update' || command === 'invalidate' || command === 'reflect') {
-    const prior = command === 'inspect' ? null : validateState(await readJson(values.state));
+    const shaped = command === 'inspect' ? null : stateSchema.safeParse(await readJson(values.state));
+    if (shaped && !shaped.success) throw new TomboError('invalid_input', 'Invalid state shape.');
+    const prior = shaped?.data ?? null;
     const expectedRevision = prior?.revision ?? -1;
     if (values.ledger) await new FileJournal(values.ledger).assertCurrent(prior);
+    if (prior) validateState(prior);
     const tombo = createTombo({ maxModelRepairAttempts, adapter: command === 'invalidate' || command === 'reflect' ? fixtureAdapter : await loadAdapter(values.adapter) });
     const result = command === 'inspect'
       ? await tombo.inspect(await readJson(values.input))

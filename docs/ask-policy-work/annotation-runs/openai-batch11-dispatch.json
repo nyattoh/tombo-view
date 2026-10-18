@@ -1,0 +1,21 @@
+{
+  "dispatch": {
+    "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-openai-batch01-20261018",
+    "messageId": "message:mcp:ba73bf88-9745-4fef-b9be-3589412d1465:thread-send:tombo-ask-policy-blind-openai-batch11-20261018",
+    "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:11",
+    "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-openai-batch11-20261018",
+    "status": "starting",
+    "delivery": "started"
+  },
+  "vendor": "openai",
+  "prompt": "docs/ask-policy-work/annotation-runs/batch-11-prompt.json",
+  "caseIds": [
+    "res-11",
+    "res-12",
+    "res-13",
+    "res-14",
+    "res-15"
+  ],
+  "sourceOnly": true,
+  "repoExploration": false
+}

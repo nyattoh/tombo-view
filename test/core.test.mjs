@@ -331,7 +331,7 @@ test('only ambiguous required gaps request user input; optional gaps permit a bo
   const tombo = createTombo({ ...options, adapter });
   const required = await tombo.inspect(packet());
   assert.equal(required.state.decision, 'needs_user_input');
-  assert.deepEqual(required.userQuestions, ['どの条件を優先するか。']);
+  assert.deepEqual(required.userQuestions, ['どの条件を優先するか。 本人の希望が目的を変えるため 目的: 架空アカウントの CLOSE 409 の原因を確認し、次の確認を選ぶ。 回答に基づき、次の行動「架空アカウントの CLOSE 409 の原因を確認し、次の確認を選ぶ。」の選択・実施条件を確定します。']);
   const optional = await tombo.inspect({ ...packet(), mode: 'explain' });
   assert.equal(optional.state.decision, 'ready_for_requested_step');
   assert.equal(optional.state.gaps[0].status, 'open');

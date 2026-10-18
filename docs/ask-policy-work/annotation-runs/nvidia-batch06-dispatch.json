@@ -1,0 +1,21 @@
+{
+  "dispatch": {
+    "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-nvidia-batch01-20261018",
+    "messageId": "message:mcp:ba73bf88-9745-4fef-b9be-3589412d1465:thread-send:tombo-ask-policy-blind-nvidia-batch06-20261018",
+    "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:6",
+    "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-nvidia-batch06-20261018",
+    "status": "queued",
+    "delivery": "queued"
+  },
+  "vendor": "nvidia",
+  "prompt": "docs/ask-policy-work/annotation-runs/batch-06-prompt.json",
+  "caseIds": [
+    "dev-record-06",
+    "dev-record-07",
+    "dev-record-08",
+    "dev-record-09",
+    "dev-record-10"
+  ],
+  "sourceOnly": true,
+  "repoExploration": false
+}

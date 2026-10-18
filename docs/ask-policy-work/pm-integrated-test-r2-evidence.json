@@ -1,0 +1,29 @@
+{
+  "command": "npm test",
+  "exit_code": 0,
+  "tests": 667,
+  "pass": 667,
+  "fail": 0,
+  "stdout": "docs/ask-policy-work/pm-final-npm-test-r2.stdout.log",
+  "stderr": "docs/ask-policy-work/pm-final-npm-test-r2.stderr.log",
+  "stderrBytes": 0,
+  "at": "2026-10-18T01:17:38.152770+00:00",
+  "input_source_sha256": {
+    "src/core.ts": "11868b3b76e52c93ef937551dbe864d2dc5a1dac64b7034bd32454b99303fb84",
+    "src/types.ts": "4218f2acc33e78a7529526630aa3b09d0beb03b8fd72ade8bf2b01c1e8166ee6",
+    "src/journal.ts": "92c4ea7ebc76a03ffd3d11ef75cbafbc01db17db3223c3e61159a82f0ea58061",
+    "src/cli.ts": "e7fef1ab0a2d0d3e205b80063ad7120efc3d6b40d056aa5a982a7fab21d64c48",
+    "skills/tombo-view/scripts/session.mjs": "90dea41551ed05f59c89cea0f4633e259c23568511131276092ebb925edcb1e2",
+    "scripts/ask-policy-annotations.mjs": "6a83a68c3c25be27c0bab01c0f228ce9086c8e14e3abab5f4e378ba1ae729b74",
+    "scripts/ask-policy-compare.mjs": "b4441a8fd0dc0de3c13417b99ce84020485b83e6f8c65767ad4c2276089d5e8c",
+    "test/ask-policy.test.mjs": "9cc250710fd4700575882576adb9226cb9f9f750ecf56ce28c7920825abd2791",
+    "test/ask-policy-annotations.test.mjs": "df6bc8af28dae3599a4bee918bcba0a475c6d85e47ba4e45c8d95e6019ec28f0",
+    "test/ask-policy-compare.test.mjs": "3af4754fdb0859965cadfcd4161e2bbf14ccc2ffca289d541af26e751c49c885",
+    "test/ask-policy-fixtures.test.mjs": "9110aae063b0c78bd7ec13b57e0c7c36d95a024c3792387baac8e3b5a0c4c4d3",
+    "test/core.test.mjs": "52950ebc8548fd8b9ee48b097312077ea6fed271626ee4eebb8192ca2073bb12",
+    "test/assessment-correction.test.mjs": "431f935d1c5582ce30f4db97b8afebe231c7f7a3d9839c24bce2fbecf6a323a1",
+    "test/assessment-correction-journal.test.mjs": "454bf14ec647f1a94e08c83376c7a64b7d77685b3199b6493c23a39e2b330484"
+  },
+  "reportSha256": "9f103749f05aa714139fac2bd20b5ff5e1c15a0b3bceb18a7f5987a1c1b0beec",
+  "qualification": "After final annotation utility code/data integration and actual two formal comparison emits; previous665 preserved separately"
+}

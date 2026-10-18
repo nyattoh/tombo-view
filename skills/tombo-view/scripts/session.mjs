@@ -10,7 +10,7 @@ const configuration = resolve(skillRoot, 'references/runtime.json');
 const configuredRoot = existsSync(configuration) ? JSON.parse(await readFile(configuration, 'utf8')).repositoryRoot : undefined;
 const repositoryRoot = resolve(process.env.TOMBO_ROOT ?? configuredRoot ?? resolve(skillRoot, '../..'));
 const sdk = await import(pathToFileURL(resolve(repositoryRoot, 'dist/index.js')).href);
-const { createTombo, proposalSchema, reflectionOutputSchema, understandingHash, assessmentReferences, taskPacketSchema, observationsSchema, validateState, FileJournal, renderMarkdownReport, TomboError } = sdk;
+const { createTombo, proposalSchema, reflectionOutputSchema, understandingHash, assessmentReferences, taskPacketSchema, observationsSchema, stateSchema, validateState, FileJournal, renderMarkdownReport, TomboError } = sdk;
 
 function canonical(value) {
   if (Array.isArray(value)) return `[${value.map(canonical).join(',')}]`;
@@ -45,7 +45,19 @@ async function main() {
     if (operation !== 'inspect' && values.input) throw new TomboError('invalid_input', 'Use either --input or --state, not both.');
     if (operation === 'reflect' && (!values.state || values.observations)) throw new TomboError('invalid_input', 'Reflection requires --state and accepts no --observations.');
     const saved = operation !== 'inspect' ? await json(values.state) : null;
-    const state = saved ? validateState(saved.state ?? saved) : null;
+    const shaped = operation !== 'inspect' ? stateSchema.safeParse(saved?.state ?? saved) : null;
+    if (shaped && !shaped.success) throw new TomboError('invalid_input', 'Invalid state shape.');
+    const state = shaped?.data ?? null;
+    if (values.ledger) await new FileJournal(values.ledger).assertCurrent(state);
+    if (state) {
+      if (command === 'prepare' && !values.ledger) {
+        // Preparation binds the supplied snapshot; execution validates policy metadata after journal authority.
+        const structural = { ...state };
+        delete structural.policyHistory;
+        delete structural.reflectionEffects;
+        validateState(structural);
+      } else validateState(state);
+    }
     const task = state?.task ?? taskPacketSchema.parse(await json(values.input));
     const lastDiagnostic = state?.modelRepairDiagnostics?.at(-1);
     if (operation === 'update' && state?.revision === 1 && state.stopReason === 'invalid_model_output' && lastDiagnostic?.operation === 'inspect' && !state.pendingAssessmentExecutionIds?.length && !state.claims.length && !state.probes.length) {
@@ -67,7 +79,6 @@ async function main() {
       request.validationFeedback = { code, message, rejectedAttempt, maxAttempts };
     }
     const binding = { schemaVersion: '0.1', operation, taskId: task.taskId, expectedRevision: state?.revision ?? -1, requestHash: digest(request) };
-    if (values.ledger) await new FileJournal(values.ledger).assertCurrent(state);
     if (command === 'prepare') {
       output = `${JSON.stringify({ binding, request, instructions: operation === 'reflect' ? sdk.reflectionGuidance : sdk.proposalGuidance, proposalSchema: resolve(repositoryRoot, 'src/types.ts'), hostUsage: { totalTokens: null, costYen: null }, apiCallsMade: 0 }, null, 2)}\n`;
     } else {

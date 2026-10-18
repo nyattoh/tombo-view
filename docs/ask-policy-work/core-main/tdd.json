@@ -1,0 +1,369 @@
+{
+  "status": "source_contract_ready_review_pending",
+  "independent_acceptance_pending": true,
+  "completion_claim": false,
+  "recorded_at": "2026-10-18T00:50:38.195049+00:00",
+  "binding": {
+    "attached": true,
+    "cwd": "D:\\develop\\works\\tombo-view-ask-policy",
+    "worktreePath": "D:\\develop\\works\\tombo-view-ask-policy",
+    "branch": "feat/ask-policy-20261018",
+    "HEAD": "f2ecc2e4ccbfe109596d9e156095fff7af76ea6a",
+    "verified_by": [
+      "t3_worktree_status",
+      "t3_thread_read",
+      "Get-Location",
+      "git branch --show-current",
+      "git rev-parse HEAD",
+      "git status --short"
+    ]
+  },
+  "design_sha256": "5F3B4FC75A3C2CBA99656BEC42C3269F8E399CCDB3D31723ED12E6095F2A47E3",
+  "design_gate": {
+    "artifact": "docs/ask-policy-work/agy-formal-design-r2-result.json",
+    "actual_status": "completed",
+    "verdict": "pass"
+  },
+  "providerInstanceId": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "high (injected runtime_info)",
+  "threadId": "thread:delegated-task:command%3Amcp%3Ab4bee315-331e-4371-8e14-4d25d3635029%3Adelegate-task%3Atombo-ask-policy-core-main-impl-20261018-r1",
+  "decision_source": "framework_only_local",
+  "Jev API call": "not made",
+  "source_hashes": {
+    "src/core.ts": "11868B3B76E52C93EF937551DBE864D2DC5A1DAC64B7034BD32454B99303FB84",
+    "src/types.ts": "4218F2ACC33E78A7529526630AA3B09D0BEB03B8FD72ADE8BF2B01C1E8166EE6",
+    "src/journal.ts": "92C4EA7EBC76A03FFD3D11EF75CBAFBC01DB17DB3223C3E61159A82F0EA58061",
+    "src/cli.ts": "E7FEF1AB0A2D0D3E205B80063AD7120EFC3D6B40D056AA5A982A7FAB21D64C48",
+    "skills/tombo-view/scripts/session.mjs": "90DEA41551ED05F59C89CEA0F4633E259C23568511131276092EBB925EDCB1E2",
+    "test/ask-policy.test.mjs": "9CC250710FD4700575882576ADB9226CB9F9F750ECF56CE28C7920825ABD2791",
+    "test/assessment-correction.test.mjs": "431F935D1C5582CE30F4DB97B8AFEBE231C7F7A3D9839C24BCE2FBECF6A323A1",
+    "test/assessment-correction-journal.test.mjs": "454BF14EC647F1A94E08C83376C7A64B7D77685B3199B6493C23A39E2B330484",
+    "test/core.test.mjs": "52950EBC8548FD8B9EE48B097312077EA6FED271626EE4EEBB8192CA2073BB12"
+  },
+  "compiled_hashes": {
+    "dist/core.js": "D8BBA21916DDC394F0670AB3B2039A7DAF058A3DBD68AF48A8BAFF89D3274F88",
+    "dist/types.js": "5C743AB52FD7DAC07EFC499E771C8BFD7A00236CF031929838C6F3F3B8D27B6D",
+    "dist/journal.js": "586E0B780EBCEA9C310A3A8E258334A64B36F73231B632CC4679C9537EE8B6F0",
+    "dist/cli.js": "E6CEA7C6A1B2D5411C50727D0466812F0A95BAFE727CC86C6F86DCF483B5A26C",
+    "dist/core.d.ts": "83C9065A2A3A8BF564B5B2C71F5C438EB1EE2CD8ABC76C7E1F8990FE485AAA73",
+    "dist/types.d.ts": "B5F989CDB49EED90385D1D281645E64186C50B3CC2D1DA0A130E30AEC33E0DCD",
+    "dist/journal.d.ts": "F58BCBEB49EFE6ACEBEA7406D1A6B50C45422CDC5F47278E7311EF916ADCA403",
+    "dist/cli.d.ts": "43E818ADF60173644896298637F47B01D5819B17EDA46EAA32D0C7D64724D012"
+  },
+  "production_changes": {
+    "skills/tombo-view/scripts/session.mjs": {
+      "added": 14,
+      "removed": 3
+    },
+    "src/cli.ts": {
+      "added": 5,
+      "removed": 2
+    },
+    "src/core.ts": {
+      "added": 101,
+      "removed": 15
+    },
+    "src/journal.ts": {
+      "added": 13,
+      "removed": 5
+    },
+    "src/types.ts": {
+      "added": 16,
+      "removed": 2
+    }
+  },
+  "red": {
+    "command": "node --test --test-name-pattern='journal snapshot conflicts|journal-backed CLI|session preparation binds' test/ask-policy.test.mjs 1> docs/ask-policy-work/core-main/compat-red.stdout.log 2> docs/ask-policy-work/core-main/compat-red.stderr.log; $result = $LASTEXITCODE; Get-Content docs/ask-policy-work/core-main/compat-red.stdout.log -TotalCount 13; Get-Content docs/ask-policy-work/core-main/compat-red.stderr.log; exit $result",
+    "exit_code": 1,
+    "stdout": "docs/ask-policy-work/core-main/compat-red.stdout.log",
+    "stderr": "docs/ask-policy-work/core-main/compat-red.stderr.log",
+    "stderr_bytes": 0,
+    "execution_path": "standard compiled dist; no source-loader",
+    "tests": 3,
+    "pass": 0,
+    "fail": 3,
+    "skipped": 0,
+    "cancelled": 0
+  },
+  "green": {
+    "command": "node --test test/ask-policy.test.mjs 1> docs/ask-policy-work/core-main/compat-focused.stdout.log 2> docs/ask-policy-work/core-main/compat-focused.stderr.log; $result = $LASTEXITCODE; Get-Content docs/ask-policy-work/core-main/compat-focused.stdout.log -Tail 10; Get-Content docs/ask-policy-work/core-main/compat-focused.stderr.log; exit $result",
+    "exit_code": 0,
+    "stdout": "docs/ask-policy-work/core-main/compat-focused.stdout.log",
+    "stderr": "docs/ask-policy-work/core-main/compat-focused.stderr.log",
+    "stderr_bytes": 0,
+    "execution_path": "standard compiled dist; no source-loader",
+    "tests": 50,
+    "pass": 50,
+    "fail": 0,
+    "skipped": 0,
+    "cancelled": 0
+  },
+  "regression": {
+    "command": "$priorNodeOptions = $env:NODE_OPTIONS; try { Remove-Item Env:NODE_OPTIONS -ErrorAction SilentlyContinue; $trackedTests = @(git ls-files 'test/*.test.mjs'); node --test --test-concurrency=1 @trackedTests 1> docs/ask-policy-work/core-main/compat-regression.stdout.log 2> docs/ask-policy-work/core-main/compat-regression.stderr.log; $result = $LASTEXITCODE; Get-Content docs/ask-policy-work/core-main/compat-regression.stdout.log -Tail 12; Get-Content docs/ask-policy-work/core-main/compat-regression.stderr.log } finally { $env:NODE_OPTIONS = $priorNodeOptions }; exit $result",
+    "exit_code": 0,
+    "stdout": "docs/ask-policy-work/core-main/compat-regression.stdout.log",
+    "stderr": "docs/ask-policy-work/core-main/compat-regression.stderr.log",
+    "stderr_bytes": 0,
+    "execution_path": "standard compiled dist; no source-loader",
+    "tests": 524,
+    "pass": 524,
+    "fail": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "paths": "docs/ask-policy-work/core-main/regression-paths.json",
+    "regression_pass": true
+  },
+  "checks": {
+    "build": {
+      "command": "npm run build 1> docs/ask-policy-work/core-main/compat-build.stdout.log 2> docs/ask-policy-work/core-main/compat-build.stderr.log; $result = $LASTEXITCODE; Get-Content docs/ask-policy-work/core-main/compat-build.stdout.log; Get-Content docs/ask-policy-work/core-main/compat-build.stderr.log; exit $result",
+      "exit_code": 0,
+      "stdout": "docs/ask-policy-work/core-main/compat-build.stdout.log",
+      "stderr": "docs/ask-policy-work/core-main/compat-build.stderr.log",
+      "stderr_bytes": 0,
+      "execution_path": "standard compiled dist; no source-loader"
+    },
+    "typecheck": {
+      "command": "npm run typecheck 1> docs/ask-policy-work/core-main/compat-typecheck.stdout.log 2> docs/ask-policy-work/core-main/compat-typecheck.stderr.log; $result = $LASTEXITCODE; Get-Content docs/ask-policy-work/core-main/compat-typecheck.stdout.log; Get-Content docs/ask-policy-work/core-main/compat-typecheck.stderr.log; exit $result",
+      "exit_code": 0,
+      "stdout": "docs/ask-policy-work/core-main/compat-typecheck.stdout.log",
+      "stderr": "docs/ask-policy-work/core-main/compat-typecheck.stderr.log",
+      "stderr_bytes": 0,
+      "execution_path": "standard compiled dist; no source-loader"
+    },
+    "affected_regression": {
+      "command": "node --test --test-concurrency=1 test/assessment-correction.test.mjs test/assessment-correction-journal.test.mjs test/core.test.mjs test/recovery-journal.test.mjs test/cli-reflection.test.mjs test/session.test.mjs test/session-repair-feedback.test.mjs 1> docs/ask-policy-work/core-main/compat-affected.stdout.log 2> docs/ask-policy-work/core-main/compat-affected.stderr.log; $result = $LASTEXITCODE; Get-Content docs/ask-policy-work/core-main/compat-affected.stdout.log -Tail 12; Get-Content docs/ask-policy-work/core-main/compat-affected.stderr.log; exit $result",
+      "exit_code": 0,
+      "stdout": "docs/ask-policy-work/core-main/compat-affected.stdout.log",
+      "stderr": "docs/ask-policy-work/core-main/compat-affected.stderr.log",
+      "stderr_bytes": 0,
+      "execution_path": "standard compiled dist; no source-loader",
+      "tests": 113,
+      "pass": 113,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0
+    }
+  },
+  "additional_red_cycles": [
+    {
+      "command": "node --disable-warning=ExperimentalWarning --import ./docs/ask-policy-work/core-main/source-loader.mjs --test --test-name-pattern='terminal states retain byte-stable' test/ask-policy.test.mjs *> docs/ask-policy-work/core-main/red-serialisation.log",
+      "exit_code": 1,
+      "tests": 1,
+      "pass": 0,
+      "fail": 1,
+      "artifact": "docs/ask-policy-work/core-main/red-serialisation.log",
+      "execution_path": "source loader after correcting root and using Node built-in transform"
+    },
+    {
+      "command": "node --test --test-name-pattern='terminal states retain byte-stable|human question names' test/ask-policy.test.mjs 1> docs/ask-policy-work/core-main/red-question-serialisation.stdout.log 2> docs/ask-policy-work/core-main/red-question-serialisation.stderr.log",
+      "exit_code": 1,
+      "tests": 2,
+      "pass": 0,
+      "fail": 2,
+      "stdout": "docs/ask-policy-work/core-main/red-question-serialisation.stdout.log",
+      "stderr": "docs/ask-policy-work/core-main/red-question-serialisation.stderr.log",
+      "execution_path": "compiled dist before deferred history ordering and specific next-action wording fixes"
+    }
+  ],
+  "intermediate_runs": [
+    {
+      "artifact": "green-attempt-1.log",
+      "exit_code": 1,
+      "tests": 40,
+      "pass": 11,
+      "fail": 29,
+      "reason": "loader root mismatch; still baseline dist"
+    },
+    {
+      "artifact": "green-attempt-2.log",
+      "exit_code": 1,
+      "tests": 1,
+      "pass": 0,
+      "fail": 1,
+      "reason": "TypeScript 7 installed module has no ScriptTarget/transpileModule API expected by the first helper"
+    },
+    {
+      "artifact": "green-attempt-3.log",
+      "exit_code": 1,
+      "tests": 40,
+      "pass": 37,
+      "fail": 3,
+      "reason": "3 new fixture expectations corrected to formal deferred/resume/changesBetween semantics; existing tests untouched"
+    },
+    {
+      "artifact": "green.log",
+      "exit_code": 0,
+      "tests": 41,
+      "pass": 41,
+      "fail": 0,
+      "execution_path": "source loader; historical intermediate result, superseded by compiled focused 47/47"
+    },
+    {
+      "artifact": "regression-attempt-1.log",
+      "exit_code": 1,
+      "tests": 524,
+      "pass": 480,
+      "fail": 44,
+      "reason": "source-loader ExperimentalWarning polluted CLI stderr JSON and initial serialization ordering defect"
+    },
+    {
+      "artifact": "regression-attempt-2.log",
+      "exit_code": 1,
+      "tests": 524,
+      "pass": 509,
+      "fail": 15,
+      "reason": "warning disabled, serialization corrected; same legacy incompatibility inventory as final compiled run"
+    },
+    {
+      "artifact": "regression.stdout.log",
+      "stderr": "regression.stderr.log",
+      "exit_code": 1,
+      "tests": 524,
+      "pass": 508,
+      "fail": 16,
+      "reason": "compiled run with default concurrency: 15 compatibility failures plus one deadline/output timing failure"
+    },
+    {
+      "artifact": "host-deadline-recheck.stdout.log",
+      "stderr": "host-deadline-recheck.stderr.log",
+      "command": "node --test --test-name-pattern='a pending repair remains subject to the same elapsed deadline' test/host-trial-record-contract.test.mjs",
+      "exit_code": 0,
+      "tests": 1,
+      "pass": 1,
+      "fail": 0,
+      "reason": "bounded rerun of the one timing failure; also passes final concurrency=1 run"
+    }
+  ],
+  "warning_diagnosis": {
+    "origin": "source-loader.mjs stripTypeScriptTypes ExperimentalWarning",
+    "observed_message": "Unexpected token ( / (node:... while JSON.parse reads stderr",
+    "standard_compiled_stderr_bytes": 0,
+    "product_cli_session_changed": false,
+    "no_claim": "The initial warning failures are not product regressions. NODE_OPTIONS warning suppression was diagnostic only; final acceptance evidence uses standard compiled dist without loader."
+  },
+  "excluded_from_tracked_regression": [
+    {
+      "path": "test/ask-policy-compare.test.mjs",
+      "reason": "new untracked concurrent stream; not one of baseline 524; PM owns integrated barrier"
+    },
+    {
+      "path": "test/ask-policy-fixtures.test.mjs",
+      "reason": "new untracked concurrent stream; frozen fixtures in progress; PM owns integrated barrier"
+    },
+    {
+      "path": "test/ask-policy.test.mjs",
+      "reason": "new owned suite executed separately: 47/47 pass"
+    },
+    {
+      "path": "test/ask-policy-annotations.test.mjs",
+      "reason": "new untracked concurrent annotation suite observed at final status after tracked regression; not one of baseline 524; PM owns integrated barrier"
+    }
+  ],
+  "full_npm_test": {
+    "status": "NOT_RUN",
+    "owner": "PM after all-writer GREEN barrier"
+  },
+  "external_compatibility": {
+    "status": "implemented_and_compiled_regression_green_independent_review_pending",
+    "fix": "stateSchema shape checks -> authoritative journal binding comparison -> core.validateState metadata/semantic checks. Malformed JSON/arbitrary malformed shape remains invalid_input; journal forks regain revision_conflict.",
+    "preparation_contract": "Unledgered session prepare binds the exact supplied state without editing its metadata. It validates legacy base semantics on a projection without the two optional policy metadata fields, deferring their integrity to execution. Ledger-backed prepare and execution assert authority first, then validate fully. Unledgered execution validates fully and still rejects a stale hash as invalid_input. prepare performs no generation.",
+    "core_validation": "Core validateState unchanged and its dedicated stale-hash negative test remains."
+  },
+  "unchanged_tests": "Only the three expressly authorised existing test definitions changed (six leaf cases including four parameterised limits). All other tracked existing tests unchanged; none deleted or skipped.",
+  "independent_test_integrate": "NOT_RUN by this worker; must be independently verified before acceptance.",
+  "pre_extension_phase": {
+    "status": "source_contract_ready_not_accepted",
+    "red": {
+      "command": "node --import ./docs/ask-policy-work/core-main/source-loader.mjs --test test/ask-policy.test.mjs *> docs/ask-policy-work/core-main/red.log; $result = $LASTEXITCODE; Get-Content docs/ask-policy-work/core-main/red.log -Tail 15; exit $result",
+      "exit_code": 1,
+      "tests": 40,
+      "pass": 11,
+      "fail": 29,
+      "artifact": "docs/ask-policy-work/core-main/red.log",
+      "stdout_stderr_merged": true,
+      "execution_path": "pre-existing dist at the unchanged baseline, before production edits",
+      "limitation": "Initial loader root had one too many parent segments and did not remap dist. Thus this is actual baseline-dist RED, not a claim of source-loader RED. The later source and compiled RED tests are recorded separately."
+    },
+    "green": {
+      "command": "node --test test/ask-policy.test.mjs 1> docs/ask-policy-work/core-main/focused.stdout.log 2> docs/ask-policy-work/core-main/focused.stderr.log; $result = $LASTEXITCODE; Get-Content docs/ask-policy-work/core-main/focused.stdout.log -Tail 20; Get-Content docs/ask-policy-work/core-main/focused.stderr.log; exit $result",
+      "exit_code": 0,
+      "tests": 47,
+      "pass": 47,
+      "fail": 0,
+      "stdout": "docs/ask-policy-work/core-main/focused.stdout.log",
+      "stderr": "docs/ask-policy-work/core-main/focused.stderr.log",
+      "stderr_bytes": 0,
+      "execution_path": "standard compiled dist; no NODE_OPTIONS loader",
+      "supplemental_tests": "Last 5 tests diagnose legacy fixture incompatibility and pass without further production changes; they are not a new production-change TDD cycle."
+    },
+    "regression": {
+      "command": "$priorNodeOptions = $env:NODE_OPTIONS; try { Remove-Item Env:NODE_OPTIONS -ErrorAction SilentlyContinue; $trackedTests = @(git ls-files 'test/*.test.mjs'); node --test --test-concurrency=1 @trackedTests 1> docs/ask-policy-work/core-main/regression-final.stdout.log 2> docs/ask-policy-work/core-main/regression-final.stderr.log; $result = $LASTEXITCODE; Get-Content docs/ask-policy-work/core-main/regression-final.stdout.log -Tail 20; Get-Content docs/ask-policy-work/core-main/regression-final.stderr.log } finally { $env:NODE_OPTIONS = $priorNodeOptions }; exit $result",
+      "exit_code": 1,
+      "tests": 524,
+      "pass": 509,
+      "fail": 15,
+      "stdout": "docs/ask-policy-work/core-main/regression-final.stdout.log",
+      "stderr": "docs/ask-policy-work/core-main/regression-final.stderr.log",
+      "stderr_bytes": 0,
+      "execution_path": "standard compiled dist; NODE_OPTIONS removed and restored",
+      "paths": "docs/ask-policy-work/core-main/regression-paths.json",
+      "exceptions": "docs/ask-policy-work/core-main/regression-exceptions.json",
+      "regression_pass": false
+    },
+    "checks": {
+      "build": {
+        "command": "npm run build 1> docs/ask-policy-work/core-main/build.stdout.log 2> docs/ask-policy-work/core-main/build.stderr.log; exit $LASTEXITCODE",
+        "exit_code": 0,
+        "stdout": "docs/ask-policy-work/core-main/build.stdout.log",
+        "stderr": "docs/ask-policy-work/core-main/build.stderr.log",
+        "stderr_bytes": 0
+      },
+      "typecheck": {
+        "command": "npm run typecheck 1> docs/ask-policy-work/core-main/typecheck.stdout.log 2> docs/ask-policy-work/core-main/typecheck.stderr.log; exit $LASTEXITCODE",
+        "exit_code": 0,
+        "stdout": "docs/ask-policy-work/core-main/typecheck.stdout.log",
+        "stderr": "docs/ask-policy-work/core-main/typecheck.stderr.log",
+        "stderr_bytes": 0
+      }
+    },
+    "source_hashes": {
+      "src/core.ts": "11868B3B76E52C93EF937551DBE864D2DC5A1DAC64B7034BD32454B99303FB84",
+      "src/types.ts": "4218F2ACC33E78A7529526630AA3B09D0BEB03B8FD72ADE8BF2B01C1E8166EE6",
+      "test/ask-policy.test.mjs": "F9C96689655A0FBCE813F278F4B8B32C13B80413B327A0D5073B035FCDF65964"
+    },
+    "compiled_hashes": {
+      "dist/core.js": "D8BBA21916DDC394F0670AB3B2039A7DAF058A3DBD68AF48A8BAFF89D3274F88",
+      "dist/types.js": "5C743AB52FD7DAC07EFC499E771C8BFD7A00236CF031929838C6F3F3B8D27B6D",
+      "dist/core.d.ts": "83C9065A2A3A8BF564B5B2C71F5C438EB1EE2CD8ABC76C7E1F8990FE485AAA73",
+      "dist/types.d.ts": "B5F989CDB49EED90385D1D281645E64186C50B3CC2D1DA0A130E30AEC33E0DCD"
+    },
+    "external_compatibility": {
+      "status": "unresolved_pending_PM_and_independent_review",
+      "locations": [
+        "src/journal.ts:79 assertCurrent and :87 commit",
+        "src/cli.ts:73 validation before :75 assertCurrent",
+        "skills/tombo-view/scripts/session.mjs:48 validation before :70 journal check"
+      ],
+      "minimum_proposal": "For ledger-backed operations, perform the authoritative journal snapshot comparison before metadata validation and align CLI/session ordering. This is a proposal only; no ownership extension was received and no external file was edited. Public core.validateState must retain design-3.3 invalid_input for stale hashes."
+    },
+    "unchanged_tests": "All tracked existing test files are byte unchanged; only test/ask-policy.test.mjs added."
+  },
+  "regression_pass": true,
+  "ownership_extension": {
+    "authorised": true,
+    "mode": "same-writer serial; no additional implementer/delegation",
+    "production_files": [
+      "src/journal.ts",
+      "src/cli.ts",
+      "skills/tombo-view/scripts/session.mjs"
+    ],
+    "exact_existing_test_files": [
+      "test/assessment-correction.test.mjs",
+      "test/assessment-correction-journal.test.mjs",
+      "test/core.test.mjs"
+    ],
+    "first_phase_terminal_before_followup": true
+  },
+  "all_original_tracked_tests": "524/524 GREEN through standard compiled dist; updated authorised fixtures but unchanged test count; no new concurrent suites included."
+}

@@ -1,0 +1,298 @@
+{
+  "status": "formal_comparison_verified_goal_acceptance_pending",
+  "observedAt": "2026-10-18T00:39:03.985Z",
+  "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-comparison-main-wave1-20261018",
+  "childThreadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-comparison-main-wave1-20261018",
+  "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-comparison-main-wave1-20261018:ordinal:1",
+  "selection": {
+    "providerInstanceId": "codex",
+    "model": "gpt-6.1-sol",
+    "options": [
+      {
+        "id": "reasoningEffort",
+        "value": "high"
+      }
+    ]
+  },
+  "layer": "main",
+  "role": "implement",
+  "goal_id": "ask-policy",
+  "parent_id": "pm-resume-r2",
+  "childrenDispatched": 0,
+  "delegationProhibited": true,
+  "binding": {
+    "attached": true,
+    "worktreePath": "D:\\develop\\works\\tombo-view-ask-policy",
+    "branch": "feat/ask-policy-20261018",
+    "head": "f2ecc2e4ccbfe109596d9e156095fff7af76ea6a"
+  },
+  "designSha256": "5f3b4fc75a3c2cba99656bec42c3269f8e399ccdb3d31723ed12e6095f2a47e3",
+  "decision_source": "framework_only_local",
+  "jev_api_call": "not made",
+  "actualCost": null,
+  "actualTokens": null,
+  "budget": "unknown; not treated as zero",
+  "routing": {
+    "ok": true,
+    "providerInstanceId": "codex",
+    "model": "gpt-6.1-sol",
+    "vendor": "openai",
+    "efforts": [
+      "low",
+      "medium",
+      "high",
+      "xhigh",
+      "max",
+      "ultra"
+    ],
+    "evidence": "ledger",
+    "rank": 5,
+    "cost_output": 10,
+    "selection": "best_score_per_cost",
+    "no_cross_vendor_candidate": false
+  },
+  "routingEvidence": "Historical benchmark score/rank/cost only; not current measured cost or quality",
+  "ownership": [
+    "scripts/ask-policy-compare.mjs",
+    "test/ask-policy-compare.test.mjs",
+    "evaluation/ask-policy-baseline/f2ecc2e/",
+    "evaluation/reports/ask-policy-compare.json (generated only)",
+    "docs/ask-policy-work/comparison-main/"
+  ],
+  "baseline": {
+    "commit": "f2ecc2e4ccbfe109596d9e156095fff7af76ea6a",
+    "sources": {
+      "core": {
+        "path": "evaluation/ask-policy-baseline/f2ecc2e/src/core.ts",
+        "blobId": "561031da516c5c7eabf742a09fa40e79569e0cbf",
+        "sha256": "510ca4f32ced22b15391d7ee9d031bf695d9b627ae58cca48a525e6b4ae45564",
+        "bytes": 47257
+      },
+      "types": {
+        "path": "evaluation/ask-policy-baseline/f2ecc2e/src/types.ts",
+        "blobId": "61ea27a90b148efb7ebd5cd9fed8deccbe5d7e6e",
+        "sha256": "280cf825f534536d39a00639720f0a0972c20b8b6897f78bb2b70baaecef20e9",
+        "bytes": 11369
+      }
+    },
+    "bridgeFiles": {
+      "core-bridge.ts": "21cfcb47cff09c0247ba8b48be7f79649521b5c34ed715dd46733d68ba7c6211",
+      "core-bridge.js": "1795f190883e516f40bfeb2037355770643250812457d1bd85ad49a0164ee2ff",
+      "types.ts": "280cf825f534536d39a00639720f0a0972c20b8b6897f78bb2b70baaecef20e9",
+      "types.js": "8aa4564abd1e37beeed9123ae608894211343df2c39ffccc6e409c781f37a774"
+    },
+    "compiler": {
+      "command": "node node_modules/typescript/bin/tsc --project evaluation/ask-policy-baseline/f2ecc2e/.generated/tsconfig.json --noCheck true",
+      "versionCommand": "node node_modules/typescript/bin/tsc --version",
+      "version": "7.0.2",
+      "exit_code": 0,
+      "config": "evaluation/ask-policy-baseline/f2ecc2e/.generated/tsconfig.json",
+      "adaptation": "PM explicitly authorised existing local CLI, ES2022+NodeNext --noCheck, output only inside baseline .generated. No API transpile claim. No new dependencies."
+    }
+  },
+  "tdd": {
+    "red": {
+      "command": "node --test test/ask-policy-compare.test.mjs",
+      "exit_code": 1,
+      "tests": 1,
+      "pass": 0,
+      "fail": 1,
+      "artifact": "docs/ask-policy-work/comparison-main/red.log",
+      "reason": "Comparator module not implemented"
+    },
+    "additionalRed": {
+      "command": "node --test --test-name-pattern='schema-required' test/ask-policy-compare.test.mjs",
+      "exit_code": 1,
+      "tests": 1,
+      "pass": 0,
+      "fail": 1,
+      "artifact": "docs/ask-policy-work/comparison-main/lens-red.log",
+      "reason": "Leak guard incorrectly rejected schema-required state.lenses[].label"
+    },
+    "green": {
+      "command": "node --test test/ask-policy-compare.test.mjs",
+      "exit_code": 0,
+      "tests": 32,
+      "pass": 32,
+      "fail": 0,
+      "artifact": "docs/ask-policy-work/comparison-main/green.log"
+    },
+    "regression": {
+      "command": "node --test test/core.test.mjs test/reflection.test.mjs",
+      "exit_code": 0,
+      "tests": 51,
+      "pass": 51,
+      "fail": 0,
+      "artifact": "docs/ask-policy-work/comparison-main/regression.log",
+      "boundary": "Existing compiled core/reflection synthetic regression; no root build or full-suite execution"
+    }
+  },
+  "attempts": [
+    {
+      "command": "node --test --test-name-pattern='metrics|denominators|normalisation|validation|formal dataset|harness' test/ask-policy-compare.test.mjs",
+      "exit_code": 1,
+      "artifact": "docs/ask-policy-work/comparison-main/pure-unit-attempt.log",
+      "reason": "TypeScript 7 root export has no ScriptTarget/transpileModule; fixed through PM-authorised local CLI"
+    },
+    {
+      "command": "node --test test/ask-policy-compare.test.mjs",
+      "exit_code": 0,
+      "tests": 26,
+      "artifact": "docs/ask-policy-work/comparison-main/green-cli-attempt.log"
+    },
+    {
+      "command": "node --test --test-name-pattern='metrics|denominators|normalisation|validation|formal dataset|harness' test/ask-policy-compare.test.mjs",
+      "exit_code": 0,
+      "tests": 22,
+      "artifact": "docs/ask-policy-work/comparison-main/pure-unit.log"
+    }
+  ],
+  "syntaxChecks": [
+    {
+      "command": "node --check scripts/ask-policy-compare.mjs",
+      "exit_code": 0
+    },
+    {
+      "command": "node --check test/ask-policy-compare.test.mjs",
+      "exit_code": 0
+    }
+  ],
+  "determinism": {
+    "baseline": "Actual two emits compared source+JS bytes and bridge metadata in focused test",
+    "unitReport": "Actual identical serialised bytes and SHA256 in focused test",
+    "formalReport": {
+      "status": "pass",
+      "bytes": 45538,
+      "sha256": "9f103749f05aa714139fac2bd20b5ff5e1c15a0b3bceb18a7f5987a1c1b0beec",
+      "actualInvocations": 2,
+      "bytesIdentical": true,
+      "hashesIdentical": true
+    }
+  },
+  "pending": [
+    "PM latest full npm test after all-writer GREEN barrier and formal emit",
+    "Fresh different-vendor Google full diff review with latest PM test evidence",
+    "PM final task_gate and parent independent acceptance"
+  ],
+  "unchangedByThisTask": [
+    "src/core.ts",
+    "src/types.ts",
+    "evaluation/ask-policy-cases.json",
+    "evaluation/ask-policy-author-intent.json",
+    "evaluation/ask-policy-annotations.json",
+    "evaluation/ask-policy-blind/",
+    "evaluation/README.md",
+    "PM state/projection/progress",
+    "root dist/",
+    "main checkout",
+    "Hidden-Side/Ommatidia/CrossRAG",
+    "dependencies",
+    "external ledger/memory"
+  ],
+  "handover": "docs/ask-policy-work/comparison-main/handover.md",
+  "updatedAt": "2026-10-18T01:17:09.255Z",
+  "resumeStartedAt": "2026-10-18 01:14:10 UTC",
+  "formalResumeDispatch": {
+    "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-comparison-main-wave1-20261018",
+    "messageId": "message:mcp:ba73bf88-9745-4fef-b9be-3589412d1465:thread-send:tombo-ask-policy-comparison-formal-ready-20261018-r2",
+    "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-comparison-main-wave1-20261018:ordinal:2",
+    "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-comparison-formal-ready-20261018-r2",
+    "status": "starting",
+    "delivery": "started"
+  },
+  "currentTaskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-comparison-formal-ready-20261018-r2",
+  "currentRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-comparison-main-wave1-20261018:ordinal:2",
+  "formalComparison": {
+    "status": "pass",
+    "runs": [
+      {
+        "command": "node scripts/ask-policy-compare.mjs",
+        "exit_code": 0,
+        "bytes": 45538,
+        "sha256": "9f103749f05aa714139fac2bd20b5ff5e1c15a0b3bceb18a7f5987a1c1b0beec",
+        "stdout": "docs/ask-policy-work/comparison-main/formal-run-1.stdout.log",
+        "stderr": "docs/ask-policy-work/comparison-main/formal-run-1.stderr.log"
+      },
+      {
+        "command": "node scripts/ask-policy-compare.mjs",
+        "exit_code": 0,
+        "bytes": 45538,
+        "sha256": "9f103749f05aa714139fac2bd20b5ff5e1c15a0b3bceb18a7f5987a1c1b0beec",
+        "stdout": "docs/ask-policy-work/comparison-main/formal-run-2.stdout.log",
+        "stderr": "docs/ask-policy-work/comparison-main/formal-run-2.stderr.log"
+      }
+    ],
+    "verification": {
+      "status": "pass",
+      "observedAt": "2026-10-18T01:16:48.858Z",
+      "command": "node docs/ask-policy-work/comparison-main/formal-verification-command.mjs",
+      "exit_code": 0,
+      "reportPath": "evaluation/reports/ask-policy-compare.json",
+      "bytes": 45538,
+      "sha256": "9f103749f05aa714139fac2bd20b5ff5e1c15a0b3bceb18a7f5987a1c1b0beec",
+      "realInvocations": 2,
+      "reportBytesIdentical": true,
+      "reportHashesIdentical": true,
+      "totalCases": 60,
+      "consensusCount": 42,
+      "disagreementCount": 18,
+      "changedCases": 7,
+      "changedCaseIds": [
+        "dev-record-03",
+        "dev-record-06",
+        "dev-record-07",
+        "dev-record-08",
+        "dev-record-10",
+        "dev-record-12",
+        "dev-record-17"
+      ],
+      "nonConsensusCases": 18,
+      "authorIntentDiffers": 0,
+      "metrics": {
+        "old": {
+          "tp": 8,
+          "fp": 0,
+          "fn": 2,
+          "precision": 1,
+          "recall": 0.8,
+          "unnecessaryAsks": 0,
+          "controlViolations": 0,
+          "missedAsks": 2
+        },
+        "new": {
+          "tp": 10,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1,
+          "recall": 1,
+          "unnecessaryAsks": 0,
+          "controlViolations": 0,
+          "missedAsks": 0
+        }
+      },
+      "allInputOutputHashesVerified": true,
+      "exactOldSnapshotsAndBridgeVerified": true,
+      "currentSourceAndDistHashesVerified": true,
+      "oldEmitNoCheck": true,
+      "newConsistencyNoCheck": false,
+      "comparatorCodeChangesThisResume": false,
+      "fullSuite": "NOT_RUN; PM owns after formal emit",
+      "independentReview": "PENDING",
+      "goalComplete": false
+    },
+    "preflight": "docs/ask-policy-work/comparison-main/formal-preflight.json",
+    "verificationEvidence": "docs/ask-policy-work/comparison-main/formal-verification.json",
+    "verificationLog": "docs/ask-policy-work/comparison-main/formal-verification.log",
+    "inputFreezeEvidence": "docs/ask-policy-work/fixture-main/freeze.json",
+    "integrationEvidence": "docs/ask-policy-work/annotation-integration/formal-integration-result.json",
+    "coreReadyEvidence": "docs/ask-policy-work/core-main/build-ready.json",
+    "productionCodeChanges": false,
+    "comparatorCodeChanges": false
+  },
+  "goalComplete": false,
+  "currentOwnedHashes": {
+    "scripts/ask-policy-compare.mjs": "b4441a8fd0dc0de3c13417b99ce84020485b83e6f8c65767ad4c2276089d5e8c",
+    "test/ask-policy-compare.test.mjs": "3af4754fdb0859965cadfcd4161e2bbf14ccc2ffca289d541af26e751c49c885",
+    "evaluation/reports/ask-policy-compare.json": "9f103749f05aa714139fac2bd20b5ff5e1c15a0b3bceb18a7f5987a1c1b0beec"
+  }
+}

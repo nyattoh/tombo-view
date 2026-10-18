@@ -1,0 +1,1 @@
+{"annotations":[{"caseId":"dev-record-11","action":"proceed","reasonPath":"state.gaps[0].resolution"},{"caseId":"dev-record-12","action":"proceed","reasonPath":"state.gaps"},{"caseId":"dev-record-13","action":"ask","reasonPath":"g1"},{"caseId":"dev-record-14","action":"reframe","reasonPath":"l2"},{"caseId":"dev-record-15","action":"proceed","reasonPath":"state.reflection"}]}

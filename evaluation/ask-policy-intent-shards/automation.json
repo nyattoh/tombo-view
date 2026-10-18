@@ -1,0 +1,122 @@
+[
+  {
+    "caseId": "auto-01",
+    "authorIntentAction": "proceed",
+    "isControl": true,
+    "rationale": "The current run record confirms a complete export and all required checks are present."
+  },
+  {
+    "caseId": "auto-02",
+    "authorIntentAction": "proceed",
+    "isControl": false,
+    "rationale": "The recorded approval and successful result meet the requested completion criteria."
+  },
+  {
+    "caseId": "auto-03",
+    "authorIntentAction": "proceed",
+    "isControl": false,
+    "rationale": "The verified run already satisfies the requested outcome."
+  },
+  {
+    "caseId": "auto-04",
+    "authorIntentAction": "proceed",
+    "isControl": false,
+    "rationale": "The evidence is current and all required conditions are resolved."
+  },
+  {
+    "caseId": "auto-05",
+    "authorIntentAction": "check",
+    "isControl": true,
+    "rationale": "The export manifest can establish whether the requested field is present."
+  },
+  {
+    "caseId": "auto-06",
+    "authorIntentAction": "check",
+    "isControl": true,
+    "rationale": "The versioned configuration is directly inspectable."
+  },
+  {
+    "caseId": "auto-07",
+    "authorIntentAction": "check",
+    "isControl": true,
+    "rationale": "A current receipt is available from the integration log."
+  },
+  {
+    "caseId": "auto-08",
+    "authorIntentAction": "check",
+    "isControl": true,
+    "rationale": "The deployment record can answer this objective status question."
+  },
+  {
+    "caseId": "auto-09",
+    "authorIntentAction": "ask",
+    "isControl": false,
+    "rationale": "The permission scope is not present in the approved access record."
+  },
+  {
+    "caseId": "auto-10",
+    "authorIntentAction": "ask",
+    "isControl": false,
+    "rationale": "The two choices change the workflow configuration and cannot be inferred from run data."
+  },
+  {
+    "caseId": "auto-11",
+    "authorIntentAction": "ask",
+    "isControl": false,
+    "rationale": "Retention is a user value decision that is absent from the approved policy."
+  },
+  {
+    "caseId": "auto-12",
+    "authorIntentAction": "ask",
+    "isControl": false,
+    "rationale": "Both records are current and in scope, and no available probe can determine the user’s authority choice."
+  },
+  {
+    "caseId": "auto-13",
+    "authorIntentAction": "reframe",
+    "isControl": true,
+    "rationale": "A new review lens was added after the original task interpretation."
+  },
+  {
+    "caseId": "auto-14",
+    "authorIntentAction": "reframe",
+    "isControl": false,
+    "rationale": "The completed review is not fresh for the current understanding."
+  },
+  {
+    "caseId": "auto-15",
+    "authorIntentAction": "reframe",
+    "isControl": false,
+    "rationale": "The reflection receipt is inconclusive and the task requires another review."
+  },
+  {
+    "caseId": "auto-16",
+    "authorIntentAction": "reframe",
+    "isControl": false,
+    "rationale": "The state contains a newly proposed perspective that has not been reviewed."
+  },
+  {
+    "caseId": "auto-17",
+    "authorIntentAction": "blocked",
+    "isControl": false,
+    "rationale": "No remaining budget is available for another attempt."
+  },
+  {
+    "caseId": "auto-18",
+    "authorIntentAction": "blocked",
+    "isControl": false,
+    "rationale": "The policy requires stopping when a required candidate is excluded."
+  },
+  {
+    "caseId": "auto-19",
+    "authorIntentAction": "blocked",
+    "isControl": false,
+    "rationale": "There is neither an authorised human-only decision nor an available objective probe."
+  },
+  {
+    "caseId": "auto-20",
+    "authorIntentAction": "blocked",
+    "isControl": false,
+    "rationale": "The repeated non-progress boundary requires a safe stop."
+  }
+]

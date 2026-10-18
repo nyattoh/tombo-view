@@ -1,0 +1,117 @@
+{
+  "status": "source_contract_ready_review_pending",
+  "source_contract_ready": true,
+  "regression_pass": true,
+  "independent_acceptance_pending": true,
+  "acceptance_pass": false,
+  "branch": "feat/ask-policy-20261018",
+  "HEAD": "f2ecc2e4ccbfe109596d9e156095fff7af76ea6a",
+  "source_hashes": {
+    "src/core.ts": "11868B3B76E52C93EF937551DBE864D2DC5A1DAC64B7034BD32454B99303FB84",
+    "src/types.ts": "4218F2ACC33E78A7529526630AA3B09D0BEB03B8FD72ADE8BF2B01C1E8166EE6",
+    "src/journal.ts": "92C4EA7EBC76A03FFD3D11EF75CBAFBC01DB17DB3223C3E61159A82F0EA58061",
+    "src/cli.ts": "E7FEF1AB0A2D0D3E205B80063AD7120EFC3D6B40D056AA5A982A7FAB21D64C48",
+    "skills/tombo-view/scripts/session.mjs": "90DEA41551ED05F59C89CEA0F4633E259C23568511131276092EBB925EDCB1E2",
+    "test/ask-policy.test.mjs": "9CC250710FD4700575882576ADB9226CB9F9F750ECF56CE28C7920825ABD2791",
+    "test/assessment-correction.test.mjs": "431F935D1C5582CE30F4DB97B8AFEBE231C7F7A3D9839C24BCE2FBECF6A323A1",
+    "test/assessment-correction-journal.test.mjs": "454BF14EC647F1A94E08C83376C7A64B7D77685B3199B6493C23A39E2B330484",
+    "test/core.test.mjs": "52950EBC8548FD8B9EE48B097312077EA6FED271626EE4EEBB8192CA2073BB12"
+  },
+  "compiled_hashes": {
+    "dist/core.js": "D8BBA21916DDC394F0670AB3B2039A7DAF058A3DBD68AF48A8BAFF89D3274F88",
+    "dist/types.js": "5C743AB52FD7DAC07EFC499E771C8BFD7A00236CF031929838C6F3F3B8D27B6D",
+    "dist/journal.js": "586E0B780EBCEA9C310A3A8E258334A64B36F73231B632CC4679C9537EE8B6F0",
+    "dist/cli.js": "E6CEA7C6A1B2D5411C50727D0466812F0A95BAFE727CC86C6F86DCF483B5A26C",
+    "dist/core.d.ts": "83C9065A2A3A8BF564B5B2C71F5C438EB1EE2CD8ABC76C7E1F8990FE485AAA73",
+    "dist/types.d.ts": "B5F989CDB49EED90385D1D281645E64186C50B3CC2D1DA0A130E30AEC33E0DCD",
+    "dist/journal.d.ts": "F58BCBEB49EFE6ACEBEA7406D1A6B50C45422CDC5F47278E7311EF916ADCA403",
+    "dist/cli.d.ts": "43E818ADF60173644896298637F47B01D5819B17EDA46EAA32D0C7D64724D012"
+  },
+  "actual_changed_source_and_test_files": [
+    "src/core.ts",
+    "src/types.ts",
+    "src/journal.ts",
+    "src/cli.ts",
+    "skills/tombo-view/scripts/session.mjs",
+    "test/ask-policy.test.mjs",
+    "test/assessment-correction.test.mjs",
+    "test/assessment-correction-journal.test.mjs",
+    "test/core.test.mjs"
+  ],
+  "owned_artifact_directory": "docs/ask-policy-work/core-main/",
+  "public_evaluatePolicy_import_paths": [
+    "./dist/core.js",
+    "./dist/index.js"
+  ],
+  "source_import_path": "src/core.ts",
+  "index_change_required": false,
+  "index_reason": "Existing src/index.ts export * from './core.js' publishes evaluatePolicy; import from compiled dist/index.js returned function.",
+  "commands": {
+    "build": {
+      "command": "npm run build 1> docs/ask-policy-work/core-main/compat-build.stdout.log 2> docs/ask-policy-work/core-main/compat-build.stderr.log; $result = $LASTEXITCODE; Get-Content docs/ask-policy-work/core-main/compat-build.stdout.log; Get-Content docs/ask-policy-work/core-main/compat-build.stderr.log; exit $result",
+      "exit_code": 0,
+      "stdout": "docs/ask-policy-work/core-main/compat-build.stdout.log",
+      "stderr": "docs/ask-policy-work/core-main/compat-build.stderr.log",
+      "stderr_bytes": 0,
+      "execution_path": "standard compiled dist; no source-loader"
+    },
+    "typecheck": {
+      "command": "npm run typecheck 1> docs/ask-policy-work/core-main/compat-typecheck.stdout.log 2> docs/ask-policy-work/core-main/compat-typecheck.stderr.log; $result = $LASTEXITCODE; Get-Content docs/ask-policy-work/core-main/compat-typecheck.stdout.log; Get-Content docs/ask-policy-work/core-main/compat-typecheck.stderr.log; exit $result",
+      "exit_code": 0,
+      "stdout": "docs/ask-policy-work/core-main/compat-typecheck.stdout.log",
+      "stderr": "docs/ask-policy-work/core-main/compat-typecheck.stderr.log",
+      "stderr_bytes": 0,
+      "execution_path": "standard compiled dist; no source-loader"
+    },
+    "focused": {
+      "command": "node --test test/ask-policy.test.mjs 1> docs/ask-policy-work/core-main/compat-focused.stdout.log 2> docs/ask-policy-work/core-main/compat-focused.stderr.log; $result = $LASTEXITCODE; Get-Content docs/ask-policy-work/core-main/compat-focused.stdout.log -Tail 10; Get-Content docs/ask-policy-work/core-main/compat-focused.stderr.log; exit $result",
+      "exit_code": 0,
+      "stdout": "docs/ask-policy-work/core-main/compat-focused.stdout.log",
+      "stderr": "docs/ask-policy-work/core-main/compat-focused.stderr.log",
+      "stderr_bytes": 0,
+      "execution_path": "standard compiled dist; no source-loader",
+      "tests": 50,
+      "pass": 50,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    "affected_regression": {
+      "command": "node --test --test-concurrency=1 test/assessment-correction.test.mjs test/assessment-correction-journal.test.mjs test/core.test.mjs test/recovery-journal.test.mjs test/cli-reflection.test.mjs test/session.test.mjs test/session-repair-feedback.test.mjs 1> docs/ask-policy-work/core-main/compat-affected.stdout.log 2> docs/ask-policy-work/core-main/compat-affected.stderr.log; $result = $LASTEXITCODE; Get-Content docs/ask-policy-work/core-main/compat-affected.stdout.log -Tail 12; Get-Content docs/ask-policy-work/core-main/compat-affected.stderr.log; exit $result",
+      "exit_code": 0,
+      "stdout": "docs/ask-policy-work/core-main/compat-affected.stdout.log",
+      "stderr": "docs/ask-policy-work/core-main/compat-affected.stderr.log",
+      "stderr_bytes": 0,
+      "execution_path": "standard compiled dist; no source-loader",
+      "tests": 113,
+      "pass": 113,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    "regression": {
+      "command": "$priorNodeOptions = $env:NODE_OPTIONS; try { Remove-Item Env:NODE_OPTIONS -ErrorAction SilentlyContinue; $trackedTests = @(git ls-files 'test/*.test.mjs'); node --test --test-concurrency=1 @trackedTests 1> docs/ask-policy-work/core-main/compat-regression.stdout.log 2> docs/ask-policy-work/core-main/compat-regression.stderr.log; $result = $LASTEXITCODE; Get-Content docs/ask-policy-work/core-main/compat-regression.stdout.log -Tail 12; Get-Content docs/ask-policy-work/core-main/compat-regression.stderr.log } finally { $env:NODE_OPTIONS = $priorNodeOptions }; exit $result",
+      "exit_code": 0,
+      "stdout": "docs/ask-policy-work/core-main/compat-regression.stdout.log",
+      "stderr": "docs/ask-policy-work/core-main/compat-regression.stderr.log",
+      "stderr_bytes": 0,
+      "execution_path": "standard compiled dist; no source-loader",
+      "tests": 524,
+      "pass": 524,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "paths": "docs/ask-policy-work/core-main/regression-paths.json",
+      "regression_pass": true
+    }
+  },
+  "remaining_failures": {
+    "count": 0,
+    "leaf": 0,
+    "parent_aggregations": 0,
+    "historical_inventory": "docs/ask-policy-work/core-main/regression-exceptions.json"
+  },
+  "full_npm_test": "NOT_RUN; reserved for PM after all-writer GREEN barrier",
+  "independent_test_integrate": "pending",
+  "notes": "Same writer serial compatibility fix and complete artifacts are ready for independent Google test-integrate on the final expanded diff. This gate does not claim independent review/acceptance pass or full npm test."
+}
