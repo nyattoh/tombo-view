@@ -1,0 +1,19 @@
+{
+  "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-google-batch11-20261018",
+  "childThreadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-google-batch01-20261018",
+  "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-google-batch01-20261018:ordinal:11",
+  "childNodeId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-google-batch11-20261018",
+  "status": "completed",
+  "workState": "result_available",
+  "hasPendingChildRuns": false,
+  "latestTerminalRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-google-batch01-20261018:ordinal:12",
+  "latestTerminalStatus": "completed",
+  "latestTerminalSummary": "{\"annotations\":[{\"caseId\":\"res-16\",\"action\":\"reframe\",\"reasonPath\":\"gap-16-main\"},{\"caseId\":\"res-17\",\"action\":\"blocked\",\"reasonPath\":\"gap-17-main\"},{\"caseId\":\"res-18\",\"action\":\"blocked\",\"reasonPath\":\"probe-18-main\"},{\"caseId\":\"res-19\",\"action\":\"blocked\",\"reasonPath\":\"gap-19-main\"},{\"caseId\":\"res-20\",\"action\":\"blocked\",\"reasonPath\":\"candidate-20-excluded\"}]}",
+  "latestTerminalResultContextTransferId": "context-transfer:type:subagent_result:source-thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-google-batch01-20261018:target-thread:thread%3Adelegated-task%3Acommand%253Amcp%253Afe76df42-f019-4e5c-8090-20e8c7a3de09%253Adelegate-task%253Atombo-ask-policy-20261018-goal-pm-resume-r2:109bc668-9c7e-4032-badd-fd683e26f764",
+  "providerInstanceId": "antigravity",
+  "model": "gemini-3.8-flash-medium",
+  "summary": "{\"annotations\":[{\"caseId\":\"res-11\",\"action\":\"ask\",\"reasonPath\":\"gap-11-main\"},{\"caseId\":\"res-12\",\"action\":\"ask\",\"reasonPath\":\"gap-12-reflection\"},{\"caseId\":\"res-13\",\"action\":\"reframe\",\"reasonPath\":\"gap-13-main\"},{\"caseId\":\"res-14\",\"action\":\"reframe\",\"reasonPath\":\"gap-14-main\"},{\"caseId\":\"res-15\",\"action\":\"proceed\",\"reasonPath\":\"claim-15-main\"}]}",
+  "resultContextTransferId": "context-transfer:type:subagent_result:source-thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-google-batch01-20261018:target-thread:thread%3Adelegated-task%3Acommand%253Amcp%253Afe76df42-f019-4e5c-8090-20e8c7a3de09%253Adelegate-task%253Atombo-ask-policy-20261018-goal-pm-resume-r2:c43c767f-b026-4f5a-b041-6be1b85830c0",
+  "hasPendingQuestion": false,
+  "waitTimedOut": false
+}

@@ -271,6 +271,7 @@ test('SDK correction retries cannot exceed model, round, elapsed or monetary lim
     const context = await supported();
     const state = structuredClone(context.state);
     Object.assign(state.task.budget, budget);
+    if (state.policyHistory) state.policyHistory.lastUnderstandingHash = sdk.understandingHash(state);
     context.set({ assessmentCorrections: [correction(), correction()] });
     const obs = observation('budget-retry');
     const failed = await context.tombo.update(state, [obs]);

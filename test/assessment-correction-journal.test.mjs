@@ -136,6 +136,7 @@ test('SDK invalidation of a redacted corrected journal remains valid when anothe
   const state = structuredClone(fixed.state);
   state.evidence.push(other);
   state.claims.push({ id: 'other', role: 'observation', text: 'A separate claim.', scope: source.scope, status: 'supported', assessments: [{ ...wrong, claimId: 'other', evidenceIds: [other.id] }] });
+  if (state.policyHistory) state.policyHistory.lastUnderstandingHash = understandingHash(state);
   assert.equal(validateState(state).claims[1].status, 'supported');
   const journal = new FileJournal(join(directory, 'events.jsonl'));
   await journal.commit(-1, state);

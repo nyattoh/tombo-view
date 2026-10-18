@@ -1,0 +1,173 @@
+[
+  {
+    "status": "fulfilled",
+    "value": {
+      "thread": {
+        "threadId": "thread:delegated-task:command%3Amcp%3Ab418ff8c-ae31-43d0-8cbd-8da70b9e751d%3Adelegate-task%3Atombo-ask-policy-fixture-main-sol-high-20261018-r1",
+        "projectId": "0992fdab-7d2e-4c48-8b57-ea69011f8ccd",
+        "title": "TOMBO ask-policy fixture main: development and validation",
+        "createdBy": "agent",
+        "creationSource": "mcp",
+        "status": "completed",
+        "latestRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Ab418ff8c-ae31-43d0-8cbd-8da70b9e751d%253Adelegate-task%253Atombo-ask-policy-fixture-main-sol-high-20261018-r1:ordinal:4",
+        "activeRunId": null,
+        "providerInstanceId": "codex",
+        "model": "gpt-6.1-sol",
+        "runtimeMode": "auto",
+        "interactionMode": "default",
+        "linkedPullRequest": null,
+        "titleRegeneration": null,
+        "branch": "feat/ask-policy-20261018",
+        "worktreePath": "D:\\develop\\works\\tombo-view-ask-policy",
+        "parentThreadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-fixture-lead-wave1-20261018",
+        "relationshipToParent": "subagent",
+        "runCount": 4,
+        "itemCount": 130,
+        "pendingRequestCount": 0,
+        "archived": false,
+        "settled": false,
+        "settledAt": null,
+        "snoozed": false,
+        "snoozedUntil": null,
+        "createdAt": "2026-10-18T00:32:51.348Z",
+        "updatedAt": "2026-10-18T00:51:42.757Z"
+      },
+      "recentRuns": [
+        {
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Ab418ff8c-ae31-43d0-8cbd-8da70b9e751d%253Adelegate-task%253Atombo-ask-policy-fixture-main-sol-high-20261018-r1:ordinal:4",
+          "ordinal": 4,
+          "status": "completed",
+          "providerInstanceId": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-18T00:50:55.758Z",
+          "startedAt": "2026-10-18T00:50:55.788Z",
+          "completedAt": "2026-10-18T00:51:42.757Z"
+        },
+        {
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Ab418ff8c-ae31-43d0-8cbd-8da70b9e751d%253Adelegate-task%253Atombo-ask-policy-fixture-main-sol-high-20261018-r1:ordinal:3",
+          "ordinal": 3,
+          "status": "completed",
+          "providerInstanceId": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-18T00:48:05.672Z",
+          "startedAt": "2026-10-18T00:48:05.805Z",
+          "completedAt": "2026-10-18T00:49:56.397Z"
+        },
+        {
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Ab418ff8c-ae31-43d0-8cbd-8da70b9e751d%253Adelegate-task%253Atombo-ask-policy-fixture-main-sol-high-20261018-r1:ordinal:2",
+          "ordinal": 2,
+          "status": "completed",
+          "providerInstanceId": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-18T00:45:38.600Z",
+          "startedAt": "2026-10-18T00:45:38.716Z",
+          "completedAt": "2026-10-18T00:46:55.621Z"
+        },
+        {
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Ab418ff8c-ae31-43d0-8cbd-8da70b9e751d%253Adelegate-task%253Atombo-ask-policy-fixture-main-sol-high-20261018-r1:ordinal:1",
+          "ordinal": 1,
+          "status": "completed",
+          "providerInstanceId": "codex",
+          "model": "gpt-6.1-sol",
+          "requestedAt": "2026-10-18T00:32:51.349Z",
+          "startedAt": "2026-10-18T00:32:52.282Z",
+          "completedAt": "2026-10-18T00:44:12.324Z"
+        }
+      ]
+    }
+  },
+  {
+    "status": "fulfilled",
+    "value": {
+      "thread": {
+        "threadId": "thread:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-automation-luna-high-20261018-r1",
+        "projectId": "0992fdab-7d2e-4c48-8b57-ea69011f8ccd",
+        "title": "ask-policy automation fixture shard",
+        "createdBy": "agent",
+        "creationSource": "mcp",
+        "status": "completed",
+        "latestRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%253Adelegate-task%253Atombo-ask-policy-fixture-automation-luna-high-20261018-r1:ordinal:1",
+        "activeRunId": null,
+        "providerInstanceId": "codex",
+        "model": "gpt-6-luna",
+        "runtimeMode": "auto",
+        "interactionMode": "default",
+        "linkedPullRequest": null,
+        "titleRegeneration": null,
+        "branch": "feat/ask-policy-20261018",
+        "worktreePath": "D:\\develop\\works\\tombo-view-ask-policy",
+        "parentThreadId": "thread:delegated-task:command%3Amcp%3Ab418ff8c-ae31-43d0-8cbd-8da70b9e751d%3Adelegate-task%3Atombo-ask-policy-fixture-main-sol-high-20261018-r1",
+        "relationshipToParent": "subagent",
+        "runCount": 1,
+        "itemCount": 149,
+        "pendingRequestCount": 0,
+        "archived": false,
+        "settled": false,
+        "settledAt": null,
+        "snoozed": false,
+        "snoozedUntil": null,
+        "createdAt": "2026-10-18T00:35:15.380Z",
+        "updatedAt": "2026-10-18T00:45:37.678Z"
+      },
+      "recentRuns": [
+        {
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%253Adelegate-task%253Atombo-ask-policy-fixture-automation-luna-high-20261018-r1:ordinal:1",
+          "ordinal": 1,
+          "status": "completed",
+          "providerInstanceId": "codex",
+          "model": "gpt-6-luna",
+          "requestedAt": "2026-10-18T00:35:15.382Z",
+          "startedAt": "2026-10-18T00:35:16.667Z",
+          "completedAt": "2026-10-18T00:45:37.678Z"
+        }
+      ]
+    }
+  },
+  {
+    "status": "fulfilled",
+    "value": {
+      "thread": {
+        "threadId": "thread:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-research-luna-high-20261018-r1",
+        "projectId": "0992fdab-7d2e-4c48-8b57-ea69011f8ccd",
+        "title": "ask-policy research fixture shard",
+        "createdBy": "agent",
+        "creationSource": "mcp",
+        "status": "completed",
+        "latestRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%253Adelegate-task%253Atombo-ask-policy-fixture-research-luna-high-20261018-r1:ordinal:1",
+        "activeRunId": null,
+        "providerInstanceId": "codex",
+        "model": "gpt-6-luna",
+        "runtimeMode": "auto",
+        "interactionMode": "default",
+        "linkedPullRequest": null,
+        "titleRegeneration": null,
+        "branch": "feat/ask-policy-20261018",
+        "worktreePath": "D:\\develop\\works\\tombo-view-ask-policy",
+        "parentThreadId": "thread:delegated-task:command%3Amcp%3Ab418ff8c-ae31-43d0-8cbd-8da70b9e751d%3Adelegate-task%3Atombo-ask-policy-fixture-main-sol-high-20261018-r1",
+        "relationshipToParent": "subagent",
+        "runCount": 1,
+        "itemCount": 133,
+        "pendingRequestCount": 0,
+        "archived": false,
+        "settled": false,
+        "settledAt": null,
+        "snoozed": false,
+        "snoozedUntil": null,
+        "createdAt": "2026-10-18T00:35:17.640Z",
+        "updatedAt": "2026-10-18T00:48:04.825Z"
+      },
+      "recentRuns": [
+        {
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%253Adelegate-task%253Atombo-ask-policy-fixture-research-luna-high-20261018-r1:ordinal:1",
+          "ordinal": 1,
+          "status": "completed",
+          "providerInstanceId": "codex",
+          "model": "gpt-6-luna",
+          "requestedAt": "2026-10-18T00:35:17.641Z",
+          "startedAt": "2026-10-18T00:35:18.989Z",
+          "completedAt": "2026-10-18T00:48:04.825Z"
+        }
+      ]
+    }
+  }
+]

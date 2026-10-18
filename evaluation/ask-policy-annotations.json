@@ -1,0 +1,482 @@
+[
+  {
+    "caseId": "auto-01",
+    "expectedAction": "proceed",
+    "consensusAction": "proceed",
+    "authorIntentAction": "proceed",
+    "unanimous": true,
+    "authorIntentDiffers": false
+  },
+  {
+    "caseId": "auto-02",
+    "expectedAction": "proceed",
+    "consensusAction": "proceed",
+    "authorIntentAction": "proceed",
+    "unanimous": true,
+    "authorIntentDiffers": false
+  },
+  {
+    "caseId": "auto-03",
+    "expectedAction": "proceed",
+    "consensusAction": "proceed",
+    "authorIntentAction": "proceed",
+    "unanimous": true,
+    "authorIntentDiffers": false
+  },
+  {
+    "caseId": "auto-04",
+    "expectedAction": "proceed",
+    "consensusAction": "proceed",
+    "authorIntentAction": "proceed",
+    "unanimous": true,
+    "authorIntentDiffers": false
+  },
+  {
+    "caseId": "auto-05",
+    "expectedAction": null,
+    "consensusAction": null,
+    "authorIntentAction": "check",
+    "unanimous": false,
+    "authorIntentDiffers": false
+  },
+  {
+    "caseId": "auto-06",
+    "expectedAction": null,
+    "consensusAction": null,
+    "authorIntentAction": "check",
+    "unanimous": false,
+    "authorIntentDiffers": false
+  },
+  {
+    "caseId": "auto-07",
+    "expectedAction": null,
+    "consensusAction": null,
+    "authorIntentAction": "check",
+    "unanimous": false,
+    "authorIntentDiffers": false
+  },
+  {
+    "caseId": "auto-08",
+    "expectedAction": null,
+    "consensusAction": null,
+    "authorIntentAction": "check",
+    "unanimous": false,
+    "authorIntentDiffers": false
+  },
+  {
+    "caseId": "auto-09",
+    "expectedAction": "ask",
+    "consensusAction": "ask",
+    "authorIntentAction": "ask",
+    "unanimous": true,
+    "authorIntentDiffers": false
+  },
+  {
+    "caseId": "auto-10",
+    "expectedAction": "ask",
+    "consensusAction": "ask",
+    "authorIntentAction": "ask",
+    "unanimous": true,
+    "authorIntentDiffers": false
+  },
+  {
+    "caseId": "auto-11",
+    "expectedAction": "ask",
+    "consensusAction": "ask",
+    "authorIntentAction": "ask",
+    "unanimous": true,
+    "authorIntentDiffers": false
+  },
+  {
+    "caseId": "auto-12",
+    "expectedAction": "ask",
+    "consensusAction": "ask",
+    "authorIntentAction": "ask",
+    "unanimous": true,
+    "authorIntentDiffers": false
+  },
+  {
+    "caseId": "auto-13",
+    "expectedAction": "reframe",
+    "consensusAction": "reframe",
+    "authorIntentAction": "reframe",
+    "unanimous": true,
+    "authorIntentDiffers": false
+  },
+  {
+    "caseId": "auto-14",
+    "expectedAction": "reframe",
+    "consensusAction": "reframe",
+    "authorIntentAction": "reframe",
+    "unanimous": true,
+    "authorIntentDiffers": false
+  },
+  {
+    "caseId": "auto-15",
+    "expectedAction": "reframe",
+    "consensusAction": "reframe",
+    "authorIntentAction": "reframe",
+    "unanimous": true,
+    "authorIntentDiffers": false
+  },
+  {
+    "caseId": "auto-16",
+    "expectedAction": "reframe",
+    "consensusAction": "reframe",
+    "authorIntentAction": "reframe",
+    "unanimous": true,
+    "authorIntentDiffers": false
+  },
+  {
+    "caseId": "auto-17",
+    "expectedAction": "blocked",
+    "consensusAction": "blocked",
+    "authorIntentAction": "blocked",
+    "unanimous": true,
+    "authorIntentDiffers": false
+  },
+  {
+    "caseId": "auto-18",
+    "expectedAction": "blocked",
+    "consensusAction": "blocked",
+    "authorIntentAction": "blocked",
+    "unanimous": true,
+    "authorIntentDiffers": false
+  },
+  {
+    "caseId": "auto-19",
+    "expectedAction": "blocked",
+    "consensusAction": "blocked",
+    "authorIntentAction": "blocked",
+    "unanimous": true,
+    "authorIntentDiffers": false
+  },
+  {
+    "caseId": "auto-20",
+    "expectedAction": "blocked",
+    "consensusAction": "blocked",
+    "authorIntentAction": "blocked",
+    "unanimous": true,
+    "authorIntentDiffers": false
+  },
+  {
+    "caseId": "dev-record-01",
+    "expectedAction": "blocked",
+    "consensusAction": "blocked",
+    "authorIntentAction": "blocked",
+    "unanimous": true,
+    "authorIntentDiffers": false
+  },
+  {
+    "caseId": "dev-record-02",
+    "expectedAction": "check",
+    "consensusAction": "check",
+    "authorIntentAction": "check",
+    "unanimous": true,
+    "authorIntentDiffers": false
+  },
+  {
+    "caseId": "dev-record-03",
+    "expectedAction": null,
+    "consensusAction": null,
+    "authorIntentAction": "ask",
+    "unanimous": false,
+    "authorIntentDiffers": false
+  },
+  {
+    "caseId": "dev-record-04",
+    "expectedAction": null,
+    "consensusAction": null,
+    "authorIntentAction": "reframe",
+    "unanimous": false,
+    "authorIntentDiffers": false
+  },
+  {
+    "caseId": "dev-record-05",
+    "expectedAction": null,
+    "consensusAction": null,
+    "authorIntentAction": "blocked",
+    "unanimous": false,
+    "authorIntentDiffers": false
+  },
+  {
+    "caseId": "dev-record-06",
+    "expectedAction": "ask",
+    "consensusAction": "ask",
+    "authorIntentAction": "ask",
+    "unanimous": true,
+    "authorIntentDiffers": false
+  },
+  {
+    "caseId": "dev-record-07",
+    "expectedAction": "proceed",
+    "consensusAction": "proceed",
+    "authorIntentAction": "proceed",
+    "unanimous": true,
+    "authorIntentDiffers": false
+  },
+  {
+    "caseId": "dev-record-08",
+    "expectedAction": null,
+    "consensusAction": null,
+    "authorIntentAction": "ask",
+    "unanimous": false,
+    "authorIntentDiffers": false
+  },
+  {
+    "caseId": "dev-record-09",
+    "expectedAction": "check",
+    "consensusAction": "check",
+    "authorIntentAction": "check",
+    "unanimous": true,
+    "authorIntentDiffers": false
+  },
+  {
+    "caseId": "dev-record-10",
+    "expectedAction": null,
+    "consensusAction": null,
+    "authorIntentAction": "blocked",
+    "unanimous": false,
+    "authorIntentDiffers": false
+  },
+  {
+    "caseId": "dev-record-11",
+    "expectedAction": "proceed",
+    "consensusAction": "proceed",
+    "authorIntentAction": "proceed",
+    "unanimous": true,
+    "authorIntentDiffers": false
+  },
+  {
+    "caseId": "dev-record-12",
+    "expectedAction": "proceed",
+    "consensusAction": "proceed",
+    "authorIntentAction": "proceed",
+    "unanimous": true,
+    "authorIntentDiffers": false
+  },
+  {
+    "caseId": "dev-record-13",
+    "expectedAction": null,
+    "consensusAction": null,
+    "authorIntentAction": "check",
+    "unanimous": false,
+    "authorIntentDiffers": false
+  },
+  {
+    "caseId": "dev-record-14",
+    "expectedAction": null,
+    "consensusAction": null,
+    "authorIntentAction": "reframe",
+    "unanimous": false,
+    "authorIntentDiffers": false
+  },
+  {
+    "caseId": "dev-record-15",
+    "expectedAction": "proceed",
+    "consensusAction": "proceed",
+    "authorIntentAction": "proceed",
+    "unanimous": true,
+    "authorIntentDiffers": false
+  },
+  {
+    "caseId": "dev-record-16",
+    "expectedAction": "check",
+    "consensusAction": "check",
+    "authorIntentAction": "check",
+    "unanimous": true,
+    "authorIntentDiffers": false
+  },
+  {
+    "caseId": "dev-record-17",
+    "expectedAction": "ask",
+    "consensusAction": "ask",
+    "authorIntentAction": "ask",
+    "unanimous": true,
+    "authorIntentDiffers": false
+  },
+  {
+    "caseId": "dev-record-18",
+    "expectedAction": null,
+    "consensusAction": null,
+    "authorIntentAction": "reframe",
+    "unanimous": false,
+    "authorIntentDiffers": false
+  },
+  {
+    "caseId": "dev-record-19",
+    "expectedAction": null,
+    "consensusAction": null,
+    "authorIntentAction": "blocked",
+    "unanimous": false,
+    "authorIntentDiffers": false
+  },
+  {
+    "caseId": "dev-record-20",
+    "expectedAction": null,
+    "consensusAction": null,
+    "authorIntentAction": "reframe",
+    "unanimous": false,
+    "authorIntentDiffers": false
+  },
+  {
+    "caseId": "res-01",
+    "expectedAction": "proceed",
+    "consensusAction": "proceed",
+    "authorIntentAction": "proceed",
+    "unanimous": true,
+    "authorIntentDiffers": false
+  },
+  {
+    "caseId": "res-02",
+    "expectedAction": "proceed",
+    "consensusAction": "proceed",
+    "authorIntentAction": "proceed",
+    "unanimous": true,
+    "authorIntentDiffers": false
+  },
+  {
+    "caseId": "res-03",
+    "expectedAction": null,
+    "consensusAction": null,
+    "authorIntentAction": "proceed",
+    "unanimous": false,
+    "authorIntentDiffers": false
+  },
+  {
+    "caseId": "res-04",
+    "expectedAction": null,
+    "consensusAction": null,
+    "authorIntentAction": "proceed",
+    "unanimous": false,
+    "authorIntentDiffers": false
+  },
+  {
+    "caseId": "res-05",
+    "expectedAction": "check",
+    "consensusAction": "check",
+    "authorIntentAction": "check",
+    "unanimous": true,
+    "authorIntentDiffers": false
+  },
+  {
+    "caseId": "res-06",
+    "expectedAction": "check",
+    "consensusAction": "check",
+    "authorIntentAction": "check",
+    "unanimous": true,
+    "authorIntentDiffers": false
+  },
+  {
+    "caseId": "res-07",
+    "expectedAction": "check",
+    "consensusAction": "check",
+    "authorIntentAction": "check",
+    "unanimous": true,
+    "authorIntentDiffers": false
+  },
+  {
+    "caseId": "res-08",
+    "expectedAction": "check",
+    "consensusAction": "check",
+    "authorIntentAction": "check",
+    "unanimous": true,
+    "authorIntentDiffers": false
+  },
+  {
+    "caseId": "res-09",
+    "expectedAction": "ask",
+    "consensusAction": "ask",
+    "authorIntentAction": "ask",
+    "unanimous": true,
+    "authorIntentDiffers": false
+  },
+  {
+    "caseId": "res-10",
+    "expectedAction": "ask",
+    "consensusAction": "ask",
+    "authorIntentAction": "ask",
+    "unanimous": true,
+    "authorIntentDiffers": false
+  },
+  {
+    "caseId": "res-11",
+    "expectedAction": "ask",
+    "consensusAction": "ask",
+    "authorIntentAction": "ask",
+    "unanimous": true,
+    "authorIntentDiffers": false
+  },
+  {
+    "caseId": "res-12",
+    "expectedAction": "ask",
+    "consensusAction": "ask",
+    "authorIntentAction": "ask",
+    "unanimous": true,
+    "authorIntentDiffers": false
+  },
+  {
+    "caseId": "res-13",
+    "expectedAction": "reframe",
+    "consensusAction": "reframe",
+    "authorIntentAction": "reframe",
+    "unanimous": true,
+    "authorIntentDiffers": false
+  },
+  {
+    "caseId": "res-14",
+    "expectedAction": "reframe",
+    "consensusAction": "reframe",
+    "authorIntentAction": "reframe",
+    "unanimous": true,
+    "authorIntentDiffers": false
+  },
+  {
+    "caseId": "res-15",
+    "expectedAction": null,
+    "consensusAction": null,
+    "authorIntentAction": "reframe",
+    "unanimous": false,
+    "authorIntentDiffers": false
+  },
+  {
+    "caseId": "res-16",
+    "expectedAction": "reframe",
+    "consensusAction": "reframe",
+    "authorIntentAction": "reframe",
+    "unanimous": true,
+    "authorIntentDiffers": false
+  },
+  {
+    "caseId": "res-17",
+    "expectedAction": "blocked",
+    "consensusAction": "blocked",
+    "authorIntentAction": "blocked",
+    "unanimous": true,
+    "authorIntentDiffers": false
+  },
+  {
+    "caseId": "res-18",
+    "expectedAction": "blocked",
+    "consensusAction": "blocked",
+    "authorIntentAction": "blocked",
+    "unanimous": true,
+    "authorIntentDiffers": false
+  },
+  {
+    "caseId": "res-19",
+    "expectedAction": "blocked",
+    "consensusAction": "blocked",
+    "authorIntentAction": "blocked",
+    "unanimous": true,
+    "authorIntentDiffers": false
+  },
+  {
+    "caseId": "res-20",
+    "expectedAction": null,
+    "consensusAction": null,
+    "authorIntentAction": "blocked",
+    "unanimous": false,
+    "authorIntentDiffers": false
+  }
+]

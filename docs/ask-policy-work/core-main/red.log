@@ -1,0 +1,534 @@
+✔ policy metadata is additive and does not alter the legacy understanding hash (18.3839ms)
+✔ model self-report cannot write policyHistory (0.3069ms)
+✔ model self-report cannot write reflectionEffects (0.0679ms)
+✔ model self-report cannot write confidence (0.0898ms)
+✔ model self-report cannot write interest (0.0617ms)
+✖ human goal is asked before an unrelated feasible probe (1.9773ms)
+✖ human priority is asked before an unrelated feasible probe (0.4999ms)
+✖ human value is asked before an unrelated feasible probe (0.4389ms)
+✖ human permission is asked before an unrelated feasible probe (0.4476ms)
+✖ goal trigger is early only for ambiguous intent; mixed remaining gaps can still ask (0.4703ms)
+✔ humanRole cannot label an objective fact (0.097ms)
+✔ metadata rejects null hash (1.3897ms)
+✔ metadata rejects wrong hash (0.5096ms)
+✔ metadata rejects future progress (0.414ms)
+✔ metadata rejects impossible count (0.444ms)
+✔ metadata rejects FIFO overflow (0.4093ms)
+✖ first no progress and repeated no progress take distinct paths before general check (1.828ms)
+✖ repeated objective no progress blocks and fatal stops never turn into ask (0.3369ms)
+✖ deferred assessment holds history; exact replay is free; resume counts once; empty pending is invalid (1.1808ms)
+✖ pending guard preserves a null stop reason ahead of early ask (0.5583ms)
+✖ invalid model output holds counters and refreshes terminal hash without counting a round (0.836ms)
+✖ normalised nonprogress chooses error before unavailable and bounds FIFO at ten (7.3849ms)
+✖ old fresh receipt cannot make a no-op update progress (2.0894ms)
+✖ reflection derives ambiguous_intent provenance and action (1.1932ms)
+✖ reflection derives missing_fact provenance and action (0.6991ms)
+✖ reflection derives lens-only provenance and action (0.5724ms)
+✖ effects retain through defer/replay, clear on semantic update/invalidate, and replace on reflection (1.2081ms)
+✖ reflection metadata rejects receipt absent (5.1872ms)
+✖ reflection metadata rejects binding task (0.7264ms)
+✖ reflection metadata rejects binding revision (0.5475ms)
+✖ reflection metadata rejects binding hash (0.5325ms)
+✖ reflection metadata rejects applied revision (0.5329ms)
+✖ reflection metadata rejects unknown gap (0.5025ms)
+✖ reflection metadata rejects unknown lens (0.5121ms)
+✖ reflection metadata rejects duplicate lens (0.4816ms)
+✖ static duplicates count, mixed new evidence and candidates win, and correction counts as progress (2.8916ms)
+✖ redaction rehydration preserves the hash and remains a valid accepted transition (0.7399ms)
+✖ contradiction-only arbitration has a question, but refutation alone is not arbitration (0.7746ms)
+✖ already resolved approved intent does not ask again (0.5289ms)
+✖ legacy reflection tool budget uses > while unresolved general budget uses >= (0.2534ms)
+ℹ tests 40
+ℹ suites 0
+ℹ pass 11
+ℹ fail 29
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 266.6795
+
+✖ failing tests:
+
+test at test\ask-policy.test.mjs:46:65
+✖ human goal is asked before an unrelated feasible probe (1.9773ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at evaluate (file:///D:/develop/works/tombo-view-ask-policy/test/ask-policy.test.mjs:28:35)
+      at TestContext.<anonymous> (file:///D:/develop/works/tombo-view-ask-policy/test/ask-policy.test.mjs:49:48)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test\ask-policy.test.mjs:46:65
+✖ human priority is asked before an unrelated feasible probe (0.4999ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at evaluate (file:///D:/develop/works/tombo-view-ask-policy/test/ask-policy.test.mjs:28:35)
+      at TestContext.<anonymous> (file:///D:/develop/works/tombo-view-ask-policy/test/ask-policy.test.mjs:49:48)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test\ask-policy.test.mjs:46:65
+✖ human value is asked before an unrelated feasible probe (0.4389ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at evaluate (file:///D:/develop/works/tombo-view-ask-policy/test/ask-policy.test.mjs:28:35)
+      at TestContext.<anonymous> (file:///D:/develop/works/tombo-view-ask-policy/test/ask-policy.test.mjs:49:48)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test\ask-policy.test.mjs:46:65
+✖ human permission is asked before an unrelated feasible probe (0.4476ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at evaluate (file:///D:/develop/works/tombo-view-ask-policy/test/ask-policy.test.mjs:28:35)
+      at TestContext.<anonymous> (file:///D:/develop/works/tombo-view-ask-policy/test/ask-policy.test.mjs:49:48)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test\ask-policy.test.mjs:55:1
+✖ goal trigger is early only for ambiguous intent; mixed remaining gaps can still ask (0.4703ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at evaluate (file:///D:/develop/works/tombo-view-ask-policy/test/ask-policy.test.mjs:28:35)
+      at TestContext.<anonymous> (file:///D:/develop/works/tombo-view-ask-policy/test/ask-policy.test.mjs:57:16)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test\ask-policy.test.mjs:76:1
+✖ first no progress and repeated no progress take distinct paths before general check (1.828ms)
+  TypeError: Cannot read properties of undefined (reading 'consecutiveNoProgressRounds')
+      at TestContext.<anonymous> (file:///D:/develop/works/tombo-view-ask-policy/test/ask-policy.test.mjs:79:40)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7)
+
+test at test\ask-policy.test.mjs:87:1
+✖ repeated objective no progress blocks and fatal stops never turn into ask (0.3369ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at evaluate (file:///D:/develop/works/tombo-view-ask-policy/test/ask-policy.test.mjs:28:35)
+      at TestContext.<anonymous> (file:///D:/develop/works/tombo-view-ask-policy/test/ask-policy.test.mjs:89:16)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test\ask-policy.test.mjs:96:1
+✖ deferred assessment holds history; exact replay is free; resume counts once; empty pending is invalid (1.1808ms)
+  TypeError: Cannot read properties of undefined (reading 'consecutiveNoProgressRounds')
+      at TestContext.<anonymous> (file:///D:/develop/works/tombo-view-ask-policy/test/ask-policy.test.mjs:99:45)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7)
+
+test at test\ask-policy.test.mjs:107:1
+✖ pending guard preserves a null stop reason ahead of early ask (0.5583ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at evaluate (file:///D:/develop/works/tombo-view-ask-policy/test/ask-policy.test.mjs:28:35)
+      at TestContext.<anonymous> (file:///D:/develop/works/tombo-view-ask-policy/test/ask-policy.test.mjs:110:13)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test\ask-policy.test.mjs:112:1
+✖ invalid model output holds counters and refreshes terminal hash without counting a round (0.836ms)
+  TypeError: Cannot read properties of undefined (reading 'consecutiveNoProgressRounds')
+      at TestContext.<anonymous> (file:///D:/develop/works/tombo-view-ask-policy/test/ask-policy.test.mjs:115:96)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7)
+
+test at test\ask-policy.test.mjs:117:1
+✖ normalised nonprogress chooses error before unavailable and bounds FIFO at ten (7.3849ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + undefined
+  - 'f780e47d4fa1ae00b1dbc6b54efdf2ed9419651c20567598e33047cb316fbd93'
+  
+      at valid (file:///D:/develop/works/tombo-view-ask-policy/test/ask-policy.test.mjs:31:10)
+      at TestContext.<anonymous> (file:///D:/develop/works/tombo-view-ask-policy/test/ask-policy.test.mjs:122:5)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 'f780e47d4fa1ae00b1dbc6b54efdf2ed9419651c20567598e33047cb316fbd93',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test\ask-policy.test.mjs:126:1
+✖ old fresh receipt cannot make a no-op update progress (2.0894ms)
+  TypeError: Cannot read properties of undefined (reading 'consecutiveNoProgressRounds')
+      at TestContext.<anonymous> (file:///D:/develop/works/tombo-view-ask-policy/test/ask-policy.test.mjs:129:41)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7)
+
+test at test\ask-policy.test.mjs:132:71
+✖ reflection derives ambiguous_intent provenance and action (1.1932ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + undefined
+  - '1209ca195bf6142a6d146bda1fbec8ad6252cdd56794b1f55373610bc44c283a'
+  
+      at valid (file:///D:/develop/works/tombo-view-ask-policy/test/ask-policy.test.mjs:31:10)
+      at TestContext.<anonymous> (file:///D:/develop/works/tombo-view-ask-policy/test/ask-policy.test.mjs:136:65)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: '1209ca195bf6142a6d146bda1fbec8ad6252cdd56794b1f55373610bc44c283a',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test\ask-policy.test.mjs:132:71
+✖ reflection derives missing_fact provenance and action (0.6991ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + undefined
+  - '6c0c3240327b0161a99ee7ce88b61d2d8b4e4918cc6e53537c1e3d640be2a8f2'
+  
+      at valid (file:///D:/develop/works/tombo-view-ask-policy/test/ask-policy.test.mjs:31:10)
+      at TestContext.<anonymous> (file:///D:/develop/works/tombo-view-ask-policy/test/ask-policy.test.mjs:136:65)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: '6c0c3240327b0161a99ee7ce88b61d2d8b4e4918cc6e53537c1e3d640be2a8f2',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test\ask-policy.test.mjs:132:71
+✖ reflection derives lens-only provenance and action (0.5724ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + undefined
+  - '3fe328958ce57c588723ff06141917450ec4edcccbfcd9cc5fdd63f602cce0d2'
+  
+      at valid (file:///D:/develop/works/tombo-view-ask-policy/test/ask-policy.test.mjs:31:10)
+      at TestContext.<anonymous> (file:///D:/develop/works/tombo-view-ask-policy/test/ask-policy.test.mjs:136:65)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: '3fe328958ce57c588723ff06141917450ec4edcccbfcd9cc5fdd63f602cce0d2',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test\ask-policy.test.mjs:143:1
+✖ effects retain through defer/replay, clear on semantic update/invalidate, and replace on reflection (1.2081ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + undefined
+  - 'a3df884987bc1c65950a610393f89def8b74c30df392d17b72fdaaf8188ccf52'
+  
+      at valid (file:///D:/develop/works/tombo-view-ask-policy/test/ask-policy.test.mjs:31:10)
+      at TestContext.<anonymous> (file:///D:/develop/works/tombo-view-ask-policy/test/ask-policy.test.mjs:146:178)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 'a3df884987bc1c65950a610393f89def8b74c30df392d17b72fdaaf8188ccf52',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test\ask-policy.test.mjs:159:4
+✖ reflection metadata rejects receipt absent (5.1872ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(s.reflectionEffects)
+  
+      at TestContext.<anonymous> (file:///D:/develop/works/tombo-view-ask-policy/test/ask-policy.test.mjs:161:10)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at test\ask-policy.test.mjs:159:4
+✖ reflection metadata rejects binding task (0.7264ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(s.reflectionEffects)
+  
+      at TestContext.<anonymous> (file:///D:/develop/works/tombo-view-ask-policy/test/ask-policy.test.mjs:161:10)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at test\ask-policy.test.mjs:159:4
+✖ reflection metadata rejects binding revision (0.5475ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(s.reflectionEffects)
+  
+      at TestContext.<anonymous> (file:///D:/develop/works/tombo-view-ask-policy/test/ask-policy.test.mjs:161:10)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at test\ask-policy.test.mjs:159:4
+✖ reflection metadata rejects binding hash (0.5325ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(s.reflectionEffects)
+  
+      at TestContext.<anonymous> (file:///D:/develop/works/tombo-view-ask-policy/test/ask-policy.test.mjs:161:10)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at test\ask-policy.test.mjs:159:4
+✖ reflection metadata rejects applied revision (0.5329ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(s.reflectionEffects)
+  
+      at TestContext.<anonymous> (file:///D:/develop/works/tombo-view-ask-policy/test/ask-policy.test.mjs:161:10)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at test\ask-policy.test.mjs:159:4
+✖ reflection metadata rejects unknown gap (0.5025ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(s.reflectionEffects)
+  
+      at TestContext.<anonymous> (file:///D:/develop/works/tombo-view-ask-policy/test/ask-policy.test.mjs:161:10)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at test\ask-policy.test.mjs:159:4
+✖ reflection metadata rejects unknown lens (0.5121ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(s.reflectionEffects)
+  
+      at TestContext.<anonymous> (file:///D:/develop/works/tombo-view-ask-policy/test/ask-policy.test.mjs:161:10)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at test\ask-policy.test.mjs:159:4
+✖ reflection metadata rejects duplicate lens (0.4816ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(s.reflectionEffects)
+  
+      at TestContext.<anonymous> (file:///D:/develop/works/tombo-view-ask-policy/test/ask-policy.test.mjs:161:10)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at test\ask-policy.test.mjs:164:1
+✖ static duplicates count, mixed new evidence and candidates win, and correction counts as progress (2.8916ms)
+  TypeError: Cannot read properties of undefined (reading 'consecutiveNoProgressRounds')
+      at TestContext.<anonymous> (file:///D:/develop/works/tombo-view-ask-policy/test/ask-policy.test.mjs:169:40)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7)
+
+test at test\ask-policy.test.mjs:182:1
+✖ redaction rehydration preserves the hash and remains a valid accepted transition (0.7399ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + undefined
+  - '52a200c2827e50747ec1e8943cd373b62f5410a8c264f240b209f9d344cc7daf'
+  
+      at valid (file:///D:/develop/works/tombo-view-ask-policy/test/ask-policy.test.mjs:31:10)
+      at TestContext.<anonymous> (file:///D:/develop/works/tombo-view-ask-policy/test/ask-policy.test.mjs:186:87)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: '52a200c2827e50747ec1e8943cd373b62f5410a8c264f240b209f9d344cc7daf',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test\ask-policy.test.mjs:189:1
+✖ contradiction-only arbitration has a question, but refutation alone is not arbitration (0.7746ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at evaluate (file:///D:/develop/works/tombo-view-ask-policy/test/ask-policy.test.mjs:28:35)
+      at TestContext.<anonymous> (file:///D:/develop/works/tombo-view-ask-policy/test/ask-policy.test.mjs:192:50)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test\ask-policy.test.mjs:197:1
+✖ already resolved approved intent does not ask again (0.5289ms)
+  Error [TomboError]: proposal.gaps.0: Unrecognized key: "humanRole"
+      at parse (file:///D:/develop/works/tombo-view-ask-policy/dist/core.js:49:15)
+      at generate (file:///D:/develop/works/tombo-view-ask-policy/dist/core.js:437:24)
+      at async propose (file:///D:/develop/works/tombo-view-ask-policy/dist/core.js:467:32)
+      at async Object.inspect (file:///D:/develop/works/tombo-view-ask-policy/dist/core.js:499:35)
+      at async TestContext.<anonymous> (file:///D:/develop/works/tombo-view-ask-policy/test/ask-policy.test.mjs:199:13)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    code: 'invalid_model_output'
+  }
+
+test at test\ask-policy.test.mjs:201:1
+✖ legacy reflection tool budget uses > while unresolved general budget uses >= (0.2534ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'undefined'
+  - 'function'
+  
+      at evaluate (file:///D:/develop/works/tombo-view-ask-policy/test/ask-policy.test.mjs:28:35)
+      at TestContext.<anonymous> (file:///D:/develop/works/tombo-view-ask-policy/test/ask-policy.test.mjs:204:16)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'undefined',
+    expected: 'function',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

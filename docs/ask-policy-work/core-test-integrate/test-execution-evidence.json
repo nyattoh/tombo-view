@@ -1,0 +1,45 @@
+{
+  "recorded_at": "2026-10-18T00:59:16.9133637Z",
+  "role": "independent_test_integrate",
+  "thread": "tombo-ask-policy-core",
+  "verdict": "pass",
+  "acceptance_pass": false,
+  "source_drift": false,
+  "pm_full_npm_test": {
+    "command": "npm test",
+    "exit_code": 0,
+    "tests": 665,
+    "pass": 665,
+    "fail": 0,
+    "evidence": "docs/ask-policy-work/pm-integrated-test-evidence.json"
+  },
+  "independent_test_runs": {
+    "focused": {
+      "command": "node --test test/ask-policy.test.mjs",
+      "exit_code": 0,
+      "tests": 50,
+      "pass": 50,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "duration_ms": 2774.3245,
+      "stdout_log": "docs/ask-policy-work/core-test-integrate/focused.stdout.log",
+      "stderr_log": "docs/ask-policy-work/core-test-integrate/focused.stderr.log",
+      "stderr_bytes": 0
+    },
+    "affected_regression": {
+      "command": "node --test --test-concurrency=1 test/assessment-correction.test.mjs test/assessment-correction-journal.test.mjs test/core.test.mjs test/recovery-journal.test.mjs test/cli-reflection.test.mjs test/session.test.mjs test/session-repair-feedback.test.mjs",
+      "exit_code": 0,
+      "tests": 113,
+      "pass": 113,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "duration_ms": 18243.3701,
+      "stdout_log": "docs/ask-policy-work/core-test-integrate/affected.stdout.log",
+      "stderr_log": "docs/ask-policy-work/core-test-integrate/affected.stderr.log",
+      "stderr_bytes": 0
+    }
+  },
+  "hash_verification": "docs/ask-policy-work/core-test-integrate/hash-verification.json"
+}

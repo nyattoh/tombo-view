@@ -3,7 +3,7 @@ import { mkdir, open, readFile, rename, unlink } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { isDeepStrictEqual } from 'node:util';
 import { TomboError, validateState } from './core.js';
-import type { UnderstandingState } from './types.js';
+import { stateSchema, type UnderstandingState } from './types.js';
 
 type Event = {
   schemaVersion: '0.1';
@@ -16,6 +16,12 @@ type Event = {
 
 function digest(value: unknown): string {
   return createHash('sha256').update(JSON.stringify(value)).digest('hex');
+}
+
+function stateShape(value: unknown): UnderstandingState {
+  const parsed = stateSchema.safeParse(value);
+  if (!parsed.success) throw new TomboError('invalid_input', 'Invalid journal state shape.');
+  return parsed.data;
 }
 
 function redact(state: UnderstandingState): UnderstandingState {
@@ -76,15 +82,16 @@ export class FileJournal {
     return (await readEvents(this.path)).at(-1)?.state ?? null;
   }
 
-  async assertCurrent(value: UnderstandingState | null): Promise<void> {
-    const state = value === null ? null : redact(validateState(value));
-    if (!isDeepStrictEqual(state, await this.load())) {
+  async assertCurrent(value: unknown): Promise<void> {
+    const state = value === null ? null : stateShape(value);
+    if (!isDeepStrictEqual(state === null ? null : redact(state), await this.load())) {
       throw new TomboError('revision_conflict', 'Reload the authoritative journal state before running this command.');
     }
+    if (state !== null) validateState(state);
   }
 
   async commit(expectedRevision: number, value: UnderstandingState): Promise<{ cacheWritten: boolean }> {
-    const state = validateState(value);
+    const state = stateShape(value);
     await mkdir(dirname(this.path), { recursive: true });
     const lockPath = `${this.path}.lock`;
     let lock;
@@ -102,6 +109,7 @@ export class FileJournal {
         (previous && (state.revision !== previous.state.revision + 1 || state.taskId !== previous.state.taskId || !isDeepStrictEqual(saved.task, previous.state.task)))) {
         throw new TomboError('revision_conflict', 'Reload the latest state before committing.');
       }
+      validateState(state);
       const event: Event = {
         schemaVersion: '0.1', sequence: events.length, expectedRevision,
         previousHash: previous ? digest(previous) : null, stateHash: digest(saved), state: saved,

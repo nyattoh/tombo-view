@@ -1,0 +1,422 @@
+[
+  {
+    "caseId": "auto-01",
+    "action": "proceed",
+    "reasonPath": "evidence-01",
+    "vendor": "openai",
+    "model": "gpt-6.1-sol"
+  },
+  {
+    "caseId": "auto-02",
+    "action": "proceed",
+    "reasonPath": "evidence-02",
+    "vendor": "openai",
+    "model": "gpt-6.1-sol"
+  },
+  {
+    "caseId": "auto-03",
+    "action": "proceed",
+    "reasonPath": "evidence-03",
+    "vendor": "openai",
+    "model": "gpt-6.1-sol"
+  },
+  {
+    "caseId": "auto-04",
+    "action": "proceed",
+    "reasonPath": "evidence-04",
+    "vendor": "openai",
+    "model": "gpt-6.1-sol"
+  },
+  {
+    "caseId": "auto-05",
+    "action": "blocked",
+    "reasonPath": "state.appliedExecutions[0].outcome",
+    "vendor": "openai",
+    "model": "gpt-6.1-sol"
+  },
+  {
+    "caseId": "auto-06",
+    "action": "blocked",
+    "reasonPath": "state.appliedExecutions[0].outcome",
+    "vendor": "openai",
+    "model": "gpt-6.1-sol"
+  },
+  {
+    "caseId": "auto-07",
+    "action": "blocked",
+    "reasonPath": "state.appliedExecutions[0].outcome",
+    "vendor": "openai",
+    "model": "gpt-6.1-sol"
+  },
+  {
+    "caseId": "auto-08",
+    "action": "blocked",
+    "reasonPath": "state.appliedExecutions[0].outcome",
+    "vendor": "openai",
+    "model": "gpt-6.1-sol"
+  },
+  {
+    "caseId": "auto-09",
+    "action": "ask",
+    "reasonPath": "gap-09",
+    "vendor": "openai",
+    "model": "gpt-6.1-sol"
+  },
+  {
+    "caseId": "auto-10",
+    "action": "ask",
+    "reasonPath": "gap-10",
+    "vendor": "openai",
+    "model": "gpt-6.1-sol"
+  },
+  {
+    "caseId": "auto-11",
+    "action": "ask",
+    "reasonPath": "gap-11",
+    "vendor": "openai",
+    "model": "gpt-6.1-sol"
+  },
+  {
+    "caseId": "auto-12",
+    "action": "ask",
+    "reasonPath": "gap-12",
+    "vendor": "openai",
+    "model": "gpt-6.1-sol"
+  },
+  {
+    "caseId": "auto-13",
+    "action": "reframe",
+    "reasonPath": "state.reflection.limitations[0]",
+    "vendor": "openai",
+    "model": "gpt-6.1-sol"
+  },
+  {
+    "caseId": "auto-14",
+    "action": "reframe",
+    "reasonPath": "gap-14",
+    "vendor": "openai",
+    "model": "gpt-6.1-sol"
+  },
+  {
+    "caseId": "auto-15",
+    "action": "reframe",
+    "reasonPath": "gap-15",
+    "vendor": "openai",
+    "model": "gpt-6.1-sol"
+  },
+  {
+    "caseId": "auto-16",
+    "action": "reframe",
+    "reasonPath": "gap-16",
+    "vendor": "openai",
+    "model": "gpt-6.1-sol"
+  },
+  {
+    "caseId": "auto-17",
+    "action": "blocked",
+    "reasonPath": "packet.budget.maxToolCalls",
+    "vendor": "openai",
+    "model": "gpt-6.1-sol"
+  },
+  {
+    "caseId": "auto-18",
+    "action": "blocked",
+    "reasonPath": "excluded-18",
+    "vendor": "openai",
+    "model": "gpt-6.1-sol"
+  },
+  {
+    "caseId": "auto-19",
+    "action": "blocked",
+    "reasonPath": "gap-19",
+    "vendor": "openai",
+    "model": "gpt-6.1-sol"
+  },
+  {
+    "caseId": "auto-20",
+    "action": "blocked",
+    "reasonPath": "gap-20",
+    "vendor": "openai",
+    "model": "gpt-6.1-sol"
+  },
+  {
+    "caseId": "dev-record-01",
+    "action": "blocked",
+    "reasonPath": "state.probes[0].requiredCapability",
+    "vendor": "openai",
+    "model": "gpt-6.1-sol"
+  },
+  {
+    "caseId": "dev-record-02",
+    "action": "check",
+    "reasonPath": "p1",
+    "vendor": "openai",
+    "model": "gpt-6.1-sol"
+  },
+  {
+    "caseId": "dev-record-03",
+    "action": "ask",
+    "reasonPath": "g1",
+    "vendor": "openai",
+    "model": "gpt-6.1-sol"
+  },
+  {
+    "caseId": "dev-record-04",
+    "action": "reframe",
+    "reasonPath": "packet.reflectionRequired",
+    "vendor": "openai",
+    "model": "gpt-6.1-sol"
+  },
+  {
+    "caseId": "dev-record-05",
+    "action": "blocked",
+    "reasonPath": "state.excludedCandidates[0]",
+    "vendor": "openai",
+    "model": "gpt-6.1-sol"
+  },
+  {
+    "caseId": "dev-record-06",
+    "action": "ask",
+    "reasonPath": "g2",
+    "vendor": "openai",
+    "model": "gpt-6.1-sol"
+  },
+  {
+    "caseId": "dev-record-07",
+    "action": "proceed",
+    "reasonPath": "state.gaps",
+    "vendor": "openai",
+    "model": "gpt-6.1-sol"
+  },
+  {
+    "caseId": "dev-record-08",
+    "action": "ask",
+    "reasonPath": "g2",
+    "vendor": "openai",
+    "model": "gpt-6.1-sol"
+  },
+  {
+    "caseId": "dev-record-09",
+    "action": "check",
+    "reasonPath": "p1",
+    "vendor": "openai",
+    "model": "gpt-6.1-sol"
+  },
+  {
+    "caseId": "dev-record-10",
+    "action": "check",
+    "reasonPath": "p1",
+    "vendor": "openai",
+    "model": "gpt-6.1-sol"
+  },
+  {
+    "caseId": "dev-record-11",
+    "action": "proceed",
+    "reasonPath": "state.gaps[0].resolution",
+    "vendor": "openai",
+    "model": "gpt-6.1-sol"
+  },
+  {
+    "caseId": "dev-record-12",
+    "action": "proceed",
+    "reasonPath": "state.gaps",
+    "vendor": "openai",
+    "model": "gpt-6.1-sol"
+  },
+  {
+    "caseId": "dev-record-13",
+    "action": "ask",
+    "reasonPath": "g1",
+    "vendor": "openai",
+    "model": "gpt-6.1-sol"
+  },
+  {
+    "caseId": "dev-record-14",
+    "action": "reframe",
+    "reasonPath": "l2",
+    "vendor": "openai",
+    "model": "gpt-6.1-sol"
+  },
+  {
+    "caseId": "dev-record-15",
+    "action": "proceed",
+    "reasonPath": "state.reflection",
+    "vendor": "openai",
+    "model": "gpt-6.1-sol"
+  },
+  {
+    "caseId": "dev-record-16",
+    "action": "check",
+    "reasonPath": "p1",
+    "vendor": "openai",
+    "model": "gpt-6.1-sol"
+  },
+  {
+    "caseId": "dev-record-17",
+    "action": "ask",
+    "reasonPath": "g2",
+    "vendor": "openai",
+    "model": "gpt-6.1-sol"
+  },
+  {
+    "caseId": "dev-record-18",
+    "action": "reframe",
+    "reasonPath": "l2",
+    "vendor": "openai",
+    "model": "gpt-6.1-sol"
+  },
+  {
+    "caseId": "dev-record-19",
+    "action": "blocked",
+    "reasonPath": "state.usage.modelCalls",
+    "vendor": "openai",
+    "model": "gpt-6.1-sol"
+  },
+  {
+    "caseId": "dev-record-20",
+    "action": "reframe",
+    "reasonPath": "c1",
+    "vendor": "openai",
+    "model": "gpt-6.1-sol"
+  },
+  {
+    "caseId": "res-01",
+    "action": "proceed",
+    "reasonPath": "gap-01-history",
+    "vendor": "openai",
+    "model": "gpt-6.1-sol"
+  },
+  {
+    "caseId": "res-02",
+    "action": "proceed",
+    "reasonPath": "gap-02-history",
+    "vendor": "openai",
+    "model": "gpt-6.1-sol"
+  },
+  {
+    "caseId": "res-03",
+    "action": "check",
+    "reasonPath": "probe-03-main",
+    "vendor": "openai",
+    "model": "gpt-6.1-sol"
+  },
+  {
+    "caseId": "res-04",
+    "action": "reframe",
+    "reasonPath": "lens-04-proposed",
+    "vendor": "openai",
+    "model": "gpt-6.1-sol"
+  },
+  {
+    "caseId": "res-05",
+    "action": "check",
+    "reasonPath": "probe-05-main",
+    "vendor": "openai",
+    "model": "gpt-6.1-sol"
+  },
+  {
+    "caseId": "res-06",
+    "action": "check",
+    "reasonPath": "probe-06-main",
+    "vendor": "openai",
+    "model": "gpt-6.1-sol"
+  },
+  {
+    "caseId": "res-07",
+    "action": "check",
+    "reasonPath": "probe-07-main",
+    "vendor": "openai",
+    "model": "gpt-6.1-sol"
+  },
+  {
+    "caseId": "res-08",
+    "action": "check",
+    "reasonPath": "probe-08-reflection",
+    "vendor": "openai",
+    "model": "gpt-6.1-sol"
+  },
+  {
+    "caseId": "res-09",
+    "action": "ask",
+    "reasonPath": "gap-09-main",
+    "vendor": "openai",
+    "model": "gpt-6.1-sol"
+  },
+  {
+    "caseId": "res-10",
+    "action": "ask",
+    "reasonPath": "gap-10-main",
+    "vendor": "openai",
+    "model": "gpt-6.1-sol"
+  },
+  {
+    "caseId": "res-11",
+    "action": "ask",
+    "reasonPath": "gap-11-main",
+    "vendor": "openai",
+    "model": "gpt-6.1-sol"
+  },
+  {
+    "caseId": "res-12",
+    "action": "ask",
+    "reasonPath": "gap-12-reflection",
+    "vendor": "openai",
+    "model": "gpt-6.1-sol"
+  },
+  {
+    "caseId": "res-13",
+    "action": "reframe",
+    "reasonPath": "claim-13-main",
+    "vendor": "openai",
+    "model": "gpt-6.1-sol"
+  },
+  {
+    "caseId": "res-14",
+    "action": "reframe",
+    "reasonPath": "gap-14-main",
+    "vendor": "openai",
+    "model": "gpt-6.1-sol"
+  },
+  {
+    "caseId": "res-15",
+    "action": "reframe",
+    "reasonPath": "packet.reflectionRequired",
+    "vendor": "openai",
+    "model": "gpt-6.1-sol"
+  },
+  {
+    "caseId": "res-16",
+    "action": "reframe",
+    "reasonPath": "packet.goal",
+    "vendor": "openai",
+    "model": "gpt-6.1-sol"
+  },
+  {
+    "caseId": "res-17",
+    "action": "blocked",
+    "reasonPath": "gap-17-main",
+    "vendor": "openai",
+    "model": "gpt-6.1-sol"
+  },
+  {
+    "caseId": "res-18",
+    "action": "blocked",
+    "reasonPath": "probe-18-main",
+    "vendor": "openai",
+    "model": "gpt-6.1-sol"
+  },
+  {
+    "caseId": "res-19",
+    "action": "blocked",
+    "reasonPath": "probe-19-main",
+    "vendor": "openai",
+    "model": "gpt-6.1-sol"
+  },
+  {
+    "caseId": "res-20",
+    "action": "blocked",
+    "reasonPath": "candidate-20-excluded",
+    "vendor": "openai",
+    "model": "gpt-6.1-sol"
+  }
+]

@@ -1,0 +1,332 @@
+{
+  "verdict": "pass",
+  "audit_type": "Existing intake independent final scope/task-state/gate audit only",
+  "observed_at": "2026-10-18T10:36:03.002346+09:00",
+  "goal_completion_claim": false,
+  "pm_final_closing_pending": true,
+  "workspace": {
+    "cwd": "D:/develop/works/tombo-view-ask-policy",
+    "t3_attached": true,
+    "branch": "feat/ask-policy-20261018",
+    "head": "f2ecc2e4ccbfe109596d9e156095fff7af76ea6a",
+    "main_checkout_access_by_audit": false
+  },
+  "input_snapshot": {
+    "at": "2026-10-18T10:36:03.002346+09:00",
+    "source_hashes_match": true,
+    "task_state_sha256": "a3a36331abc553de05f6325e5a95951f97dffa1b10e26d9029b21119e63a9072",
+    "projection_sha256": "65f58dc5c798950be2ef6422e6aa9960559127d5eb65c61023394050d6d1e599",
+    "projection_source_still_matches": true,
+    "design_sha256": "5f3b4fc75a3c2cba99656bec42c3269f8e399ccdb3d31723ed12e6095f2a47e3",
+    "charter_sha256": "40701cc7e1fdca8f0dc38b313a40b39475e45b40155b8cfef1cfc3182ab8d85f",
+    "report_sha256": "9f103749f05aa714139fac2bd20b5ff5e1c15a0b3bceb18a7f5987a1c1b0beec",
+    "parent_file_exists": false
+  },
+  "blocking_findings": [],
+  "acceptance": [
+    {
+      "id": 1,
+      "status": "pass",
+      "evidence": [
+        "docs/ask-policy.md",
+        "docs/ask-policy-work/agy-formal-design-r2-result.json"
+      ],
+      "verification": "Current design and unchanged locked-charter hashes match. Actual durable Google/gemini-4-argon-high R2 final VERDICT pass confirmed, prior R1 fail retained. Design pass completed 2026-10-18T00:26:08.745Z before checked implementation starts (comparison 00:30:49.306Z, core 00:31:50.298Z, fixture-main 00:32:52.282Z). Reviewer vendor differs from OpenAI implementation. Pi missing outputs remain no verdict."
+    },
+    {
+      "id": 2,
+      "status": "pass",
+      "evidence": [
+        "docs/ask-policy-work/core-main/tdd.json",
+        "docs/ask-policy-work/pm-integrated-test-r2-evidence.json",
+        "docs/ask-policy-work/core-test-integrate/test-execution-evidence.json"
+      ],
+      "verification": "Six implementation sets have RED/GREEN/regression records and artefacts. Inspected RED/GREEN log summaries, including initial core40 tests/29fail, compatibility RED3fail/GREEN50pass, legacy524pass, comparison RED1fail/GREEN32pass, annotation reference RED2fail/GREEN49pass/regression66. Automation shard RED is a structured command/result summary (2 missing-file failures), not standard TAP; records identify it. Shared shard regression is explicitly attributed to PM. Independent Google actually ran50focused/113affected, not524. Latest PM npm test log667pass/fail0/skipped0/exit0/stderr0; all14 source/test hashes still match. Parent did not repeat unchanged npm tests."
+    },
+    {
+      "id": 3,
+      "status": "pass",
+      "evidence": [
+        "evaluation/ask-policy-cases.json",
+        "evaluation/ask-policy-annotations.json",
+        "evaluation/ask-policy-disagreements.json",
+        "evaluation/README.md",
+        "docs/ask-policy-work/annotation-runs/manifest.json"
+      ],
+      "verification": "60 frozen inputs, 3 domains20each, author-intended five actions12each (four main actions plus blocked),23controls. Separate author intent is not ground truth. All3vendors cover60IDs;42unanimous/18disagreements independently rederived; disagreement expectedAction null. Saved36 batch output JSONs match recorded summaries and independently match36 actual durable assistant messages across3threads/12runs each. Batch prompts contain only neutral frozen rubric plus exact caseId/input; domain grouping metadata intentionally omitted. Recorded complete source-only timelines have no tool events. Three actual author threads and annotator threads are disjoint. Input/rubric/output hashes match; provisional-label/non-claim README inspected."
+    },
+    {
+      "id": 4,
+      "status": "pass",
+      "evidence": [
+        "scripts/ask-policy-compare.mjs",
+        "evaluation/reports/ask-policy-compare.json",
+        "docs/ask-policy-work/pm-independent-final-check.json"
+      ],
+      "verification": "Report45538bytes/SHA matches. Base core/types snapshots independently compared byte-for-byte with Git objects at exact base; blob IDs/SHA match. Bridge is exact base core plus export alias only; generated JS and current source/dist report hashes match. Read two-run deterministic-report evidence without rewriting report. Independently recomputed consensus-only vote-derived metrics and changed-case counts. PM120directpolicycalls are attributed to PM, not parent."
+    },
+    {
+      "id": 5,
+      "status": "pass",
+      "evidence": [
+        "docs/ask-policy-work/full-review-r1-result.json",
+        "docs/ask-policy-work/full-review-r1-pm-validation.json",
+        "docs/ask-policy-work/full-review-r1-tool-audit.json"
+      ],
+      "verification": "Actual durable fresh Google/gemini-4-argon-high full-diff R1 completed with visible VERDICT pass, different vendor from OpenAI implementation. Stored68 read-only tool evidence items and PM corrective validation inspected. Raw verdict retained; erroneous narrative model-name/bridge quote/anchors/index/actor details are not adopted as product facts. No new model review dispatched by parent."
+    },
+    {
+      "id": 6,
+      "status": "pass_for_parent_checkpoint",
+      "evidence": [
+        "D:/inbox/tombo-ask-policy-20261018/handover.md",
+        "docs/ask-policy-work/acceptance-evidence-index.md"
+      ],
+      "verification": "Read latest10:29JST handover section with test counts, comparison values, model/task provenance, limitations and parent-pending status. PM final gate/inbox closing remains after this audit and must not be claimed already done."
+    }
+  ],
+  "dataset_metrics": {
+    "total_cases": 60,
+    "consensus": 42,
+    "disagreements": 18,
+    "controls": 23,
+    "old": {
+      "tp": 8,
+      "fp": 0,
+      "fn": 2,
+      "precision": 1,
+      "recall": 0.8,
+      "unnecessaryAsks": 0,
+      "controlViolations": 0
+    },
+    "new": {
+      "tp": 10,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1,
+      "recall": 1,
+      "unnecessaryAsks": 0,
+      "controlViolations": 0
+    },
+    "changed": 7,
+    "changed_consensus": 4,
+    "changed_nonconsensus": 3
+  },
+  "gate": {
+    "parent_command": "python C:/Users/ryoko/.agents/skills/bench-ledger-router/scripts/task_gate.py docs/ask-policy-work/current-execution-projection.json",
+    "parent_exec_exit_code": 0,
+    "result": {
+      "ok": true,
+      "violations": [],
+      "counts": {
+        "implement": 6,
+        "verify": 6
+      }
+    },
+    "projection_verification": "Projection source SHA matches raw current task-state. Only old pm task removed from tasks and retained identically in historical_retired_pm. Every other task unchanged. One real full-review handle supplies6 code_review and5 verify logical views, not11 agents. Existing independent core-test-integrate is separate. Logical PM verification done and actual PM host running for closing are explicitly distinct."
+  },
+  "task_states": {
+    "unique_returned_delegated_threads": 28,
+    "counts": {
+      "running": 1,
+      "completed": 24,
+      "failed": 2,
+      "interrupted": 1
+    },
+    "only_live_descendant": "Existing PM waiting for this parent audit; correct running status",
+    "all_other_descendants_terminal": true,
+    "complete_substantive_started_count": null,
+    "count_qualification": "Includes historical PM, startup failure, interrupted and missing-output attempts; excludes intake and same-thread follow-up runs. Critical5threads actual run timestamps checked; no claim all28 performed substantive successful work.",
+    "inventory": [
+      {
+        "threadId": "thread:delegated-task:command%3Amcp%3Afe76df42-f019-4e5c-8090-20e8c7a3de09%3Adelegate-task%3Atombo-ask-policy-20261018-goal-pm-resume-r2",
+        "status": "running",
+        "providerInstanceId": "codex",
+        "model": "gpt-6.1-sol"
+      },
+      {
+        "threadId": "thread:delegated-task:command%3Amcp%3Ab4bee315-331e-4371-8e14-4d25d3635029%3Adelegate-task%3Atombo-ask-policy-core-test-integrate-20261018-r1",
+        "status": "completed",
+        "providerInstanceId": "antigravity",
+        "model": "gemini-3.8-flash-medium"
+      },
+      {
+        "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-local-qwen-input-audit-20261018-r1",
+        "status": "failed",
+        "providerInstanceId": "pi",
+        "model": "ollama-local/qwen3.5-4b-local"
+      },
+      {
+        "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-full-diff-agy-argon-high-r1-20261018",
+        "status": "completed",
+        "providerInstanceId": "antigravity",
+        "model": "gemini-4-argon-high"
+      },
+      {
+        "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-comparison-main-wave1-20261018",
+        "status": "completed",
+        "providerInstanceId": "codex",
+        "model": "gpt-6.1-sol"
+      },
+      {
+        "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-annotation-integration-main-20261018-r1",
+        "status": "completed",
+        "providerInstanceId": "codex",
+        "model": "gpt-6.1-sol"
+      },
+      {
+        "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-nvidia-batch01-20261018",
+        "status": "completed",
+        "providerInstanceId": "pi",
+        "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b"
+      },
+      {
+        "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-google-batch01-20261018",
+        "status": "completed",
+        "providerInstanceId": "antigravity",
+        "model": "gemini-3.8-flash-medium"
+      },
+      {
+        "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-openai-batch01-20261018",
+        "status": "completed",
+        "providerInstanceId": "codex",
+        "model": "gpt-6.1-sol"
+      },
+      {
+        "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-core-lead-impl-wave1-20261018",
+        "status": "completed",
+        "providerInstanceId": "codex",
+        "model": "gpt-6-luna"
+      },
+      {
+        "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-local-gemma-compat-audit-20261018-r1",
+        "status": "completed",
+        "providerInstanceId": "pi",
+        "model": "ollama-local/gemma4:e2b"
+      },
+      {
+        "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-formal-design-agy-argon-high-r2-20261018",
+        "status": "completed",
+        "providerInstanceId": "antigravity",
+        "model": "gemini-4-argon-high"
+      },
+      {
+        "threadId": "thread:delegated-task:command%3Amcp%3A486d7c52-bf09-4413-bfc0-231a2e44a6e9%3Adelegate-task%3Atombo-ask-policy-design-author-resume-r2-20261018",
+        "status": "completed",
+        "providerInstanceId": "antigravity",
+        "model": "gemini-3.8-flash-medium"
+      },
+      {
+        "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-fixture-lead-wave1-20261018",
+        "status": "completed",
+        "providerInstanceId": "codex",
+        "model": "gpt-6-luna"
+      },
+      {
+        "threadId": "thread:delegated-task:command%3Amcp%3Ab4bee315-331e-4371-8e14-4d25d3635029%3Adelegate-task%3Atombo-ask-policy-core-main-impl-20261018-r1",
+        "status": "completed",
+        "providerInstanceId": "codex",
+        "model": "gpt-6.1-sol"
+      },
+      {
+        "threadId": "thread:delegated-task:command%3Amcp%3Ab418ff8c-ae31-43d0-8cbd-8da70b9e751d%3Adelegate-task%3Atombo-ask-policy-fixture-main-sol-high-20261018-r1",
+        "status": "completed",
+        "providerInstanceId": "codex",
+        "model": "gpt-6.1-sol"
+      },
+      {
+        "threadId": "thread:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-research-luna-high-20261018-r1",
+        "status": "completed",
+        "providerInstanceId": "codex",
+        "model": "gpt-6-luna"
+      },
+      {
+        "threadId": "thread:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-automation-luna-high-20261018-r1",
+        "status": "completed",
+        "providerInstanceId": "codex",
+        "model": "gpt-6-luna"
+      },
+      {
+        "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-formal-design-agy-argon-high-r1-20261018",
+        "status": "completed",
+        "providerInstanceId": "antigravity",
+        "model": "gemini-4-argon-high"
+      },
+      {
+        "threadId": "thread:delegated-task:command%3Amcp%3A486d7c52-bf09-4413-bfc0-231a2e44a6e9%3Adelegate-task%3Atombo-ask-policy-formal-pi-verdict-recovery-once-20261018-r1",
+        "status": "completed",
+        "providerInstanceId": "pi",
+        "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b"
+      },
+      {
+        "threadId": "thread:delegated-task:command%3Amcp%3A486d7c52-bf09-4413-bfc0-231a2e44a6e9%3Adelegate-task%3Atombo-ask-policy-formal-design-pi-r1-sourcepacket-20261018",
+        "status": "completed",
+        "providerInstanceId": "pi",
+        "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b"
+      },
+      {
+        "threadId": "thread:delegated-task:command%3Amcp%3A486d7c52-bf09-4413-bfc0-231a2e44a6e9%3Adelegate-task%3Atombo-ask-policy-formal-design-pi-r1-20261018",
+        "status": "interrupted",
+        "providerInstanceId": "pi",
+        "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b"
+      },
+      {
+        "threadId": "thread:delegated-task:command%3Amcp%3Ab3b4e001-4a08-4369-bbc8-bcab0ec3b1d0%3Adelegate-task%3Atombo-ask-policy-design-review-r1-20261018",
+        "status": "failed",
+        "providerInstanceId": "cursor",
+        "model": "grok-4.7"
+      },
+      {
+        "threadId": "thread:delegated-task:command%3Amcp%3Ab3b4e001-4a08-4369-bbc8-bcab0ec3b1d0%3Adelegate-task%3Atombo-ask-policy-design-main-r1-20261018",
+        "status": "completed",
+        "providerInstanceId": "antigravity",
+        "model": "gemini-3.8-flash-medium"
+      },
+      {
+        "threadId": "thread:delegated-task:command%3Amcp%3A1bb7bd3e-0c2f-4be5-a087-9fce14550f79%3Adelegate-task%3Atombo-ask-policy-20261018-pi-design-stress-r1",
+        "status": "completed",
+        "providerInstanceId": "pi",
+        "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b"
+      },
+      {
+        "threadId": "thread:delegated-task:command%3Amcp%3Afe76df42-f019-4e5c-8090-20e8c7a3de09%3Adelegate-task%3Atombo-ask-policy-20261018-goal-pm-codex-r1",
+        "status": "completed",
+        "providerInstanceId": "codex",
+        "model": "gpt-6.1-sol"
+      },
+      {
+        "threadId": "thread:delegated-task:command%3Amcp%3A1bb7bd3e-0c2f-4be5-a087-9fce14550f79%3Adelegate-task%3Atombo-ask-policy-20261018-design-lead-r1",
+        "status": "completed",
+        "providerInstanceId": "codex",
+        "model": "gpt-6-luna"
+      },
+      {
+        "threadId": "thread:delegated-task:command%3Amcp%3A1bb7bd3e-0c2f-4be5-a087-9fce14550f79%3Adelegate-task%3Atombo-ask-policy-20261018-evaluation-lead-r1",
+        "status": "completed",
+        "providerInstanceId": "codex",
+        "model": "gpt-6-luna"
+      }
+    ]
+  },
+  "known_deviations_and_limits": [
+    "Recorded historical fixture-author relative-path mistake temporarily wrote2 own JSON files outside authorised roots; evidence says hash-identical files were removed and user informed. This audit does not certify zero historical out-of-root writes or erase this incident.",
+    "28 returned delegated thread handles are not28 successful agents. PM's conservative active+queued cap13 is a recorded bound, not a parent reconstruction of every historical queue interval.",
+    "Deterministic synthetic state-to-action results and provisional unanimous model labels only; no live-model spontaneous asking, complete blind-spot discovery, subjective interest or real-world efficacy established.",
+    "Review narrative inaccuracies remain retained and corrected in PM validation. Finality of product findings is supported by actual review, read-only evidence, PM independent verification and unchanged hashes, not narrative confidence.",
+    "Model costs/tokens unknown. Local Qwen/Gemma records are outside formal review/third-vendor-label substitutes; no additional ledger operation performed by parent.",
+    "Audit exploratory assertions were corrected for observed evidence formats: one historical annotation status had pending child runs while subsequent batch was active (current thread terminal); blind prompt omits domain metadata; timeline toolItems is an empty array. These were audit-script assumptions, not product/label failures."
+  ],
+  "audit_actions": {
+    "new_agents": 0,
+    "new_pm": 0,
+    "new_workers": 0,
+    "new_model_reviews": 0,
+    "product_edits": 0,
+    "additional_model_api_calls": 0,
+    "additional_npm_test_runs": 0,
+    "report_rewrites": 0,
+    "pm_owned_file_edits": 0,
+    "allowed_write_only": "docs/ask-policy-work/parent-final-audit.json",
+    "gate_rerun": 1
+  }
+}

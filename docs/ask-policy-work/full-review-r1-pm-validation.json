@@ -1,0 +1,46 @@
+{
+  "actual_verdict": "pass",
+  "round": 1,
+  "providerInstanceId": "antigravity",
+  "model": "gemini-4-argon-high",
+  "vendor": "google",
+  "actual_host_task": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-full-diff-agy-argon-high-r1-20261018",
+  "actual_host_status": "completed",
+  "host_pending_children": false,
+  "blocking_product_findings": 0,
+  "raw_result_retained": "docs/ask-policy-work/full-review-r1-result.json",
+  "tool_audit": "docs/ask-policy-work/full-review-r1-tool-audit.json",
+  "pm_independent_product_checks": "docs/ask-policy-work/pm-independent-final-check.json",
+  "latest_tests": "docs/ask-policy-work/pm-integrated-test-r2-evidence.json",
+  "narrative_errata": [
+    {
+      "claim": "Qwen model called qwen3.6-35b-a3b",
+      "actual": "ollama-local/qwen3.5-4b-local; thinking medium; actual dispatch and failedapi_schema result preserved",
+      "evidence": "docs/ask-policy-work/qwen-input-audit-dispatch.json"
+    },
+    {
+      "claim": "Baseline bridge quoted a wrapper export const evaluateBaselinePolicy",
+      "actual": "scripts/ask-policy-compare.mjs:14 appends only export { result as evaluateBaselinePolicy };. Validation/projection is in separate caller at line103. PM independently executed actualalias for all60cases. No oldrule reimplementation.",
+      "evidence": "scripts/ask-policy-compare.mjs:14"
+    },
+    {
+      "claim": "Several source line anchors/helper names refer to a larger or different file layout",
+      "actual": "Use actual source current symbols: understandingHash at src/core.ts:45, checkState at119, reflectionEffectsValid at211, result at239, local questionFor at253/arbitration258; journal stateShape21/assertCurrent85/commit93. Model narrative anchors are not adopted as source evidence.",
+      "evidence": "Actual rg and source tool output, latest14file hashbound test evidence"
+    },
+    {
+      "claim": "acceptance-evidence-index.md already records current completed design/review history",
+      "actual": "The existing index was historical NOT_RELEASED/PENDING and is stale. Actual design R1FAIL/R2PASS is independently established by their actual returned taskresults; the PM will append a dated current evidence section without deleting the old index.",
+      "evidence": "docs/ask-policy-work/agy-formal-design-r1-result.json and agy-formal-design-r2-result.json"
+    },
+    {
+      "claim": "Independent test-integrate itself ran tracked524",
+      "actual": "Core implementer ran tracked524; Google independent verifier ran focused50+affected113, verified evidence. PM ran full667. Do not conflate execution roles.",
+      "evidence": "docs/ask-policy-work/core-test-integrate/test-execution-evidence.json"
+    }
+  ],
+  "assessment": "These are reviewer narrative inaccuracies, not product findings or authority for changing code. Raw independent actualpass preserved; PM accepted verdict only with actual readonly tool audit + own120policycalls/hash/metrics/TDD/all667 verification. No code changes or additional formalround required.",
+  "scope_incident": "Fixture author temporarily created two own files outside worktree through relative path error; samebytes/hash matched correct outputs then removed. Incident retained, not claimed strict zero-out-of-root-write compliance. Maincheckout not accessed in recorded evidence.",
+  "cost_tokens": "unknown",
+  "final_acceptance": "pending task_gate and inbox final"
+}

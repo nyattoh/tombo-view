@@ -1,0 +1,3302 @@
+[
+  {
+    "caseId": "auto-01",
+    "domain": "automation",
+    "input": {
+      "packet": {
+        "schemaVersion": "0.1",
+        "taskId": "job-01",
+        "goal": "The scheduled export completed within its approved window.",
+        "mode": "explain",
+        "successCriteria": [
+          "Resolve the stated automation requirement for run 01."
+        ],
+        "evidence": [
+          {
+            "id": "evidence-01",
+            "kind": "document",
+            "locator": "runbook://automation/01",
+            "sourceGroup": "operations-01",
+            "retrievedAt": "2026-10-18T00:00:00.000Z",
+            "version": "revision-4",
+            "scope": "automation-run-01",
+            "passage": "Current automation record 01: The scheduled export completed within its approved window.",
+            "contentHash": "84d5b1562169785f02bdbf20c3699a2b367e6679cf1b15225225610f32622494",
+            "validity": "current"
+          }
+        ],
+        "capabilities": [
+          "read-automation-record"
+        ],
+        "budget": {
+          "maxRounds": 8,
+          "maxModelCalls": 8,
+          "maxToolCalls": 8,
+          "maxElapsedMs": 120000,
+          "maxInputChars": 20000,
+          "maxOutputTokensPerCall": 2000
+        }
+      },
+      "state": {
+        "schemaVersion": "0.1",
+        "taskId": "job-01",
+        "revision": 3,
+        "startedAt": "2026-10-18T00:00:00.000Z",
+        "task": {
+          "schemaVersion": "0.1",
+          "taskId": "job-01",
+          "goal": "The scheduled export completed within its approved window.",
+          "mode": "explain",
+          "successCriteria": [
+            "Resolve the stated automation requirement for run 01."
+          ],
+          "evidence": [
+            {
+              "id": "evidence-01",
+              "kind": "document",
+              "locator": "runbook://automation/01",
+              "sourceGroup": "operations-01",
+              "retrievedAt": "2026-10-18T00:00:00.000Z",
+              "version": "revision-4",
+              "scope": "automation-run-01",
+              "passage": "Current automation record 01: The scheduled export completed within its approved window.",
+              "contentHash": "84d5b1562169785f02bdbf20c3699a2b367e6679cf1b15225225610f32622494",
+              "validity": "current"
+            }
+          ],
+          "capabilities": [
+            "read-automation-record"
+          ],
+          "budget": {
+            "maxRounds": 8,
+            "maxModelCalls": 8,
+            "maxToolCalls": 8,
+            "maxElapsedMs": 120000,
+            "maxInputChars": 20000,
+            "maxOutputTokensPerCall": 2000
+          }
+        },
+        "evidence": [
+          {
+            "id": "evidence-01",
+            "kind": "document",
+            "locator": "runbook://automation/01",
+            "sourceGroup": "operations-01",
+            "retrievedAt": "2026-10-18T00:00:00.000Z",
+            "version": "revision-4",
+            "scope": "automation-run-01",
+            "passage": "Current automation record 01: The scheduled export completed within its approved window.",
+            "contentHash": "84d5b1562169785f02bdbf20c3699a2b367e6679cf1b15225225610f32622494",
+            "validity": "current"
+          }
+        ],
+        "claims": [
+          {
+            "id": "claim-01",
+            "role": "observation",
+            "text": "The automation record for run 01 is applicable to this task.",
+            "scope": "automation-run-01",
+            "status": "supported",
+            "assessments": [
+              {
+                "claimId": "claim-01",
+                "evidenceIds": [
+                  "evidence-01"
+                ],
+                "verdict": "supports",
+                "scopeMatched": true,
+                "reason": "The current record supports the run condition."
+              }
+            ]
+          }
+        ],
+        "lenses": [
+          {
+            "id": "lens-01",
+            "label": "Run interpretation 01",
+            "rationale": "Scope the record to this automation run.",
+            "origin": "initial",
+            "status": "active"
+          }
+        ],
+        "gaps": [
+          {
+            "id": "gap-01",
+            "kind": "missing_fact",
+            "lensId": "lens-01",
+            "question": "The scheduled export completed within its approved window.",
+            "triggerRefs": [
+              "task:criterion:0"
+            ],
+            "whyItMatters": "The current run record confirms a complete export and all required checks are present.",
+            "importance": "optional",
+            "claimIds": [],
+            "probeIds": [
+              "probe-01"
+            ],
+            "status": "checking"
+          }
+        ],
+        "probes": [
+          {
+            "id": "probe-01",
+            "gapIds": [
+              "gap-01"
+            ],
+            "method": "dependency",
+            "question": "The scheduled export completed within its approved window.",
+            "requiredCapability": "read-automation-record",
+            "sourceGroups": [
+              "operations-01"
+            ],
+            "successCondition": "A current record confirms the requested condition.",
+            "refutationCondition": "A current record contradicts the requested condition.",
+            "inconclusiveCondition": "No current record is available.",
+            "status": "pending"
+          }
+        ],
+        "usage": {
+          "rounds": 1,
+          "modelCalls": 1,
+          "toolCalls": 0,
+          "elapsedMs": 10,
+          "totalTokens": 100,
+          "costYen": 0
+        },
+        "decision": "needs_check",
+        "stopReason": null,
+        "appliedExecutions": [
+          {
+            "executionId": "execution-01",
+            "payloadHash": "6003d042ebbc326ffb28aceec18c4236289022b54162e3af6c7b9c027e8a07bd",
+            "probeId": "probe-01",
+            "outcome": "unavailable"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "caseId": "auto-02",
+    "domain": "automation",
+    "input": {
+      "packet": {
+        "schemaVersion": "0.1",
+        "taskId": "job-02",
+        "goal": "The workflow has the required approval and current run evidence.",
+        "mode": "explain",
+        "successCriteria": [
+          "Resolve the stated automation requirement for run 02."
+        ],
+        "evidence": [
+          {
+            "id": "evidence-02",
+            "kind": "document",
+            "locator": "runbook://automation/02",
+            "sourceGroup": "operations-02",
+            "retrievedAt": "2026-10-18T00:00:00.000Z",
+            "version": "revision-4",
+            "scope": "automation-run-02",
+            "passage": "Current automation record 02: The workflow has the required approval and current run evidence.",
+            "contentHash": "b960fd1303711ed98924a9c92516f40cf607946d89e78d26ec21919b9dbc0ea2",
+            "validity": "current"
+          }
+        ],
+        "capabilities": [
+          "local-inspection"
+        ],
+        "budget": {
+          "maxRounds": 8,
+          "maxModelCalls": 8,
+          "maxToolCalls": 8,
+          "maxElapsedMs": 120000,
+          "maxInputChars": 20000,
+          "maxOutputTokensPerCall": 2000
+        }
+      },
+      "state": {
+        "schemaVersion": "0.1",
+        "taskId": "job-02",
+        "revision": 3,
+        "startedAt": "2026-10-18T00:00:00.000Z",
+        "task": {
+          "schemaVersion": "0.1",
+          "taskId": "job-02",
+          "goal": "The workflow has the required approval and current run evidence.",
+          "mode": "explain",
+          "successCriteria": [
+            "Resolve the stated automation requirement for run 02."
+          ],
+          "evidence": [
+            {
+              "id": "evidence-02",
+              "kind": "document",
+              "locator": "runbook://automation/02",
+              "sourceGroup": "operations-02",
+              "retrievedAt": "2026-10-18T00:00:00.000Z",
+              "version": "revision-4",
+              "scope": "automation-run-02",
+              "passage": "Current automation record 02: The workflow has the required approval and current run evidence.",
+              "contentHash": "b960fd1303711ed98924a9c92516f40cf607946d89e78d26ec21919b9dbc0ea2",
+              "validity": "current"
+            }
+          ],
+          "capabilities": [
+            "local-inspection"
+          ],
+          "budget": {
+            "maxRounds": 8,
+            "maxModelCalls": 8,
+            "maxToolCalls": 8,
+            "maxElapsedMs": 120000,
+            "maxInputChars": 20000,
+            "maxOutputTokensPerCall": 2000
+          }
+        },
+        "evidence": [
+          {
+            "id": "evidence-02",
+            "kind": "document",
+            "locator": "runbook://automation/02",
+            "sourceGroup": "operations-02",
+            "retrievedAt": "2026-10-18T00:00:00.000Z",
+            "version": "revision-4",
+            "scope": "automation-run-02",
+            "passage": "Current automation record 02: The workflow has the required approval and current run evidence.",
+            "contentHash": "b960fd1303711ed98924a9c92516f40cf607946d89e78d26ec21919b9dbc0ea2",
+            "validity": "current"
+          }
+        ],
+        "claims": [
+          {
+            "id": "claim-02",
+            "role": "observation",
+            "text": "The automation record for run 02 is applicable to this task.",
+            "scope": "automation-run-02",
+            "status": "supported",
+            "assessments": [
+              {
+                "claimId": "claim-02",
+                "evidenceIds": [
+                  "evidence-02"
+                ],
+                "verdict": "supports",
+                "scopeMatched": true,
+                "reason": "The current record supports the run condition."
+              }
+            ]
+          }
+        ],
+        "lenses": [
+          {
+            "id": "lens-02",
+            "label": "Run interpretation 02",
+            "rationale": "Scope the record to this automation run.",
+            "origin": "initial",
+            "status": "active"
+          }
+        ],
+        "gaps": [],
+        "probes": [],
+        "usage": {
+          "rounds": 1,
+          "modelCalls": 1,
+          "toolCalls": 0,
+          "elapsedMs": 10,
+          "totalTokens": 100,
+          "costYen": 0
+        },
+        "decision": "needs_check",
+        "stopReason": null,
+        "appliedExecutions": []
+      }
+    }
+  },
+  {
+    "caseId": "auto-03",
+    "domain": "automation",
+    "input": {
+      "packet": {
+        "schemaVersion": "0.1",
+        "taskId": "job-03",
+        "goal": "A scheduled transfer has a current success record and no open requirements.",
+        "mode": "explain",
+        "successCriteria": [
+          "Resolve the stated automation requirement for run 03."
+        ],
+        "evidence": [
+          {
+            "id": "evidence-03",
+            "kind": "document",
+            "locator": "runbook://automation/03",
+            "sourceGroup": "operations-03",
+            "retrievedAt": "2026-10-18T00:00:00.000Z",
+            "version": "revision-4",
+            "scope": "automation-run-03",
+            "passage": "Current automation record 03: A scheduled transfer has a current success record and no open requirements.",
+            "contentHash": "84016efabfef563c8f8143e4c89b173794642adb2c9d8228b5d10353da758c71",
+            "validity": "current"
+          }
+        ],
+        "capabilities": [
+          "local-inspection"
+        ],
+        "budget": {
+          "maxRounds": 8,
+          "maxModelCalls": 8,
+          "maxToolCalls": 8,
+          "maxElapsedMs": 120000,
+          "maxInputChars": 20000,
+          "maxOutputTokensPerCall": 2000
+        }
+      },
+      "state": {
+        "schemaVersion": "0.1",
+        "taskId": "job-03",
+        "revision": 3,
+        "startedAt": "2026-10-18T00:00:00.000Z",
+        "task": {
+          "schemaVersion": "0.1",
+          "taskId": "job-03",
+          "goal": "A scheduled transfer has a current success record and no open requirements.",
+          "mode": "explain",
+          "successCriteria": [
+            "Resolve the stated automation requirement for run 03."
+          ],
+          "evidence": [
+            {
+              "id": "evidence-03",
+              "kind": "document",
+              "locator": "runbook://automation/03",
+              "sourceGroup": "operations-03",
+              "retrievedAt": "2026-10-18T00:00:00.000Z",
+              "version": "revision-4",
+              "scope": "automation-run-03",
+              "passage": "Current automation record 03: A scheduled transfer has a current success record and no open requirements.",
+              "contentHash": "84016efabfef563c8f8143e4c89b173794642adb2c9d8228b5d10353da758c71",
+              "validity": "current"
+            }
+          ],
+          "capabilities": [
+            "local-inspection"
+          ],
+          "budget": {
+            "maxRounds": 8,
+            "maxModelCalls": 8,
+            "maxToolCalls": 8,
+            "maxElapsedMs": 120000,
+            "maxInputChars": 20000,
+            "maxOutputTokensPerCall": 2000
+          }
+        },
+        "evidence": [
+          {
+            "id": "evidence-03",
+            "kind": "document",
+            "locator": "runbook://automation/03",
+            "sourceGroup": "operations-03",
+            "retrievedAt": "2026-10-18T00:00:00.000Z",
+            "version": "revision-4",
+            "scope": "automation-run-03",
+            "passage": "Current automation record 03: A scheduled transfer has a current success record and no open requirements.",
+            "contentHash": "84016efabfef563c8f8143e4c89b173794642adb2c9d8228b5d10353da758c71",
+            "validity": "current"
+          }
+        ],
+        "claims": [
+          {
+            "id": "claim-03",
+            "role": "observation",
+            "text": "The automation record for run 03 is applicable to this task.",
+            "scope": "automation-run-03",
+            "status": "supported",
+            "assessments": [
+              {
+                "claimId": "claim-03",
+                "evidenceIds": [
+                  "evidence-03"
+                ],
+                "verdict": "supports",
+                "scopeMatched": true,
+                "reason": "The current record supports the run condition."
+              }
+            ]
+          }
+        ],
+        "lenses": [
+          {
+            "id": "lens-03",
+            "label": "Run interpretation 03",
+            "rationale": "Scope the record to this automation run.",
+            "origin": "initial",
+            "status": "active"
+          }
+        ],
+        "gaps": [],
+        "probes": [],
+        "usage": {
+          "rounds": 1,
+          "modelCalls": 1,
+          "toolCalls": 0,
+          "elapsedMs": 10,
+          "totalTokens": 100,
+          "costYen": 0
+        },
+        "decision": "needs_check",
+        "stopReason": null,
+        "appliedExecutions": []
+      }
+    }
+  },
+  {
+    "caseId": "auto-04",
+    "domain": "automation",
+    "input": {
+      "packet": {
+        "schemaVersion": "0.1",
+        "taskId": "job-04",
+        "goal": "The automation configuration was reviewed and the requested outcome is complete.",
+        "mode": "explain",
+        "successCriteria": [
+          "Resolve the stated automation requirement for run 04."
+        ],
+        "evidence": [
+          {
+            "id": "evidence-04",
+            "kind": "document",
+            "locator": "runbook://automation/04",
+            "sourceGroup": "operations-04",
+            "retrievedAt": "2026-10-18T00:00:00.000Z",
+            "version": "revision-4",
+            "scope": "automation-run-04",
+            "passage": "Current automation record 04: The automation configuration was reviewed and the requested outcome is complete.",
+            "contentHash": "65cfd36f946e286b5a37916c921310e1cd3bcbb9571032da56c0bb77b83bb245",
+            "validity": "current"
+          }
+        ],
+        "capabilities": [
+          "local-inspection"
+        ],
+        "budget": {
+          "maxRounds": 8,
+          "maxModelCalls": 8,
+          "maxToolCalls": 8,
+          "maxElapsedMs": 120000,
+          "maxInputChars": 20000,
+          "maxOutputTokensPerCall": 2000
+        }
+      },
+      "state": {
+        "schemaVersion": "0.1",
+        "taskId": "job-04",
+        "revision": 3,
+        "startedAt": "2026-10-18T00:00:00.000Z",
+        "task": {
+          "schemaVersion": "0.1",
+          "taskId": "job-04",
+          "goal": "The automation configuration was reviewed and the requested outcome is complete.",
+          "mode": "explain",
+          "successCriteria": [
+            "Resolve the stated automation requirement for run 04."
+          ],
+          "evidence": [
+            {
+              "id": "evidence-04",
+              "kind": "document",
+              "locator": "runbook://automation/04",
+              "sourceGroup": "operations-04",
+              "retrievedAt": "2026-10-18T00:00:00.000Z",
+              "version": "revision-4",
+              "scope": "automation-run-04",
+              "passage": "Current automation record 04: The automation configuration was reviewed and the requested outcome is complete.",
+              "contentHash": "65cfd36f946e286b5a37916c921310e1cd3bcbb9571032da56c0bb77b83bb245",
+              "validity": "current"
+            }
+          ],
+          "capabilities": [
+            "local-inspection"
+          ],
+          "budget": {
+            "maxRounds": 8,
+            "maxModelCalls": 8,
+            "maxToolCalls": 8,
+            "maxElapsedMs": 120000,
+            "maxInputChars": 20000,
+            "maxOutputTokensPerCall": 2000
+          }
+        },
+        "evidence": [
+          {
+            "id": "evidence-04",
+            "kind": "document",
+            "locator": "runbook://automation/04",
+            "sourceGroup": "operations-04",
+            "retrievedAt": "2026-10-18T00:00:00.000Z",
+            "version": "revision-4",
+            "scope": "automation-run-04",
+            "passage": "Current automation record 04: The automation configuration was reviewed and the requested outcome is complete.",
+            "contentHash": "65cfd36f946e286b5a37916c921310e1cd3bcbb9571032da56c0bb77b83bb245",
+            "validity": "current"
+          }
+        ],
+        "claims": [
+          {
+            "id": "claim-04",
+            "role": "observation",
+            "text": "The automation record for run 04 is applicable to this task.",
+            "scope": "automation-run-04",
+            "status": "supported",
+            "assessments": [
+              {
+                "claimId": "claim-04",
+                "evidenceIds": [
+                  "evidence-04"
+                ],
+                "verdict": "supports",
+                "scopeMatched": true,
+                "reason": "The current record supports the run condition."
+              }
+            ]
+          }
+        ],
+        "lenses": [
+          {
+            "id": "lens-04",
+            "label": "Run interpretation 04",
+            "rationale": "Scope the record to this automation run.",
+            "origin": "initial",
+            "status": "active"
+          }
+        ],
+        "gaps": [],
+        "probes": [],
+        "usage": {
+          "rounds": 1,
+          "modelCalls": 1,
+          "toolCalls": 0,
+          "elapsedMs": 10,
+          "totalTokens": 100,
+          "costYen": 0
+        },
+        "decision": "needs_check",
+        "stopReason": null,
+        "appliedExecutions": []
+      }
+    }
+  },
+  {
+    "caseId": "auto-05",
+    "domain": "automation",
+    "input": {
+      "packet": {
+        "schemaVersion": "0.1",
+        "taskId": "job-05",
+        "goal": "Confirm whether the latest scheduled export included the new column.",
+        "mode": "execute",
+        "successCriteria": [
+          "Resolve the stated automation requirement for run 05."
+        ],
+        "evidence": [
+          {
+            "id": "evidence-05",
+            "kind": "document",
+            "locator": "runbook://automation/05",
+            "sourceGroup": "operations-05",
+            "retrievedAt": "2026-10-18T00:00:00.000Z",
+            "version": "revision-4",
+            "scope": "automation-run-05",
+            "passage": "Current automation record 05: Confirm whether the latest scheduled export included the new column.",
+            "contentHash": "9ec144524f082c6463d926de0b82ad152861be1adfd8b5ff37a297e1554491ed",
+            "validity": "current"
+          }
+        ],
+        "capabilities": [
+          "read-automation-record"
+        ],
+        "budget": {
+          "maxRounds": 8,
+          "maxModelCalls": 8,
+          "maxToolCalls": 8,
+          "maxElapsedMs": 120000,
+          "maxInputChars": 20000,
+          "maxOutputTokensPerCall": 2000
+        }
+      },
+      "state": {
+        "schemaVersion": "0.1",
+        "taskId": "job-05",
+        "revision": 3,
+        "startedAt": "2026-10-18T00:00:00.000Z",
+        "task": {
+          "schemaVersion": "0.1",
+          "taskId": "job-05",
+          "goal": "Confirm whether the latest scheduled export included the new column.",
+          "mode": "execute",
+          "successCriteria": [
+            "Resolve the stated automation requirement for run 05."
+          ],
+          "evidence": [
+            {
+              "id": "evidence-05",
+              "kind": "document",
+              "locator": "runbook://automation/05",
+              "sourceGroup": "operations-05",
+              "retrievedAt": "2026-10-18T00:00:00.000Z",
+              "version": "revision-4",
+              "scope": "automation-run-05",
+              "passage": "Current automation record 05: Confirm whether the latest scheduled export included the new column.",
+              "contentHash": "9ec144524f082c6463d926de0b82ad152861be1adfd8b5ff37a297e1554491ed",
+              "validity": "current"
+            }
+          ],
+          "capabilities": [
+            "read-automation-record"
+          ],
+          "budget": {
+            "maxRounds": 8,
+            "maxModelCalls": 8,
+            "maxToolCalls": 8,
+            "maxElapsedMs": 120000,
+            "maxInputChars": 20000,
+            "maxOutputTokensPerCall": 2000
+          }
+        },
+        "evidence": [
+          {
+            "id": "evidence-05",
+            "kind": "document",
+            "locator": "runbook://automation/05",
+            "sourceGroup": "operations-05",
+            "retrievedAt": "2026-10-18T00:00:00.000Z",
+            "version": "revision-4",
+            "scope": "automation-run-05",
+            "passage": "Current automation record 05: Confirm whether the latest scheduled export included the new column.",
+            "contentHash": "9ec144524f082c6463d926de0b82ad152861be1adfd8b5ff37a297e1554491ed",
+            "validity": "current"
+          }
+        ],
+        "claims": [
+          {
+            "id": "claim-05",
+            "role": "observation",
+            "text": "The automation record for run 05 is applicable to this task.",
+            "scope": "automation-run-05",
+            "status": "supported",
+            "assessments": [
+              {
+                "claimId": "claim-05",
+                "evidenceIds": [
+                  "evidence-05"
+                ],
+                "verdict": "supports",
+                "scopeMatched": true,
+                "reason": "The current record supports the run condition."
+              }
+            ]
+          }
+        ],
+        "lenses": [
+          {
+            "id": "lens-05",
+            "label": "Run interpretation 05",
+            "rationale": "Scope the record to this automation run.",
+            "origin": "initial",
+            "status": "active"
+          }
+        ],
+        "gaps": [
+          {
+            "id": "gap-05",
+            "kind": "missing_fact",
+            "lensId": "lens-05",
+            "question": "Confirm whether the latest scheduled export included the new column.",
+            "triggerRefs": [
+              "task:criterion:0"
+            ],
+            "whyItMatters": "The export manifest can establish whether the requested field is present.",
+            "importance": "required",
+            "claimIds": [],
+            "probeIds": [
+              "probe-05"
+            ],
+            "status": "checking"
+          }
+        ],
+        "probes": [
+          {
+            "id": "probe-05",
+            "gapIds": [
+              "gap-05"
+            ],
+            "method": "dependency",
+            "question": "Confirm whether the latest scheduled export included the new column.",
+            "requiredCapability": "read-automation-record",
+            "sourceGroups": [
+              "operations-05"
+            ],
+            "successCondition": "A current record confirms the requested condition.",
+            "refutationCondition": "A current record contradicts the requested condition.",
+            "inconclusiveCondition": "No current record is available.",
+            "status": "pending"
+          }
+        ],
+        "usage": {
+          "rounds": 1,
+          "modelCalls": 1,
+          "toolCalls": 0,
+          "elapsedMs": 10,
+          "totalTokens": 100,
+          "costYen": 0
+        },
+        "decision": "needs_check",
+        "stopReason": null,
+        "appliedExecutions": [
+          {
+            "executionId": "execution-05",
+            "payloadHash": "fc18ba3964c9c8ac82a8f983ff2601615eeae7fac89d0b4a1b4501f605a99e7e",
+            "probeId": "probe-05",
+            "outcome": "unavailable"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "caseId": "auto-06",
+    "domain": "automation",
+    "input": {
+      "packet": {
+        "schemaVersion": "0.1",
+        "taskId": "job-06",
+        "goal": "Verify the current retry count in the pipeline configuration.",
+        "mode": "execute",
+        "successCriteria": [
+          "Resolve the stated automation requirement for run 06."
+        ],
+        "evidence": [
+          {
+            "id": "evidence-06",
+            "kind": "document",
+            "locator": "runbook://automation/06",
+            "sourceGroup": "operations-06",
+            "retrievedAt": "2026-10-18T00:00:00.000Z",
+            "version": "revision-4",
+            "scope": "automation-run-06",
+            "passage": "Current automation record 06: Verify the current retry count in the pipeline configuration.",
+            "contentHash": "c4ac53ec32627aba6d858ed99d3d07b308d543d3a02da60a9d50f78abf50623e",
+            "validity": "current"
+          }
+        ],
+        "capabilities": [
+          "read-automation-record"
+        ],
+        "budget": {
+          "maxRounds": 8,
+          "maxModelCalls": 8,
+          "maxToolCalls": 8,
+          "maxElapsedMs": 120000,
+          "maxInputChars": 20000,
+          "maxOutputTokensPerCall": 2000
+        }
+      },
+      "state": {
+        "schemaVersion": "0.1",
+        "taskId": "job-06",
+        "revision": 3,
+        "startedAt": "2026-10-18T00:00:00.000Z",
+        "task": {
+          "schemaVersion": "0.1",
+          "taskId": "job-06",
+          "goal": "Verify the current retry count in the pipeline configuration.",
+          "mode": "execute",
+          "successCriteria": [
+            "Resolve the stated automation requirement for run 06."
+          ],
+          "evidence": [
+            {
+              "id": "evidence-06",
+              "kind": "document",
+              "locator": "runbook://automation/06",
+              "sourceGroup": "operations-06",
+              "retrievedAt": "2026-10-18T00:00:00.000Z",
+              "version": "revision-4",
+              "scope": "automation-run-06",
+              "passage": "Current automation record 06: Verify the current retry count in the pipeline configuration.",
+              "contentHash": "c4ac53ec32627aba6d858ed99d3d07b308d543d3a02da60a9d50f78abf50623e",
+              "validity": "current"
+            }
+          ],
+          "capabilities": [
+            "read-automation-record"
+          ],
+          "budget": {
+            "maxRounds": 8,
+            "maxModelCalls": 8,
+            "maxToolCalls": 8,
+            "maxElapsedMs": 120000,
+            "maxInputChars": 20000,
+            "maxOutputTokensPerCall": 2000
+          }
+        },
+        "evidence": [
+          {
+            "id": "evidence-06",
+            "kind": "document",
+            "locator": "runbook://automation/06",
+            "sourceGroup": "operations-06",
+            "retrievedAt": "2026-10-18T00:00:00.000Z",
+            "version": "revision-4",
+            "scope": "automation-run-06",
+            "passage": "Current automation record 06: Verify the current retry count in the pipeline configuration.",
+            "contentHash": "c4ac53ec32627aba6d858ed99d3d07b308d543d3a02da60a9d50f78abf50623e",
+            "validity": "current"
+          }
+        ],
+        "claims": [
+          {
+            "id": "claim-06",
+            "role": "observation",
+            "text": "The automation record for run 06 is applicable to this task.",
+            "scope": "automation-run-06",
+            "status": "supported",
+            "assessments": [
+              {
+                "claimId": "claim-06",
+                "evidenceIds": [
+                  "evidence-06"
+                ],
+                "verdict": "supports",
+                "scopeMatched": true,
+                "reason": "The current record supports the run condition."
+              }
+            ]
+          }
+        ],
+        "lenses": [
+          {
+            "id": "lens-06",
+            "label": "Run interpretation 06",
+            "rationale": "Scope the record to this automation run.",
+            "origin": "initial",
+            "status": "active"
+          }
+        ],
+        "gaps": [
+          {
+            "id": "gap-06",
+            "kind": "missing_fact",
+            "lensId": "lens-06",
+            "question": "Verify the current retry count in the pipeline configuration.",
+            "triggerRefs": [
+              "task:criterion:0"
+            ],
+            "whyItMatters": "The versioned configuration is directly inspectable.",
+            "importance": "required",
+            "claimIds": [],
+            "probeIds": [
+              "probe-06"
+            ],
+            "status": "checking"
+          }
+        ],
+        "probes": [
+          {
+            "id": "probe-06",
+            "gapIds": [
+              "gap-06"
+            ],
+            "method": "dependency",
+            "question": "Verify the current retry count in the pipeline configuration.",
+            "requiredCapability": "read-automation-record",
+            "sourceGroups": [
+              "operations-06"
+            ],
+            "successCondition": "A current record confirms the requested condition.",
+            "refutationCondition": "A current record contradicts the requested condition.",
+            "inconclusiveCondition": "No current record is available.",
+            "status": "pending"
+          }
+        ],
+        "usage": {
+          "rounds": 1,
+          "modelCalls": 1,
+          "toolCalls": 0,
+          "elapsedMs": 10,
+          "totalTokens": 100,
+          "costYen": 0
+        },
+        "decision": "needs_check",
+        "stopReason": null,
+        "appliedExecutions": [
+          {
+            "executionId": "execution-06",
+            "payloadHash": "b2ba10a50927641b5c9a052cb8bc8fd1e30e7b600a4afb24191663069f0c33fa",
+            "probeId": "probe-06",
+            "outcome": "unavailable"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "caseId": "auto-07",
+    "domain": "automation",
+    "input": {
+      "packet": {
+        "schemaVersion": "0.1",
+        "taskId": "job-07",
+        "goal": "Check whether the destination accepted the latest batch.",
+        "mode": "execute",
+        "successCriteria": [
+          "Resolve the stated automation requirement for run 07."
+        ],
+        "evidence": [
+          {
+            "id": "evidence-07",
+            "kind": "document",
+            "locator": "runbook://automation/07",
+            "sourceGroup": "operations-07",
+            "retrievedAt": "2026-10-18T00:00:00.000Z",
+            "version": "revision-4",
+            "scope": "automation-run-07",
+            "passage": "Current automation record 07: Check whether the destination accepted the latest batch.",
+            "contentHash": "02ee3fb0dbb668340bd6f5c7f25f0b2e42e473f7ed78bd51edee125a4ae86942",
+            "validity": "current"
+          }
+        ],
+        "capabilities": [
+          "read-automation-record"
+        ],
+        "budget": {
+          "maxRounds": 8,
+          "maxModelCalls": 8,
+          "maxToolCalls": 8,
+          "maxElapsedMs": 120000,
+          "maxInputChars": 20000,
+          "maxOutputTokensPerCall": 2000
+        }
+      },
+      "state": {
+        "schemaVersion": "0.1",
+        "taskId": "job-07",
+        "revision": 3,
+        "startedAt": "2026-10-18T00:00:00.000Z",
+        "task": {
+          "schemaVersion": "0.1",
+          "taskId": "job-07",
+          "goal": "Check whether the destination accepted the latest batch.",
+          "mode": "execute",
+          "successCriteria": [
+            "Resolve the stated automation requirement for run 07."
+          ],
+          "evidence": [
+            {
+              "id": "evidence-07",
+              "kind": "document",
+              "locator": "runbook://automation/07",
+              "sourceGroup": "operations-07",
+              "retrievedAt": "2026-10-18T00:00:00.000Z",
+              "version": "revision-4",
+              "scope": "automation-run-07",
+              "passage": "Current automation record 07: Check whether the destination accepted the latest batch.",
+              "contentHash": "02ee3fb0dbb668340bd6f5c7f25f0b2e42e473f7ed78bd51edee125a4ae86942",
+              "validity": "current"
+            }
+          ],
+          "capabilities": [
+            "read-automation-record"
+          ],
+          "budget": {
+            "maxRounds": 8,
+            "maxModelCalls": 8,
+            "maxToolCalls": 8,
+            "maxElapsedMs": 120000,
+            "maxInputChars": 20000,
+            "maxOutputTokensPerCall": 2000
+          }
+        },
+        "evidence": [
+          {
+            "id": "evidence-07",
+            "kind": "document",
+            "locator": "runbook://automation/07",
+            "sourceGroup": "operations-07",
+            "retrievedAt": "2026-10-18T00:00:00.000Z",
+            "version": "revision-4",
+            "scope": "automation-run-07",
+            "passage": "Current automation record 07: Check whether the destination accepted the latest batch.",
+            "contentHash": "02ee3fb0dbb668340bd6f5c7f25f0b2e42e473f7ed78bd51edee125a4ae86942",
+            "validity": "current"
+          }
+        ],
+        "claims": [
+          {
+            "id": "claim-07",
+            "role": "observation",
+            "text": "The automation record for run 07 is applicable to this task.",
+            "scope": "automation-run-07",
+            "status": "supported",
+            "assessments": [
+              {
+                "claimId": "claim-07",
+                "evidenceIds": [
+                  "evidence-07"
+                ],
+                "verdict": "supports",
+                "scopeMatched": true,
+                "reason": "The current record supports the run condition."
+              }
+            ]
+          }
+        ],
+        "lenses": [
+          {
+            "id": "lens-07",
+            "label": "Run interpretation 07",
+            "rationale": "Scope the record to this automation run.",
+            "origin": "initial",
+            "status": "active"
+          }
+        ],
+        "gaps": [
+          {
+            "id": "gap-07",
+            "kind": "missing_fact",
+            "lensId": "lens-07",
+            "question": "Check whether the destination accepted the latest batch.",
+            "triggerRefs": [
+              "task:criterion:0"
+            ],
+            "whyItMatters": "A current receipt is available from the integration log.",
+            "importance": "required",
+            "claimIds": [],
+            "probeIds": [
+              "probe-07"
+            ],
+            "status": "checking"
+          }
+        ],
+        "probes": [
+          {
+            "id": "probe-07",
+            "gapIds": [
+              "gap-07"
+            ],
+            "method": "dependency",
+            "question": "Check whether the destination accepted the latest batch.",
+            "requiredCapability": "read-automation-record",
+            "sourceGroups": [
+              "operations-07"
+            ],
+            "successCondition": "A current record confirms the requested condition.",
+            "refutationCondition": "A current record contradicts the requested condition.",
+            "inconclusiveCondition": "No current record is available.",
+            "status": "pending"
+          }
+        ],
+        "usage": {
+          "rounds": 1,
+          "modelCalls": 1,
+          "toolCalls": 0,
+          "elapsedMs": 10,
+          "totalTokens": 100,
+          "costYen": 0
+        },
+        "decision": "needs_check",
+        "stopReason": null,
+        "appliedExecutions": [
+          {
+            "executionId": "execution-07",
+            "payloadHash": "feac2d2868cdc01cf533e90072a4cb4bfbcdcbe42d8ea8603d48fdcb53ed60ad",
+            "probeId": "probe-07",
+            "outcome": "unavailable"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "caseId": "auto-08",
+    "domain": "automation",
+    "input": {
+      "packet": {
+        "schemaVersion": "0.1",
+        "taskId": "job-08",
+        "goal": "Inspect the deployed workflow status for the requested job.",
+        "mode": "execute",
+        "successCriteria": [
+          "Resolve the stated automation requirement for run 08."
+        ],
+        "evidence": [
+          {
+            "id": "evidence-08",
+            "kind": "document",
+            "locator": "runbook://automation/08",
+            "sourceGroup": "operations-08",
+            "retrievedAt": "2026-10-18T00:00:00.000Z",
+            "version": "revision-4",
+            "scope": "automation-run-08",
+            "passage": "Current automation record 08: Inspect the deployed workflow status for the requested job.",
+            "contentHash": "f0355cac0cb8d52093dbf1682b3707713bc5061857eed5825fe2613916e23847",
+            "validity": "current"
+          }
+        ],
+        "capabilities": [
+          "read-automation-record"
+        ],
+        "budget": {
+          "maxRounds": 8,
+          "maxModelCalls": 8,
+          "maxToolCalls": 8,
+          "maxElapsedMs": 120000,
+          "maxInputChars": 20000,
+          "maxOutputTokensPerCall": 2000
+        }
+      },
+      "state": {
+        "schemaVersion": "0.1",
+        "taskId": "job-08",
+        "revision": 3,
+        "startedAt": "2026-10-18T00:00:00.000Z",
+        "task": {
+          "schemaVersion": "0.1",
+          "taskId": "job-08",
+          "goal": "Inspect the deployed workflow status for the requested job.",
+          "mode": "execute",
+          "successCriteria": [
+            "Resolve the stated automation requirement for run 08."
+          ],
+          "evidence": [
+            {
+              "id": "evidence-08",
+              "kind": "document",
+              "locator": "runbook://automation/08",
+              "sourceGroup": "operations-08",
+              "retrievedAt": "2026-10-18T00:00:00.000Z",
+              "version": "revision-4",
+              "scope": "automation-run-08",
+              "passage": "Current automation record 08: Inspect the deployed workflow status for the requested job.",
+              "contentHash": "f0355cac0cb8d52093dbf1682b3707713bc5061857eed5825fe2613916e23847",
+              "validity": "current"
+            }
+          ],
+          "capabilities": [
+            "read-automation-record"
+          ],
+          "budget": {
+            "maxRounds": 8,
+            "maxModelCalls": 8,
+            "maxToolCalls": 8,
+            "maxElapsedMs": 120000,
+            "maxInputChars": 20000,
+            "maxOutputTokensPerCall": 2000
+          }
+        },
+        "evidence": [
+          {
+            "id": "evidence-08",
+            "kind": "document",
+            "locator": "runbook://automation/08",
+            "sourceGroup": "operations-08",
+            "retrievedAt": "2026-10-18T00:00:00.000Z",
+            "version": "revision-4",
+            "scope": "automation-run-08",
+            "passage": "Current automation record 08: Inspect the deployed workflow status for the requested job.",
+            "contentHash": "f0355cac0cb8d52093dbf1682b3707713bc5061857eed5825fe2613916e23847",
+            "validity": "current"
+          }
+        ],
+        "claims": [
+          {
+            "id": "claim-08",
+            "role": "observation",
+            "text": "The automation record for run 08 is applicable to this task.",
+            "scope": "automation-run-08",
+            "status": "supported",
+            "assessments": [
+              {
+                "claimId": "claim-08",
+                "evidenceIds": [
+                  "evidence-08"
+                ],
+                "verdict": "supports",
+                "scopeMatched": true,
+                "reason": "The current record supports the run condition."
+              }
+            ]
+          }
+        ],
+        "lenses": [
+          {
+            "id": "lens-08",
+            "label": "Run interpretation 08",
+            "rationale": "Scope the record to this automation run.",
+            "origin": "initial",
+            "status": "active"
+          }
+        ],
+        "gaps": [
+          {
+            "id": "gap-08",
+            "kind": "missing_fact",
+            "lensId": "lens-08",
+            "question": "Inspect the deployed workflow status for the requested job.",
+            "triggerRefs": [
+              "task:criterion:0"
+            ],
+            "whyItMatters": "The deployment record can answer this objective status question.",
+            "importance": "required",
+            "claimIds": [],
+            "probeIds": [
+              "probe-08"
+            ],
+            "status": "checking"
+          }
+        ],
+        "probes": [
+          {
+            "id": "probe-08",
+            "gapIds": [
+              "gap-08"
+            ],
+            "method": "dependency",
+            "question": "Inspect the deployed workflow status for the requested job.",
+            "requiredCapability": "read-automation-record",
+            "sourceGroups": [
+              "operations-08"
+            ],
+            "successCondition": "A current record confirms the requested condition.",
+            "refutationCondition": "A current record contradicts the requested condition.",
+            "inconclusiveCondition": "No current record is available.",
+            "status": "pending"
+          }
+        ],
+        "usage": {
+          "rounds": 1,
+          "modelCalls": 1,
+          "toolCalls": 0,
+          "elapsedMs": 10,
+          "totalTokens": 100,
+          "costYen": 0
+        },
+        "decision": "needs_check",
+        "stopReason": null,
+        "appliedExecutions": [
+          {
+            "executionId": "execution-08",
+            "payloadHash": "4a867f53d15cff8ba9a7e3f317e0a21f3caa0b3fd6f0ff3a4d714e6ff6fcf987",
+            "probeId": "probe-08",
+            "outcome": "unavailable"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "caseId": "auto-09",
+    "domain": "automation",
+    "input": {
+      "packet": {
+        "schemaVersion": "0.1",
+        "taskId": "job-09",
+        "goal": "Which information may this workflow transfer to the external workspace?",
+        "mode": "execute",
+        "successCriteria": [
+          "Resolve the stated automation requirement for run 09."
+        ],
+        "evidence": [
+          {
+            "id": "evidence-09",
+            "kind": "document",
+            "locator": "runbook://automation/09",
+            "sourceGroup": "operations-09",
+            "retrievedAt": "2026-10-18T00:00:00.000Z",
+            "version": "revision-4",
+            "scope": "automation-run-09",
+            "passage": "Current automation record 09: Which information may this workflow transfer to the external workspace?",
+            "contentHash": "f31a203cd12a8ada3202d6465385c517331f52afad606dfd537e641d3028179c",
+            "validity": "current"
+          }
+        ],
+        "capabilities": [
+          "local-inspection"
+        ],
+        "budget": {
+          "maxRounds": 8,
+          "maxModelCalls": 8,
+          "maxToolCalls": 8,
+          "maxElapsedMs": 120000,
+          "maxInputChars": 20000,
+          "maxOutputTokensPerCall": 2000
+        }
+      },
+      "state": {
+        "schemaVersion": "0.1",
+        "taskId": "job-09",
+        "revision": 3,
+        "startedAt": "2026-10-18T00:00:00.000Z",
+        "task": {
+          "schemaVersion": "0.1",
+          "taskId": "job-09",
+          "goal": "Which information may this workflow transfer to the external workspace?",
+          "mode": "execute",
+          "successCriteria": [
+            "Resolve the stated automation requirement for run 09."
+          ],
+          "evidence": [
+            {
+              "id": "evidence-09",
+              "kind": "document",
+              "locator": "runbook://automation/09",
+              "sourceGroup": "operations-09",
+              "retrievedAt": "2026-10-18T00:00:00.000Z",
+              "version": "revision-4",
+              "scope": "automation-run-09",
+              "passage": "Current automation record 09: Which information may this workflow transfer to the external workspace?",
+              "contentHash": "f31a203cd12a8ada3202d6465385c517331f52afad606dfd537e641d3028179c",
+              "validity": "current"
+            }
+          ],
+          "capabilities": [
+            "local-inspection"
+          ],
+          "budget": {
+            "maxRounds": 8,
+            "maxModelCalls": 8,
+            "maxToolCalls": 8,
+            "maxElapsedMs": 120000,
+            "maxInputChars": 20000,
+            "maxOutputTokensPerCall": 2000
+          }
+        },
+        "evidence": [
+          {
+            "id": "evidence-09",
+            "kind": "document",
+            "locator": "runbook://automation/09",
+            "sourceGroup": "operations-09",
+            "retrievedAt": "2026-10-18T00:00:00.000Z",
+            "version": "revision-4",
+            "scope": "automation-run-09",
+            "passage": "Current automation record 09: Which information may this workflow transfer to the external workspace?",
+            "contentHash": "f31a203cd12a8ada3202d6465385c517331f52afad606dfd537e641d3028179c",
+            "validity": "current"
+          }
+        ],
+        "claims": [
+          {
+            "id": "claim-09",
+            "role": "observation",
+            "text": "The automation record for run 09 is applicable to this task.",
+            "scope": "automation-run-09",
+            "status": "supported",
+            "assessments": [
+              {
+                "claimId": "claim-09",
+                "evidenceIds": [
+                  "evidence-09"
+                ],
+                "verdict": "supports",
+                "scopeMatched": true,
+                "reason": "The current record supports the run condition."
+              }
+            ]
+          }
+        ],
+        "lenses": [
+          {
+            "id": "lens-09",
+            "label": "Run interpretation 09",
+            "rationale": "Scope the record to this automation run.",
+            "origin": "initial",
+            "status": "active"
+          }
+        ],
+        "gaps": [
+          {
+            "id": "gap-09",
+            "kind": "ambiguous_intent",
+            "lensId": "lens-09",
+            "question": "Which information may this workflow transfer to the external workspace?",
+            "triggerRefs": [
+              "task:criterion:0"
+            ],
+            "whyItMatters": "The permission scope is not present in the approved access record.",
+            "importance": "required",
+            "claimIds": [],
+            "probeIds": [],
+            "status": "open",
+            "humanRole": "goal"
+          }
+        ],
+        "probes": [],
+        "usage": {
+          "rounds": 1,
+          "modelCalls": 1,
+          "toolCalls": 0,
+          "elapsedMs": 10,
+          "totalTokens": 100,
+          "costYen": 0
+        },
+        "decision": "needs_check",
+        "stopReason": null,
+        "appliedExecutions": [],
+        "policyHistory": {
+          "consecutiveNoProgressRounds": 2,
+          "lastUnderstandingHash": "62006122404c550150f98777527aae90049c459d860e7c35e6fc894ddae6aef6",
+          "recentOutcomes": [
+            "no_result",
+            "no_result"
+          ],
+          "lastProgressAtRevision": 1
+        }
+      }
+    }
+  },
+  {
+    "caseId": "auto-10",
+    "domain": "automation",
+    "input": {
+      "packet": {
+        "schemaVersion": "0.1",
+        "taskId": "job-10",
+        "goal": "Should the schedule prioritise lower cost or shorter completion time?",
+        "mode": "execute",
+        "successCriteria": [
+          "Resolve the stated automation requirement for run 10."
+        ],
+        "evidence": [
+          {
+            "id": "evidence-10",
+            "kind": "document",
+            "locator": "runbook://automation/10",
+            "sourceGroup": "operations-10",
+            "retrievedAt": "2026-10-18T00:00:00.000Z",
+            "version": "revision-4",
+            "scope": "automation-run-10",
+            "passage": "Current automation record 10: Should the schedule prioritise lower cost or shorter completion time?",
+            "contentHash": "39b4bb2803a4ba92a7c47345ee757b32e538b005616ef051acdcae7017e98eb6",
+            "validity": "current"
+          }
+        ],
+        "capabilities": [
+          "local-inspection"
+        ],
+        "budget": {
+          "maxRounds": 8,
+          "maxModelCalls": 8,
+          "maxToolCalls": 8,
+          "maxElapsedMs": 120000,
+          "maxInputChars": 20000,
+          "maxOutputTokensPerCall": 2000
+        }
+      },
+      "state": {
+        "schemaVersion": "0.1",
+        "taskId": "job-10",
+        "revision": 3,
+        "startedAt": "2026-10-18T00:00:00.000Z",
+        "task": {
+          "schemaVersion": "0.1",
+          "taskId": "job-10",
+          "goal": "Should the schedule prioritise lower cost or shorter completion time?",
+          "mode": "execute",
+          "successCriteria": [
+            "Resolve the stated automation requirement for run 10."
+          ],
+          "evidence": [
+            {
+              "id": "evidence-10",
+              "kind": "document",
+              "locator": "runbook://automation/10",
+              "sourceGroup": "operations-10",
+              "retrievedAt": "2026-10-18T00:00:00.000Z",
+              "version": "revision-4",
+              "scope": "automation-run-10",
+              "passage": "Current automation record 10: Should the schedule prioritise lower cost or shorter completion time?",
+              "contentHash": "39b4bb2803a4ba92a7c47345ee757b32e538b005616ef051acdcae7017e98eb6",
+              "validity": "current"
+            }
+          ],
+          "capabilities": [
+            "local-inspection"
+          ],
+          "budget": {
+            "maxRounds": 8,
+            "maxModelCalls": 8,
+            "maxToolCalls": 8,
+            "maxElapsedMs": 120000,
+            "maxInputChars": 20000,
+            "maxOutputTokensPerCall": 2000
+          }
+        },
+        "evidence": [
+          {
+            "id": "evidence-10",
+            "kind": "document",
+            "locator": "runbook://automation/10",
+            "sourceGroup": "operations-10",
+            "retrievedAt": "2026-10-18T00:00:00.000Z",
+            "version": "revision-4",
+            "scope": "automation-run-10",
+            "passage": "Current automation record 10: Should the schedule prioritise lower cost or shorter completion time?",
+            "contentHash": "39b4bb2803a4ba92a7c47345ee757b32e538b005616ef051acdcae7017e98eb6",
+            "validity": "current"
+          }
+        ],
+        "claims": [
+          {
+            "id": "claim-10",
+            "role": "observation",
+            "text": "The automation record for run 10 is applicable to this task.",
+            "scope": "automation-run-10",
+            "status": "supported",
+            "assessments": [
+              {
+                "claimId": "claim-10",
+                "evidenceIds": [
+                  "evidence-10"
+                ],
+                "verdict": "supports",
+                "scopeMatched": true,
+                "reason": "The current record supports the run condition."
+              }
+            ]
+          }
+        ],
+        "lenses": [
+          {
+            "id": "lens-10",
+            "label": "Run interpretation 10",
+            "rationale": "Scope the record to this automation run.",
+            "origin": "initial",
+            "status": "active"
+          }
+        ],
+        "gaps": [
+          {
+            "id": "gap-10",
+            "kind": "ambiguous_intent",
+            "lensId": "lens-10",
+            "question": "Should the schedule prioritise lower cost or shorter completion time?",
+            "triggerRefs": [
+              "task:criterion:0"
+            ],
+            "whyItMatters": "The two choices change the workflow configuration and cannot be inferred from run data.",
+            "importance": "required",
+            "claimIds": [],
+            "probeIds": [],
+            "status": "open",
+            "humanRole": "priority"
+          }
+        ],
+        "probes": [],
+        "usage": {
+          "rounds": 1,
+          "modelCalls": 1,
+          "toolCalls": 0,
+          "elapsedMs": 10,
+          "totalTokens": 100,
+          "costYen": 0
+        },
+        "decision": "needs_check",
+        "stopReason": null,
+        "appliedExecutions": []
+      }
+    }
+  },
+  {
+    "caseId": "auto-11",
+    "domain": "automation",
+    "input": {
+      "packet": {
+        "schemaVersion": "0.1",
+        "taskId": "job-11",
+        "goal": "May the automation retain the supplied records after the run?",
+        "mode": "execute",
+        "successCriteria": [
+          "Resolve the stated automation requirement for run 11."
+        ],
+        "evidence": [
+          {
+            "id": "evidence-11",
+            "kind": "document",
+            "locator": "runbook://automation/11",
+            "sourceGroup": "operations-11",
+            "retrievedAt": "2026-10-18T00:00:00.000Z",
+            "version": "revision-4",
+            "scope": "automation-run-11",
+            "passage": "Current automation record 11: May the automation retain the supplied records after the run?",
+            "contentHash": "a24c16a475edec698112bf1f47db428ff7679a0b5cc2f9f13fb5b5a956054f11",
+            "validity": "current"
+          }
+        ],
+        "capabilities": [
+          "local-inspection"
+        ],
+        "budget": {
+          "maxRounds": 8,
+          "maxModelCalls": 8,
+          "maxToolCalls": 8,
+          "maxElapsedMs": 120000,
+          "maxInputChars": 20000,
+          "maxOutputTokensPerCall": 2000
+        }
+      },
+      "state": {
+        "schemaVersion": "0.1",
+        "taskId": "job-11",
+        "revision": 3,
+        "startedAt": "2026-10-18T00:00:00.000Z",
+        "task": {
+          "schemaVersion": "0.1",
+          "taskId": "job-11",
+          "goal": "May the automation retain the supplied records after the run?",
+          "mode": "execute",
+          "successCriteria": [
+            "Resolve the stated automation requirement for run 11."
+          ],
+          "evidence": [
+            {
+              "id": "evidence-11",
+              "kind": "document",
+              "locator": "runbook://automation/11",
+              "sourceGroup": "operations-11",
+              "retrievedAt": "2026-10-18T00:00:00.000Z",
+              "version": "revision-4",
+              "scope": "automation-run-11",
+              "passage": "Current automation record 11: May the automation retain the supplied records after the run?",
+              "contentHash": "a24c16a475edec698112bf1f47db428ff7679a0b5cc2f9f13fb5b5a956054f11",
+              "validity": "current"
+            }
+          ],
+          "capabilities": [
+            "local-inspection"
+          ],
+          "budget": {
+            "maxRounds": 8,
+            "maxModelCalls": 8,
+            "maxToolCalls": 8,
+            "maxElapsedMs": 120000,
+            "maxInputChars": 20000,
+            "maxOutputTokensPerCall": 2000
+          }
+        },
+        "evidence": [
+          {
+            "id": "evidence-11",
+            "kind": "document",
+            "locator": "runbook://automation/11",
+            "sourceGroup": "operations-11",
+            "retrievedAt": "2026-10-18T00:00:00.000Z",
+            "version": "revision-4",
+            "scope": "automation-run-11",
+            "passage": "Current automation record 11: May the automation retain the supplied records after the run?",
+            "contentHash": "a24c16a475edec698112bf1f47db428ff7679a0b5cc2f9f13fb5b5a956054f11",
+            "validity": "current"
+          }
+        ],
+        "claims": [
+          {
+            "id": "claim-11",
+            "role": "observation",
+            "text": "The automation record for run 11 is applicable to this task.",
+            "scope": "automation-run-11",
+            "status": "supported",
+            "assessments": [
+              {
+                "claimId": "claim-11",
+                "evidenceIds": [
+                  "evidence-11"
+                ],
+                "verdict": "supports",
+                "scopeMatched": true,
+                "reason": "The current record supports the run condition."
+              }
+            ]
+          }
+        ],
+        "lenses": [
+          {
+            "id": "lens-11",
+            "label": "Run interpretation 11",
+            "rationale": "Scope the record to this automation run.",
+            "origin": "initial",
+            "status": "active"
+          }
+        ],
+        "gaps": [
+          {
+            "id": "gap-11",
+            "kind": "ambiguous_intent",
+            "lensId": "lens-11",
+            "question": "May the automation retain the supplied records after the run?",
+            "triggerRefs": [
+              "task:goal"
+            ],
+            "whyItMatters": "Retention is a user value decision that is absent from the approved policy.",
+            "importance": "required",
+            "claimIds": [],
+            "probeIds": [],
+            "status": "open",
+            "humanRole": "value"
+          }
+        ],
+        "probes": [],
+        "usage": {
+          "rounds": 1,
+          "modelCalls": 1,
+          "toolCalls": 0,
+          "elapsedMs": 10,
+          "totalTokens": 100,
+          "costYen": 0
+        },
+        "decision": "needs_check",
+        "stopReason": null,
+        "appliedExecutions": [],
+        "reflection": {
+          "binding": {
+            "taskId": "job-11",
+            "basedRevision": 1,
+            "understandingHash": "43a9a87fca17f06d733fb87b02c7aed26571a57c79f10b08a9b0d1a25a49549c"
+          },
+          "reviewedClaimIds": [
+            "claim-11"
+          ],
+          "completion": "inconclusive",
+          "limitations": [
+            "The priority setting changed the current goal interpretation."
+          ]
+        },
+        "reflectionEffects": {
+          "binding": {
+            "taskId": "job-11",
+            "basedRevision": 1,
+            "understandingHash": "43a9a87fca17f06d733fb87b02c7aed26571a57c79f10b08a9b0d1a25a49549c"
+          },
+          "appliedRevision": 2,
+          "addedGoalGapIds": [
+            "gap-11"
+          ],
+          "addedLensIds": []
+        }
+      }
+    }
+  },
+  {
+    "caseId": "auto-12",
+    "domain": "automation",
+    "input": {
+      "packet": {
+        "schemaVersion": "0.1",
+        "taskId": "job-12",
+        "goal": "Two current source records disagree about the mandatory delivery window; which source governs?",
+        "mode": "execute",
+        "successCriteria": [
+          "Resolve the stated automation requirement for run 12."
+        ],
+        "evidence": [
+          {
+            "id": "evidence-12",
+            "kind": "document",
+            "locator": "runbook://automation/12",
+            "sourceGroup": "operations-12",
+            "retrievedAt": "2026-10-18T00:00:00.000Z",
+            "version": "revision-4",
+            "scope": "automation-run-12",
+            "passage": "Current automation record 12: Two current source records disagree about the mandatory delivery window; which source governs?",
+            "contentHash": "84cd6945ee715cf36a43fb3dfc4388bd5d44e1a2141161ca14060c743232c1fd",
+            "validity": "current"
+          }
+        ],
+        "capabilities": [
+          "read-automation-record"
+        ],
+        "budget": {
+          "maxRounds": 8,
+          "maxModelCalls": 8,
+          "maxToolCalls": 8,
+          "maxElapsedMs": 120000,
+          "maxInputChars": 20000,
+          "maxOutputTokensPerCall": 2000
+        }
+      },
+      "state": {
+        "schemaVersion": "0.1",
+        "taskId": "job-12",
+        "revision": 3,
+        "startedAt": "2026-10-18T00:00:00.000Z",
+        "task": {
+          "schemaVersion": "0.1",
+          "taskId": "job-12",
+          "goal": "Two current source records disagree about the mandatory delivery window; which source governs?",
+          "mode": "execute",
+          "successCriteria": [
+            "Resolve the stated automation requirement for run 12."
+          ],
+          "evidence": [
+            {
+              "id": "evidence-12",
+              "kind": "document",
+              "locator": "runbook://automation/12",
+              "sourceGroup": "operations-12",
+              "retrievedAt": "2026-10-18T00:00:00.000Z",
+              "version": "revision-4",
+              "scope": "automation-run-12",
+              "passage": "Current automation record 12: Two current source records disagree about the mandatory delivery window; which source governs?",
+              "contentHash": "84cd6945ee715cf36a43fb3dfc4388bd5d44e1a2141161ca14060c743232c1fd",
+              "validity": "current"
+            }
+          ],
+          "capabilities": [
+            "read-automation-record"
+          ],
+          "budget": {
+            "maxRounds": 8,
+            "maxModelCalls": 8,
+            "maxToolCalls": 8,
+            "maxElapsedMs": 120000,
+            "maxInputChars": 20000,
+            "maxOutputTokensPerCall": 2000
+          }
+        },
+        "evidence": [
+          {
+            "id": "evidence-12",
+            "kind": "document",
+            "locator": "runbook://automation/12",
+            "sourceGroup": "operations-12",
+            "retrievedAt": "2026-10-18T00:00:00.000Z",
+            "version": "revision-4",
+            "scope": "automation-run-12",
+            "passage": "Current automation record 12: Two current source records disagree about the mandatory delivery window; which source governs?",
+            "contentHash": "84cd6945ee715cf36a43fb3dfc4388bd5d44e1a2141161ca14060c743232c1fd",
+            "validity": "current"
+          },
+          {
+            "id": "evidence-x-12",
+            "kind": "test",
+            "locator": "audit://automation/12",
+            "sourceGroup": "audit-12",
+            "retrievedAt": "2026-10-18T00:00:01.000Z",
+            "version": "revision-4",
+            "scope": "automation-run-12",
+            "passage": "Independent current audit record 12 conflicts with the runbook.",
+            "contentHash": "5c430dca3580c4ecd2dab8dab30c5d04a44003cadae4e5f5858c1ec77632af51",
+            "validity": "current"
+          }
+        ],
+        "claims": [
+          {
+            "id": "claim-12",
+            "role": "answer_claim",
+            "text": "The automation record for run 12 is applicable to this task.",
+            "scope": "automation-run-12",
+            "status": "disputed",
+            "assessments": [
+              {
+                "claimId": "claim-12",
+                "evidenceIds": [
+                  "evidence-12"
+                ],
+                "verdict": "supports",
+                "scopeMatched": true,
+                "reason": "The current record supports the run condition."
+              },
+              {
+                "claimId": "claim-12",
+                "evidenceIds": [
+                  "evidence-x-12"
+                ],
+                "verdict": "refutes",
+                "scopeMatched": true,
+                "reason": "The independent current record conflicts in the same scope."
+              }
+            ]
+          }
+        ],
+        "lenses": [
+          {
+            "id": "lens-12",
+            "label": "Run interpretation 12",
+            "rationale": "Scope the record to this automation run.",
+            "origin": "initial",
+            "status": "active"
+          }
+        ],
+        "gaps": [
+          {
+            "id": "gap-12",
+            "kind": "ambiguous_intent",
+            "lensId": "lens-12",
+            "question": "Two current source records disagree about the mandatory delivery window; which source governs?",
+            "triggerRefs": [
+              "claim-12"
+            ],
+            "whyItMatters": "Both records are current and in scope, and no available probe can determine the user’s authority choice.",
+            "importance": "required",
+            "claimIds": [
+              "claim-12"
+            ],
+            "probeIds": [
+              "probe-12"
+            ],
+            "status": "open",
+            "humanRole": "permission"
+          }
+        ],
+        "probes": [
+          {
+            "id": "probe-12",
+            "gapIds": [
+              "gap-12"
+            ],
+            "method": "corroboration",
+            "question": "Check whether another current source resolves the conflicting delivery records.",
+            "requiredCapability": "read-automation-record",
+            "sourceGroups": [
+              "operations-12",
+              "audit-12"
+            ],
+            "successCondition": "A new current record resolves the conflict.",
+            "refutationCondition": "A new current record rules out one source.",
+            "inconclusiveCondition": "No further current source resolves the conflict.",
+            "status": "unavailable"
+          }
+        ],
+        "usage": {
+          "rounds": 1,
+          "modelCalls": 1,
+          "toolCalls": 0,
+          "elapsedMs": 10,
+          "totalTokens": 100,
+          "costYen": 0
+        },
+        "decision": "needs_check",
+        "stopReason": null,
+        "appliedExecutions": [
+          {
+            "executionId": "execution-12",
+            "payloadHash": "13cce0f017fcc12df8f3ccb20948377984b009ac22867a22e02fa4192f149f19",
+            "probeId": "probe-12",
+            "outcome": "unavailable"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "caseId": "auto-13",
+    "domain": "automation",
+    "input": {
+      "packet": {
+        "schemaVersion": "0.1",
+        "taskId": "job-13",
+        "goal": "Reassess whether the requested workflow should be a single batch or a staged sequence.",
+        "mode": "execute",
+        "successCriteria": [
+          "Resolve the stated automation requirement for run 13."
+        ],
+        "evidence": [
+          {
+            "id": "evidence-13",
+            "kind": "document",
+            "locator": "runbook://automation/13",
+            "sourceGroup": "operations-13",
+            "retrievedAt": "2026-10-18T00:00:00.000Z",
+            "version": "revision-4",
+            "scope": "automation-run-13",
+            "passage": "Current automation record 13: Reassess whether the requested workflow should be a single batch or a staged sequence.",
+            "contentHash": "2149f089783766d70a182a316a67464ea45a65c561e9e525f06ade608feda091",
+            "validity": "current"
+          }
+        ],
+        "reflectionRequired": true,
+        "capabilities": [
+          "read-automation-record"
+        ],
+        "budget": {
+          "maxRounds": 8,
+          "maxModelCalls": 8,
+          "maxToolCalls": 8,
+          "maxElapsedMs": 120000,
+          "maxInputChars": 20000,
+          "maxOutputTokensPerCall": 2000
+        }
+      },
+      "state": {
+        "schemaVersion": "0.1",
+        "taskId": "job-13",
+        "revision": 2,
+        "startedAt": "2026-10-18T00:00:00.000Z",
+        "task": {
+          "schemaVersion": "0.1",
+          "taskId": "job-13",
+          "goal": "Reassess whether the requested workflow should be a single batch or a staged sequence.",
+          "mode": "execute",
+          "successCriteria": [
+            "Resolve the stated automation requirement for run 13."
+          ],
+          "evidence": [
+            {
+              "id": "evidence-13",
+              "kind": "document",
+              "locator": "runbook://automation/13",
+              "sourceGroup": "operations-13",
+              "retrievedAt": "2026-10-18T00:00:00.000Z",
+              "version": "revision-4",
+              "scope": "automation-run-13",
+              "passage": "Current automation record 13: Reassess whether the requested workflow should be a single batch or a staged sequence.",
+              "contentHash": "2149f089783766d70a182a316a67464ea45a65c561e9e525f06ade608feda091",
+              "validity": "current"
+            }
+          ],
+          "reflectionRequired": true,
+          "capabilities": [
+            "read-automation-record"
+          ],
+          "budget": {
+            "maxRounds": 8,
+            "maxModelCalls": 8,
+            "maxToolCalls": 8,
+            "maxElapsedMs": 120000,
+            "maxInputChars": 20000,
+            "maxOutputTokensPerCall": 2000
+          }
+        },
+        "evidence": [
+          {
+            "id": "evidence-13",
+            "kind": "document",
+            "locator": "runbook://automation/13",
+            "sourceGroup": "operations-13",
+            "retrievedAt": "2026-10-18T00:00:00.000Z",
+            "version": "revision-4",
+            "scope": "automation-run-13",
+            "passage": "Current automation record 13: Reassess whether the requested workflow should be a single batch or a staged sequence.",
+            "contentHash": "2149f089783766d70a182a316a67464ea45a65c561e9e525f06ade608feda091",
+            "validity": "current"
+          }
+        ],
+        "claims": [
+          {
+            "id": "claim-13",
+            "role": "observation",
+            "text": "The automation record for run 13 is applicable to this task.",
+            "scope": "automation-run-13",
+            "status": "supported",
+            "assessments": [
+              {
+                "claimId": "claim-13",
+                "evidenceIds": [
+                  "evidence-13"
+                ],
+                "verdict": "supports",
+                "scopeMatched": true,
+                "reason": "The current record supports the run condition."
+              }
+            ]
+          }
+        ],
+        "lenses": [
+          {
+            "id": "lens-13",
+            "label": "Run interpretation 13",
+            "rationale": "Scope the record to this automation run.",
+            "origin": "initial",
+            "status": "active"
+          }
+        ],
+        "gaps": [
+          {
+            "id": "gap-13",
+            "kind": "missing_fact",
+            "lensId": "lens-13",
+            "question": "Reassess whether the requested workflow should be a single batch or a staged sequence.",
+            "triggerRefs": [
+              "task:criterion:0"
+            ],
+            "whyItMatters": "A new review lens was added after the original task interpretation.",
+            "importance": "optional",
+            "claimIds": [],
+            "probeIds": [
+              "probe-13"
+            ],
+            "status": "checking"
+          }
+        ],
+        "probes": [
+          {
+            "id": "probe-13",
+            "gapIds": [
+              "gap-13"
+            ],
+            "method": "dependency",
+            "question": "Reassess whether the requested workflow should be a single batch or a staged sequence.",
+            "requiredCapability": "read-automation-record",
+            "sourceGroups": [
+              "operations-13"
+            ],
+            "successCondition": "A current record confirms the requested condition.",
+            "refutationCondition": "A current record contradicts the requested condition.",
+            "inconclusiveCondition": "No current record is available.",
+            "status": "pending"
+          }
+        ],
+        "usage": {
+          "rounds": 1,
+          "modelCalls": 1,
+          "toolCalls": 0,
+          "elapsedMs": 10,
+          "totalTokens": 100,
+          "costYen": 0
+        },
+        "decision": "needs_check",
+        "stopReason": null,
+        "appliedExecutions": [
+          {
+            "executionId": "execution-13",
+            "payloadHash": "0cdb840d2690a6dbfb1c674306da8d68d14fa2b8edf5f617ecd1ec5f50a1a31b",
+            "probeId": "probe-13",
+            "outcome": "unavailable"
+          }
+        ],
+        "reflection": {
+          "binding": {
+            "taskId": "job-13",
+            "basedRevision": 1,
+            "understandingHash": "866f500cfd0a5ffbf34c4f8cbac30073b273e5947a7d680a583e95efe0dc7114"
+          },
+          "reviewedClaimIds": [
+            "claim-13"
+          ],
+          "completion": "inconclusive",
+          "limitations": [
+            "The new operational perspective needs another review."
+          ]
+        }
+      }
+    }
+  },
+  {
+    "caseId": "auto-14",
+    "domain": "automation",
+    "input": {
+      "packet": {
+        "schemaVersion": "0.1",
+        "taskId": "job-14",
+        "goal": "Reconsider the goal after the review identified an omitted recovery condition.",
+        "mode": "execute",
+        "successCriteria": [
+          "Resolve the stated automation requirement for run 14."
+        ],
+        "evidence": [
+          {
+            "id": "evidence-14",
+            "kind": "document",
+            "locator": "runbook://automation/14",
+            "sourceGroup": "operations-14",
+            "retrievedAt": "2026-10-18T00:00:00.000Z",
+            "version": "revision-4",
+            "scope": "automation-run-14",
+            "passage": "Current automation record 14: Reconsider the goal after the review identified an omitted recovery condition.",
+            "contentHash": "e86a5f94375b744aaecd05e6326bd723dca3051b77b4bb3e5b6f6633dcb4ca03",
+            "validity": "current"
+          }
+        ],
+        "reflectionRequired": true,
+        "capabilities": [
+          "local-inspection"
+        ],
+        "budget": {
+          "maxRounds": 8,
+          "maxModelCalls": 8,
+          "maxToolCalls": 8,
+          "maxElapsedMs": 120000,
+          "maxInputChars": 20000,
+          "maxOutputTokensPerCall": 2000
+        }
+      },
+      "state": {
+        "schemaVersion": "0.1",
+        "taskId": "job-14",
+        "revision": 2,
+        "startedAt": "2026-10-18T00:00:00.000Z",
+        "task": {
+          "schemaVersion": "0.1",
+          "taskId": "job-14",
+          "goal": "Reconsider the goal after the review identified an omitted recovery condition.",
+          "mode": "execute",
+          "successCriteria": [
+            "Resolve the stated automation requirement for run 14."
+          ],
+          "evidence": [
+            {
+              "id": "evidence-14",
+              "kind": "document",
+              "locator": "runbook://automation/14",
+              "sourceGroup": "operations-14",
+              "retrievedAt": "2026-10-18T00:00:00.000Z",
+              "version": "revision-4",
+              "scope": "automation-run-14",
+              "passage": "Current automation record 14: Reconsider the goal after the review identified an omitted recovery condition.",
+              "contentHash": "e86a5f94375b744aaecd05e6326bd723dca3051b77b4bb3e5b6f6633dcb4ca03",
+              "validity": "current"
+            }
+          ],
+          "reflectionRequired": true,
+          "capabilities": [
+            "local-inspection"
+          ],
+          "budget": {
+            "maxRounds": 8,
+            "maxModelCalls": 8,
+            "maxToolCalls": 8,
+            "maxElapsedMs": 120000,
+            "maxInputChars": 20000,
+            "maxOutputTokensPerCall": 2000
+          }
+        },
+        "evidence": [
+          {
+            "id": "evidence-14",
+            "kind": "document",
+            "locator": "runbook://automation/14",
+            "sourceGroup": "operations-14",
+            "retrievedAt": "2026-10-18T00:00:00.000Z",
+            "version": "revision-4",
+            "scope": "automation-run-14",
+            "passage": "Current automation record 14: Reconsider the goal after the review identified an omitted recovery condition.",
+            "contentHash": "e86a5f94375b744aaecd05e6326bd723dca3051b77b4bb3e5b6f6633dcb4ca03",
+            "validity": "current"
+          }
+        ],
+        "claims": [
+          {
+            "id": "claim-14",
+            "role": "observation",
+            "text": "The automation record for run 14 is applicable to this task.",
+            "scope": "automation-run-14",
+            "status": "supported",
+            "assessments": [
+              {
+                "claimId": "claim-14",
+                "evidenceIds": [
+                  "evidence-14"
+                ],
+                "verdict": "supports",
+                "scopeMatched": true,
+                "reason": "The current record supports the run condition."
+              }
+            ]
+          }
+        ],
+        "lenses": [
+          {
+            "id": "lens-14",
+            "label": "Run interpretation 14",
+            "rationale": "Scope the record to this automation run.",
+            "origin": "initial",
+            "status": "active"
+          }
+        ],
+        "gaps": [
+          {
+            "id": "gap-14",
+            "kind": "unexplored_view",
+            "lensId": "lens-14",
+            "question": "Reconsider the goal after the review identified an omitted recovery condition.",
+            "triggerRefs": [
+              "task:criterion:0"
+            ],
+            "whyItMatters": "The completed review is not fresh for the current understanding.",
+            "importance": "required",
+            "claimIds": [],
+            "probeIds": [],
+            "status": "open"
+          }
+        ],
+        "probes": [],
+        "usage": {
+          "rounds": 1,
+          "modelCalls": 1,
+          "toolCalls": 0,
+          "elapsedMs": 10,
+          "totalTokens": 100,
+          "costYen": 0
+        },
+        "decision": "needs_check",
+        "stopReason": null,
+        "appliedExecutions": [],
+        "reflection": {
+          "binding": {
+            "taskId": "job-14",
+            "basedRevision": 1,
+            "understandingHash": "836f4a04c8b0f169b61c16d54724ebb75a419b0c2ee9e339d9afdf113ae41ab6"
+          },
+          "reviewedClaimIds": [
+            "claim-14"
+          ],
+          "completion": "inconclusive",
+          "limitations": [
+            "The new operational perspective needs another review."
+          ]
+        }
+      }
+    }
+  },
+  {
+    "caseId": "auto-15",
+    "domain": "automation",
+    "input": {
+      "packet": {
+        "schemaVersion": "0.1",
+        "taskId": "job-15",
+        "goal": "Re-evaluate whether the current sequence meets the stated automation objective.",
+        "mode": "execute",
+        "successCriteria": [
+          "Resolve the stated automation requirement for run 15."
+        ],
+        "evidence": [
+          {
+            "id": "evidence-15",
+            "kind": "document",
+            "locator": "runbook://automation/15",
+            "sourceGroup": "operations-15",
+            "retrievedAt": "2026-10-18T00:00:00.000Z",
+            "version": "revision-4",
+            "scope": "automation-run-15",
+            "passage": "Current automation record 15: Re-evaluate whether the current sequence meets the stated automation objective.",
+            "contentHash": "c322b4e26b252c1eeeb682c43c567a259503e225b2be625657ab25157f10966b",
+            "validity": "current"
+          }
+        ],
+        "reflectionRequired": true,
+        "capabilities": [
+          "local-inspection"
+        ],
+        "budget": {
+          "maxRounds": 8,
+          "maxModelCalls": 8,
+          "maxToolCalls": 8,
+          "maxElapsedMs": 120000,
+          "maxInputChars": 20000,
+          "maxOutputTokensPerCall": 2000
+        }
+      },
+      "state": {
+        "schemaVersion": "0.1",
+        "taskId": "job-15",
+        "revision": 2,
+        "startedAt": "2026-10-18T00:00:00.000Z",
+        "task": {
+          "schemaVersion": "0.1",
+          "taskId": "job-15",
+          "goal": "Re-evaluate whether the current sequence meets the stated automation objective.",
+          "mode": "execute",
+          "successCriteria": [
+            "Resolve the stated automation requirement for run 15."
+          ],
+          "evidence": [
+            {
+              "id": "evidence-15",
+              "kind": "document",
+              "locator": "runbook://automation/15",
+              "sourceGroup": "operations-15",
+              "retrievedAt": "2026-10-18T00:00:00.000Z",
+              "version": "revision-4",
+              "scope": "automation-run-15",
+              "passage": "Current automation record 15: Re-evaluate whether the current sequence meets the stated automation objective.",
+              "contentHash": "c322b4e26b252c1eeeb682c43c567a259503e225b2be625657ab25157f10966b",
+              "validity": "current"
+            }
+          ],
+          "reflectionRequired": true,
+          "capabilities": [
+            "local-inspection"
+          ],
+          "budget": {
+            "maxRounds": 8,
+            "maxModelCalls": 8,
+            "maxToolCalls": 8,
+            "maxElapsedMs": 120000,
+            "maxInputChars": 20000,
+            "maxOutputTokensPerCall": 2000
+          }
+        },
+        "evidence": [
+          {
+            "id": "evidence-15",
+            "kind": "document",
+            "locator": "runbook://automation/15",
+            "sourceGroup": "operations-15",
+            "retrievedAt": "2026-10-18T00:00:00.000Z",
+            "version": "revision-4",
+            "scope": "automation-run-15",
+            "passage": "Current automation record 15: Re-evaluate whether the current sequence meets the stated automation objective.",
+            "contentHash": "c322b4e26b252c1eeeb682c43c567a259503e225b2be625657ab25157f10966b",
+            "validity": "current"
+          }
+        ],
+        "claims": [
+          {
+            "id": "claim-15",
+            "role": "observation",
+            "text": "The automation record for run 15 is applicable to this task.",
+            "scope": "automation-run-15",
+            "status": "supported",
+            "assessments": [
+              {
+                "claimId": "claim-15",
+                "evidenceIds": [
+                  "evidence-15"
+                ],
+                "verdict": "supports",
+                "scopeMatched": true,
+                "reason": "The current record supports the run condition."
+              }
+            ]
+          }
+        ],
+        "lenses": [
+          {
+            "id": "lens-15",
+            "label": "Run interpretation 15",
+            "rationale": "Scope the record to this automation run.",
+            "origin": "initial",
+            "status": "active"
+          }
+        ],
+        "gaps": [
+          {
+            "id": "gap-15",
+            "kind": "unexplored_view",
+            "lensId": "lens-15",
+            "question": "Re-evaluate whether the current sequence meets the stated automation objective.",
+            "triggerRefs": [
+              "task:criterion:0"
+            ],
+            "whyItMatters": "The reflection receipt is inconclusive and the task requires another review.",
+            "importance": "required",
+            "claimIds": [],
+            "probeIds": [],
+            "status": "open"
+          }
+        ],
+        "probes": [],
+        "usage": {
+          "rounds": 1,
+          "modelCalls": 1,
+          "toolCalls": 0,
+          "elapsedMs": 10,
+          "totalTokens": 100,
+          "costYen": 0
+        },
+        "decision": "needs_check",
+        "stopReason": null,
+        "appliedExecutions": [],
+        "reflection": {
+          "binding": {
+            "taskId": "job-15",
+            "basedRevision": 1,
+            "understandingHash": "28151e1b6b11a6609c7b97cade7c0b6c804fad6928ca0b37cae040454597ce10"
+          },
+          "reviewedClaimIds": [
+            "claim-15"
+          ],
+          "completion": "inconclusive",
+          "limitations": [
+            "The new operational perspective needs another review."
+          ]
+        }
+      }
+    }
+  },
+  {
+    "caseId": "auto-16",
+    "domain": "automation",
+    "input": {
+      "packet": {
+        "schemaVersion": "0.1",
+        "taskId": "job-16",
+        "goal": "Review the task framing after a new operational lens was introduced.",
+        "mode": "execute",
+        "successCriteria": [
+          "Resolve the stated automation requirement for run 16."
+        ],
+        "evidence": [
+          {
+            "id": "evidence-16",
+            "kind": "document",
+            "locator": "runbook://automation/16",
+            "sourceGroup": "operations-16",
+            "retrievedAt": "2026-10-18T00:00:00.000Z",
+            "version": "revision-4",
+            "scope": "automation-run-16",
+            "passage": "Current automation record 16: Review the task framing after a new operational lens was introduced.",
+            "contentHash": "1d30b6992099f5dc2bb5d3078f8e983be50684efdca68306eb2b323d42fcc192",
+            "validity": "current"
+          }
+        ],
+        "reflectionRequired": true,
+        "capabilities": [
+          "local-inspection"
+        ],
+        "budget": {
+          "maxRounds": 8,
+          "maxModelCalls": 8,
+          "maxToolCalls": 8,
+          "maxElapsedMs": 120000,
+          "maxInputChars": 20000,
+          "maxOutputTokensPerCall": 2000
+        }
+      },
+      "state": {
+        "schemaVersion": "0.1",
+        "taskId": "job-16",
+        "revision": 2,
+        "startedAt": "2026-10-18T00:00:00.000Z",
+        "task": {
+          "schemaVersion": "0.1",
+          "taskId": "job-16",
+          "goal": "Review the task framing after a new operational lens was introduced.",
+          "mode": "execute",
+          "successCriteria": [
+            "Resolve the stated automation requirement for run 16."
+          ],
+          "evidence": [
+            {
+              "id": "evidence-16",
+              "kind": "document",
+              "locator": "runbook://automation/16",
+              "sourceGroup": "operations-16",
+              "retrievedAt": "2026-10-18T00:00:00.000Z",
+              "version": "revision-4",
+              "scope": "automation-run-16",
+              "passage": "Current automation record 16: Review the task framing after a new operational lens was introduced.",
+              "contentHash": "1d30b6992099f5dc2bb5d3078f8e983be50684efdca68306eb2b323d42fcc192",
+              "validity": "current"
+            }
+          ],
+          "reflectionRequired": true,
+          "capabilities": [
+            "local-inspection"
+          ],
+          "budget": {
+            "maxRounds": 8,
+            "maxModelCalls": 8,
+            "maxToolCalls": 8,
+            "maxElapsedMs": 120000,
+            "maxInputChars": 20000,
+            "maxOutputTokensPerCall": 2000
+          }
+        },
+        "evidence": [
+          {
+            "id": "evidence-16",
+            "kind": "document",
+            "locator": "runbook://automation/16",
+            "sourceGroup": "operations-16",
+            "retrievedAt": "2026-10-18T00:00:00.000Z",
+            "version": "revision-4",
+            "scope": "automation-run-16",
+            "passage": "Current automation record 16: Review the task framing after a new operational lens was introduced.",
+            "contentHash": "1d30b6992099f5dc2bb5d3078f8e983be50684efdca68306eb2b323d42fcc192",
+            "validity": "current"
+          }
+        ],
+        "claims": [
+          {
+            "id": "claim-16",
+            "role": "observation",
+            "text": "The automation record for run 16 is applicable to this task.",
+            "scope": "automation-run-16",
+            "status": "supported",
+            "assessments": [
+              {
+                "claimId": "claim-16",
+                "evidenceIds": [
+                  "evidence-16"
+                ],
+                "verdict": "supports",
+                "scopeMatched": true,
+                "reason": "The current record supports the run condition."
+              }
+            ]
+          }
+        ],
+        "lenses": [
+          {
+            "id": "lens-16",
+            "label": "Run interpretation 16",
+            "rationale": "Scope the record to this automation run.",
+            "origin": "initial",
+            "status": "active"
+          }
+        ],
+        "gaps": [
+          {
+            "id": "gap-16",
+            "kind": "unexplored_view",
+            "lensId": "lens-16",
+            "question": "Review the task framing after a new operational lens was introduced.",
+            "triggerRefs": [
+              "task:criterion:0"
+            ],
+            "whyItMatters": "The state contains a newly proposed perspective that has not been reviewed.",
+            "importance": "required",
+            "claimIds": [],
+            "probeIds": [],
+            "status": "open"
+          }
+        ],
+        "probes": [],
+        "usage": {
+          "rounds": 1,
+          "modelCalls": 1,
+          "toolCalls": 0,
+          "elapsedMs": 10,
+          "totalTokens": 100,
+          "costYen": 0
+        },
+        "decision": "needs_check",
+        "stopReason": null,
+        "appliedExecutions": [],
+        "reflection": {
+          "binding": {
+            "taskId": "job-16",
+            "basedRevision": 1,
+            "understandingHash": "a2f331d6a2cae61de55baf657efb8b1ae72ceb0085783f9652153cc1e7f4bffa"
+          },
+          "reviewedClaimIds": [
+            "claim-16"
+          ],
+          "completion": "inconclusive",
+          "limitations": [
+            "The new operational perspective needs another review."
+          ]
+        }
+      }
+    }
+  },
+  {
+    "caseId": "auto-17",
+    "domain": "automation",
+    "input": {
+      "packet": {
+        "schemaVersion": "0.1",
+        "taskId": "job-17",
+        "goal": "The run reached the configured tool-call ceiling before completing the required operation.",
+        "mode": "execute",
+        "successCriteria": [
+          "Resolve the stated automation requirement for run 17."
+        ],
+        "evidence": [
+          {
+            "id": "evidence-17",
+            "kind": "document",
+            "locator": "runbook://automation/17",
+            "sourceGroup": "operations-17",
+            "retrievedAt": "2026-10-18T00:00:00.000Z",
+            "version": "revision-4",
+            "scope": "automation-run-17",
+            "passage": "Current automation record 17: The run reached the configured tool-call ceiling before completing the required operation.",
+            "contentHash": "c5a613b8836b159c2b41e23953e0e192ef6eb0531e17f314aba19bfbe1e8adae",
+            "validity": "current"
+          }
+        ],
+        "capabilities": [
+          "local-inspection"
+        ],
+        "budget": {
+          "maxRounds": 8,
+          "maxModelCalls": 8,
+          "maxToolCalls": 0,
+          "maxElapsedMs": 120000,
+          "maxInputChars": 20000,
+          "maxOutputTokensPerCall": 2000
+        }
+      },
+      "state": {
+        "schemaVersion": "0.1",
+        "taskId": "job-17",
+        "revision": 3,
+        "startedAt": "2026-10-18T00:00:00.000Z",
+        "task": {
+          "schemaVersion": "0.1",
+          "taskId": "job-17",
+          "goal": "The run reached the configured tool-call ceiling before completing the required operation.",
+          "mode": "execute",
+          "successCriteria": [
+            "Resolve the stated automation requirement for run 17."
+          ],
+          "evidence": [
+            {
+              "id": "evidence-17",
+              "kind": "document",
+              "locator": "runbook://automation/17",
+              "sourceGroup": "operations-17",
+              "retrievedAt": "2026-10-18T00:00:00.000Z",
+              "version": "revision-4",
+              "scope": "automation-run-17",
+              "passage": "Current automation record 17: The run reached the configured tool-call ceiling before completing the required operation.",
+              "contentHash": "c5a613b8836b159c2b41e23953e0e192ef6eb0531e17f314aba19bfbe1e8adae",
+              "validity": "current"
+            }
+          ],
+          "capabilities": [
+            "local-inspection"
+          ],
+          "budget": {
+            "maxRounds": 8,
+            "maxModelCalls": 8,
+            "maxToolCalls": 0,
+            "maxElapsedMs": 120000,
+            "maxInputChars": 20000,
+            "maxOutputTokensPerCall": 2000
+          }
+        },
+        "evidence": [
+          {
+            "id": "evidence-17",
+            "kind": "document",
+            "locator": "runbook://automation/17",
+            "sourceGroup": "operations-17",
+            "retrievedAt": "2026-10-18T00:00:00.000Z",
+            "version": "revision-4",
+            "scope": "automation-run-17",
+            "passage": "Current automation record 17: The run reached the configured tool-call ceiling before completing the required operation.",
+            "contentHash": "c5a613b8836b159c2b41e23953e0e192ef6eb0531e17f314aba19bfbe1e8adae",
+            "validity": "current"
+          }
+        ],
+        "claims": [
+          {
+            "id": "claim-17",
+            "role": "observation",
+            "text": "The automation record for run 17 is applicable to this task.",
+            "scope": "automation-run-17",
+            "status": "supported",
+            "assessments": [
+              {
+                "claimId": "claim-17",
+                "evidenceIds": [
+                  "evidence-17"
+                ],
+                "verdict": "supports",
+                "scopeMatched": true,
+                "reason": "The current record supports the run condition."
+              }
+            ]
+          }
+        ],
+        "lenses": [
+          {
+            "id": "lens-17",
+            "label": "Run interpretation 17",
+            "rationale": "Scope the record to this automation run.",
+            "origin": "initial",
+            "status": "active"
+          }
+        ],
+        "gaps": [
+          {
+            "id": "gap-17",
+            "kind": "capability_limit",
+            "lensId": "lens-17",
+            "question": "The run reached the configured tool-call ceiling before completing the required operation.",
+            "triggerRefs": [
+              "task:criterion:0"
+            ],
+            "whyItMatters": "No remaining budget is available for another attempt.",
+            "importance": "required",
+            "claimIds": [],
+            "probeIds": [],
+            "status": "open"
+          }
+        ],
+        "probes": [],
+        "usage": {
+          "rounds": 1,
+          "modelCalls": 1,
+          "toolCalls": 0,
+          "elapsedMs": 10,
+          "totalTokens": 100,
+          "costYen": 0
+        },
+        "decision": "needs_check",
+        "stopReason": null,
+        "appliedExecutions": []
+      }
+    }
+  },
+  {
+    "caseId": "auto-18",
+    "domain": "automation",
+    "input": {
+      "packet": {
+        "schemaVersion": "0.1",
+        "taskId": "job-18",
+        "goal": "The required approval candidate exceeded the configured exclusion limit.",
+        "mode": "execute",
+        "successCriteria": [
+          "Resolve the stated automation requirement for run 18."
+        ],
+        "evidence": [
+          {
+            "id": "evidence-18",
+            "kind": "document",
+            "locator": "runbook://automation/18",
+            "sourceGroup": "operations-18",
+            "retrievedAt": "2026-10-18T00:00:00.000Z",
+            "version": "revision-4",
+            "scope": "automation-run-18",
+            "passage": "Current automation record 18: The required approval candidate exceeded the configured exclusion limit.",
+            "contentHash": "e5d9c7e204720182700bee1a080f12c30587a8d4e7217d3a526b446a6800805b",
+            "validity": "current"
+          }
+        ],
+        "capabilities": [
+          "local-inspection"
+        ],
+        "budget": {
+          "maxRounds": 8,
+          "maxModelCalls": 8,
+          "maxToolCalls": 8,
+          "maxElapsedMs": 120000,
+          "maxInputChars": 20000,
+          "maxOutputTokensPerCall": 2000
+        }
+      },
+      "state": {
+        "schemaVersion": "0.1",
+        "taskId": "job-18",
+        "revision": 3,
+        "startedAt": "2026-10-18T00:00:00.000Z",
+        "task": {
+          "schemaVersion": "0.1",
+          "taskId": "job-18",
+          "goal": "The required approval candidate exceeded the configured exclusion limit.",
+          "mode": "execute",
+          "successCriteria": [
+            "Resolve the stated automation requirement for run 18."
+          ],
+          "evidence": [
+            {
+              "id": "evidence-18",
+              "kind": "document",
+              "locator": "runbook://automation/18",
+              "sourceGroup": "operations-18",
+              "retrievedAt": "2026-10-18T00:00:00.000Z",
+              "version": "revision-4",
+              "scope": "automation-run-18",
+              "passage": "Current automation record 18: The required approval candidate exceeded the configured exclusion limit.",
+              "contentHash": "e5d9c7e204720182700bee1a080f12c30587a8d4e7217d3a526b446a6800805b",
+              "validity": "current"
+            }
+          ],
+          "capabilities": [
+            "local-inspection"
+          ],
+          "budget": {
+            "maxRounds": 8,
+            "maxModelCalls": 8,
+            "maxToolCalls": 8,
+            "maxElapsedMs": 120000,
+            "maxInputChars": 20000,
+            "maxOutputTokensPerCall": 2000
+          }
+        },
+        "evidence": [
+          {
+            "id": "evidence-18",
+            "kind": "document",
+            "locator": "runbook://automation/18",
+            "sourceGroup": "operations-18",
+            "retrievedAt": "2026-10-18T00:00:00.000Z",
+            "version": "revision-4",
+            "scope": "automation-run-18",
+            "passage": "Current automation record 18: The required approval candidate exceeded the configured exclusion limit.",
+            "contentHash": "e5d9c7e204720182700bee1a080f12c30587a8d4e7217d3a526b446a6800805b",
+            "validity": "current"
+          }
+        ],
+        "claims": [
+          {
+            "id": "claim-18",
+            "role": "observation",
+            "text": "The automation record for run 18 is applicable to this task.",
+            "scope": "automation-run-18",
+            "status": "supported",
+            "assessments": [
+              {
+                "claimId": "claim-18",
+                "evidenceIds": [
+                  "evidence-18"
+                ],
+                "verdict": "supports",
+                "scopeMatched": true,
+                "reason": "The current record supports the run condition."
+              }
+            ]
+          }
+        ],
+        "lenses": [
+          {
+            "id": "lens-18",
+            "label": "Run interpretation 18",
+            "rationale": "Scope the record to this automation run.",
+            "origin": "initial",
+            "status": "active"
+          }
+        ],
+        "gaps": [
+          {
+            "id": "gap-18",
+            "kind": "capability_limit",
+            "lensId": "lens-18",
+            "question": "The required approval candidate exceeded the configured exclusion limit.",
+            "triggerRefs": [
+              "task:criterion:0"
+            ],
+            "whyItMatters": "The policy requires stopping when a required candidate is excluded.",
+            "importance": "required",
+            "claimIds": [],
+            "probeIds": [],
+            "status": "open"
+          }
+        ],
+        "probes": [],
+        "usage": {
+          "rounds": 1,
+          "modelCalls": 1,
+          "toolCalls": 0,
+          "elapsedMs": 10,
+          "totalTokens": 100,
+          "costYen": 0
+        },
+        "decision": "needs_check",
+        "stopReason": null,
+        "appliedExecutions": [],
+        "excludedCandidates": [
+          {
+            "id": "excluded-18",
+            "reason": "Required approval candidate exceeded limit.",
+            "importance": "required"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "caseId": "auto-19",
+    "domain": "automation",
+    "input": {
+      "packet": {
+        "schemaVersion": "0.1",
+        "taskId": "job-19",
+        "goal": "The required deployment probe needs a capability unavailable in this environment.",
+        "mode": "execute",
+        "successCriteria": [
+          "Resolve the stated automation requirement for run 19."
+        ],
+        "evidence": [
+          {
+            "id": "evidence-19",
+            "kind": "document",
+            "locator": "runbook://automation/19",
+            "sourceGroup": "operations-19",
+            "retrievedAt": "2026-10-18T00:00:00.000Z",
+            "version": "revision-4",
+            "scope": "automation-run-19",
+            "passage": "Current automation record 19: The required deployment probe needs a capability unavailable in this environment.",
+            "contentHash": "bdcf697877969f37ed5ba0e64a3bb4c62ca882b2dd9e466a995335f54babee05",
+            "validity": "current"
+          }
+        ],
+        "capabilities": [
+          "local-inspection"
+        ],
+        "budget": {
+          "maxRounds": 8,
+          "maxModelCalls": 8,
+          "maxToolCalls": 8,
+          "maxElapsedMs": 120000,
+          "maxInputChars": 20000,
+          "maxOutputTokensPerCall": 2000
+        }
+      },
+      "state": {
+        "schemaVersion": "0.1",
+        "taskId": "job-19",
+        "revision": 3,
+        "startedAt": "2026-10-18T00:00:00.000Z",
+        "task": {
+          "schemaVersion": "0.1",
+          "taskId": "job-19",
+          "goal": "The required deployment probe needs a capability unavailable in this environment.",
+          "mode": "execute",
+          "successCriteria": [
+            "Resolve the stated automation requirement for run 19."
+          ],
+          "evidence": [
+            {
+              "id": "evidence-19",
+              "kind": "document",
+              "locator": "runbook://automation/19",
+              "sourceGroup": "operations-19",
+              "retrievedAt": "2026-10-18T00:00:00.000Z",
+              "version": "revision-4",
+              "scope": "automation-run-19",
+              "passage": "Current automation record 19: The required deployment probe needs a capability unavailable in this environment.",
+              "contentHash": "bdcf697877969f37ed5ba0e64a3bb4c62ca882b2dd9e466a995335f54babee05",
+              "validity": "current"
+            }
+          ],
+          "capabilities": [
+            "local-inspection"
+          ],
+          "budget": {
+            "maxRounds": 8,
+            "maxModelCalls": 8,
+            "maxToolCalls": 8,
+            "maxElapsedMs": 120000,
+            "maxInputChars": 20000,
+            "maxOutputTokensPerCall": 2000
+          }
+        },
+        "evidence": [
+          {
+            "id": "evidence-19",
+            "kind": "document",
+            "locator": "runbook://automation/19",
+            "sourceGroup": "operations-19",
+            "retrievedAt": "2026-10-18T00:00:00.000Z",
+            "version": "revision-4",
+            "scope": "automation-run-19",
+            "passage": "Current automation record 19: The required deployment probe needs a capability unavailable in this environment.",
+            "contentHash": "bdcf697877969f37ed5ba0e64a3bb4c62ca882b2dd9e466a995335f54babee05",
+            "validity": "current"
+          }
+        ],
+        "claims": [
+          {
+            "id": "claim-19",
+            "role": "observation",
+            "text": "The automation record for run 19 is applicable to this task.",
+            "scope": "automation-run-19",
+            "status": "supported",
+            "assessments": [
+              {
+                "claimId": "claim-19",
+                "evidenceIds": [
+                  "evidence-19"
+                ],
+                "verdict": "supports",
+                "scopeMatched": true,
+                "reason": "The current record supports the run condition."
+              }
+            ]
+          }
+        ],
+        "lenses": [
+          {
+            "id": "lens-19",
+            "label": "Run interpretation 19",
+            "rationale": "Scope the record to this automation run.",
+            "origin": "initial",
+            "status": "active"
+          }
+        ],
+        "gaps": [
+          {
+            "id": "gap-19",
+            "kind": "capability_limit",
+            "lensId": "lens-19",
+            "question": "The required deployment probe needs a capability unavailable in this environment.",
+            "triggerRefs": [
+              "task:criterion:0"
+            ],
+            "whyItMatters": "There is neither an authorised human-only decision nor an available objective probe.",
+            "importance": "required",
+            "claimIds": [],
+            "probeIds": [],
+            "status": "open"
+          }
+        ],
+        "probes": [],
+        "usage": {
+          "rounds": 1,
+          "modelCalls": 1,
+          "toolCalls": 0,
+          "elapsedMs": 10,
+          "totalTokens": 100,
+          "costYen": 0
+        },
+        "decision": "needs_check",
+        "stopReason": null,
+        "appliedExecutions": []
+      }
+    }
+  },
+  {
+    "caseId": "auto-20",
+    "domain": "automation",
+    "input": {
+      "packet": {
+        "schemaVersion": "0.1",
+        "taskId": "job-20",
+        "goal": "Two consecutive accepted rounds produced no result and no human decision is pending.",
+        "mode": "execute",
+        "successCriteria": [
+          "Resolve the stated automation requirement for run 20."
+        ],
+        "evidence": [
+          {
+            "id": "evidence-20",
+            "kind": "document",
+            "locator": "runbook://automation/20",
+            "sourceGroup": "operations-20",
+            "retrievedAt": "2026-10-18T00:00:00.000Z",
+            "version": "revision-4",
+            "scope": "automation-run-20",
+            "passage": "Current automation record 20: Two consecutive accepted rounds produced no result and no human decision is pending.",
+            "contentHash": "d4b8ca0c976e5aaebe6aff02a8fb3422318cb1dff28bc9eae75cbe4b2af58fd2",
+            "validity": "current"
+          }
+        ],
+        "capabilities": [
+          "local-inspection"
+        ],
+        "budget": {
+          "maxRounds": 8,
+          "maxModelCalls": 8,
+          "maxToolCalls": 8,
+          "maxElapsedMs": 120000,
+          "maxInputChars": 20000,
+          "maxOutputTokensPerCall": 2000
+        }
+      },
+      "state": {
+        "schemaVersion": "0.1",
+        "taskId": "job-20",
+        "revision": 3,
+        "startedAt": "2026-10-18T00:00:00.000Z",
+        "task": {
+          "schemaVersion": "0.1",
+          "taskId": "job-20",
+          "goal": "Two consecutive accepted rounds produced no result and no human decision is pending.",
+          "mode": "execute",
+          "successCriteria": [
+            "Resolve the stated automation requirement for run 20."
+          ],
+          "evidence": [
+            {
+              "id": "evidence-20",
+              "kind": "document",
+              "locator": "runbook://automation/20",
+              "sourceGroup": "operations-20",
+              "retrievedAt": "2026-10-18T00:00:00.000Z",
+              "version": "revision-4",
+              "scope": "automation-run-20",
+              "passage": "Current automation record 20: Two consecutive accepted rounds produced no result and no human decision is pending.",
+              "contentHash": "d4b8ca0c976e5aaebe6aff02a8fb3422318cb1dff28bc9eae75cbe4b2af58fd2",
+              "validity": "current"
+            }
+          ],
+          "capabilities": [
+            "local-inspection"
+          ],
+          "budget": {
+            "maxRounds": 8,
+            "maxModelCalls": 8,
+            "maxToolCalls": 8,
+            "maxElapsedMs": 120000,
+            "maxInputChars": 20000,
+            "maxOutputTokensPerCall": 2000
+          }
+        },
+        "evidence": [
+          {
+            "id": "evidence-20",
+            "kind": "document",
+            "locator": "runbook://automation/20",
+            "sourceGroup": "operations-20",
+            "retrievedAt": "2026-10-18T00:00:00.000Z",
+            "version": "revision-4",
+            "scope": "automation-run-20",
+            "passage": "Current automation record 20: Two consecutive accepted rounds produced no result and no human decision is pending.",
+            "contentHash": "d4b8ca0c976e5aaebe6aff02a8fb3422318cb1dff28bc9eae75cbe4b2af58fd2",
+            "validity": "current"
+          }
+        ],
+        "claims": [
+          {
+            "id": "claim-20",
+            "role": "observation",
+            "text": "The automation record for run 20 is applicable to this task.",
+            "scope": "automation-run-20",
+            "status": "supported",
+            "assessments": [
+              {
+                "claimId": "claim-20",
+                "evidenceIds": [
+                  "evidence-20"
+                ],
+                "verdict": "supports",
+                "scopeMatched": true,
+                "reason": "The current record supports the run condition."
+              }
+            ]
+          }
+        ],
+        "lenses": [
+          {
+            "id": "lens-20",
+            "label": "Run interpretation 20",
+            "rationale": "Scope the record to this automation run.",
+            "origin": "initial",
+            "status": "active"
+          }
+        ],
+        "gaps": [
+          {
+            "id": "gap-20",
+            "kind": "capability_limit",
+            "lensId": "lens-20",
+            "question": "Two consecutive accepted rounds produced no result and no human decision is pending.",
+            "triggerRefs": [
+              "task:criterion:0"
+            ],
+            "whyItMatters": "The repeated non-progress boundary requires a safe stop.",
+            "importance": "required",
+            "claimIds": [],
+            "probeIds": [],
+            "status": "open"
+          }
+        ],
+        "probes": [],
+        "usage": {
+          "rounds": 1,
+          "modelCalls": 1,
+          "toolCalls": 0,
+          "elapsedMs": 10,
+          "totalTokens": 100,
+          "costYen": 0
+        },
+        "decision": "needs_check",
+        "stopReason": null,
+        "appliedExecutions": [],
+        "policyHistory": {
+          "consecutiveNoProgressRounds": 2,
+          "lastUnderstandingHash": "798fdd970f1783c07955641a73c6a3c103c8c5e7b1f3791dbda9fabda9c97863",
+          "recentOutcomes": [
+            "no_result",
+            "no_result"
+          ],
+          "lastProgressAtRevision": 1
+        }
+      }
+    }
+  }
+]

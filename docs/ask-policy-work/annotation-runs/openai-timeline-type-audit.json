@@ -1,0 +1,341 @@
+{
+  "vendor": "openai",
+  "thread": {
+    "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-openai-batch01-20261018",
+    "projectId": "0992fdab-7d2e-4c48-8b57-ea69011f8ccd",
+    "title": "TOMBO blind annotation openai batch01",
+    "createdBy": "agent",
+    "creationSource": "mcp",
+    "status": "completed",
+    "latestRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:12",
+    "activeRunId": null,
+    "providerInstanceId": "codex",
+    "model": "gpt-6.1-sol",
+    "runtimeMode": "auto",
+    "interactionMode": "default",
+    "linkedPullRequest": null,
+    "titleRegeneration": null,
+    "branch": "feat/ask-policy-20261018",
+    "worktreePath": "D:\\develop\\works\\tombo-view-ask-policy",
+    "parentThreadId": "thread:delegated-task:command%3Amcp%3Afe76df42-f019-4e5c-8090-20e8c7a3de09%3Adelegate-task%3Atombo-ask-policy-20261018-goal-pm-resume-r2",
+    "relationshipToParent": "subagent",
+    "runCount": 12,
+    "itemCount": 36,
+    "pendingRequestCount": 0,
+    "archived": false,
+    "settled": false,
+    "settledAt": null,
+    "snoozed": false,
+    "snoozedUntil": null,
+    "createdAt": "2026-10-18T00:50:04.352Z",
+    "updatedAt": "2026-10-18T01:02:19.313Z"
+  },
+  "recentRuns": [
+    {
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:12",
+      "ordinal": 12,
+      "status": "completed",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "requestedAt": "2026-10-18T01:02:14.452Z",
+      "startedAt": "2026-10-18T01:02:14.527Z",
+      "completedAt": "2026-10-18T01:02:19.313Z"
+    },
+    {
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:11",
+      "ordinal": 11,
+      "status": "completed",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "requestedAt": "2026-10-18T01:02:01.630Z",
+      "startedAt": "2026-10-18T01:02:01.677Z",
+      "completedAt": "2026-10-18T01:02:07.546Z"
+    },
+    {
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:10",
+      "ordinal": 10,
+      "status": "completed",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "requestedAt": "2026-10-18T00:59:43.371Z",
+      "startedAt": "2026-10-18T00:59:43.503Z",
+      "completedAt": "2026-10-18T00:59:47.534Z"
+    },
+    {
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:9",
+      "ordinal": 9,
+      "status": "completed",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "requestedAt": "2026-10-18T00:59:28.050Z",
+      "startedAt": "2026-10-18T00:59:28.462Z",
+      "completedAt": "2026-10-18T00:59:40.122Z"
+    },
+    {
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:8",
+      "ordinal": 8,
+      "status": "completed",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "requestedAt": "2026-10-18T00:56:55.986Z",
+      "startedAt": "2026-10-18T00:56:56.023Z",
+      "completedAt": "2026-10-18T00:57:00.351Z"
+    },
+    {
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:7",
+      "ordinal": 7,
+      "status": "completed",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "requestedAt": "2026-10-18T00:56:47.418Z",
+      "startedAt": "2026-10-18T00:56:47.460Z",
+      "completedAt": "2026-10-18T00:56:52.320Z"
+    },
+    {
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:6",
+      "ordinal": 6,
+      "status": "completed",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "requestedAt": "2026-10-18T00:55:29.236Z",
+      "startedAt": "2026-10-18T00:55:29.279Z",
+      "completedAt": "2026-10-18T00:55:38.170Z"
+    },
+    {
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:5",
+      "ordinal": 5,
+      "status": "completed",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "requestedAt": "2026-10-18T00:55:16.850Z",
+      "startedAt": "2026-10-18T00:55:16.881Z",
+      "completedAt": "2026-10-18T00:55:24.209Z"
+    },
+    {
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:4",
+      "ordinal": 4,
+      "status": "completed",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "requestedAt": "2026-10-18T00:53:45.448Z",
+      "startedAt": "2026-10-18T00:53:45.550Z",
+      "completedAt": "2026-10-18T00:53:49.821Z"
+    },
+    {
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:3",
+      "ordinal": 3,
+      "status": "completed",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "requestedAt": "2026-10-18T00:52:31.370Z",
+      "startedAt": "2026-10-18T00:52:37.908Z",
+      "completedAt": "2026-10-18T00:52:43.254Z"
+    },
+    {
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:2",
+      "ordinal": 2,
+      "status": "completed",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "requestedAt": "2026-10-18T00:51:26.947Z",
+      "startedAt": "2026-10-18T00:51:27.037Z",
+      "completedAt": "2026-10-18T00:51:32.400Z"
+    },
+    {
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:1",
+      "ordinal": 1,
+      "status": "completed",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "requestedAt": "2026-10-18T00:50:04.353Z",
+      "startedAt": "2026-10-18T00:50:05.163Z",
+      "completedAt": "2026-10-18T00:50:13.724Z"
+    }
+  ],
+  "itemTypes": [
+    {
+      "position": 0,
+      "type": "user_message",
+      "status": "completed"
+    },
+    {
+      "position": 1,
+      "type": "assistant_message",
+      "status": "completed"
+    },
+    {
+      "position": 2,
+      "type": "checkpoint",
+      "status": "completed"
+    },
+    {
+      "position": 3,
+      "type": "user_message",
+      "status": "completed"
+    },
+    {
+      "position": 4,
+      "type": "assistant_message",
+      "status": "completed"
+    },
+    {
+      "position": 5,
+      "type": "checkpoint",
+      "status": "completed"
+    },
+    {
+      "position": 6,
+      "type": "user_message",
+      "status": "completed"
+    },
+    {
+      "position": 7,
+      "type": "assistant_message",
+      "status": "completed"
+    },
+    {
+      "position": 8,
+      "type": "checkpoint",
+      "status": "completed"
+    },
+    {
+      "position": 9,
+      "type": "user_message",
+      "status": "completed"
+    },
+    {
+      "position": 10,
+      "type": "assistant_message",
+      "status": "completed"
+    },
+    {
+      "position": 11,
+      "type": "checkpoint",
+      "status": "completed"
+    },
+    {
+      "position": 12,
+      "type": "user_message",
+      "status": "completed"
+    },
+    {
+      "position": 13,
+      "type": "assistant_message",
+      "status": "completed"
+    },
+    {
+      "position": 14,
+      "type": "checkpoint",
+      "status": "completed"
+    },
+    {
+      "position": 15,
+      "type": "user_message",
+      "status": "completed"
+    },
+    {
+      "position": 16,
+      "type": "assistant_message",
+      "status": "completed"
+    },
+    {
+      "position": 17,
+      "type": "checkpoint",
+      "status": "completed"
+    },
+    {
+      "position": 18,
+      "type": "user_message",
+      "status": "completed"
+    },
+    {
+      "position": 19,
+      "type": "assistant_message",
+      "status": "completed"
+    },
+    {
+      "position": 20,
+      "type": "checkpoint",
+      "status": "completed"
+    },
+    {
+      "position": 21,
+      "type": "user_message",
+      "status": "completed"
+    },
+    {
+      "position": 22,
+      "type": "assistant_message",
+      "status": "completed"
+    },
+    {
+      "position": 23,
+      "type": "checkpoint",
+      "status": "completed"
+    },
+    {
+      "position": 24,
+      "type": "user_message",
+      "status": "completed"
+    },
+    {
+      "position": 25,
+      "type": "assistant_message",
+      "status": "completed"
+    },
+    {
+      "position": 26,
+      "type": "checkpoint",
+      "status": "completed"
+    },
+    {
+      "position": 27,
+      "type": "user_message",
+      "status": "completed"
+    },
+    {
+      "position": 28,
+      "type": "assistant_message",
+      "status": "completed"
+    },
+    {
+      "position": 29,
+      "type": "checkpoint",
+      "status": "completed"
+    },
+    {
+      "position": 30,
+      "type": "user_message",
+      "status": "completed"
+    },
+    {
+      "position": 31,
+      "type": "assistant_message",
+      "status": "completed"
+    },
+    {
+      "position": 32,
+      "type": "checkpoint",
+      "status": "completed"
+    },
+    {
+      "position": 33,
+      "type": "user_message",
+      "status": "completed"
+    },
+    {
+      "position": 34,
+      "type": "assistant_message",
+      "status": "completed"
+    },
+    {
+      "position": 35,
+      "type": "checkpoint",
+      "status": "completed"
+    }
+  ],
+  "hasMore": false,
+  "nextPosition": 35,
+  "toolItems": [],
+  "note": "Content and internal reasoning intentionally omitted; types only. Exact prompts/status raw results preserved separately."
+}

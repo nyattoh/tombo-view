@@ -1,0 +1,422 @@
+[
+  {
+    "caseId": "auto-01",
+    "action": "proceed",
+    "reasonPath": "evidence-01",
+    "vendor": "nvidia",
+    "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b"
+  },
+  {
+    "caseId": "auto-02",
+    "action": "proceed",
+    "reasonPath": "evidence-02",
+    "vendor": "nvidia",
+    "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b"
+  },
+  {
+    "caseId": "auto-03",
+    "action": "proceed",
+    "reasonPath": "evidence-03",
+    "vendor": "nvidia",
+    "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b"
+  },
+  {
+    "caseId": "auto-04",
+    "action": "proceed",
+    "reasonPath": "evidence-04",
+    "vendor": "nvidia",
+    "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b"
+  },
+  {
+    "caseId": "auto-05",
+    "action": "check",
+    "reasonPath": "probe-05",
+    "vendor": "nvidia",
+    "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b"
+  },
+  {
+    "caseId": "auto-06",
+    "action": "check",
+    "reasonPath": "probe-06",
+    "vendor": "nvidia",
+    "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b"
+  },
+  {
+    "caseId": "auto-07",
+    "action": "check",
+    "reasonPath": "probe-07",
+    "vendor": "nvidia",
+    "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b"
+  },
+  {
+    "caseId": "auto-08",
+    "action": "check",
+    "reasonPath": "probe-08",
+    "vendor": "nvidia",
+    "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b"
+  },
+  {
+    "caseId": "auto-09",
+    "action": "ask",
+    "reasonPath": "gap-09",
+    "vendor": "nvidia",
+    "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b"
+  },
+  {
+    "caseId": "auto-10",
+    "action": "ask",
+    "reasonPath": "gap-10",
+    "vendor": "nvidia",
+    "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b"
+  },
+  {
+    "caseId": "auto-11",
+    "action": "ask",
+    "reasonPath": "gap-11",
+    "vendor": "nvidia",
+    "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b"
+  },
+  {
+    "caseId": "auto-12",
+    "action": "ask",
+    "reasonPath": "gap-12",
+    "vendor": "nvidia",
+    "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b"
+  },
+  {
+    "caseId": "auto-13",
+    "action": "reframe",
+    "reasonPath": "gap-13",
+    "vendor": "nvidia",
+    "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b"
+  },
+  {
+    "caseId": "auto-14",
+    "action": "reframe",
+    "reasonPath": "gap-14",
+    "vendor": "nvidia",
+    "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b"
+  },
+  {
+    "caseId": "auto-15",
+    "action": "reframe",
+    "reasonPath": "gap-15",
+    "vendor": "nvidia",
+    "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b"
+  },
+  {
+    "caseId": "auto-16",
+    "action": "reframe",
+    "reasonPath": "gap-16",
+    "vendor": "nvidia",
+    "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b"
+  },
+  {
+    "caseId": "auto-17",
+    "action": "blocked",
+    "reasonPath": "gap-17",
+    "vendor": "nvidia",
+    "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b"
+  },
+  {
+    "caseId": "auto-18",
+    "action": "blocked",
+    "reasonPath": "gap-18",
+    "vendor": "nvidia",
+    "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b"
+  },
+  {
+    "caseId": "auto-19",
+    "action": "blocked",
+    "reasonPath": "gap-19",
+    "vendor": "nvidia",
+    "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b"
+  },
+  {
+    "caseId": "auto-20",
+    "action": "blocked",
+    "reasonPath": "gap-20",
+    "vendor": "nvidia",
+    "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b"
+  },
+  {
+    "caseId": "dev-record-01",
+    "action": "blocked",
+    "reasonPath": "g1",
+    "vendor": "nvidia",
+    "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b"
+  },
+  {
+    "caseId": "dev-record-02",
+    "action": "check",
+    "reasonPath": "p1",
+    "vendor": "nvidia",
+    "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b"
+  },
+  {
+    "caseId": "dev-record-03",
+    "action": "reframe",
+    "reasonPath": "g1",
+    "vendor": "nvidia",
+    "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b"
+  },
+  {
+    "caseId": "dev-record-04",
+    "action": "proceed",
+    "reasonPath": "g1",
+    "vendor": "nvidia",
+    "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b"
+  },
+  {
+    "caseId": "dev-record-05",
+    "action": "check",
+    "reasonPath": "p1",
+    "vendor": "nvidia",
+    "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b"
+  },
+  {
+    "caseId": "dev-record-06",
+    "action": "ask",
+    "reasonPath": "g2",
+    "vendor": "nvidia",
+    "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b"
+  },
+  {
+    "caseId": "dev-record-07",
+    "action": "proceed",
+    "reasonPath": "g1",
+    "vendor": "nvidia",
+    "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b"
+  },
+  {
+    "caseId": "dev-record-08",
+    "action": "ask",
+    "reasonPath": "g2",
+    "vendor": "nvidia",
+    "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b"
+  },
+  {
+    "caseId": "dev-record-09",
+    "action": "check",
+    "reasonPath": "p1",
+    "vendor": "nvidia",
+    "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b"
+  },
+  {
+    "caseId": "dev-record-10",
+    "action": "check",
+    "reasonPath": "p1",
+    "vendor": "nvidia",
+    "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b"
+  },
+  {
+    "caseId": "dev-record-11",
+    "action": "proceed",
+    "reasonPath": "g1",
+    "vendor": "nvidia",
+    "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b"
+  },
+  {
+    "caseId": "dev-record-12",
+    "action": "proceed",
+    "reasonPath": "g1",
+    "vendor": "nvidia",
+    "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b"
+  },
+  {
+    "caseId": "dev-record-13",
+    "action": "check",
+    "reasonPath": "p1",
+    "vendor": "nvidia",
+    "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b"
+  },
+  {
+    "caseId": "dev-record-14",
+    "action": "proceed",
+    "reasonPath": "g1",
+    "vendor": "nvidia",
+    "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b"
+  },
+  {
+    "caseId": "dev-record-15",
+    "action": "proceed",
+    "reasonPath": "g1",
+    "vendor": "nvidia",
+    "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b"
+  },
+  {
+    "caseId": "dev-record-16",
+    "action": "check",
+    "reasonPath": "p1",
+    "vendor": "nvidia",
+    "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b"
+  },
+  {
+    "caseId": "dev-record-17",
+    "action": "ask",
+    "reasonPath": "g2",
+    "vendor": "nvidia",
+    "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b"
+  },
+  {
+    "caseId": "dev-record-18",
+    "action": "proceed",
+    "reasonPath": "g1",
+    "vendor": "nvidia",
+    "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b"
+  },
+  {
+    "caseId": "dev-record-19",
+    "action": "check",
+    "reasonPath": "p1",
+    "vendor": "nvidia",
+    "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b"
+  },
+  {
+    "caseId": "dev-record-20",
+    "action": "proceed",
+    "reasonPath": "g1",
+    "vendor": "nvidia",
+    "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b"
+  },
+  {
+    "caseId": "res-01",
+    "action": "proceed",
+    "reasonPath": "gap-01-history",
+    "vendor": "nvidia",
+    "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b"
+  },
+  {
+    "caseId": "res-02",
+    "action": "proceed",
+    "reasonPath": "claim-02-main",
+    "vendor": "nvidia",
+    "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b"
+  },
+  {
+    "caseId": "res-03",
+    "action": "check",
+    "reasonPath": "probe-03-main",
+    "vendor": "nvidia",
+    "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b"
+  },
+  {
+    "caseId": "res-04",
+    "action": "proceed",
+    "reasonPath": "claim-04-main",
+    "vendor": "nvidia",
+    "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b"
+  },
+  {
+    "caseId": "res-05",
+    "action": "check",
+    "reasonPath": "probe-05-main",
+    "vendor": "nvidia",
+    "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b"
+  },
+  {
+    "caseId": "res-06",
+    "action": "check",
+    "reasonPath": "probe-06-main",
+    "vendor": "nvidia",
+    "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b"
+  },
+  {
+    "caseId": "res-07",
+    "action": "check",
+    "reasonPath": "probe-07-main",
+    "vendor": "nvidia",
+    "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b"
+  },
+  {
+    "caseId": "res-08",
+    "action": "check",
+    "reasonPath": "probe-08-main",
+    "vendor": "nvidia",
+    "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b"
+  },
+  {
+    "caseId": "res-09",
+    "action": "ask",
+    "reasonPath": "gap-09-main",
+    "vendor": "nvidia",
+    "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b"
+  },
+  {
+    "caseId": "res-10",
+    "action": "ask",
+    "reasonPath": "gap-10-main",
+    "vendor": "nvidia",
+    "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b"
+  },
+  {
+    "caseId": "res-11",
+    "action": "ask",
+    "reasonPath": "gap-11-main",
+    "vendor": "nvidia",
+    "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b"
+  },
+  {
+    "caseId": "res-12",
+    "action": "ask",
+    "reasonPath": "gap-12-main",
+    "vendor": "nvidia",
+    "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b"
+  },
+  {
+    "caseId": "res-13",
+    "action": "reframe",
+    "reasonPath": "gap-13-main",
+    "vendor": "nvidia",
+    "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b"
+  },
+  {
+    "caseId": "res-14",
+    "action": "reframe",
+    "reasonPath": "gap-14-main",
+    "vendor": "nvidia",
+    "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b"
+  },
+  {
+    "caseId": "res-15",
+    "action": "check",
+    "reasonPath": "probe-15-main",
+    "vendor": "nvidia",
+    "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b"
+  },
+  {
+    "caseId": "res-16",
+    "action": "reframe",
+    "reasonPath": "gap-16-main",
+    "vendor": "nvidia",
+    "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b"
+  },
+  {
+    "caseId": "res-17",
+    "action": "blocked",
+    "reasonPath": "gap-17-main",
+    "vendor": "nvidia",
+    "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b"
+  },
+  {
+    "caseId": "res-18",
+    "action": "blocked",
+    "reasonPath": "gap-18-main",
+    "vendor": "nvidia",
+    "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b"
+  },
+  {
+    "caseId": "res-19",
+    "action": "blocked",
+    "reasonPath": "gap-19-main",
+    "vendor": "nvidia",
+    "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b"
+  },
+  {
+    "caseId": "res-20",
+    "action": "check",
+    "reasonPath": "probe-20-main",
+    "vendor": "nvidia",
+    "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b"
+  }
+]

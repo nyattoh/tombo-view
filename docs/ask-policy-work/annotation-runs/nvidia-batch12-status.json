@@ -1,0 +1,19 @@
+{
+  "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-nvidia-batch12-20261018",
+  "childThreadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-nvidia-batch01-20261018",
+  "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:12",
+  "childNodeId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-nvidia-batch12-20261018",
+  "status": "completed",
+  "workState": "result_available",
+  "hasPendingChildRuns": false,
+  "latestTerminalRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:12",
+  "latestTerminalStatus": "completed",
+  "latestTerminalSummary": "{\"annotations\":[{\"caseId\":\"res-16\",\"action\":\"reframe\",\"reasonPath\":\"gap-16-main\"},{\"caseId\":\"res-17\",\"action\":\"blocked\",\"reasonPath\":\"gap-17-main\"},{\"caseId\":\"res-18\",\"action\":\"blocked\",\"reasonPath\":\"gap-18-main\"},{\"caseId\":\"res-19\",\"action\":\"blocked\",\"reasonPath\":\"gap-19-main\"},{\"caseId\":\"res-20\",\"action\":\"check\",\"reasonPath\":\"probe-20-main\"}]}",
+  "latestTerminalResultContextTransferId": "context-transfer:type:subagent_result:source-thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:target-thread:thread%3Adelegated-task%3Acommand%253Amcp%253Afe76df42-f019-4e5c-8090-20e8c7a3de09%253Adelegate-task%253Atombo-ask-policy-20261018-goal-pm-resume-r2:8ad849b6-67ce-4321-831d-e610466acb4c",
+  "providerInstanceId": "pi",
+  "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b",
+  "summary": "{\"annotations\":[{\"caseId\":\"res-16\",\"action\":\"reframe\",\"reasonPath\":\"gap-16-main\"},{\"caseId\":\"res-17\",\"action\":\"blocked\",\"reasonPath\":\"gap-17-main\"},{\"caseId\":\"res-18\",\"action\":\"blocked\",\"reasonPath\":\"gap-18-main\"},{\"caseId\":\"res-19\",\"action\":\"blocked\",\"reasonPath\":\"gap-19-main\"},{\"caseId\":\"res-20\",\"action\":\"check\",\"reasonPath\":\"probe-20-main\"}]}",
+  "resultContextTransferId": "context-transfer:type:subagent_result:source-thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:target-thread:thread%3Adelegated-task%3Acommand%253Amcp%253Afe76df42-f019-4e5c-8090-20e8c7a3de09%253Adelegate-task%253Atombo-ask-policy-20261018-goal-pm-resume-r2:8ad849b6-67ce-4321-831d-e610466acb4c",
+  "hasPendingQuestion": false,
+  "waitTimedOut": false
+}

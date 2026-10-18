@@ -1,0 +1,19 @@
+{
+  "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-openai-batch05-20261018",
+  "childThreadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-openai-batch01-20261018",
+  "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:5",
+  "childNodeId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-openai-batch05-20261018",
+  "status": "completed",
+  "workState": "result_available",
+  "hasPendingChildRuns": false,
+  "latestTerminalRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:6",
+  "latestTerminalStatus": "completed",
+  "latestTerminalSummary": "{\"annotations\":[{\"caseId\":\"dev-record-06\",\"action\":\"ask\",\"reasonPath\":\"g2\"},{\"caseId\":\"dev-record-07\",\"action\":\"proceed\",\"reasonPath\":\"state.gaps\"},{\"caseId\":\"dev-record-08\",\"action\":\"ask\",\"reasonPath\":\"g2\"},{\"caseId\":\"dev-record-09\",\"action\":\"check\",\"reasonPath\":\"p1\"},{\"caseId\":\"dev-record-10\",\"action\":\"check\",\"reasonPath\":\"p1\"}]}",
+  "latestTerminalResultContextTransferId": "context-transfer:type:subagent_result:source-thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:target-thread:thread%3Adelegated-task%3Acommand%253Amcp%253Afe76df42-f019-4e5c-8090-20e8c7a3de09%253Adelegate-task%253Atombo-ask-policy-20261018-goal-pm-resume-r2:4b250b02-3c8d-4823-88e3-89daefd78934",
+  "providerInstanceId": "codex",
+  "model": "gpt-6.1-sol",
+  "summary": "{\"annotations\":[{\"caseId\":\"dev-record-01\",\"action\":\"blocked\",\"reasonPath\":\"state.probes[0].requiredCapability\"},{\"caseId\":\"dev-record-02\",\"action\":\"check\",\"reasonPath\":\"p1\"},{\"caseId\":\"dev-record-03\",\"action\":\"ask\",\"reasonPath\":\"g1\"},{\"caseId\":\"dev-record-04\",\"action\":\"reframe\",\"reasonPath\":\"packet.reflectionRequired\"},{\"caseId\":\"dev-record-05\",\"action\":\"blocked\",\"reasonPath\":\"state.excludedCandidates[0]\"}]}",
+  "resultContextTransferId": "context-transfer:type:subagent_result:source-thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:target-thread:thread%3Adelegated-task%3Acommand%253Amcp%253Afe76df42-f019-4e5c-8090-20e8c7a3de09%253Adelegate-task%253Atombo-ask-policy-20261018-goal-pm-resume-r2:fb68e263-8341-4413-b10a-d6527a5ef70d",
+  "hasPendingQuestion": false,
+  "waitTimedOut": false
+}

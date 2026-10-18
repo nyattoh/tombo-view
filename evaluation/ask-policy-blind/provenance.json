@@ -1,0 +1,2962 @@
+{
+  "schemaVersion": "1",
+  "acceptance": "complete_valid_labels",
+  "formal": true,
+  "decisionSource": "framework_only_local",
+  "jevApiCall": "not made",
+  "cost": "unknown",
+  "freeze": {
+    "status": "frozen",
+    "fixturesHash": "2fd8bb6340563d8ea614adab1d0731b343c15887cb0823aa9bcd9324c1040ba2",
+    "authorIntentHash": "5341dd093ac005d2c9ad3d266fe44d783dcbe1c1a43087f15ebdfedc7cf4359b",
+    "rubricHash": "0e031b80a18f3990ddaacf6bfd3a927dd32919f42160b0913886217c8286e740"
+  },
+  "fixtures": {
+    "path": "evaluation/ask-policy-cases.json",
+    "sha256": "2fd8bb6340563d8ea614adab1d0731b343c15887cb0823aa9bcd9324c1040ba2",
+    "byteLength": 549617
+  },
+  "authorIntent": {
+    "path": "evaluation/ask-policy-author-intent.json",
+    "sha256": "5341dd093ac005d2c9ad3d266fe44d783dcbe1c1a43087f15ebdfedc7cf4359b",
+    "byteLength": 13604
+  },
+  "rubric": {
+    "path": "docs/ask-policy-work/blind-annotation-rubric.md",
+    "sha256": "0e031b80a18f3990ddaacf6bfd3a927dd32919f42160b0913886217c8286e740",
+    "byteLength": 3178
+  },
+  "sourceEvidence": [
+    {
+      "path": "docs/ask-policy-work/annotation-runs/manifest.json",
+      "sha256": "15085d5368791b9f491210ffc45a3247936a47dd41e33030fb17c2e93203e7bb",
+      "byteLength": 4861
+    },
+    {
+      "path": "docs/ask-policy-work/fixture-main/freeze.json",
+      "sha256": "5aa5ea3636b55af4e4c7bd95b2e5d54050f70bdffdc8454a4c2d666717623d25",
+      "byteLength": 35351
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/actual-author-thread-metadata.json",
+      "sha256": "a7561476fdf610ee087ea5a86fca14149aac095c00b9a97cf91a6c7d1fec88e7",
+      "byteLength": 7840
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-integration/live-payload-audit.json",
+      "sha256": "f0a9d471dce779d9bb8f2534a0dd1dfa6b59e4edc9dcba0ebe7ff1b506e8595b",
+      "byteLength": 107224
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/openai-timeline-type-audit.json",
+      "sha256": "6af79ccce098f2f704a8958c4ce858a7f3ae9f1243703ff75ad1c57b5bcd7a6f",
+      "byteLength": 10574
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/google-timeline-type-audit.json",
+      "sha256": "1f592b3b1728862906f174ecb133b2dbf51a1bb1899e559e0cbaab036b6358f6",
+      "byteLength": 10808
+    },
+    {
+      "path": "docs/ask-policy.md",
+      "sha256": "5f3b4fc75a3c2cba99656bec42c3269f8e399ccdb3d31723ed12e6095f2a47e3",
+      "byteLength": 63791
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/openai-batch01-dispatch.json",
+      "sha256": "cc16683c87ebd6552121864a6b55e6414c8db1dd20cde56a8ebec2841384304a",
+      "byteLength": 1605
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/openai-batch01-status.json",
+      "sha256": "ccd13ad2e664ffe017757cbcf75c0c975fe4590691f2dc79cf29a333da34893e",
+      "byteLength": 2923
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/batch-01-prompt.json",
+      "sha256": "7142175ff211a53b16f01df526dd902665b37a770dd154f3df88a511aec2e5d9",
+      "byteLength": 19467
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/openai-batch01-output.json",
+      "sha256": "753a6c1e9c5db46ea532621a8383d8cc83a1366b0d89401c0e67dcf814f1096e",
+      "byteLength": 376
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/openai-batch02-dispatch.json",
+      "sha256": "d61a8e34ed51110dda119d40b26f1de85db0a688cc157bfb9cc21b3a7591a421",
+      "byteLength": 944
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/openai-batch02-status.json",
+      "sha256": "d4e7f1caa7eaede9ed815d75900fbfb38b2758d709323c74dff4c6f2ee0d4d70",
+      "byteLength": 2975
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/batch-02-prompt.json",
+      "sha256": "53007898ccdf2aae6a4d379b47755928fd97d541c8448d2eb5e791865425c264",
+      "byteLength": 21123
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/openai-batch02-output.json",
+      "sha256": "53e82a2bf6d6ede1444d32af6699fd15bcf612277359c28659aa3712be1e26f0",
+      "byteLength": 404
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/openai-batch03-dispatch.json",
+      "sha256": "88266f055d6203829a43689754a20e74f5c820984c4be878fe47c01cfb67d466",
+      "byteLength": 944
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/openai-batch03-status.json",
+      "sha256": "5341aa1b4b99f406755973d77b1c429fb2420d8c0e8d851f092b45ae6b1c32c0",
+      "byteLength": 2857
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/batch-03-prompt.json",
+      "sha256": "b805e09de02ba9581a32c60b8a4b8131edf81990e56106493c350af971575736",
+      "byteLength": 22960
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/openai-batch03-output.json",
+      "sha256": "22d5234282a673e85a6249e31e524f4ce25001b56951c369165391757c867178",
+      "byteLength": 345
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/openai-batch04-dispatch.json",
+      "sha256": "74844364515d685349622d01dcf187983638445fd41b78d7a4520c40d4cec23f",
+      "byteLength": 944
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/openai-batch04-status.json",
+      "sha256": "a1450185678a10acaca5bac1f2f517f6bd692c47786e4a63f70560cfca651a89",
+      "byteLength": 2873
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/batch-04-prompt.json",
+      "sha256": "01b79d4f860eceb45ff181a9cf60c877a5717437adefede9c6595fd7ea480114",
+      "byteLength": 20174
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/openai-batch04-output.json",
+      "sha256": "9bd648bbb9282f0e42d8fb01a41f29f661e256f02b187461f908bd093eb8828b",
+      "byteLength": 353
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/openai-batch05-dispatch.json",
+      "sha256": "0f7ce1055cb68faf952fdba990a9866dfc8a27358ee3ce7f32c0a1ab2cf350b3",
+      "byteLength": 974
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/openai-batch05-status.json",
+      "sha256": "bc95e5d59ed5fd064c613e9d03c9a593ad6356b4d515a7851e26db574e103833",
+      "byteLength": 2913
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/batch-05-prompt.json",
+      "sha256": "f04131d16204870f0293e2f7277755fc12df242002fd9a94af857c314eab9b55",
+      "byteLength": 37445
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/openai-batch05-output.json",
+      "sha256": "d7cfb104bc3864b23317b417e6f31f07946e25879ae0e3f0c9701d3c2d53eb24",
+      "byteLength": 412
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/openai-batch06-dispatch.json",
+      "sha256": "98289c6030af7d200154794158f37fabc4d688c454461711baf7976aaf5f7af1",
+      "byteLength": 974
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/openai-batch06-status.json",
+      "sha256": "c5ab0ae14536a0174e26b67619cf1aefee4169f4e7fc8bb3ab45ed6dd8fc74b4",
+      "byteLength": 2835
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/batch-06-prompt.json",
+      "sha256": "1d73fdbd87ba0939d21c8bc50a5af8d0c5cc54d31f39bb439a86bdf0177eded0",
+      "byteLength": 38522
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/openai-batch06-output.json",
+      "sha256": "738bde0e8a88a458b75d77082eb8a2da9eafff1590d9162cb716817dd0af1f22",
+      "byteLength": 334
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/openai-batch07-dispatch.json",
+      "sha256": "144df87fc4ad84d54542e843012b2dc37e3562b2725eb2c9ae362d5e18aec1bc",
+      "byteLength": 974
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/openai-batch07-status.json",
+      "sha256": "41c27001eba58d598329ba53b6b5251377d112350d8dc0e4d98e9a5161fe24b9",
+      "byteLength": 2897
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/batch-07-prompt.json",
+      "sha256": "76dcd49da3f68328aa0bba853c474c0f1c014278315d12961a0e556940cc1ebc",
+      "byteLength": 42788
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/openai-batch07-output.json",
+      "sha256": "7696b794d895ed7b71c355a8a4699ca09ae3fa5d04c92178a6ff7c3aae3f62e4",
+      "byteLength": 378
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/openai-batch08-dispatch.json",
+      "sha256": "9dbda689b667622f7813833438d89a09a2bf07b760f1d0013e3b4a67e508cd1d",
+      "byteLength": 974
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/openai-batch08-status.json",
+      "sha256": "46f5ad48796e9fe0f11850da6222812001654d9d828d7d484896b5e0f817f8e4",
+      "byteLength": 2871
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/batch-08-prompt.json",
+      "sha256": "d47decc67992466fdb25c3cda5666ea40960f6138e68d9d4eb6ff7a0ba52ebf8",
+      "byteLength": 36904
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/openai-batch08-output.json",
+      "sha256": "85c36d8a76315a709aa50d434f078f941e85000ae8af49568d660d140b830847",
+      "byteLength": 352
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/openai-batch09-dispatch.json",
+      "sha256": "756db62d49108281b482fb5225687e80d3629cc067a0f5602e4a32e135783f06",
+      "byteLength": 939
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/openai-batch09-status.json",
+      "sha256": "6b1c425c996c02e6e436133a598b4eeaedb4b9670a97a94f67b1ab8dc5aa3df9",
+      "byteLength": 2873
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/batch-09-prompt.json",
+      "sha256": "50c1db94918bfa5ef8846097472bdcb1bd3a9f84571215d06efcf3bc637c9a9b",
+      "byteLength": 39578
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/openai-batch09-output.json",
+      "sha256": "9fb9110c45bf3b16b9556ed101df36a3d4777ea1cb3448043b3fbb99bb2668e2",
+      "byteLength": 359
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/openai-batch10-dispatch.json",
+      "sha256": "aeded565b9dd7fa6ab074ad93096f5a0dc4fe3df03450b7b0ecc386f706da2e9",
+      "byteLength": 940
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/openai-batch10-status.json",
+      "sha256": "187527ab4972024d8d8300fc1172423907da7afb5eb87a7bdf3501c90f888739",
+      "byteLength": 2861
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/batch-10-prompt.json",
+      "sha256": "b09b3578141d76316f7ea5401b8a5ef52f76ba818d4c6f8791467479029b6c97",
+      "byteLength": 42009
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/openai-batch10-output.json",
+      "sha256": "10c1f8ca6b2e296f028bbdd1d65a03441d6c380a7329722f4c20f0ce0d0d5277",
+      "byteLength": 346
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/openai-batch11-dispatch.json",
+      "sha256": "ba36c97621371aa8197a5503f41a12199300d65814efb53a6873c99b6de06af6",
+      "byteLength": 940
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/openai-batch11-status.json",
+      "sha256": "48029a3aeb5441190d85c47dd848c62e6af3694316a49c1bf76e275570912f41",
+      "byteLength": 2893
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/batch-11-prompt.json",
+      "sha256": "dc6310ccc8efa260fe8241480f445d6a6dd14f66b89a1a129113b44ffe3170e2",
+      "byteLength": 39942
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/openai-batch11-output.json",
+      "sha256": "73b60afb7d31bba773ab973e861365d8cae2a7e764a65348f4adb119f18dce04",
+      "byteLength": 362
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/openai-batch12-dispatch.json",
+      "sha256": "0053390a9b8a997cf23b46a59c3f60e151ae89dcea5554750047a5ea51bf8002",
+      "byteLength": 940
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/openai-batch12-status.json",
+      "sha256": "e2c4e3bb6ae24436fe8894cd4981764dbf0bc17686b033f3c95e2a7e421b589e",
+      "byteLength": 2893
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/batch-12-prompt.json",
+      "sha256": "d4f69b853494595d8a2389b503dbd34db0970728540a1331537e7c5f0fc9f119",
+      "byteLength": 40292
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/openai-batch12-output.json",
+      "sha256": "c698e1081441d8ea434280f8bcc60f7a2ee1bd8bcb3ce2f0eaaa809929adc2cf",
+      "byteLength": 362
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/google-batch01-dispatch.json",
+      "sha256": "bc89c51b3ceb3272e503169548b9f7b3254a5053db9465a684df5caf24ca457c",
+      "byteLength": 1544
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/google-batch01-status.json",
+      "sha256": "f8ec5f21dcde1ee9910ab136a1ce895731dc283cdc6c8df199792080bd85f067",
+      "byteLength": 2873
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/google-batch01-output.json",
+      "sha256": "1727ca6d9cfe0f4b56fe268b8f59f717214f0359d36d3dc01603605faf4e9318",
+      "byteLength": 342
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/google-batch02-dispatch.json",
+      "sha256": "47a0cdf3a04aeb6e8a5a89b72a91820338fc1850d14be01380018eb889fa37e3",
+      "byteLength": 944
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/google-batch02-status.json",
+      "sha256": "71840fb2c95b1065a1d8b3914e0661d6c5b5d9b85dfde97ca08745c2702ac53d",
+      "byteLength": 2861
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/google-batch02-output.json",
+      "sha256": "764aca6ee5f5e74f3d15d590d3bc3fd560f072d0d427241f15061ec929a0e8c6",
+      "byteLength": 338
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/google-batch03-dispatch.json",
+      "sha256": "149c53bf4ca7618d3042c49387bedbc836901c9a1843d1a5080a1ce60c18a651",
+      "byteLength": 944
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/google-batch03-status.json",
+      "sha256": "f8f7b302f77fddfb7559d32feb7d7f7e9627071ebade4b45806ee3a5a961225a",
+      "byteLength": 2825
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/google-batch03-output.json",
+      "sha256": "065016111c032dee394395b4c8d2992170266a86e253dcb4c919a52ea25e0b75",
+      "byteLength": 320
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/google-batch04-dispatch.json",
+      "sha256": "43ea5872037dd0fa514088c315e6802d19588395663af8d626931471fd8c3a53",
+      "byteLength": 944
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/google-batch04-status.json",
+      "sha256": "9e033c7afe89328d8b0e190976d3041ae1dc386cc20342109bdeb5c930e22698",
+      "byteLength": 2841
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/google-batch04-output.json",
+      "sha256": "4228974deef9fc264c3546648ca3076eec1ac0f12874ae81e64f263c65532941",
+      "byteLength": 328
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/google-batch05-dispatch.json",
+      "sha256": "a091808703930438b218a43ef3624a8105bd4172962f58a567f3512106f377a1",
+      "byteLength": 974
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/google-batch05-status.json",
+      "sha256": "a5ae1b0c190f29a701fa77ab656874aa47d354f44f73ffde34fc3ad4460a2a35",
+      "byteLength": 2860
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/google-batch05-output.json",
+      "sha256": "ca196045d5184ee38db768baba44eb7e1dc27032a04c2f57d7d301a40bdbca7e",
+      "byteLength": 332
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/google-batch06-dispatch.json",
+      "sha256": "165479188e226c10d3c1685dde6036f008b153115e9debb9ff991dc80d9fcde4",
+      "byteLength": 971
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/google-batch06-status.json",
+      "sha256": "99abbacbc97f37d0d3ad0fa0a281e9d0afc0748111556c4ef354cf531f60642f",
+      "byteLength": 2871
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/google-batch06-output.json",
+      "sha256": "2e865cb2dc2c905a52496188146d6c42f2f6398da28555bad319cb13a278ef15",
+      "byteLength": 343
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/google-batch07-dispatch.json",
+      "sha256": "b95efc5ee9ca79a95326b10c399974736593905769317460d4bb2c2e4aa2ff9f",
+      "byteLength": 974
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/google-batch07-status.json",
+      "sha256": "519dba52398b17baff03474a52c9e96e4d4f7aa6fa522c4ea984ef0d7b4a7dfa",
+      "byteLength": 2873
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/google-batch07-output.json",
+      "sha256": "2376e80a9f999855c22c672fda469be57901458ae4dd3fc93c1907e02bcd66e5",
+      "byteLength": 336
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/google-batch08-dispatch.json",
+      "sha256": "70436e10c40db6502591a2df0a4eec17138bf1000db169f5af98fc1dd2440749",
+      "byteLength": 971
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/google-batch08-status.json",
+      "sha256": "11304998a2d0ab104419ecec0d15465a3ac73dfb3cecd476ba6a731a5593911e",
+      "byteLength": 2889
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/google-batch08-output.json",
+      "sha256": "3c071ac75f4f55aa9f87c9cf2994b3f6ec124522d2f8f22a1357d1923aecb000",
+      "byteLength": 352
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/google-batch09-dispatch.json",
+      "sha256": "6a8cd2251187e700a0609cd494817e08fb98d7acabdc7dfa026cf45c2de52d31",
+      "byteLength": 939
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/google-batch09-status.json",
+      "sha256": "3db58d134348fe3eff4beb3edefc48f15acac72c6d64494f104a5f761380949b",
+      "byteLength": 2891
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/google-batch09-output.json",
+      "sha256": "5b219138053226e787d6fd46792300e6da4a4d1940a391d29bef252e0bd4d192",
+      "byteLength": 359
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/google-batch10-dispatch.json",
+      "sha256": "fdcc778c90f254e0e0c3192d2be047c8d866ca3d1ff0c084d8bbe16984615adf",
+      "byteLength": 937
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/google-batch10-status.json",
+      "sha256": "ef85868e71b52f63d2a54e074461d87186c7659ba4d2a2cabf86912bb4bfae8a",
+      "byteLength": 2879
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/google-batch10-output.json",
+      "sha256": "10c1f8ca6b2e296f028bbdd1d65a03441d6c380a7329722f4c20f0ce0d0d5277",
+      "byteLength": 346
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/google-batch11-dispatch.json",
+      "sha256": "52813a6230b4f711e68d873c0f22dbdc4e432bb7036541bd37bad7b57b51b695",
+      "byteLength": 940
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/google-batch11-status.json",
+      "sha256": "331dee839a3834cb8d78fdcc7262ff76dca04dc364cd3bb8c7c5dc0bdecfeb3a",
+      "byteLength": 2895
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/google-batch11-output.json",
+      "sha256": "189a7e8493668ec25bfdf2f12d52c963d457c8c0936fcac263a3e687c9f274f2",
+      "byteLength": 348
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/google-batch12-dispatch.json",
+      "sha256": "2d3e36bbc4bc5f1315f75720b01abc445428e2ef4a2dd6059bda091d06863ca0",
+      "byteLength": 940
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/google-batch12-status.json",
+      "sha256": "aef316bd6a35aa0164f76862248cd2e48719887377ed07fae35c39fa73ebfafd",
+      "byteLength": 2907
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/google-batch12-output.json",
+      "sha256": "b91aae7657d2aced2dadf2521ce2aad086f44e4fd4c7994d92b8656f0a30edf1",
+      "byteLength": 360
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/nvidia-batch01-dispatch.json",
+      "sha256": "3506bb25540b49e5a100ad43e2bedeb84e7518e172adc03252b7dc7e16d043e8",
+      "byteLength": 1659
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/nvidia-batch01-status.json",
+      "sha256": "52baa73ad56cb5ac25c0515f297c2656ff34f2496cbf787f594537ba65ce5f74",
+      "byteLength": 2898
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/nvidia-batch01-output.json",
+      "sha256": "5692548acf08140cf548f25ee07180f55ab317d55d48bb1a053b15e610179395",
+      "byteLength": 348
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/nvidia-batch02-dispatch.json",
+      "sha256": "db88f688fbcb7b1cc4cac815951b3afb809eaf102e2f75d74b80b93de2645a53",
+      "byteLength": 944
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/nvidia-batch02-status.json",
+      "sha256": "4af3fca05555b4413c410b5248b05569b3afb6115d9fa736e21dc41d0741a2ca",
+      "byteLength": 2838
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/nvidia-batch02-output.json",
+      "sha256": "a256cc294aad0fce2169431f3b354b06923c7338cb2193a93fd0d5f9d3460d7b",
+      "byteLength": 320
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/nvidia-batch03-dispatch.json",
+      "sha256": "d28f770ee3e4d16118449fd4da6ca6313965dbbd6ce494bf8d98df557e9f031c",
+      "byteLength": 944
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/nvidia-batch03-status.json",
+      "sha256": "d8a7c5526b1f5e018409c8fb27a0fa9fa841464e4f4b8c2375fdc68fc7d2dbe2",
+      "byteLength": 2846
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/nvidia-batch03-output.json",
+      "sha256": "065016111c032dee394395b4c8d2992170266a86e253dcb4c919a52ea25e0b75",
+      "byteLength": 320
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/nvidia-batch04-dispatch.json",
+      "sha256": "beac2ea8a1809b8bc998d69873d470147acdf288fdfa350a5ca353bb3207e985",
+      "byteLength": 941
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/nvidia-batch04-status.json",
+      "sha256": "1e105029b641b9df250675132d18595f33a64a178dcff5261834886451011439",
+      "byteLength": 2854
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/nvidia-batch04-output.json",
+      "sha256": "4228974deef9fc264c3546648ca3076eec1ac0f12874ae81e64f263c65532941",
+      "byteLength": 328
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/nvidia-batch05-dispatch.json",
+      "sha256": "b902098f54be8772968113dd35420563dd60a27616852c2ce90f6f777e5d08a8",
+      "byteLength": 974
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/nvidia-batch05-status.json",
+      "sha256": "dbb911af2208e5ce07305cf32c358004ef6a96ba3f84178903e17bda8b067d76",
+      "byteLength": 2865
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/nvidia-batch05-output.json",
+      "sha256": "f70b2e0430d3bc754befa4e4f56c8cb82b68bb57a365ad8ec1df79dd0712dfdb",
+      "byteLength": 334
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/nvidia-batch06-dispatch.json",
+      "sha256": "a54d9d27b08318dcaeea7939ccb877d6d5d3a2aa3ede956dcec02400fb99f42a",
+      "byteLength": 971
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/nvidia-batch06-status.json",
+      "sha256": "ff1ef00f5efea22afaa78dc6cbf851f370b75318be7d2f6017305a3caa88b4e1",
+      "byteLength": 2860
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/nvidia-batch06-output.json",
+      "sha256": "87bb008b5ec145661c6ff114fa759e771bfb3519842696b314632d667a68b7c9",
+      "byteLength": 326
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/nvidia-batch07-dispatch.json",
+      "sha256": "421a8e59dff0616515d4d004a6a1e4e365674a28dd8d7b83dc50ea9103dd22ef",
+      "byteLength": 971
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/nvidia-batch07-status.json",
+      "sha256": "b5a85ebe6c0f706ff7dc04eae98180da25c4238e8e3195db9c5b6e49421a4ed1",
+      "byteLength": 2870
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/nvidia-batch07-output.json",
+      "sha256": "5f8b19c57787dde1ef695034aa6180080eaf922b7872def48ca5648e6904b1ba",
+      "byteLength": 336
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/nvidia-batch08-dispatch.json",
+      "sha256": "ffd0465351168de9ba33ca7c4b36bea488215ffac7f3e98498b75333cc7c5ba5",
+      "byteLength": 974
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/nvidia-batch08-status.json",
+      "sha256": "c3741281372f87a2e6e7c23dcc67664a2e303dda5912058e643cbaf48e0ca05c",
+      "byteLength": 2883
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/nvidia-batch08-output.json",
+      "sha256": "15c045b3ac773f0d6d30afedc1985459b67775fa95e64c235478177489340e97",
+      "byteLength": 330
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/nvidia-batch09-dispatch.json",
+      "sha256": "60da6661d8300bd6774b567f2ae595c3b414eec2ebcf5390328575afd0223eb4",
+      "byteLength": 936
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/nvidia-batch09-status.json",
+      "sha256": "313b1c3c6079bcffc61e442e02dacddaadcc3c3e9b55cce1eaddb5b571e7afcc",
+      "byteLength": 2908
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/nvidia-batch09-output.json",
+      "sha256": "089b9643ebbbcdc4eb431247bdacb1f904ef26bd19eb67d5898570ea4d7a76df",
+      "byteLength": 355
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/nvidia-batch10-dispatch.json",
+      "sha256": "54123f04fd7233b9b2ac245096c485a8cf9cb2e39f4976afd4036d17f473d8e7",
+      "byteLength": 940
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/nvidia-batch10-status.json",
+      "sha256": "ea79f9af53254383a02ee316968224a2251a79566bc3fae69e672700feb66929",
+      "byteLength": 2880
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/nvidia-batch10-output.json",
+      "sha256": "49070243b42ddc8ac88abf5d3072bbd7a21bac599424980f1ed429dfcfa597d0",
+      "byteLength": 340
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/nvidia-batch11-dispatch.json",
+      "sha256": "07f7bb1bffd5eb37090dba790f3412fede57465a50fc2b5ef7890107fe1629c2",
+      "byteLength": 940
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/nvidia-batch11-status.json",
+      "sha256": "d6c9bbb2b90d5554b7318e78b1a717712605ca33f9f63848c6bbfeae7467d638",
+      "byteLength": 2880
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/nvidia-batch11-output.json",
+      "sha256": "91e74e40280ec3f7350c3c574bb37db212609f8df3db75d9dfb07aef6f699839",
+      "byteLength": 340
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/nvidia-batch12-dispatch.json",
+      "sha256": "9679594b8145df04c730e4a9ea9ba94e3f54be3b21254660f292f09c828bc4fc",
+      "byteLength": 940
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/nvidia-batch12-status.json",
+      "sha256": "ecf2c910ba03b1878bb10cf3e65409413d499829d5ff65f8acc6049328249b73",
+      "byteLength": 2896
+    },
+    {
+      "path": "docs/ask-policy-work/annotation-runs/nvidia-batch12-output.json",
+      "sha256": "efc5c95dee726cc174dad27bcc2ea61d39d13e894949f28325c34c92cf82737a",
+      "byteLength": 348
+    }
+  ],
+  "validLabelCounts": {
+    "openai": 60,
+    "google": 60,
+    "nvidia": 60
+  },
+  "authors": [
+    {
+      "caseId": "auto-01",
+      "taskId": "node:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-automation-luna-high-20261018-r1",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%253Adelegate-task%253Atombo-ask-policy-fixture-automation-luna-high-20261018-r1:ordinal:1",
+      "threadId": "thread:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-automation-luna-high-20261018-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6-luna",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "high"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "caseId": "auto-02",
+      "taskId": "node:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-automation-luna-high-20261018-r1",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%253Adelegate-task%253Atombo-ask-policy-fixture-automation-luna-high-20261018-r1:ordinal:1",
+      "threadId": "thread:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-automation-luna-high-20261018-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6-luna",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "high"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "caseId": "auto-03",
+      "taskId": "node:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-automation-luna-high-20261018-r1",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%253Adelegate-task%253Atombo-ask-policy-fixture-automation-luna-high-20261018-r1:ordinal:1",
+      "threadId": "thread:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-automation-luna-high-20261018-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6-luna",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "high"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "caseId": "auto-04",
+      "taskId": "node:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-automation-luna-high-20261018-r1",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%253Adelegate-task%253Atombo-ask-policy-fixture-automation-luna-high-20261018-r1:ordinal:1",
+      "threadId": "thread:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-automation-luna-high-20261018-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6-luna",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "high"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "caseId": "auto-05",
+      "taskId": "node:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-automation-luna-high-20261018-r1",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%253Adelegate-task%253Atombo-ask-policy-fixture-automation-luna-high-20261018-r1:ordinal:1",
+      "threadId": "thread:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-automation-luna-high-20261018-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6-luna",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "high"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "caseId": "auto-06",
+      "taskId": "node:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-automation-luna-high-20261018-r1",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%253Adelegate-task%253Atombo-ask-policy-fixture-automation-luna-high-20261018-r1:ordinal:1",
+      "threadId": "thread:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-automation-luna-high-20261018-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6-luna",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "high"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "caseId": "auto-07",
+      "taskId": "node:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-automation-luna-high-20261018-r1",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%253Adelegate-task%253Atombo-ask-policy-fixture-automation-luna-high-20261018-r1:ordinal:1",
+      "threadId": "thread:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-automation-luna-high-20261018-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6-luna",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "high"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "caseId": "auto-08",
+      "taskId": "node:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-automation-luna-high-20261018-r1",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%253Adelegate-task%253Atombo-ask-policy-fixture-automation-luna-high-20261018-r1:ordinal:1",
+      "threadId": "thread:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-automation-luna-high-20261018-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6-luna",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "high"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "caseId": "auto-09",
+      "taskId": "node:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-automation-luna-high-20261018-r1",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%253Adelegate-task%253Atombo-ask-policy-fixture-automation-luna-high-20261018-r1:ordinal:1",
+      "threadId": "thread:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-automation-luna-high-20261018-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6-luna",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "high"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "caseId": "auto-10",
+      "taskId": "node:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-automation-luna-high-20261018-r1",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%253Adelegate-task%253Atombo-ask-policy-fixture-automation-luna-high-20261018-r1:ordinal:1",
+      "threadId": "thread:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-automation-luna-high-20261018-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6-luna",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "high"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "caseId": "auto-11",
+      "taskId": "node:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-automation-luna-high-20261018-r1",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%253Adelegate-task%253Atombo-ask-policy-fixture-automation-luna-high-20261018-r1:ordinal:1",
+      "threadId": "thread:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-automation-luna-high-20261018-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6-luna",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "high"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "caseId": "auto-12",
+      "taskId": "node:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-automation-luna-high-20261018-r1",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%253Adelegate-task%253Atombo-ask-policy-fixture-automation-luna-high-20261018-r1:ordinal:1",
+      "threadId": "thread:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-automation-luna-high-20261018-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6-luna",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "high"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "caseId": "auto-13",
+      "taskId": "node:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-automation-luna-high-20261018-r1",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%253Adelegate-task%253Atombo-ask-policy-fixture-automation-luna-high-20261018-r1:ordinal:1",
+      "threadId": "thread:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-automation-luna-high-20261018-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6-luna",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "high"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "caseId": "auto-14",
+      "taskId": "node:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-automation-luna-high-20261018-r1",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%253Adelegate-task%253Atombo-ask-policy-fixture-automation-luna-high-20261018-r1:ordinal:1",
+      "threadId": "thread:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-automation-luna-high-20261018-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6-luna",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "high"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "caseId": "auto-15",
+      "taskId": "node:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-automation-luna-high-20261018-r1",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%253Adelegate-task%253Atombo-ask-policy-fixture-automation-luna-high-20261018-r1:ordinal:1",
+      "threadId": "thread:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-automation-luna-high-20261018-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6-luna",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "high"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "caseId": "auto-16",
+      "taskId": "node:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-automation-luna-high-20261018-r1",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%253Adelegate-task%253Atombo-ask-policy-fixture-automation-luna-high-20261018-r1:ordinal:1",
+      "threadId": "thread:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-automation-luna-high-20261018-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6-luna",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "high"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "caseId": "auto-17",
+      "taskId": "node:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-automation-luna-high-20261018-r1",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%253Adelegate-task%253Atombo-ask-policy-fixture-automation-luna-high-20261018-r1:ordinal:1",
+      "threadId": "thread:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-automation-luna-high-20261018-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6-luna",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "high"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "caseId": "auto-18",
+      "taskId": "node:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-automation-luna-high-20261018-r1",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%253Adelegate-task%253Atombo-ask-policy-fixture-automation-luna-high-20261018-r1:ordinal:1",
+      "threadId": "thread:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-automation-luna-high-20261018-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6-luna",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "high"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "caseId": "auto-19",
+      "taskId": "node:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-automation-luna-high-20261018-r1",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%253Adelegate-task%253Atombo-ask-policy-fixture-automation-luna-high-20261018-r1:ordinal:1",
+      "threadId": "thread:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-automation-luna-high-20261018-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6-luna",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "high"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "caseId": "auto-20",
+      "taskId": "node:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-automation-luna-high-20261018-r1",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%253Adelegate-task%253Atombo-ask-policy-fixture-automation-luna-high-20261018-r1:ordinal:1",
+      "threadId": "thread:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-automation-luna-high-20261018-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6-luna",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "high"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "caseId": "dev-record-01",
+      "taskId": "node:delegated-task:command%3Amcp%3Ab418ff8c-ae31-43d0-8cbd-8da70b9e751d%3Adelegate-task%3Atombo-ask-policy-fixture-main-sol-high-20261018-r1",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Ab418ff8c-ae31-43d0-8cbd-8da70b9e751d%253Adelegate-task%253Atombo-ask-policy-fixture-main-sol-high-20261018-r1:ordinal:1",
+      "threadId": "thread:delegated-task:command%3Amcp%3Ab418ff8c-ae31-43d0-8cbd-8da70b9e751d%3Adelegate-task%3Atombo-ask-policy-fixture-main-sol-high-20261018-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "high"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "caseId": "dev-record-02",
+      "taskId": "node:delegated-task:command%3Amcp%3Ab418ff8c-ae31-43d0-8cbd-8da70b9e751d%3Adelegate-task%3Atombo-ask-policy-fixture-main-sol-high-20261018-r1",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Ab418ff8c-ae31-43d0-8cbd-8da70b9e751d%253Adelegate-task%253Atombo-ask-policy-fixture-main-sol-high-20261018-r1:ordinal:1",
+      "threadId": "thread:delegated-task:command%3Amcp%3Ab418ff8c-ae31-43d0-8cbd-8da70b9e751d%3Adelegate-task%3Atombo-ask-policy-fixture-main-sol-high-20261018-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "high"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "caseId": "dev-record-03",
+      "taskId": "node:delegated-task:command%3Amcp%3Ab418ff8c-ae31-43d0-8cbd-8da70b9e751d%3Adelegate-task%3Atombo-ask-policy-fixture-main-sol-high-20261018-r1",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Ab418ff8c-ae31-43d0-8cbd-8da70b9e751d%253Adelegate-task%253Atombo-ask-policy-fixture-main-sol-high-20261018-r1:ordinal:1",
+      "threadId": "thread:delegated-task:command%3Amcp%3Ab418ff8c-ae31-43d0-8cbd-8da70b9e751d%3Adelegate-task%3Atombo-ask-policy-fixture-main-sol-high-20261018-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "high"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "caseId": "dev-record-04",
+      "taskId": "node:delegated-task:command%3Amcp%3Ab418ff8c-ae31-43d0-8cbd-8da70b9e751d%3Adelegate-task%3Atombo-ask-policy-fixture-main-sol-high-20261018-r1",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Ab418ff8c-ae31-43d0-8cbd-8da70b9e751d%253Adelegate-task%253Atombo-ask-policy-fixture-main-sol-high-20261018-r1:ordinal:1",
+      "threadId": "thread:delegated-task:command%3Amcp%3Ab418ff8c-ae31-43d0-8cbd-8da70b9e751d%3Adelegate-task%3Atombo-ask-policy-fixture-main-sol-high-20261018-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "high"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "caseId": "dev-record-05",
+      "taskId": "node:delegated-task:command%3Amcp%3Ab418ff8c-ae31-43d0-8cbd-8da70b9e751d%3Adelegate-task%3Atombo-ask-policy-fixture-main-sol-high-20261018-r1",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Ab418ff8c-ae31-43d0-8cbd-8da70b9e751d%253Adelegate-task%253Atombo-ask-policy-fixture-main-sol-high-20261018-r1:ordinal:1",
+      "threadId": "thread:delegated-task:command%3Amcp%3Ab418ff8c-ae31-43d0-8cbd-8da70b9e751d%3Adelegate-task%3Atombo-ask-policy-fixture-main-sol-high-20261018-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "high"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "caseId": "dev-record-06",
+      "taskId": "node:delegated-task:command%3Amcp%3Ab418ff8c-ae31-43d0-8cbd-8da70b9e751d%3Adelegate-task%3Atombo-ask-policy-fixture-main-sol-high-20261018-r1",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Ab418ff8c-ae31-43d0-8cbd-8da70b9e751d%253Adelegate-task%253Atombo-ask-policy-fixture-main-sol-high-20261018-r1:ordinal:1",
+      "threadId": "thread:delegated-task:command%3Amcp%3Ab418ff8c-ae31-43d0-8cbd-8da70b9e751d%3Adelegate-task%3Atombo-ask-policy-fixture-main-sol-high-20261018-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "high"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "caseId": "dev-record-07",
+      "taskId": "node:delegated-task:command%3Amcp%3Ab418ff8c-ae31-43d0-8cbd-8da70b9e751d%3Adelegate-task%3Atombo-ask-policy-fixture-main-sol-high-20261018-r1",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Ab418ff8c-ae31-43d0-8cbd-8da70b9e751d%253Adelegate-task%253Atombo-ask-policy-fixture-main-sol-high-20261018-r1:ordinal:1",
+      "threadId": "thread:delegated-task:command%3Amcp%3Ab418ff8c-ae31-43d0-8cbd-8da70b9e751d%3Adelegate-task%3Atombo-ask-policy-fixture-main-sol-high-20261018-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "high"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "caseId": "dev-record-08",
+      "taskId": "node:delegated-task:command%3Amcp%3Ab418ff8c-ae31-43d0-8cbd-8da70b9e751d%3Adelegate-task%3Atombo-ask-policy-fixture-main-sol-high-20261018-r1",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Ab418ff8c-ae31-43d0-8cbd-8da70b9e751d%253Adelegate-task%253Atombo-ask-policy-fixture-main-sol-high-20261018-r1:ordinal:1",
+      "threadId": "thread:delegated-task:command%3Amcp%3Ab418ff8c-ae31-43d0-8cbd-8da70b9e751d%3Adelegate-task%3Atombo-ask-policy-fixture-main-sol-high-20261018-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "high"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "caseId": "dev-record-09",
+      "taskId": "node:delegated-task:command%3Amcp%3Ab418ff8c-ae31-43d0-8cbd-8da70b9e751d%3Adelegate-task%3Atombo-ask-policy-fixture-main-sol-high-20261018-r1",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Ab418ff8c-ae31-43d0-8cbd-8da70b9e751d%253Adelegate-task%253Atombo-ask-policy-fixture-main-sol-high-20261018-r1:ordinal:1",
+      "threadId": "thread:delegated-task:command%3Amcp%3Ab418ff8c-ae31-43d0-8cbd-8da70b9e751d%3Adelegate-task%3Atombo-ask-policy-fixture-main-sol-high-20261018-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "high"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "caseId": "dev-record-10",
+      "taskId": "node:delegated-task:command%3Amcp%3Ab418ff8c-ae31-43d0-8cbd-8da70b9e751d%3Adelegate-task%3Atombo-ask-policy-fixture-main-sol-high-20261018-r1",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Ab418ff8c-ae31-43d0-8cbd-8da70b9e751d%253Adelegate-task%253Atombo-ask-policy-fixture-main-sol-high-20261018-r1:ordinal:1",
+      "threadId": "thread:delegated-task:command%3Amcp%3Ab418ff8c-ae31-43d0-8cbd-8da70b9e751d%3Adelegate-task%3Atombo-ask-policy-fixture-main-sol-high-20261018-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "high"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "caseId": "dev-record-11",
+      "taskId": "node:delegated-task:command%3Amcp%3Ab418ff8c-ae31-43d0-8cbd-8da70b9e751d%3Adelegate-task%3Atombo-ask-policy-fixture-main-sol-high-20261018-r1",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Ab418ff8c-ae31-43d0-8cbd-8da70b9e751d%253Adelegate-task%253Atombo-ask-policy-fixture-main-sol-high-20261018-r1:ordinal:1",
+      "threadId": "thread:delegated-task:command%3Amcp%3Ab418ff8c-ae31-43d0-8cbd-8da70b9e751d%3Adelegate-task%3Atombo-ask-policy-fixture-main-sol-high-20261018-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "high"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "caseId": "dev-record-12",
+      "taskId": "node:delegated-task:command%3Amcp%3Ab418ff8c-ae31-43d0-8cbd-8da70b9e751d%3Adelegate-task%3Atombo-ask-policy-fixture-main-sol-high-20261018-r1",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Ab418ff8c-ae31-43d0-8cbd-8da70b9e751d%253Adelegate-task%253Atombo-ask-policy-fixture-main-sol-high-20261018-r1:ordinal:1",
+      "threadId": "thread:delegated-task:command%3Amcp%3Ab418ff8c-ae31-43d0-8cbd-8da70b9e751d%3Adelegate-task%3Atombo-ask-policy-fixture-main-sol-high-20261018-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "high"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "caseId": "dev-record-13",
+      "taskId": "node:delegated-task:command%3Amcp%3Ab418ff8c-ae31-43d0-8cbd-8da70b9e751d%3Adelegate-task%3Atombo-ask-policy-fixture-main-sol-high-20261018-r1",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Ab418ff8c-ae31-43d0-8cbd-8da70b9e751d%253Adelegate-task%253Atombo-ask-policy-fixture-main-sol-high-20261018-r1:ordinal:1",
+      "threadId": "thread:delegated-task:command%3Amcp%3Ab418ff8c-ae31-43d0-8cbd-8da70b9e751d%3Adelegate-task%3Atombo-ask-policy-fixture-main-sol-high-20261018-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "high"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "caseId": "dev-record-14",
+      "taskId": "node:delegated-task:command%3Amcp%3Ab418ff8c-ae31-43d0-8cbd-8da70b9e751d%3Adelegate-task%3Atombo-ask-policy-fixture-main-sol-high-20261018-r1",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Ab418ff8c-ae31-43d0-8cbd-8da70b9e751d%253Adelegate-task%253Atombo-ask-policy-fixture-main-sol-high-20261018-r1:ordinal:1",
+      "threadId": "thread:delegated-task:command%3Amcp%3Ab418ff8c-ae31-43d0-8cbd-8da70b9e751d%3Adelegate-task%3Atombo-ask-policy-fixture-main-sol-high-20261018-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "high"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "caseId": "dev-record-15",
+      "taskId": "node:delegated-task:command%3Amcp%3Ab418ff8c-ae31-43d0-8cbd-8da70b9e751d%3Adelegate-task%3Atombo-ask-policy-fixture-main-sol-high-20261018-r1",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Ab418ff8c-ae31-43d0-8cbd-8da70b9e751d%253Adelegate-task%253Atombo-ask-policy-fixture-main-sol-high-20261018-r1:ordinal:1",
+      "threadId": "thread:delegated-task:command%3Amcp%3Ab418ff8c-ae31-43d0-8cbd-8da70b9e751d%3Adelegate-task%3Atombo-ask-policy-fixture-main-sol-high-20261018-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "high"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "caseId": "dev-record-16",
+      "taskId": "node:delegated-task:command%3Amcp%3Ab418ff8c-ae31-43d0-8cbd-8da70b9e751d%3Adelegate-task%3Atombo-ask-policy-fixture-main-sol-high-20261018-r1",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Ab418ff8c-ae31-43d0-8cbd-8da70b9e751d%253Adelegate-task%253Atombo-ask-policy-fixture-main-sol-high-20261018-r1:ordinal:1",
+      "threadId": "thread:delegated-task:command%3Amcp%3Ab418ff8c-ae31-43d0-8cbd-8da70b9e751d%3Adelegate-task%3Atombo-ask-policy-fixture-main-sol-high-20261018-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "high"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "caseId": "dev-record-17",
+      "taskId": "node:delegated-task:command%3Amcp%3Ab418ff8c-ae31-43d0-8cbd-8da70b9e751d%3Adelegate-task%3Atombo-ask-policy-fixture-main-sol-high-20261018-r1",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Ab418ff8c-ae31-43d0-8cbd-8da70b9e751d%253Adelegate-task%253Atombo-ask-policy-fixture-main-sol-high-20261018-r1:ordinal:1",
+      "threadId": "thread:delegated-task:command%3Amcp%3Ab418ff8c-ae31-43d0-8cbd-8da70b9e751d%3Adelegate-task%3Atombo-ask-policy-fixture-main-sol-high-20261018-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "high"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "caseId": "dev-record-18",
+      "taskId": "node:delegated-task:command%3Amcp%3Ab418ff8c-ae31-43d0-8cbd-8da70b9e751d%3Adelegate-task%3Atombo-ask-policy-fixture-main-sol-high-20261018-r1",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Ab418ff8c-ae31-43d0-8cbd-8da70b9e751d%253Adelegate-task%253Atombo-ask-policy-fixture-main-sol-high-20261018-r1:ordinal:1",
+      "threadId": "thread:delegated-task:command%3Amcp%3Ab418ff8c-ae31-43d0-8cbd-8da70b9e751d%3Adelegate-task%3Atombo-ask-policy-fixture-main-sol-high-20261018-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "high"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "caseId": "dev-record-19",
+      "taskId": "node:delegated-task:command%3Amcp%3Ab418ff8c-ae31-43d0-8cbd-8da70b9e751d%3Adelegate-task%3Atombo-ask-policy-fixture-main-sol-high-20261018-r1",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Ab418ff8c-ae31-43d0-8cbd-8da70b9e751d%253Adelegate-task%253Atombo-ask-policy-fixture-main-sol-high-20261018-r1:ordinal:1",
+      "threadId": "thread:delegated-task:command%3Amcp%3Ab418ff8c-ae31-43d0-8cbd-8da70b9e751d%3Adelegate-task%3Atombo-ask-policy-fixture-main-sol-high-20261018-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "high"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "caseId": "dev-record-20",
+      "taskId": "node:delegated-task:command%3Amcp%3Ab418ff8c-ae31-43d0-8cbd-8da70b9e751d%3Adelegate-task%3Atombo-ask-policy-fixture-main-sol-high-20261018-r1",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Ab418ff8c-ae31-43d0-8cbd-8da70b9e751d%253Adelegate-task%253Atombo-ask-policy-fixture-main-sol-high-20261018-r1:ordinal:1",
+      "threadId": "thread:delegated-task:command%3Amcp%3Ab418ff8c-ae31-43d0-8cbd-8da70b9e751d%3Adelegate-task%3Atombo-ask-policy-fixture-main-sol-high-20261018-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "high"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "caseId": "res-01",
+      "taskId": "node:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-research-luna-high-20261018-r1",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%253Adelegate-task%253Atombo-ask-policy-fixture-research-luna-high-20261018-r1:ordinal:1",
+      "threadId": "thread:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-research-luna-high-20261018-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6-luna",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "high"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "caseId": "res-02",
+      "taskId": "node:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-research-luna-high-20261018-r1",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%253Adelegate-task%253Atombo-ask-policy-fixture-research-luna-high-20261018-r1:ordinal:1",
+      "threadId": "thread:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-research-luna-high-20261018-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6-luna",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "high"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "caseId": "res-03",
+      "taskId": "node:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-research-luna-high-20261018-r1",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%253Adelegate-task%253Atombo-ask-policy-fixture-research-luna-high-20261018-r1:ordinal:1",
+      "threadId": "thread:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-research-luna-high-20261018-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6-luna",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "high"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "caseId": "res-04",
+      "taskId": "node:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-research-luna-high-20261018-r1",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%253Adelegate-task%253Atombo-ask-policy-fixture-research-luna-high-20261018-r1:ordinal:1",
+      "threadId": "thread:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-research-luna-high-20261018-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6-luna",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "high"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "caseId": "res-05",
+      "taskId": "node:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-research-luna-high-20261018-r1",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%253Adelegate-task%253Atombo-ask-policy-fixture-research-luna-high-20261018-r1:ordinal:1",
+      "threadId": "thread:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-research-luna-high-20261018-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6-luna",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "high"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "caseId": "res-06",
+      "taskId": "node:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-research-luna-high-20261018-r1",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%253Adelegate-task%253Atombo-ask-policy-fixture-research-luna-high-20261018-r1:ordinal:1",
+      "threadId": "thread:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-research-luna-high-20261018-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6-luna",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "high"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "caseId": "res-07",
+      "taskId": "node:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-research-luna-high-20261018-r1",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%253Adelegate-task%253Atombo-ask-policy-fixture-research-luna-high-20261018-r1:ordinal:1",
+      "threadId": "thread:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-research-luna-high-20261018-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6-luna",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "high"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "caseId": "res-08",
+      "taskId": "node:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-research-luna-high-20261018-r1",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%253Adelegate-task%253Atombo-ask-policy-fixture-research-luna-high-20261018-r1:ordinal:1",
+      "threadId": "thread:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-research-luna-high-20261018-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6-luna",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "high"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "caseId": "res-09",
+      "taskId": "node:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-research-luna-high-20261018-r1",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%253Adelegate-task%253Atombo-ask-policy-fixture-research-luna-high-20261018-r1:ordinal:1",
+      "threadId": "thread:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-research-luna-high-20261018-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6-luna",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "high"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "caseId": "res-10",
+      "taskId": "node:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-research-luna-high-20261018-r1",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%253Adelegate-task%253Atombo-ask-policy-fixture-research-luna-high-20261018-r1:ordinal:1",
+      "threadId": "thread:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-research-luna-high-20261018-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6-luna",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "high"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "caseId": "res-11",
+      "taskId": "node:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-research-luna-high-20261018-r1",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%253Adelegate-task%253Atombo-ask-policy-fixture-research-luna-high-20261018-r1:ordinal:1",
+      "threadId": "thread:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-research-luna-high-20261018-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6-luna",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "high"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "caseId": "res-12",
+      "taskId": "node:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-research-luna-high-20261018-r1",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%253Adelegate-task%253Atombo-ask-policy-fixture-research-luna-high-20261018-r1:ordinal:1",
+      "threadId": "thread:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-research-luna-high-20261018-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6-luna",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "high"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "caseId": "res-13",
+      "taskId": "node:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-research-luna-high-20261018-r1",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%253Adelegate-task%253Atombo-ask-policy-fixture-research-luna-high-20261018-r1:ordinal:1",
+      "threadId": "thread:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-research-luna-high-20261018-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6-luna",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "high"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "caseId": "res-14",
+      "taskId": "node:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-research-luna-high-20261018-r1",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%253Adelegate-task%253Atombo-ask-policy-fixture-research-luna-high-20261018-r1:ordinal:1",
+      "threadId": "thread:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-research-luna-high-20261018-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6-luna",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "high"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "caseId": "res-15",
+      "taskId": "node:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-research-luna-high-20261018-r1",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%253Adelegate-task%253Atombo-ask-policy-fixture-research-luna-high-20261018-r1:ordinal:1",
+      "threadId": "thread:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-research-luna-high-20261018-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6-luna",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "high"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "caseId": "res-16",
+      "taskId": "node:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-research-luna-high-20261018-r1",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%253Adelegate-task%253Atombo-ask-policy-fixture-research-luna-high-20261018-r1:ordinal:1",
+      "threadId": "thread:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-research-luna-high-20261018-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6-luna",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "high"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "caseId": "res-17",
+      "taskId": "node:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-research-luna-high-20261018-r1",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%253Adelegate-task%253Atombo-ask-policy-fixture-research-luna-high-20261018-r1:ordinal:1",
+      "threadId": "thread:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-research-luna-high-20261018-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6-luna",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "high"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "caseId": "res-18",
+      "taskId": "node:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-research-luna-high-20261018-r1",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%253Adelegate-task%253Atombo-ask-policy-fixture-research-luna-high-20261018-r1:ordinal:1",
+      "threadId": "thread:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-research-luna-high-20261018-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6-luna",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "high"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "caseId": "res-19",
+      "taskId": "node:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-research-luna-high-20261018-r1",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%253Adelegate-task%253Atombo-ask-policy-fixture-research-luna-high-20261018-r1:ordinal:1",
+      "threadId": "thread:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-research-luna-high-20261018-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6-luna",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "high"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "caseId": "res-20",
+      "taskId": "node:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-research-luna-high-20261018-r1",
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%253Adelegate-task%253Atombo-ask-policy-fixture-research-luna-high-20261018-r1:ordinal:1",
+      "threadId": "thread:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-research-luna-high-20261018-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6-luna",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "high"
+        }
+      ],
+      "status": "completed"
+    }
+  ],
+  "runs": [
+    {
+      "vendor": "openai",
+      "caseIds": [
+        "auto-01",
+        "auto-02",
+        "auto-03",
+        "auto-04",
+        "auto-05"
+      ],
+      "fixturesHash": "2fd8bb6340563d8ea614adab1d0731b343c15887cb0823aa9bcd9324c1040ba2",
+      "rubricHash": "0e031b80a18f3990ddaacf6bfd3a927dd32919f42160b0913886217c8286e740",
+      "attempts": [
+        {
+          "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-openai-batch01-20261018",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:1",
+          "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-openai-batch01-20261018",
+          "providerInstanceId": "codex",
+          "model": "gpt-6.1-sol",
+          "options": [
+            {
+              "id": "reasoningEffort",
+              "value": "high"
+            }
+          ],
+          "status": "completed",
+          "sourceOnly": true,
+          "repoExploration": false,
+          "prompt": {
+            "path": "docs/ask-policy-work/annotation-runs/batch-01-prompt.json",
+            "sha256": "7142175ff211a53b16f01df526dd902665b37a770dd154f3df88a511aec2e5d9",
+            "byteLength": 19467
+          },
+          "output": {
+            "path": "docs/ask-policy-work/annotation-runs/openai-batch01-output.json",
+            "sha256": "753a6c1e9c5db46ea532621a8383d8cc83a1366b0d89401c0e67dcf814f1096e",
+            "byteLength": 376
+          }
+        }
+      ]
+    },
+    {
+      "vendor": "openai",
+      "caseIds": [
+        "auto-06",
+        "auto-07",
+        "auto-08",
+        "auto-09",
+        "auto-10"
+      ],
+      "fixturesHash": "2fd8bb6340563d8ea614adab1d0731b343c15887cb0823aa9bcd9324c1040ba2",
+      "rubricHash": "0e031b80a18f3990ddaacf6bfd3a927dd32919f42160b0913886217c8286e740",
+      "attempts": [
+        {
+          "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-openai-batch02-20261018",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:2",
+          "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-openai-batch01-20261018",
+          "providerInstanceId": "codex",
+          "model": "gpt-6.1-sol",
+          "options": [
+            {
+              "id": "reasoningEffort",
+              "value": "high"
+            }
+          ],
+          "status": "completed",
+          "sourceOnly": true,
+          "repoExploration": false,
+          "prompt": {
+            "path": "docs/ask-policy-work/annotation-runs/batch-02-prompt.json",
+            "sha256": "53007898ccdf2aae6a4d379b47755928fd97d541c8448d2eb5e791865425c264",
+            "byteLength": 21123
+          },
+          "output": {
+            "path": "docs/ask-policy-work/annotation-runs/openai-batch02-output.json",
+            "sha256": "53e82a2bf6d6ede1444d32af6699fd15bcf612277359c28659aa3712be1e26f0",
+            "byteLength": 404
+          }
+        }
+      ]
+    },
+    {
+      "vendor": "openai",
+      "caseIds": [
+        "auto-11",
+        "auto-12",
+        "auto-13",
+        "auto-14",
+        "auto-15"
+      ],
+      "fixturesHash": "2fd8bb6340563d8ea614adab1d0731b343c15887cb0823aa9bcd9324c1040ba2",
+      "rubricHash": "0e031b80a18f3990ddaacf6bfd3a927dd32919f42160b0913886217c8286e740",
+      "attempts": [
+        {
+          "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-openai-batch03-20261018",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:3",
+          "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-openai-batch01-20261018",
+          "providerInstanceId": "codex",
+          "model": "gpt-6.1-sol",
+          "options": [
+            {
+              "id": "reasoningEffort",
+              "value": "high"
+            }
+          ],
+          "status": "completed",
+          "sourceOnly": true,
+          "repoExploration": false,
+          "prompt": {
+            "path": "docs/ask-policy-work/annotation-runs/batch-03-prompt.json",
+            "sha256": "b805e09de02ba9581a32c60b8a4b8131edf81990e56106493c350af971575736",
+            "byteLength": 22960
+          },
+          "output": {
+            "path": "docs/ask-policy-work/annotation-runs/openai-batch03-output.json",
+            "sha256": "22d5234282a673e85a6249e31e524f4ce25001b56951c369165391757c867178",
+            "byteLength": 345
+          }
+        }
+      ]
+    },
+    {
+      "vendor": "openai",
+      "caseIds": [
+        "auto-16",
+        "auto-17",
+        "auto-18",
+        "auto-19",
+        "auto-20"
+      ],
+      "fixturesHash": "2fd8bb6340563d8ea614adab1d0731b343c15887cb0823aa9bcd9324c1040ba2",
+      "rubricHash": "0e031b80a18f3990ddaacf6bfd3a927dd32919f42160b0913886217c8286e740",
+      "attempts": [
+        {
+          "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-openai-batch04-20261018",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:4",
+          "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-openai-batch01-20261018",
+          "providerInstanceId": "codex",
+          "model": "gpt-6.1-sol",
+          "options": [
+            {
+              "id": "reasoningEffort",
+              "value": "high"
+            }
+          ],
+          "status": "completed",
+          "sourceOnly": true,
+          "repoExploration": false,
+          "prompt": {
+            "path": "docs/ask-policy-work/annotation-runs/batch-04-prompt.json",
+            "sha256": "01b79d4f860eceb45ff181a9cf60c877a5717437adefede9c6595fd7ea480114",
+            "byteLength": 20174
+          },
+          "output": {
+            "path": "docs/ask-policy-work/annotation-runs/openai-batch04-output.json",
+            "sha256": "9bd648bbb9282f0e42d8fb01a41f29f661e256f02b187461f908bd093eb8828b",
+            "byteLength": 353
+          }
+        }
+      ]
+    },
+    {
+      "vendor": "openai",
+      "caseIds": [
+        "dev-record-01",
+        "dev-record-02",
+        "dev-record-03",
+        "dev-record-04",
+        "dev-record-05"
+      ],
+      "fixturesHash": "2fd8bb6340563d8ea614adab1d0731b343c15887cb0823aa9bcd9324c1040ba2",
+      "rubricHash": "0e031b80a18f3990ddaacf6bfd3a927dd32919f42160b0913886217c8286e740",
+      "attempts": [
+        {
+          "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-openai-batch05-20261018",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:5",
+          "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-openai-batch01-20261018",
+          "providerInstanceId": "codex",
+          "model": "gpt-6.1-sol",
+          "options": [
+            {
+              "id": "reasoningEffort",
+              "value": "high"
+            }
+          ],
+          "status": "completed",
+          "sourceOnly": true,
+          "repoExploration": false,
+          "prompt": {
+            "path": "docs/ask-policy-work/annotation-runs/batch-05-prompt.json",
+            "sha256": "f04131d16204870f0293e2f7277755fc12df242002fd9a94af857c314eab9b55",
+            "byteLength": 37445
+          },
+          "output": {
+            "path": "docs/ask-policy-work/annotation-runs/openai-batch05-output.json",
+            "sha256": "d7cfb104bc3864b23317b417e6f31f07946e25879ae0e3f0c9701d3c2d53eb24",
+            "byteLength": 412
+          }
+        }
+      ]
+    },
+    {
+      "vendor": "openai",
+      "caseIds": [
+        "dev-record-06",
+        "dev-record-07",
+        "dev-record-08",
+        "dev-record-09",
+        "dev-record-10"
+      ],
+      "fixturesHash": "2fd8bb6340563d8ea614adab1d0731b343c15887cb0823aa9bcd9324c1040ba2",
+      "rubricHash": "0e031b80a18f3990ddaacf6bfd3a927dd32919f42160b0913886217c8286e740",
+      "attempts": [
+        {
+          "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-openai-batch06-20261018",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:6",
+          "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-openai-batch01-20261018",
+          "providerInstanceId": "codex",
+          "model": "gpt-6.1-sol",
+          "options": [
+            {
+              "id": "reasoningEffort",
+              "value": "high"
+            }
+          ],
+          "status": "completed",
+          "sourceOnly": true,
+          "repoExploration": false,
+          "prompt": {
+            "path": "docs/ask-policy-work/annotation-runs/batch-06-prompt.json",
+            "sha256": "1d73fdbd87ba0939d21c8bc50a5af8d0c5cc54d31f39bb439a86bdf0177eded0",
+            "byteLength": 38522
+          },
+          "output": {
+            "path": "docs/ask-policy-work/annotation-runs/openai-batch06-output.json",
+            "sha256": "738bde0e8a88a458b75d77082eb8a2da9eafff1590d9162cb716817dd0af1f22",
+            "byteLength": 334
+          }
+        }
+      ]
+    },
+    {
+      "vendor": "openai",
+      "caseIds": [
+        "dev-record-11",
+        "dev-record-12",
+        "dev-record-13",
+        "dev-record-14",
+        "dev-record-15"
+      ],
+      "fixturesHash": "2fd8bb6340563d8ea614adab1d0731b343c15887cb0823aa9bcd9324c1040ba2",
+      "rubricHash": "0e031b80a18f3990ddaacf6bfd3a927dd32919f42160b0913886217c8286e740",
+      "attempts": [
+        {
+          "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-openai-batch07-20261018",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:7",
+          "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-openai-batch01-20261018",
+          "providerInstanceId": "codex",
+          "model": "gpt-6.1-sol",
+          "options": [
+            {
+              "id": "reasoningEffort",
+              "value": "high"
+            }
+          ],
+          "status": "completed",
+          "sourceOnly": true,
+          "repoExploration": false,
+          "prompt": {
+            "path": "docs/ask-policy-work/annotation-runs/batch-07-prompt.json",
+            "sha256": "76dcd49da3f68328aa0bba853c474c0f1c014278315d12961a0e556940cc1ebc",
+            "byteLength": 42788
+          },
+          "output": {
+            "path": "docs/ask-policy-work/annotation-runs/openai-batch07-output.json",
+            "sha256": "7696b794d895ed7b71c355a8a4699ca09ae3fa5d04c92178a6ff7c3aae3f62e4",
+            "byteLength": 378
+          }
+        }
+      ]
+    },
+    {
+      "vendor": "openai",
+      "caseIds": [
+        "dev-record-16",
+        "dev-record-17",
+        "dev-record-18",
+        "dev-record-19",
+        "dev-record-20"
+      ],
+      "fixturesHash": "2fd8bb6340563d8ea614adab1d0731b343c15887cb0823aa9bcd9324c1040ba2",
+      "rubricHash": "0e031b80a18f3990ddaacf6bfd3a927dd32919f42160b0913886217c8286e740",
+      "attempts": [
+        {
+          "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-openai-batch08-20261018",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:8",
+          "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-openai-batch01-20261018",
+          "providerInstanceId": "codex",
+          "model": "gpt-6.1-sol",
+          "options": [
+            {
+              "id": "reasoningEffort",
+              "value": "high"
+            }
+          ],
+          "status": "completed",
+          "sourceOnly": true,
+          "repoExploration": false,
+          "prompt": {
+            "path": "docs/ask-policy-work/annotation-runs/batch-08-prompt.json",
+            "sha256": "d47decc67992466fdb25c3cda5666ea40960f6138e68d9d4eb6ff7a0ba52ebf8",
+            "byteLength": 36904
+          },
+          "output": {
+            "path": "docs/ask-policy-work/annotation-runs/openai-batch08-output.json",
+            "sha256": "85c36d8a76315a709aa50d434f078f941e85000ae8af49568d660d140b830847",
+            "byteLength": 352
+          }
+        }
+      ]
+    },
+    {
+      "vendor": "openai",
+      "caseIds": [
+        "res-01",
+        "res-02",
+        "res-03",
+        "res-04",
+        "res-05"
+      ],
+      "fixturesHash": "2fd8bb6340563d8ea614adab1d0731b343c15887cb0823aa9bcd9324c1040ba2",
+      "rubricHash": "0e031b80a18f3990ddaacf6bfd3a927dd32919f42160b0913886217c8286e740",
+      "attempts": [
+        {
+          "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-openai-batch09-20261018",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:9",
+          "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-openai-batch01-20261018",
+          "providerInstanceId": "codex",
+          "model": "gpt-6.1-sol",
+          "options": [
+            {
+              "id": "reasoningEffort",
+              "value": "high"
+            }
+          ],
+          "status": "completed",
+          "sourceOnly": true,
+          "repoExploration": false,
+          "prompt": {
+            "path": "docs/ask-policy-work/annotation-runs/batch-09-prompt.json",
+            "sha256": "50c1db94918bfa5ef8846097472bdcb1bd3a9f84571215d06efcf3bc637c9a9b",
+            "byteLength": 39578
+          },
+          "output": {
+            "path": "docs/ask-policy-work/annotation-runs/openai-batch09-output.json",
+            "sha256": "9fb9110c45bf3b16b9556ed101df36a3d4777ea1cb3448043b3fbb99bb2668e2",
+            "byteLength": 359
+          }
+        }
+      ]
+    },
+    {
+      "vendor": "openai",
+      "caseIds": [
+        "res-06",
+        "res-07",
+        "res-08",
+        "res-09",
+        "res-10"
+      ],
+      "fixturesHash": "2fd8bb6340563d8ea614adab1d0731b343c15887cb0823aa9bcd9324c1040ba2",
+      "rubricHash": "0e031b80a18f3990ddaacf6bfd3a927dd32919f42160b0913886217c8286e740",
+      "attempts": [
+        {
+          "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-openai-batch10-20261018",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:10",
+          "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-openai-batch01-20261018",
+          "providerInstanceId": "codex",
+          "model": "gpt-6.1-sol",
+          "options": [
+            {
+              "id": "reasoningEffort",
+              "value": "high"
+            }
+          ],
+          "status": "completed",
+          "sourceOnly": true,
+          "repoExploration": false,
+          "prompt": {
+            "path": "docs/ask-policy-work/annotation-runs/batch-10-prompt.json",
+            "sha256": "b09b3578141d76316f7ea5401b8a5ef52f76ba818d4c6f8791467479029b6c97",
+            "byteLength": 42009
+          },
+          "output": {
+            "path": "docs/ask-policy-work/annotation-runs/openai-batch10-output.json",
+            "sha256": "10c1f8ca6b2e296f028bbdd1d65a03441d6c380a7329722f4c20f0ce0d0d5277",
+            "byteLength": 346
+          }
+        }
+      ]
+    },
+    {
+      "vendor": "openai",
+      "caseIds": [
+        "res-11",
+        "res-12",
+        "res-13",
+        "res-14",
+        "res-15"
+      ],
+      "fixturesHash": "2fd8bb6340563d8ea614adab1d0731b343c15887cb0823aa9bcd9324c1040ba2",
+      "rubricHash": "0e031b80a18f3990ddaacf6bfd3a927dd32919f42160b0913886217c8286e740",
+      "attempts": [
+        {
+          "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-openai-batch11-20261018",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:11",
+          "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-openai-batch01-20261018",
+          "providerInstanceId": "codex",
+          "model": "gpt-6.1-sol",
+          "options": [
+            {
+              "id": "reasoningEffort",
+              "value": "high"
+            }
+          ],
+          "status": "completed",
+          "sourceOnly": true,
+          "repoExploration": false,
+          "prompt": {
+            "path": "docs/ask-policy-work/annotation-runs/batch-11-prompt.json",
+            "sha256": "dc6310ccc8efa260fe8241480f445d6a6dd14f66b89a1a129113b44ffe3170e2",
+            "byteLength": 39942
+          },
+          "output": {
+            "path": "docs/ask-policy-work/annotation-runs/openai-batch11-output.json",
+            "sha256": "73b60afb7d31bba773ab973e861365d8cae2a7e764a65348f4adb119f18dce04",
+            "byteLength": 362
+          }
+        }
+      ]
+    },
+    {
+      "vendor": "openai",
+      "caseIds": [
+        "res-16",
+        "res-17",
+        "res-18",
+        "res-19",
+        "res-20"
+      ],
+      "fixturesHash": "2fd8bb6340563d8ea614adab1d0731b343c15887cb0823aa9bcd9324c1040ba2",
+      "rubricHash": "0e031b80a18f3990ddaacf6bfd3a927dd32919f42160b0913886217c8286e740",
+      "attempts": [
+        {
+          "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-openai-batch12-20261018",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-openai-batch01-20261018:ordinal:12",
+          "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-openai-batch01-20261018",
+          "providerInstanceId": "codex",
+          "model": "gpt-6.1-sol",
+          "options": [
+            {
+              "id": "reasoningEffort",
+              "value": "high"
+            }
+          ],
+          "status": "completed",
+          "sourceOnly": true,
+          "repoExploration": false,
+          "prompt": {
+            "path": "docs/ask-policy-work/annotation-runs/batch-12-prompt.json",
+            "sha256": "d4f69b853494595d8a2389b503dbd34db0970728540a1331537e7c5f0fc9f119",
+            "byteLength": 40292
+          },
+          "output": {
+            "path": "docs/ask-policy-work/annotation-runs/openai-batch12-output.json",
+            "sha256": "c698e1081441d8ea434280f8bcc60f7a2ee1bd8bcb3ce2f0eaaa809929adc2cf",
+            "byteLength": 362
+          }
+        }
+      ]
+    },
+    {
+      "vendor": "google",
+      "caseIds": [
+        "auto-01",
+        "auto-02",
+        "auto-03",
+        "auto-04",
+        "auto-05"
+      ],
+      "fixturesHash": "2fd8bb6340563d8ea614adab1d0731b343c15887cb0823aa9bcd9324c1040ba2",
+      "rubricHash": "0e031b80a18f3990ddaacf6bfd3a927dd32919f42160b0913886217c8286e740",
+      "attempts": [
+        {
+          "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-google-batch01-20261018",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-google-batch01-20261018:ordinal:1",
+          "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-google-batch01-20261018",
+          "providerInstanceId": "antigravity",
+          "model": "gemini-3.8-flash-medium",
+          "options": [],
+          "status": "completed",
+          "sourceOnly": true,
+          "repoExploration": false,
+          "prompt": {
+            "path": "docs/ask-policy-work/annotation-runs/batch-01-prompt.json",
+            "sha256": "7142175ff211a53b16f01df526dd902665b37a770dd154f3df88a511aec2e5d9",
+            "byteLength": 19467
+          },
+          "output": {
+            "path": "docs/ask-policy-work/annotation-runs/google-batch01-output.json",
+            "sha256": "1727ca6d9cfe0f4b56fe268b8f59f717214f0359d36d3dc01603605faf4e9318",
+            "byteLength": 342
+          }
+        }
+      ]
+    },
+    {
+      "vendor": "google",
+      "caseIds": [
+        "auto-06",
+        "auto-07",
+        "auto-08",
+        "auto-09",
+        "auto-10"
+      ],
+      "fixturesHash": "2fd8bb6340563d8ea614adab1d0731b343c15887cb0823aa9bcd9324c1040ba2",
+      "rubricHash": "0e031b80a18f3990ddaacf6bfd3a927dd32919f42160b0913886217c8286e740",
+      "attempts": [
+        {
+          "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-google-batch02-20261018",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-google-batch01-20261018:ordinal:2",
+          "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-google-batch01-20261018",
+          "providerInstanceId": "antigravity",
+          "model": "gemini-3.8-flash-medium",
+          "options": [],
+          "status": "completed",
+          "sourceOnly": true,
+          "repoExploration": false,
+          "prompt": {
+            "path": "docs/ask-policy-work/annotation-runs/batch-02-prompt.json",
+            "sha256": "53007898ccdf2aae6a4d379b47755928fd97d541c8448d2eb5e791865425c264",
+            "byteLength": 21123
+          },
+          "output": {
+            "path": "docs/ask-policy-work/annotation-runs/google-batch02-output.json",
+            "sha256": "764aca6ee5f5e74f3d15d590d3bc3fd560f072d0d427241f15061ec929a0e8c6",
+            "byteLength": 338
+          }
+        }
+      ]
+    },
+    {
+      "vendor": "google",
+      "caseIds": [
+        "auto-11",
+        "auto-12",
+        "auto-13",
+        "auto-14",
+        "auto-15"
+      ],
+      "fixturesHash": "2fd8bb6340563d8ea614adab1d0731b343c15887cb0823aa9bcd9324c1040ba2",
+      "rubricHash": "0e031b80a18f3990ddaacf6bfd3a927dd32919f42160b0913886217c8286e740",
+      "attempts": [
+        {
+          "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-google-batch03-20261018",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-google-batch01-20261018:ordinal:3",
+          "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-google-batch01-20261018",
+          "providerInstanceId": "antigravity",
+          "model": "gemini-3.8-flash-medium",
+          "options": [],
+          "status": "completed",
+          "sourceOnly": true,
+          "repoExploration": false,
+          "prompt": {
+            "path": "docs/ask-policy-work/annotation-runs/batch-03-prompt.json",
+            "sha256": "b805e09de02ba9581a32c60b8a4b8131edf81990e56106493c350af971575736",
+            "byteLength": 22960
+          },
+          "output": {
+            "path": "docs/ask-policy-work/annotation-runs/google-batch03-output.json",
+            "sha256": "065016111c032dee394395b4c8d2992170266a86e253dcb4c919a52ea25e0b75",
+            "byteLength": 320
+          }
+        }
+      ]
+    },
+    {
+      "vendor": "google",
+      "caseIds": [
+        "auto-16",
+        "auto-17",
+        "auto-18",
+        "auto-19",
+        "auto-20"
+      ],
+      "fixturesHash": "2fd8bb6340563d8ea614adab1d0731b343c15887cb0823aa9bcd9324c1040ba2",
+      "rubricHash": "0e031b80a18f3990ddaacf6bfd3a927dd32919f42160b0913886217c8286e740",
+      "attempts": [
+        {
+          "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-google-batch04-20261018",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-google-batch01-20261018:ordinal:4",
+          "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-google-batch01-20261018",
+          "providerInstanceId": "antigravity",
+          "model": "gemini-3.8-flash-medium",
+          "options": [],
+          "status": "completed",
+          "sourceOnly": true,
+          "repoExploration": false,
+          "prompt": {
+            "path": "docs/ask-policy-work/annotation-runs/batch-04-prompt.json",
+            "sha256": "01b79d4f860eceb45ff181a9cf60c877a5717437adefede9c6595fd7ea480114",
+            "byteLength": 20174
+          },
+          "output": {
+            "path": "docs/ask-policy-work/annotation-runs/google-batch04-output.json",
+            "sha256": "4228974deef9fc264c3546648ca3076eec1ac0f12874ae81e64f263c65532941",
+            "byteLength": 328
+          }
+        }
+      ]
+    },
+    {
+      "vendor": "google",
+      "caseIds": [
+        "dev-record-01",
+        "dev-record-02",
+        "dev-record-03",
+        "dev-record-04",
+        "dev-record-05"
+      ],
+      "fixturesHash": "2fd8bb6340563d8ea614adab1d0731b343c15887cb0823aa9bcd9324c1040ba2",
+      "rubricHash": "0e031b80a18f3990ddaacf6bfd3a927dd32919f42160b0913886217c8286e740",
+      "attempts": [
+        {
+          "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-google-batch05-20261018",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-google-batch01-20261018:ordinal:5",
+          "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-google-batch01-20261018",
+          "providerInstanceId": "antigravity",
+          "model": "gemini-3.8-flash-medium",
+          "options": [],
+          "status": "completed",
+          "sourceOnly": true,
+          "repoExploration": false,
+          "prompt": {
+            "path": "docs/ask-policy-work/annotation-runs/batch-05-prompt.json",
+            "sha256": "f04131d16204870f0293e2f7277755fc12df242002fd9a94af857c314eab9b55",
+            "byteLength": 37445
+          },
+          "output": {
+            "path": "docs/ask-policy-work/annotation-runs/google-batch05-output.json",
+            "sha256": "ca196045d5184ee38db768baba44eb7e1dc27032a04c2f57d7d301a40bdbca7e",
+            "byteLength": 332
+          }
+        }
+      ]
+    },
+    {
+      "vendor": "google",
+      "caseIds": [
+        "dev-record-06",
+        "dev-record-07",
+        "dev-record-08",
+        "dev-record-09",
+        "dev-record-10"
+      ],
+      "fixturesHash": "2fd8bb6340563d8ea614adab1d0731b343c15887cb0823aa9bcd9324c1040ba2",
+      "rubricHash": "0e031b80a18f3990ddaacf6bfd3a927dd32919f42160b0913886217c8286e740",
+      "attempts": [
+        {
+          "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-google-batch06-20261018",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-google-batch01-20261018:ordinal:6",
+          "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-google-batch01-20261018",
+          "providerInstanceId": "antigravity",
+          "model": "gemini-3.8-flash-medium",
+          "options": [],
+          "status": "completed",
+          "sourceOnly": true,
+          "repoExploration": false,
+          "prompt": {
+            "path": "docs/ask-policy-work/annotation-runs/batch-06-prompt.json",
+            "sha256": "1d73fdbd87ba0939d21c8bc50a5af8d0c5cc54d31f39bb439a86bdf0177eded0",
+            "byteLength": 38522
+          },
+          "output": {
+            "path": "docs/ask-policy-work/annotation-runs/google-batch06-output.json",
+            "sha256": "2e865cb2dc2c905a52496188146d6c42f2f6398da28555bad319cb13a278ef15",
+            "byteLength": 343
+          }
+        }
+      ]
+    },
+    {
+      "vendor": "google",
+      "caseIds": [
+        "dev-record-11",
+        "dev-record-12",
+        "dev-record-13",
+        "dev-record-14",
+        "dev-record-15"
+      ],
+      "fixturesHash": "2fd8bb6340563d8ea614adab1d0731b343c15887cb0823aa9bcd9324c1040ba2",
+      "rubricHash": "0e031b80a18f3990ddaacf6bfd3a927dd32919f42160b0913886217c8286e740",
+      "attempts": [
+        {
+          "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-google-batch07-20261018",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-google-batch01-20261018:ordinal:7",
+          "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-google-batch01-20261018",
+          "providerInstanceId": "antigravity",
+          "model": "gemini-3.8-flash-medium",
+          "options": [],
+          "status": "completed",
+          "sourceOnly": true,
+          "repoExploration": false,
+          "prompt": {
+            "path": "docs/ask-policy-work/annotation-runs/batch-07-prompt.json",
+            "sha256": "76dcd49da3f68328aa0bba853c474c0f1c014278315d12961a0e556940cc1ebc",
+            "byteLength": 42788
+          },
+          "output": {
+            "path": "docs/ask-policy-work/annotation-runs/google-batch07-output.json",
+            "sha256": "2376e80a9f999855c22c672fda469be57901458ae4dd3fc93c1907e02bcd66e5",
+            "byteLength": 336
+          }
+        }
+      ]
+    },
+    {
+      "vendor": "google",
+      "caseIds": [
+        "dev-record-16",
+        "dev-record-17",
+        "dev-record-18",
+        "dev-record-19",
+        "dev-record-20"
+      ],
+      "fixturesHash": "2fd8bb6340563d8ea614adab1d0731b343c15887cb0823aa9bcd9324c1040ba2",
+      "rubricHash": "0e031b80a18f3990ddaacf6bfd3a927dd32919f42160b0913886217c8286e740",
+      "attempts": [
+        {
+          "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-google-batch08-20261018",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-google-batch01-20261018:ordinal:8",
+          "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-google-batch01-20261018",
+          "providerInstanceId": "antigravity",
+          "model": "gemini-3.8-flash-medium",
+          "options": [],
+          "status": "completed",
+          "sourceOnly": true,
+          "repoExploration": false,
+          "prompt": {
+            "path": "docs/ask-policy-work/annotation-runs/batch-08-prompt.json",
+            "sha256": "d47decc67992466fdb25c3cda5666ea40960f6138e68d9d4eb6ff7a0ba52ebf8",
+            "byteLength": 36904
+          },
+          "output": {
+            "path": "docs/ask-policy-work/annotation-runs/google-batch08-output.json",
+            "sha256": "3c071ac75f4f55aa9f87c9cf2994b3f6ec124522d2f8f22a1357d1923aecb000",
+            "byteLength": 352
+          }
+        }
+      ]
+    },
+    {
+      "vendor": "google",
+      "caseIds": [
+        "res-01",
+        "res-02",
+        "res-03",
+        "res-04",
+        "res-05"
+      ],
+      "fixturesHash": "2fd8bb6340563d8ea614adab1d0731b343c15887cb0823aa9bcd9324c1040ba2",
+      "rubricHash": "0e031b80a18f3990ddaacf6bfd3a927dd32919f42160b0913886217c8286e740",
+      "attempts": [
+        {
+          "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-google-batch09-20261018",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-google-batch01-20261018:ordinal:9",
+          "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-google-batch01-20261018",
+          "providerInstanceId": "antigravity",
+          "model": "gemini-3.8-flash-medium",
+          "options": [],
+          "status": "completed",
+          "sourceOnly": true,
+          "repoExploration": false,
+          "prompt": {
+            "path": "docs/ask-policy-work/annotation-runs/batch-09-prompt.json",
+            "sha256": "50c1db94918bfa5ef8846097472bdcb1bd3a9f84571215d06efcf3bc637c9a9b",
+            "byteLength": 39578
+          },
+          "output": {
+            "path": "docs/ask-policy-work/annotation-runs/google-batch09-output.json",
+            "sha256": "5b219138053226e787d6fd46792300e6da4a4d1940a391d29bef252e0bd4d192",
+            "byteLength": 359
+          }
+        }
+      ]
+    },
+    {
+      "vendor": "google",
+      "caseIds": [
+        "res-06",
+        "res-07",
+        "res-08",
+        "res-09",
+        "res-10"
+      ],
+      "fixturesHash": "2fd8bb6340563d8ea614adab1d0731b343c15887cb0823aa9bcd9324c1040ba2",
+      "rubricHash": "0e031b80a18f3990ddaacf6bfd3a927dd32919f42160b0913886217c8286e740",
+      "attempts": [
+        {
+          "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-google-batch10-20261018",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-google-batch01-20261018:ordinal:10",
+          "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-google-batch01-20261018",
+          "providerInstanceId": "antigravity",
+          "model": "gemini-3.8-flash-medium",
+          "options": [],
+          "status": "completed",
+          "sourceOnly": true,
+          "repoExploration": false,
+          "prompt": {
+            "path": "docs/ask-policy-work/annotation-runs/batch-10-prompt.json",
+            "sha256": "b09b3578141d76316f7ea5401b8a5ef52f76ba818d4c6f8791467479029b6c97",
+            "byteLength": 42009
+          },
+          "output": {
+            "path": "docs/ask-policy-work/annotation-runs/google-batch10-output.json",
+            "sha256": "10c1f8ca6b2e296f028bbdd1d65a03441d6c380a7329722f4c20f0ce0d0d5277",
+            "byteLength": 346
+          }
+        }
+      ]
+    },
+    {
+      "vendor": "google",
+      "caseIds": [
+        "res-11",
+        "res-12",
+        "res-13",
+        "res-14",
+        "res-15"
+      ],
+      "fixturesHash": "2fd8bb6340563d8ea614adab1d0731b343c15887cb0823aa9bcd9324c1040ba2",
+      "rubricHash": "0e031b80a18f3990ddaacf6bfd3a927dd32919f42160b0913886217c8286e740",
+      "attempts": [
+        {
+          "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-google-batch11-20261018",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-google-batch01-20261018:ordinal:11",
+          "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-google-batch01-20261018",
+          "providerInstanceId": "antigravity",
+          "model": "gemini-3.8-flash-medium",
+          "options": [],
+          "status": "completed",
+          "sourceOnly": true,
+          "repoExploration": false,
+          "prompt": {
+            "path": "docs/ask-policy-work/annotation-runs/batch-11-prompt.json",
+            "sha256": "dc6310ccc8efa260fe8241480f445d6a6dd14f66b89a1a129113b44ffe3170e2",
+            "byteLength": 39942
+          },
+          "output": {
+            "path": "docs/ask-policy-work/annotation-runs/google-batch11-output.json",
+            "sha256": "189a7e8493668ec25bfdf2f12d52c963d457c8c0936fcac263a3e687c9f274f2",
+            "byteLength": 348
+          }
+        }
+      ]
+    },
+    {
+      "vendor": "google",
+      "caseIds": [
+        "res-16",
+        "res-17",
+        "res-18",
+        "res-19",
+        "res-20"
+      ],
+      "fixturesHash": "2fd8bb6340563d8ea614adab1d0731b343c15887cb0823aa9bcd9324c1040ba2",
+      "rubricHash": "0e031b80a18f3990ddaacf6bfd3a927dd32919f42160b0913886217c8286e740",
+      "attempts": [
+        {
+          "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-google-batch12-20261018",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-google-batch01-20261018:ordinal:12",
+          "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-google-batch01-20261018",
+          "providerInstanceId": "antigravity",
+          "model": "gemini-3.8-flash-medium",
+          "options": [],
+          "status": "completed",
+          "sourceOnly": true,
+          "repoExploration": false,
+          "prompt": {
+            "path": "docs/ask-policy-work/annotation-runs/batch-12-prompt.json",
+            "sha256": "d4f69b853494595d8a2389b503dbd34db0970728540a1331537e7c5f0fc9f119",
+            "byteLength": 40292
+          },
+          "output": {
+            "path": "docs/ask-policy-work/annotation-runs/google-batch12-output.json",
+            "sha256": "b91aae7657d2aced2dadf2521ce2aad086f44e4fd4c7994d92b8656f0a30edf1",
+            "byteLength": 360
+          }
+        }
+      ]
+    },
+    {
+      "vendor": "nvidia",
+      "caseIds": [
+        "auto-01",
+        "auto-02",
+        "auto-03",
+        "auto-04",
+        "auto-05"
+      ],
+      "fixturesHash": "2fd8bb6340563d8ea614adab1d0731b343c15887cb0823aa9bcd9324c1040ba2",
+      "rubricHash": "0e031b80a18f3990ddaacf6bfd3a927dd32919f42160b0913886217c8286e740",
+      "attempts": [
+        {
+          "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-nvidia-batch01-20261018",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:1",
+          "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-nvidia-batch01-20261018",
+          "providerInstanceId": "pi",
+          "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "options": [
+            {
+              "id": "thinking",
+              "value": "off"
+            }
+          ],
+          "status": "completed",
+          "sourceOnly": true,
+          "repoExploration": false,
+          "prompt": {
+            "path": "docs/ask-policy-work/annotation-runs/batch-01-prompt.json",
+            "sha256": "7142175ff211a53b16f01df526dd902665b37a770dd154f3df88a511aec2e5d9",
+            "byteLength": 19467
+          },
+          "output": {
+            "path": "docs/ask-policy-work/annotation-runs/nvidia-batch01-output.json",
+            "sha256": "5692548acf08140cf548f25ee07180f55ab317d55d48bb1a053b15e610179395",
+            "byteLength": 348
+          }
+        }
+      ]
+    },
+    {
+      "vendor": "nvidia",
+      "caseIds": [
+        "auto-06",
+        "auto-07",
+        "auto-08",
+        "auto-09",
+        "auto-10"
+      ],
+      "fixturesHash": "2fd8bb6340563d8ea614adab1d0731b343c15887cb0823aa9bcd9324c1040ba2",
+      "rubricHash": "0e031b80a18f3990ddaacf6bfd3a927dd32919f42160b0913886217c8286e740",
+      "attempts": [
+        {
+          "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-nvidia-batch02-20261018",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:2",
+          "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-nvidia-batch01-20261018",
+          "providerInstanceId": "pi",
+          "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "options": [
+            {
+              "id": "thinking",
+              "value": "off"
+            }
+          ],
+          "status": "completed",
+          "sourceOnly": true,
+          "repoExploration": false,
+          "prompt": {
+            "path": "docs/ask-policy-work/annotation-runs/batch-02-prompt.json",
+            "sha256": "53007898ccdf2aae6a4d379b47755928fd97d541c8448d2eb5e791865425c264",
+            "byteLength": 21123
+          },
+          "output": {
+            "path": "docs/ask-policy-work/annotation-runs/nvidia-batch02-output.json",
+            "sha256": "a256cc294aad0fce2169431f3b354b06923c7338cb2193a93fd0d5f9d3460d7b",
+            "byteLength": 320
+          }
+        }
+      ]
+    },
+    {
+      "vendor": "nvidia",
+      "caseIds": [
+        "auto-11",
+        "auto-12",
+        "auto-13",
+        "auto-14",
+        "auto-15"
+      ],
+      "fixturesHash": "2fd8bb6340563d8ea614adab1d0731b343c15887cb0823aa9bcd9324c1040ba2",
+      "rubricHash": "0e031b80a18f3990ddaacf6bfd3a927dd32919f42160b0913886217c8286e740",
+      "attempts": [
+        {
+          "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-nvidia-batch03-20261018",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:3",
+          "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-nvidia-batch01-20261018",
+          "providerInstanceId": "pi",
+          "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "options": [
+            {
+              "id": "thinking",
+              "value": "off"
+            }
+          ],
+          "status": "completed",
+          "sourceOnly": true,
+          "repoExploration": false,
+          "prompt": {
+            "path": "docs/ask-policy-work/annotation-runs/batch-03-prompt.json",
+            "sha256": "b805e09de02ba9581a32c60b8a4b8131edf81990e56106493c350af971575736",
+            "byteLength": 22960
+          },
+          "output": {
+            "path": "docs/ask-policy-work/annotation-runs/nvidia-batch03-output.json",
+            "sha256": "065016111c032dee394395b4c8d2992170266a86e253dcb4c919a52ea25e0b75",
+            "byteLength": 320
+          }
+        }
+      ]
+    },
+    {
+      "vendor": "nvidia",
+      "caseIds": [
+        "auto-16",
+        "auto-17",
+        "auto-18",
+        "auto-19",
+        "auto-20"
+      ],
+      "fixturesHash": "2fd8bb6340563d8ea614adab1d0731b343c15887cb0823aa9bcd9324c1040ba2",
+      "rubricHash": "0e031b80a18f3990ddaacf6bfd3a927dd32919f42160b0913886217c8286e740",
+      "attempts": [
+        {
+          "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-nvidia-batch04-20261018",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:4",
+          "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-nvidia-batch01-20261018",
+          "providerInstanceId": "pi",
+          "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "options": [
+            {
+              "id": "thinking",
+              "value": "off"
+            }
+          ],
+          "status": "completed",
+          "sourceOnly": true,
+          "repoExploration": false,
+          "prompt": {
+            "path": "docs/ask-policy-work/annotation-runs/batch-04-prompt.json",
+            "sha256": "01b79d4f860eceb45ff181a9cf60c877a5717437adefede9c6595fd7ea480114",
+            "byteLength": 20174
+          },
+          "output": {
+            "path": "docs/ask-policy-work/annotation-runs/nvidia-batch04-output.json",
+            "sha256": "4228974deef9fc264c3546648ca3076eec1ac0f12874ae81e64f263c65532941",
+            "byteLength": 328
+          }
+        }
+      ]
+    },
+    {
+      "vendor": "nvidia",
+      "caseIds": [
+        "dev-record-01",
+        "dev-record-02",
+        "dev-record-03",
+        "dev-record-04",
+        "dev-record-05"
+      ],
+      "fixturesHash": "2fd8bb6340563d8ea614adab1d0731b343c15887cb0823aa9bcd9324c1040ba2",
+      "rubricHash": "0e031b80a18f3990ddaacf6bfd3a927dd32919f42160b0913886217c8286e740",
+      "attempts": [
+        {
+          "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-nvidia-batch05-20261018",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:5",
+          "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-nvidia-batch01-20261018",
+          "providerInstanceId": "pi",
+          "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "options": [
+            {
+              "id": "thinking",
+              "value": "off"
+            }
+          ],
+          "status": "completed",
+          "sourceOnly": true,
+          "repoExploration": false,
+          "prompt": {
+            "path": "docs/ask-policy-work/annotation-runs/batch-05-prompt.json",
+            "sha256": "f04131d16204870f0293e2f7277755fc12df242002fd9a94af857c314eab9b55",
+            "byteLength": 37445
+          },
+          "output": {
+            "path": "docs/ask-policy-work/annotation-runs/nvidia-batch05-output.json",
+            "sha256": "f70b2e0430d3bc754befa4e4f56c8cb82b68bb57a365ad8ec1df79dd0712dfdb",
+            "byteLength": 334
+          }
+        }
+      ]
+    },
+    {
+      "vendor": "nvidia",
+      "caseIds": [
+        "dev-record-06",
+        "dev-record-07",
+        "dev-record-08",
+        "dev-record-09",
+        "dev-record-10"
+      ],
+      "fixturesHash": "2fd8bb6340563d8ea614adab1d0731b343c15887cb0823aa9bcd9324c1040ba2",
+      "rubricHash": "0e031b80a18f3990ddaacf6bfd3a927dd32919f42160b0913886217c8286e740",
+      "attempts": [
+        {
+          "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-nvidia-batch06-20261018",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:6",
+          "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-nvidia-batch01-20261018",
+          "providerInstanceId": "pi",
+          "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "options": [
+            {
+              "id": "thinking",
+              "value": "off"
+            }
+          ],
+          "status": "completed",
+          "sourceOnly": true,
+          "repoExploration": false,
+          "prompt": {
+            "path": "docs/ask-policy-work/annotation-runs/batch-06-prompt.json",
+            "sha256": "1d73fdbd87ba0939d21c8bc50a5af8d0c5cc54d31f39bb439a86bdf0177eded0",
+            "byteLength": 38522
+          },
+          "output": {
+            "path": "docs/ask-policy-work/annotation-runs/nvidia-batch06-output.json",
+            "sha256": "87bb008b5ec145661c6ff114fa759e771bfb3519842696b314632d667a68b7c9",
+            "byteLength": 326
+          }
+        }
+      ]
+    },
+    {
+      "vendor": "nvidia",
+      "caseIds": [
+        "dev-record-11",
+        "dev-record-12",
+        "dev-record-13",
+        "dev-record-14",
+        "dev-record-15"
+      ],
+      "fixturesHash": "2fd8bb6340563d8ea614adab1d0731b343c15887cb0823aa9bcd9324c1040ba2",
+      "rubricHash": "0e031b80a18f3990ddaacf6bfd3a927dd32919f42160b0913886217c8286e740",
+      "attempts": [
+        {
+          "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-nvidia-batch07-20261018",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:7",
+          "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-nvidia-batch01-20261018",
+          "providerInstanceId": "pi",
+          "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "options": [
+            {
+              "id": "thinking",
+              "value": "off"
+            }
+          ],
+          "status": "completed",
+          "sourceOnly": true,
+          "repoExploration": false,
+          "prompt": {
+            "path": "docs/ask-policy-work/annotation-runs/batch-07-prompt.json",
+            "sha256": "76dcd49da3f68328aa0bba853c474c0f1c014278315d12961a0e556940cc1ebc",
+            "byteLength": 42788
+          },
+          "output": {
+            "path": "docs/ask-policy-work/annotation-runs/nvidia-batch07-output.json",
+            "sha256": "5f8b19c57787dde1ef695034aa6180080eaf922b7872def48ca5648e6904b1ba",
+            "byteLength": 336
+          }
+        }
+      ]
+    },
+    {
+      "vendor": "nvidia",
+      "caseIds": [
+        "dev-record-16",
+        "dev-record-17",
+        "dev-record-18",
+        "dev-record-19",
+        "dev-record-20"
+      ],
+      "fixturesHash": "2fd8bb6340563d8ea614adab1d0731b343c15887cb0823aa9bcd9324c1040ba2",
+      "rubricHash": "0e031b80a18f3990ddaacf6bfd3a927dd32919f42160b0913886217c8286e740",
+      "attempts": [
+        {
+          "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-nvidia-batch08-20261018",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:8",
+          "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-nvidia-batch01-20261018",
+          "providerInstanceId": "pi",
+          "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "options": [
+            {
+              "id": "thinking",
+              "value": "off"
+            }
+          ],
+          "status": "completed",
+          "sourceOnly": true,
+          "repoExploration": false,
+          "prompt": {
+            "path": "docs/ask-policy-work/annotation-runs/batch-08-prompt.json",
+            "sha256": "d47decc67992466fdb25c3cda5666ea40960f6138e68d9d4eb6ff7a0ba52ebf8",
+            "byteLength": 36904
+          },
+          "output": {
+            "path": "docs/ask-policy-work/annotation-runs/nvidia-batch08-output.json",
+            "sha256": "15c045b3ac773f0d6d30afedc1985459b67775fa95e64c235478177489340e97",
+            "byteLength": 330
+          }
+        }
+      ]
+    },
+    {
+      "vendor": "nvidia",
+      "caseIds": [
+        "res-01",
+        "res-02",
+        "res-03",
+        "res-04",
+        "res-05"
+      ],
+      "fixturesHash": "2fd8bb6340563d8ea614adab1d0731b343c15887cb0823aa9bcd9324c1040ba2",
+      "rubricHash": "0e031b80a18f3990ddaacf6bfd3a927dd32919f42160b0913886217c8286e740",
+      "attempts": [
+        {
+          "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-nvidia-batch09-20261018",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:9",
+          "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-nvidia-batch01-20261018",
+          "providerInstanceId": "pi",
+          "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "options": [
+            {
+              "id": "thinking",
+              "value": "off"
+            }
+          ],
+          "status": "completed",
+          "sourceOnly": true,
+          "repoExploration": false,
+          "prompt": {
+            "path": "docs/ask-policy-work/annotation-runs/batch-09-prompt.json",
+            "sha256": "50c1db94918bfa5ef8846097472bdcb1bd3a9f84571215d06efcf3bc637c9a9b",
+            "byteLength": 39578
+          },
+          "output": {
+            "path": "docs/ask-policy-work/annotation-runs/nvidia-batch09-output.json",
+            "sha256": "089b9643ebbbcdc4eb431247bdacb1f904ef26bd19eb67d5898570ea4d7a76df",
+            "byteLength": 355
+          }
+        }
+      ]
+    },
+    {
+      "vendor": "nvidia",
+      "caseIds": [
+        "res-06",
+        "res-07",
+        "res-08",
+        "res-09",
+        "res-10"
+      ],
+      "fixturesHash": "2fd8bb6340563d8ea614adab1d0731b343c15887cb0823aa9bcd9324c1040ba2",
+      "rubricHash": "0e031b80a18f3990ddaacf6bfd3a927dd32919f42160b0913886217c8286e740",
+      "attempts": [
+        {
+          "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-nvidia-batch10-20261018",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:10",
+          "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-nvidia-batch01-20261018",
+          "providerInstanceId": "pi",
+          "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "options": [
+            {
+              "id": "thinking",
+              "value": "off"
+            }
+          ],
+          "status": "completed",
+          "sourceOnly": true,
+          "repoExploration": false,
+          "prompt": {
+            "path": "docs/ask-policy-work/annotation-runs/batch-10-prompt.json",
+            "sha256": "b09b3578141d76316f7ea5401b8a5ef52f76ba818d4c6f8791467479029b6c97",
+            "byteLength": 42009
+          },
+          "output": {
+            "path": "docs/ask-policy-work/annotation-runs/nvidia-batch10-output.json",
+            "sha256": "49070243b42ddc8ac88abf5d3072bbd7a21bac599424980f1ed429dfcfa597d0",
+            "byteLength": 340
+          }
+        }
+      ]
+    },
+    {
+      "vendor": "nvidia",
+      "caseIds": [
+        "res-11",
+        "res-12",
+        "res-13",
+        "res-14",
+        "res-15"
+      ],
+      "fixturesHash": "2fd8bb6340563d8ea614adab1d0731b343c15887cb0823aa9bcd9324c1040ba2",
+      "rubricHash": "0e031b80a18f3990ddaacf6bfd3a927dd32919f42160b0913886217c8286e740",
+      "attempts": [
+        {
+          "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-nvidia-batch11-20261018",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:11",
+          "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-nvidia-batch01-20261018",
+          "providerInstanceId": "pi",
+          "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "options": [
+            {
+              "id": "thinking",
+              "value": "off"
+            }
+          ],
+          "status": "completed",
+          "sourceOnly": true,
+          "repoExploration": false,
+          "prompt": {
+            "path": "docs/ask-policy-work/annotation-runs/batch-11-prompt.json",
+            "sha256": "dc6310ccc8efa260fe8241480f445d6a6dd14f66b89a1a129113b44ffe3170e2",
+            "byteLength": 39942
+          },
+          "output": {
+            "path": "docs/ask-policy-work/annotation-runs/nvidia-batch11-output.json",
+            "sha256": "91e74e40280ec3f7350c3c574bb37db212609f8df3db75d9dfb07aef6f699839",
+            "byteLength": 340
+          }
+        }
+      ]
+    },
+    {
+      "vendor": "nvidia",
+      "caseIds": [
+        "res-16",
+        "res-17",
+        "res-18",
+        "res-19",
+        "res-20"
+      ],
+      "fixturesHash": "2fd8bb6340563d8ea614adab1d0731b343c15887cb0823aa9bcd9324c1040ba2",
+      "rubricHash": "0e031b80a18f3990ddaacf6bfd3a927dd32919f42160b0913886217c8286e740",
+      "attempts": [
+        {
+          "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Athread-send%3Atombo-ask-policy-blind-nvidia-batch12-20261018",
+          "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:12",
+          "threadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-nvidia-batch01-20261018",
+          "providerInstanceId": "pi",
+          "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "options": [
+            {
+              "id": "thinking",
+              "value": "off"
+            }
+          ],
+          "status": "completed",
+          "sourceOnly": true,
+          "repoExploration": false,
+          "prompt": {
+            "path": "docs/ask-policy-work/annotation-runs/batch-12-prompt.json",
+            "sha256": "d4f69b853494595d8a2389b503dbd34db0970728540a1331537e7c5f0fc9f119",
+            "byteLength": 40292
+          },
+          "output": {
+            "path": "docs/ask-policy-work/annotation-runs/nvidia-batch12-output.json",
+            "sha256": "efc5c95dee726cc174dad27bcc2ea61d39d13e894949f28325c34c92cf82737a",
+            "byteLength": 348
+          }
+        }
+      ]
+    }
+  ],
+  "rawLabelHashes": {
+    "openai": "91bef75bcc571878b287a458deaa8b2839f4882f995afd02f39bcdd7afe2f8b6",
+    "google": "e3cb68103cbe55c637f4c78076b8c44fae5f81e34f7edb27289ca05ce2fc3db2",
+    "nvidia": "57e7fdaf323062bfc31b45bc569c0729a0febc39a17b440f13ea0e45e62d942a"
+  },
+  "annotationsHash": "0cc6d188ad07cc6d5701815ca397cf7abe81aaa94650bd74989fdb87446350ea",
+  "disagreementsHash": "1dbbcd7c0499ecd3bc5e8fff1963ecceccde13c0e59196b997a90ab895b64efb"
+}

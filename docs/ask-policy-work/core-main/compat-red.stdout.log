@@ -1,0 +1,78 @@
+✖ journal snapshot conflicts precede metadata integrity while malformed shapes remain invalid input (38.0519ms)
+✖ journal-backed CLI rejects a fork before importing generation and preserves malformed-input errors (182.579ms)
+✖ session preparation binds a fork without executing it; journal-backed execution checks authority first (186.8864ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 0
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 573.5726
+
+✖ failing tests:
+
+test at test\ask-policy.test.mjs:291:1
+✖ journal snapshot conflicts precede metadata integrity while malformed shapes remain invalid input (38.0519ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    Comparison {
+  +   code: 'invalid_input'
+  -   code: 'revision_conflict'
+    }
+  
+      at async TestContext.<anonymous> (file:///D:/develop/works/tombo-view-ask-policy/test/ask-policy.test.mjs:299:5)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:358:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: TomboError: Policy history understanding hash mismatch
+        at requireCondition (file:///D:/develop/works/tombo-view-ask-policy/dist/core.js:54:15)
+        at checkState (file:///D:/develop/works/tombo-view-ask-policy/dist/core.js:163:13)
+        at validateState (file:///D:/develop/works/tombo-view-ask-policy/dist/core.js:189:5)
+        at FileJournal.assertCurrent (file:///D:/develop/works/tombo-view-ask-policy/dist/journal.js:72:54)
+        at TestContext.<anonymous> (file:///D:/develop/works/tombo-view-ask-policy/test/ask-policy.test.mjs:299:34)
+        at async Test.run (node:internal/test_runner/test:1113:7)
+        at async startSubtestAfterBootstrap (node:internal/test_runner/harness:358:3),
+    expected: { code: 'revision_conflict' },
+    operator: 'rejects',
+    diff: 'simple'
+  }
+
+test at test\ask-policy.test.mjs:309:1
+✖ journal-backed CLI rejects a fork before importing generation and preserves malformed-input errors (182.579ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'invalid_input'
+  - 'revision_conflict'
+  
+      at TestContext.<anonymous> (file:///D:/develop/works/tombo-view-ask-policy/test/ask-policy.test.mjs:321:43)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'invalid_input',
+    expected: 'revision_conflict',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at test\ask-policy.test.mjs:327:1
+✖ session preparation binds a fork without executing it; journal-backed execution checks authority first (186.8864ms)
+  AssertionError [ERR_ASSERTION]: {"error":{"code":"invalid_input","message":"Policy history understanding hash mismatch"}}
+  
+  
+  1 !== 0
+  
+      at TestContext.<anonymous> (file:///D:/develop/works/tombo-view-ask-policy/test/ask-policy.test.mjs:338:12)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

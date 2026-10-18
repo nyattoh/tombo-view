@@ -1,0 +1,168 @@
+{
+  "status": "frozen",
+  "fixturesHash": "2fd8bb6340563d8ea614adab1d0731b343c15887cb0823aa9bcd9324c1040ba2",
+  "authorIntentHash": "5341dd093ac005d2c9ad3d266fe44d783dcbe1c1a43087f15ebdfedc7cf4359b",
+  "rubricHash": "0e031b80a18f3990ddaacf6bfd3a927dd32919f42160b0913886217c8286e740",
+  "freezeEvidence": "docs/ask-policy-work/fixture-main/freeze.json",
+  "batches": [
+    {
+      "batch": 1,
+      "path": "docs/ask-policy-work/annotation-runs/batch-01-prompt.json",
+      "sha256": "7142175ff211a53b16f01df526dd902665b37a770dd154f3df88a511aec2e5d9",
+      "chars": 19467,
+      "caseIds": [
+        "auto-01",
+        "auto-02",
+        "auto-03",
+        "auto-04",
+        "auto-05"
+      ]
+    },
+    {
+      "batch": 2,
+      "path": "docs/ask-policy-work/annotation-runs/batch-02-prompt.json",
+      "sha256": "53007898ccdf2aae6a4d379b47755928fd97d541c8448d2eb5e791865425c264",
+      "chars": 21123,
+      "caseIds": [
+        "auto-06",
+        "auto-07",
+        "auto-08",
+        "auto-09",
+        "auto-10"
+      ]
+    },
+    {
+      "batch": 3,
+      "path": "docs/ask-policy-work/annotation-runs/batch-03-prompt.json",
+      "sha256": "b805e09de02ba9581a32c60b8a4b8131edf81990e56106493c350af971575736",
+      "chars": 22958,
+      "caseIds": [
+        "auto-11",
+        "auto-12",
+        "auto-13",
+        "auto-14",
+        "auto-15"
+      ]
+    },
+    {
+      "batch": 4,
+      "path": "docs/ask-policy-work/annotation-runs/batch-04-prompt.json",
+      "sha256": "01b79d4f860eceb45ff181a9cf60c877a5717437adefede9c6595fd7ea480114",
+      "chars": 20174,
+      "caseIds": [
+        "auto-16",
+        "auto-17",
+        "auto-18",
+        "auto-19",
+        "auto-20"
+      ]
+    },
+    {
+      "batch": 5,
+      "path": "docs/ask-policy-work/annotation-runs/batch-05-prompt.json",
+      "sha256": "f04131d16204870f0293e2f7277755fc12df242002fd9a94af857c314eab9b55",
+      "chars": 37445,
+      "caseIds": [
+        "dev-record-01",
+        "dev-record-02",
+        "dev-record-03",
+        "dev-record-04",
+        "dev-record-05"
+      ]
+    },
+    {
+      "batch": 6,
+      "path": "docs/ask-policy-work/annotation-runs/batch-06-prompt.json",
+      "sha256": "1d73fdbd87ba0939d21c8bc50a5af8d0c5cc54d31f39bb439a86bdf0177eded0",
+      "chars": 38522,
+      "caseIds": [
+        "dev-record-06",
+        "dev-record-07",
+        "dev-record-08",
+        "dev-record-09",
+        "dev-record-10"
+      ]
+    },
+    {
+      "batch": 7,
+      "path": "docs/ask-policy-work/annotation-runs/batch-07-prompt.json",
+      "sha256": "76dcd49da3f68328aa0bba853c474c0f1c014278315d12961a0e556940cc1ebc",
+      "chars": 42788,
+      "caseIds": [
+        "dev-record-11",
+        "dev-record-12",
+        "dev-record-13",
+        "dev-record-14",
+        "dev-record-15"
+      ]
+    },
+    {
+      "batch": 8,
+      "path": "docs/ask-policy-work/annotation-runs/batch-08-prompt.json",
+      "sha256": "d47decc67992466fdb25c3cda5666ea40960f6138e68d9d4eb6ff7a0ba52ebf8",
+      "chars": 36904,
+      "caseIds": [
+        "dev-record-16",
+        "dev-record-17",
+        "dev-record-18",
+        "dev-record-19",
+        "dev-record-20"
+      ]
+    },
+    {
+      "batch": 9,
+      "path": "docs/ask-policy-work/annotation-runs/batch-09-prompt.json",
+      "sha256": "50c1db94918bfa5ef8846097472bdcb1bd3a9f84571215d06efcf3bc637c9a9b",
+      "chars": 39578,
+      "caseIds": [
+        "res-01",
+        "res-02",
+        "res-03",
+        "res-04",
+        "res-05"
+      ]
+    },
+    {
+      "batch": 10,
+      "path": "docs/ask-policy-work/annotation-runs/batch-10-prompt.json",
+      "sha256": "b09b3578141d76316f7ea5401b8a5ef52f76ba818d4c6f8791467479029b6c97",
+      "chars": 42009,
+      "caseIds": [
+        "res-06",
+        "res-07",
+        "res-08",
+        "res-09",
+        "res-10"
+      ]
+    },
+    {
+      "batch": 11,
+      "path": "docs/ask-policy-work/annotation-runs/batch-11-prompt.json",
+      "sha256": "dc6310ccc8efa260fe8241480f445d6a6dd14f66b89a1a129113b44ffe3170e2",
+      "chars": 39942,
+      "caseIds": [
+        "res-11",
+        "res-12",
+        "res-13",
+        "res-14",
+        "res-15"
+      ]
+    },
+    {
+      "batch": 12,
+      "path": "docs/ask-policy-work/annotation-runs/batch-12-prompt.json",
+      "sha256": "d4f69b853494595d8a2389b503dbd34db0970728540a1331537e7c5f0fc9f119",
+      "chars": 40292,
+      "caseIds": [
+        "res-16",
+        "res-17",
+        "res-18",
+        "res-19",
+        "res-20"
+      ]
+    }
+  ],
+  "batchSize": 5,
+  "modelsReceive": "rubric and caseId+input only; no domain, authors, intent, expected, provenance or other votes",
+  "reason": "Small fixed source-only batches; no repeated missing formal review call"
+}

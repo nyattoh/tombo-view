@@ -1,0 +1,43 @@
+{
+  "dispatch": {
+    "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-nvidia-batch01-20261018",
+    "childThreadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-nvidia-batch01-20261018",
+    "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Aba73bf88-9745-4fef-b9be-3589412d1465%253Adelegate-task%253Atombo-ask-policy-blind-nvidia-batch01-20261018:ordinal:1",
+    "childNodeId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-blind-nvidia-batch01-20261018",
+    "status": "running",
+    "workState": "working",
+    "hasPendingChildRuns": false,
+    "latestTerminalRunId": null,
+    "latestTerminalStatus": null,
+    "latestTerminalSummary": null,
+    "latestTerminalResultContextTransferId": null,
+    "providerInstanceId": "pi",
+    "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b",
+    "summary": null,
+    "resultContextTransferId": null,
+    "hasPendingQuestion": false,
+    "waitTimedOut": false
+  },
+  "target": {
+    "providerInstanceId": "pi",
+    "model": "nvidia/nvidia/nemotron-3.5-super-vl-120b-a12b",
+    "options": [
+      {
+        "id": "thinking",
+        "value": "off"
+      }
+    ]
+  },
+  "vendor": "nvidia",
+  "clientRequestId": "tombo-ask-policy-blind-nvidia-batch01-20261018",
+  "prompt": "docs/ask-policy-work/annotation-runs/batch-01-prompt.json",
+  "caseIds": [
+    "auto-01",
+    "auto-02",
+    "auto-03",
+    "auto-04",
+    "auto-05"
+  ],
+  "sourceOnly": true,
+  "repoExploration": false
+}

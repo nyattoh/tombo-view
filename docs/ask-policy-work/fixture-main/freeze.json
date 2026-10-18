@@ -1,0 +1,857 @@
+{
+  "status": "frozen",
+  "observedAt": "2026-10-18T00:48:39.846Z",
+  "worktree": "D:/develop/works/tombo-view-ask-policy",
+  "branch": "feat/ask-policy-20261018",
+  "baseCommit": "f2ecc2e4ccbfe109596d9e156095fff7af76ea6a",
+  "designSha256": "5f3b4fc75a3c2cba99656bec42c3269f8e399ccdb3d31723ed12e6095f2a47e3",
+  "cases": {
+    "path": "evaluation/ask-policy-cases.json",
+    "bytes": 549617,
+    "sha256": "2fd8bb6340563d8ea614adab1d0731b343c15887cb0823aa9bcd9324c1040ba2",
+    "count": 60
+  },
+  "authorIntent": {
+    "path": "evaluation/ask-policy-author-intent.json",
+    "bytes": 13604,
+    "sha256": "5341dd093ac005d2c9ad3d266fe44d783dcbe1c1a43087f15ebdfedc7cf4359b",
+    "count": 60,
+    "meaning": "author intent only; never expected labels or ground truth"
+  },
+  "counts": {
+    "development": {
+      "cases": 20,
+      "authorIntentCounts": {
+        "proceed": 4,
+        "check": 4,
+        "ask": 4,
+        "reframe": 4,
+        "blocked": 4
+      },
+      "controls": 11,
+      "controlActions": {
+        "proceed": 4,
+        "check": 3,
+        "reframe": 4
+      }
+    },
+    "automation": {
+      "cases": 20,
+      "authorIntentCounts": {
+        "proceed": 4,
+        "check": 4,
+        "ask": 4,
+        "reframe": 4,
+        "blocked": 4
+      },
+      "controls": 6,
+      "controlActions": {
+        "proceed": 1,
+        "check": 4,
+        "reframe": 1
+      }
+    },
+    "research": {
+      "cases": 20,
+      "authorIntentCounts": {
+        "proceed": 4,
+        "check": 4,
+        "ask": 4,
+        "reframe": 4,
+        "blocked": 4
+      },
+      "controls": 6,
+      "controlActions": {
+        "proceed": 1,
+        "check": 4,
+        "reframe": 1
+      }
+    }
+  },
+  "totalControls": 23,
+  "uniqueCaseIds": [
+    "auto-01",
+    "auto-02",
+    "auto-03",
+    "auto-04",
+    "auto-05",
+    "auto-06",
+    "auto-07",
+    "auto-08",
+    "auto-09",
+    "auto-10",
+    "auto-11",
+    "auto-12",
+    "auto-13",
+    "auto-14",
+    "auto-15",
+    "auto-16",
+    "auto-17",
+    "auto-18",
+    "auto-19",
+    "auto-20",
+    "dev-record-01",
+    "dev-record-02",
+    "dev-record-03",
+    "dev-record-04",
+    "dev-record-05",
+    "dev-record-06",
+    "dev-record-07",
+    "dev-record-08",
+    "dev-record-09",
+    "dev-record-10",
+    "dev-record-11",
+    "dev-record-12",
+    "dev-record-13",
+    "dev-record-14",
+    "dev-record-15",
+    "dev-record-16",
+    "dev-record-17",
+    "dev-record-18",
+    "dev-record-19",
+    "dev-record-20",
+    "res-01",
+    "res-02",
+    "res-03",
+    "res-04",
+    "res-05",
+    "res-06",
+    "res-07",
+    "res-08",
+    "res-09",
+    "res-10",
+    "res-11",
+    "res-12",
+    "res-13",
+    "res-14",
+    "res-15",
+    "res-16",
+    "res-17",
+    "res-18",
+    "res-19",
+    "res-20"
+  ],
+  "uniqueIdCount": 60,
+  "writers": [
+    {
+      "domain": "development",
+      "taskId": "node:delegated-task:command%3Amcp%3Ab418ff8c-ae31-43d0-8cbd-8da70b9e751d%3Adelegate-task%3Atombo-ask-policy-fixture-main-sol-high-20261018-r1",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3Ab418ff8c-ae31-43d0-8cbd-8da70b9e751d%3Adelegate-task%3Atombo-ask-policy-fixture-main-sol-high-20261018-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "high"
+        }
+      ],
+      "caseIds": [
+        "dev-record-01",
+        "dev-record-02",
+        "dev-record-03",
+        "dev-record-04",
+        "dev-record-05",
+        "dev-record-06",
+        "dev-record-07",
+        "dev-record-08",
+        "dev-record-09",
+        "dev-record-10",
+        "dev-record-11",
+        "dev-record-12",
+        "dev-record-13",
+        "dev-record-14",
+        "dev-record-15",
+        "dev-record-16",
+        "dev-record-17",
+        "dev-record-18",
+        "dev-record-19",
+        "dev-record-20"
+      ],
+      "evidence": {
+        "red": {
+          "command": "node --test --test-name-pattern='^development ' test/ask-policy-fixtures.test.mjs",
+          "exitCode": 1,
+          "tests": 2,
+          "pass": 0,
+          "fail": 2,
+          "artifact": "development-red.log"
+        },
+        "green": {
+          "command": "node --test --test-name-pattern='^development ' test/ask-policy-fixtures.test.mjs",
+          "exitCode": 0,
+          "tests": 2,
+          "pass": 2,
+          "fail": 0,
+          "artifact": "development-green.log"
+        },
+        "regression": {
+          "command": "node --test test/core.test.mjs test/reflection.test.mjs",
+          "exitCode": 0,
+          "tests": 51,
+          "pass": 51,
+          "fail": 0,
+          "artifact": "focused-regression.log",
+          "qualification": "Existing dist only; new-core regression remains core owner responsibility."
+        }
+      },
+      "terminalStatus": "writer validation complete"
+    },
+    {
+      "domain": "automation",
+      "taskId": "node:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-automation-luna-high-20261018-r1",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-automation-luna-high-20261018-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6-luna",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "high"
+        }
+      ],
+      "caseIds": [
+        "auto-01",
+        "auto-02",
+        "auto-03",
+        "auto-04",
+        "auto-05",
+        "auto-06",
+        "auto-07",
+        "auto-08",
+        "auto-09",
+        "auto-10",
+        "auto-11",
+        "auto-12",
+        "auto-13",
+        "auto-14",
+        "auto-15",
+        "auto-16",
+        "auto-17",
+        "auto-18",
+        "auto-19",
+        "auto-20"
+      ],
+      "evidence": {
+        "workstream": "automation fixture shard",
+        "status": "automation focused validation green; new SDK validation pending main",
+        "worktree": "D:/develop/works/tombo-view-ask-policy",
+        "branch": "feat/ask-policy-20261018",
+        "baseCommit": "f2ecc2e4ccbfe109596d9e156095fff7af76ea6a",
+        "fixtures": {
+          "domain": "automation",
+          "count": 20,
+          "inputShard": {
+            "path": "evaluation/ask-policy-input-shards/automation.json",
+            "bytes": 111796,
+            "sha256": "5c04d2dd08c5634611eabd760c4ff7e15ef613ef858fbe5cc01806bde36add69"
+          },
+          "intentShard": {
+            "path": "evaluation/ask-policy-intent-shards/automation.json",
+            "bytes": 3685,
+            "sha256": "08830c2d76fcd6b34fe532234e58b7ef53c20996b90b9d14760a09182203009e"
+          },
+          "authorIntentCounts": {
+            "proceed": 4,
+            "check": 4,
+            "ask": 4,
+            "reframe": 4,
+            "blocked": 4
+          },
+          "controlCount": 6,
+          "caseIds": [
+            "auto-01",
+            "auto-02",
+            "auto-03",
+            "auto-04",
+            "auto-05",
+            "auto-06",
+            "auto-07",
+            "auto-08",
+            "auto-09",
+            "auto-10",
+            "auto-11",
+            "auto-12",
+            "auto-13",
+            "auto-14",
+            "auto-15",
+            "auto-16",
+            "auto-17",
+            "auto-18",
+            "auto-19",
+            "auto-20"
+          ],
+          "coveredStructure": [
+            "humanRole permission and value, plus goal and priority",
+            "goal-relevant disputed evidence with an unavailable corroboration probe",
+            "policyHistory no-progress human-ask boundary and no-human blocked boundary",
+            "reflection receipt and reflectionEffects provenance",
+            "objective pipeline status probes and optional missing-fact controls",
+            "tool budget exhaustion, unavailable capability, and required excluded candidate"
+          ],
+          "cachedDecision": "needs_check for all cases; it is an initial state value, not an expected action or oracle"
+        },
+        "runs": [
+          {
+            "phase": "RED before shard creation",
+            "command": "node --test --test-name-pattern='^automation ' test/ask-policy-fixtures.test.mjs",
+            "exitCode": 1,
+            "counts": {
+              "tests": 2,
+              "pass": 0,
+              "fail": 2
+            },
+            "evidence": "logs/red-initial.log",
+            "reason": "The automation input shard did not exist; both selected tests failed with ENOENT."
+          },
+          {
+            "phase": "fixture generation",
+            "command": "node docs/ask-policy-work/fixture-automation/generate.mjs",
+            "exitCode": 0,
+            "counts": {
+              "inputCases": 20,
+              "intentRows": 20
+            },
+            "evidence": "logs/generation.log"
+          },
+          {
+            "phase": "pre-addendum focused run",
+            "command": "node --test --test-name-pattern='^automation ' test/ask-policy-fixtures.test.mjs",
+            "exitCode": 0,
+            "counts": {
+              "tests": 2,
+              "pass": 2,
+              "fail": 0
+            },
+            "evidence": "logs/green.log",
+            "qualification": "This run predates comparison-main's artifact-based validation handover and is retained as history only."
+          },
+          {
+            "phase": "final focused automation run after comparison-main handover and shared validator update",
+            "command": "node --test --test-name-pattern='^automation ' test/ask-policy-fixtures.test.mjs",
+            "exitCode": 0,
+            "counts": {
+              "tests": 2,
+              "pass": 2,
+              "fail": 0
+            },
+            "evidence": "logs/green.log",
+            "details": "Automation input integrity and old SDK projection passed; isolated author distribution and objective controls passed."
+          }
+        ],
+        "intermediateAttempts": [
+          {
+            "command": "node --test --test-name-pattern='^automation ' test/ask-policy-fixtures.test.mjs",
+            "exitCode": 1,
+            "counts": {
+              "tests": 2,
+              "pass": 0,
+              "fail": 2
+            },
+            "reason": "Early draft lacked control coverage and its input-leakage validation rejected the schema-required lens label. The shared validator was corrected outside this worker's ownership; the fixture was corrected to satisfy the control contract."
+          },
+          {
+            "command": "node --test --test-name-pattern='^automation ' test/ask-policy-fixtures.test.mjs",
+            "exitCode": 1,
+            "counts": {
+              "tests": 2,
+              "pass": 1,
+              "fail": 1
+            },
+            "reason": "Proceed control had no executable objective probe; the optional missing-fact gap and probe were added."
+          }
+        ],
+        "limits": [
+          "No comparison with annotations or expected-action files was performed.",
+          "Old-projection validation is pending comparison-main handover and baseline-ready evidence; no child old SDK loader was created.",
+          "The addendum-scoped schema/metadata/structural-only focused rerun is pending the shared test/helper adjustment by main.",
+          "No SDK-final validation, full suite, npm test, or dist build was run; those remain with main.",
+          "Author intent is fixture-author metadata, not ground truth."
+        ],
+        "addendumConditions": {
+          "authorshipComplete": true,
+          "annotationsRead": false,
+          "lensLabel": "Current state lens.label is required schema data. Main's shared validator and 4/4 lens-label tests allow that canonical path while rejecting case-level/other leakage; this worker edited no shared validator/test file.",
+          "instructionLikeStrings": "Input strings are treated as inert data; no instruction-like text was executed or used as an expected label.",
+          "oldValidationStatus": "passed for automation shard using comparison-main's existing emitted bridge artifacts and byte/hash checks",
+          "newValidationStatus": "pending core/build-ready barrier and main SDK validation",
+          "finalFreezeDeclared": false,
+          "quotaAndOwnership": "No child was created. Only the automation shard, automation intent shard, and docs/ask-policy-work/fixture-automation/ were written."
+        },
+        "validationProvenance": {
+          "worker": {
+            "layer": "implementation sub-worker",
+            "provider": "codex",
+            "model": "gpt-6-luna",
+            "reasoningEffort": "high",
+            "childCount": 0
+          },
+          "decisionSource": "framework_only_local",
+          "jevApiCall": "not made",
+          "comparisonHandover": {
+            "evidenceFile": "docs/ask-policy-work/comparison-main/execution.json",
+            "evidenceStatus": "partial_dependency_wait; baseline source/emit evidence present",
+            "taskId": "node:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-comparison-main-wave1-20261018",
+            "childThreadId": "thread:delegated-task:command%3Amcp%3Aba73bf88-9745-4fef-b9be-3589412d1465%3Adelegate-task%3Atombo-ask-policy-comparison-main-wave1-20261018",
+            "baselineCommit": "f2ecc2e4ccbfe109596d9e156095fff7af76ea6a",
+            "coreSource": {
+              "blobId": "561031da516c5c7eabf742a09fa40e79569e0cbf",
+              "sha256": "510ca4f32ced22b15391d7ee9d031bf695d9b627ae58cca48a525e6b4ae45564",
+              "bytes": 47257
+            },
+            "typesSource": {
+              "blobId": "61ea27a90b148efb7ebd5cd9fed8deccbe5d7e6e",
+              "sha256": "280cf825f534536d39a00639720f0a0972c20b8b6897f78bb2b70baaecef20e9",
+              "bytes": 11369
+            },
+            "compilerCommand": "node node_modules/typescript/bin/tsc --project evaluation/ask-policy-baseline/f2ecc2e/.generated/tsconfig.json --noCheck true",
+            "compilerVersion": "7.0.2",
+            "compilerExitCode": 0,
+            "emittedCoreBridgeJsSha256": "1795f190883e516f40bfeb2037355770643250812457d1bd85ad49a0164ee2ff",
+            "emittedTypesJsSha256": "8aa4564abd1e37beeed9123ae608894211343df2c39ffccc6e409c781f37a774",
+            "validation": "Shared helper reads comparison-owned bridge files, verifies source snapshot bytes equal git show and checks source/emitted JS hashes before importing. No child baseline loader or compilation was created."
+          }
+        }
+      },
+      "terminalStatus": "completed"
+    },
+    {
+      "domain": "research",
+      "taskId": "node:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-research-luna-high-20261018-r1",
+      "childThreadId": "thread:delegated-task:command%3Amcp%3A2ed79ed2-b740-4034-b2f2-51d0f57b1c7c%3Adelegate-task%3Atombo-ask-policy-fixture-research-luna-high-20261018-r1",
+      "providerInstanceId": "codex",
+      "model": "gpt-6-luna",
+      "options": [
+        {
+          "id": "reasoningEffort",
+          "value": "high"
+        }
+      ],
+      "caseIds": [
+        "res-01",
+        "res-02",
+        "res-03",
+        "res-04",
+        "res-05",
+        "res-06",
+        "res-07",
+        "res-08",
+        "res-09",
+        "res-10",
+        "res-11",
+        "res-12",
+        "res-13",
+        "res-14",
+        "res-15",
+        "res-16",
+        "res-17",
+        "res-18",
+        "res-19",
+        "res-20"
+      ],
+      "evidence": {
+        "task": "research synthetic fixture shard",
+        "status": "returned_to_main",
+        "binding": {
+          "worktreePath": "D:\\develop\\works\\tombo-view-ask-policy",
+          "branch": "feat/ask-policy-20261018",
+          "baseHead": "f2ecc2e4ccbfe109596d9e156095fff7af76ea6a",
+          "t3Attached": true
+        },
+        "design": {
+          "path": "docs/ask-policy.md",
+          "sha256": "5F3B4FC75A3C2CBA99656BEC42C3269F8E399CCDB3D31723ED12E6095F2A47E3"
+        },
+        "outputs": {
+          "input": "evaluation/ask-policy-input-shards/research.json",
+          "authorIntent": "evaluation/ask-policy-intent-shards/research.json",
+          "ownedEvidenceDirectory": "docs/ask-policy-work/fixture-research/",
+          "count": 20,
+          "caseIds": [
+            "res-01",
+            "res-02",
+            "res-03",
+            "res-04",
+            "res-05",
+            "res-06",
+            "res-07",
+            "res-08",
+            "res-09",
+            "res-10",
+            "res-11",
+            "res-12",
+            "res-13",
+            "res-14",
+            "res-15",
+            "res-16",
+            "res-17",
+            "res-18",
+            "res-19",
+            "res-20"
+          ],
+          "authorIntentCounts": {
+            "proceed": 4,
+            "check": 4,
+            "ask": 4,
+            "reframe": 4,
+            "blocked": 4
+          },
+          "objectiveProbeControls": {
+            "total": 6,
+            "proceed": 1,
+            "check": 4,
+            "reframe": 1
+          },
+          "reflectionEffectsCoverage": {
+            "humanGoalGap": [
+              "res-12"
+            ],
+            "objectiveFactGoalGap": [
+              "res-08"
+            ],
+            "lensOnly": [
+              "res-04"
+            ]
+          },
+          "structuralCoverage": [
+            "document edition/version and population scope differences",
+            "human-owned source priority for conflicting current records",
+            "reflection introducing human and factual goal gaps, plus lens-only reflection",
+            "content hashes, evidence validity/scope, claim assessments, gap/probe references, policy history hashes, receipt/effects bindings, and resolution structure"
+          ],
+          "initialCachedDecision": "needs_check for all 20 states; it is state data, not an expected answer"
+        },
+        "verification": {
+          "red": {
+            "requestedCommand": "node --test --test-name-pattern='^research ' test/ask-policy-fixtures.test.mjs",
+            "executedCommand": "node --test \"--test-name-pattern=^research \" test/ask-policy-fixtures.test.mjs",
+            "exitCode": 1,
+            "tests": 2,
+            "passed": 0,
+            "failed": 2,
+            "reason": "research shard files were not yet present",
+            "log": "docs/ask-policy-work/fixture-research/logs/red.txt",
+            "record": "docs/ask-policy-work/fixture-research/red-result.json"
+          },
+          "finalFocusedGreen": {
+            "requestedCommand": "node --test --test-name-pattern='^research ' test/ask-policy-fixtures.test.mjs",
+            "executedCommand": "node --test \"--test-name-pattern=^research \" test/ask-policy-fixtures.test.mjs",
+            "exitCode": 0,
+            "tests": 2,
+            "passed": 2,
+            "failed": 0,
+            "log": "docs/ask-policy-work/fixture-research/logs/green-final.txt",
+            "coverage": "Focused research input integrity/old-schema projection and isolated author distribution/objective controls. The shared helper checked comparison-owned baseline source bytes and hashes, bridge hashes, and the research cases' old-schema projection."
+          },
+          "authoringIterations": [
+            {
+              "requestedCommand": "node --test --test-name-pattern='^research ' test/ask-policy-fixtures.test.mjs",
+              "exitCode": 1,
+              "tests": 2,
+              "passed": 0,
+              "failed": 2,
+              "reason": "Initial fixture generation had probe-gap relation and objective-control construction errors.",
+              "log": "docs/ask-policy-work/fixture-research/logs/green-first.txt",
+              "baselineStatus": "Before comparison-main handover; not counted as the accepted old-validator result."
+            },
+            {
+              "requestedCommand": "node --test --test-name-pattern='^research ' test/ask-policy-fixtures.test.mjs",
+              "exitCode": 1,
+              "tests": 2,
+              "passed": 1,
+              "failed": 1,
+              "reason": "Resolved-case probe reference needed correction.",
+              "log": "docs/ask-policy-work/fixture-research/logs/green.txt",
+              "baselineStatus": "Before comparison-main handover; not counted as the accepted old-validator result."
+            }
+          ],
+          "fixtureGeneration": {
+            "command": "node docs/ask-policy-work/fixture-research/build-fixtures.mjs",
+            "exitCode": 0,
+            "cases": 20
+          },
+          "mainReportedFollowup": {
+            "source": "user update 2026-10-18",
+            "command": "node --test test/ask-policy-fixtures.test.mjs",
+            "exitCode": 0,
+            "tests": 12,
+            "passed": 12,
+            "failed": 0,
+            "evidence": "docs/ask-policy-work/fixture-main/sdk-ready-validation.log",
+            "note": "Main reported new and old SDK validation for all 60 cases, including all 20 research cases. Not run by this worker."
+          }
+        },
+        "provenance": {
+          "comparisonHandover": "docs/ask-policy-work/comparison-main/execution.json",
+          "baselineCommit": "f2ecc2e4ccbfe109596d9e156095fff7af76ea6a",
+          "baselineBridge": "evaluation/ask-policy-baseline/f2ecc2e/.generated/core-bridge.js",
+          "focusedValidation": "The shared helper imported the comparison-owned baseline bridge read-only after checking Git snapshot byte equality, source SHA256 values, compiler exit code 0, and bridge JS hashes.",
+          "coreBuildReady": "Main reported build-ready and all-case SDK validation; this worker did not build dist or rerun that validation.",
+          "jev": "framework_only_local; API call not made"
+        },
+        "authoringBoundary": {
+          "intentIsNotGroundTruth": true,
+          "policyFitOracleUsed": false,
+          "annotationFilesRead": false,
+          "caseInputsChangedAfterAuthoring": false,
+          "instructionLikeText": "Treated only as inert string data; no instructions embedded for execution.",
+          "lensLabel": "Retained as a required observable schema field; main owns the two-sided leakage unit test.",
+          "oldValidationBeforeBaselineReady": "Pending until comparison-main handover; completed only after the comparison-owned handover became available.",
+          "newSdkValidation": "Main-owned build-ready validation; not run by this worker.",
+          "finalFreeze": "Not declared; main owns the final freeze."
+        },
+        "scope": {
+          "writes": [
+            "evaluation/ask-policy-input-shards/research.json",
+            "evaluation/ask-policy-intent-shards/research.json",
+            "docs/ask-policy-work/fixture-research/"
+          ],
+          "notRun": [
+            "full suite/npm test",
+            "dist build",
+            "annotation or comparison-label inspection",
+            "new SDK build/validation",
+            "push, PR, or merge"
+          ],
+          "noReDelegation": true,
+          "noSubagentsCreated": true
+        }
+      },
+      "terminalStatus": "completed"
+    }
+  ],
+  "validation": {
+    "command": "node --test test/ask-policy-fixtures.test.mjs",
+    "exitCode": 0,
+    "testCounts": {
+      "tests": 12,
+      "pass": 12,
+      "fail": 0
+    },
+    "log": "docs/ask-policy-work/fixture-main/sdk-ready-validation.log",
+    "newSdkCases": 60,
+    "oldProjectionCases": 60,
+    "packetTaskDeepEqualCases": 60,
+    "leakageCheck": "pass; canonical lens.label accepted, other metadata rejected; strings inert",
+    "policyFitOracle": false,
+    "annotationFilesRead": false,
+    "childResultsIncorporated": true,
+    "oldCompiler": {
+      "command": "node node_modules/typescript/bin/tsc --project evaluation/ask-policy-baseline/f2ecc2e/.generated/tsconfig.json --noCheck true",
+      "versionCommand": "node node_modules/typescript/bin/tsc --version",
+      "version": "7.0.2",
+      "exit_code": 0,
+      "config": "evaluation/ask-policy-baseline/f2ecc2e/.generated/tsconfig.json",
+      "adaptation": "PM explicitly authorised existing local CLI, ES2022+NodeNext --noCheck, output only inside baseline .generated. No API transpile claim. No new dependencies."
+    },
+    "baselineSources": {
+      "core": {
+        "path": "evaluation/ask-policy-baseline/f2ecc2e/src/core.ts",
+        "blobId": "561031da516c5c7eabf742a09fa40e79569e0cbf",
+        "sha256": "510ca4f32ced22b15391d7ee9d031bf695d9b627ae58cca48a525e6b4ae45564",
+        "bytes": 47257
+      },
+      "types": {
+        "path": "evaluation/ask-policy-baseline/f2ecc2e/src/types.ts",
+        "blobId": "61ea27a90b148efb7ebd5cd9fed8deccbe5d7e6e",
+        "sha256": "280cf825f534536d39a00639720f0a0972c20b8b6897f78bb2b70baaecef20e9",
+        "bytes": 11369
+      }
+    },
+    "baselineBridgeHashes": {
+      "core-bridge.ts": "21cfcb47cff09c0247ba8b48be7f79649521b5c34ed715dd46733d68ba7c6211",
+      "core-bridge.js": "1795f190883e516f40bfeb2037355770643250812457d1bd85ad49a0164ee2ff",
+      "types.ts": "280cf825f534536d39a00639720f0a0972c20b8b6897f78bb2b70baaecef20e9",
+      "types.js": "8aa4564abd1e37beeed9123ae608894211343df2c39ffccc6e409c781f37a774"
+    },
+    "coreBuildReady": {
+      "status": "source_contract_ready_not_accepted",
+      "source_contract_ready": true,
+      "regression_pass": false,
+      "independent_acceptance_pending": true,
+      "acceptance_pass": false,
+      "branch": "feat/ask-policy-20261018",
+      "HEAD": "f2ecc2e4ccbfe109596d9e156095fff7af76ea6a",
+      "source_hashes": {
+        "src/core.ts": "11868B3B76E52C93EF937551DBE864D2DC5A1DAC64B7034BD32454B99303FB84",
+        "src/types.ts": "4218F2ACC33E78A7529526630AA3B09D0BEB03B8FD72ADE8BF2B01C1E8166EE6",
+        "test/ask-policy.test.mjs": "F9C96689655A0FBCE813F278F4B8B32C13B80413B327A0D5073B035FCDF65964"
+      },
+      "compiled_hashes": {
+        "dist/core.js": "D8BBA21916DDC394F0670AB3B2039A7DAF058A3DBD68AF48A8BAFF89D3274F88",
+        "dist/types.js": "5C743AB52FD7DAC07EFC499E771C8BFD7A00236CF031929838C6F3F3B8D27B6D",
+        "dist/core.d.ts": "83C9065A2A3A8BF564B5B2C71F5C438EB1EE2CD8ABC76C7E1F8990FE485AAA73",
+        "dist/types.d.ts": "B5F989CDB49EED90385D1D281645E64186C50B3CC2D1DA0A130E30AEC33E0DCD"
+      },
+      "actual_changed_source_and_test_files": [
+        "src/core.ts",
+        "src/types.ts",
+        "test/ask-policy.test.mjs"
+      ],
+      "owned_artifact_directory": "docs/ask-policy-work/core-main/",
+      "public_evaluatePolicy_import_paths": [
+        "./dist/core.js",
+        "./dist/index.js"
+      ],
+      "source_import_path": "src/core.ts",
+      "index_change_required": false,
+      "index_reason": "Existing src/index.ts export * from './core.js' publishes evaluatePolicy; import from compiled dist/index.js returned function.",
+      "commands": {
+        "build": {
+          "command": "npm run build 1> docs/ask-policy-work/core-main/build.stdout.log 2> docs/ask-policy-work/core-main/build.stderr.log; exit $LASTEXITCODE",
+          "exit_code": 0,
+          "stdout": "docs/ask-policy-work/core-main/build.stdout.log",
+          "stderr": "docs/ask-policy-work/core-main/build.stderr.log",
+          "stderr_bytes": 0
+        },
+        "typecheck": {
+          "command": "npm run typecheck 1> docs/ask-policy-work/core-main/typecheck.stdout.log 2> docs/ask-policy-work/core-main/typecheck.stderr.log; exit $LASTEXITCODE",
+          "exit_code": 0,
+          "stdout": "docs/ask-policy-work/core-main/typecheck.stdout.log",
+          "stderr": "docs/ask-policy-work/core-main/typecheck.stderr.log",
+          "stderr_bytes": 0
+        },
+        "focused": {
+          "command": "node --test test/ask-policy.test.mjs 1> docs/ask-policy-work/core-main/focused.stdout.log 2> docs/ask-policy-work/core-main/focused.stderr.log; $result = $LASTEXITCODE; Get-Content docs/ask-policy-work/core-main/focused.stdout.log -Tail 20; Get-Content docs/ask-policy-work/core-main/focused.stderr.log; exit $result",
+          "exit_code": 0,
+          "tests": 47,
+          "pass": 47,
+          "fail": 0,
+          "stdout": "docs/ask-policy-work/core-main/focused.stdout.log",
+          "stderr": "docs/ask-policy-work/core-main/focused.stderr.log",
+          "stderr_bytes": 0,
+          "execution_path": "standard compiled dist; no NODE_OPTIONS loader",
+          "supplemental_tests": "Last 5 tests diagnose legacy fixture incompatibility and pass without further production changes; they are not a new production-change TDD cycle."
+        },
+        "regression": {
+          "command": "$priorNodeOptions = $env:NODE_OPTIONS; try { Remove-Item Env:NODE_OPTIONS -ErrorAction SilentlyContinue; $trackedTests = @(git ls-files 'test/*.test.mjs'); node --test --test-concurrency=1 @trackedTests 1> docs/ask-policy-work/core-main/regression-final.stdout.log 2> docs/ask-policy-work/core-main/regression-final.stderr.log; $result = $LASTEXITCODE; Get-Content docs/ask-policy-work/core-main/regression-final.stdout.log -Tail 20; Get-Content docs/ask-policy-work/core-main/regression-final.stderr.log } finally { $env:NODE_OPTIONS = $priorNodeOptions }; exit $result",
+          "exit_code": 1,
+          "tests": 524,
+          "pass": 509,
+          "fail": 15,
+          "stdout": "docs/ask-policy-work/core-main/regression-final.stdout.log",
+          "stderr": "docs/ask-policy-work/core-main/regression-final.stderr.log",
+          "stderr_bytes": 0,
+          "execution_path": "standard compiled dist; NODE_OPTIONS removed and restored",
+          "paths": "docs/ask-policy-work/core-main/regression-paths.json",
+          "exceptions": "docs/ask-policy-work/core-main/regression-exceptions.json",
+          "regression_pass": false
+        }
+      },
+      "remaining_failures": {
+        "count": 15,
+        "leaf": 13,
+        "parent_aggregations": 2,
+        "inventory": "docs/ask-policy-work/core-main/regression-exceptions.json"
+      },
+      "full_npm_test": "NOT_RUN; reserved for PM after all-writer GREEN barrier",
+      "independent_test_integrate": "pending",
+      "notes": "Gate only permits dependent source consumers to use this API/schema. It does not certify full regression, compatibility acceptance, review pass or overall completion."
+    },
+    "coreReadinessScope": "Checks current core/types source and compiled runtime bytes; upstream test-file changes and compatibility acceptance remain with their owner.",
+    "hashes": {
+      "src/core.ts": "11868b3b76e52c93ef937551dbe864d2dc5a1dac64b7034bd32454b99303fb84",
+      "src/types.ts": "4218f2acc33e78a7529526630aa3b09d0beb03b8fd72ade8bf2b01c1e8166ee6",
+      "dist/core.js": "d8bba21916ddc394f0670ab3b2039a7daf058a3dbd68af48a8baff89d3274f88",
+      "dist/types.js": "5c743ab52fd7dac07efc499e771c8bfd7a00236cf031929838c6f3f3b8d27b6d",
+      "test/ask-policy-fixtures.test.mjs": "9110aae063b0c78bd7ec13b57e0c7c36d95a024c3792387baac8e3b5a0c4c4d3",
+      "docs/ask-policy-work/fixture-main/fixture-validation.mjs": "9eaacb6a324fe8179b7da781d63c71472bc44e1cca082422c745d7c5c1182139"
+    }
+  },
+  "cachedDecision": "Every incoming cached state.decision is needs_check; it is not an expected label.",
+  "nonClaims": [
+    "Synthetic state-to-action inputs only; no live model efficacy or subjective machine interest measured.",
+    "Blind consensus distribution is not constrained by author intent.",
+    "Authors are excluded from annotation.",
+    "No annotation outcomes consulted or used to revise fixtures."
+  ],
+  "remaining": [
+    "PM all-writer GREEN barrier and full npm test",
+    "Independent vendor review",
+    "PM-owned blind annotation and comparison"
+  ],
+  "jev": {
+    "mode": "framework_only_local",
+    "apiCall": "not made"
+  },
+  "rubric": {
+    "sourcePath": "docs/ask-policy-work/blind-annotation-rubric.md",
+    "sha256": "0e031b80a18f3990ddaacf6bfd3a927dd32919f42160b0913886217c8286e740",
+    "taskLeadMeasuredSha256": "0e031b80a18f3990ddaacf6bfd3a927dd32919f42160b0913886217c8286e740",
+    "matchesTaskLeadMeasurement": true,
+    "verification": "SHA256 of file bytes only; rubric text not decoded or inspected in this follow-up"
+  },
+  "metadataVerification": {
+    "observedAt": "2026-10-18T00:51:34.176039+00:00",
+    "scope": "Metadata-only follow-up by the same fixture-main writer",
+    "inputs": {
+      "evaluation/ask-policy-cases.json": {
+        "sha256": "2fd8bb6340563d8ea614adab1d0731b343c15887cb0823aa9bcd9324c1040ba2",
+        "unchanged": true
+      },
+      "evaluation/ask-policy-author-intent.json": {
+        "sha256": "5341dd093ac005d2c9ad3d266fe44d783dcbe1c1a43087f15ebdfedc7cf4359b",
+        "unchanged": true
+      }
+    },
+    "newValidatorContracts": {
+      "src/core.ts": {
+        "sha256": "11868b3b76e52c93ef937551dbe864d2dc5a1dac64b7034bd32454b99303fb84",
+        "matchesSdkFinal": true,
+        "matchesCurrentBuildReady": true,
+        "matchesFrozenValidation": true
+      },
+      "src/types.ts": {
+        "sha256": "4218f2acc33e78a7529526630aa3b09d0beb03b8fd72ade8bf2b01c1e8166ee6",
+        "matchesSdkFinal": true,
+        "matchesCurrentBuildReady": true,
+        "matchesFrozenValidation": true
+      },
+      "dist/core.js": {
+        "sha256": "d8bba21916ddc394f0670ab3b2039a7daf058a3dbd68af48a8baff89d3274f88",
+        "matchesSdkFinal": true,
+        "matchesCurrentBuildReady": true,
+        "matchesFrozenValidation": true
+      },
+      "dist/types.js": {
+        "sha256": "5c743ab52fd7dac07efc499e771c8bfd7a00236cf031929838c6f3f3b8d27b6d",
+        "matchesSdkFinal": true,
+        "matchesCurrentBuildReady": true,
+        "matchesFrozenValidation": true
+      }
+    },
+    "oldValidatorContractHashes": {
+      "evaluation/ask-policy-baseline/f2ecc2e/src/core.ts": "510ca4f32ced22b15391d7ee9d031bf695d9b627ae58cca48a525e6b4ae45564",
+      "evaluation/ask-policy-baseline/f2ecc2e/src/types.ts": "280cf825f534536d39a00639720f0a0972c20b8b6897f78bb2b70baaecef20e9",
+      "evaluation/ask-policy-baseline/f2ecc2e/.generated/core-bridge.js": "1795f190883e516f40bfeb2037355770643250812457d1bd85ad49a0164ee2ff",
+      "evaluation/ask-policy-baseline/f2ecc2e/.generated/types.js": "8aa4564abd1e37beeed9123ae608894211343df2c39ffccc6e409c781f37a774"
+    },
+    "fixtureGatePreserved": {
+      "testCounts": {
+        "tests": 12,
+        "pass": 12,
+        "fail": 0
+      },
+      "newSdkCases": 60,
+      "oldProjectionCases": 60,
+      "policyFitOracle": false,
+      "annotationFilesRead": false
+    },
+    "currentBuildReadyObservation": {
+      "path": "docs/ask-policy-work/core-main/build-ready.json",
+      "sha256": "9d88300ba9b3a8b15fb12eba839ac0311609f4cae13704fbfd9f3e31e5e81a1f",
+      "status": "source_contract_ready_review_pending",
+      "source_contract_ready": true,
+      "regression_pass": true,
+      "acceptance_pass": false,
+      "qualification": "The prior embedded build-ready snapshot is historical. Fixture validation is separate from overall regression/review acceptance."
+    },
+    "annotationsRead": false,
+    "rubricTextRead": false,
+    "caseOrIntentBytesChanged": false,
+    "buildRun": false,
+    "suiteRerun": false,
+    "newAgentsCreated": false,
+    "pmCoordinationFilesEdited": false,
+    "annotationRelease": "No annotation action taken by this follow-up",
+    "writerEvidencePreserved": true
+  }
+}

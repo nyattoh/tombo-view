@@ -1,0 +1,422 @@
+[
+  {
+    "caseId": "auto-01",
+    "action": "proceed",
+    "reasonPath": "claim-01",
+    "vendor": "google",
+    "model": "gemini-3.8-flash-medium"
+  },
+  {
+    "caseId": "auto-02",
+    "action": "proceed",
+    "reasonPath": "claim-02",
+    "vendor": "google",
+    "model": "gemini-3.8-flash-medium"
+  },
+  {
+    "caseId": "auto-03",
+    "action": "proceed",
+    "reasonPath": "claim-03",
+    "vendor": "google",
+    "model": "gemini-3.8-flash-medium"
+  },
+  {
+    "caseId": "auto-04",
+    "action": "proceed",
+    "reasonPath": "claim-04",
+    "vendor": "google",
+    "model": "gemini-3.8-flash-medium"
+  },
+  {
+    "caseId": "auto-05",
+    "action": "blocked",
+    "reasonPath": "execution-05",
+    "vendor": "google",
+    "model": "gemini-3.8-flash-medium"
+  },
+  {
+    "caseId": "auto-06",
+    "action": "blocked",
+    "reasonPath": "execution-06",
+    "vendor": "google",
+    "model": "gemini-3.8-flash-medium"
+  },
+  {
+    "caseId": "auto-07",
+    "action": "blocked",
+    "reasonPath": "execution-07",
+    "vendor": "google",
+    "model": "gemini-3.8-flash-medium"
+  },
+  {
+    "caseId": "auto-08",
+    "action": "blocked",
+    "reasonPath": "execution-08",
+    "vendor": "google",
+    "model": "gemini-3.8-flash-medium"
+  },
+  {
+    "caseId": "auto-09",
+    "action": "ask",
+    "reasonPath": "gap-09",
+    "vendor": "google",
+    "model": "gemini-3.8-flash-medium"
+  },
+  {
+    "caseId": "auto-10",
+    "action": "ask",
+    "reasonPath": "gap-10",
+    "vendor": "google",
+    "model": "gemini-3.8-flash-medium"
+  },
+  {
+    "caseId": "auto-11",
+    "action": "ask",
+    "reasonPath": "gap-11",
+    "vendor": "google",
+    "model": "gemini-3.8-flash-medium"
+  },
+  {
+    "caseId": "auto-12",
+    "action": "ask",
+    "reasonPath": "gap-12",
+    "vendor": "google",
+    "model": "gemini-3.8-flash-medium"
+  },
+  {
+    "caseId": "auto-13",
+    "action": "reframe",
+    "reasonPath": "gap-13",
+    "vendor": "google",
+    "model": "gemini-3.8-flash-medium"
+  },
+  {
+    "caseId": "auto-14",
+    "action": "reframe",
+    "reasonPath": "gap-14",
+    "vendor": "google",
+    "model": "gemini-3.8-flash-medium"
+  },
+  {
+    "caseId": "auto-15",
+    "action": "reframe",
+    "reasonPath": "gap-15",
+    "vendor": "google",
+    "model": "gemini-3.8-flash-medium"
+  },
+  {
+    "caseId": "auto-16",
+    "action": "reframe",
+    "reasonPath": "gap-16",
+    "vendor": "google",
+    "model": "gemini-3.8-flash-medium"
+  },
+  {
+    "caseId": "auto-17",
+    "action": "blocked",
+    "reasonPath": "gap-17",
+    "vendor": "google",
+    "model": "gemini-3.8-flash-medium"
+  },
+  {
+    "caseId": "auto-18",
+    "action": "blocked",
+    "reasonPath": "gap-18",
+    "vendor": "google",
+    "model": "gemini-3.8-flash-medium"
+  },
+  {
+    "caseId": "auto-19",
+    "action": "blocked",
+    "reasonPath": "gap-19",
+    "vendor": "google",
+    "model": "gemini-3.8-flash-medium"
+  },
+  {
+    "caseId": "auto-20",
+    "action": "blocked",
+    "reasonPath": "gap-20",
+    "vendor": "google",
+    "model": "gemini-3.8-flash-medium"
+  },
+  {
+    "caseId": "dev-record-01",
+    "action": "blocked",
+    "reasonPath": "g1",
+    "vendor": "google",
+    "model": "gemini-3.8-flash-medium"
+  },
+  {
+    "caseId": "dev-record-02",
+    "action": "check",
+    "reasonPath": "p1",
+    "vendor": "google",
+    "model": "gemini-3.8-flash-medium"
+  },
+  {
+    "caseId": "dev-record-03",
+    "action": "ask",
+    "reasonPath": "g1",
+    "vendor": "google",
+    "model": "gemini-3.8-flash-medium"
+  },
+  {
+    "caseId": "dev-record-04",
+    "action": "proceed",
+    "reasonPath": "c1",
+    "vendor": "google",
+    "model": "gemini-3.8-flash-medium"
+  },
+  {
+    "caseId": "dev-record-05",
+    "action": "blocked",
+    "reasonPath": "g9",
+    "vendor": "google",
+    "model": "gemini-3.8-flash-medium"
+  },
+  {
+    "caseId": "dev-record-06",
+    "action": "ask",
+    "reasonPath": "g2",
+    "vendor": "google",
+    "model": "gemini-3.8-flash-medium"
+  },
+  {
+    "caseId": "dev-record-07",
+    "action": "proceed",
+    "reasonPath": "c1",
+    "vendor": "google",
+    "model": "gemini-3.8-flash-medium"
+  },
+  {
+    "caseId": "dev-record-08",
+    "action": "reframe",
+    "reasonPath": "g2",
+    "vendor": "google",
+    "model": "gemini-3.8-flash-medium"
+  },
+  {
+    "caseId": "dev-record-09",
+    "action": "check",
+    "reasonPath": "p1",
+    "vendor": "google",
+    "model": "gemini-3.8-flash-medium"
+  },
+  {
+    "caseId": "dev-record-10",
+    "action": "blocked",
+    "reasonPath": "policyHistory",
+    "vendor": "google",
+    "model": "gemini-3.8-flash-medium"
+  },
+  {
+    "caseId": "dev-record-11",
+    "action": "proceed",
+    "reasonPath": "c1",
+    "vendor": "google",
+    "model": "gemini-3.8-flash-medium"
+  },
+  {
+    "caseId": "dev-record-12",
+    "action": "proceed",
+    "reasonPath": "c1",
+    "vendor": "google",
+    "model": "gemini-3.8-flash-medium"
+  },
+  {
+    "caseId": "dev-record-13",
+    "action": "check",
+    "reasonPath": "p1",
+    "vendor": "google",
+    "model": "gemini-3.8-flash-medium"
+  },
+  {
+    "caseId": "dev-record-14",
+    "action": "reframe",
+    "reasonPath": "l2",
+    "vendor": "google",
+    "model": "gemini-3.8-flash-medium"
+  },
+  {
+    "caseId": "dev-record-15",
+    "action": "proceed",
+    "reasonPath": "c1",
+    "vendor": "google",
+    "model": "gemini-3.8-flash-medium"
+  },
+  {
+    "caseId": "dev-record-16",
+    "action": "check",
+    "reasonPath": "p1",
+    "vendor": "google",
+    "model": "gemini-3.8-flash-medium"
+  },
+  {
+    "caseId": "dev-record-17",
+    "action": "ask",
+    "reasonPath": "g2",
+    "vendor": "google",
+    "model": "gemini-3.8-flash-medium"
+  },
+  {
+    "caseId": "dev-record-18",
+    "action": "reframe",
+    "reasonPath": "l2",
+    "vendor": "google",
+    "model": "gemini-3.8-flash-medium"
+  },
+  {
+    "caseId": "dev-record-19",
+    "action": "blocked",
+    "reasonPath": "state.usage.modelCalls",
+    "vendor": "google",
+    "model": "gemini-3.8-flash-medium"
+  },
+  {
+    "caseId": "dev-record-20",
+    "action": "proceed",
+    "reasonPath": "g1",
+    "vendor": "google",
+    "model": "gemini-3.8-flash-medium"
+  },
+  {
+    "caseId": "res-01",
+    "action": "proceed",
+    "reasonPath": "claim-01-main",
+    "vendor": "google",
+    "model": "gemini-3.8-flash-medium"
+  },
+  {
+    "caseId": "res-02",
+    "action": "proceed",
+    "reasonPath": "claim-02-main",
+    "vendor": "google",
+    "model": "gemini-3.8-flash-medium"
+  },
+  {
+    "caseId": "res-03",
+    "action": "proceed",
+    "reasonPath": "claim-03-main",
+    "vendor": "google",
+    "model": "gemini-3.8-flash-medium"
+  },
+  {
+    "caseId": "res-04",
+    "action": "reframe",
+    "reasonPath": "lens-04-proposed",
+    "vendor": "google",
+    "model": "gemini-3.8-flash-medium"
+  },
+  {
+    "caseId": "res-05",
+    "action": "check",
+    "reasonPath": "probe-05-main",
+    "vendor": "google",
+    "model": "gemini-3.8-flash-medium"
+  },
+  {
+    "caseId": "res-06",
+    "action": "check",
+    "reasonPath": "probe-06-main",
+    "vendor": "google",
+    "model": "gemini-3.8-flash-medium"
+  },
+  {
+    "caseId": "res-07",
+    "action": "check",
+    "reasonPath": "probe-07-main",
+    "vendor": "google",
+    "model": "gemini-3.8-flash-medium"
+  },
+  {
+    "caseId": "res-08",
+    "action": "check",
+    "reasonPath": "probe-08-reflection",
+    "vendor": "google",
+    "model": "gemini-3.8-flash-medium"
+  },
+  {
+    "caseId": "res-09",
+    "action": "ask",
+    "reasonPath": "gap-09-main",
+    "vendor": "google",
+    "model": "gemini-3.8-flash-medium"
+  },
+  {
+    "caseId": "res-10",
+    "action": "ask",
+    "reasonPath": "gap-10-main",
+    "vendor": "google",
+    "model": "gemini-3.8-flash-medium"
+  },
+  {
+    "caseId": "res-11",
+    "action": "ask",
+    "reasonPath": "gap-11-main",
+    "vendor": "google",
+    "model": "gemini-3.8-flash-medium"
+  },
+  {
+    "caseId": "res-12",
+    "action": "ask",
+    "reasonPath": "gap-12-reflection",
+    "vendor": "google",
+    "model": "gemini-3.8-flash-medium"
+  },
+  {
+    "caseId": "res-13",
+    "action": "reframe",
+    "reasonPath": "gap-13-main",
+    "vendor": "google",
+    "model": "gemini-3.8-flash-medium"
+  },
+  {
+    "caseId": "res-14",
+    "action": "reframe",
+    "reasonPath": "gap-14-main",
+    "vendor": "google",
+    "model": "gemini-3.8-flash-medium"
+  },
+  {
+    "caseId": "res-15",
+    "action": "proceed",
+    "reasonPath": "claim-15-main",
+    "vendor": "google",
+    "model": "gemini-3.8-flash-medium"
+  },
+  {
+    "caseId": "res-16",
+    "action": "reframe",
+    "reasonPath": "gap-16-main",
+    "vendor": "google",
+    "model": "gemini-3.8-flash-medium"
+  },
+  {
+    "caseId": "res-17",
+    "action": "blocked",
+    "reasonPath": "gap-17-main",
+    "vendor": "google",
+    "model": "gemini-3.8-flash-medium"
+  },
+  {
+    "caseId": "res-18",
+    "action": "blocked",
+    "reasonPath": "probe-18-main",
+    "vendor": "google",
+    "model": "gemini-3.8-flash-medium"
+  },
+  {
+    "caseId": "res-19",
+    "action": "blocked",
+    "reasonPath": "gap-19-main",
+    "vendor": "google",
+    "model": "gemini-3.8-flash-medium"
+  },
+  {
+    "caseId": "res-20",
+    "action": "blocked",
+    "reasonPath": "candidate-20-excluded",
+    "vendor": "google",
+    "model": "gemini-3.8-flash-medium"
+  }
+]

@@ -1,0 +1,122 @@
+[
+  {
+    "caseId": "dev-record-01",
+    "authorIntentAction": "blocked",
+    "isControl": false,
+    "rationale": "A structural stopping constraint prevents useful autonomous progress: resource limit, unavailable required capability, excluded mandatory candidate, or repeated nonprogress without a human decision."
+  },
+  {
+    "caseId": "dev-record-02",
+    "authorIntentAction": "check",
+    "isControl": true,
+    "rationale": "The unresolved requirement is an objective local fact with an executable scoped probe, including when a user statement or the goal is a trigger."
+  },
+  {
+    "caseId": "dev-record-03",
+    "authorIntentAction": "ask",
+    "isControl": false,
+    "rationale": "Same-scope current evidence both supports and refutes the answer claim, and the relevant local probe has been exhausted."
+  },
+  {
+    "caseId": "dev-record-04",
+    "authorIntentAction": "reframe",
+    "isControl": true,
+    "rationale": "Required matters are resolved, but critique is absent or stale; executable optional facts do not establish completed critique. A single refuted hypothesis is not a two-sided dispute."
+  },
+  {
+    "caseId": "dev-record-05",
+    "authorIntentAction": "blocked",
+    "isControl": false,
+    "rationale": "A structural stopping constraint prevents useful autonomous progress: resource limit, unavailable required capability, excluded mandatory candidate, or repeated nonprogress without a human decision."
+  },
+  {
+    "caseId": "dev-record-06",
+    "authorIntentAction": "ask",
+    "isControl": false,
+    "rationale": "The human goal or priority is unresolved and changes the implementation despite an unrelated executable fact probe."
+  },
+  {
+    "caseId": "dev-record-07",
+    "authorIntentAction": "proceed",
+    "isControl": true,
+    "rationale": "The mandatory property is supported and current critique covers it; the remaining executable diagnostic is optional. Existing authorisation, where present, does not need repeating."
+  },
+  {
+    "caseId": "dev-record-08",
+    "authorIntentAction": "ask",
+    "isControl": false,
+    "rationale": "Two recorded rounds produced no progress and a human preference remains alongside an available fact probe."
+  },
+  {
+    "caseId": "dev-record-09",
+    "authorIntentAction": "check",
+    "isControl": true,
+    "rationale": "The unresolved requirement is an objective local fact with an executable scoped probe, including when a user statement or the goal is a trigger."
+  },
+  {
+    "caseId": "dev-record-10",
+    "authorIntentAction": "blocked",
+    "isControl": false,
+    "rationale": "A structural stopping constraint prevents useful autonomous progress: resource limit, unavailable required capability, excluded mandatory candidate, or repeated nonprogress without a human decision."
+  },
+  {
+    "caseId": "dev-record-11",
+    "authorIntentAction": "proceed",
+    "isControl": true,
+    "rationale": "The mandatory property is supported and current critique covers it; the remaining executable diagnostic is optional. Existing authorisation, where present, does not need repeating."
+  },
+  {
+    "caseId": "dev-record-12",
+    "authorIntentAction": "proceed",
+    "isControl": true,
+    "rationale": "The mandatory property is supported and current critique covers it; the remaining executable diagnostic is optional. Existing authorisation, where present, does not need repeating."
+  },
+  {
+    "caseId": "dev-record-13",
+    "authorIntentAction": "check",
+    "isControl": false,
+    "rationale": "The current contracts conflict, but a local reconstruction probe remains available before human arbitration."
+  },
+  {
+    "caseId": "dev-record-14",
+    "authorIntentAction": "reframe",
+    "isControl": true,
+    "rationale": "Required matters are resolved, but critique is absent or stale; executable optional facts do not establish completed critique. A single refuted hypothesis is not a two-sided dispute."
+  },
+  {
+    "caseId": "dev-record-15",
+    "authorIntentAction": "proceed",
+    "isControl": true,
+    "rationale": "The mandatory property is supported and current critique covers it; the remaining executable diagnostic is optional. Existing authorisation, where present, does not need repeating."
+  },
+  {
+    "caseId": "dev-record-16",
+    "authorIntentAction": "check",
+    "isControl": true,
+    "rationale": "The unresolved requirement is an objective local fact with an executable scoped probe, including when a user statement or the goal is a trigger."
+  },
+  {
+    "caseId": "dev-record-17",
+    "authorIntentAction": "ask",
+    "isControl": false,
+    "rationale": "The human goal or priority is unresolved and changes the implementation despite an unrelated executable fact probe."
+  },
+  {
+    "caseId": "dev-record-18",
+    "authorIntentAction": "reframe",
+    "isControl": true,
+    "rationale": "Required matters are resolved, but critique is absent or stale; executable optional facts do not establish completed critique. A single refuted hypothesis is not a two-sided dispute."
+  },
+  {
+    "caseId": "dev-record-19",
+    "authorIntentAction": "blocked",
+    "isControl": false,
+    "rationale": "A structural stopping constraint prevents useful autonomous progress: resource limit, unavailable required capability, excluded mandatory candidate, or repeated nonprogress without a human decision."
+  },
+  {
+    "caseId": "dev-record-20",
+    "authorIntentAction": "reframe",
+    "isControl": true,
+    "rationale": "Required matters are resolved, but critique is absent or stale; executable optional facts do not establish completed critique. A single refuted hypothesis is not a two-sided dispute."
+  }
+]
