@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 650" role="img" aria-labelledby="title desc">
+  <title id="title">理解の不足から、次の行動へ</title>
+  <desc id="desc">開発者・利用者が目的と回答案を渡す。TOMBOが主張、証拠、未確認事項を確認して、proceed、check、ask、reframe、blockedを選ぶ。askは最後の手段ではない。ホストが観測や回答を戻して状態を更新する。効果を測定した図ではなく、設計上の流れを示す。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#64748b"/></marker>
+    <style>
+      text{font-family:"Noto Sans JP","Yu Gothic",Meiryo,sans-serif;fill:#172b4d}
+      .heading{font-size:30px;font-weight:700}.label{font-size:26px;font-weight:700}.body{font-size:22px}.small{font-size:20px}.wire{fill:none;stroke:#64748b;stroke-width:3;marker-end:url(#arrow)}
+    </style>
+  </defs>
+  <rect width="960" height="650" rx="16" fill="#f8fafc"/>
+  <text x="32" y="47" class="heading">理解の不足から、次の行動へ</text>
+  <text x="32" y="80" class="small">設計上の流れ / Intended workflow</text>
+  <rect x="32" y="116" width="308" height="110" rx="14" fill="#e8eef7" stroke="#c7d5e9"/>
+  <text x="54" y="157" class="label">開発者・利用者</text>
+  <text x="54" y="195" class="body">目的・回答案・許可範囲</text>
+  <path d="M186 226 V274" class="wire"/>
+  <rect x="32" y="284" width="308" height="178" rx="14" fill="#ffffff" stroke="#8097b7" stroke-width="2"/>
+  <text x="54" y="326" class="label">理解状態を確かめる</text>
+  <text x="54" y="366" class="body">主張・証拠・未確認事項</text>
+  <text x="54" y="402" class="body">目的への影響・矛盾</text>
+  <text x="54" y="438" class="body">検査候補と制約</text>
+  <path d="M340 372 H376 M376 150 V486" fill="none" stroke="#64748b" stroke-width="3"/>
+  <path d="M376 150 H405" class="wire"/>
+  <path d="M376 234 H405" class="wire"/>
+  <path d="M376 318 H405" class="wire"/>
+  <path d="M376 402 H405" class="wire"/>
+  <path d="M376 486 H405" class="wire"/>
+  <g>
+    <rect x="418" y="116" width="510" height="68" rx="12" fill="#e7f4ec" stroke="#b1d7be"/>
+    <text x="438" y="158" class="label">確認できた → 進む / proceed</text>
+    <rect x="418" y="200" width="510" height="68" rx="12" fill="#e8f1fc" stroke="#b7ceea"/>
+    <text x="438" y="242" class="label">資料で確かめる → 調べる / check</text>
+    <rect x="418" y="284" width="510" height="68" rx="12" fill="#fff1d6" stroke="#bc7b12" stroke-width="2"/>
+    <text x="438" y="326" class="label">人の判断が必要 → 尋ねる / ask</text>
+    <rect x="418" y="368" width="510" height="68" rx="12" fill="#f1ebfb" stroke="#d1c1e5"/>
+    <text x="438" y="410" class="label">前提を見直す → 問い直す / reframe</text>
+    <rect x="418" y="452" width="510" height="68" rx="12" fill="#edf0f4" stroke="#c2cad5"/>
+    <text x="438" y="494" class="label">制約で進めない → 止まる / blocked</text>
+  </g>
+  <path d="M928 150 H944 M928 234 H944 M928 318 H944 M928 402 H944 M928 486 H944 M944 150 V550" fill="none" stroke="#64748b" stroke-width="3"/>
+  <path d="M944 550 V561 H186 V475" class="wire"/>
+  <rect x="275" y="540" width="440" height="38" rx="7" fill="#f8fafc"/>
+  <text x="287" y="566" class="small">必要時、ホストが観測・回答を戻して更新</text>
+  <text x="32" y="612" class="body" font-weight="700">askは第一級の選択肢。無関係な検査が残っていても選べる。</text>
+</svg>

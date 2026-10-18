@@ -1,10 +1,48 @@
 # TOMBO
 
-AIが自分の理解を確かめる複眼ツール。回答案や操作予定を、主張、証拠、未確認事項、検査へ分け、追加証拠に応じて状態を更新します。
+AIが自分の理解を確かめる複眼ツール。**AIエージェントを開発・運用する人と、その回答や操作を確認する人**のために、回答案や操作予定を主張・証拠・未確認事項・検査へ分けます。「何を根拠に進めるか」「何を調べるか」「何を人に尋ねるか」を、理解状態に基づいて選びます。
 
-**v0.1 は探索的な試作品です。** TypeScript SDK、CLI、会話内スキルで、証拠に応じた状態更新と再考を実行します。4回の実モデル比較はいずれも受入条件を満たしていません。第4回は36試行中26試行が正常終了し、通常再点検は17/18、TOMBOは9/18でした。全件を別モデルで採点しましたが、採点者は同じOpenAI系列であり、異なるベンダーによる検証ではありません。比較終了後の修正を含む全494試験が親の環境で成功しました。修正後の効果は新規比較で未確認です。[最新の比較結果と限界](docs/metacognition-evaluation-epoch4.md)を参照してください。未知をすべて発見する能力、完全な理解、幻覚の防止を保証しません。
+**v0.1 は探索的な試作品です。** TypeScript SDK、CLI、会話内スキルを提供します。固定状態からの判断規則は検証していますが、ライブモデルの自発的な質問や、回答品質の改善効果は未実証です。
 
 [English](#english) · [仕様書](TOMBO_spec_v0.1_ja.md) · [比較実験の準備](evaluation/README.md)
+
+## 誰の何を解決するか
+
+| 対象者 | 困っていること | TOMBOで扱えること |
+| --- | --- | --- |
+| AIエージェントの開発者・運用者 | 検査を続けているが、目的・優先順位・権限の不足が解消しない | 人だけが決められる不足を区別し、実行可能な検査が残っていても `ask` を選ぶ |
+| 回答や操作を確認する利用者 | AIが何を根拠に進むのか、何を自分に確認したいのか分からない | 主張・証拠・未確認事項と、質問の理由・回答で確定する行動条件を確認する |
+| エージェントを評価する人 | 自信や振り返りの文章だけでは、質問の必要性を比較しづらい | 同じ状態に対する判断を再現し、適切な質問・不要な質問・質問の見逃しを分けて数える |
+
+例えば「速度と正確さのどちらを優先するか」が目的を変えるなら、人に尋ねます。資料で調べられる事実の不足なら検査し、前提の見直しが必要なら問い直します。質問数を増やすこと自体は目標にしません。
+
+## 理解の不足から、次の行動へ
+
+![開発者・利用者が目的、回答案、許可範囲を渡し、TOMBOが主張・証拠・未確認事項を確認して、進む・調べる・人に尋ねる・問い直す・止まるを選ぶ。ホストが観測や回答を戻して状態を更新する。](docs/images/understanding-actions.svg)
+
+AIが候補を用意し、SDKが参照・状態の整合性と行動規則を検証します。`ask` は最後の手段ではなく、人の判断が必要なときに能動的に選ぶ行動です。実際の検査や質問の提示はホストが担当し、`proceed` は外部操作の許可を意味しません。「理解への関心」はこの行動上の狙いであり、主観的な関心や意識を測定したものではありません。
+
+## 検証で分かったこと
+
+### 固定状態でのask判断：必要な質問の見逃しを減らした
+
+架空の60状態を、開発・自動化・研究の3ドメイン各20件で用意しました。入力と作者意図・期待値を分離し、OpenAI・Google・NVIDIAが各60件を独立に注釈しました。**全員一致42件だけ**を主指標に使い、不一致18件は未確定として分離しています。モデル注釈は暫定であり、客観的な正解ではありません。
+
+| 指標（合意42件：ask 10件・非ask 32件） | 旧規則 `f2ecc2e` | ask-policy |
+| --- | ---: | ---: |
+| 必要なaskを選べた割合（recall） | 8/10（80%） | 10/10（100%） |
+| 選んだaskが必要だった割合（precision） | 8/8（100%） | 10/10（100%） |
+| 必要なaskの見逃し | 2件 | 0件 |
+| 不要なask（合意が非askの32件） | 0件 | 0件 |
+| 不要askの対照ケース違反（合意13件） | 0件 | 0件 |
+
+これは**与えた固定状態から行動を選ぶ規則**の比較です。モデルが自ら不足や盲点を発見し、実際の会話で適切に質問できるようになったことまでは示しません。全60件の比較では行動が7件変わり、うち合意ケースは4件、不一致ケースは3件でした。[比較レポート](evaluation/reports/ask-policy-compare.json)、[暫定注釈](evaluation/ask-policy-annotations.json)、[不一致18件](evaluation/ask-policy-disagreements.json)、[評価方法と限界](evaluation/README.md)で確認できます。
+
+ask-policy統合後の機構・回帰試験は**667/667成功**でした（2026-10-18、skip 0）。これはソフトウェアの検査結果であり、ライブモデルの有効性の証明とは分けます。[試験記録](docs/ask-policy-work/pm-integrated-test-r2-evidence.json)
+
+### 実モデル比較：有効性はまだ示せていない
+
+4回の実モデル比較はいずれも受入条件を満たしていません。第4回は36試行中26試行が正常終了し、通常再点検は17/18、TOMBOは9/18でした。全件を別モデルで採点しましたが、採点者は同じOpenAI系列であり、異なるベンダーによる検証ではありません。その比較終了後の修正時点では全494試験が親の環境で成功しましたが、修正後の効果は新規の実モデル比較で未確認です。[比較結果と限界](docs/metacognition-evaluation-epoch4.md)を参照してください。未知をすべて発見する能力、完全な理解、幻覚の防止を保証しません。
 
 ## アーキテクチャ
 
@@ -194,6 +232,36 @@ CIはLinuxとWindowsでNode.js 22と24を対象にします。MITライセンス
 
 ## English
 
+### Who TOMBO is for
+
+TOMBO is for people who build or operate AI agents, and people who need to check their answers or planned actions. It records claims, evidence, open questions and probes so the next action can depend on what is understood and what remains unresolved.
+
+| Audience | Problem | What TOMBO supports |
+| --- | --- | --- |
+| Agent developers and operators | More checks cannot settle a missing goal, priority or permission | Distinguish human-only decisions and choose `ask` before exhausting unrelated executable probes |
+| People checking an answer or action | The reason for proceeding or requesting clarification is unclear | Inspect evidence, unresolved issues, the reason for a question and the action conditions its answer would settle |
+| Agent evaluators | Confidence statements alone do not show whether clarification is needed | Replay the same states and count appropriate asks, unnecessary asks and missed asks separately |
+
+![The developer or user supplies a goal, draft answer and permission scope. TOMBO checks claims, evidence and gaps, then selects proceed, check, ask, reframe or blocked. The host returns observations or human answers to update the state.](docs/images/understanding-actions.svg)
+
+If the choice between speed and accuracy changes the goal, ask the person. If a fact can be checked in a source, investigate it. If the framing needs revision, reframe. Asking more questions is not itself the goal. The model supplies candidates; the SDK validates references, state consistency and action rules. The host presents questions and executes permitted checks. `proceed` does not grant permission for an external action. Concern for understanding describes the intended behaviour, not measured subjective interest or consciousness.
+
+### What has been verified
+
+The ask-policy comparison uses 60 fictional states across development, automation and research, with 20 per domain. Inputs, author intent and expected actions are separated. OpenAI, Google and NVIDIA each independently labelled all 60 cases. **Only the 42 unanimous cases** enter the main metrics; 18 disagreements remain unresolved. Model labels are provisional, not ground truth.
+
+| Metric (42 unanimous cases: 10 ask, 32 non-ask) | Old rule `f2ecc2e` | Ask-policy |
+| --- | ---: | ---: |
+| Necessary asks selected (recall) | 8/10 (80%) | 10/10 (100%) |
+| Selected asks that were necessary (precision) | 8/8 (100%) | 10/10 (100%) |
+| Missed necessary asks | 2 | 0 |
+| Unnecessary asks (32 unanimous non-ask cases) | 0 | 0 |
+| Unnecessary-ask control violations (13 unanimous controls) | 0 | 0 |
+
+This verifies deterministic rules on supplied states. It does not establish that a live model spontaneously discovers gaps or blind spots, or asks better questions in conversation. Seven of all 60 decisions changed: four unanimous cases and three disputed cases. See the [comparison report](evaluation/reports/ask-policy-compare.json), [provisional labels](evaluation/ask-policy-annotations.json), [18 disagreements](evaluation/ask-policy-disagreements.json) and [method and limitations](evaluation/README.md).
+
+After ask-policy integration, **667/667 mechanism and regression tests passed**, with none skipped (18 October 2026; [test record](docs/ask-policy-work/pm-integrated-test-r2-evidence.json)). Software checks and live-model effectiveness are separate claims. All four earlier real-model comparisons failed their acceptance criteria; the fourth completed 17/18 general-recheck trials and 9/18 TOMBO trials. The [comparison and limitations](docs/metacognition-evaluation-epoch4.md) remain applicable.
+
 ### Use TOMBO in a conversation
 
 The skill name is `tombo-view`. In Codex, invoke it with `$tombo-view`.
@@ -204,7 +272,7 @@ Point the installed skill's `references/runtime.json` at the built repository wi
 
 TOMBO is an experimental tool for checking an AI agent's understanding. It separates draft answers and planned actions into claims, evidence, open questions, and probes. New evidence updates the external state of understanding.
 
-Version 0.1 provides a TypeScript SDK, a CLI, an agent skill, two synthetic replay examples, and 48 synthetic scenarios for preparing comparisons. All four real-model comparisons failed the acceptance criteria. The fourth completed 26 of 36 trials without execution errors, with 17 of 18 for the general recheck and 9 of 18 for TOMBO. A different model assessed every trial, but the assessor belongs to the same OpenAI family. This is not verification by a different vendor. All 494 tests passed in the parent environment after subsequent fixes. Their effect remains unverified in a new comparison. See the [latest comparison and limitations](docs/metacognition-evaluation-epoch4.md). TOMBO does not guarantee complete understanding, discovery of every unknown, or prevention of hallucinations.
+Version 0.1 provides a TypeScript SDK, a CLI, an agent skill, two synthetic replay examples, and the original 48 synthetic scenarios for preparing comparisons, alongside the separate 60-case ask-policy dataset above. All four real-model comparisons failed the acceptance criteria. The fourth completed 26 of 36 trials without execution errors, with 17 of 18 for the general recheck and 9 of 18 for TOMBO. A different model assessed every trial, but the assessor belongs to the same OpenAI family. This is not verification by a different vendor. At the earlier post-comparison checkpoint, all 494 tests passed in the parent environment. Their effect remains unverified in a new real-model comparison. See the [latest comparison and limitations](docs/metacognition-evaluation-epoch4.md). TOMBO does not guarantee complete understanding, discovery of every unknown, or prevention of hallucinations.
 
 ### Run the replay examples
 
