@@ -4,7 +4,7 @@ import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { parseArgs } from 'node:util';
-import { SessionStore, canonicalPath, findSessionWorkspace, taskDigest } from './session-store.mjs';
+import { SessionStore, canonicalPath, findSessionWorkspace, sameDirectoryIdentity, taskDigest } from './session-store.mjs';
 
 const skillRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const configuration = resolve(skillRoot, 'references/runtime.json');
@@ -48,8 +48,11 @@ function proposalFeedback(state, operation) {
 }
 
 async function managed(command, values, workspace) {
-  const store = new SessionStore(await canonicalPath(workspace), sdk);
-  if (await canonicalPath(process.cwd()) !== store.workspace) throw new TomboError('revision_conflict', 'Return to the fixed activated workspace. A child directory cannot create another binding.');
+  const store = new SessionStore(workspace, sdk);
+  const cwdMatchesWorkspace = process.platform === 'win32'
+    ? await sameDirectoryIdentity(process.cwd(), store.workspace)
+    : await canonicalPath(process.cwd()) === store.workspace;
+  if (!cwdMatchesWorkspace) throw new TomboError('revision_conflict', 'Return to the fixed activated workspace. A child directory cannot create another binding.');
   await store.withLock(async () => {
     await store.load();
     if (command === 'activate') {

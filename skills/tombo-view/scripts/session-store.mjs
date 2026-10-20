@@ -1,7 +1,7 @@
 import { createHash, randomUUID } from 'node:crypto';
 import { existsSync } from 'node:fs';
-import { mkdir, open, readFile, realpath, rename, unlink, writeFile } from 'node:fs/promises';
-import { basename, dirname, isAbsolute, join, relative, resolve, sep } from 'node:path';
+import { lstat, mkdir, open, readFile, realpath, rename, stat, unlink, writeFile } from 'node:fs/promises';
+import { basename, dirname, isAbsolute, join, parse, relative, resolve, sep } from 'node:path';
 
 export function canonical(value) {
   if (Array.isArray(value)) return `[${value.map(canonical).join(',')}]`;
@@ -24,6 +24,32 @@ export async function canonicalPath(path) {
     if (parent === absolute) throw error;
     return normal(join(await canonicalPath(parent), relative(parent, absolute)));
   }
+}
+async function hasLinkComponent(path) {
+  const absolute = resolve(path), root = parse(absolute).root;
+  let current = root;
+  for (const component of absolute.slice(root.length).split(/[\\/]+/).filter(Boolean)) {
+    current = join(current, component);
+    let info;
+    try { info = await lstat(current); }
+    catch (error) { if (error.code === 'ENOENT') return false; throw error; }
+    if (info.isSymbolicLink()) return true;
+  }
+  return false;
+}
+export async function sameDirectoryIdentity(left, right) {
+  if (process.platform !== 'win32') return left === right;
+  try {
+    const [a, b] = await Promise.all([stat(left, { bigint: true }), stat(right, { bigint: true })]);
+    return a.isDirectory() && b.isDirectory() && a.dev !== 0n && b.dev !== 0n && a.ino !== 0n && b.ino !== 0n && a.dev === b.dev && a.ino === b.ino;
+  } catch { return false; }
+}
+async function sameWorkspaceBinding(bindingWorkspace, workspace) {
+  if (process.platform !== 'win32') return bindingWorkspace === workspace;
+  try {
+    const spelling = resolve(bindingWorkspace);
+    return !(await hasLinkComponent(spelling)) && await sameDirectoryIdentity(spelling, workspace);
+  } catch { return false; }
 }
 export function redacted(state) {
   const saved = structuredClone(state);
@@ -55,7 +81,8 @@ export function findSessionWorkspace(cwd) {
 
 export class SessionStore {
   constructor(workspace, sdk) {
-    this.workspace = normal(resolve(workspace));
+    this.workspaceSpelling = normal(resolve(workspace));
+    this.workspace = this.workspaceSpelling;
     this.sdk = sdk;
     this.directory = join(this.workspace, '.session');
     this.path = join(this.directory, 'tombo-session.jsonl');
@@ -69,10 +96,19 @@ export class SessionStore {
   require(condition, code, message) { if (!condition) throw new this.sdk.TomboError(code, message); }
 
   async withLock(operation) {
-    const workspace = await canonicalPath(this.workspace);
-    this.require(workspace === this.workspace, 'revision_conflict', 'Use the canonical activated workspace.');
+    const workspace = await canonicalPath(this.workspaceSpelling);
+    this.require(!(await hasLinkComponent(this.workspaceSpelling)) && await sameDirectoryIdentity(this.workspaceSpelling, workspace), 'revision_conflict', 'Use the canonical activated workspace.');
+    if (process.platform === 'win32') {
+      this.workspace = workspace;
+      this.directory = join(this.workspace, '.session');
+      this.path = join(this.directory, 'tombo-session.jsonl');
+      this.cache = join(this.directory, 'tombo-session.json');
+      this.lock = `${this.path}.lock`;
+    }
+    this.require(!(await hasLinkComponent(this.directory)), 'revision_conflict', 'Session authority cannot be redirected through a symbolic link.');
     await mkdir(this.directory, { recursive: true });
-    this.require(await canonicalPath(this.directory) === normal(resolve(this.directory)), 'revision_conflict', 'Session authority cannot be redirected through a symbolic link.');
+    const session = await canonicalPath(this.directory);
+    this.require(!(await hasLinkComponent(this.workspaceSpelling)) && !(await hasLinkComponent(this.directory)) && await sameDirectoryIdentity(this.directory, session), 'revision_conflict', 'Session authority cannot be redirected through a symbolic link.');
     let lock;
     try { lock = await open(this.lock, 'wx'); } catch (error) {
       if (error.code === 'EEXIST') throw new this.sdk.TomboError('revision_conflict', 'Another writer or an interrupted process owns the session lock. Preserve it for explicit recovery.');
@@ -101,7 +137,7 @@ export class SessionStore {
         const event = JSON.parse(line), previous = events.at(-1);
         this.require(event.schemaVersion === '0.1' && event.sequence === events.length && event.previousHash === (previous ? digest(previous) : null) && event.snapshotHash === digest(event.snapshot), 'invalid_ledger', 'Session sequence or digest mismatch.');
         const session = event.snapshot, binding = session.binding;
-        this.require(binding.workspace === this.workspace && binding.taskId === session.task.taskId && binding.taskHash === taskDigest(session.task) && canonical(binding.budget) === canonical(session.task.budget) && typeof binding.sessionId === 'string' && Array.isArray(session.updates) && Array.isArray(session.transitions), 'invalid_ledger', 'Invalid session binding.');
+        this.require(await sameWorkspaceBinding(binding.workspace, this.workspace) && binding.taskId === session.task.taskId && binding.taskHash === taskDigest(session.task) && canonical(binding.budget) === canonical(session.task.budget) && typeof binding.sessionId === 'string' && Array.isArray(session.updates) && Array.isArray(session.transitions), 'invalid_ledger', 'Invalid session binding.');
         this.sdk.taskPacketSchema.parse(session.task);
         this.validateClockHistory(session, previous?.snapshot);
         if (session.pendingOperation?.result) this.sdk.validateState(session.pendingOperation.result);
@@ -145,15 +181,18 @@ export class SessionStore {
   async paths(ledger, statePath) {
     this.require(ledger && statePath, 'invalid_input', 'Activation and transition require --ledger and --out for the fixed state cache.');
     const boundLedger = await canonicalPath(resolve(this.workspace, ledger)), boundState = await canonicalPath(resolve(this.workspace, statePath));
-    const within = path => { const rel = relative(this.workspace, path); return rel !== '' && !rel.startsWith('..') && !isAbsolute(rel); };
-    this.require(within(boundLedger) && within(boundState) && boundLedger !== this.directory && boundState !== this.directory, 'revision_conflict', 'Ledger and state cache must be files inside the fixed workspace.');
+    const workspaceRoot = process.platform === 'win32' ? await canonicalPath(this.workspace) : this.workspace;
+    const sessionDirectory = process.platform === 'win32' ? await canonicalPath(this.directory) : this.directory;
+    const within = path => { const rel = relative(workspaceRoot, path); return rel !== '' && !rel.startsWith('..') && !isAbsolute(rel); };
+    this.require(within(boundLedger) && within(boundState) && boundLedger !== sessionDirectory && boundState !== sessionDirectory, 'revision_conflict', 'Ledger and state cache must be files inside the fixed workspace.');
     this.require(boundLedger !== boundState && `${boundLedger}.lock` !== boundState && `${boundState}.lock` !== boundLedger, 'invalid_input', 'Ledger, its lock and state cache must differ.');
     const proposed = [boundLedger, `${boundLedger}.lock`, boundState];
     this.require(!proposed.some((path, index) => proposed.slice(index + 1).some(other => pathsOverlap(path, other))) && !proposed.some(path => cacheTemporary(path, boundState)), 'revision_conflict', 'SDK ledger, lock, cache and cache temporary files must not overlap.');
     const current = this.snapshot?.binding;
     const history = (this.snapshot?.transitions ?? []).map(item => item.previous);
     if (current && (current.ledger !== boundLedger || current.statePath !== boundState)) history.push(current);
-    const reserved = [this.path, this.cache, this.lock, ...history.flatMap(item => [item.ledger, `${item.ledger}.lock`, item.statePath])];
+    const authorityPaths = process.platform === 'win32' ? await Promise.all([this.path, this.cache, this.lock].map(path => canonicalPath(path))) : [this.path, this.cache, this.lock];
+    const reserved = [...authorityPaths, ...history.flatMap(item => [item.ledger, `${item.ledger}.lock`, item.statePath])];
     const caches = [this.cache, ...history.map(item => item.statePath)];
     this.require(!proposed.some(path => reserved.some(other => pathsOverlap(path, other)) || caches.some(cache => cacheTemporary(path, cache))) && !reserved.some(path => cacheTemporary(path, boundState)), 'revision_conflict', 'SDK paths overlap reserved session or current/historical SDK artifacts or cache temporary names.');
     return { ledger: boundLedger, statePath: boundState };
