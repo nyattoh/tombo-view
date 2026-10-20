@@ -1,6 +1,0 @@
-{
-  "started_at": "2026-10-21T00:00:16.4580877+09:00",
-  "completed_at": "2026-10-21T00:00:38.1842851+09:00",
-  "command": "node --test --test-name-pattern='managed invalidate|managed invalidation' test/session-followup.test.mjs",
-  "exit": 0
-}

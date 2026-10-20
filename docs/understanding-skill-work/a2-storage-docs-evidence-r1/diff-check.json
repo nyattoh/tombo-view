@@ -1,4 +1,0 @@
-{
-  "command": "git diff --check -- skills/tombo-view/SKILL.md skills/tombo-view/references/host-session.md README.md",
-  "exit_code": 0
-}

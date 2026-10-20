@@ -1,7 +1,0 @@
-{
-  "batch": "local-batch-17",
-  "captured_at": "2026-10-19T10:04:00+09:00",
-  "published_order": ["p1", "p2", "p3", "p4"],
-  "completed_order": ["p1", "p2", "p4", "p3"],
-  "counts": {"completed": 4, "pending": 0, "failed": 0}
-}

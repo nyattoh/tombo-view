@@ -1,6 +1,0 @@
-{
-  "initial_role": "test_integrate",
-  "error": "avoid_vendor_required",
-  "no_child_dispatch": true,
-  "correction": "Use actual forward_observer role for descriptive blinded model/bundle comparison. Formal acceptance code review remains fresh Google cross-vendor task later; Codex observer is not a formal independent review of its own family."
-}

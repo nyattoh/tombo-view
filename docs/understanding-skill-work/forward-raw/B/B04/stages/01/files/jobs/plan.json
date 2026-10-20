@@ -1,9 +1,0 @@
-{
-  "plan_revision": 1,
-  "start_local_time": "00:00",
-  "deadline_local_time": "01:00",
-  "order": ["collect", "summarise", "archive"],
-  "execution": "serial",
-  "startup_overhead_minutes": 0,
-  "additional_wait_minutes": 0
-}

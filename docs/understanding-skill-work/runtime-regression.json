@@ -1,8 +1,0 @@
-{
-  "started_at": "2026-10-20T17:20:00.5374315+09:00",
-  "completed_at": "2026-10-20T17:20:09.8045606+09:00",
-  "typecheck_command": "npm run typecheck",
-  "typecheck_exit": 0,
-  "regression_command": "node --test test/core.test.mjs test/reflection.test.mjs test/assessment-correction.test.mjs test/assessment-correction-surfaces.test.mjs test/assessment-correction-journal.test.mjs test/ask-policy.test.mjs test/session.test.mjs test/session-repair-feedback.test.mjs test/host-session-framing.test.mjs test/recovery-journal.test.mjs test/cli-reflection.test.mjs",
-  "regression_exit": 0
-}

@@ -1,3 +1,0 @@
-Acceptance2限定のmanaged撤回入口を独立design checkへ付託。提案正本はresults/understanding-acceptance2/runtime/managed-invalidate-proposal.md、実欠落再現はmanaged-invalidate-diagnosis.json。期限内は既存SDK非生成invalidateをmanaged transactionへ通し、期限後はcheckpoint停止と撤回申告未評価保存を維持する案。製品実装は明示PASS待ち。既存の外部commit拒否を弱めない。
-
-選定は現live catalogueを23:45 JST再確認したantigravity/gemini-3.8-flash-medium/options=[]。前回bench/assign_slotのcross-vendor reviewer選定を継承する限定設計確認。実費/tokenはunknown。旧失敗を免除しない。

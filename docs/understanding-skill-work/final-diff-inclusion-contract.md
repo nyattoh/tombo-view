@@ -1,5 +1,0 @@
-# Required new-file coverage
-
-Parent independent readback confirmed that session-store.mjs and session-binding.test.mjs are untracked required owned files. A tracked-only git diff is incomplete. Final independent review must receive the explicit full changed/new product manifest and read every new source/test file directly; it must include the seven untracked product files listed in a2-review-product-file-status-r1.txt, including these two. Rebuild the final diff/manifest after docs freeze; preserve earlier snapshots as historical.
-
-No commit or staging for publication before parent re-audit PASS. After that PASS, stage exact named product files and the authorised feature evidence directory; never git add . or stage historical docs/ask-policy-work. Before commit inspect cached names/diff and verify required source/test coverage. After commit inspect origin/main...HEAD names and content, confirm all required files are included, historical192 files remain untracked/untouched, and final source hashes match accepted review. Repeat the coverage check against the PR head before closing. These checks are pending, not claimed completed.

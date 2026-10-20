@@ -1,6 +1,0 @@
-{
-  "started_at": "2026-10-21T01:49:24.4777539+09:00",
-  "completed_at": "2026-10-21T01:49:52.5012209+09:00",
-  "command": "node --test --test-name-pattern='post-F|actual deadline|expired managed invalidate' test/session-followup.test.mjs",
-  "exit": 0
-}

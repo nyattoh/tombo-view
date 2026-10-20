@@ -1,6 +1,0 @@
-{
-  "command": "node --test test/cli-model-repair.test.mjs test/session-followup.test.mjs test/session-binding.test.mjs test/session-budget-checkpoint.test.mjs",
-  "started_at": "2026-10-21T05:46:58.1640490+09:00",
-  "completed_at": "2026-10-21T05:48:44.3948118+09:00",
-  "exit": 0
-}

@@ -1,7 +1,0 @@
-# Fresh full-diff review preparation
-
-Not dispatched. Dependency: completed fresh raw stages and evidence evaluation. Source and skill are frozen; integrated npm test is705/705, fail0/skip0/exit0. Actual changed/new product files are in a2-review-product-file-status-r1.txt. Tracked patch is a2-review-tracked-diff-r1.patch; the final reviewer must also read every explicitly listed untracked product/test file directly, including session-store.mjs and the six new test files. Historical docs/ask-policy-work is excluded from writes and feature scope.
-
-The fresh review brief must include the locked charter and parent-authorized acceptance2 amendment, original full-review-r2 and parent-final-audit failures, D01 evidence, a2 design and fresh design reviews, managed invalidate r1/r2 objections and responses, actual RED/GREEN/regression commands and hashes, final raw observations with every failure/partial preserved, current usage docs and truthful host/synthetic boundaries. Old PASS claims are not current evidence. Require an explicit pass/fail/needs_review and severity-ranked actionable findings. Review current full feature diff, not just managed invalidate. No source changes or publication by reviewer. Different vendor from implementation, fresh delegate_task and stable distinct request ID.
-
-Before launch, complete the forward evidence references and recheck actual current catalogue/options. Parent independently audits all gates before commit/push/Draft PR. PM remains the same and performs no product/test/skill implementation.

@@ -9,7 +9,13 @@ export function canonical(value) {
   return JSON.stringify(value);
 }
 export const digest = value => createHash('sha256').update(canonical(value)).digest('hex');
-const normal = path => process.platform === 'win32' ? path.toLowerCase() : path;
+const normal = path => {
+  if (process.platform !== 'win32') return path;
+  let value = path.replaceAll('/', '\\');
+  if (value.startsWith('\\\\?\\UNC\\')) value = `\\\\${value.slice(8)}`;
+  else if (value.startsWith('\\\\?\\')) value = value.slice(4);
+  return value.toLowerCase();
+};
 export async function canonicalPath(path) {
   const absolute = resolve(path);
   try { return normal(await realpath(absolute)); } catch (error) {
@@ -419,7 +425,7 @@ export class SessionStore {
   async transition(input, ledger, statePath, clockInput) {
     const task = this.sdk.taskPacketSchema.parse(input.task), change = input.userChange, previous = this.snapshot;
     this.require(!previous.pendingOperation && !previous.accountingUncertain && this.state, 'revision_conflict', 'Resolve or explicitly recover the current transaction before a goal transition.');
-    this.require(input.previousSessionId === previous.binding.sessionId && typeof input.reason === 'string' && input.reason.length > 0 && change?.kind === 'user_statement' && typeof change.id === 'string' && typeof change.locator === 'string' && change.locator.length > 0 && Number.isFinite(Date.parse(change.receivedAt)) && typeof change.passage === 'string' && change.passage.length > 0 && change.contentHash === this.sdk.hashPassage(change.passage), 'invalid_input', 'Transition requires a referenced, dated user change, not an AI paraphrase.');
+    this.require(input.previousSessionId === previous.binding.sessionId && typeof input.reason === 'string' && input.reason.length > 0 && change?.kind === 'user_statement' && typeof change.id === 'string' && typeof change.locator === 'string' && change.locator.length > 0 && isoTime(change.receivedAt) && Date.parse(change.receivedAt) <= Date.now() + 5000 && typeof change.passage === 'string' && change.passage.length > 0 && change.contentHash === this.sdk.hashPassage(change.passage), 'invalid_input', 'Transition requires a referenced, dated user change, not an AI paraphrase.');
     this.require(change.previousGoal === previous.task.goal && change.newGoal === task.goal && canonical(change.previousSuccessCriteria) === canonical(previous.task.successCriteria) && canonical(change.newSuccessCriteria) === canonical(task.successCriteria), 'invalid_input', 'The user change must reference the actual previous and new conditions.');
     this.require(task.taskId !== previous.binding.taskId && (task.goal.trim() !== previous.task.goal.trim() || canonical(task.successCriteria) !== canonical(previous.task.successCriteria)), 'revision_conflict', 'A same-goal follow-up cannot start a new task or budget.');
     const summary = input.hand_over_summary;

@@ -1,6 +1,0 @@
-{
-  "started_at": "2026-10-20T17:25:00.0425376+09:00",
-  "completed_at": "2026-10-20T17:25:05.2784932+09:00",
-  "command": "node --test test/cli-model-repair.test.mjs",
-  "exit": 0
-}

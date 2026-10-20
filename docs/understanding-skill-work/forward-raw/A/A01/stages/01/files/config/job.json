@@ -1,5 +1,0 @@
-{
-  "job": "catalogue-import",
-  "maxAttempts": 3,
-  "retryDelayMs": 1000
-}

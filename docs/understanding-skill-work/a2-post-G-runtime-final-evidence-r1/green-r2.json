@@ -1,7 +1,0 @@
-{
-  "started_at": "2026-10-21T03:07:40.2089519+09:00",
-  "completed_at": "2026-10-21T03:08:14.2073787+09:00",
-  "command": "node --test --test-name-pattern='post-G' test/session-followup.test.mjs",
-  "exit": 0,
-  "prior_attempt": "green-r1 preserved; report test now compares rendered underscore escapes correctly"
-}

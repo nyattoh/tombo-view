@@ -1,7 +1,0 @@
-{
-  "started_at": "2026-10-20T17:19:19.9525281+09:00",
-  "completed_at": "2026-10-20T17:19:31.0196365+09:00",
-  "build_exit": 0,
-  "command": "node --test test/assessment-scope-diagnostics.test.mjs test/assessment-scope-report.test.mjs test/understanding-session.test.mjs",
-  "exit": 0
-}

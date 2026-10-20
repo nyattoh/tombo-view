@@ -1,7 +1,0 @@
-{
-  "recorded_at": "2026-10-21T01:15:55.8855531+09:00",
-  "command": "python C:/Users/ryoko/.agents/skills/bench-ledger-router/scripts/task_gate.py docs/understanding-skill-work/task-state.json",
-  "exit_code": 3,
-  "acceptance2": "not_passed",
-  "publication": "not_authorised_before_parent_PASS"
-}

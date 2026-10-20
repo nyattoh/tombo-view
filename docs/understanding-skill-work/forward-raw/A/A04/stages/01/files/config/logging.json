@@ -1,6 +1,0 @@
-{
-  "current": {"delete_after_days": 90},
-  "proposed": {"delete_after_days": 30},
-  "category": "application-diagnostics",
-  "environment": "local-simulation"
-}

@@ -1,6 +1,0 @@
-{
-  "command": "node --test --test-name-pattern='F1' test/cli-model-repair.test.mjs test/session-followup.test.mjs",
-  "started_at": "2026-10-21T05:43:35.8428402+09:00",
-  "completed_at": "2026-10-21T05:43:49.2380970+09:00",
-  "exit": 0
-}

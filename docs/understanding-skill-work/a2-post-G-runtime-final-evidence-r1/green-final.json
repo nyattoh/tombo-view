@@ -1,6 +1,0 @@
-{
-  "started_at": "2026-10-21T03:08:44.3700042+09:00",
-  "completed_at": "2026-10-21T03:09:15.8552480+09:00",
-  "command": "node --test --test-name-pattern='post-G' test/session-followup.test.mjs",
-  "exit": 0
-}

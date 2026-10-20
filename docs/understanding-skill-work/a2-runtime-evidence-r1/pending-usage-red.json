@@ -1,7 +1,0 @@
-{
-  "started_at": "2026-10-20T23:36:09.1515244+09:00",
-  "completed_at": "2026-10-20T23:36:20.4097373+09:00",
-  "command": "node --test test/session-budget-checkpoint.test.mjs test/session-binding.test.mjs test/session-followup.test.mjs",
-  "exit": 1,
-  "purpose": "Additional pending-usage and canonical-case public regressions before their production fixes; unknown-operation prepare remains RED."
-}

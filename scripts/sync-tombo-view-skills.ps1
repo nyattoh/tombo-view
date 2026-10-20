@@ -15,6 +15,31 @@ $targets = @(
   (Join-Path $localAppData 'hermes/skills/tombo-view')
 )
 
+function Get-GitOutput {
+  param(
+    [Parameter(Mandatory)][string[]]$Arguments,
+    [Parameter(Mandatory)][string]$FailureMessage
+  )
+  $output = @(& git -C $repositoryRoot @Arguments 2>$null)
+  $gitExitCode = $LASTEXITCODE
+  if ($gitExitCode -ne 0) {
+    throw "$FailureMessage (git exit code $gitExitCode)."
+  }
+  return ($output -join [Environment]::NewLine).Trim()
+}
+
+function Assert-GitSuccess {
+  param(
+    [Parameter(Mandatory)][string[]]$Arguments,
+    [Parameter(Mandatory)][string]$FailureMessage
+  )
+  $null = & git -C $repositoryRoot @Arguments 2>$null
+  $gitExitCode = $LASTEXITCODE
+  if ($gitExitCode -ne 0) {
+    throw "$FailureMessage (git exit code $gitExitCode)."
+  }
+}
+
 if (-not (Test-Path -LiteralPath (Join-Path $sourceRoot 'SKILL.md') -PathType Leaf)) {
   throw "Skill source not found: $sourceRoot"
 }
@@ -23,14 +48,27 @@ if ($Apply) {
   if ([string]::IsNullOrWhiteSpace($MergedCommit)) {
     throw 'Pass -MergedCommit with the commit that contains the merged PR.'
   }
-  $null = & git -C $repositoryRoot merge-base --is-ancestor $MergedCommit origin/main
-  if ($LASTEXITCODE -ne 0) {
-    throw "Merged commit $MergedCommit is not contained in origin/main; no copies were changed. Update origin/main after the PR is merged."
+  if ($MergedCommit -notmatch '\A(?:[0-9a-fA-F]{40}|[0-9a-fA-F]{64})\z') {
+    throw 'MergedCommit must be a full commit SHA; no copies were changed.'
   }
-  $null = & git -C $repositoryRoot merge-base --is-ancestor $MergedCommit HEAD
-  if ($LASTEXITCODE -ne 0) {
-    throw "Merged commit $MergedCommit is not an ancestor of HEAD; no copies were changed."
+
+  $resolvedMergedCommit = Get-GitOutput -Arguments @('rev-parse', '--verify', "$MergedCommit^{commit}") -FailureMessage "Merged commit $MergedCommit cannot be resolved"
+  $headCommit = Get-GitOutput -Arguments @('rev-parse', '--verify', 'HEAD^{commit}') -FailureMessage 'HEAD cannot be resolved'
+  if ($resolvedMergedCommit -ne $headCommit) {
+    throw "Merged commit $resolvedMergedCommit does not equal HEAD $headCommit; no copies were changed."
   }
+
+  $currentBranch = Get-GitOutput -Arguments @('branch', '--show-current') -FailureMessage 'Current branch cannot be determined'
+  if ($currentBranch -ne 'main') {
+    throw "Apply requires the main branch; current branch is '$currentBranch'. No copies were changed."
+  }
+
+  $status = Get-GitOutput -Arguments @('status', '--porcelain=v1', '--untracked-files=all') -FailureMessage 'Working tree status cannot be determined'
+  if (-not [string]::IsNullOrEmpty($status)) {
+    throw 'Apply requires a clean working tree, including untracked files; no copies were changed.'
+  }
+
+  Assert-GitSuccess -Arguments @('merge-base', '--is-ancestor', $resolvedMergedCommit, 'origin/main') -FailureMessage "Merged commit $resolvedMergedCommit is not contained in origin/main; update origin/main after the PR is merged. No copies were changed"
 }
 
 $sourceFiles = @(Get-ChildItem -LiteralPath $sourceRoot -File -Recurse -Force | Where-Object {
@@ -41,6 +79,26 @@ $sourceFiles = @(Get-ChildItem -LiteralPath $sourceRoot -File -Recurse -Force | 
 } | Sort-Object { [IO.Path]::GetRelativePath($sourceRoot, $_.FullName).Replace('\', '/') })
 
 if ($sourceFiles.Count -eq 0) { throw 'The skill source contains no deployable files.' }
+
+if ($Apply) {
+  $committedTree = Get-GitOutput -Arguments @('ls-tree', '-r', '--name-only', '--full-tree', $resolvedMergedCommit, '--', 'skills/tombo-view') -FailureMessage "Deployable files for $resolvedMergedCommit cannot be listed"
+  $committedSourcePaths = @($committedTree -split '\r?\n' | Where-Object { -not [string]::IsNullOrEmpty($_) } | ForEach-Object {
+    if (-not $_.StartsWith('skills/tombo-view/')) {
+      throw "Unexpected skill path in commit tree: $_; no copies were changed."
+    }
+    $_.Substring('skills/tombo-view/'.Length)
+  } | Where-Object {
+    $_ -ne 'references/runtime.json' -and
+      -not $_.StartsWith('.session/') -and
+      -not $_.Contains('/.session/')
+  } | Sort-Object)
+  $sourcePaths = @($sourceFiles | ForEach-Object { [IO.Path]::GetRelativePath($sourceRoot, $_.FullName).Replace('\', '/') } | Sort-Object)
+  $pathDifferences = @(Compare-Object -ReferenceObject $committedSourcePaths -DifferenceObject $sourcePaths -CaseSensitive)
+  if ($pathDifferences.Count -gt 0) {
+    throw "Deployable source files do not match commit $resolvedMergedCommit; no copies were changed."
+  }
+}
+
 $sourceHashes = @{}
 $manifestLines = foreach ($file in $sourceFiles) {
   $relativePath = [IO.Path]::GetRelativePath($sourceRoot, $file.FullName).Replace('\', '/')

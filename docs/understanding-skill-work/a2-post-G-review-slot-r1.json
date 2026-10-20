@@ -1,1 +1,0 @@
-{"ok": true, "providerInstanceId": "antigravity", "model": "gemini-3.8-flash-high", "vendor": "google", "efforts": ["default"], "evidence": "ledger", "rank": 8, "cost_output": null, "selection": "cross_vendor_when_separate", "no_cross_vendor_candidate": false}
