@@ -1,0 +1,171 @@
+{
+  "binding": {
+    "schemaVersion": "0.1",
+    "operation": "inspect",
+    "taskId": "task-a04-log-retention-check",
+    "expectedRevision": -1,
+    "requestHash": "ab1df72feade5d6756bbfe5ee7e5b5eb8b22e53598ce2c2a605ebf03fc3b6c6d"
+  },
+  "proposal": {
+    "claims": [
+      {
+        "id": "claim-can-change-setting",
+        "role": "answer_claim",
+        "text": "ログ削除設定（delete_after_days: 30）への変更は最終保存期間規程と整合しており変更してよい",
+        "scope": "config/logging.json:policies/retention-final.txt"
+      },
+      {
+        "id": "claim-config-proposed-days",
+        "role": "hypothesis",
+        "text": "config/logging.json にて提案されている削除日数は30日である",
+        "scope": "config/logging.json"
+      },
+      {
+        "id": "claim-policy-final-exists",
+        "role": "hypothesis",
+        "text": "policies/retention-final.txt に最終的な保存期間規程が定義されている",
+        "scope": "policies/retention-final.txt"
+      },
+      {
+        "id": "claim-draft-status-nonfinal",
+        "role": "hypothesis",
+        "text": "drafts/retention-discussion.txt は検討途中のメモであり最終規程ではない",
+        "scope": "drafts/retention-discussion.txt"
+      }
+    ],
+    "lenses": [
+      {
+        "id": "lens-policy-compliance",
+        "label": "保存期間規程への適合性",
+        "rationale": "ログ削除設定の変更が最終的な保存期間規程に準拠しているか確認する視点",
+        "origin": "initial",
+        "status": "active"
+      },
+      {
+        "id": "lens-doc-status",
+        "label": "文書の確定状態と効力",
+        "rationale": "参照する文書が最終規程か検討中メモかを区別する視点",
+        "origin": "initial",
+        "status": "active"
+      }
+    ],
+    "gaps": [
+      {
+        "id": "gap-config-proposed-unverified",
+        "kind": "missing_fact",
+        "lensId": "lens-policy-compliance",
+        "question": "config/logging.json で指定されている変更対象の削除設定値は何か",
+        "triggerRefs": [
+          "claim-can-change-setting"
+        ],
+        "whyItMatters": "変更予定の設定値を把握しなければ、最終規程との整合性を照合できないため",
+        "importance": "required",
+        "claimIds": [
+          "claim-config-proposed-days"
+        ],
+        "probeIds": [
+          "probe-read-config-logging"
+        ]
+      },
+      {
+        "id": "gap-policy-final-unverified",
+        "kind": "missing_fact",
+        "lensId": "lens-policy-compliance",
+        "question": "policies/retention-final.txt における最終保存期間の規程内容は何か",
+        "triggerRefs": [
+          "claim-can-change-setting"
+        ],
+        "whyItMatters": "最終規程の内容が不明な場合、設定変更が規程に適合しているか照合できないため",
+        "importance": "required",
+        "claimIds": [
+          "claim-policy-final-exists"
+        ],
+        "probeIds": [
+          "probe-read-policy-final"
+        ]
+      },
+      {
+        "id": "gap-draft-status-unverified",
+        "kind": "missing_fact",
+        "lensId": "lens-doc-status",
+        "question": "drafts/retention-discussion.txt の位置付けおよび確定状態は何か",
+        "triggerRefs": [
+          "task:goal"
+        ],
+        "whyItMatters": "検討メモの記述が確定規程と誤認されるのを防ぐため",
+        "importance": "required",
+        "claimIds": [
+          "claim-draft-status-nonfinal"
+        ],
+        "probeIds": [
+          "probe-check-draft-status"
+        ]
+      },
+      {
+        "id": "gap-verify-change-readiness",
+        "kind": "unsupported_claim",
+        "lensId": "lens-policy-compliance",
+        "question": "設定変更が最終保存期間規程と矛盾しないことの確認が取れているか",
+        "triggerRefs": [
+          "task:goal"
+        ],
+        "whyItMatters": "規程と設定の照合が完了しなければ、変更してよい状態とは判断できないため",
+        "importance": "required",
+        "claimIds": [
+          "claim-can-change-setting"
+        ],
+        "probeIds": [
+          "probe-read-policy-final"
+        ]
+      }
+    ],
+    "probes": [
+      {
+        "id": "probe-read-config-logging",
+        "gapIds": [
+          "gap-config-proposed-unverified"
+        ],
+        "method": "corroboration",
+        "question": "config/logging.json を読み取り、現在の設定および提案されている設定値を確認する",
+        "requiredCapability": "read_file",
+        "sourceGroups": [
+          "config"
+        ],
+        "successCondition": "config/logging.json から current および proposed の設定値が取得できた場合",
+        "refutationCondition": "ファイルが存在しないか、設定形式が不正で設定値が取得できない場合",
+        "inconclusiveCondition": "ファイルに proposed 設定が含まれないなど、変更内容が特定できない場合"
+      },
+      {
+        "id": "probe-read-policy-final",
+        "gapIds": [
+          "gap-policy-final-unverified",
+          "gap-verify-change-readiness"
+        ],
+        "method": "corroboration",
+        "question": "policies/retention-final.txt を読み取り、最終的な保存期間規程を確認する",
+        "requiredCapability": "read_file",
+        "sourceGroups": [
+          "policies"
+        ],
+        "successCondition": "policies/retention-final.txt から最終保存期間の規程が取得できた場合",
+        "refutationCondition": "ファイルが存在せず、最終規程が取得できない場合",
+        "inconclusiveCondition": "ファイルが存在するが、対象カテゴリの保存期間が明記されていない場合"
+      },
+      {
+        "id": "probe-check-draft-status",
+        "gapIds": [
+          "gap-draft-status-unverified"
+        ],
+        "method": "corroboration",
+        "question": "drafts/retention-discussion.txt を読み取り、検討メモの内容と確定状態を確認する",
+        "requiredCapability": "read_file",
+        "sourceGroups": [
+          "drafts"
+        ],
+        "successCondition": "検討メモの記載内容および確定状況が取得できた場合",
+        "refutationCondition": "ファイルが存在しないか読み取れない場合",
+        "inconclusiveCondition": "メモの記述が曖昧で確定状況が判断できない場合"
+      }
+    ]
+  }
+}

@@ -1,0 +1,110 @@
+{
+  "observed_at": "2026-10-20T20:53:03.067553+00:00",
+  "finding": "Two detected doc changes match authorized docs owner ordinal11 actual write events255/256/257 and current hashes",
+  "write_evidence": "a2-F1-r2-concurrent-docs-write-evidence-r1.json",
+  "doc_hashes": {
+    "README.md": "1e8cfda602e87eeb8d4fabae55e140ca5b49077800e29aa2df8af58f0c99f0d0",
+    "skills/tombo-view/references/host-session.md": "d3e300f2928fb4b947d82ec8921b9db569b2f74365793a8e0e583d035964a9a1"
+  },
+  "protected9": [
+    {
+      "path": "skills/tombo-view/SKILL.md",
+      "hash_match": true,
+      "mtime_match": true
+    },
+    {
+      "path": "skills/tombo-view/agents/openai.yaml",
+      "hash_match": true,
+      "mtime_match": true
+    },
+    {
+      "path": "src/report.ts",
+      "hash_match": true,
+      "mtime_match": true
+    },
+    {
+      "path": "skills/tombo-view/scripts/session-store.mjs",
+      "hash_match": true,
+      "mtime_match": true
+    },
+    {
+      "path": "test/assessment-scope-diagnostics.test.mjs",
+      "hash_match": true,
+      "mtime_match": true
+    },
+    {
+      "path": "test/assessment-scope-report.test.mjs",
+      "hash_match": true,
+      "mtime_match": true
+    },
+    {
+      "path": "test/session-binding.test.mjs",
+      "hash_match": true,
+      "mtime_match": true
+    },
+    {
+      "path": "test/session-budget-checkpoint.test.mjs",
+      "hash_match": true,
+      "mtime_match": true
+    },
+    {
+      "path": "test/understanding-session.test.mjs",
+      "hash_match": true,
+      "mtime_match": true
+    }
+  ],
+  "guard_script_exit1": "Preserved freeze-attempt-r1, not a test failure; overly broad all11 unchanged claim corrected by runtime; no rollback",
+  "test_evidence": [
+    {
+      "meta": {
+        "command": "node --test test/cli-model-repair.test.mjs test/session-followup.test.mjs test/session-binding.test.mjs test/session-budget-checkpoint.test.mjs",
+        "started_at": "2026-10-21T05:46:58.1640490+09:00",
+        "completed_at": "2026-10-21T05:48:44.3948118+09:00",
+        "exit": 0
+      },
+      "counts": {
+        "tests": 119,
+        "pass": 119,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "logsha256": "6e235aa87ca6dae4a159e8493877da794e6911889a35337f3e08bb4a9e913234"
+    },
+    {
+      "meta": {
+        "command": "node --test test/core.test.mjs test/reflection.test.mjs test/model-repair.test.mjs test/assessment-correction.test.mjs test/assessment-correction-surfaces.test.mjs test/assessment-correction-journal.test.mjs test/assessment-scope-diagnostics.test.mjs test/assessment-scope-report.test.mjs test/ask-policy.test.mjs test/session.test.mjs test/session-repair-feedback.test.mjs test/host-session-framing.test.mjs test/recovery-journal.test.mjs test/cli-reflection.test.mjs test/understanding-session.test.mjs",
+        "started_at": "2026-10-21T05:47:08.3758887+09:00",
+        "completed_at": "2026-10-21T05:47:22.1330634+09:00",
+        "exit": 0
+      },
+      "counts": {
+        "tests": 254,
+        "pass": 254,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "logsha256": "9633114b2ea7f9629d3c70eb78117260471b2cefedc03307d200b2cb6a23d5ec"
+    }
+  ],
+  "final_build_typecheck": {
+    "build": {
+      "command": "npm run build",
+      "started_at": "2026-10-21T05:49:23.5727899+09:00",
+      "completed_at": "2026-10-21T05:49:24.3932621+09:00",
+      "exit": 0
+    },
+    "typecheck": {
+      "command": "npm run typecheck",
+      "started_at": "2026-10-21T05:49:24.3932621+09:00",
+      "completed_at": "2026-10-21T05:49:25.0700253+09:00",
+      "exit": 0
+    }
+  },
+  "extra_test_readback": "Only3 new F1 SDK tests appended, no approved expectation weakened. All32 F1 cases covered in actual119 affected run; first F1-only29/29 remains separate. No32-only run claimed.",
+  "steers": "Existing runtime10 and docs11 steered, same task/run IDs, no extra starts",
+  "composite_freeze": "pending both terminal; new npm/raw not started",
+  "A2": false,
+  "unwaived_AGENTS_deviation": "recorded_unwaived_for_parent_audit retained separately"
+}

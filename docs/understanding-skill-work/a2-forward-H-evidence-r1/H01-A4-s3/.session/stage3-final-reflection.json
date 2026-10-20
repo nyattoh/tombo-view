@@ -1,0 +1,41 @@
+{
+  "binding": {
+    "schemaVersion": "0.1",
+    "operation": "reflect",
+    "taskId": "reading-meeting-formats",
+    "expectedRevision": 9,
+    "requestHash": "adad1c50a9f18290d30c7ff17b6186d01dc80c2c441fdbf4ad057e6c9d27f1ee",
+    "sessionId": "c59dc9a2-2b21-40b3-b8de-baa9cfb5fc2b"
+  },
+  "reflection": {
+    "binding": {
+      "taskId": "reading-meeting-formats",
+      "basedRevision": 9,
+      "understandingHash": "8a298f201ff1c39cd1733564e2210cf79c7cbb4874184db450f99a07d1f3e10e"
+    },
+    "reviewedClaimIds": [
+      "open-round-duration",
+      "card-duration",
+      "card-preparation-estimate",
+      "priority-small-groups",
+      "preparation-flexible",
+      "prefers-short-preparation",
+      "group-speaking-comfort-unknown",
+      "open-round-no-materials",
+      "card-current-preparation-25",
+      "card-preparation-not-timed",
+      "accepts-25-for-small-groups"
+    ],
+    "completion": "completed",
+    "limitations": [
+      "現在の準備見積りは約25分であり実測ではない。旧10分を現行の比較へ再利用しない。旧証拠のwithdrawnと実観測の再登録・評価を行い、旧履歴は保持した。",
+      "25分は事前準備であり、活動35分とは別。会場45分に25分と35分を単純加算して当日の時間超過とは判断しない。",
+      "順番案の資料不要と一巡最大16分、カード活動の導入込み35分は未変更の構成箇所から再確認した。資料不要は進行準備が実測ゼロという意味ではない。",
+      "本人の準備を短くしたい希望は確認済みだが、少人数構成との優先順位・25分の受入れは未確認。参加者の全体発言の話しやすさも未確認である。",
+      "パス可・短い一言可はAIの調整提案。効果の実測や本人による採用の証拠ではない。",
+      "旧10分に関する確認は現在の決定条件として再質問しない。SDKの旧preparation-gapとclaimIdsのないcurrent-preparation-note-gapは解決を適用できずopenの記録を保持している。新しい25分の事実は実観測によりsupportedだが、これらのgapや本人判断を完了扱いにしない。",
+      "初回更新のresolution提案は検証で拒否された。同じ停止状態・同じ観測executionを使い、根拠のないresolutionを除いた提案で再評価した。取得済み観測を再実行・会計を初期化していない。"
+    ],
+    "proposal": {}
+  }
+}

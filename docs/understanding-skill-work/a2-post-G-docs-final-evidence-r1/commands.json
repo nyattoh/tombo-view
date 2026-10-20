@@ -1,0 +1,38 @@
+[
+  {
+    "name": "clock-example",
+    "command": "powershell.exe -NoProfile -File D:\\develop\\works\\tombo-view-ask-policy\\results\\understanding-acceptance2\\docs\\post-G\\clock-example\\clock-example.ps1",
+    "cwd": "D:\\develop\\works\\tombo-view-ask-policy\\results\\understanding-acceptance2\\docs\\post-G\\clock-example",
+    "start": "2026-10-20T18:22:24.785929+00:00",
+    "end": "2026-10-20T18:22:25.215151+00:00",
+    "exit": 0,
+    "log": "clock-example.log"
+  },
+  {
+    "name": "clock-example-schema",
+    "command": "node --input-type=module -e \"import {readFileSync} from \\\"node:fs\\\"; import assert from \\\"node:assert/strict\\\"; import {SessionStore} from \\\"./skills/tombo-view/scripts/session-store.mjs\\\"; import * as sdk from \\\"./dist/index.js\\\"; const c=JSON.parse(readFileSync(\\\"results/understanding-acceptance2/docs/post-G/clock-example/.session/task-clock.json\\\",\\\"utf8\\\")); assert.deepEqual(Object.keys(c).sort(),[\\\"basis\\\",\\\"deadlineAt\\\",\\\"sourceRef\\\",\\\"startedAt\\\"]); assert.equal(Date.parse(c.deadlineAt)-Date.parse(c.startedAt),600000); const store=new SessionStore(process.cwd(),sdk); const sealed=store.taskClock(c); assert.equal(sealed.basis,\\\"first_observed\\\"); assert.ok(Date.parse(sealed.recordedAt)>=Date.parse(c.startedAt)); console.log(JSON.stringify({descriptor:c,validatedBy:\\\"SessionStore.taskClock\\\",recordedAt:sealed.recordedAt,boundary:\\\"example syntax/schema/arithmetic only; no helper activation or semantic evaluation\\\"},null,2));\"",
+    "cwd": "D:\\develop\\works\\tombo-view-ask-policy",
+    "start": "2026-10-20T18:22:25.215595+00:00",
+    "end": "2026-10-20T18:22:25.395248+00:00",
+    "exit": 0,
+    "log": "clock-example-schema.log"
+  },
+  {
+    "name": "quick-validate",
+    "command": "python C:/Users/ryoko/.codex/skills/.system/skill-creator/scripts/quick_validate.py skills/tombo-view",
+    "cwd": "D:\\develop\\works\\tombo-view-ask-policy",
+    "start": "2026-10-20T18:22:25.395962+00:00",
+    "end": "2026-10-20T18:22:25.551744+00:00",
+    "exit": 0,
+    "log": "quick-validate.log"
+  },
+  {
+    "name": "diff-check",
+    "command": "git diff --check -- skills/tombo-view/SKILL.md skills/tombo-view/references/host-session.md README.md",
+    "cwd": "D:\\develop\\works\\tombo-view-ask-policy",
+    "start": "2026-10-20T18:22:25.552659+00:00",
+    "end": "2026-10-20T18:22:25.601888+00:00",
+    "exit": 0,
+    "log": "diff-check.log"
+  }
+]

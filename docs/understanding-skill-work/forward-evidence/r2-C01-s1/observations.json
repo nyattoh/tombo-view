@@ -1,0 +1,24 @@
+[
+  {
+    "executionId": "exec-read-craft-boxes",
+    "probeId": "probe-read-boxes-file",
+    "outcome": "completed",
+    "toolCalls": 1,
+    "elapsedMs": 5,
+    "costYen": null,
+    "evidence": [
+      {
+        "id": "ev-craft-boxes-file",
+        "kind": "document",
+        "locator": "craft/boxes.json",
+        "sourceGroup": "local_filesystem",
+        "retrievedAt": "2026-10-20T08:48:26.000Z",
+        "version": null,
+        "scope": "craft/boxes.json",
+        "passage": "{\n  \"boxes\": [\n    {\"name\": \"縫う道具\", \"contents\": [\"針\", \"糸\", \"糸切りばさみ\"]},\n    {\"name\": \"留める道具\", \"contents\": [\"待ち針\", \"クリップ\"]},\n    {\"name\": \"測る道具\", \"contents\": [\"メジャー\", \"定規\"]}\n  ]\n}\n",
+        "contentHash": "6045e6c1e7c5d6b434a03e1ab3ab71b9ba6c71694794226b295c01f4afa37562",
+        "validity": "current"
+      }
+    ]
+  }
+]

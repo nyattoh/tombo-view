@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "0.1",
+  "taskId": "loading-policy-decision",
+  "goal": "個人用ローカル資料検索ツールにおける索引読み込み方針（起動時読み込み eager vs 初回検索時読み込み lazy）の決定",
+  "mode": "explain",
+  "successCriteria": [
+    "両案（eager, lazy）が必須条件（起動2秒以内、初回検索2秒以内、最大メモリ120MB以内）を満たすことが確認されていること",
+    "利用者の優先順位（起動待ち時間短縮か初回検索速度か）を確認・反映して方針を確定できる状態にすること"
+  ],
+  "evidence": [
+    {
+      "id": "evidence-constraints",
+      "kind": "document",
+      "locator": "design/constraints.txt",
+      "sourceGroup": "design",
+      "retrievedAt": "2026-10-20T17:44:06+09:00",
+      "version": null,
+      "scope": "local_search_tool",
+      "passage": "このツールは一人で、端末内の固定資料を検索するために使う。\n検索内容と結果の一致は両案で確認済み。ネットワークは使わない。\n今回の必須条件は、起動2秒以内、初回検索2秒以内、最大メモリ120MB以内。\n実装の手間と保守の手間は両案とも同程度。追加のライブラリは不要。\n起動の待ち時間と初回検索の待ち時間のどちらを重視するかは、まだ決めていない。\n",
+      "contentHash": "dfb366f4327605fcaee1a3d8030d9cdac53b2dc368cd068f5a46f5982694bf59",
+      "validity": "current"
+    },
+    {
+      "id": "evidence-loading-options",
+      "kind": "document",
+      "locator": "design/loading-options.json",
+      "sourceGroup": "design",
+      "retrievedAt": "2026-10-20T17:44:06+09:00",
+      "version": null,
+      "scope": "local_search_tool",
+      "passage": "{\n  \"measurement\": {\n    \"environment\": \"同じローカル模擬端末と同じ固定資料300件\",\n    \"method\": \"各案5回起動し、起動直後に同じ検索を1回行った中央値\",\n    \"startup_definition\": \"アプリ起動から検索欄を操作できるまで\",\n    \"search_definition\": \"検索ボタンを押してから結果が表示されるまで\"\n  },\n  \"options\": [\n    {\"id\": \"eager\", \"description\": \"起動時に索引を読み込む\", \"startup_seconds\": 1.6, \"first_search_seconds\": 0.05, \"later_search_seconds\": 0.05, \"peak_memory_mb\": 90},\n    {\"id\": \"lazy\", \"description\": \"最初の検索時に索引を読み込む\", \"startup_seconds\": 0.3, \"first_search_seconds\": 1.4, \"later_search_seconds\": 0.05, \"peak_memory_mb\": 90}\n  ]\n}\n",
+      "contentHash": "f0798f21986c018b4c7ca432cd08097dbe47f939f181cc6275747cdc3a463868",
+      "validity": "current"
+    }
+  ],
+  "reflectionRequired": true,
+  "proposedAnswer": "必須条件（起動2秒以内、初回検索2秒以内、最大メモリ120MB以内）はeager案・lazy案ともに満たしています。起動待ち時間短縮を重視するならlazy案（起動0.3秒・初回検索1.4秒）、初回検索の即応性を重視するならeager案（起動1.6秒・初回検索0.05秒）が適しています。",
+  "proposedActions": [
+    "起動時間重視としてlazy案（初回検索時に索引読み込み）の採用方針を確定する",
+    "初回検索速度重視としてeager案（起動時に索引読み込み）の採用方針を確定する"
+  ],
+  "capabilities": [
+    "file_read",
+    "user_dialogue"
+  ],
+  "budget": {
+    "maxRounds": 5,
+    "maxModelCalls": 10,
+    "maxToolCalls": 10,
+    "maxElapsedMs": 600000,
+    "maxInputChars": 50000,
+    "maxOutputTokensPerCall": 4000
+  }
+}

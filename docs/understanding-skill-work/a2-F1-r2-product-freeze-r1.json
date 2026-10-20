@@ -1,0 +1,164 @@
+{
+  "frozen_at": "2026-10-20T20:55:47.039529+00:00",
+  "scope": "Full16 product current source/docs composite freeze after runtime10 and docs11 actual terminal",
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "1e8cfda602e87eeb8d4fabae55e140ca5b49077800e29aa2df8af58f0c99f0d0",
+      "mtime_ns": "1792529404699574400",
+      "runtime_hash_match": true,
+      "runtime_mtime_match": true
+    },
+    {
+      "path": "skills/tombo-view/SKILL.md",
+      "sha256": "c8ca55395aa2727efbbe098b970bc12e5441fd77013013c978978e72a9133b39",
+      "mtime_ns": "1792520498150143300",
+      "runtime_hash_match": true,
+      "runtime_mtime_match": true
+    },
+    {
+      "path": "skills/tombo-view/agents/openai.yaml",
+      "sha256": "06f40acb0d8181ca1524cbaafc49ea209043354266a045ed25d3af2e4a5b6fcf",
+      "mtime_ns": "1792484131542519300",
+      "runtime_hash_match": true,
+      "runtime_mtime_match": true
+    },
+    {
+      "path": "skills/tombo-view/references/host-session.md",
+      "sha256": "d3e300f2928fb4b947d82ec8921b9db569b2f74365793a8e0e583d035964a9a1",
+      "mtime_ns": "1792529422338615200",
+      "runtime_hash_match": true,
+      "runtime_mtime_match": true
+    },
+    {
+      "path": "skills/tombo-view/scripts/session.mjs",
+      "sha256": "d7dec89c35183a0cc5f8499a280b752410fae36d94b93b7f690b4d4b19ca6b35",
+      "mtime_ns": "1792529007916519100",
+      "runtime_hash_match": true,
+      "runtime_mtime_match": true
+    },
+    {
+      "path": "src/core.ts",
+      "sha256": "5f482373f1d7054c9db6005319380a4fec9a664001dac6202a6caeb25d40fde7",
+      "mtime_ns": "1792529005754284800",
+      "runtime_hash_match": true,
+      "runtime_mtime_match": true
+    },
+    {
+      "path": "src/report.ts",
+      "sha256": "7043d10897d43e8f6bfd3457eb566545d96daf66ae9b64c5ef4e2df01e8be2e7",
+      "mtime_ns": "1792484356803732700",
+      "runtime_hash_match": true,
+      "runtime_mtime_match": true
+    },
+    {
+      "path": "src/types.ts",
+      "sha256": "9b16cf222f9d56248fb65cb7be6c6a677cdb8fc0ead5c19efea5bf65423f5eeb",
+      "mtime_ns": "1792528957604861600",
+      "runtime_hash_match": true,
+      "runtime_mtime_match": true
+    },
+    {
+      "path": "test/cli-model-repair.test.mjs",
+      "sha256": "b2e93a05e6634047d30e1209231596cef208e3b18a92bad508e743f61883a3b3",
+      "mtime_ns": "1792529218151332500",
+      "runtime_hash_match": true,
+      "runtime_mtime_match": true
+    },
+    {
+      "path": "skills/tombo-view/scripts/session-store.mjs",
+      "sha256": "2bafafeaa30beb6067367ce75af9d46e2bf1abe58d4d80a1ca31729fe92b6219",
+      "mtime_ns": "1792519825965063500",
+      "runtime_hash_match": true,
+      "runtime_mtime_match": true
+    },
+    {
+      "path": "test/assessment-scope-diagnostics.test.mjs",
+      "sha256": "9ddd46e32886f46b15bd890cb87637f5864e823e5faa6443fef329a2e9e39dc0",
+      "mtime_ns": "1792484313569120000",
+      "runtime_hash_match": true,
+      "runtime_mtime_match": true
+    },
+    {
+      "path": "test/assessment-scope-report.test.mjs",
+      "sha256": "c904c36645c535207b543a26e67df18e29b547afad0cb265186b620858e49f2d",
+      "mtime_ns": "1792484313568145600",
+      "runtime_hash_match": true,
+      "runtime_mtime_match": true
+    },
+    {
+      "path": "test/session-binding.test.mjs",
+      "sha256": "c07d8c636eb766ebc2ca12517491b46a7fef912df4b628663a913963de3a2acd",
+      "mtime_ns": "1792510503050050200",
+      "runtime_hash_match": true,
+      "runtime_mtime_match": true
+    },
+    {
+      "path": "test/session-budget-checkpoint.test.mjs",
+      "sha256": "36dd66b02ddfad46f6bb2c4b18cbafd7f0948c2654ff192f898437efd4d13ee0",
+      "mtime_ns": "1792506968319791500",
+      "runtime_hash_match": true,
+      "runtime_mtime_match": true
+    },
+    {
+      "path": "test/session-followup.test.mjs",
+      "sha256": "4f0f34ee149f8bad1bd16bfd837d90248987f1a6107343b454f98f850524b568",
+      "mtime_ns": "1792528506485413300",
+      "runtime_hash_match": true,
+      "runtime_mtime_match": true
+    },
+    {
+      "path": "test/understanding-session.test.mjs",
+      "sha256": "0768dbb8e1694ff0b83057d39f7530c4cac63511eefcd3cab3e28b61075dc721",
+      "mtime_ns": "1792484313570622500",
+      "runtime_hash_match": true,
+      "runtime_mtime_match": true
+    }
+  ],
+  "new_owned_files": [
+    "skills/tombo-view/scripts/session-store.mjs",
+    "test/assessment-scope-diagnostics.test.mjs",
+    "test/assessment-scope-report.test.mjs",
+    "test/session-binding.test.mjs",
+    "test/session-budget-checkpoint.test.mjs",
+    "test/session-followup.test.mjs",
+    "test/understanding-session.test.mjs"
+  ],
+  "runtime_evidence": "a2-F1-r2-final-runtime-evidence-r1/",
+  "docs_evidence": "a2-F1-r2-final-docs-evidence-r1/",
+  "API_spec_unchanged": true,
+  "runtime_protected9_unchanged": true,
+  "concurrent_docs2_confirmed": "a2-F1-r2-concurrent-docs-drift-readback-r1.json",
+  "docs_validator_and_content_checks": {
+    "readme_fixed_japanese": true,
+    "readme_fixed_english": true,
+    "readme_hidden_crossrag_japanese": true,
+    "readme_hidden_crossrag_english": true,
+    "host_bytes_outside_recovery_explanation": true,
+    "F3_existing_resolution_paragraph_unchanged": true,
+    "protected_non_owned_files_bytes_mtime_unchanged": true,
+    "owned_two_files_changed": true,
+    "historical_409_path_hashes_preserved": true,
+    "ask_192_untracked_preserved": true,
+    "API_specification_unchanged_append_only": true
+  },
+  "prefixes": "entire amended RED test bytes retained; CLI only3 appended SDK invariants",
+  "staged": 0,
+  "ask_untracked": 192,
+  "tracked_product_diff_paths": [
+    "README.md",
+    "skills/tombo-view/SKILL.md",
+    "skills/tombo-view/agents/openai.yaml",
+    "skills/tombo-view/references/host-session.md",
+    "skills/tombo-view/scripts/session.mjs",
+    "src/core.ts",
+    "src/report.ts",
+    "src/types.ts",
+    "test/cli-model-repair.test.mjs"
+  ],
+  "new7_explicit": true,
+  "A2": false,
+  "publication_ready": false,
+  "AGENTS_deviation": "recorded_unwaived_for_parent_audit",
+  "cost_tokens": "unknown"
+}

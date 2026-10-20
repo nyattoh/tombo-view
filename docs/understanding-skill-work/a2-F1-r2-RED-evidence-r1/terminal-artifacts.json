@@ -1,0 +1,58 @@
+{
+  "recorded_at": "2026-10-20T20:37:10.452Z",
+  "all16_after_rechecked": true,
+  "protected14_unchanged": true,
+  "source3_and_store_unchanged": true,
+  "artifacts": [
+    {
+      "path": "results/understanding-acceptance2/runtime/F1/r2-red/after.json",
+      "sha256": "e3744ad8e598103ac0b5eee1e089ceb45278dbc381e722072954c4d85a154fcc",
+      "bytes": 7440
+    },
+    {
+      "path": "results/understanding-acceptance2/runtime/F1/r2-red/before.json",
+      "sha256": "432df38b6f7197f23a4b3da254db6f4093380575e12935326cb95a783a95da14",
+      "bytes": 5151
+    },
+    {
+      "path": "results/understanding-acceptance2/runtime/F1/r2-red/cli-model-repair.test.mjs.r1-before.mjs",
+      "sha256": "3f3be921c9fe8c520fedeb83a6bf1133781258297218278369c800d618679866",
+      "bytes": 32610
+    },
+    {
+      "path": "results/understanding-acceptance2/runtime/F1/r2-red/cli-model-repair.test.mjs.r2.patch",
+      "sha256": "e6830d172c48d7cd407f9bd54a2b0a5fb20be19889f77a7895dc0f28d97c0e6c",
+      "bytes": 2845
+    },
+    {
+      "path": "results/understanding-acceptance2/runtime/F1/r2-red/hand_over_summary.md",
+      "sha256": "4ddc62f273f0c58a0f7ad9ce0693b2c8879de85df40e8761c7aee57f5668dcb1",
+      "bytes": 5944
+    },
+    {
+      "path": "results/understanding-acceptance2/runtime/F1/r2-red/red-r2.json",
+      "sha256": "3fcb15f512bd3e44aa1a38382539bd435253f2b4e873af749dd8bbb462a4b97d",
+      "bytes": 357
+    },
+    {
+      "path": "results/understanding-acceptance2/runtime/F1/r2-red/red-r2.log",
+      "sha256": "f31f874b8a5a311930d981f209e41ea1a09e584f7eb1f0f97af14aae2af32b46",
+      "bytes": 24634
+    },
+    {
+      "path": "results/understanding-acceptance2/runtime/F1/r2-red/session-followup.test.mjs.r1-before.mjs",
+      "sha256": "5eef341502f2f69742b34b867b91e1bbe4d0924e972c6e0f40bc0c1210d99c4b",
+      "bytes": 87364
+    },
+    {
+      "path": "results/understanding-acceptance2/runtime/F1/r2-red/session-followup.test.mjs.r2.patch",
+      "sha256": "edf1d1ca4adea487c21cf775129fb95292ab731e98af7565a40b47300ddd7ad1",
+      "bytes": 5224
+    },
+    {
+      "path": "results/understanding-acceptance2/runtime/F1/r2-red/verification-summary.json",
+      "sha256": "3101f48a22ecc4325fe1ea1b8b1e1542a6ee741bf484322ee9d5cf0eec069769",
+      "bytes": 5591
+    }
+  ]
+}

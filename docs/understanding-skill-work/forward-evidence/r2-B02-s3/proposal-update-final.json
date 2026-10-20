@@ -1,0 +1,49 @@
+{
+  "binding": {
+    "schemaVersion": "0.1",
+    "operation": "update",
+    "taskId": "b02-final-report",
+    "expectedRevision": 1,
+    "requestHash": "6bb41cf37c3397b652aece2b3e2ad5bbb588a3de136c400d6b2699ca7b07d5fc"
+  },
+  "proposal": {
+    "assessments": [
+      {
+        "claimId": "claim-final-counts",
+        "evidenceIds": [
+          "ev-final"
+        ],
+        "verdict": "supports",
+        "scopeMatched": true,
+        "reason": "export/final.json の counts において completed: 4, pending: 0, failed: 0 と記録されており、全4件が完了し未完了および失敗が0件であることが支持される。"
+      },
+      {
+        "claimId": "claim-final-order",
+        "evidenceIds": [
+          "ev-final"
+        ],
+        "verdict": "supports",
+        "scopeMatched": true,
+        "reason": "export/final.json において published_order は [\"p1\", \"p2\", \"p3\", \"p4\"] であるのに対し、completed_order は [\"p1\", \"p2\", \"p4\", \"p3\"] と記録されており、p4がp3より先に完了したことが支持される。"
+      }
+    ],
+    "resolutions": [
+      {
+        "gapId": "gap-final-counts",
+        "reason": "supported",
+        "evidenceIds": [
+          "ev-final"
+        ],
+        "explanation": "export/final.json により全4件完了（completed: 4, pending: 0, failed: 0）が確認され、支持・解決された。"
+      },
+      {
+        "gapId": "gap-final-order",
+        "reason": "supported",
+        "evidenceIds": [
+          "ev-final"
+        ],
+        "explanation": "export/final.json により完了順が p1, p2, p4, p3 であり投入順と異なる順序で完了したことが確認され、支持・解決された。"
+      }
+    ]
+  }
+}

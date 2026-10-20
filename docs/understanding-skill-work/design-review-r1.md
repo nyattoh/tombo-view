@@ -1,0 +1,58 @@
+### 判定結果 (Verdict)
+
+**PASS** (合格)
+
+本設計（`docs/understanding-skill-work/design.md`）は、[locked-charter.md](locked-charter.md) の全7受入条件、既存SDK/helper/CLIのAPI制約、および `skill-creator/SKILL.md` の設計原則に完全に整合しており、実装前に解消すべき致命的な欠陥や矛盾は認められません。
+
+---
+
+### 受入基準別の根拠
+
+| 受入番号 | チャーター要件 | 設計書（`design.md`）の対応・根拠 | 照合結果 |
+| :--- | :--- | :--- | :--- |
+| **受入1** | 開発・通常会話における意図から行動へのマッピング（理解循環：proceed/check/ask/reframe/blocked）、既存SDK/runtime調査、独立設計パス | 節1〜4でAI自身の理解状態（支持/反証/不確実/矛盾/見落とし）に応じた5行動への写像を定義。質問を自己目的化せず理解更新の一手段と位置付け。SDKの既存Decision enum（`ready_for_requested_step`, `needs_reflection`, `needs_check`, `needs_user_input`, `blocked`）を維持し、`reframe` はTaskPacketの再生成などホスト側行動として定義。実装着手前の独立設計パスを要求（[design.md:20](design.md#L20)）。 | **PASS** |
+| **受入2** | `skills/tombo-view` の改訂、実タスク入力準備、継続サイクル（新証拠/follow-up/人の回答）、保存・再開境界の明確化、簡潔な説明 | 節2・3で固定fixture依存を排除し会話AI自身が入力を構成する仕様を定義。人の回答は `user_statement` として扱い外的事実の証明へ拡大しない。FileJournalを正本とし、`startedAt` や消費予算のリセットを禁止。証拠本文の再取得境界、保存禁止セッションでの不永続化を明記。思考過程を漏らさず要点のみを返す（[design.md:38](design.md#L38)）。 | **PASS** |
+| **受入3** | 適用不能な証拠評価に対する scope mismatch 診断の追加（非介入性、証拠有効性を毀損せず、即時blocked化しない）、既存挙動検証 | 節4で `src/core.ts` に非介入な診断導出関数を追加し、型を `src/types.ts` に配置。`scopeMatched: false`（モデル解釈）と `claim.scope !== evidence.scope`（文字列不一致）を区別。訂正済み評価を除外し、current証拠のみを対象とする。本文未取得時は「保存時診断・未再検証」と明示。state/journal/hashスキーマを変更せず、mismatchのみで即時blockedにしない（[design.md:72](design.md#L72)）。 | **PASS** |
+| **受入4** | TDD（RED→最小修正→GREEN→回帰）、E2E・継続・レポートのテスト、`npm test` / build / typecheck、既存テスト保持（skip禁止） | 節6で新規テスト3件（`assessment-scope-diagnostics.test.mjs`, `assessment-scope-report.test.mjs`, `understanding-session.test.mjs`）を定義。失敗コマンド・exit code・アサーションの記録、`npm run build`, `npm run typecheck`, `npm test` の順次実行と既存テスト（667件）の維持・skip禁止を明記（[design.md:126](design.md#L126)）。 | **PASS** |
+| **受入5** | 独立 blind forward-test（raw scenarioのみ、期待動作秘匿）、8パターン検証、決定的テストとモデル評価の分離、追加API/特定プロバイダ依存の禁止 | 節7で設計・実装者から独立したobserverに改訂skillと生シナリオのみを渡す評価を策定。8シナリオ（外部確認、反例reframe、人のみask、十分な証拠でのproceed、検証不能、訂正と反例併存、scope mismatch、follow-up更新）を網羅。決定的テストと分離し、観察結果のみを報告（[design.md:162](design.md#L162)）。 | **PASS** |
+| **受入6** | 独立 full-diff review（実装と別ベンダー推奨、agy/Google利用可、Claude/Grok除外）、PM実装禁止、一意のファイル所有権、最大2ラウンド、親による最終監査 | 節5・8でPMの責務を計画・委譲・統合・テストに限定し製品コード実装を禁止。ファイル所有権を単一writerへ排他的に割当（dependency waves）。agy/Google を活用しClaude/Grokを除外。最大2ラウンド、20スレッド上限、費用/token unknownの保持、親による最終監査を定義（[design.md:104](design.md#L104)）。 | **PASS** |
+| **受入7** | README使用法・限界の更新、既存証拠境界の維持、`docs/understanding-skill-work/` への handover 作成、全必須パス後の Draft PR 作成・リンク | 節8でREADMEの日英同期、過去の実験結果（固定状態評価や667試験）を歴史的境界として保持し合格証拠へ流用しない方針を明記。`docs/understanding-skill-work/` への handover 保存、全パス確認後の Draft PR 作成・リンクを規定（[design.md:195](design.md#L195)）。 | **PASS** |
+
+---
+
+### 詳細論点の照合結果
+
+#### 1. 現APIの実現可能性と制約の整合性
+- **Entity上書き禁止と双方向参照制約**:
+  - 現行 [`src/core.ts:151`](../../src/core.ts#L151) および [`src/core.ts:340`](../../src/core.ts#L340) において、既存 entity の上書きは `invalid_model_output` で拒否され、gap と probe の双方向参照が厳格に要求されます。
+  - 設計書は「既存gapへ後からprobeだけを足す設計は使えない」ことを正しく特定しており、新情報は `reflect` 経由で gap/probe の組を追加するか既存 probe への観測として `update` する現実的で安全な手順を指定しています。
+- **Scope mismatch 診断の非介入性**:
+  - 現行 [`src/core.ts:84`](../../src/core.ts#L84) および [`src/report.ts:40`](../../src/report.ts#L40) では、`!item.scopeMatched` や `evidence.scope !== claim.scope` の評価が除外されるため、評価が反映されなかった理由がレポートに現れません。
+  - 設計書では状態（`UnderstandingState`）やハッシュ計算を一切書き換えない非介入な純粋導出関数として診断を設計しており、既存の検証ロジックや意思決定ルール（`claimStatus` / `resolutionValid`）に副作用を与えません。
+
+#### 2. Discovery の誠実な保証範囲
+- `skills/tombo-view/SKILL.md` の説明および `agents/openai.yaml` の更新方針において、全メッセージの常駐傍受（global hook）や絶対的な自動発火を主張せず、暗黙 discovery を可能としつつ明示呼び出し `$tombo-view` を維持する誠実な仕様となっています。
+
+#### 3. skill-creator の原則との整合性
+- **Assume Codex is already capable**: 冗長な一般論やチェックリストを排し、SDK連携における不変条件（ハッシュ一致、台帳正本性、予算上限）と判断基準に集中。
+- **Preserve user intent and scope**: 認可境界を超えた外部操作や不要なAPI依存を排除。
+- **Progressive Disclosure**: `SKILL.md` を簡潔な入口にとどめ、複数ターン・復元・訂正の詳細手順を `references/host-session.md` へ配置。
+
+#### 4. 目的縮小の防止
+- 単なる「scope mismatch 診断の追加」に閉じず、チャーターの主目的である「開発および通常会話における理解の維持・更新・行動選択（proceed/check/ask/reframe/blocked）」を包括的にカバーしています。
+
+---
+
+### 不確実性 (Uncertainties)
+
+1. **実モデルによる forward-test の観察結果**:
+   - 設計通りのプロンプト・シナリオで実モデルが自律的に適切な行動（過剰な質問を避けつつ必要な質問を行う等）を選択できるかは、受入5の独立 forward-test で初めて検証されます（設計上もこれを合成成功の根拠とせず、実測結果を報告する前提となっています）。
+2. **会話側の消費トークン・費用**:
+   - SDK外のホスト会話側モデル消費量は原理的に取得不能であるため、仕様通り一貫して「unknown」として管理されます。
+
+---
+
+### 結論と引継ぎ事項 (Handover Note)
+
+本レビューにおける指摘事項・修正要求はゼロ（**明示PASS**）です。
+既存 goal PM は本設計を承認済みとし、設計書（`docs/understanding-skill-work/design.md`）の波次計画（Dependency Waves: REDテスト作成 → SDK実装 → helper統合 → GREEN/回帰 → 独立blind forward-test → full-diff review → 親監査）に従って実装タスクの委譲を進めてください。

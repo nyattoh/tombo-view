@@ -1,0 +1,12 @@
+{
+  "case": "F03",
+  "released_at": "2026-10-21T00:58:30.4590570+09:00",
+  "stage": 2,
+  "source": null,
+  "user_message": "F03/stage2/user-message.md",
+  "source_hash": null,
+  "request_hash": "c8d9cc2b17a9b39c0ef53f0c3d0c0f2e528d20497f5bedb96e7877be1e62d51e",
+  "original_sdk_deadline": null,
+  "first_turn_terminal": true,
+  "expected_actions_supplied": false
+}

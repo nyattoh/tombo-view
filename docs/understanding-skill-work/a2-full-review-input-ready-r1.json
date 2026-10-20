@@ -1,0 +1,26 @@
+{
+  "phase": "ready_for_independent_full_review_input_only",
+  "acceptance2": "not_passed",
+  "review_dispatched": false,
+  "reason_not_dispatched_this_turn": "Current parent instruction: no new PM/worker/implementation/review launch.",
+  "product_manifest": "a2-full-review-product-manifest-r1.json",
+  "complete_product_diff": "a2-full-review-product-diff-r1.patch",
+  "product_file_count": 16,
+  "new_product_file_count": 7,
+  "required_new_files": ["skills/tombo-view/scripts/session-store.mjs", "test/session-binding.test.mjs"],
+  "software_validation": "a2-integrated-npm-test-r2.json: 712 pass / 0 fail / 0 skip / exit0",
+  "behavioural_evaluation": "a2-behavioural-evaluation-F-r1.md",
+  "unresolved_objections": [
+    "F01 receivedAt is a future JST-looking time marked UTC; keep timestamp failure separate from true continuity checks",
+    "F03 warranty/delivery/sole-choice overclaims and final narrative versus needs_user_input/open gap/no fresh reflection",
+    "F01 suggested budget-change resumption is not proof of an implemented same-goal budget-amendment route",
+    "README F-unrun wording is a frozen pre-evaluation statement; current final documentation must match actual outcomes"
+  ],
+  "latest_gate": "a2-task-gate-after-F-r1.json: exit3; independent acceptance/review and PM closure missing",
+  "actual_started_task_turns": 58,
+  "distinct_child_threads": 31,
+  "active_child_threads": 0,
+  "goal_complete": false,
+  "parent_final_audit_pass": false,
+  "commit_push_pr": "not performed"
+}

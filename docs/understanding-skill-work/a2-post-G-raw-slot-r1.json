@@ -1,0 +1,1 @@
+{"ok": true, "providerInstanceId": "codex", "model": "gpt-6-luna", "vendor": "openai", "efforts": ["low", "medium", "high", "xhigh", "max"], "evidence": "ledger", "rank": 1, "cost_output": 0.5, "selection": "cheapest_adequate", "note": null}

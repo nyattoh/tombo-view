@@ -1,0 +1,31 @@
+{
+  "binding": {
+    "schemaVersion": "0.1",
+    "operation": "reflect",
+    "taskId": "task-notification-delivery-guide",
+    "expectedRevision": 1,
+    "requestHash": "b06dfdc356a54d299372667d4a69dca47eac4786fedc048953b7c40b1ce1790c",
+    "sessionId": "a7cf7b35-9154-45a4-9589-3bfaaff6b8db"
+  },
+  "reflection": {
+    "binding": {
+      "taskId": "task-notification-delivery-guide",
+      "basedRevision": 1,
+      "understandingHash": "63ba33107d3ab542b427580e41be3fbd56f8c5680e8abecec732c466f6d8a154"
+    },
+    "reviewedClaimIds": [
+      "c-accepted-delivery",
+      "c-provider-retry"
+    ],
+    "completion": "completed",
+    "limitations": [
+      "開発メモは通知relayの合成メモであり、下流providerの実際の到達・閲覧完了を保証するものではない。",
+      "待機時間（約1分、4分、16分）は設定遅延であり、実測の配信所要時間ではない。"
+    ],
+    "proposal": {
+      "lenses": [],
+      "gaps": [],
+      "probes": []
+    }
+  }
+}

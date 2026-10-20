@@ -1,0 +1,7 @@
+{
+  "started_at": "2026-10-20T17:18:33.5838434+09:00",
+  "completed_at": "2026-10-20T17:18:42.0944068+09:00",
+  "command": "node --test test/assessment-scope-diagnostics.test.mjs test/assessment-scope-report.test.mjs test/understanding-session.test.mjs",
+  "exit": 1,
+  "product_changes_before_red": false
+}

@@ -1,0 +1,6 @@
+{
+  "command": "node --test test/core.test.mjs test/reflection.test.mjs test/model-repair.test.mjs test/assessment-correction.test.mjs test/assessment-correction-surfaces.test.mjs test/assessment-correction-journal.test.mjs test/assessment-scope-diagnostics.test.mjs test/assessment-scope-report.test.mjs test/ask-policy.test.mjs test/session.test.mjs test/session-repair-feedback.test.mjs test/host-session-framing.test.mjs test/recovery-journal.test.mjs test/cli-reflection.test.mjs test/understanding-session.test.mjs",
+  "started_at": "2026-10-21T05:47:08.3758887+09:00",
+  "completed_at": "2026-10-21T05:47:22.1330634+09:00",
+  "exit": 0
+}

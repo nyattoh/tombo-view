@@ -1,0 +1,88 @@
+{
+  "binding": {
+    "schemaVersion": "0.1",
+    "operation": "update",
+    "taskId": "reading-meeting-formats",
+    "expectedRevision": 7,
+    "requestHash": "22bed9ccee1ab2dae0e64c7b19e89695a7cb5c618c65254bd002b4e315b5d997",
+    "sessionId": "c59dc9a2-2b21-40b3-b8de-baa9cfb5fc2b"
+  },
+  "proposal": {
+    "claims": [
+      {
+        "id": "card-current-preparation-25",
+        "role": "observation",
+        "text": "今回のカード一式の準備は、仕分けを含め約25分と見積もられている。",
+        "scope": "current card preparation estimate for this reading meeting"
+      },
+      {
+        "id": "card-preparation-not-timed",
+        "role": "observation",
+        "text": "訂正後のカード準備時間についても実測記録はない。",
+        "scope": "current card preparation estimate for this reading meeting"
+      },
+      {
+        "id": "accepts-25-for-small-groups",
+        "role": "hypothesis",
+        "text": "本人は約25分のカード準備を引き受けてでも少人数で話す構成を優先する意向である。",
+        "scope": "user choice under corrected preparation estimate for this reading meeting"
+      }
+    ],
+    "assessments": [
+      {
+        "claimId": "open-round-duration",
+        "evidenceIds": [
+          "meeting-format-unchanged"
+        ],
+        "verdict": "supports",
+        "scopeMatched": true,
+        "reason": "訂正対象でない8人×最大2分の構成から計16分と再確認した。実測ではない。"
+      },
+      {
+        "claimId": "card-duration",
+        "evidenceIds": [
+          "meeting-format-unchanged"
+        ],
+        "verdict": "supports",
+        "scopeMatched": true,
+        "reason": "元メモの訂正されていない構成条件は導入込み35分。追加メモは事前準備のみを訂正している。"
+      },
+      {
+        "claimId": "open-round-no-materials",
+        "evidenceIds": [
+          "meeting-format-unchanged"
+        ],
+        "verdict": "supports",
+        "scopeMatched": true,
+        "reason": "訂正対象でない順番案の条件に資料不要と明記されている。進行準備ゼロとの実測ではない。"
+      },
+      {
+        "claimId": "card-current-preparation-25",
+        "evidenceIds": [
+          "organiser-preparation-update"
+        ],
+        "verdict": "supports",
+        "scopeMatched": true,
+        "reason": "追加メモはearlier 10-minute estimateに代えて約25分と記し、今回の仕分けが必要と説明する。計画上の見積りとしてのみ支持する。"
+      },
+      {
+        "claimId": "card-preparation-not-timed",
+        "evidenceIds": [
+          "organiser-preparation-update"
+        ],
+        "verdict": "supports",
+        "scopeMatched": true,
+        "reason": "no timed preparation was recordedと明記されている。"
+      },
+      {
+        "claimId": "card-preparation-estimate",
+        "evidenceIds": [
+          "organiser-preparation-update"
+        ],
+        "verdict": "inconclusive",
+        "scopeMatched": false,
+        "reason": "従来10分が見積りだったという過去の記述は残るが、現在の準備時間の根拠には使えない。新メモの現行値は25分であり、旧値を現在の比較へ再利用しない。"
+      }
+    ]
+  }
+}

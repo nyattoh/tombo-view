@@ -1,0 +1,24 @@
+[
+  {
+    "executionId": "exec-user-reply-stage2",
+    "probeId": "p-ask-user-priority",
+    "outcome": "completed",
+    "evidence": [
+      {
+        "id": "ev-user-statement-stage2",
+        "kind": "user_statement",
+        "locator": "file://request-stage2.md",
+        "sourceGroup": "user-interaction",
+        "retrievedAt": "2026-10-20T16:42:35.067Z",
+        "version": "1.0",
+        "scope": "balcony-planting",
+        "passage": "水やりの手間は増やしたくないですし、料理に使える葉があるとうれしいです。鉢の数も少ないほうが助かります。どれも気になりますが、どれを一番にするかはまだ決めていません。\n",
+        "contentHash": "a95004e6c0c0a3383fb8cc94d67594257d16fe3f3704f7bbe38de3de6a3c7bbe",
+        "validity": "current"
+      }
+    ],
+    "toolCalls": 0,
+    "elapsedMs": 10,
+    "costYen": null
+  }
+]

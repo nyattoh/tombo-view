@@ -1,0 +1,60 @@
+{
+  "at": "2026-10-21T03:14:58.569524+09:00",
+  "source_freeze": "2026-10-21T03:13:32.9879312+09:00",
+  "checks": [
+    {
+      "path": "skills/tombo-view/scripts/session-store.mjs",
+      "sha256": "2bafafeaa30beb6067367ce75af9d46e2bf1abe58d4d80a1ca31729fe92b6219",
+      "matches": true
+    },
+    {
+      "path": "skills/tombo-view/scripts/session.mjs",
+      "sha256": "f545b21fa172b3fa975a09125ff981f6aa47b36e5446c3d76ec6ead66429688b",
+      "matches": true
+    },
+    {
+      "path": "test/session-followup.test.mjs",
+      "sha256": "588b274e13355a31b544cc77d9a9dd52d3b16dc7dba536c65538a945a2b88e08",
+      "matches": true
+    },
+    {
+      "path": "src/core.ts",
+      "sha256": "6642d469b4a005b124da7bdc215b7a0720461488f386ec6c70afc7939e52e260",
+      "matches": true
+    },
+    {
+      "path": "src/types.ts",
+      "sha256": "2e96aea0702eb270326aae797768b53f65ae0b9dc79e25cfa7eff6e17f341d26",
+      "matches": true
+    },
+    {
+      "path": "src/report.ts",
+      "sha256": "7043d10897d43e8f6bfd3457eb566545d96daf66ae9b64c5ef4e2df01e8be2e7",
+      "matches": true
+    },
+    {
+      "path": "test/session-binding.test.mjs",
+      "sha256": "c07d8c636eb766ebc2ca12517491b46a7fef912df4b628663a913963de3a2acd",
+      "matches": true
+    }
+  ],
+  "contract_sha256": "3e24d0d2447ae8d3e0e5db374f06921e7b1b782dbffeae3f9edd26864af3c362",
+  "focused": {
+    "command": "node --test test/session-budget-checkpoint.test.mjs test/session-binding.test.mjs test/session-followup.test.mjs",
+    "exit": 0,
+    "pass": 57,
+    "fail": 0,
+    "skip": 0,
+    "metadata": "../../results/understanding-acceptance2/runtime/post-G/focused.json"
+  },
+  "related": {
+    "exit": 0,
+    "pass": 284,
+    "fail": 0,
+    "skip": 0,
+    "metadata": "../../results/understanding-acceptance2/runtime/post-G/regression.json"
+  },
+  "build_typecheck": "../../results/understanding-acceptance2/runtime/post-G/build-typecheck-final.json",
+  "boundary": "actual API GREEN; runtime evidence handover still pending; A2/semantic/fullreview not passed",
+  "docs_dependency_ready": true
+}

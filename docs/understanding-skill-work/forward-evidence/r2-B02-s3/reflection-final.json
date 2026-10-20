@@ -1,0 +1,25 @@
+{
+  "binding": {
+    "schemaVersion": "0.1",
+    "operation": "reflect",
+    "taskId": "b02-final-report",
+    "expectedRevision": 2,
+    "requestHash": "4c164e21665c06422287643d6c3b576d7c6e4e79b834e852fa8ba70a2236c035"
+  },
+  "reflection": {
+    "binding": {
+      "taskId": "b02-final-report",
+      "basedRevision": 2,
+      "understandingHash": "2097b5af1e759b0bd7ef29420575b6a0b1fb3dfb0941befb421e58f11e428373"
+    },
+    "reviewedClaimIds": [
+      "claim-final-counts",
+      "claim-final-order"
+    ],
+    "completion": "completed",
+    "limitations": [
+      "export/final.json の記録に基づく検証であり、各項目の個別実行ログや内部処理詳細までは検証範囲に含まない"
+    ],
+    "proposal": {}
+  }
+}

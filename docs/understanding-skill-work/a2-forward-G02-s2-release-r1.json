@@ -1,0 +1,16 @@
+{
+  "at": "2026-10-21T02:10:10.513085+09:00",
+  "case": "G02",
+  "stage": 2,
+  "previous_task_terminal": true,
+  "previous_state_authority": "a2-forward-G02-s1-authority-readback-r1.json",
+  "previous_stage_archive": "a2-forward-evidence/G02-s1/.session",
+  "published": [
+    {
+      "path": "results\\understanding-acceptance2\\observers\\G02\\scratch\\request-stage2.md",
+      "sha256": "6b8600a696c1c83c9349ae350b9ebe1b3c2e8763cdc9852e61a9f0853bfe4929"
+    }
+  ],
+  "expected_answers_or_prior_findings_supplied": false,
+  "future_stage3_not_published": true
+}

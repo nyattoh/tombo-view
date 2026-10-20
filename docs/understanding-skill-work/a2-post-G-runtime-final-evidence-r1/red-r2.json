@@ -1,0 +1,8 @@
+{
+  "started_at": "2026-10-21T03:03:32.2505690+09:00",
+  "completed_at": "2026-10-21T03:03:51.2995574+09:00",
+  "command": "node --test --test-name-pattern='post-G' test/session-followup.test.mjs",
+  "exit": 1,
+  "product_edits_before_red": false,
+  "earlier_red": "red.json/log retained; transition assertion moved before unknown CLI flag"
+}

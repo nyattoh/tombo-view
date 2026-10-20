@@ -1,0 +1,92 @@
+{
+  "at": "2026-10-21T03:05:58.322818+09:00",
+  "red_command": "node --test --test-name-pattern='post-G' test/session-followup.test.mjs",
+  "red_exit": 1,
+  "red_tests": 10,
+  "red_pass": 0,
+  "red_fail": 10,
+  "red_skip": 0,
+  "legacy_red": "separate real inspect before report; failed missing immutable-time inconsistency diagnostic, not null-state gate",
+  "initial_attempt": "initial red.log retained; red-r2 reordered to expose behavior before unsupported flag; tenth legacy test further corrected by legacy-red",
+  "contract_adjustment": "one previous new-future-date test input becomes past date with explicit offset; independent helper clock assertions retained, legacyfuture replay covered separately; old evidence immutable",
+  "logs": {
+    "before.json": {
+      "sha256": "c682945f89df9e921a8a7704a972ed5c225400628f4b2af293364e62241a5f29",
+      "mtime": "2026-10-20T18:00:36.043495+00:00"
+    },
+    "red-r2.json": {
+      "sha256": "9979904e2967d0cd46d16f93da1ee2c33aaac23d45e7f8786abb7e3a4257170c",
+      "mtime": "2026-10-20T18:03:51.319667+00:00"
+    },
+    "red-r2.log": {
+      "sha256": "e911479003e443749fce0b7f0022778d166377e9d95f48d693841804311ef0c8",
+      "mtime": "2026-10-20T18:03:51.292944+00:00"
+    },
+    "legacy-red.json": {
+      "sha256": "e427fe93c1dce4ef6ef2e6f32375f69a3d14d5c7867771cf459022aabf2879dc",
+      "mtime": "2026-10-20T18:04:36.313549+00:00"
+    },
+    "legacy-red.log": {
+      "sha256": "4e9ec984b47a4fc9fcd68c87eea7eee91f3e55f1456ae8894e9f3f671ef8c1e1",
+      "mtime": "2026-10-20T18:04:36.295013+00:00"
+    },
+    "red.json": {
+      "sha256": "e41c5ad93a83497a98c564d06fedbda2744d3c83ebfd5319e8185008f72a276b",
+      "mtime": "2026-10-20T18:02:42.830395+00:00"
+    },
+    "red.log": {
+      "sha256": "7898d4cf6e38dea9fccabfb9cb1ce1afdb423accc926efc3b078d67f082a4b50",
+      "mtime": "2026-10-20T18:02:42.789391+00:00"
+    }
+  },
+  "before_and_current_observed": [
+    {
+      "path": "skills/tombo-view/scripts/session-store.mjs",
+      "before_sha256": "3221357fba1123a3f91a670da9a6af14eb53d53a1e04a0029cd9c35ca29eafa5",
+      "observed_sha256": "d5e720ab58bbf40210b2c4cafe45c92c0a8b505a1a036112d460db6b1f0f32d1",
+      "observed_mtime_utc": "2026-10-20T18:05:26.173298+00:00"
+    },
+    {
+      "path": "skills/tombo-view/scripts/session.mjs",
+      "before_sha256": "cb6c5e6b4fe528a44482aa20c068f2a2a60a681f1714ee8fb620ecfe44220269",
+      "observed_sha256": "cb6c5e6b4fe528a44482aa20c068f2a2a60a681f1714ee8fb620ecfe44220269",
+      "observed_mtime_utc": "2026-10-20T16:49:23.673439+00:00"
+    },
+    {
+      "path": "test/session-followup.test.mjs",
+      "before_sha256": "8c29a95a538c6ea027035a7425a1e4d98fcd6cba32d5e344c70f4f587deb3221",
+      "observed_sha256": "1184e60fc2c13b787adac57d51c8a2bbd54ba55b73fcfe4306105573a398ef57",
+      "observed_mtime_utc": "2026-10-20T18:04:33.516790+00:00"
+    },
+    {
+      "path": "src/core.ts",
+      "before_sha256": "6642d469b4a005b124da7bdc215b7a0720461488f386ec6c70afc7939e52e260",
+      "observed_sha256": "6642d469b4a005b124da7bdc215b7a0720461488f386ec6c70afc7939e52e260",
+      "observed_mtime_utc": "2026-10-20T14:37:13.990634+00:00"
+    },
+    {
+      "path": "src/types.ts",
+      "before_sha256": "2e96aea0702eb270326aae797768b53f65ae0b9dc79e25cfa7eff6e17f341d26",
+      "observed_sha256": "2e96aea0702eb270326aae797768b53f65ae0b9dc79e25cfa7eff6e17f341d26",
+      "observed_mtime_utc": "2026-10-20T08:19:11.608243+00:00"
+    },
+    {
+      "path": "src/report.ts",
+      "before_sha256": "7043d10897d43e8f6bfd3457eb566545d96daf66ae9b64c5ef4e2df01e8be2e7",
+      "observed_sha256": "7043d10897d43e8f6bfd3457eb566545d96daf66ae9b64c5ef4e2df01e8be2e7",
+      "observed_mtime_utc": "2026-10-20T08:19:16.803733+00:00"
+    },
+    {
+      "path": "test/session-binding.test.mjs",
+      "before_sha256": "c07d8c636eb766ebc2ca12517491b46a7fef912df4b628663a913963de3a2acd",
+      "observed_sha256": "c07d8c636eb766ebc2ca12517491b46a7fef912df4b628663a913963de3a2acd",
+      "observed_mtime_utc": "2026-10-20T15:35:03.050050+00:00"
+    }
+  ],
+  "not_claimed": [
+    "GREEN",
+    "regression of pending changes",
+    "semantic efficacy",
+    "A2 PASS"
+  ]
+}

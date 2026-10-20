@@ -1,0 +1,74 @@
+{
+  "binding": {
+    "schemaVersion": "0.1",
+    "operation": "reflect",
+    "taskId": "reading-group-format",
+    "expectedRevision": 6,
+    "requestHash": "6bc359f6f49ee15d55e8f4a5b669f4ea464313796322fb24cf10023ea288bfe7",
+    "sessionId": "24cc4f30-ba82-4066-bab9-3d4e14dff741"
+  },
+  "reflection": {
+    "binding": {
+      "taskId": "reading-group-format",
+      "basedRevision": 6,
+      "understandingHash": "a0777e983c28062b30bf2b093f28ddd4f8dae3b6a7b6e137cd2214be62208057"
+    },
+    "reviewedClaimIds": [
+      "room",
+      "round-time",
+      "card-time",
+      "card-prep-estimate",
+      "priority-small-group",
+      "prep-outside",
+      "prep-minimise",
+      "comfort-unknown"
+    ],
+    "completion": "completed",
+    "limitations": [
+      "旧メモの撤回は一部訂正への保守的な処理であり、45分枠や35分活動枠が誤りと確定した意味ではない。訂正対象外を別の取得証拠として再確認する。",
+      "受領した追加メモはまだSDK評価前である。",
+      "準備負担の希望は既回答として保持する。参加者の話しやすさ、パス可否、準備を枠外で行えるかは未確認。"
+    ],
+    "proposal": {
+      "gaps": [
+        {
+          "id": "corrected-prep-gap",
+          "kind": "missing_fact",
+          "lensId": "practical",
+          "question": "追加メモが示す現行の準備見積りと、訂正の及ばない会場・活動時間の条件は何か。",
+          "triggerRefs": [
+            "task:goal",
+            "card-prep-estimate",
+            "room",
+            "round-time",
+            "card-time"
+          ],
+          "whyItMatters": "旧10分を現在値として再利用せず、新見積りで負担と45分枠を再比較する。",
+          "importance": "required",
+          "claimIds": [],
+          "probeIds": [
+            "read-corrected-planning"
+          ]
+        }
+      ],
+      "probes": [
+        {
+          "id": "read-corrected-planning",
+          "gapIds": [
+            "corrected-prep-gap"
+          ],
+          "method": "corroboration",
+          "question": "追加メモが示す現行の準備見積りと、訂正の及ばない会場・活動時間の条件は何か。",
+          "requiredCapability": "local_document_read",
+          "sourceGroups": [
+            "preparation-update.md",
+            "meeting-options.md"
+          ],
+          "successCondition": "追加メモで旧値に代わる現行見積りと非実測であることを確認し、元資料の訂正対象外の時間条件を取得できる。",
+          "refutationCondition": "追加メモが訂正を撤回しているか、異なる値を示す。",
+          "inconclusiveCondition": "資料取得不能、現在値や訂正範囲が不明。"
+        }
+      ]
+    }
+  }
+}

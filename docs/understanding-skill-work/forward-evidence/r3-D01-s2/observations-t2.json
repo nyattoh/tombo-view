@@ -1,0 +1,24 @@
+[
+  {
+    "executionId": "exec-read-power-settings",
+    "probeId": "probe-power-settings",
+    "outcome": "completed",
+    "evidence": [
+      {
+        "id": "evidence-power-settings",
+        "kind": "document",
+        "locator": "notes/power-settings.txt",
+        "sourceGroup": "notes",
+        "retrievedAt": "2026-10-20T18:19:16+09:00",
+        "version": null,
+        "scope": "local_json_export_benchmark",
+        "passage": "測定日の電源設定メモ\n午前のbefore測定時：OSの電源モードは「省電力」。\n午後のafter測定時：OSの電源モードは「高パフォーマンス」。\n午後の作業前に設定を切り替え、そのままafterを測定した。\nCPUの動作周波数、消費電力、ディスクの待ち時間は記録していない。\n同じ電源モードにそろえたbeforeとafterの測定記録はない。\nコードを変えずに電源モードだけを切り替えた測定記録もない。\n",
+        "contentHash": "961493a1f354aef919a701e66432ffef9182f87cfdff4ee76236868ae6487f51",
+        "validity": "current"
+      }
+    ],
+    "toolCalls": 1,
+    "elapsedMs": 5,
+    "costYen": null
+  }
+]

@@ -1,0 +1,31 @@
+{
+  "binding": {
+    "schemaVersion": "0.1",
+    "operation": "reflect",
+    "taskId": "json-export-confounded-review",
+    "expectedRevision": 2,
+    "requestHash": "0d89ab8b00b059732656e41ee523ae0c49970f679c5afd33ebec8ef314e515fd"
+  },
+  "reflection": {
+    "binding": {
+      "taskId": "json-export-confounded-review",
+      "basedRevision": 2,
+      "understandingHash": "fa3ad64c7194d4ca75200a0803aba3a97119ee4cdb9f3af319942f32eda76fd7"
+    },
+    "reviewedClaimIds": [
+      "claim-measured-speedup",
+      "claim-confounded-causality",
+      "claim-environmental-change"
+    ],
+    "completion": "completed",
+    "limitations": [
+      "電源モード変更が処理時間に与えた影響の定量的寄与（CPU周波数やディスク待ちの具体的変動）は未計測であり、代替原因の寄与量は確定できない",
+      "同一電源モードでの記録が存在しないため、コード変更（まとめ書き）単独での真の高速化倍率は不明である"
+    ],
+    "proposal": {
+      "lenses": [],
+      "gaps": [],
+      "probes": []
+    }
+  }
+}

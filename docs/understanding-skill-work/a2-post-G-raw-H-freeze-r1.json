@@ -1,0 +1,74 @@
+{
+  "at": "2026-10-21T03:05:58.320925+09:00",
+  "files": [
+    {
+      "path": "H01/stage1/meeting-options.md",
+      "sha256": "372b184220e8fb0167a85ec4bdfd295892e0196616a1e42aa547337c2ad829f4",
+      "actor_input": true
+    },
+    {
+      "path": "H01/stage1/user-message.md",
+      "sha256": "ce97f0ac0b65104b9bdea2ae93607442f2a3b49308bca16cb00e9fdebaf1629e",
+      "actor_input": true
+    },
+    {
+      "path": "H01/stage2/user-message.md",
+      "sha256": "ecda878437ccd5f54456910c22b8a4e6ac2629d626503f80fc862126667afa13",
+      "actor_input": true
+    },
+    {
+      "path": "H01/stage3/preparation-update.md",
+      "sha256": "11280bb17d088c2f7d60a264faa1503efb7c46c7856cefb24a0a276252e365a5",
+      "actor_input": true
+    },
+    {
+      "path": "H01/stage3/user-message.md",
+      "sha256": "fd41721d4358f7cfe07f54f1b9c8603af96977fe108ab86871927448cbec5312",
+      "actor_input": true
+    },
+    {
+      "path": "H02/stage1/editor-guide.md",
+      "sha256": "8e76a68f37f204332c0618bc256134674ac6ffbe4b44280164363f61871ec281",
+      "actor_input": true
+    },
+    {
+      "path": "H02/stage1/user-message.md",
+      "sha256": "d9e3f5b1708601bb01aa8dd2e6d0539997bf9b6cf385f56dd15f226a026619aa",
+      "actor_input": true
+    },
+    {
+      "path": "H02/stage2/preview-note.md",
+      "sha256": "b2d0a87d1687747447d236422c12251ef7175e2e2e1e1ec495deb71341354a96",
+      "actor_input": true
+    },
+    {
+      "path": "H02/stage2/user-message.md",
+      "sha256": "4ce88c082c864887652884737ebcc624caecf95ccad5efbaf7fee829bd09fa90",
+      "actor_input": true
+    },
+    {
+      "path": "H02/stage3/user-message.md",
+      "sha256": "62863070e37bf24f10abbb913d562377c44e91041eb9498f076e112dd4ed2bf2",
+      "actor_input": true
+    },
+    {
+      "path": "hand_over_summary.md",
+      "sha256": "5a2088b14fe2d754747a6c7ac8e26f19ad5a5622541c9dd6bc31fdaba587e551",
+      "actor_input": false
+    },
+    {
+      "path": "manifest.facilitator.json",
+      "sha256": "f58e241bed5da3cc2fb2570ac64c55af49c5173a2a7043878b03c8f20e2367ba",
+      "actor_input": false
+    }
+  ],
+  "manifest_path_checks": true,
+  "facilitator_only": [
+    "manifest.facilitator.json",
+    "hand_over_summary.md"
+  ],
+  "observer_started": false,
+  "stages_released": [],
+  "manual_readback": "All ten raw actor files read: synthetic undated reading-group planning and editor status explanation; no expected answers/outcome rubric/old findings/helper command supplied. Per-condition c w d must be isolated before release.",
+  "scope": "raw preparation only, not behavioural pass"
+}

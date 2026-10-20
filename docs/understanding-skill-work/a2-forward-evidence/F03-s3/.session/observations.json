@@ -1,0 +1,36 @@
+[
+  {
+    "executionId": "exec-quote-correction-stage3",
+    "probeId": "probe-ask-user-priority",
+    "outcome": "completed",
+    "evidence": [
+      {
+        "id": "ev-laptop-quote-correction",
+        "kind": "document",
+        "locator": "laptop-quote-correction.md",
+        "sourceGroup": "quotes",
+        "retrievedAt": "2026-10-21T01:07:44+09:00",
+        "version": "2",
+        "scope": "laptop_repair_and_refurbished_quotes",
+        "passage": "# Revised repair estimate\n\nSynthetic update from the repair shop: The current laptop repair will take 8 working days, not 2. The price and 90-day repair warranty remain unchanged. The refurbished replacement quote is unchanged.\n",
+        "contentHash": "4a1cca261131e94154f96c100185d7ea2ebb09a22bd6746691e8fa417229aa38",
+        "validity": "current"
+      },
+      {
+        "id": "ev-user-request-stage3",
+        "kind": "user_statement",
+        "locator": "request-stage3.md",
+        "sourceGroup": "user",
+        "retrievedAt": "2026-10-21T01:07:44+09:00",
+        "version": "1",
+        "scope": "user_decision_request",
+        "passage": "修理店から納期の訂正が来ました。新しい見積りを読んで、さっき伝えた希望を踏まえてもう一度考えてください。\n",
+        "contentHash": "0ed7e70101af52722fc2324fb51579d3bc320f3d472b7823d4b940ef3383529e",
+        "validity": "current"
+      }
+    ],
+    "toolCalls": 0,
+    "elapsedMs": 5,
+    "costYen": null
+  }
+]

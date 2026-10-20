@@ -1,0 +1,133 @@
+{
+  "observedAt": "2026-10-20T19:20:42.439Z",
+  "raw": {
+    "thread": {
+      "threadId": "thread:delegated-task:command%3Amcp%3Adcc7a0ba-9101-46f3-9102-ed0a89ba52ed%3Adelegate-task%3Atombo-understanding-skill-20261020-goal-pm-r1",
+      "projectId": "0992fdab-7d2e-4c48-8b57-ea69011f8ccd",
+      "title": "TOMBO understanding skill goal PM",
+      "createdBy": "agent",
+      "creationSource": "mcp",
+      "status": "running",
+      "latestRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Adcc7a0ba-9101-46f3-9102-ed0a89ba52ed%253Adelegate-task%253Atombo-understanding-skill-20261020-goal-pm-r1:ordinal:71",
+      "activeRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Adcc7a0ba-9101-46f3-9102-ed0a89ba52ed%253Adelegate-task%253Atombo-understanding-skill-20261020-goal-pm-r1:ordinal:69",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "runtimeMode": "auto",
+      "interactionMode": "default",
+      "linkedPullRequest": null,
+      "pullRequests": [],
+      "titleRegeneration": null,
+      "branch": "fix/baseline-blob-pin",
+      "worktreePath": "D:\\develop\\works\\tombo-view-ask-policy",
+      "parentThreadId": "mcp:634b09cf-9f2a-44b3-9605-c3447aeac6e0",
+      "relationshipToParent": "subagent",
+      "runCount": 71,
+      "itemCount": 1883,
+      "pendingRequestCount": 0,
+      "archived": false,
+      "settled": false,
+      "settledAt": null,
+      "snoozed": false,
+      "snoozedUntil": null,
+      "createdAt": "2026-10-20T08:01:13.429Z",
+      "updatedAt": "2026-10-20T19:20:24.071Z"
+    },
+    "recentRuns": [
+      {
+        "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Adcc7a0ba-9101-46f3-9102-ed0a89ba52ed%253Adelegate-task%253Atombo-understanding-skill-20261020-goal-pm-r1:ordinal:71",
+        "ordinal": 71,
+        "status": "cancelled",
+        "providerInstanceId": "codex",
+        "model": "gpt-6.1-sol",
+        "requestedAt": "2026-10-20T18:50:26.784Z",
+        "startedAt": null,
+        "completedAt": "2026-10-20T18:52:07.080Z"
+      },
+      {
+        "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Adcc7a0ba-9101-46f3-9102-ed0a89ba52ed%253Adelegate-task%253Atombo-understanding-skill-20261020-goal-pm-r1:ordinal:70",
+        "ordinal": 70,
+        "status": "cancelled",
+        "providerInstanceId": "codex",
+        "model": "gpt-6.1-sol",
+        "requestedAt": "2026-10-20T18:43:30.425Z",
+        "startedAt": null,
+        "completedAt": "2026-10-20T18:52:03.928Z"
+      },
+      {
+        "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Adcc7a0ba-9101-46f3-9102-ed0a89ba52ed%253Adelegate-task%253Atombo-understanding-skill-20261020-goal-pm-r1:ordinal:69",
+        "ordinal": 69,
+        "status": "running",
+        "providerInstanceId": "codex",
+        "model": "gpt-6.1-sol",
+        "requestedAt": "2026-10-20T18:42:05.440Z",
+        "startedAt": "2026-10-20T19:10:20.364Z",
+        "completedAt": null
+      },
+      {
+        "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Adcc7a0ba-9101-46f3-9102-ed0a89ba52ed%253Adelegate-task%253Atombo-understanding-skill-20261020-goal-pm-r1:ordinal:68",
+        "ordinal": 68,
+        "status": "cancelled",
+        "providerInstanceId": "codex",
+        "model": "gpt-6.1-sol",
+        "requestedAt": "2026-10-20T18:32:27.884Z",
+        "startedAt": null,
+        "completedAt": "2026-10-20T18:51:53.277Z"
+      },
+      {
+        "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Adcc7a0ba-9101-46f3-9102-ed0a89ba52ed%253Adelegate-task%253Atombo-understanding-skill-20261020-goal-pm-r1:ordinal:67",
+        "ordinal": 67,
+        "status": "completed",
+        "providerInstanceId": "codex",
+        "model": "gpt-6.1-sol",
+        "requestedAt": "2026-10-20T18:32:17.006Z",
+        "startedAt": "2026-10-20T18:33:33.685Z",
+        "completedAt": "2026-10-20T19:10:15.481Z"
+      },
+      {
+        "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Adcc7a0ba-9101-46f3-9102-ed0a89ba52ed%253Adelegate-task%253Atombo-understanding-skill-20261020-goal-pm-r1:ordinal:66",
+        "ordinal": 66,
+        "status": "completed",
+        "providerInstanceId": "codex",
+        "model": "gpt-6.1-sol",
+        "requestedAt": "2026-10-20T18:18:39.318Z",
+        "startedAt": "2026-10-20T18:18:40.133Z",
+        "completedAt": "2026-10-20T18:33:27.893Z"
+      },
+      {
+        "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Adcc7a0ba-9101-46f3-9102-ed0a89ba52ed%253Adelegate-task%253Atombo-understanding-skill-20261020-goal-pm-r1:ordinal:65",
+        "ordinal": 65,
+        "status": "completed",
+        "providerInstanceId": "codex",
+        "model": "gpt-6.1-sol",
+        "requestedAt": "2026-10-20T18:13:04.314Z",
+        "startedAt": "2026-10-20T18:13:05.590Z",
+        "completedAt": "2026-10-20T18:18:16.828Z"
+      },
+      {
+        "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Adcc7a0ba-9101-46f3-9102-ed0a89ba52ed%253Adelegate-task%253Atombo-understanding-skill-20261020-goal-pm-r1:ordinal:64",
+        "ordinal": 64,
+        "status": "completed",
+        "providerInstanceId": "codex",
+        "model": "gpt-6.1-sol",
+        "requestedAt": "2026-10-20T18:06:44.257Z",
+        "startedAt": "2026-10-20T18:06:45.036Z",
+        "completedAt": "2026-10-20T18:12:34.726Z"
+      }
+    ],
+    "items": [],
+    "nextPosition": null,
+    "hasMore": false
+  },
+  "interpretation": {
+    "activeOrdinal": 69,
+    "activeStatus": "running",
+    "latestOrdinal": 71,
+    "latestStatus": "cancelled",
+    "ordinal70Status": "cancelled",
+    "ordinal68Status": "cancelled",
+    "startedAtForCancelledRuns": null,
+    "goalComplete": false,
+    "correction": "Earlier PM notification called the current turn ordinal71 from latestRunId alone. That did not establish run71 was executing or successful. Live activeRunId69 is running; do not conflate latest ordinal with active run or completion.",
+    "cause": "unknown; no cancellation was issued by this PM for these runs"
+  }
+}

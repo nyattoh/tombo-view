@@ -1,0 +1,96 @@
+{
+  "binding": {
+    "schemaVersion": "0.1",
+    "operation": "inspect",
+    "taskId": "exhibit-visit-reasoning-review",
+    "expectedRevision": -1,
+    "requestHash": "cc622c57209bafb4171e4095bfb56a5ee19577cae36bffd491410f2d855fb7b3"
+  },
+  "proposal": {
+    "claims": [
+      {
+        "id": "claim-saturday-higher",
+        "role": "hypothesis",
+        "text": "直近の来場記録において土曜日の来場者数は日曜日より多い",
+        "scope": "exhibit/visits.txt"
+      },
+      {
+        "id": "claim-saturday-rationale",
+        "role": "answer_claim",
+        "text": "直近の来場実績を根拠として次回開催を土曜日に提案することは理由づけとして適切である",
+        "scope": "exhibit/visits.txt"
+      }
+    ],
+    "lenses": [
+      {
+        "id": "lens-visit-data",
+        "label": "来場記録の事実確認",
+        "rationale": "提案理由の前提となる直近3回の来場記録の内容を確認する",
+        "origin": "initial",
+        "status": "active"
+      },
+      {
+        "id": "lens-decision-balance",
+        "label": "提案理由の妥当性評価",
+        "rationale": "データ実績と試行回数の制約を照らして理由づけの妥当性を評価する",
+        "origin": "initial",
+        "status": "active"
+      }
+    ],
+    "gaps": [
+      {
+        "id": "gap-visit-counts",
+        "kind": "missing_fact",
+        "lensId": "lens-visit-data",
+        "question": "exhibit/visits.txt に記録された直近3回の開催曜日および来場者数は何人か？",
+        "triggerRefs": [
+          "task:criterion:0"
+        ],
+        "whyItMatters": "土曜のほうが来場者が多いという前提事実の真偽を検証するため",
+        "importance": "required",
+        "claimIds": [
+          "claim-saturday-higher"
+        ],
+        "probeIds": [
+          "probe-read-visits"
+        ]
+      },
+      {
+        "id": "gap-reasoning-validity",
+        "kind": "unsupported_claim",
+        "lensId": "lens-decision-balance",
+        "question": "直近の来場実績データは次回土曜開催を提案する理由づけとして十分か、またどのような留意点があるか？",
+        "triggerRefs": [
+          "claim-saturday-higher",
+          "task:criterion:1"
+        ],
+        "whyItMatters": "会議での提案においてデータに基づく妥当性と試行回数の限界を正確に説明するため",
+        "importance": "required",
+        "claimIds": [
+          "claim-saturday-rationale"
+        ],
+        "probeIds": [
+          "probe-read-visits"
+        ]
+      }
+    ],
+    "probes": [
+      {
+        "id": "probe-read-visits",
+        "gapIds": [
+          "gap-visit-counts",
+          "gap-reasoning-validity"
+        ],
+        "method": "corroboration",
+        "question": "exhibit/visits.txt を読み取り、直近3回の開催日・曜日・来場者数および開催条件を確認する",
+        "requiredCapability": "read_local_file",
+        "sourceGroups": [
+          "local_file"
+        ],
+        "successCondition": "exhibit/visits.txtから各回の開催日、曜日、来場者数、時間等の記録が取得できること",
+        "refutationCondition": "exhibit/visits.txtが存在しないか、来場者記録が取得できないこと",
+        "inconclusiveCondition": "記録の一部のみ取得でき、曜日や人数の詳細が不明であること"
+      }
+    ]
+  }
+}

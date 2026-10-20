@@ -1,0 +1,40 @@
+{
+  "recorded_at": "2026-10-21T00:05:36.1010895+09:00",
+  "binding": "D:\\develop\\works\\tombo-view-ask-policy",
+  "branch": "devin/20261020-1705-understanding-skill",
+  "head": "dda5ff739ff0c23c37cc2e1d067b8ed0294cbbf9",
+  "source_frozen": true,
+  "focused_pass": 27,
+  "focused_fail": 0,
+  "focused_skip": 0,
+  "focused_exit": 0,
+  "regression_pass": 284,
+  "regression_fail": 0,
+  "regression_skip": 0,
+  "regression_exit": 0,
+  "build_exit": 0,
+  "typecheck_exit": 0,
+  "diff_check_exit": 0,
+  "core_unchanged": true,
+  "core_sha256": "6642d469b4a005b124da7bdc215b7a0720461488f386ec6c70afc7939e52e260",
+  "npm_test": "NOT_RUN by runtime child; PM a2-integrated-npm-test-r1 owner",
+  "cost": "unknown",
+  "tokens": "unknown",
+  "source_hashes": [
+    {
+      "path": "skills/tombo-view/scripts/session.mjs",
+      "sha256": "7ddc53b94e8c1159bc16adc68fe12f9290a2280aa5f3fa4cb347bf1e9ee45a0b",
+      "last_write_utc": "2026-10-20T15:00:15.6322080Z"
+    },
+    {
+      "path": "skills/tombo-view/scripts/session-store.mjs",
+      "sha256": "9d975899c84fa0500446c577f5b369848ff8c57104b37754bebcd6877c4f75b7",
+      "last_write_utc": "2026-10-20T15:00:14.3339919Z"
+    },
+    {
+      "path": "test/session-followup.test.mjs",
+      "sha256": "480b3d776615641827a48eaf9cad14224943f1315f357550b09d7ec161322f06",
+      "last_write_utc": "2026-10-20T15:02:38.4395592Z"
+    }
+  ]
+}

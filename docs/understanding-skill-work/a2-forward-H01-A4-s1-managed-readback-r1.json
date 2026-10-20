@@ -1,0 +1,244 @@
+{
+  "actor": "H01-A4",
+  "observedAt": "2026-10-20T18:40:34.931Z",
+  "readOnly": true,
+  "checks": {
+    "contiguousSessionJournal": true,
+    "sessionCacheMatchesJournal": true,
+    "SDKcacheMatchesAuthority": true,
+    "SDKheadMatchesAuthority": true,
+    "bindingTaskMatches": true,
+    "pinnedTaskMatches": true,
+    "pinnedBudgetMatches": true,
+    "pinnedStartedAtMatches": true,
+    "noUnfinishedOperation": true,
+    "noAccountingUncertainty": true,
+    "noSessionOrSDKLock": true
+  },
+  "sessionId": "c59dc9a2-2b21-40b3-b8de-baa9cfb5fc2b",
+  "binding": {
+    "sessionId": "c59dc9a2-2b21-40b3-b8de-baa9cfb5fc2b",
+    "workspace": "d:\\develop\\works\\tombo-view-ask-policy\\results\\understanding-acceptance2\\observers\\h01-a4\\scratch",
+    "ledger": "d:\\develop\\works\\tombo-view-ask-policy\\results\\understanding-acceptance2\\observers\\h01-a4\\scratch\\.session\\sdk.jsonl",
+    "statePath": "d:\\develop\\works\\tombo-view-ask-policy\\results\\understanding-acceptance2\\observers\\h01-a4\\scratch\\.session\\state.json",
+    "taskId": "reading-meeting-formats",
+    "taskHash": "454ec105432ec0c25ad05d21371805451fbebf9a3082ca8e0d9284806d2c82ca",
+    "budget": {
+      "maxRounds": 6,
+      "maxModelCalls": 12,
+      "maxToolCalls": 12,
+      "maxElapsedMs": 1800000,
+      "maxInputChars": 50000,
+      "maxOutputTokensPerCall": 5000
+    },
+    "startedAt": "2026-10-20T18:34:06.401Z"
+  },
+  "sessionClock": {
+    "startedAt": "2026-10-20T18:30:18.635627Z",
+    "deadlineAt": "2026-10-20T19:00:18.635627Z",
+    "basis": "host_provided",
+    "sourceRef": "local:request-origin.json; publication observation, not exact host delivery",
+    "recordedAt": "2026-10-20T18:33:32.002Z"
+  },
+  "actualPersistedSessionStop": null,
+  "clockExpiredAtReadback": false,
+  "clockBoundary": "Expiry at this PM readback is a derived observation only, not a helper invocation or a new persisted SDK/session stop.",
+  "state": {
+    "taskId": "reading-meeting-formats",
+    "revision": 2,
+    "startedAt": "2026-10-20T18:34:06.401Z",
+    "budget": {
+      "maxRounds": 6,
+      "maxModelCalls": 12,
+      "maxToolCalls": 12,
+      "maxElapsedMs": 1800000,
+      "maxInputChars": 50000,
+      "maxOutputTokensPerCall": 5000
+    },
+    "usage": {
+      "rounds": 0,
+      "modelCalls": 2,
+      "toolCalls": 0,
+      "elapsedMs": 42260,
+      "totalTokens": null,
+      "costYen": null
+    },
+    "decision": "needs_user_input",
+    "stopReason": null,
+    "understandingHash": "bdc76117a900412e60b27e0473eb6f4199a05942ac9bf997f258f2e61edc916f",
+    "reflectionCurrent": true,
+    "reflection": {
+      "binding": {
+        "taskId": "reading-meeting-formats",
+        "basedRevision": 1,
+        "understandingHash": "bdc76117a900412e60b27e0473eb6f4199a05942ac9bf997f258f2e61edc916f"
+      },
+      "reviewedClaimIds": [
+        "open-round-duration",
+        "card-duration",
+        "card-preparation-estimate",
+        "priority-small-groups",
+        "preparation-flexible"
+      ],
+      "completion": "completed",
+      "limitations": [
+        "資料は日付のない合成計画メモであり、実施結果や参加者満足度の測定ではない。",
+        "一巡16分は上限2分を8人全員が使う算術であり、導入・交代・片付けを含む実測時間ではない。",
+        "カード案の35分と準備約10分は計画値であり、時間内完了や全員の発言を保証しない。",
+        "本人の最優先条件と準備可能性の仮説は未評価であり、回答までは本人の希望として扱わない。",
+        "少人数なら必ず話しやすい、順番を設ければ必ず満足するといった効果は未確認である。"
+      ]
+    },
+    "evidence": [
+      {
+        "id": "meeting-note",
+        "locator": "local:meeting-options.md",
+        "retrievedAt": "2026-10-20T18:32:02.246Z",
+        "scope": "undated synthetic reading-group plan for eight attendees, 45-minute room",
+        "validity": "current",
+        "contentHash": "372b184220e8fb0167a85ec4bdfd295892e0196616a1e42aa547337c2ad829f4"
+      }
+    ],
+    "claims": [
+      {
+        "id": "open-round-duration",
+        "role": "observation",
+        "text": "順番に話す案の一巡は、8人全員が上限2分を使うと計16分である。",
+        "scope": "undated synthetic reading-group plan for eight attendees, 45-minute room",
+        "status": "supported",
+        "assessments": [
+          {
+            "claimId": "open-round-duration",
+            "evidenceIds": [
+              "meeting-note"
+            ],
+            "verdict": "supports",
+            "scopeMatched": true,
+            "reason": "計画値の8人×最大2分からの算術。実際の所要時間ではない。"
+          }
+        ]
+      },
+      {
+        "id": "card-duration",
+        "role": "observation",
+        "text": "カード案の活動計画は導入込み35分を確保している。",
+        "scope": "undated synthetic reading-group plan for eight attendees, 45-minute room",
+        "status": "supported",
+        "assessments": [
+          {
+            "claimId": "card-duration",
+            "evidenceIds": [
+              "meeting-note"
+            ],
+            "verdict": "supports",
+            "scopeMatched": true,
+            "reason": "メモに導入を含む35分の枠が明記されている。"
+          }
+        ]
+      },
+      {
+        "id": "card-preparation-estimate",
+        "role": "observation",
+        "text": "カード準備の約10分は実測ではなく計画上の見積りである。",
+        "scope": "undated synthetic reading-group plan for eight attendees, 45-minute room",
+        "status": "supported",
+        "assessments": [
+          {
+            "claimId": "card-preparation-estimate",
+            "evidenceIds": [
+              "meeting-note"
+            ],
+            "verdict": "supports",
+            "scopeMatched": true,
+            "reason": "メモが見積りであり実測でないと明記している。"
+          }
+        ]
+      },
+      {
+        "id": "priority-small-groups",
+        "role": "hypothesis",
+        "text": "本人が今回いちばん重視するのは少人数でお題に沿って話す時間である。",
+        "scope": "user priority for this reading meeting",
+        "status": "unverified",
+        "assessments": []
+      },
+      {
+        "id": "preparation-flexible",
+        "role": "hypothesis",
+        "text": "本人はカード準備が目安の10分を多少超えても準備時間を確保できる。",
+        "scope": "user preparation capacity for this reading meeting",
+        "status": "unverified",
+        "assessments": []
+      }
+    ],
+    "gaps": [
+      {
+        "id": "priority-gap",
+        "kind": "ambiguous_intent",
+        "lensId": "participant-and-organiser",
+        "question": "今回いちばん大事にしたいのは全員の発言機会、少人数のお題による対話、準備負担の抑制のどれか。",
+        "triggerRefs": [
+          "task:goal"
+        ],
+        "whyItMatters": "優先順位によってAとBの勧め方が逆転する。",
+        "importance": "required",
+        "claimIds": [
+          "priority-small-groups"
+        ],
+        "probeIds": [
+          "ask-priority"
+        ],
+        "humanRole": "priority",
+        "status": "open"
+      },
+      {
+        "id": "preparation-gap",
+        "kind": "ambiguous_intent",
+        "lensId": "participant-and-organiser",
+        "question": "準備の目安10分と多少の超過を本人が受け入れられるか。",
+        "triggerRefs": [
+          "card-preparation-estimate"
+        ],
+        "whyItMatters": "カード案の準備を無理なく引き受けられるかを確認する。",
+        "importance": "required",
+        "claimIds": [
+          "preparation-flexible"
+        ],
+        "probeIds": [
+          "ask-preparation"
+        ],
+        "humanRole": "priority",
+        "status": "open"
+      }
+    ],
+    "appliedExecutions": [],
+    "pendingAssessmentExecutionIds": null
+  },
+  "cachedManagedFields": {
+    "effectiveDecision": "needs_user_input",
+    "understandingStatus": {
+      "requiredGapIds": [
+        "priority-gap",
+        "preparation-gap"
+      ],
+      "reflectionStatus": "completed",
+      "canReportCompletion": false
+    },
+    "taskClockStatus": {
+      "coverage": "host_provided",
+      "startedAt": "2026-10-20T18:30:18.635627Z",
+      "deadlineAt": "2026-10-20T19:00:18.635627Z",
+      "observedAt": "2026-10-20T18:34:48.856Z",
+      "expired": false
+    },
+    "sessionStopReason": null,
+    "hostUsage": {
+      "totalTokens": null,
+      "costYen": null
+    }
+  },
+  "receipts": [],
+  "stopReceipts": [],
+  "transitions": [],
+  "outcome": "Structural evidence only; semantic and final-answer alignment require trace/raw readback. Completed actor task is not an acceptance PASS."
+}

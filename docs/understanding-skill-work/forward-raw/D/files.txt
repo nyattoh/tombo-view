@@ -1,0 +1,7 @@
+D01/stages/01/files/measurements/export-times.json
+D01/stages/01/files/notes/run-summary.txt
+D01/stages/01/request.txt
+D01/stages/02/files/notes/power-settings.txt
+D01/stages/02/request.txt
+files.txt
+manifest.json

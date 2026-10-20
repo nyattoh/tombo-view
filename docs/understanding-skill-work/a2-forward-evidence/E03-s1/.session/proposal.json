@@ -1,0 +1,113 @@
+{
+  "claims": [
+    {
+      "id": "claim-rooms-available",
+      "role": "observation",
+      "text": "Cedar RoomとHarbour Roomはどちらも12名収容可能で希望日に利用可能である",
+      "scope": "workshop room options"
+    },
+    {
+      "id": "claim-cedar-props",
+      "role": "observation",
+      "text": "Cedar Roomは駅から徒歩10分、50,000円、静かだがホワイトボードはない",
+      "scope": "workshop room options"
+    },
+    {
+      "id": "claim-harbour-props",
+      "role": "observation",
+      "text": "Harbour Roomは駅から徒歩25分、30,000円、ホワイトボード付きだが適度な街頭騒音がある",
+      "scope": "workshop room options"
+    },
+    {
+      "id": "claim-decision-depends-priority",
+      "role": "answer_claim",
+      "text": "どちらの部屋を押さえるべきかはホワイトボードの要否、予算、徒歩距離、騒音許容度の優先順位に依存する",
+      "scope": "workshop room options"
+    }
+  ],
+  "lenses": [
+    {
+      "id": "lens-workshop-criteria",
+      "label": "ワークショップ条件評価",
+      "rationale": "参加者の利便性とワークショップ進行に必要な設備の適合性を確認する",
+      "origin": "initial",
+      "status": "active"
+    }
+  ],
+  "gaps": [
+    {
+      "id": "gap-user-priorities",
+      "kind": "ambiguous_intent",
+      "lensId": "lens-workshop-criteria",
+      "question": "ワークショップにおけるホワイトボードの必要性や、徒歩距離・予算・静穏性の優先順位は何か？",
+      "triggerRefs": [
+        "claim-decision-depends-priority"
+      ],
+      "whyItMatters": "ホワイトボード必須ならHarbour Room、静穏性や駅近重視ならCedar Roomとなり選択が逆転するため",
+      "importance": "required",
+      "claimIds": [
+        "claim-decision-depends-priority"
+      ],
+      "probeIds": [
+        "probe-user-priority"
+      ],
+      "humanRole": "priority"
+    }
+  ],
+  "probes": [
+    {
+      "id": "probe-user-priority",
+      "gapIds": [
+        "gap-user-priorities"
+      ],
+      "method": "boundary",
+      "question": "ホワイトボードが必須か、それとも駅近・静穏性（Cedar）や低予算（Harbour）のどれを最優先とするか？",
+      "requiredCapability": "interactive_dialogue",
+      "sourceGroups": [
+        "user_statement"
+      ],
+      "successCondition": "ユーザーから優先順位の回答が得られること",
+      "refutationCondition": "優先順位が特定できないこと",
+      "inconclusiveCondition": "回答が得られないこと"
+    }
+  ],
+  "assessments": [
+    {
+      "claimId": "claim-rooms-available",
+      "evidenceIds": [
+        "evidence-venue-note"
+      ],
+      "verdict": "supports",
+      "scopeMatched": true,
+      "reason": "venue-note.mdに両部屋とも12人収容可能で希望日に利用可能と明記されているため"
+    },
+    {
+      "claimId": "claim-cedar-props",
+      "evidenceIds": [
+        "evidence-venue-note"
+      ],
+      "verdict": "supports",
+      "scopeMatched": true,
+      "reason": "venue-note.mdにCedar Roomの条件が記載されているため"
+    },
+    {
+      "claimId": "claim-harbour-props",
+      "evidenceIds": [
+        "evidence-venue-note"
+      ],
+      "verdict": "supports",
+      "scopeMatched": true,
+      "reason": "venue-note.mdにHarbour Roomの条件が記載されているため"
+    },
+    {
+      "claimId": "claim-decision-depends-priority",
+      "evidenceIds": [
+        "evidence-venue-note"
+      ],
+      "verdict": "supports",
+      "scopeMatched": true,
+      "reason": "venue-note.mdの2部屋の条件差（駅徒歩10分vs25分、5万円vs3万円、静かvs騒音あり、ホワイトボードなしvsあり）から判断が条件に依存することが支持されるため"
+    }
+  ],
+  "resolutions": []
+}

@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "0.1",
+  "taskId": "nightly-jobs-deadline-check",
+  "goal": "jobs/plan.json と jobs/durations.txt を読み取り、夜間処理（collect, summarise, archive）が01:00までに完了するか確認する",
+  "mode": "explain",
+  "successCriteria": [
+    "jobs/plan.json から開始時刻(00:00)、デッドライン(01:00)、順序、待機時間を確認する",
+    "jobs/durations.txt から3処理の所要時間（計45分）を確認し、01:00に間に合うか判定する",
+    "計測値の性質（上限値ではない点）を回答に含める"
+  ],
+  "evidence": [],
+  "reflectionRequired": true,
+  "proposedAnswer": "jobs/plan.json と jobs/durations.txt の記録に基づくと、3つの処理の所要時間合計は45分（collect: 18分, summarise: 12分, archive: 15分）であり、00:00開始で00:45に終了するため01:00の期限に間に合います。ただしこれは過去5回の計測値であり、次回の上限値ではない点に留意が必要です。",
+  "capabilities": ["read_document"],
+  "budget": {
+    "maxRounds": 4,
+    "maxModelCalls": 10,
+    "maxToolCalls": 10,
+    "maxElapsedMs": 1800000,
+    "maxInputChars": 100000,
+    "maxOutputTokensPerCall": 4000
+  }
+}

@@ -1,0 +1,151 @@
+{
+  "at": "2026-10-21T04:38:25.424112+09:00",
+  "reviewer_actual_status": "completed",
+  "reviewer_overall_verdict": "needs_review",
+  "file_hash_checks": [
+    {
+      "path": "README.md",
+      "current": "ece2927fa1280a4c73dd222b44beb81701b888bfc0e60dd30b33a7624cac6acd",
+      "manifest": "ece2927fa1280a4c73dd222b44beb81701b888bfc0e60dd30b33a7624cac6acd",
+      "reviewer_claim": "89116754f2592c3e2680290bf59a16f713972c07cc45448809c2b12b402ff0b8",
+      "current_matches_frozen": true,
+      "reviewer_hash_matches_current": false
+    },
+    {
+      "path": "skills/tombo-view/SKILL.md",
+      "current": "c8ca55395aa2727efbbe098b970bc12e5441fd77013013c978978e72a9133b39",
+      "manifest": "c8ca55395aa2727efbbe098b970bc12e5441fd77013013c978978e72a9133b39",
+      "reviewer_claim": "135036518456c42423d5d1a90477e045d8ab05eb4f36ca744ab03940587564a0",
+      "current_matches_frozen": true,
+      "reviewer_hash_matches_current": false
+    },
+    {
+      "path": "skills/tombo-view/agents/openai.yaml",
+      "current": "06f40acb0d8181ca1524cbaafc49ea209043354266a045ed25d3af2e4a5b6fcf",
+      "manifest": "06f40acb0d8181ca1524cbaafc49ea209043354266a045ed25d3af2e4a5b6fcf",
+      "reviewer_claim": "14ca2f3518aa004f96a0948085bc263d3f36f7e0fb30f73bdac0a835a1236222",
+      "current_matches_frozen": true,
+      "reviewer_hash_matches_current": false
+    },
+    {
+      "path": "skills/tombo-view/references/host-session.md",
+      "current": "442602f5a30395e869b55ff67a397964023ed6abb5b847192f544da638df58a6",
+      "manifest": "442602f5a30395e869b55ff67a397964023ed6abb5b847192f544da638df58a6",
+      "reviewer_claim": "d9b251ca5e87a1a6ff0e6eb3fb19cb961ef1f3fb40c9e07e94c879173164a32f",
+      "current_matches_frozen": true,
+      "reviewer_hash_matches_current": false
+    },
+    {
+      "path": "skills/tombo-view/scripts/session.mjs",
+      "current": "f545b21fa172b3fa975a09125ff981f6aa47b36e5446c3d76ec6ead66429688b",
+      "manifest": "f545b21fa172b3fa975a09125ff981f6aa47b36e5446c3d76ec6ead66429688b",
+      "reviewer_claim": "cf92c179be8ca4bf43e0dd2cb0a8d45f2c48c4fb46b2f61db6d6ac608eb89cb4",
+      "current_matches_frozen": true,
+      "reviewer_hash_matches_current": false
+    },
+    {
+      "path": "src/core.ts",
+      "current": "6642d469b4a005b124da7bdc215b7a0720461488f386ec6c70afc7939e52e260",
+      "manifest": "6642d469b4a005b124da7bdc215b7a0720461488f386ec6c70afc7939e52e260",
+      "reviewer_claim": "06c9005bc426e959c0b2ec36d5fd4117e5e9fd903bc41bc331280ec9a49c0e61",
+      "current_matches_frozen": true,
+      "reviewer_hash_matches_current": false
+    },
+    {
+      "path": "src/report.ts",
+      "current": "7043d10897d43e8f6bfd3457eb566545d96daf66ae9b64c5ef4e2df01e8be2e7",
+      "manifest": "7043d10897d43e8f6bfd3457eb566545d96daf66ae9b64c5ef4e2df01e8be2e7",
+      "reviewer_claim": "bb21ba4e7226bb0ac725a0661e045d9bc15bf071574383b41046be3ef5c5b8ca",
+      "current_matches_frozen": true,
+      "reviewer_hash_matches_current": false
+    },
+    {
+      "path": "src/types.ts",
+      "current": "2e96aea0702eb270326aae797768b53f65ae0b9dc79e25cfa7eff6e17f341d26",
+      "manifest": "2e96aea0702eb270326aae797768b53f65ae0b9dc79e25cfa7eff6e17f341d26",
+      "reviewer_claim": "e75c977acddbe4a008257b98f29e53df8fb34e7b573b46be62f5a9821f7b0f64",
+      "current_matches_frozen": true,
+      "reviewer_hash_matches_current": false
+    },
+    {
+      "path": "test/cli-model-repair.test.mjs",
+      "current": "aa67405356b181d4f2a2aec75fb0d31a64c7127d204f60d4e7daa24df4c3e54a",
+      "manifest": "aa67405356b181d4f2a2aec75fb0d31a64c7127d204f60d4e7daa24df4c3e54a",
+      "reviewer_claim": "27885a2736d7c1b30198ca393e3e4469bc23e563f957a280a5e9d75498b8ddff",
+      "current_matches_frozen": true,
+      "reviewer_hash_matches_current": false
+    },
+    {
+      "path": "skills/tombo-view/scripts/session-store.mjs",
+      "current": "2bafafeaa30beb6067367ce75af9d46e2bf1abe58d4d80a1ca31729fe92b6219",
+      "manifest": "2bafafeaa30beb6067367ce75af9d46e2bf1abe58d4d80a1ca31729fe92b6219",
+      "reviewer_claim": "839481cb50bf8799f44d0e67973c6ca45685d7524319bc5f49e845c20172b5e0",
+      "current_matches_frozen": true,
+      "reviewer_hash_matches_current": false
+    },
+    {
+      "path": "test/assessment-scope-diagnostics.test.mjs",
+      "current": "9ddd46e32886f46b15bd890cb87637f5864e823e5faa6443fef329a2e9e39dc0",
+      "manifest": "9ddd46e32886f46b15bd890cb87637f5864e823e5faa6443fef329a2e9e39dc0",
+      "reviewer_claim": "fbcfad18f3ac9056c2a5002c6060ca3b65955c0c980cfbf72ec62e235c9c430e",
+      "current_matches_frozen": true,
+      "reviewer_hash_matches_current": false
+    },
+    {
+      "path": "test/assessment-scope-report.test.mjs",
+      "current": "c904c36645c535207b543a26e67df18e29b547afad0cb265186b620858e49f2d",
+      "manifest": "c904c36645c535207b543a26e67df18e29b547afad0cb265186b620858e49f2d",
+      "reviewer_claim": "e21810f3c6a325c40a8a31fc556e35147fa39c933575b0e088d9c765117e29ca",
+      "current_matches_frozen": true,
+      "reviewer_hash_matches_current": false
+    },
+    {
+      "path": "test/session-binding.test.mjs",
+      "current": "c07d8c636eb766ebc2ca12517491b46a7fef912df4b628663a913963de3a2acd",
+      "manifest": "c07d8c636eb766ebc2ca12517491b46a7fef912df4b628663a913963de3a2acd",
+      "reviewer_claim": "78cb8d6402da14d12f13c596baab5852f8c30801e5612eb8f56caed589b3b6ca",
+      "current_matches_frozen": true,
+      "reviewer_hash_matches_current": false
+    },
+    {
+      "path": "test/session-budget-checkpoint.test.mjs",
+      "current": "36dd66b02ddfad46f6bb2c4b18cbafd7f0948c2654ff192f898437efd4d13ee0",
+      "manifest": "36dd66b02ddfad46f6bb2c4b18cbafd7f0948c2654ff192f898437efd4d13ee0",
+      "reviewer_claim": "74bc9a77bf76426d958c4487e3c3c9460cf0c4c271c26cf286e3fd14ab4a6d20",
+      "current_matches_frozen": true,
+      "reviewer_hash_matches_current": false
+    },
+    {
+      "path": "test/session-followup.test.mjs",
+      "current": "588b274e13355a31b544cc77d9a9dd52d3b16dc7dba536c65538a945a2b88e08",
+      "manifest": "588b274e13355a31b544cc77d9a9dd52d3b16dc7dba536c65538a945a2b88e08",
+      "reviewer_claim": "03bb87e919232ba7dfdc5890f1ddbf51f3314c7db52d52c7265571beeb192c88",
+      "current_matches_frozen": true,
+      "reviewer_hash_matches_current": false
+    },
+    {
+      "path": "test/understanding-session.test.mjs",
+      "current": "0768dbb8e1694ff0b83057d39f7530c4cac63511eefcd3cab3e28b61075dc721",
+      "manifest": "0768dbb8e1694ff0b83057d39f7530c4cac63511eefcd3cab3e28b61075dc721",
+      "reviewer_claim": "3df2bf512dc082b47c2b0a943fd7dc29be52e7b4bb690f74a34a20780876bb14",
+      "current_matches_frozen": true,
+      "reviewer_hash_matches_current": false
+    }
+  ],
+  "all16_current_match_frozen": true,
+  "reviewer_claimed_hash_matches": 0,
+  "patch_current": "c57cb1bf754c23d4824769ee5bbf43a24446c437170a11fc3f2363beb0971069",
+  "patch_manifest": "c57cb1bf754c23d4824769ee5bbf43a24446c437170a11fc3f2363beb0971069",
+  "reviewer_claimed_patch": "b62b38c6731a6fd2d52c7f33769ca206f4e456e31de6b21a5b58c61614338148",
+  "no_subset_PASS_adopted": true,
+  "additional_fact_objections": [
+    "Reviewer H02-B3/B4 identifiers do not exist in registered H; actual B1 Google/B2 Codex.",
+    "Reviewer gemini-3-flash-preview is not actual H observer gemini-3.8-flash-medium.",
+    "Reviewer --discard-execution option not present in managed helper.",
+    "Reviewer InformationGap/conditionRefs/blocking fields not actual current gap schema.",
+    "Reviewer A3-r4 times/receipt/revision/taskClock mix differ from actual K4 trace/readback.",
+    "Reviewer post-G RED12/GREEN37 and npm run validate:skill claims do not match recorded RED10+legacy/GREEN11/focused57 and quick_validate.py evidence.",
+    "Reviewer criterion labels differ from locked charter."
+  ],
+  "interpretation": "Overall needs_review preserved. Actual file hashes remain frozen; report claims are not proof of product mutation or independent current-diff PASS. Each substantive diagnosis needs source-backed challenge before design/code."
+}

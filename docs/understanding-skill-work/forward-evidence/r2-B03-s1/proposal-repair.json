@@ -1,0 +1,39 @@
+{
+  "binding": {
+    "schemaVersion": "0.1",
+    "operation": "update",
+    "taskId": "check-reading-group-survey",
+    "expectedRevision": 2,
+    "requestHash": "76cf75e8a2b937b17e87913e8758e45615157f264a2da7e3f7a397993e5c0cf7"
+  },
+  "proposal": {
+    "claims": [
+      {
+        "id": "claim-survey-actual-target",
+        "role": "observation",
+        "text": "survey/results.jsonのアンケートは2026年8月の夏休み昼の読書会（回答15名）を対象としており、2026年9月〜10月の平日夜の読書会（登録24名）の大半の継続希望を示す根拠にはならない",
+        "scope": "夏休み昼の読書会（2026年8月）アンケート及び平日夜の読書会（2026年9月〜10月）コメント"
+      }
+    ],
+    "assessments": [
+      {
+        "claimId": "claim-majority-night-continuation",
+        "evidenceIds": [
+          "evidence-survey-results"
+        ],
+        "verdict": "inconclusive",
+        "scopeMatched": false,
+        "reason": "アンケートは2026年8月の夏休み昼の読書会を対象としており、平日夜の読書会参加者の大半が継続希望である根拠にはならない"
+      },
+      {
+        "claimId": "claim-survey-actual-target",
+        "evidenceIds": [
+          "evidence-survey-results"
+        ],
+        "verdict": "supports",
+        "scopeMatched": true,
+        "reason": "survey/results.jsonの記述内容と完全に合致している"
+      }
+    ]
+  }
+}

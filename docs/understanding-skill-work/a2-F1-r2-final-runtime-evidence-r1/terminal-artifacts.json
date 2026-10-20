@@ -1,0 +1,154 @@
+{
+  "recorded_at": "2026-10-20T20:54:34.756Z",
+  "owned_source3_test2_rechecked": true,
+  "protected9_rechecked": true,
+  "parallel_docs2": "PM-confirmed authorised same docs owner; combined freeze deferred to PM",
+  "api_changed_after_milestone": false,
+  "artifacts": [
+    {
+      "path": "results/understanding-acceptance2/runtime/F1/r2-green/affected-r1.json",
+      "sha256": "f3c60bcbd3d4185de3a2cf1ad608fba6dfc4a2001cc6a436a1427a3b9e3bfa65",
+      "bytes": 290
+    },
+    {
+      "path": "results/understanding-acceptance2/runtime/F1/r2-green/affected-r1.log",
+      "sha256": "6e235aa87ca6dae4a159e8493877da794e6911889a35337f3e08bb4a9e913234",
+      "bytes": 12582
+    },
+    {
+      "path": "results/understanding-acceptance2/runtime/F1/r2-green/api-contract.md",
+      "sha256": "facc4085230e247cc0c6fb6bc16b2e8477aa34a43364ff2a207153dd2a556792",
+      "bytes": 8066
+    },
+    {
+      "path": "results/understanding-acceptance2/runtime/F1/r2-green/before.json",
+      "sha256": "69ae9d0677f75ccc2a359991eda9cd3c5e8d4dbd3818c34c38ec113bd9ccd389",
+      "bytes": 4179
+    },
+    {
+      "path": "results/understanding-acceptance2/runtime/F1/r2-green/build-final.log",
+      "sha256": "6e09b2ed8ddef342a3eea023d9f2a517595cb8d1079d405ee204c494530952f6",
+      "bytes": 63
+    },
+    {
+      "path": "results/understanding-acceptance2/runtime/F1/r2-green/build-r1.json",
+      "sha256": "7806357716d28e53c451f19e27305c6f8d3b991647c0e7baf97a1fc1d7d8b945",
+      "bytes": 160
+    },
+    {
+      "path": "results/understanding-acceptance2/runtime/F1/r2-green/build-r1.log",
+      "sha256": "6e09b2ed8ddef342a3eea023d9f2a517595cb8d1079d405ee204c494530952f6",
+      "bytes": 63
+    },
+    {
+      "path": "results/understanding-acceptance2/runtime/F1/r2-green/build-typecheck-final.json",
+      "sha256": "37ebd7cb5d3c2a3a7faa8931e1e6662d11fea2b1c16f3fbfa56dc1336d71694b",
+      "bytes": 377
+    },
+    {
+      "path": "results/understanding-acceptance2/runtime/F1/r2-green/f1-green-r1.json",
+      "sha256": "312700c3c89fe5b674d4fb2b21c75e2d42b9270e4b57afb0b6c9796474ef184a",
+      "bytes": 245
+    },
+    {
+      "path": "results/understanding-acceptance2/runtime/F1/r2-green/f1-green-r1.log",
+      "sha256": "d8cd7070c8e23d318eaf5955ab139f8ef745a73e851cee9c78190f30d2158ae9",
+      "bytes": 3211
+    },
+    {
+      "path": "results/understanding-acceptance2/runtime/F1/r2-green/freeze-attempt-r1.md",
+      "sha256": "b85cb97606770ac8aeace0b3a2c0efa81da20583fee6314f146f927b6b29aca8",
+      "bytes": 916
+    },
+    {
+      "path": "results/understanding-acceptance2/runtime/F1/r2-green/freeze-drift-r1.json",
+      "sha256": "fa57682cc6f0f18eb9da1b81a98b16c6a645926ee2061cdf844257b2fc6312e9",
+      "bytes": 807
+    },
+    {
+      "path": "results/understanding-acceptance2/runtime/F1/r2-green/hand_over_summary.md",
+      "sha256": "b05bd1d418b0414e921e2af2101ffaec26c622eace04db7dd9f7ae9bbd55c283",
+      "bytes": 9454
+    },
+    {
+      "path": "results/understanding-acceptance2/runtime/F1/r2-green/parallel-docs-readback.md",
+      "sha256": "c4e8d23c0c946a2fea05ae6f96d849e186e69ba60f2acce6c2778961f4882650",
+      "bytes": 908
+    },
+    {
+      "path": "results/understanding-acceptance2/runtime/F1/r2-green/regression-r1.json",
+      "sha256": "f128f7ebe6b0653643b2264284fff06c21f11003e11598ca15640742d7c69bf0",
+      "bytes": 651
+    },
+    {
+      "path": "results/understanding-acceptance2/runtime/F1/r2-green/regression-r1.log",
+      "sha256": "9633114b2ea7f9629d3c70eb78117260471b2cefedc03307d200b2cb6a23d5ec",
+      "bytes": 21226
+    },
+    {
+      "path": "results/understanding-acceptance2/runtime/F1/r2-green/skills__tombo-view__scripts__session.mjs.before",
+      "sha256": "f545b21fa172b3fa975a09125ff981f6aa47b36e5446c3d76ec6ead66429688b",
+      "bytes": 30820
+    },
+    {
+      "path": "results/understanding-acceptance2/runtime/F1/r2-green/skills__tombo-view__scripts__session.mjs.patch",
+      "sha256": "74485dfb028bb1352b7b71eb4a17f258cc75371fcde1312027f576d8f6e7ae78",
+      "bytes": 6484
+    },
+    {
+      "path": "results/understanding-acceptance2/runtime/F1/r2-green/source-freeze.json",
+      "sha256": "a561d54714d65d23238884e0964a619d8e567addb6f95e1db0159b4e174b2b9e",
+      "bytes": 8815
+    },
+    {
+      "path": "results/understanding-acceptance2/runtime/F1/r2-green/src__core.ts.before",
+      "sha256": "6642d469b4a005b124da7bdc215b7a0720461488f386ec6c70afc7939e52e260",
+      "bytes": 57847
+    },
+    {
+      "path": "results/understanding-acceptance2/runtime/F1/r2-green/src__core.ts.patch",
+      "sha256": "9f275149fec5c78fcbdd45cb8df183e7372d087d4f2bfb5518f6c19d9c6f8f09",
+      "bytes": 13705
+    },
+    {
+      "path": "results/understanding-acceptance2/runtime/F1/r2-green/src__types.ts.before",
+      "sha256": "2e96aea0702eb270326aae797768b53f65ae0b9dc79e25cfa7eff6e17f341d26",
+      "bytes": 12681
+    },
+    {
+      "path": "results/understanding-acceptance2/runtime/F1/r2-green/src__types.ts.patch",
+      "sha256": "9ebdfd95caa8b05509b71f8b997d38b45f9ba5aa4f040a434f975b21f0f4e34e",
+      "bytes": 2684
+    },
+    {
+      "path": "results/understanding-acceptance2/runtime/F1/r2-green/test__cli-model-repair.test.mjs.before",
+      "sha256": "93813bd5cf44d4bcb7d1349e6db4dacfa0edc0c662ddbbb7c3eb77eb01d28d5a",
+      "bytes": 33182
+    },
+    {
+      "path": "results/understanding-acceptance2/runtime/F1/r2-green/test__cli-model-repair.test.mjs.patch",
+      "sha256": "c016c6e933ac7e4e09f0685b3df8234bea5e6c2cfb7cb9f2edbfafd2276bd536",
+      "bytes": 5165
+    },
+    {
+      "path": "results/understanding-acceptance2/runtime/F1/r2-green/test__session-followup.test.mjs.before",
+      "sha256": "4f0f34ee149f8bad1bd16bfd837d90248987f1a6107343b454f98f850524b568",
+      "bytes": 88643
+    },
+    {
+      "path": "results/understanding-acceptance2/runtime/F1/r2-green/test__session-followup.test.mjs.patch",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "results/understanding-acceptance2/runtime/F1/r2-green/typecheck-final.log",
+      "sha256": "42df91725e3a9777f8e37ee339b0d2065926cffcabc4848d9efb8829f8395e35",
+      "bytes": 76
+    },
+    {
+      "path": "results/understanding-acceptance2/runtime/F1/r2-green/verification-summary.json",
+      "sha256": "8a3f5b542524352d9695e2c7a7d07fb5e9c322f2b8a19dfc5f7543e384d031f8",
+      "bytes": 6827
+    }
+  ]
+}

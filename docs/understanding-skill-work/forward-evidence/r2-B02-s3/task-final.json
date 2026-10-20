@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "0.1",
+  "taskId": "b02-final-report",
+  "goal": "export/final.json を読み込み、バッチ local-batch-17 の全件完了記録に基づき最終報告を作成する",
+  "mode": "explain",
+  "successCriteria": [
+    "export/final.json の完了件数、未完了件数、失敗件数、および処理順（completed_order vs published_order）を正確に検証する",
+    "全件完了後の最終報告文を作成する"
+  ],
+  "capabilities": [
+    "file_read",
+    "session_save"
+  ],
+  "budget": {
+    "maxRounds": 5,
+    "maxModelCalls": 10,
+    "maxToolCalls": 10,
+    "maxElapsedMs": 600000,
+    "maxInputChars": 100000,
+    "maxOutputTokensPerCall": 4000
+  },
+  "evidence": [],
+  "reflectionRequired": true,
+  "proposedAnswer": "全4件が完了（completed: 4, pending: 0, failed: 0）し、処理完了順は p1, p2, p4, p3 であった"
+}

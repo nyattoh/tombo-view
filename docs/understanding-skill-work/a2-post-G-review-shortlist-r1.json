@@ -1,0 +1,148 @@
+{
+  "candidates": [
+    {
+      "providerInstanceId": "antigravity",
+      "provider": "Antigravity",
+      "model": "gemini-3.8-flash-high",
+      "label": "Gemini 3.8 Flash (High)",
+      "efforts": [
+        "default"
+      ],
+      "cost": {
+        "input": null,
+        "output": null
+      },
+      "benchmark": {
+        "best_score": 100.0,
+        "best_source": "measured",
+        "scores": [
+          {
+            "bench": "cuemetrica-manual-impact-status-review-20261011",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-11 16:27:35"
+          },
+          {
+            "bench": "cuemetrica-manual-point-persistence-review-20261011",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-11 16:59:12"
+          },
+          {
+            "bench": "trajexa-inferential-prose-review-corrected-20261011-r1",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-11 17:07:16"
+          },
+          {
+            "bench": "trajexa-inferential-prose-review-corrected-20261011-r2",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-11 17:14:20"
+          },
+          {
+            "bench": "cm-phase-status-review-20261011-r1",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-11 17:15:50"
+          },
+          {
+            "bench": "cm-issue28-boundary-review-20261011-r1",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-11 17:20:28"
+          },
+          {
+            "bench": "cuemetrica-issue19-independent-20261011",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-11 18:09:03"
+          },
+          {
+            "bench": "cuemetrica-ui-refresh-20261013-independent-review",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-13 01:23:20"
+          },
+          {
+            "bench": "cue-correction-sync-review",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-13 04:48:36"
+          },
+          {
+            "bench": "trajexa-resolved-config-limited-static-review-20261013-r1",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-13 05:32:35"
+          },
+          {
+            "bench": "trajexa-click-consent-static-review-20261013-r1",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-13 06:28:07"
+          },
+          {
+            "bench": "trajexa-personality-comparison-static-review-20261013-r1",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-13 07:03:03"
+          },
+          {
+            "bench": "trajexa-theory-docs-static-review-20261013-r1",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-13 11:23:00"
+          },
+          {
+            "bench": "cuemetrica-skeleton-cloud-review-20261013",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-13 11:47:18"
+          },
+          {
+            "bench": "trajexa-own-ai-all-items-static-review-20261013-r1",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-13 13:57:32"
+          },
+          {
+            "bench": "trajexa-own-ai-final-static-review-20261013-r2",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-13 14:22:01"
+          },
+          {
+            "bench": "coding-verify",
+            "score": 80.0,
+            "source": "measured",
+            "recorded_at": "2026-10-14 21:37:55"
+          }
+        ]
+      },
+      "evidence": "ledger",
+      "vendor": "google",
+      "notes": "effort=model_encoded_high FAILED RUN Independent OpenAI review FAIL two P2 misleading unsupported proposal nextstep and safety fallback;188 tests passed but wrong expectations; scoped acceptance only | effort=high Binary scoped acceptance: Google round2 copy repair; separate OpenAI review no P1/P2 and14 tests PASS; parent Japanese desktop390/1280 preview verified. Not measurement accuracy. Cost unknown. | Antigravity independent read-only scope: hashes verified,91 focused+30 regression+31 UI tests,tsc PASS. No private media/DB, no live Gemini test. Cost unknown. | effort=high Read-only independent final scoped review completed PASS, source-grounded invariants checked; real video and live API not evaluated; cost unknown | effort=high FAILED RUN Static review verdict failed after the supplied diff was flattened to one line; artifact handover defect is real, source SyntaxError claim is contradicted by node --check and passing tests. No source or sample data included. | effort=host_default Independent AGY Issue36 source guard review PASS;17 new and147 related tests independently PASS. Browser GREEN supplied by parent candidate and live runs; reviewer old6755 run RED before publication. Real20 and API unverified; cost unknown. | effort=high Corrected newline-preserving diff passed static prompt-contract review; no attachment or API included; task cost unknown. | effort=high Second review of corrected diff passed; Japanese and English both require two independent clues per named guess; no attachment/API; task cost unknown. | effort=host_default Independent component-state review P1/P2 none,36 tests and tsc PASS; not live or video accuracy; cost unknown. | effort=host_default Scoped independent 13 synthetic boundary tests and arithmetic PASS; private20 and precision not verified; cost unknown | effort=host_default AGY independent134 plus downstream31 PASS; reviewed three counterexamples; UI not run by reviewer; cost unknown | effort=host_default AGY independent read-only review: both scoped issues PASS, independently 226 tests and typecheck; no browser or real video claim; cost unknown | effort=host_default TRAJEXA refund review r3 pass, evidence-based | effort=model-encoded Completed bounded source review and test execution, report review-agy-r1.md. Private user records not inspected. Actual cost unknown. | effort=default Executed static review of exactly2 sanitised records; six fidelity checks PASS; no owner API/media execution claimed; encoded-high model/default option; cost UNKNOWN omitted | effort=default Executed static review of7 source/proof files+contract; no P1/P2 in fixed-synthetic scope; no runtime/realF/hostloss claims credited; DPAPI Windows-profile dependence retained; cost UNKNOWN | effort=default Static review of frozen8 source/proof files plus contract PASS; no P1/P2. No reviewer runtime/source/F operations. Model encoded high; cost UNKNOWN. | effort=default Static9 frozen collector/proof files contract PASS; no runtime execution. Model encoded high; cost UNKNOWN. | effort=default Static frozen offline probe contract PASS, P1/P2 none; no runtime executed. Parent corrected report wording: raw records are inside internal ledger RAM pipe, not publicly output. Binary blocking-code gate only; cost UNKNOWN. | effort=host_default Bounded independent review of cue correction persistence and derived analysis; pass; integrated browser checks 2 passed; cost unknown; not detection accuracy evidence. | effort=default Static frozen configuration capsule contract PASS; no tests or real secrets executed. External references, Windows profile loss, full app restore not validated. Binary blocking-code gate only; cost UNKNOWN. | effort=default Static frozen backend harness contract PASS, no genuine P1/P2 found. Generic dependencies excluded/unverified; tests not executed. Binary static code gate only; cost UNKNOWN. | effort=default Original limited fake contract static PASS; real input omitted-field applicability not inspected and later failed root check. No runtime executed. Binary static report gate only. Cost UNKNOWN omitted. | effort=default Final r2 static optional-field/map fidelity contract PASS. No tests/actual execution. Parent clarifies only mutable bytearrays wiped; immutable copies/paging/dumps not guaranteed. Binary static code gate only. Cost UNKNOWN omitted. | effort=default Static root-only extractor contract PASS after preverified ciphertext; no tests/actual data inspected. Confidential stdout pipe not public metadata. CurrentUser profile/paging limits remain; binary static code gate only. Cost UNKNOWN omitted. | effort=default Final r2 static parser/clone contract PASS from supplied fake context, no execution and generic runtime excluded. Later real Stage field mismatch found by root with source not inspected here. Binary limited static gate only. Cost UNKNOWN omitted. | effort=default Static source-backed Stage guard PASS with full generic runtime/email/producer supplied;78fakechecks owner-run only. No tests/actual data inspected. Claude start rate-limit is separate and has no performance score. Binary static code gate only. Cost UNKNOWN omitted. | effort=model-encoded-high Static review PASS of frozen six-file diff only. No runtime/provider/legal/device evaluation. | effort=model-encoded-high Static review PASS of frozen eleven-file educational diff only. No reviewer runtime/empirical psychological/device evaluation. | effort=model-encoded-high Static five-document review PASS only. No executed runtime tests, full-paper reading, empirical validity or product quality measurement. | effort=default Independent final source review pass; synthetic unit and browser evidence; model encoded high; cost unknown | effort=model-encoded-high Static review PASS of all-material ownAI UI and narrow whitespace change plus integrationtest only. Reviewer ran no runtime/browser. Fullapp/device/provider quality not measured. | effort=model-encoded-high Final static PASS on existing all-material export scope and two browser expectation fixes only. Reviewer ran no browser or tests. Original R1PASS preserved. | effort=model-encoded-high FAILED RUN Static reviewed-artifact acceptance FAIL; reviewer correctly detected storage assertion defect. Zero means artifact gate failed, not defect-detection quality. Source reads performed r2; no runtime execution. R1 infrastructure NOT_RUN not scored. | effort=host_default Binary frozen closed-preview/control acceptance only: owner705 Node, focused88 and PHP251; parent8 fake-service scenarios paidrows0, crossdigest and JAEN loopback. Google static PASS only, not reviewer execution. No evaluated semantic quality/live classifier, pricing, real rights/provider/payment/refund or fullgoal score. Gemini modelID encodes high with no separate effort option. Grok cancelled and Claude rate-limit NOT_RUN are not scored. UNKNOWN cost omitted. | effort=host_default static review of narrative V2 additive diff: pass, no P1/P2",
+      "rank": 8
+    },
+    {
+      "providerInstanceId": "antigravity",
+      "provider": "Antigravity",
+      "model": "gemini-4-argon-high",
+      "label": "Gemini 4 Argon (High)",
+      "efforts": [
+        "default"
+      ],
+      "cost": {
+        "input": null,
+        "output": null
+      },
+      "benchmark": null,
+      "evidence": "unknown",
+      "vendor": null,
+      "notes": null,
+      "rank": 33
+    }
+  ],
+  "reason": "Higher supported model-encoded reasoning for newly interacting legacy/new date policy, absolute clock, null state and recovery after repeated behavioural failures. Cross-vendor Google required; benchmark/quota/cost may be unknown, not inferred successful or superior."
+}

@@ -1,0 +1,48 @@
+{
+  "same_task": true,
+  "same_startedAt": true,
+  "before_revision": 3,
+  "after_revision": 6,
+  "before_usage": {
+    "rounds": 1,
+    "modelCalls": 3,
+    "toolCalls": 2,
+    "elapsedMs": 87074,
+    "totalTokens": null,
+    "costYen": null
+  },
+  "after_usage": {
+    "rounds": 2,
+    "modelCalls": 5,
+    "toolCalls": 4,
+    "elapsedMs": 836123,
+    "totalTokens": null,
+    "costYen": null
+  },
+  "decision": "ready_for_requested_step",
+  "stopReason": null,
+  "evidence": [
+    {
+      "id": "e-plan-json",
+      "validity": "withdrawn"
+    },
+    {
+      "id": "e-durations-txt",
+      "validity": "current"
+    },
+    {
+      "id": "e-plan-json-v2",
+      "validity": "current"
+    },
+    {
+      "id": "e-durations-txt-v2",
+      "validity": "current"
+    }
+  ],
+  "claims": [
+    {
+      "id": "c-plan-completion",
+      "status": "contradicted"
+    }
+  ]
+}

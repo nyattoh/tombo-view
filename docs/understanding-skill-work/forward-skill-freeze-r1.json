@@ -1,0 +1,30 @@
+[
+  {
+    "Path": "D:\\develop\\works\\tombo-view-ask-policy\\skills\\tombo-view\\SKILL.md",
+    "Hash": "A4A2B957880233C621A976AF0FDB520D99D6E6296FB6F94C51479AC95158F870"
+  },
+  {
+    "Path": "D:\\develop\\works\\tombo-view-ask-policy\\skills\\tombo-view\\references\\host-session.md",
+    "Hash": "B46086ED8951BC65AC9C62FB469C06BDB140255BEC131B2A3095BD18FD897305"
+  },
+  {
+    "Path": "D:\\develop\\works\\tombo-view-ask-policy\\skills\\tombo-view\\agents\\openai.yaml",
+    "Hash": "06F40ACB0D8181CA1524CBAAFC49EA209043354266A045ED25D3AF2E4A5B6FCF"
+  },
+  {
+    "Path": "D:\\develop\\works\\tombo-view-ask-policy\\skills\\tombo-view\\scripts\\session.mjs",
+    "Hash": "13F1AC976788C0050CD52E48E2799D2E1BD8B19BC7040575B334B8277D70A286"
+  },
+  {
+    "Path": "D:\\develop\\works\\tombo-view-ask-policy\\src\\core.ts",
+    "Hash": "C1697D01A999B3253A65A46A3D26D97DCB29535081FD7110052390B2F50D7A29"
+  },
+  {
+    "Path": "D:\\develop\\works\\tombo-view-ask-policy\\src\\report.ts",
+    "Hash": "7043D10897D43E8F6BFD3457EB566545D96DAF66AE9B64C5EF4E2DF01E8BE2E7"
+  },
+  {
+    "Path": "D:\\develop\\works\\tombo-view-ask-policy\\src\\types.ts",
+    "Hash": "2E96AEA0702EB270326AAE797768B53F65AE0B9DC79E25CFA7EFF6E17F341D26"
+  }
+]

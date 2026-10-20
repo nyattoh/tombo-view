@@ -1,0 +1,90 @@
+{
+  "group": "understanding-acceptance2-raw-r2",
+  "cases": [
+    {
+      "id": "E01",
+      "casecwd": "E01/scratch",
+      "allowed_scope": [
+        "read supplied materials",
+        "save skill work state only within this work area's .session/ directory"
+      ],
+      "session_target": ".session/",
+      "stages": [
+        {
+          "stage": "firstturn",
+          "release": "Start from this case's empty scratch directory.",
+          "source": "E01/stage1/service-note.md",
+          "target": "service-note.md",
+          "user_message_file": "E01/stage1/user-message.md"
+        },
+        {
+          "stage": "stage2",
+          "release": "Place only after the first observer has ended and the original session's five-minute deadline has passed in real time. Keep this file hidden before release.",
+          "source": "E01/stage2/revision-note.md",
+          "target": "revision-note.md",
+          "user_message_file": "E01/stage2/user-message.md"
+        },
+        {
+          "stage": "stage3",
+          "release": "After stage2, in a fresh conversation with no prior history and the same workspace and saved case area. Keep this file hidden before release.",
+          "user_message_file": "E01/stage3/user-message.md"
+        }
+      ]
+    },
+    {
+      "id": "E02",
+      "casecwd": "E02/scratch",
+      "allowed_scope": [
+        "read supplied materials",
+        "save skill work state only within this work area's .session/ directory"
+      ],
+      "session_target": ".session/",
+      "stages": [
+        {
+          "stage": "firstturn",
+          "release": "Start from this case's empty scratch directory.",
+          "source": "E02/stage1/outing-note.md",
+          "target": "outing-note.md",
+          "user_message_file": "E02/stage1/user-message.md"
+        },
+        {
+          "stage": "stage2",
+          "release": "Place only after the first observer has ended and the original session's five-minute deadline has passed in real time. Keep this file hidden before release.",
+          "source": "E02/stage2/correction-note.md",
+          "target": "correction-note.md",
+          "user_message_file": "E02/stage2/user-message.md"
+        }
+      ]
+    },
+    {
+      "id": "E03",
+      "casecwd": "E03/scratch",
+      "allowed_scope": [
+        "read supplied materials",
+        "save skill work state only within this work area's .session/ directory"
+      ],
+      "session_target": ".session/",
+      "stages": [
+        {
+          "stage": "firstturn",
+          "release": "Start from this case's empty scratch directory.",
+          "source": "E03/stage1/venue-note.md",
+          "target": "venue-note.md",
+          "user_message_file": "E03/stage1/user-message.md"
+        },
+        {
+          "stage": "stage2",
+          "release": "After the firstturn response, reveal this message and no later-stage material.",
+          "user_message_file": "E03/stage2/user-message.md"
+        },
+        {
+          "stage": "stage3",
+          "release": "After the stage2 response, reveal the supplied correction and this message.",
+          "source": "E03/stage3/venue-correction.md",
+          "target": "venue-correction.md",
+          "user_message_file": "E03/stage3/user-message.md"
+        }
+      ]
+    }
+  ]
+}

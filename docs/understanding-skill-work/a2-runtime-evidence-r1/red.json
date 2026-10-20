@@ -1,0 +1,9 @@
+{
+  "started_at": "2026-10-20T23:29:09.2798438+09:00",
+  "completed_at": "2026-10-20T23:29:11.4796047+09:00",
+  "build_command": "npm run build",
+  "build_exit": 0,
+  "command": "node --test test/session-budget-checkpoint.test.mjs test/session-binding.test.mjs test/session-followup.test.mjs",
+  "exit": 1,
+  "product_edits_before_red": false
+}

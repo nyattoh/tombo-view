@@ -1,0 +1,126 @@
+{
+  "parentThreadId": "thread:delegated-task:command%3Amcp%3Adcc7a0ba-9101-46f3-9102-ed0a89ba52ed%3Adelegate-task%3Atombo-understanding-skill-20261020-goal-pm-r1",
+  "inheritedProviderInstanceId": "codex",
+  "inheritedModel": "gpt-6.1-sol",
+  "runtimeMode": "auto",
+  "interactionMode": "default",
+  "providers": [
+    {
+      "providerInstanceId": "codex",
+      "driverKind": "codex",
+      "displayName": "Codex",
+      "models": [
+        {
+          "id": "gpt-6.1-sol",
+          "label": "GPT-6.1-Sol",
+          "options": [
+            {
+              "id": "reasoningEffort",
+              "label": "Reasoning",
+              "type": "select",
+              "options": [
+                {
+                  "id": "low",
+                  "label": "Low"
+                },
+                {
+                  "id": "medium",
+                  "label": "Medium",
+                  "isDefault": true
+                },
+                {
+                  "id": "high",
+                  "label": "High"
+                },
+                {
+                  "id": "xhigh",
+                  "label": "Extra High"
+                },
+                {
+                  "id": "max",
+                  "label": "Max"
+                },
+                {
+                  "id": "ultra",
+                  "label": "Ultra"
+                }
+              ],
+              "currentValue": "medium"
+            },
+            {
+              "id": "serviceTier",
+              "label": "Service Tier",
+              "type": "select",
+              "options": [
+                {
+                  "id": "default",
+                  "label": "Standard",
+                  "isDefault": true
+                },
+                {
+                  "id": "priority",
+                  "label": "Fast",
+                  "description": "2x speed, increased usage"
+                }
+              ],
+              "currentValue": "default"
+            }
+          ]
+        }
+      ],
+      "canRunChildTask": true,
+      "canRunCrossProviderChildTask": true,
+      "constraints": []
+    },
+    {
+      "providerInstanceId": "antigravity",
+      "driverKind": "antigravity",
+      "displayName": "Antigravity",
+      "models": [
+        {
+          "id": "gemini-4-argon-medium",
+          "label": "Gemini 4 Argon (Medium)",
+          "options": []
+        },
+        {
+          "id": "gemini-4-argon-high",
+          "label": "Gemini 4 Argon (High)",
+          "options": []
+        },
+        {
+          "id": "gemini-4-argon-low",
+          "label": "Gemini 4 Argon (Low)",
+          "options": []
+        },
+        {
+          "id": "gemini-3.8-flash-high",
+          "label": "Gemini 3.8 Flash (High)",
+          "options": []
+        },
+        {
+          "id": "gemini-3.8-flash-medium",
+          "label": "Gemini 3.8 Flash (Medium)",
+          "options": []
+        },
+        {
+          "id": "gemini-3.8-flash-low",
+          "label": "Gemini 3.8 Flash (Low)",
+          "options": []
+        }
+      ],
+      "canRunChildTask": true,
+      "canRunCrossProviderChildTask": true,
+      "constraints": []
+    }
+  ],
+  "features": {
+    "appOwnedSubagents": true,
+    "asyncPolling": true,
+    "cancellation": true,
+    "batchThreadCreation": true,
+    "threadManagement": true,
+    "incrementalThreadRead": true,
+    "scheduledTasks": true,
+    "maxBatchThreads": 20
+  }
+}

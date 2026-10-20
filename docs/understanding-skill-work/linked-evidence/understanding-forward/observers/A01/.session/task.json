@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "0.1",
+  "taskId": "task-retry-note-audit-A01",
+  "goal": "notes/retry-note.txt の記述が src/retry.ts および config/job.json の実装と合致しているか確認し、相違があれば差し替え文を提示する",
+  "mode": "explain",
+  "successCriteria": [
+    "notes/retry-note.txt に記載された再試行対象ステータス（HTTP 408等）が src/retry.ts の shouldRetry 実装と一致しているか検証する",
+    "notes/retry-note.txt に記載された maxAttempts の定義が src/retry.ts の判定ロジックと一致しているか検証する",
+    "不一致がある場合は現状の実装に沿った運用メモの差し替え文を提示する"
+  ],
+  "reflectionRequired": true,
+  "capabilities": [
+    "local_file_read"
+  ],
+  "budget": {
+    "maxRounds": 5,
+    "maxModelCalls": 10,
+    "maxToolCalls": 10,
+    "maxElapsedMs": 60000,
+    "maxInputChars": 50000,
+    "maxOutputTokensPerCall": 4000
+  },
+  "evidence": [
+    {
+      "id": "evi-retry-note",
+      "kind": "document",
+      "locator": "notes/retry-note.txt",
+      "sourceGroup": "notes",
+      "retrievedAt": "2026-10-20T17:25:00+09:00",
+      "version": null,
+      "scope": "batch:retry",
+      "passage": "取込バッチの再試行\nHTTP 408、429、500以上の失敗は自動で再試行する。\n設定値 maxAttempts は、初回を除いた再試行回数を表す。\n再試行の対象にならない失敗は、その場で終了する。\n",
+      "contentHash": "f4051941a3b6e6d794133da6eba3a2232e0d79d9b3c17046e0279f7438468c28",
+      "validity": "current"
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "0.1",
+  "taskId": "film-selection-task",
+  "goal": "今夜みんなで見る映画を提示されたメモ（2作品）から一緒に選定する",
+  "mode": "explain",
+  "successCriteria": [
+    "今夜見る映画（A Map of Small Things または The Last Lighthouse）の選定または判断に必要な好みの確認を完了する",
+    "20分以内の予算制約を満たす"
+  ],
+  "evidence": [
+    {
+      "id": "evidence-film-notes",
+      "kind": "document",
+      "locator": "film-notes.md",
+      "sourceGroup": "film-club-notes",
+      "retrievedAt": "2026-10-21T02:00:00+09:00",
+      "version": null,
+      "scope": "film-selection",
+      "passage": "# Two films for tonight\n\nSynthetic listing notes from a local film club:\n\n- *A Map of Small Things*: listed runtime 94 minutes; described as a gentle comedy.\n- *The Last Lighthouse*: listed runtime 108 minutes; described as a quiet mystery.\n\nThe listings do not include audience ratings or screening records.\n",
+      "contentHash": "cebb067d0ec7522a1f64c392557ffc26cc536e16b7c08364a29ecb60606fc6b2",
+      "validity": "current"
+    },
+    {
+      "id": "evidence-user-request",
+      "kind": "user_statement",
+      "locator": "request.md",
+      "sourceGroup": "user-request",
+      "retrievedAt": "2026-10-21T02:00:00+09:00",
+      "version": null,
+      "scope": "film-selection",
+      "passage": "今夜みんなで見る映画をこのメモから一緒に選びたいです。どちらがよさそうか、必要なら好みを聞いてください。同じ検討全体は開始から20分まででお願いします。資料を読むことと、この固定作業領域の`.session/`配下に最小限のスキル作業・実行状態を保存することだけ許可します。\n",
+      "contentHash": "d9c4705541e72f8c75465288629b01bce383ea10dbf44f013faecad9b5cdf552",
+      "validity": "current"
+    }
+  ],
+  "reflectionRequired": true,
+  "proposedAnswer": "映画の候補として『A Map of Small Things』（94分・穏やかなコメディ）と『The Last Lighthouse』（108分・静かなミステリ）があるが、参加者のジャンルや上映時間の好みが未指定のため、確認を行ってから最終決定する",
+  "proposedActions": [
+    "参加者にジャンル（コメディ対ミステリ）や上映時間の好みを確認する",
+    "好みに基づき映画を選択する"
+  ],
+  "capabilities": [
+    "ask_user"
+  ],
+  "budget": {
+    "maxRounds": 10,
+    "maxModelCalls": 20,
+    "maxToolCalls": 20,
+    "maxElapsedMs": 1200000,
+    "maxInputChars": 50000,
+    "maxOutputTokensPerCall": 4000
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "recorded_at": "2026-10-20T16:57:41.869623+00:00",
+  "frozen": true,
+  "seven_source_readback": [
+    {
+      "path": "skills/tombo-view/SKILL.md",
+      "before_sha256": "fbb3805b50bd9b257cf3a0776eed38ffe79783549ebcbe760998e19d8d68642e",
+      "after_sha256": "c20314c6297a1b8d0cc293911353859fcea7e7e7ff58b494b8ee39867b401f30",
+      "changed": true
+    },
+    {
+      "path": "skills/tombo-view/references/host-session.md",
+      "before_sha256": "0096ea0f3d4c8fb2a6e428b5d3b7108adab659a42523491b2d4d5e9cc0c304ff",
+      "after_sha256": "332457a7c499296b714e59dc70833e6f65afb834787ca4a167f22787df50629c",
+      "changed": true
+    },
+    {
+      "path": "README.md",
+      "before_sha256": "551dc5b5340493cb8a6f063c18b61e9bd922b6901e514ab388fed902c40f371d",
+      "after_sha256": "f54de2b96b65a68c2eb8010cdb264be6c9607e1cb5320dd5ac1385c3e8f34344",
+      "changed": true
+    },
+    {
+      "path": "skills/tombo-view/agents/openai.yaml",
+      "before_sha256": "06f40acb0d8181ca1524cbaafc49ea209043354266a045ed25d3af2e4a5b6fcf",
+      "after_sha256": "06f40acb0d8181ca1524cbaafc49ea209043354266a045ed25d3af2e4a5b6fcf",
+      "changed": false
+    },
+    {
+      "path": "src/core.ts",
+      "before_sha256": "6642d469b4a005b124da7bdc215b7a0720461488f386ec6c70afc7939e52e260",
+      "after_sha256": "6642d469b4a005b124da7bdc215b7a0720461488f386ec6c70afc7939e52e260",
+      "changed": false
+    },
+    {
+      "path": "skills/tombo-view/scripts/session.mjs",
+      "before_sha256": "cb6c5e6b4fe528a44482aa20c068f2a2a60a681f1714ee8fb620ecfe44220269",
+      "after_sha256": "cb6c5e6b4fe528a44482aa20c068f2a2a60a681f1714ee8fb620ecfe44220269",
+      "changed": false
+    },
+    {
+      "path": "skills/tombo-view/scripts/session-store.mjs",
+      "before_sha256": "3221357fba1123a3f91a670da9a6af14eb53d53a1e04a0029cd9c35ca29eafa5",
+      "after_sha256": "3221357fba1123a3f91a670da9a6af14eb53d53a1e04a0029cd9c35ca29eafa5",
+      "changed": false
+    }
+  ],
+  "read_inputs": {
+    "docs/understanding-skill-work/locked-charter.md": "9084a8b40104f23a36ca3074fc4c9e6180cf788daee95735277efedfe0b2c8ca",
+    "docs/understanding-skill-work/parent-authorized-scope-amendment-r1.md": "f0952686138c9c35a14acbb2e14ce6b5a0da761de17bd81fbbc8e786ad04706d",
+    "docs/understanding-skill-work/a2-post-F-repair-design-r1.md": "809bb936ee008cd08cb2e67341d27963f24c8a450855e6c925332e4ebfe11817",
+    "docs/understanding-skill-work/a2-post-F-independent-design-review-r1.md": "54f8f0914f1d35738494cbf8df3434ecf54397556f26570206f9635dc919c289",
+    "docs/understanding-skill-work/a2-post-F-source-diagnosis-r1.md": "5b1dd958edcfa822d9752b5b23c48ead7d452e68dc331c3edd4533418194adf8",
+    "docs/understanding-skill-work/a2-behavioural-evaluation-F-r1.md": "bf673848777a5abb9007bea5f3869a39c3604b413c9c3d8eb9f69a34569187ad",
+    "results/understanding-acceptance2/runtime/post-F/api-contract.md": "418454b3aa7594cb02e3a5e27454fb97a45b91201091bf9e04919dc8d05ea760"
+  },
+  "preservation_checks": {
+    "skill_hidden_side_body_unchanged": true,
+    "readme_japanese_hidden_side_unchanged": true,
+    "readme_english_hidden_side_unchanged": true,
+    "ui_metadata_unchanged": true,
+    "fixed_state_comparisons_unchanged": true,
+    "nonowned_seven_sources_unchanged": true,
+    "runtime_freeze_sources_match": true
+  },
+  "G_raw_and_observers": "NOT_READ; no evaluation performed",
+  "full_npm_test": "NOT_RUN by docs writer; PM saved 724/724 pass exit0 fail0 skip0",
+  "cost": null,
+  "tokens": null
+}

@@ -1,0 +1,34 @@
+{
+  "recorded_at": "2026-10-20T15:45:35.540454+00:00",
+  "frozen": true,
+  "readback_inputs": {
+    "docs/understanding-skill-work/a2-storage-review-r1.md": "a5c3b72c9ca4b0858767df59b30b86195274c56b7e904a0ffa32c9ac20037f17",
+    "results/understanding-acceptance2/runtime/storage/api-contract.md": "36991e04c46d35fa9bcfc97c097086350cc278f8bd27c693480f77f6604919c4",
+    "results/understanding-acceptance2/runtime/api-contract.md": "cebb385b7aadee41acf50879fbb952c171aa8be510c5d34057243ff151be8b1e"
+  },
+  "seven_product_source_hashes": {
+    "src/core.ts": "6642d469b4a005b124da7bdc215b7a0720461488f386ec6c70afc7939e52e260",
+    "skills/tombo-view/scripts/session.mjs": "7ddc53b94e8c1159bc16adc68fe12f9290a2280aa5f3fa4cb347bf1e9ee45a0b",
+    "skills/tombo-view/scripts/session-store.mjs": "81c6563997a46aa740124d9c10eef19e851d3dafc09a01356634ef10be8b41e2",
+    "skills/tombo-view/SKILL.md": "fbb3805b50bd9b257cf3a0776eed38ffe79783549ebcbe760998e19d8d68642e",
+    "skills/tombo-view/references/host-session.md": "0096ea0f3d4c8fb2a6e428b5d3b7108adab659a42523491b2d4d5e9cc0c304ff",
+    "README.md": "551dc5b5340493cb8a6f063c18b61e9bd922b6901e514ab388fed902c40f371d",
+    "skills/tombo-view/agents/openai.yaml": "06f40acb0d8181ca1524cbaafc49ea209043354266a045ed25d3af2e4a5b6fcf"
+  },
+  "preservation_checks": {
+    "skill_hidden_side_text_unchanged": true,
+    "readme_japanese_hidden_side_unchanged": true,
+    "readme_english_hidden_side_unchanged": true,
+    "ui_metadata_unchanged": true,
+    "fixed_state_comparison_unchanged": true
+  },
+  "npm_test": "NOT_RUN by docs writer; PM notified 712/712 pass, exit 0/fail 0/skip 0",
+  "fresh_F_raw": "NOT_RUN; no general efficacy claim",
+  "cost": null,
+  "tokens": null,
+  "final_recorded_at": "2026-10-20T15:47:08.647413+00:00",
+  "freeze_checks": {
+    "seven_sources_unchanged_since_validation": true,
+    "runtime_storage_freeze_hashes_match": true
+  }
+}

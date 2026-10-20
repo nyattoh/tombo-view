@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "0.1",
+  "taskId": "json-export-speedup-assessment",
+  "goal": "ローカルJSON書き出し処理のまとめ書き変更による約1.5倍高速化の報告可否検討と説明文作成",
+  "mode": "explain",
+  "successCriteria": [
+    "測定記録（measurements/export-times.json、notes/run-summary.txt）に基づいて1.5倍高速化の主張の妥当性と適用条件を評価する",
+    "開発報告に記載する短い説明文を提示する"
+  ],
+  "evidence": [],
+  "reflectionRequired": true,
+  "proposedAnswer": "まとめ書き（100件単位）への変更によりローカルJSON書き出し（30,000件）の所要時間が約12.0秒から約8.0秒へと短縮し、約1.5倍高速化が確認された。測定条件（30,000件、100件バッチ、同一ノートPC）を明記した上で報告への記載が妥当である。",
+  "proposedActions": [
+    "measurements/export-times.json を読み取り測定秒数と高速化比率を確認する",
+    "notes/run-summary.txt を読み取り測定環境および前提条件を確認する"
+  ],
+  "capabilities": [
+    "read_saved_records"
+  ],
+  "budget": {
+    "maxRounds": 4,
+    "maxModelCalls": 6,
+    "maxToolCalls": 6,
+    "maxElapsedMs": 300000,
+    "maxInputChars": 50000,
+    "maxOutputTokensPerCall": 4000
+  }
+}

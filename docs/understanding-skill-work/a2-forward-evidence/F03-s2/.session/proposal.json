@@ -1,0 +1,114 @@
+{
+  "binding": {
+    "schemaVersion": "0.1",
+    "operation": "inspect",
+    "taskId": "laptop-choice-f03",
+    "expectedRevision": -1,
+    "requestHash": "6be1ee6e2ec963abe21c7276cfb54e9f725092a04dbd55cca407edc1a4f1af7d",
+    "sessionId": "28d44c8d-d8d1-41fd-a6c9-375f6995e3e5"
+  },
+  "proposal": {
+    "claims": [
+      {
+        "id": "claim-quotes-repair",
+        "role": "observation",
+        "text": "現行PCの修理費用は24,000円、復帰予定は2営業日、保証は90日間である。",
+        "scope": "laptop_repair_and_refurbished_quotes"
+      },
+      {
+        "id": "claim-quotes-refurbished",
+        "role": "observation",
+        "text": "整備済み品の購入費用は38,000円、納品予定は1営業日、保証は1年間である。",
+        "scope": "laptop_repair_and_refurbished_quotes"
+      },
+      {
+        "id": "claim-user-unclear-priority",
+        "role": "observation",
+        "text": "利用者は自分が何を優先したいかまだ整理できておらず、20分以内に方向を決めたいと考えている。",
+        "scope": "user_decision_request"
+      },
+      {
+        "id": "claim-direction-depends-on-user-priority",
+        "role": "answer_claim",
+        "text": "修理（低価格・2営業日・90日保証）と整備済み品（高価格・翌日納品・1年保証）の選択は、利用者の最優先事項（費用抑制、速度、保証期間）の判断によって決定される。",
+        "scope": "laptop_selection_policy"
+      }
+    ],
+    "lenses": [
+      {
+        "id": "lens-decision-priority",
+        "label": "利用者の選択優先基準",
+        "rationale": "修理と整備済み品のトレードオフを解消するために、利用者が重視する基準を明確にする必要がある。",
+        "origin": "initial",
+        "status": "active"
+      }
+    ],
+    "gaps": [
+      {
+        "id": "gap-user-priority",
+        "kind": "ambiguous_intent",
+        "lensId": "lens-decision-priority",
+        "question": "ノートPCの選択において、費用（14,000円安い修理）、復帰の早さ（1営業日の整備済み品）、保証期間の長さ（1年保証の整備済み品）のうち、どれを最も重視しますか？",
+        "triggerRefs": [
+          "task:goal",
+          "ev-user-request"
+        ],
+        "whyItMatters": "利用者の優先順位によって、修理（費用最優先）か整備済み品（納期または保証最優先）のどちらを選ぶべきかが逆転するため。",
+        "importance": "required",
+        "claimIds": [
+          "claim-direction-depends-on-user-priority"
+        ],
+        "probeIds": [
+          "probe-ask-user-priority"
+        ]
+      }
+    ],
+    "probes": [
+      {
+        "id": "probe-ask-user-priority",
+        "gapIds": [
+          "gap-user-priority"
+        ],
+        "method": "dependency",
+        "question": "利用者に最優先したい条件（費用、納期、保証期間）を質問し回答を得る",
+        "requiredCapability": "humanRole",
+        "sourceGroups": [
+          "user"
+        ],
+        "successCondition": "利用者が費用、納期、保証のいずれか、または明確な判断基準を回答すること",
+        "refutationCondition": "利用者がいずれの条件も選ばず、外部の別の基準や全権委任を指定すること",
+        "inconclusiveCondition": "利用者の回答が得られないか、追加の制約のみが提示されること"
+      }
+    ],
+    "assessments": [
+      {
+        "claimId": "claim-quotes-repair",
+        "evidenceIds": [
+          "ev-laptop-quotes"
+        ],
+        "verdict": "supports",
+        "scopeMatched": true,
+        "reason": "見積もり文書に修理は24,000円、2営業日、90日保証と明記されている。"
+      },
+      {
+        "claimId": "claim-quotes-refurbished",
+        "evidenceIds": [
+          "ev-laptop-quotes"
+        ],
+        "verdict": "supports",
+        "scopeMatched": true,
+        "reason": "見積もり文書に整備済み品は38,000円、1営業日、1年保証と明記されている。"
+      },
+      {
+        "claimId": "claim-user-unclear-priority",
+        "evidenceIds": [
+          "ev-user-request"
+        ],
+        "verdict": "supports",
+        "scopeMatched": true,
+        "reason": "利用者の依頼文に何を優先したいか整理できておらず20分以内に決めたいと明記されている。"
+      }
+    ],
+    "resolutions": []
+  }
+}

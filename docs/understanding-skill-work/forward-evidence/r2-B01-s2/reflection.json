@@ -1,0 +1,26 @@
+{
+  "binding": {
+    "schemaVersion": "0.1",
+    "operation": "reflect",
+    "taskId": "exhibit-visit-reasoning-review",
+    "expectedRevision": 2,
+    "requestHash": "87e7e5a9b006b6d31b20e27f6f1e2b020bf2b408a5fb7f13499d24f11bc16c0a"
+  },
+  "reflection": {
+    "binding": {
+      "taskId": "exhibit-visit-reasoning-review",
+      "basedRevision": 2,
+      "understandingHash": "0b4e6f449fab5a022d9cc75ad97cb4e4b05f5c3863a78ef1911137ba0d130757"
+    },
+    "reviewedClaimIds": [
+      "claim-saturday-higher",
+      "claim-saturday-rationale"
+    ],
+    "completion": "completed",
+    "limitations": [
+      "直近3回（土曜2回、日曜1回）の小規模記録に基づく評価であり、長期的な傾向や天候・他イベント等の要因は未記録・未確認であること",
+      "指示に基づき外部通信や日程の確定・連絡は行わず、資料の読取りと理由づけの妥当性評価および会議用説明文の提示に限定していること"
+    ],
+    "proposal": {}
+  }
+}

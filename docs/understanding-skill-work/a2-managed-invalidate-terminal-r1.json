@@ -1,0 +1,26 @@
+{
+  "taskId": "node:delegated-task:command%3Amcp%3Aa82eaa08-dbac-4ad7-914c-b2168a530ea6%3Athread-send%3Aunderstanding-a2-managed-invalidate-tdd-r1",
+  "childThreadId": "thread:delegated-task:command%3Amcp%3A8f9b8d39-0be7-46bd-a881-cc0212912ad2%3Adelegate-task%3Aunderstanding-20261020-runtime-tdd-r1",
+  "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A8f9b8d39-0be7-46bd-a881-cc0212912ad2%253Adelegate-task%253Aunderstanding-20261020-runtime-tdd-r1:ordinal:4",
+  "childNodeId": "node:delegated-task:command%3Amcp%3Aa82eaa08-dbac-4ad7-914c-b2168a530ea6%3Athread-send%3Aunderstanding-a2-managed-invalidate-tdd-r1",
+  "status": "completed",
+  "workState": "result_available",
+  "hasPendingChildRuns": false,
+  "latestTerminalRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A8f9b8d39-0be7-46bd-a881-cc0212912ad2%253Adelegate-task%253Aunderstanding-20261020-runtime-tdd-r1:ordinal:4",
+  "latestTerminalStatus": "completed",
+  "latestTerminalSummary": null,
+  "latestTerminalResultContextTransferId": null,
+  "providerInstanceId": "codex",
+  "model": "gpt-6.1-sol",
+  "options": [
+    {
+      "id": "reasoningEffort",
+      "value": "high"
+    }
+  ],
+  "summary": "◤◢◤◢◤◢◤◢ STATUS ◤◢◤◢◤◢◤◢\n\n担当実装・検証を完了し、コード・テストをfreezeしました。PMへ最終通知済みです。\n\n📝 SUMMARY\n\n- managed `invalidate` を追加し、同sessionでの撤回・再評価・再考を維持。\n- 旧停止理由、未評価破棄履歴、混在receiptの未計上usageを保持。\n- 期限後は旧snapshotを変えず、撤回申告を未評価保存します。\n\n💻 DETAILS\n\n- 製品変更前RED：入口5件失敗、stop/pending専用2件失敗を記録。\n- 最終focused：**27/27成功**。\n- 関連回帰：**284/284成功**。\n- build/typecheck：各 **exit 0**。失敗・skip 0。\n\n[最終handover](/D:/develop/works/tombo-view-ask-policy/results/understanding-acceptance2/runtime/managed-invalidate-handover.md) に正確なコマンド・時刻・ログ・source行・限界を集約しました。[API契約](/D:/develop/works/tombo-view-ask-policy/results/understanding-acceptance2/runtime/api-contract.md)・[source hashes](/D:/develop/works/tombo-view-ask-policy/results/understanding-acceptance2/runtime/verification-summary-invalidate.json) も保存済みです。\n\n➡️ NEXT STEPS\n\n全 `npm test` と受入判断はPMの統合工程へ残しています。commit/push/PRなし、費用/tokenはunknownです。",
+  "resultContextTransferId": "context-transfer:type:subagent_result:source-thread:thread%3Adelegated-task%3Acommand%253Amcp%253A8f9b8d39-0be7-46bd-a881-cc0212912ad2%253Adelegate-task%253Aunderstanding-20261020-runtime-tdd-r1:target-thread:thread%3Adelegated-task%3Acommand%253Amcp%253Adcc7a0ba-9101-46f3-9102-ed0a89ba52ed%253Adelegate-task%253Atombo-understanding-skill-20261020-goal-pm-r1:592451a2-7356-4e32-9f60-3f26016c15a3",
+  "hasPendingQuestion": false,
+  "pendingApproval": null,
+  "waitTimedOut": false
+}

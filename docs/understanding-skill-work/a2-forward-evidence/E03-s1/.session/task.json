@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "0.1",
+  "taskId": "workshop-room-selection",
+  "goal": "ワークショップ用の部屋の選定を支援する",
+  "mode": "explain",
+  "successCriteria": [
+    "Cedar RoomとHarbour Roomの条件を比較し、判断に必要な優先条件を特定して方針を決める"
+  ],
+  "evidence": [
+    {
+      "id": "evidence-venue-note",
+      "locator": "venue-note.md",
+      "kind": "document",
+      "version": "1.0",
+      "validity": "current",
+      "sourceGroup": "workspace_document",
+      "retrievedAt": "2026-10-21T00:11:47+09:00",
+      "scope": "workshop room options",
+      "passage": "# Workshop room options\n\nSynthetic planning note for a small workshop:\n\n- Cedar Room: 10-minute walk from the station, 50,000 yen, quiet, no whiteboard.\n- Harbour Room: 25-minute walk from the station, 30,000 yen, whiteboard included, moderate street noise.\n\nBoth rooms fit 12 people and are available on the requested date.\n",
+      "contentHash": "a851bb26fa8807b6ac3303920f20598ae5927e05fc9840cd32fb29b759e52ae2"
+    }
+  ],
+  "reflectionRequired": true,
+  "proposedAnswer": "部屋の選定には優先順位の確認が必要です。",
+  "proposedActions": [],
+  "capabilities": [
+    "file_read",
+    "interactive_dialogue"
+  ],
+  "budget": {
+    "maxElapsedMs": 1200000,
+    "maxRounds": 5,
+    "maxModelCalls": 10,
+    "maxToolCalls": 20,
+    "maxInputChars": 10000,
+    "maxOutputTokensPerCall": 2000
+  }
+}

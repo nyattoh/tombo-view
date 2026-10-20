@@ -1,0 +1,8 @@
+{
+  "recordType": "request_publication",
+  "publishedAt": "2026-10-20T18:30:18.635627Z",
+  "durationMs": 1800000,
+  "deadlineAt": "2026-10-20T19:00:18.635627Z",
+  "source": "local:request-origin.json",
+  "measurement": "Actual local OS observation at facilitator publication. This is not exact host delivery time, queue start, SDK start or source-document publication date."
+}

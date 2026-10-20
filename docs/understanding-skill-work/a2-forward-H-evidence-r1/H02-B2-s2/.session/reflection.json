@@ -1,0 +1,30 @@
+{
+  "binding": {
+    "schemaVersion": "0.1",
+    "operation": "reflect",
+    "taskId": "editor-status-explanation",
+    "expectedRevision": 1,
+    "requestHash": "9567c065f1470be4336908587d7534d40329b2c359697709863b6ce0c3adeb44",
+    "sessionId": "58fb5139-2f6b-4c05-8842-cdde1b24a7ea"
+  },
+  "reflection": {
+    "reviewedClaimIds": [
+      "claim-1",
+      "claim-2",
+      "claim-3",
+      "claim-4"
+    ],
+    "proposal": {},
+    "binding": {
+      "taskId": "editor-status-explanation",
+      "basedRevision": 1,
+      "understandingHash": "127d59ccd91490b52790731cd9b178de9ad06a24b460cd69f2bb48a9aca483b0"
+    },
+    "completion": "completed",
+    "limitations": [
+      "全4命題を本文と照合。Savedが出ても既公開版と保存済み最新版が一致する証拠にはならない。公開済みAを編集してBを保存してもAは置き換わらないという例が本文と整合する。",
+      "Publishedは保存済みのある版からの公開コピーを示し、その後の最新編集まで含むとは限らない。",
+      "資料はsyntheticかつundatedであり実製品の現在の挙動は未確認。下書きへの共同編集者のアクセス権限、公開操作の具体手順、未公開時のプレビュー挙動は本文から確定できない。"
+    ]
+  }
+}

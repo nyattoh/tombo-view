@@ -1,0 +1,55 @@
+{
+  "questionRequestId": "runtime-request:provider:codex:provider-turn:provider-turn%3Aprovider%3Acodex%3Anative-turn%3A01a15a9e-807f-7bf3-8e5b-62ea8617bda6:native-request:async%3Acall_863b1d7887224574acb38879ef71c2b4:16cf2d22-36a9-4de7-b88b-a8b73b000fca",
+  "threadId": "thread:delegated-task:command%3Amcp%3A6332d4e8-30bd-476f-80f7-fbe6b1ce0d6a%3Adelegate-task%3Aunderstanding-a2-forward-h01-a3-s1-r1",
+  "threadBeforeAnswer": {
+    "status": "completed",
+    "activeRunId": null,
+    "runCount": 3,
+    "pendingRequestCount": 2,
+    "recentRuns": [
+      {
+        "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A6332d4e8-30bd-476f-80f7-fbe6b1ce0d6a%253Adelegate-task%253Aunderstanding-a2-forward-h01-a3-s1-r1:ordinal:3",
+        "ordinal": 3,
+        "status": "completed",
+        "providerInstanceId": "codex",
+        "model": "gpt-6.1-sol",
+        "requestedAt": "2026-10-20T18:47:27.621Z",
+        "startedAt": "2026-10-20T18:47:29.244Z",
+        "completedAt": "2026-10-20T18:50:11.678Z"
+      },
+      {
+        "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A6332d4e8-30bd-476f-80f7-fbe6b1ce0d6a%253Adelegate-task%253Aunderstanding-a2-forward-h01-a3-s1-r1:ordinal:2",
+        "ordinal": 2,
+        "status": "completed",
+        "providerInstanceId": "codex",
+        "model": "gpt-6.1-sol",
+        "requestedAt": "2026-10-20T18:41:38.742Z",
+        "startedAt": "2026-10-20T18:41:38.987Z",
+        "completedAt": "2026-10-20T18:43:13.548Z"
+      },
+      {
+        "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A6332d4e8-30bd-476f-80f7-fbe6b1ce0d6a%253Adelegate-task%253Aunderstanding-a2-forward-h01-a3-s1-r1:ordinal:1",
+        "ordinal": 1,
+        "status": "completed",
+        "providerInstanceId": "codex",
+        "model": "gpt-6.1-sol",
+        "requestedAt": "2026-10-20T18:31:04.588Z",
+        "startedAt": "2026-10-20T18:31:45.266Z",
+        "completedAt": "2026-10-20T18:33:49.609Z"
+      }
+    ]
+  },
+  "pendingBeforeAnswer": {
+    "requestIds": [
+      "runtime-request:provider:codex:provider-turn:provider-turn%3Aprovider%3Acodex%3Anative-turn%3A01a15a95-7912-7311-9671-c9161ce85a2a:native-request:async%3Acall_8fe264c570a34c3594c319386f34210d:7a6e2c8d-f192-4848-bc3f-6ededcab8c50",
+      "runtime-request:provider:codex:provider-turn:provider-turn%3Aprovider%3Acodex%3Anative-turn%3A01a15a9e-807f-7bf3-8e5b-62ea8617bda6:native-request:async%3Acall_863b1d7887224574acb38879ef71c2b4:16cf2d22-36a9-4de7-b88b-a8b73b000fca"
+    ]
+  },
+  "actualUserAnswer": "パスして聞くだけでもよい",
+  "responseReceipt": {
+    "sequence": 1345786
+  },
+  "provenance": "Actual user response in PM thread; forwarded verbatim using pending-request response, no preference invented or borrowed from A4.",
+  "evaluationBoundary": "Outside registered H18 turns/8 threads; original H01 deadline passed. Any resulting actual run must be counted separately after live verification.",
+  "correction": "Terminal task/hasPendingQuestion=false does not prove asynchronous UI questions were dismissed; pending-request list/read remains authoritative for outstanding request."
+}

@@ -1,0 +1,124 @@
+{
+  "at": "2026-10-20T18:46:58.220750+00:00",
+  "cases": [
+    {
+      "actor": "H01-A1",
+      "case": "H01",
+      "releasedAt": "2026-10-20T18:46:58.220750+00:00",
+      "predecessor_status": "completed",
+      "original_deadline": "2026-10-20T19:00:18.635627Z",
+      "kind": "same_thread",
+      "task": "主催の人からカード準備について訂正がありました。追加メモを読んで、同じ読書会の進め方について考え直してもらえますか。最初にお願いした時間と、この固定作業領域の`.session/`配下だけに作業状態を書く条件は変わりません。\n\n\n依頼原文: D:/develop/works/tombo-view-ask-policy/results/understanding-acceptance2/observers/H01-A1/scratch/request-stage3.md\n添付資料: D:/develop/works/tombo-view-ask-policy/results/understanding-acceptance2/observers/H01-A1/scratch/preparation-update.md\n同じ固定作業領域・元の時間枠・読取り/書込み許可のままお願いします。",
+      "clientRequestId": "understanding-a2-forward-h01-a1-s3-r1",
+      "target": {
+        "providerInstanceId": "antigravity",
+        "model": "gemini-3.8-flash-medium",
+        "options": []
+      },
+      "raw_user_sha256": "fd41721d4358f7cfe07f54f1b9c8603af96977fe108ab86871927448cbec5312",
+      "source_sha256": "11280bb17d088c2f7d60a264faa1503efb7c46c7856cefb24a0a276252e365a5"
+    },
+    {
+      "actor": "H01-A2",
+      "case": "H01",
+      "releasedAt": "2026-10-20T18:46:58.220750+00:00",
+      "predecessor_status": "completed",
+      "original_deadline": "2026-10-20T19:00:18.635627Z",
+      "kind": "same_thread",
+      "task": "主催の人からカード準備について訂正がありました。追加メモを読んで、同じ読書会の進め方について考え直してもらえますか。最初にお願いした時間と、この固定作業領域の`.session/`配下だけに作業状態を書く条件は変わりません。\n\n\n依頼原文: D:/develop/works/tombo-view-ask-policy/results/understanding-acceptance2/observers/H01-A2/scratch/request-stage3.md\n添付資料: D:/develop/works/tombo-view-ask-policy/results/understanding-acceptance2/observers/H01-A2/scratch/preparation-update.md\n同じ固定作業領域・元の時間枠・読取り/書込み許可のままお願いします。",
+      "clientRequestId": "understanding-a2-forward-h01-a2-s3-r1",
+      "target": {
+        "providerInstanceId": "antigravity",
+        "model": "gemini-3.8-flash-medium",
+        "options": []
+      },
+      "raw_user_sha256": "fd41721d4358f7cfe07f54f1b9c8603af96977fe108ab86871927448cbec5312",
+      "source_sha256": "11280bb17d088c2f7d60a264faa1503efb7c46c7856cefb24a0a276252e365a5"
+    },
+    {
+      "actor": "H01-A3",
+      "case": "H01",
+      "releasedAt": "2026-10-20T18:46:58.220750+00:00",
+      "predecessor_status": "completed",
+      "original_deadline": "2026-10-20T19:00:18.635627Z",
+      "kind": "same_thread",
+      "task": "主催の人からカード準備について訂正がありました。追加メモを読んで、同じ読書会の進め方について考え直してもらえますか。最初にお願いした時間と、この固定作業領域の`.session/`配下だけに作業状態を書く条件は変わりません。\n\n\n依頼原文: D:/develop/works/tombo-view-ask-policy/results/understanding-acceptance2/observers/H01-A3/scratch/request-stage3.md\n添付資料: D:/develop/works/tombo-view-ask-policy/results/understanding-acceptance2/observers/H01-A3/scratch/preparation-update.md\n同じ固定作業領域・元の時間枠・読取り/書込み許可のままお願いします。",
+      "clientRequestId": "understanding-a2-forward-h01-a3-s3-r1",
+      "target": {
+        "providerInstanceId": "codex",
+        "model": "gpt-6.1-sol",
+        "options": [
+          {
+            "id": "reasoningEffort",
+            "value": "high"
+          }
+        ]
+      },
+      "raw_user_sha256": "fd41721d4358f7cfe07f54f1b9c8603af96977fe108ab86871927448cbec5312",
+      "source_sha256": "11280bb17d088c2f7d60a264faa1503efb7c46c7856cefb24a0a276252e365a5"
+    },
+    {
+      "actor": "H01-A4",
+      "case": "H01",
+      "releasedAt": "2026-10-20T18:46:58.220750+00:00",
+      "predecessor_status": "completed",
+      "original_deadline": "2026-10-20T19:00:18.635627Z",
+      "kind": "same_thread",
+      "task": "主催の人からカード準備について訂正がありました。追加メモを読んで、同じ読書会の進め方について考え直してもらえますか。最初にお願いした時間と、この固定作業領域の`.session/`配下だけに作業状態を書く条件は変わりません。\n\n\n依頼原文: D:/develop/works/tombo-view-ask-policy/results/understanding-acceptance2/observers/H01-A4/scratch/request-stage3.md\n添付資料: D:/develop/works/tombo-view-ask-policy/results/understanding-acceptance2/observers/H01-A4/scratch/preparation-update.md\n同じ固定作業領域・元の時間枠・読取り/書込み許可のままお願いします。",
+      "clientRequestId": "understanding-a2-forward-h01-a4-s3-r1",
+      "target": {
+        "providerInstanceId": "codex",
+        "model": "gpt-6.1-sol",
+        "options": [
+          {
+            "id": "reasoningEffort",
+            "value": "high"
+          }
+        ]
+      },
+      "raw_user_sha256": "fd41721d4358f7cfe07f54f1b9c8603af96977fe108ab86871927448cbec5312",
+      "source_sha256": "11280bb17d088c2f7d60a264faa1503efb7c46c7856cefb24a0a276252e365a5"
+    },
+    {
+      "actor": "H02-B1",
+      "case": "H02",
+      "releasedAt": "2026-10-20T18:46:58.220750+00:00",
+      "predecessor_status": "completed",
+      "original_deadline": "2026-10-20T18:35:18.635627Z",
+      "kind": "fresh_conversation_same_saved_cwd",
+      "task": "新しい会話から続きをお願いします。同じ固定作業領域に残してある作業状態と、今ここで読める資料をもとに、現時点で分かっていることを説明してください。この固定作業領域の`.session/`配下だけに作業状態を書く条件はそのままです。\n\n\n依頼原文: D:/develop/works/tombo-view-ask-policy/results/understanding-acceptance2/observers/H02-B1/scratch/request-stage3.md\n現在の資料: D:/develop/works/tombo-view-ask-policy/results/understanding-acceptance2/observers/H02-B1/scratch/editor-guide.md、D:/develop/works/tombo-view-ask-policy/results/understanding-acceptance2/observers/H02-B1/scratch/preview-note.md\n公開記録: D:/develop/works/tombo-view-ask-policy/results/understanding-acceptance2/observers/H02-B1/scratch/request-origin.json\n固定cwd: D:/develop/works/tombo-view-ask-policy/results/understanding-acceptance2/observers/H02-B1/scratch\n利用可能なskill catalogue: tombo-view — 開発や通常の会話で、AI自身の理解を証拠・反例・訂正・人の回答で更新し、進む・調べる・尋ねる・問い直す・止まるを選ぶ。根拠の確認、未確認の前提や矛盾の検討、継続中の理解の見直しに使う。\n入口: D:/develop/works/tombo-view-ask-policy/results/understanding-acceptance2/bundles/R9/skills/tombo-view/SKILL.md\n読取りはこのcwdの依頼・資料・保存状態、指定bundleのskills/tombo-view/**、src/types.ts、dist/**のみ。書込みはこのcwd/.session/**内の必要最小限の作業資材・状態・記録だけ。他case/bundle/README/作業docs/global installed skillsを読みません。外部検索・製品実操作・依存追加・直接model/API・secret・他agent・commit/push/PRは許可されていません。SDKは指定bundleのbuild済みdist、TOMBO_ROOTが必要ならこのbundle rootだけを利用できます。",
+      "clientRequestId": "understanding-a2-forward-h02-b1-s3-r1",
+      "target": {
+        "providerInstanceId": "antigravity",
+        "model": "gemini-3.8-flash-medium",
+        "options": []
+      },
+      "raw_user_sha256": "62863070e37bf24f10abbb913d562377c44e91041eb9498f076e112dd4ed2bf2",
+      "source_sha256": null
+    },
+    {
+      "actor": "H02-B2",
+      "case": "H02",
+      "releasedAt": "2026-10-20T18:46:58.220750+00:00",
+      "predecessor_status": "completed",
+      "original_deadline": "2026-10-20T18:35:18.635627Z",
+      "kind": "fresh_conversation_same_saved_cwd",
+      "task": "新しい会話から続きをお願いします。同じ固定作業領域に残してある作業状態と、今ここで読める資料をもとに、現時点で分かっていることを説明してください。この固定作業領域の`.session/`配下だけに作業状態を書く条件はそのままです。\n\n\n依頼原文: D:/develop/works/tombo-view-ask-policy/results/understanding-acceptance2/observers/H02-B2/scratch/request-stage3.md\n現在の資料: D:/develop/works/tombo-view-ask-policy/results/understanding-acceptance2/observers/H02-B2/scratch/editor-guide.md、D:/develop/works/tombo-view-ask-policy/results/understanding-acceptance2/observers/H02-B2/scratch/preview-note.md\n公開記録: D:/develop/works/tombo-view-ask-policy/results/understanding-acceptance2/observers/H02-B2/scratch/request-origin.json\n固定cwd: D:/develop/works/tombo-view-ask-policy/results/understanding-acceptance2/observers/H02-B2/scratch\n利用可能なskill catalogue: tombo-view — 開発や通常の会話で、AI自身の理解を証拠・反例・訂正・人の回答で更新し、進む・調べる・尋ねる・問い直す・止まるを選ぶ。根拠の確認、未確認の前提や矛盾の検討、継続中の理解の見直しに使う。\n入口: D:/develop/works/tombo-view-ask-policy/results/understanding-acceptance2/bundles/R9/skills/tombo-view/SKILL.md\n読取りはこのcwdの依頼・資料・保存状態、指定bundleのskills/tombo-view/**、src/types.ts、dist/**のみ。書込みはこのcwd/.session/**内の必要最小限の作業資材・状態・記録だけ。他case/bundle/README/作業docs/global installed skillsを読みません。外部検索・製品実操作・依存追加・直接model/API・secret・他agent・commit/push/PRは許可されていません。SDKは指定bundleのbuild済みdist、TOMBO_ROOTが必要ならこのbundle rootだけを利用できます。",
+      "clientRequestId": "understanding-a2-forward-h02-b2-s3-r1",
+      "target": {
+        "providerInstanceId": "codex",
+        "model": "gpt-6.1-sol",
+        "options": [
+          {
+            "id": "reasoningEffort",
+            "value": "high"
+          }
+        ]
+      },
+      "raw_user_sha256": "62863070e37bf24f10abbb913d562377c44e91041eb9498f076e112dd4ed2bf2",
+      "source_sha256": null
+    }
+  ],
+  "expected_answers_or_prior_findings_disclosed": false,
+  "input_only": true
+}

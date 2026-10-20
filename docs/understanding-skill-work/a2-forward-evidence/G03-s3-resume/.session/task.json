@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "0.1",
+  "taskId": "balcony-planting-g03",
+  "goal": "手元にある種と鉢でベランダに適した植栽案（Option AまたはOption B）を検討し、利用者の重視する条件に応じて適切な案を選択する。",
+  "mode": "explain",
+  "successCriteria": [
+    "ベランダの日照条件および手元の種・鉢の特性を整理する",
+    "利用者の重視する優先条件を確認し、合致する植栽案を提示する"
+  ],
+  "evidence": [
+    {
+      "id": "ev-planter-notes-1",
+      "kind": "document",
+      "locator": "file://planter-notes.md",
+      "sourceGroup": "planter-notes",
+      "retrievedAt": "2026-10-20T16:42:30.959Z",
+      "version": "1.0",
+      "scope": "balcony-planting",
+      "passage": "# Existing balcony planting options\n\nSynthetic planning notes for seeds and containers already on hand:\n\n- Option A uses one rectangular planter for thyme and chives. The packet labels describe thyme as needing a sunny position and chives as tolerating partial shade.\n- Option B uses two small pots for mint and parsley. The mint label recommends keeping it in its own pot; the parsley label allows partial shade.\n- A quick clear-day observation was estimated at about 4–5 hours of direct light on the balcony. It was an informal estimate, not a seasonal measurement.\n",
+      "contentHash": "88340510e46dd755d7d965904ba80687f2567f1ed0c125301e9380ca65f613be",
+      "validity": "current"
+    }
+  ],
+  "reflectionRequired": true,
+  "proposedAnswer": "利用者の優先条件を確認した上で適した植栽案を決定する。",
+  "proposedActions": [
+    "日当たり・管理のしやすさ、鉢の配置、使いたいハーブのどれを重視するか確認する",
+    "重視条件に応じてOption AまたはOption Bを確定する"
+  ],
+  "capabilities": [
+    "read_document",
+    "ask_user"
+  ],
+  "budget": {
+    "maxRounds": 5,
+    "maxModelCalls": 10,
+    "maxToolCalls": 10,
+    "maxElapsedMs": 1200000,
+    "maxInputChars": 50000,
+    "maxOutputTokensPerCall": 4000
+  }
+}

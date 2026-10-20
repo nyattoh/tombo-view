@@ -1,0 +1,20 @@
+[
+  {
+    "command": "node D:/develop/works/tombo-view-ask-policy/skills/tombo-view/scripts/session.mjs prepare --input .session/task.json --out .session/context.json --ledger .session/events.jsonl",
+    "cwd": "D:/develop/works/tombo-view-ask-policy/results/understanding-forward/observers/C02",
+    "exitCode": 0,
+    "description": "Prepare initial inspection context and binding"
+  },
+  {
+    "command": "node D:/develop/works/tombo-view-ask-policy/skills/tombo-view/scripts/session.mjs inspect --input .session/task.json --proposal .session/proposal.json --out .session/inspection.json --ledger .session/events.jsonl",
+    "cwd": "D:/develop/works/tombo-view-ask-policy/results/understanding-forward/observers/C02",
+    "exitCode": 0,
+    "description": "Execute initial inspect with proposal, verifying evidence and policy decision"
+  },
+  {
+    "command": "node D:/develop/works/tombo-view-ask-policy/skills/tombo-view/scripts/session.mjs report --state .session/inspection.json --out .session/report.md",
+    "cwd": "D:/develop/works/tombo-view-ask-policy/results/understanding-forward/observers/C02",
+    "exitCode": 0,
+    "description": "Generate markdown inspection report from state"
+  }
+]

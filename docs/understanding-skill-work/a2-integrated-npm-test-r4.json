@@ -1,0 +1,21 @@
+{
+  "started_at": "2026-10-21T03:26:13.7713843+09:00",
+  "completed_at": "2026-10-21T03:27:53.5367706+09:00",
+  "command": "npm test",
+  "exit_code": 0,
+  "workspace": "D:\\develop\\works\\tombo-view-ask-policy",
+  "source_freeze": "a2-post-G-product-freeze-r1.json",
+  "baseline_only": "724 from r3 is historical, not current result",
+  "counts": {
+    "tests": 735,
+    "pass": 735,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "log_sha256": "c7f51493682d600da0279f70e606c19ed71bbc3da2949847d22565db05650b22",
+  "all_16_post_run_hashes_match": true,
+  "source_freeze_sha256": "1509ddbc8e67c8d38379e1ee41ba4d9b0f939490826cd0bf43baabb6efb298c2",
+  "scope": "Current source/docs freeze integrated regression, not behavioural efficacy/acceptance"
+}

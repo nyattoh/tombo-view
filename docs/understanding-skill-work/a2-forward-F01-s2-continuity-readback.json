@@ -1,0 +1,115 @@
+{
+  "observed_at": "2026-10-20T16:02:38.687Z",
+  "kind": "read-only expiry continuity verification, no helper call",
+  "checks": {
+    "binding_unchanged": true,
+    "head_matches_sdk": true,
+    "task_id_unchanged": true,
+    "started_at_unchanged": true,
+    "claims_unchanged": true,
+    "evidence_unchanged": true,
+    "gaps_unchanged": true,
+    "reflection_unchanged": true,
+    "usage_counts_unchanged": true,
+    "elapsed_monotonic": true,
+    "actual_expiry": true,
+    "blocked": true,
+    "budget_reason": true,
+    "new_input_unassessed": true,
+    "no_transition": true
+  },
+  "all_checks_pass": true,
+  "binding": {
+    "sessionId": "bf9e5b06-07da-4cff-b880-6a17da9a59ed",
+    "workspace": "d:\\develop\\works\\tombo-view-ask-policy\\results\\understanding-acceptance2\\observers\\f01\\scratch",
+    "ledger": "d:\\develop\\works\\tombo-view-ask-policy\\results\\understanding-acceptance2\\observers\\f01\\scratch\\.session\\sdk.jsonl",
+    "statePath": "d:\\develop\\works\\tombo-view-ask-policy\\results\\understanding-acceptance2\\observers\\f01\\scratch\\.session\\state.json",
+    "taskId": "task-export-workspace-deletion",
+    "taskHash": "632f37797efb66ba53e028a802eef65432969e459b881aa9971c82cc05e4ee39",
+    "budget": {
+      "maxRounds": 5,
+      "maxModelCalls": 5,
+      "maxToolCalls": 5,
+      "maxElapsedMs": 300000,
+      "maxInputChars": 100000,
+      "maxOutputTokensPerCall": 4000
+    },
+    "startedAt": "2026-10-20T15:52:45.248Z"
+  },
+  "old_usage": {
+    "rounds": 0,
+    "modelCalls": 2,
+    "toolCalls": 0,
+    "elapsedMs": 34680,
+    "totalTokens": null,
+    "costYen": null
+  },
+  "current_usage": {
+    "rounds": 0,
+    "modelCalls": 2,
+    "toolCalls": 0,
+    "elapsedMs": 435491,
+    "totalTokens": null,
+    "costYen": null
+  },
+  "decision": "blocked",
+  "stopReason": "budget_exhausted",
+  "updates": [
+    {
+      "id": "receipt-update-1",
+      "source": {
+        "kind": "document",
+        "locator": "export-update.md",
+        "receivedAt": "2026-10-21T00:58:34.000Z"
+      },
+      "text": "# Export retention update\n\nSynthetic documentation update: A completed export is copied to the account's archive when its workspace is deleted. The original link is removed, but the archived file remains available from the account's exports page for 7 days. Pending exports are still cancelled.",
+      "references": [],
+      "observations": [],
+      "payloadHash": "62fe6e364916431b75c24d1f5670edf61540b987bc1bb1543f7d668fa6df6b1c",
+      "status": "received_unassessed",
+      "appliedRevision": null
+    }
+  ],
+  "stopReceipts": [
+    {
+      "revision": 3,
+      "stateHash": "f5d618d9eb03248919854d50b45372a008846ff7a63095df8aac7014947b36f1",
+      "stopReason": "budget_exhausted",
+      "usage": {
+        "rounds": 0,
+        "modelCalls": 2,
+        "toolCalls": 0,
+        "elapsedMs": 425392,
+        "totalTokens": null,
+        "costYen": null
+      },
+      "budgetCheckpoint": {
+        "operation": "update",
+        "exhausted": true,
+        "accountingUnavailable": false,
+        "elapsedMs": 425392,
+        "previousStopReason": null
+      }
+    },
+    {
+      "revision": 4,
+      "stateHash": "88d96ba5b4647e9118c67b6f8cfd847ad54a90f572e91b5f44a2fded8fa58f88",
+      "stopReason": "budget_exhausted",
+      "usage": {
+        "rounds": 0,
+        "modelCalls": 2,
+        "toolCalls": 0,
+        "elapsedMs": 435491,
+        "totalTokens": null,
+        "costYen": null
+      },
+      "budgetCheckpoint": {
+        "operation": "update",
+        "exhausted": true,
+        "accountingUnavailable": false,
+        "elapsedMs": 435491,
+        "previousStopReason": "budget_exhausted"
+      }
+    }
+  ]
+}

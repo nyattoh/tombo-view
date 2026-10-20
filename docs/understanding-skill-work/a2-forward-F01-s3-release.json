@@ -1,0 +1,9 @@
+{
+  "case": "F01",
+  "released_at": "2026-10-21T01:07:19.8214106+09:00",
+  "stage": 3,
+  "previous_turn_terminal": true,
+  "fresh_conversation": true,
+  "expected_actions_supplied": false,
+  "request_hash": "9bca1f6531a8605d1fb0d06d92bc89ba743d9f72a262ab58ee5fff7c895fa554"
+}

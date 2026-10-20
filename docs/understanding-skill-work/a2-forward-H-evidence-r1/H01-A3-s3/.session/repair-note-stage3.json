@@ -1,0 +1,4 @@
+{
+  "reason": "Resolution was incorrectly proposed for a gap with no linked claim. Dist/core.js requires at least one claim for supported/refuted resolution. Remove only that unjustified resolution; keep the real evidence, original pending observation batch, IDs, usage, and original time window. The gap remains open.",
+  "recordedAt": "2026-10-20T18:49:53.600Z"
+}

@@ -1,0 +1,57 @@
+{
+  "frozen_at": "2026-10-21T03:13:32.9879312+09:00",
+  "binding": "D:\\develop\\works\\tombo-view-ask-policy",
+  "branch": "devin/20261020-1705-understanding-skill",
+  "head": "dda5ff739ff0c23c37cc2e1d067b8ed0294cbbf9",
+  "source_hashes": [
+    {
+      "path": "skills/tombo-view/scripts/session-store.mjs",
+      "before_sha256": "3221357fba1123a3f91a670da9a6af14eb53d53a1e04a0029cd9c35ca29eafa5",
+      "sha256": "2bafafeaa30beb6067367ce75af9d46e2bf1abe58d4d80a1ca31729fe92b6219",
+      "unchanged": false,
+      "last_write_utc": "2026-10-20T18:10:25.9650635Z"
+    },
+    {
+      "path": "skills/tombo-view/scripts/session.mjs",
+      "before_sha256": "cb6c5e6b4fe528a44482aa20c068f2a2a60a681f1714ee8fb620ecfe44220269",
+      "sha256": "f545b21fa172b3fa975a09125ff981f6aa47b36e5446c3d76ec6ead66429688b",
+      "unchanged": false,
+      "last_write_utc": "2026-10-20T18:07:38.9793864Z"
+    },
+    {
+      "path": "test/session-followup.test.mjs",
+      "before_sha256": "8c29a95a538c6ea027035a7425a1e4d98fcd6cba32d5e344c70f4f587deb3221",
+      "sha256": "588b274e13355a31b544cc77d9a9dd52d3b16dc7dba536c65538a945a2b88e08",
+      "unchanged": false,
+      "last_write_utc": "2026-10-20T18:10:28.3454351Z"
+    },
+    {
+      "path": "src/core.ts",
+      "before_sha256": "6642d469b4a005b124da7bdc215b7a0720461488f386ec6c70afc7939e52e260",
+      "sha256": "6642d469b4a005b124da7bdc215b7a0720461488f386ec6c70afc7939e52e260",
+      "unchanged": true,
+      "last_write_utc": "2026-10-20T14:37:13.9906337Z"
+    },
+    {
+      "path": "src/types.ts",
+      "before_sha256": "2e96aea0702eb270326aae797768b53f65ae0b9dc79e25cfa7eff6e17f341d26",
+      "sha256": "2e96aea0702eb270326aae797768b53f65ae0b9dc79e25cfa7eff6e17f341d26",
+      "unchanged": true,
+      "last_write_utc": "2026-10-20T08:19:11.6082430Z"
+    },
+    {
+      "path": "src/report.ts",
+      "before_sha256": "7043d10897d43e8f6bfd3457eb566545d96daf66ae9b64c5ef4e2df01e8be2e7",
+      "sha256": "7043d10897d43e8f6bfd3457eb566545d96daf66ae9b64c5ef4e2df01e8be2e7",
+      "unchanged": true,
+      "last_write_utc": "2026-10-20T08:19:16.8037327Z"
+    },
+    {
+      "path": "test/session-binding.test.mjs",
+      "before_sha256": "c07d8c636eb766ebc2ca12517491b46a7fef912df4b628663a913963de3a2acd",
+      "sha256": "c07d8c636eb766ebc2ca12517491b46a7fef912df4b628663a913963de3a2acd",
+      "unchanged": true,
+      "last_write_utc": "2026-10-20T15:35:03.0500502Z"
+    }
+  ]
+}

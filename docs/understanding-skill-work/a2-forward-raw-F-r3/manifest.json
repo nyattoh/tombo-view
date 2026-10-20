@@ -1,0 +1,77 @@
+{
+  "cases": [
+    {
+      "id": "F01",
+      "casecwd": "F01/scratch",
+      "allowed_scope": "Read supplied materials and save skill work state only within the fixed task workspace's .session/ directory.",
+      "stages": [
+        {
+          "stage": "firstturn",
+          "release": "Start from this case's empty scratch directory.",
+          "source": "F01/stage1/export-note.md",
+          "target": "export-note.md",
+          "user_message_file": "F01/stage1/user-message.md"
+        },
+        {
+          "stage": "stage2",
+          "release": "Release only after the first observer reaches terminal and the original session's five-minute deadline has passed in real time.",
+          "source": "F01/stage2/export-update.md",
+          "target": "export-update.md",
+          "user_message_file": "F01/stage2/user-message.md"
+        },
+        {
+          "stage": "stage3",
+          "release": "After stage2, in a fresh conversation with no prior history and the same workspace.",
+          "user_message_file": "F01/stage3/user-message.md"
+        }
+      ]
+    },
+    {
+      "id": "F02",
+      "casecwd": "F02/scratch",
+      "allowed_scope": "Read supplied materials and save skill work state only within the fixed task workspace's .session/ directory.",
+      "stages": [
+        {
+          "stage": "firstturn",
+          "release": "Start from this case's empty scratch directory.",
+          "source": "F02/stage1/game-night-note.md",
+          "target": "game-night-note.md",
+          "user_message_file": "F02/stage1/user-message.md"
+        },
+        {
+          "stage": "stage2",
+          "release": "Release only after the first observer reaches terminal and the original session's five-minute deadline has passed in real time.",
+          "source": "F02/stage2/game-night-update.md",
+          "target": "game-night-update.md",
+          "user_message_file": "F02/stage2/user-message.md"
+        }
+      ]
+    },
+    {
+      "id": "F03",
+      "casecwd": "F03/scratch",
+      "allowed_scope": "Read supplied materials and save skill work state only within the fixed task workspace's .session/ directory.",
+      "stages": [
+        {
+          "stage": "firstturn",
+          "release": "Start from this case's empty scratch directory.",
+          "source": "F03/stage1/laptop-quotes.md",
+          "target": "laptop-quotes.md",
+          "user_message_file": "F03/stage1/user-message.md"
+        },
+        {
+          "stage": "stage2",
+          "release": "Release after the firstturn response reaches terminal.",
+          "user_message_file": "F03/stage2/user-message.md"
+        },
+        {
+          "stage": "stage3",
+          "release": "Release after the stage2 response reaches terminal.",
+          "source": "F03/stage3/laptop-quote-correction.md",
+          "target": "laptop-quote-correction.md",
+          "user_message_file": "F03/stage3/user-message.md"
+        }
+      ]
+    }
+  ]
+}

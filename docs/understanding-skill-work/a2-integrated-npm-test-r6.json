@@ -1,0 +1,109 @@
+{
+  "command": "npm test",
+  "cwd": "D:\\develop\\works\\tombo-view-ask-policy",
+  "started_at": "2026-10-20T20:56:00.292313+00:00",
+  "started_at_JST": "2026-10-21T05:56:00.292313+09:00",
+  "source_freeze": "docs/understanding-skill-work/a2-F1-r2-product-freeze-r1.json",
+  "source_freeze_sha256": "d17402d71849ab82c8b2006feb679938474dc29bea62afab5360f0d988454bb1",
+  "status": "completed",
+  "exit_code": 0,
+  "completed_at": "2026-10-20T20:57:47.954748+00:00",
+  "completed_at_JST": "2026-10-21T05:57:47.954748+09:00",
+  "counts": {
+    "tests": 767,
+    "pass": 767,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "log": "docs/understanding-skill-work/a2-integrated-npm-test-r6.log",
+  "log_sha256": "c7e4f43ec79ab8b21bc46533a285d06d0354369524f90f8168d87b518cd93303",
+  "log_streams": "combined original stdout/stderr bytes",
+  "source_after": [
+    {
+      "path": "README.md",
+      "hash_match": true,
+      "mtime_match": true
+    },
+    {
+      "path": "skills/tombo-view/SKILL.md",
+      "hash_match": true,
+      "mtime_match": true
+    },
+    {
+      "path": "skills/tombo-view/agents/openai.yaml",
+      "hash_match": true,
+      "mtime_match": true
+    },
+    {
+      "path": "skills/tombo-view/references/host-session.md",
+      "hash_match": true,
+      "mtime_match": true
+    },
+    {
+      "path": "skills/tombo-view/scripts/session.mjs",
+      "hash_match": true,
+      "mtime_match": true
+    },
+    {
+      "path": "src/core.ts",
+      "hash_match": true,
+      "mtime_match": true
+    },
+    {
+      "path": "src/report.ts",
+      "hash_match": true,
+      "mtime_match": true
+    },
+    {
+      "path": "src/types.ts",
+      "hash_match": true,
+      "mtime_match": true
+    },
+    {
+      "path": "test/cli-model-repair.test.mjs",
+      "hash_match": true,
+      "mtime_match": true
+    },
+    {
+      "path": "skills/tombo-view/scripts/session-store.mjs",
+      "hash_match": true,
+      "mtime_match": true
+    },
+    {
+      "path": "test/assessment-scope-diagnostics.test.mjs",
+      "hash_match": true,
+      "mtime_match": true
+    },
+    {
+      "path": "test/assessment-scope-report.test.mjs",
+      "hash_match": true,
+      "mtime_match": true
+    },
+    {
+      "path": "test/session-binding.test.mjs",
+      "hash_match": true,
+      "mtime_match": true
+    },
+    {
+      "path": "test/session-budget-checkpoint.test.mjs",
+      "hash_match": true,
+      "mtime_match": true
+    },
+    {
+      "path": "test/session-followup.test.mjs",
+      "hash_match": true,
+      "mtime_match": true
+    },
+    {
+      "path": "test/understanding-session.test.mjs",
+      "hash_match": true,
+      "mtime_match": true
+    }
+  ],
+  "all16_hash_mtime_match": true,
+  "A2_pass": false,
+  "publication_ready": false,
+  "cost_tokens": "unknown"
+}

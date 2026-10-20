@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "0.1",
+  "taskId": "exhibit-visit-reasoning-review",
+  "goal": "exhibit/visits.txtの来場実績を確認し、「土曜のほうが来場者が多いので次回も土曜にする」という提案理由の妥当性を評価して会議用の短い説明文を作成する",
+  "mode": "explain",
+  "successCriteria": [
+    "exhibit/visits.txtの来場記録を確認する",
+    "提案理由の妥当性と留意点を評価する",
+    "会議で話す簡潔な提案文を提示する"
+  ],
+  "evidence": [],
+  "reflectionRequired": true,
+  "capabilities": [
+    "read_local_file",
+    "converse"
+  ],
+  "budget": {
+    "maxRounds": 4,
+    "maxModelCalls": 8,
+    "maxToolCalls": 8,
+    "maxElapsedMs": 300000,
+    "maxInputChars": 30000,
+    "maxOutputTokensPerCall": 2500
+  }
+}

@@ -1,0 +1,176 @@
+{
+  "status": "owned_scoped_verification_complete",
+  "recorded_at": "2026-10-21T01:53:07.2852083+09:00",
+  "binding": "D:\\develop\\works\\tombo-view-ask-policy",
+  "branch": "devin/20261020-1705-understanding-skill",
+  "head": "dda5ff739ff0c23c37cc2e1d067b8ed0294cbbf9",
+  "cost": "unknown",
+  "tokens": "unknown",
+  "product_changes": [
+    "skills/tombo-view/scripts/session-store.mjs",
+    "skills/tombo-view/scripts/session.mjs"
+  ],
+  "test_changes": [
+    "test/session-followup.test.mjs"
+  ],
+  "red_before_product_edits": true,
+  "red_assertions": [
+    "AssertionError [ERR_ASSERTION]: Internal observations also have a measured helper acceptance time",
+    "AssertionError [ERR_ASSERTION]: Internal invalidation records actual helper acceptance independently",
+    "AssertionError [ERR_ASSERTION]: The helper must persist its own first accepted-at time",
+    "AssertionError [ERR_ASSERTION]: The helper must persist its own first accepted-at time",
+    "AssertionError [ERR_ASSERTION]: Receipt acceptance must record helperReceivedAt",
+    "AssertionError [ERR_ASSERTION]: The input did not match the regular expression /helper実受領時刻: unknown/. Input:",
+    "AssertionError [ERR_ASSERTION]: Managed output must expose non-mutating understandingStatus",
+    "AssertionError [ERR_ASSERTION]: Managed output must expose non-mutating understandingStatus",
+    "AssertionError [ERR_ASSERTION]: Managed output must expose non-mutating understandingStatus",
+    "AssertionError [ERR_ASSERTION]: Managed output must expose non-mutating understandingStatus",
+    "AssertionError [ERR_ASSERTION]: Managed output must expose non-mutating understandingStatus",
+    "AssertionError [ERR_ASSERTION]: Managed output must expose non-mutating understandingStatus",
+    "AssertionError [ERR_ASSERTION]: Managed output must expose non-mutating understandingStatus",
+    "AssertionError [ERR_ASSERTION]: Managed output must expose non-mutating understandingStatus"
+  ],
+  "test_runs": [
+    {
+      "name": "red",
+      "command": "node --test --test-name-pattern='post-F|actual deadline|expired managed invalidate' test/session-followup.test.mjs",
+      "started_at": "2026-10-21T01:46:46.6993523+09:00",
+      "completed_at": "2026-10-21T01:47:06.7031421+09:00",
+      "exit": 1,
+      "counts": {
+        "tests": 14,
+        "pass": 0,
+        "fail": 14,
+        "skipped": 0,
+        "cancelled": 0
+      },
+      "log": "results/understanding-acceptance2/runtime/post-F/red.log",
+      "log_sha256": "6c8068c12d02c51a54a755442cf0aea5be2cbc70bf2e151df42085fc15f8f846"
+    },
+    {
+      "name": "green-r1",
+      "command": "node --test --test-name-pattern='post-F|actual deadline|expired managed invalidate' test/session-followup.test.mjs",
+      "started_at": "2026-10-21T01:49:24.4777539+09:00",
+      "completed_at": "2026-10-21T01:49:52.5012209+09:00",
+      "exit": 0,
+      "counts": {
+        "tests": 14,
+        "pass": 14,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0
+      },
+      "log": "results/understanding-acceptance2/runtime/post-F/green-r1.log",
+      "log_sha256": "d197dbacd9fa1644e4c2010a888e5331de476282ea5ccd3db6c1084b224fffda"
+    },
+    {
+      "name": "focused",
+      "command": "node --test test/session-budget-checkpoint.test.mjs test/session-binding.test.mjs test/session-followup.test.mjs",
+      "started_at": "2026-10-21T01:51:03.8064453+09:00",
+      "completed_at": "2026-10-21T01:51:59.2129146+09:00",
+      "exit": 0,
+      "counts": {
+        "tests": 46,
+        "pass": 46,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0
+      },
+      "log": "results/understanding-acceptance2/runtime/post-F/focused.log",
+      "log_sha256": "2100ca11e6b22515940d5198577813fa9ccbbdf80bcc1ce77c804172fba3d63c"
+    },
+    {
+      "name": "regression",
+      "command": "node --test test/core.test.mjs test/reflection.test.mjs test/model-repair.test.mjs test/assessment-correction.test.mjs test/assessment-correction-surfaces.test.mjs test/assessment-correction-journal.test.mjs test/assessment-scope-diagnostics.test.mjs test/assessment-scope-report.test.mjs test/ask-policy.test.mjs test/session.test.mjs test/session-repair-feedback.test.mjs test/host-session-framing.test.mjs test/recovery-journal.test.mjs test/cli-reflection.test.mjs test/cli-model-repair.test.mjs test/understanding-session.test.mjs",
+      "started_at": "2026-10-21T01:51:14.0361102+09:00",
+      "completed_at": "2026-10-21T01:51:26.3194652+09:00",
+      "exit": 0,
+      "counts": {
+        "tests": 284,
+        "pass": 284,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0
+      },
+      "log": "results/understanding-acceptance2/runtime/post-F/regression.log",
+      "log_sha256": "6d0b2800855a732b3deec6fd094f59ac38c554ce5eeae83e7c3924403a88e2f1"
+    }
+  ],
+  "build": {
+    "completed_at": "2026-10-21T01:50:38.5640236+09:00",
+    "exit": 0,
+    "started_at": "2026-10-21T01:50:37.7005248+09:00",
+    "command": "npm run build"
+  },
+  "typecheck": {
+    "completed_at": "2026-10-21T01:50:39.1987109+09:00",
+    "exit": 0,
+    "started_at": "2026-10-21T01:50:38.5640236+09:00",
+    "command": "npm run typecheck"
+  },
+  "source_frozen": true,
+  "source_hashes": [
+    {
+      "path": "skills/tombo-view/scripts/session-store.mjs",
+      "before_sha256": "81c6563997a46aa740124d9c10eef19e851d3dafc09a01356634ef10be8b41e2",
+      "sha256": "3221357fba1123a3f91a670da9a6af14eb53d53a1e04a0029cd9c35ca29eafa5",
+      "unchanged": false,
+      "last_write_utc": "2026-10-20T16:49:21.5881951Z"
+    },
+    {
+      "path": "skills/tombo-view/scripts/session.mjs",
+      "before_sha256": "7ddc53b94e8c1159bc16adc68fe12f9290a2280aa5f3fa4cb347bf1e9ee45a0b",
+      "sha256": "cb6c5e6b4fe528a44482aa20c068f2a2a60a681f1714ee8fb620ecfe44220269",
+      "unchanged": false,
+      "last_write_utc": "2026-10-20T16:49:23.6734387Z"
+    },
+    {
+      "path": "test/session-followup.test.mjs",
+      "before_sha256": "480b3d776615641827a48eaf9cad14224943f1315f357550b09d7ec161322f06",
+      "sha256": "8c29a95a538c6ea027035a7425a1e4d98fcd6cba32d5e344c70f4f587deb3221",
+      "unchanged": false,
+      "last_write_utc": "2026-10-20T16:46:45.8408704Z"
+    },
+    {
+      "path": "src/core.ts",
+      "before_sha256": "6642d469b4a005b124da7bdc215b7a0720461488f386ec6c70afc7939e52e260",
+      "sha256": "6642d469b4a005b124da7bdc215b7a0720461488f386ec6c70afc7939e52e260",
+      "unchanged": true,
+      "last_write_utc": "2026-10-20T14:37:13.9906337Z"
+    },
+    {
+      "path": "src/types.ts",
+      "before_sha256": "2e96aea0702eb270326aae797768b53f65ae0b9dc79e25cfa7eff6e17f341d26",
+      "sha256": "2e96aea0702eb270326aae797768b53f65ae0b9dc79e25cfa7eff6e17f341d26",
+      "unchanged": true,
+      "last_write_utc": "2026-10-20T08:19:11.6082430Z"
+    },
+    {
+      "path": "src/report.ts",
+      "before_sha256": "7043d10897d43e8f6bfd3457eb566545d96daf66ae9b64c5ef4e2df01e8be2e7",
+      "sha256": "7043d10897d43e8f6bfd3457eb566545d96daf66ae9b64c5ef4e2df01e8be2e7",
+      "unchanged": true,
+      "last_write_utc": "2026-10-20T08:19:16.8037327Z"
+    },
+    {
+      "path": "test/session-binding.test.mjs",
+      "before_sha256": "c07d8c636eb766ebc2ca12517491b46a7fef912df4b628663a913963de3a2acd",
+      "sha256": "c07d8c636eb766ebc2ca12517491b46a7fef912df4b628663a913963de3a2acd",
+      "unchanged": true,
+      "last_write_utc": "2026-10-20T15:35:03.0500502Z"
+    }
+  ],
+  "api_contract": "results/understanding-acceptance2/runtime/post-F/api-contract.md",
+  "full_npm_test": "NOT_RUN_PM_INTEGRATION",
+  "model_semantic_efficacy": "NOT_TESTED_DETERMINISTIC_INVARIANTS_ONLY",
+  "acceptance2": "NOT_CLAIMED",
+  "independent_full_review": "PM_PENDING",
+  "limitations": [
+    "helper time is local OS acceptance, not host delivery or monotonic budget authority",
+    "legacy helper timestamp absent remains unknown without backfill",
+    "isolated valid legacy journal fixture omits optional helper metadata",
+    "legacy reflection compatibility projection removes optional reflectionEffects from actual public SDK result",
+    "no raw F content or observer access; no external APIs; no commit/push/PR"
+  ],
+  "terminal": "no active verification process; no known owned-scope outstanding item"
+}

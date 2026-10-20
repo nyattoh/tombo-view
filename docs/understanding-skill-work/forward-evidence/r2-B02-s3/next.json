@@ -1,0 +1,272 @@
+{
+  "state": {
+    "schemaVersion": "0.1",
+    "taskId": "b02-review-draft-check",
+    "revision": 2,
+    "startedAt": "2026-10-20T08:47:38.736Z",
+    "task": {
+      "schemaVersion": "0.1",
+      "taskId": "b02-review-draft-check",
+      "goal": "notes/review-draft.txt の進捗報告下書きが export/snapshot.json および docs/fields.txt と整合しているか検証し、必要に応じて報告文を修正する",
+      "mode": "explain",
+      "successCriteria": [
+        "notes/review-draft.txt の各命題（pending定義、failed件数、全件処理順）の正誤を仕様・記録に基づき検証する",
+        "誤りがある場合は正確な進捗報告文を作成する"
+      ],
+      "evidence": [],
+      "reflectionRequired": true,
+      "proposedAnswer": "notes/review-draft.txt の説明は正確でありそのまま進捗報告として使用できる",
+      "capabilities": [
+        "file_read",
+        "session_save"
+      ],
+      "budget": {
+        "maxRounds": 5,
+        "maxModelCalls": 10,
+        "maxToolCalls": 10,
+        "maxElapsedMs": 300000,
+        "maxInputChars": 100000,
+        "maxOutputTokensPerCall": 4000
+      }
+    },
+    "evidence": [
+      {
+        "id": "ev-draft",
+        "kind": "document",
+        "locator": "notes/review-draft.txt",
+        "sourceGroup": "notes",
+        "retrievedAt": "2026-10-20T17:47:00+09:00",
+        "version": null,
+        "scope": "local-batch-17",
+        "passage": "進捗報告の下書き\npending は処理失敗の件数で、現在2件の失敗が残っています。\n今回の4件は、公開時に指定した順番のまま処理されました。\n",
+        "contentHash": "155bec2b53f8c0dc55583a5bc6ccea10c806724b62d158e8fa57784ce4817997",
+        "validity": "current"
+      },
+      {
+        "id": "ev-fields",
+        "kind": "document",
+        "locator": "docs/fields.txt",
+        "sourceGroup": "docs",
+        "retrievedAt": "2026-10-20T17:47:00+09:00",
+        "version": null,
+        "scope": "local-batch-17",
+        "passage": "pending：受付済みだが処理がまだ完了していない件数。失敗とは別。\nfailed：処理を試み、失敗として確定した件数。\npublished_order：投入時の指定順。\ncompleted_order：この記録時点までの、完了した項目の順。\nsnapshot は途中経過の記録であり、全件完了の保証ではない。\n",
+        "contentHash": "515829488475ab8ed0d400f78276730ef0ddd98d38d405002ce90bc9e39d1b96",
+        "validity": "current"
+      },
+      {
+        "id": "ev-snapshot",
+        "kind": "document",
+        "locator": "export/snapshot.json",
+        "sourceGroup": "export",
+        "retrievedAt": "2026-10-20T17:47:00+09:00",
+        "version": null,
+        "scope": "local-batch-17",
+        "passage": "{\n  \"batch\": \"local-batch-17\",\n  \"captured_at\": \"2026-10-19T10:00:00+09:00\",\n  \"published_order\": [\"p1\", \"p2\", \"p3\", \"p4\"],\n  \"completed_order\": [\"p1\", \"p2\"],\n  \"counts\": {\"completed\": 2, \"pending\": 2, \"failed\": 0}\n}\n",
+        "contentHash": "280b0d210cef3aebf0742c607936465f9d265413bd7a58e6eb715aac9de41e15",
+        "validity": "current"
+      }
+    ],
+    "claims": [
+      {
+        "id": "claim-draft-valid",
+        "role": "answer_claim",
+        "text": "notes/review-draft.txt の説明は正確であり、そのまま進捗報告してよい",
+        "scope": "local-batch-17",
+        "status": "unverified",
+        "assessments": []
+      },
+      {
+        "id": "claim-pending-meaning",
+        "role": "hypothesis",
+        "text": "pending は処理失敗の件数であり、現在2件の失敗が残っている",
+        "scope": "local-batch-17",
+        "status": "unverified",
+        "assessments": []
+      },
+      {
+        "id": "claim-all-processed",
+        "role": "hypothesis",
+        "text": "今回の4件は公開時に指定した順番のまま処理完了した",
+        "scope": "local-batch-17",
+        "status": "unverified",
+        "assessments": []
+      }
+    ],
+    "lenses": [
+      {
+        "id": "lens-accuracy",
+        "label": "報告内容の正確性検証",
+        "rationale": "下書きの記述が仕様定義（docs/fields.txt）および記録（export/snapshot.json）と整合しているかを点検する",
+        "origin": "initial",
+        "status": "active"
+      }
+    ],
+    "gaps": [
+      {
+        "id": "gap-pending",
+        "kind": "unsupported_claim",
+        "lensId": "lens-accuracy",
+        "question": "pending の定義は処理失敗であり現在2件の失敗が残っているか？",
+        "triggerRefs": [
+          "claim-pending-meaning"
+        ],
+        "whyItMatters": "pendingとfailedの定義の違いおよび実際の件数を確認する必要がある",
+        "importance": "required",
+        "claimIds": [
+          "claim-pending-meaning"
+        ],
+        "probeIds": [
+          "probe-fields",
+          "probe-snapshot"
+        ],
+        "status": "open"
+      },
+      {
+        "id": "gap-processed",
+        "kind": "unsupported_claim",
+        "lensId": "lens-accuracy",
+        "question": "今回の4件は公開時に指定した順番のまま処理完了したか？",
+        "triggerRefs": [
+          "claim-all-processed"
+        ],
+        "whyItMatters": "全4件が完了したのか、それとも途中経過で一部のみ完了なのかを確認する必要がある",
+        "importance": "required",
+        "claimIds": [
+          "claim-all-processed"
+        ],
+        "probeIds": [
+          "probe-fields",
+          "probe-snapshot"
+        ],
+        "status": "open"
+      },
+      {
+        "id": "gap-draft-valid",
+        "kind": "unsupported_claim",
+        "lensId": "lens-accuracy",
+        "question": "下書き全体として進捗報告を行って問題ないか？",
+        "triggerRefs": [
+          "claim-draft-valid",
+          "claim-pending-meaning",
+          "claim-all-processed"
+        ],
+        "whyItMatters": "個別命題の検証結果を統合して報告下書きの妥当性を判断する必要がある",
+        "importance": "required",
+        "claimIds": [
+          "claim-draft-valid"
+        ],
+        "probeIds": [
+          "probe-draft"
+        ],
+        "status": "open"
+      }
+    ],
+    "probes": [
+      {
+        "id": "probe-draft",
+        "gapIds": [
+          "gap-draft-valid"
+        ],
+        "method": "corroboration",
+        "question": "notes/review-draft.txt の下書き内容を確認する",
+        "requiredCapability": "file_read",
+        "sourceGroups": [
+          "notes"
+        ],
+        "successCondition": "下書きの全文が取得でき、報告文の記述内容が確認できる",
+        "refutationCondition": "review-draft.txt が存在しないか読み取れない",
+        "inconclusiveCondition": "記述内容が不明瞭",
+        "status": "complete"
+      },
+      {
+        "id": "probe-fields",
+        "gapIds": [
+          "gap-pending",
+          "gap-processed"
+        ],
+        "method": "corroboration",
+        "question": "docs/fields.txt における pending, failed, published_order, completed_order, snapshot の定義を確認する",
+        "requiredCapability": "file_read",
+        "sourceGroups": [
+          "docs"
+        ],
+        "successCondition": "fields.txt が取得でき、各フィールドの仕様定義が確認できる",
+        "refutationCondition": "fields.txt が存在しないか読み取れない",
+        "inconclusiveCondition": "必要なフィールド定義が記載されていない",
+        "status": "complete"
+      },
+      {
+        "id": "probe-snapshot",
+        "gapIds": [
+          "gap-pending",
+          "gap-processed"
+        ],
+        "method": "corroboration",
+        "question": "export/snapshot.json における counts, published_order, completed_order の値を確認する",
+        "requiredCapability": "file_read",
+        "sourceGroups": [
+          "export"
+        ],
+        "successCondition": "snapshot.json が取得でき、実行記録（counts, orders）が確認できる",
+        "refutationCondition": "snapshot.json が存在しないか読み取れない",
+        "inconclusiveCondition": "記録形式が不正または件数が確認できない",
+        "status": "complete"
+      }
+    ],
+    "usage": {
+      "rounds": 1,
+      "modelCalls": 2,
+      "toolCalls": 3,
+      "elapsedMs": 121678,
+      "totalTokens": null,
+      "costYen": null
+    },
+    "decision": "blocked",
+    "stopReason": "invalid_model_output",
+    "appliedExecutions": [
+      {
+        "executionId": "exec-read-draft",
+        "payloadHash": "c8d72e9d94cf0f2e2ef92ef75b5c9dbfb371ad3d7cda3a42191c4a6266295149",
+        "probeId": "probe-draft",
+        "outcome": "completed"
+      },
+      {
+        "executionId": "exec-read-fields",
+        "payloadHash": "96664567a2bd2ab1cfa8b53b8fec3678cf2ce3d60a63b09e4d3392b9c37556fd",
+        "probeId": "probe-fields",
+        "outcome": "completed"
+      },
+      {
+        "executionId": "exec-read-snapshot",
+        "payloadHash": "7626fceb0e1f8770a5196d658b02254efc85639577f9d25cecc8c9b25aa096d1",
+        "probeId": "probe-snapshot",
+        "outcome": "completed"
+      }
+    ],
+    "pendingAssessmentExecutionIds": [
+      "exec-read-draft",
+      "exec-read-fields",
+      "exec-read-snapshot"
+    ],
+    "policyHistory": {
+      "consecutiveNoProgressRounds": 0,
+      "lastUnderstandingHash": "3220f865659ec677adf5b6361cc94e48b4782bf60e042681110eac8ebdab045e",
+      "recentOutcomes": [
+        "progress"
+      ],
+      "lastProgressAtRevision": 1
+    },
+    "excludedCandidates": []
+  },
+  "changes": [],
+  "nextProbeIds": [],
+  "userQuestions": [],
+  "assessmentScopeDiagnostics": [],
+  "mode": "host-assisted",
+  "apiCallsMade": 0,
+  "hostUsage": {
+    "totalTokens": null,
+    "costYen": null
+  }
+}

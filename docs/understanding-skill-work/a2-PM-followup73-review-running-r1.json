@@ -1,0 +1,140 @@
+{
+  "at": "2026-10-20T19:34:15.797Z",
+  "PM": {
+    "thread": {
+      "threadId": "thread:delegated-task:command%3Amcp%3Adcc7a0ba-9101-46f3-9102-ed0a89ba52ed%3Adelegate-task%3Atombo-understanding-skill-20261020-goal-pm-r1",
+      "projectId": "0992fdab-7d2e-4c48-8b57-ea69011f8ccd",
+      "title": "TOMBO understanding skill goal PM",
+      "createdBy": "agent",
+      "creationSource": "mcp",
+      "status": "running",
+      "latestRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Adcc7a0ba-9101-46f3-9102-ed0a89ba52ed%253Adelegate-task%253Atombo-understanding-skill-20261020-goal-pm-r1:ordinal:73",
+      "activeRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Adcc7a0ba-9101-46f3-9102-ed0a89ba52ed%253Adelegate-task%253Atombo-understanding-skill-20261020-goal-pm-r1:ordinal:73",
+      "providerInstanceId": "codex",
+      "model": "gpt-6.1-sol",
+      "runtimeMode": "auto",
+      "interactionMode": "default",
+      "linkedPullRequest": null,
+      "pullRequests": [],
+      "titleRegeneration": null,
+      "branch": "fix/baseline-blob-pin",
+      "worktreePath": "D:\\develop\\works\\tombo-view-ask-policy",
+      "parentThreadId": "mcp:634b09cf-9f2a-44b3-9605-c3447aeac6e0",
+      "relationshipToParent": "subagent",
+      "runCount": 73,
+      "itemCount": 1939,
+      "pendingRequestCount": 0,
+      "archived": false,
+      "settled": false,
+      "settledAt": null,
+      "snoozed": false,
+      "snoozedUntil": null,
+      "createdAt": "2026-10-20T08:01:13.429Z",
+      "updatedAt": "2026-10-20T19:33:39.887Z"
+    },
+    "recentRuns": [
+      {
+        "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Adcc7a0ba-9101-46f3-9102-ed0a89ba52ed%253Adelegate-task%253Atombo-understanding-skill-20261020-goal-pm-r1:ordinal:73",
+        "ordinal": 73,
+        "status": "running",
+        "providerInstanceId": "codex",
+        "model": "gpt-6.1-sol",
+        "requestedAt": "2026-10-20T19:33:28.549Z",
+        "startedAt": "2026-10-20T19:33:29.565Z",
+        "completedAt": null
+      },
+      {
+        "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Adcc7a0ba-9101-46f3-9102-ed0a89ba52ed%253Adelegate-task%253Atombo-understanding-skill-20261020-goal-pm-r1:ordinal:72",
+        "ordinal": 72,
+        "status": "completed",
+        "providerInstanceId": "codex",
+        "model": "gpt-6.1-sol",
+        "requestedAt": "2026-10-20T19:28:47.833Z",
+        "startedAt": "2026-10-20T19:28:48.780Z",
+        "completedAt": "2026-10-20T19:32:47.303Z"
+      },
+      {
+        "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253Adcc7a0ba-9101-46f3-9102-ed0a89ba52ed%253Adelegate-task%253Atombo-understanding-skill-20261020-goal-pm-r1:ordinal:71",
+        "ordinal": 71,
+        "status": "cancelled",
+        "providerInstanceId": "codex",
+        "model": "gpt-6.1-sol",
+        "requestedAt": "2026-10-20T18:50:26.784Z",
+        "startedAt": null,
+        "completedAt": "2026-10-20T18:52:07.080Z"
+      }
+    ],
+    "items": [],
+    "nextPosition": null,
+    "hasMore": false
+  },
+  "review": {
+    "threadId": "thread:delegated-task:command%3Amcp%3A6332d4e8-30bd-476f-80f7-fbe6b1ce0d6a%3Adelegate-task%3Aunderstanding-a2-post-H-independent-full-diff-review-r1",
+    "projectId": "0992fdab-7d2e-4c48-8b57-ea69011f8ccd",
+    "title": "Acceptance2 post-H independent full-diff review r1",
+    "createdBy": "agent",
+    "creationSource": "mcp",
+    "status": "running",
+    "latestRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A6332d4e8-30bd-476f-80f7-fbe6b1ce0d6a%253Adelegate-task%253Aunderstanding-a2-post-H-independent-full-diff-review-r1:ordinal:1",
+    "activeRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A6332d4e8-30bd-476f-80f7-fbe6b1ce0d6a%253Adelegate-task%253Aunderstanding-a2-post-H-independent-full-diff-review-r1:ordinal:1",
+    "providerInstanceId": "antigravity",
+    "model": "gemini-4-argon-high",
+    "runtimeMode": "auto",
+    "interactionMode": "default",
+    "linkedPullRequest": null,
+    "pullRequests": [],
+    "titleRegeneration": null,
+    "branch": "fix/baseline-blob-pin",
+    "worktreePath": "D:\\develop\\works\\tombo-view-ask-policy",
+    "parentThreadId": "thread:delegated-task:command%3Amcp%3Adcc7a0ba-9101-46f3-9102-ed0a89ba52ed%3Adelegate-task%3Atombo-understanding-skill-20261020-goal-pm-r1",
+    "relationshipToParent": "subagent",
+    "runCount": 1,
+    "itemCount": 78,
+    "pendingRequestCount": 0,
+    "archived": false,
+    "settled": false,
+    "settledAt": null,
+    "snoozed": false,
+    "snoozedUntil": null,
+    "createdAt": "2026-10-20T19:26:59.429Z",
+    "updatedAt": "2026-10-20T19:33:40.835Z"
+  },
+  "review_activity_positions": [
+    {
+      "position": 71,
+      "type": "dynamic_tool",
+      "title": "Read D:\\develop\\works\\tombo-view-ask-policy\\docs\\understanding-skill-work\\a2-design-r1.md"
+    },
+    {
+      "position": 72,
+      "type": "dynamic_tool",
+      "title": "Read D:\\develop\\works\\tombo-view-ask-policy\\docs\\understanding-skill-work\\a2-post-F-source-diagnosis-and-design-r1.md"
+    },
+    {
+      "position": 73,
+      "type": "dynamic_tool",
+      "title": "Read D:\\develop\\works\\tombo-view-ask-policy\\docs\\understanding-skill-work\\a2-post-G-source-diagnosis-and-design-r1.md"
+    },
+    {
+      "position": 74,
+      "type": "dynamic_tool",
+      "title": "Read D:\\develop\\works\\tombo-view-ask-policy\\docs\\understanding-skill-work\\a2-storage-design-review-r1.md"
+    },
+    {
+      "position": 75,
+      "type": "dynamic_tool",
+      "title": "Read D:\\develop\\works\\tombo-view-ask-policy\\docs\\understanding-skill-work\\a2-post-H-docs-final-evidence-r1\\verification-summary.json"
+    },
+    {
+      "position": 76,
+      "type": "dynamic_tool",
+      "title": "Read D:\\develop\\works\\tombo-view-ask-policy\\docs\\understanding-skill-work\\a2-post-H-docs-final-evidence-r1\\owned-diff.patch"
+    },
+    {
+      "position": 77,
+      "type": "dynamic_tool",
+      "title": "Read D:\\develop\\works\\tombo-view-ask-policy\\results\\understanding-acceptance2\\runtime\\post-G\\api-contract.md"
+    }
+  ],
+  "conclusion": "Same PM ordinal73 follows completed72; same original reviewer ordinal1 running. Read activity is progress evidence, not terminal verdict or successful read coverage. No new child starts."
+}

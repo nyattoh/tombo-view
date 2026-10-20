@@ -1,0 +1,249 @@
+{
+  "actor": "H01-A2",
+  "observedAt": "2026-10-20T18:40:34.920Z",
+  "readOnly": true,
+  "checks": {
+    "contiguousSessionJournal": true,
+    "sessionCacheMatchesJournal": true,
+    "SDKcacheMatchesAuthority": true,
+    "SDKheadMatchesAuthority": true,
+    "bindingTaskMatches": true,
+    "pinnedTaskMatches": true,
+    "pinnedBudgetMatches": true,
+    "pinnedStartedAtMatches": true,
+    "noUnfinishedOperation": true,
+    "noAccountingUncertainty": true,
+    "noSessionOrSDKLock": true
+  },
+  "sessionId": "00391d21-90d0-41d8-8087-6dacf2c2c394",
+  "binding": {
+    "sessionId": "00391d21-90d0-41d8-8087-6dacf2c2c394",
+    "workspace": "d:\\develop\\works\\tombo-view-ask-policy\\results\\understanding-acceptance2\\observers\\h01-a2\\scratch",
+    "ledger": "d:\\develop\\works\\tombo-view-ask-policy\\results\\understanding-acceptance2\\observers\\h01-a2\\scratch\\.session\\sdk.jsonl",
+    "statePath": "d:\\develop\\works\\tombo-view-ask-policy\\results\\understanding-acceptance2\\observers\\h01-a2\\scratch\\.session\\state.json",
+    "taskId": "task-reading-group-options",
+    "taskHash": "bd78857b606db36ba8835974a7565b2e89764b6ac551025a496bcf4beb37c7ad",
+    "budget": {
+      "maxRounds": 10,
+      "maxModelCalls": 20,
+      "maxToolCalls": 10,
+      "maxElapsedMs": 1800000,
+      "maxInputChars": 50000,
+      "maxOutputTokensPerCall": 4000
+    },
+    "startedAt": "2026-10-20T18:37:24.778Z"
+  },
+  "sessionClock": {
+    "startedAt": "2026-10-20T18:30:18.635627Z",
+    "deadlineAt": "2026-10-20T19:00:18.635627Z",
+    "basis": "host_provided",
+    "sourceRef": "local:request-origin.json",
+    "recordedAt": "2026-10-20T18:36:09.184Z"
+  },
+  "actualPersistedSessionStop": null,
+  "clockExpiredAtReadback": false,
+  "clockBoundary": "Expiry at this PM readback is a derived observation only, not a helper invocation or a new persisted SDK/session stop.",
+  "state": {
+    "taskId": "task-reading-group-options",
+    "revision": 2,
+    "startedAt": "2026-10-20T18:37:24.778Z",
+    "budget": {
+      "maxRounds": 10,
+      "maxModelCalls": 20,
+      "maxToolCalls": 10,
+      "maxElapsedMs": 1800000,
+      "maxInputChars": 50000,
+      "maxOutputTokensPerCall": 4000
+    },
+    "usage": {
+      "rounds": 0,
+      "modelCalls": 2,
+      "toolCalls": 0,
+      "elapsedMs": 45154,
+      "totalTokens": null,
+      "costYen": null
+    },
+    "decision": "needs_user_input",
+    "stopReason": null,
+    "understandingHash": "a9a1868e3c2a9d9dc49637b8af9d9b541621dc1ae95ffdf0787d12ffa5f0bf3f",
+    "reflectionCurrent": true,
+    "reflection": {
+      "binding": {
+        "taskId": "task-reading-group-options",
+        "basedRevision": 1,
+        "understandingHash": "a9a1868e3c2a9d9dc49637b8af9d9b541621dc1ae95ffdf0787d12ffa5f0bf3f"
+      },
+      "reviewedClaimIds": [
+        "claim-room-and-attendees",
+        "claim-open-round-features",
+        "claim-prompt-card-features",
+        "claim-both-fit-time",
+        "claim-choice-depends-on-priority"
+      ],
+      "completion": "completed",
+      "limitations": [
+        "資料記載の事実は確認済みだが、利用者の事前準備負担への許容度および初回読書会で望む対話形式（全員自由発言か小グループ対話か）の優先順位が確定していないため、どちらの案を採用すべきかは利用者の回答に依存する。"
+      ]
+    },
+    "evidence": [
+      {
+        "id": "ev-memo",
+        "locator": "meeting-options.md",
+        "retrievedAt": "2026-10-21T03:31:45+09:00",
+        "scope": "first_meeting",
+        "validity": "current",
+        "contentHash": "372b184220e8fb0167a85ec4bdfd295892e0196616a1e42aa547337c2ad829f4"
+      },
+      {
+        "id": "ev-request",
+        "locator": "request.md",
+        "retrievedAt": "2026-10-21T03:31:45+09:00",
+        "scope": "first_meeting",
+        "validity": "current",
+        "contentHash": "315ce7b3c06d4c84b3b15eb235093b4c032984de43cbf3cc2b485ac9fd16d049"
+      }
+    ],
+    "claims": [
+      {
+        "id": "claim-room-and-attendees",
+        "role": "observation",
+        "text": "読書会の参加者は8名で、部屋の利用可能時間は45分間である。",
+        "scope": "first_meeting",
+        "status": "supported",
+        "assessments": [
+          {
+            "claimId": "claim-room-and-attendees",
+            "evidenceIds": [
+              "ev-memo"
+            ],
+            "verdict": "supports",
+            "scopeMatched": true,
+            "reason": "添付メモに「Synthetic, undated planning note for eight attendees. The room is available for 45 minutes.」と記載されている。"
+          }
+        ]
+      },
+      {
+        "id": "claim-open-round-features",
+        "role": "observation",
+        "text": "オープンラウンド案は各参加者最大2分の発言（計16分）後、残り時間（29分）を全体討議とし、事前資材は不要である。",
+        "scope": "first_meeting",
+        "status": "supported",
+        "assessments": [
+          {
+            "claimId": "claim-open-round-features",
+            "evidenceIds": [
+              "ev-memo"
+            ],
+            "verdict": "supports",
+            "scopeMatched": true,
+            "reason": "添付メモに「Open round: allow each attendee up to 2 minutes to share a thought, then leave the remaining time for open discussion. No materials are needed.」と記載されている。"
+          }
+        ]
+      },
+      {
+        "id": "claim-prompt-card-features",
+        "role": "observation",
+        "text": "プロンプトカード案は3枚のカードを用い、導入を含む小グループ活動に35分を確保し、カード準備に約10分の見積もりを要する。",
+        "scope": "first_meeting",
+        "status": "supported",
+        "assessments": [
+          {
+            "claimId": "claim-prompt-card-features",
+            "evidenceIds": [
+              "ev-memo"
+            ],
+            "verdict": "supports",
+            "scopeMatched": true,
+            "reason": "添付メモに「Prompt-card activity: use three prompt cards in small groups. The activity outline reserves 35 minutes, including the introduction. Preparing the cards is estimated at about 10 minutes...」と記載されている。"
+          }
+        ]
+      },
+      {
+        "id": "claim-both-fit-time",
+        "role": "observation",
+        "text": "両案とも45分の部屋利用時間内に収まるスケジュール構成である。",
+        "scope": "first_meeting",
+        "status": "supported",
+        "assessments": [
+          {
+            "claimId": "claim-both-fit-time",
+            "evidenceIds": [
+              "ev-memo"
+            ],
+            "verdict": "supports",
+            "scopeMatched": true,
+            "reason": "オープンラウンド案は発言16分＋残り29分＝45分、プロンプトカード案は活動35分（10分の余裕あり）で、いずれも部屋の利用可能時間45分以内である。"
+          }
+        ]
+      },
+      {
+        "id": "claim-choice-depends-on-priority",
+        "role": "answer_claim",
+        "text": "どちらの案を採用すべきかは、事前準備の許容度および初回に少人数対話と全体自由討議のどちらを重視するかという利用者の優先順位に依存する。",
+        "scope": "first_meeting",
+        "status": "unverified",
+        "assessments": [
+          {
+            "claimId": "claim-choice-depends-on-priority",
+            "evidenceIds": [
+              "ev-memo",
+              "ev-request"
+            ],
+            "verdict": "inconclusive",
+            "scopeMatched": true,
+            "reason": "資料は2案の特徴を提示しているが、利用者の事前準備への意向や対話形式の重視点については依頼文にも記載がなく未確定である。"
+          }
+        ]
+      }
+    ],
+    "gaps": [
+      {
+        "id": "gap-organizer-priority",
+        "kind": "ambiguous_intent",
+        "lensId": "lens-discussion-format",
+        "question": "読書会の進め方として、事前準備なしで全員が自由に発言する「オープンラウンド案」と、約10分のカード準備を行い小グループで対話する「プロンプトカード案」のどちらを優先しますか？",
+        "triggerRefs": [
+          "task:goal"
+        ],
+        "whyItMatters": "両案とも45分の制限時間内に収まるため、事前準備の可否および希望する対話形式の優先順位によってどちらを採用すべきかが決まります。",
+        "importance": "required",
+        "claimIds": [
+          "claim-choice-depends-on-priority"
+        ],
+        "probeIds": [
+          "probe-ask-priority"
+        ],
+        "humanRole": "priority",
+        "status": "open"
+      }
+    ],
+    "appliedExecutions": [],
+    "pendingAssessmentExecutionIds": null
+  },
+  "cachedManagedFields": {
+    "effectiveDecision": "needs_user_input",
+    "understandingStatus": {
+      "requiredGapIds": [
+        "gap-organizer-priority"
+      ],
+      "reflectionStatus": "completed",
+      "canReportCompletion": false
+    },
+    "taskClockStatus": {
+      "coverage": "host_provided",
+      "startedAt": "2026-10-20T18:30:18.635627Z",
+      "deadlineAt": "2026-10-20T19:00:18.635627Z",
+      "observedAt": "2026-10-20T18:38:16.200Z",
+      "expired": false
+    },
+    "sessionStopReason": null,
+    "hostUsage": {
+      "totalTokens": null,
+      "costYen": null
+    }
+  },
+  "receipts": [],
+  "stopReceipts": [],
+  "transitions": [],
+  "outcome": "Structural evidence only; semantic and final-answer alignment require trace/raw readback. Completed actor task is not an acceptance PASS."
+}

@@ -1,0 +1,36 @@
+{
+  "binding": {
+    "schemaVersion": "0.1",
+    "operation": "reflect",
+    "taskId": "task-reading-group-options",
+    "expectedRevision": 3,
+    "requestHash": "f82d7b465aa8d916309065268925981db4269717494d37d48d00e7b387439803",
+    "sessionId": "00391d21-90d0-41d8-8087-6dacf2c2c394"
+  },
+  "reflection": {
+    "binding": {
+      "taskId": "task-reading-group-options",
+      "basedRevision": 3,
+      "understandingHash": "485dda897ad49f027d07000f17dd89f0ebcc637247326ba90719bde63eda8b31"
+    },
+    "reviewedClaimIds": [
+      "claim-room-and-attendees",
+      "claim-open-round-features",
+      "claim-prompt-card-features",
+      "claim-both-fit-time",
+      "claim-choice-depends-on-priority",
+      "claim-user-prep-priority",
+      "claim-speaking-ease-concern",
+      "claim-open-round-best-fit"
+    ],
+    "completion": "completed",
+    "limitations": [
+      "利用者の「準備時間を短くしたい」意向によりオープンラウンド案が有力だが、実際の参加者が全員の前で話しやすいかは事前の計画段階では測定できず、初回の進行中の反応に応じた柔軟な調整（口頭での問いかけやペアでの事前共有など）が必要である。"
+    ],
+    "proposal": {
+      "lenses": [],
+      "gaps": [],
+      "probes": []
+    }
+  }
+}

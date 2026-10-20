@@ -1,0 +1,117 @@
+{
+  "observed_at": "2026-10-20T16:02:38.698Z",
+  "kind": "read-only expiry continuity verification, no helper call",
+  "checks": {
+    "binding_unchanged": true,
+    "head_matches_sdk": true,
+    "task_id_unchanged": true,
+    "started_at_unchanged": true,
+    "claims_unchanged": true,
+    "evidence_unchanged": true,
+    "gaps_unchanged": true,
+    "reflection_unchanged": true,
+    "usage_counts_unchanged": true,
+    "elapsed_monotonic": true,
+    "actual_expiry": true,
+    "blocked": true,
+    "budget_reason": true,
+    "new_input_unassessed": true,
+    "no_transition": true
+  },
+  "all_checks_pass": true,
+  "binding": {
+    "sessionId": "6c60a571-ec1f-4687-9513-2ff4d817a5df",
+    "workspace": "d:\\develop\\works\\tombo-view-ask-policy\\results\\understanding-acceptance2\\observers\\f02\\scratch",
+    "ledger": "d:\\develop\\works\\tombo-view-ask-policy\\results\\understanding-acceptance2\\observers\\f02\\scratch\\.session\\sdk.jsonl",
+    "statePath": "d:\\develop\\works\\tombo-view-ask-policy\\results\\understanding-acceptance2\\observers\\f02\\scratch\\.session\\state.json",
+    "taskId": "task-game-night-001",
+    "taskHash": "7dd5b4fbfcf744bab7803bd211c869c6555947e6a82707f185a041cf44cedaa7",
+    "budget": {
+      "maxRounds": 5,
+      "maxModelCalls": 10,
+      "maxToolCalls": 10,
+      "maxElapsedMs": 300000,
+      "maxInputChars": 100000,
+      "maxOutputTokensPerCall": 4000
+    },
+    "startedAt": "2026-10-20T15:53:21.083Z"
+  },
+  "old_usage": {
+    "rounds": 0,
+    "modelCalls": 2,
+    "toolCalls": 0,
+    "elapsedMs": 34756,
+    "totalTokens": null,
+    "costYen": null
+  },
+  "current_usage": {
+    "rounds": 0,
+    "modelCalls": 2,
+    "toolCalls": 0,
+    "elapsedMs": 433038,
+    "totalTokens": null,
+    "costYen": null
+  },
+  "decision": "blocked",
+  "stopReason": "budget_exhausted",
+  "updates": [
+    {
+      "id": "receipt-stage2-notice",
+      "source": {
+        "kind": "document",
+        "locator": "game-night-update.md",
+        "receivedAt": "2026-10-20T16:00:19.215Z"
+      },
+      "text": "# Revised Friday notice\n\nSynthetic correction from the organiser: This Friday only, the event starts at 19:00 instead of 18:30. The end time, address, indoor-shoes request, refreshments, and no-registration arrangement are unchanged.\n",
+      "references": [
+        "game-night-update.md"
+      ],
+      "observations": [],
+      "payloadHash": "af60b3b088f5acec6543d646b4d162062eb23db63d1643ef1a7038ae073607ef",
+      "status": "received_unassessed",
+      "appliedRevision": null
+    }
+  ],
+  "stopReceipts": [
+    {
+      "revision": 3,
+      "stateHash": "cbddf11decd07100ce258d2c9d94e38972094981a7190003e7759a9c09829401",
+      "stopReason": "budget_exhausted",
+      "usage": {
+        "rounds": 0,
+        "modelCalls": 2,
+        "toolCalls": 0,
+        "elapsedMs": 423363,
+        "totalTokens": null,
+        "costYen": null
+      },
+      "budgetCheckpoint": {
+        "operation": "update",
+        "exhausted": true,
+        "accountingUnavailable": false,
+        "elapsedMs": 423363,
+        "previousStopReason": null
+      }
+    },
+    {
+      "revision": 4,
+      "stateHash": "bc3af72185e8ad901223262d45dda0b376b92056ffbd6ea9adc239309db51230",
+      "stopReason": "budget_exhausted",
+      "usage": {
+        "rounds": 0,
+        "modelCalls": 2,
+        "toolCalls": 0,
+        "elapsedMs": 433038,
+        "totalTokens": null,
+        "costYen": null
+      },
+      "budgetCheckpoint": {
+        "operation": "update",
+        "exhausted": true,
+        "accountingUnavailable": false,
+        "elapsedMs": 433038,
+        "previousStopReason": "budget_exhausted"
+      }
+    }
+  ]
+}

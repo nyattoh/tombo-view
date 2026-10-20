@@ -1,0 +1,8 @@
+C01/stages/01/files/craft/boxes.json
+C01/stages/01/request.txt
+C02/stages/01/files/design/constraints.txt
+C02/stages/01/files/design/loading-options.json
+C02/stages/01/request.txt
+C02/stages/02/request.txt
+files.txt
+manifest.json

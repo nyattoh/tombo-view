@@ -1,0 +1,29 @@
+{
+  "binding": {
+    "schemaVersion": "0.1",
+    "operation": "reflect",
+    "taskId": "bulletin-announcement",
+    "expectedRevision": 2,
+    "requestHash": "a1b096500547e2983f20134af5e62ad3bb22bb98d8771d2788f4959a627a3924"
+  },
+  "reflection": {
+    "binding": {
+      "taskId": "bulletin-announcement",
+      "basedRevision": 2,
+      "understandingHash": "cb57a6c0ff156da28cd84e52b51b35f2d2f723a973956f4fa3fa58577e827ff4"
+    },
+    "reviewedClaimIds": [
+      "claim-confirmed-facts",
+      "claim-announcement-draft"
+    ],
+    "completion": "completed",
+    "limitations": [
+      "workshop/confirmed.txtに記載のない外部情報については利用者の指示通り検証対象外としている"
+    ],
+    "proposal": {
+      "lenses": [],
+      "gaps": [],
+      "probes": []
+    }
+  }
+}

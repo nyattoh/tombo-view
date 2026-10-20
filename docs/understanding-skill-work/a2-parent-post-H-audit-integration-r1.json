@@ -1,0 +1,108 @@
+{
+  "integratedAt": "2026-10-21T04:50:09.975419+09:00",
+  "source": "parent-final-audit.json",
+  "parent_file_sha256_at_read": "618a27fda665d63c7d2903673c59399362400df3172fc9b1a37a908f0ec1f59b",
+  "snapshot": {
+    "snapshot_id": "post-H-parent-independent-audit-r1",
+    "observed_at_local": "2026-10-21 04:46:39 +09:00",
+    "decision": "not_accepted_needs_review",
+    "goal_complete": false,
+    "publication_ready": false,
+    "workspace": "D:/develop/works/tombo-view-ask-policy",
+    "workspace_binding": {
+      "branch": "devin/20261020-1705-understanding-skill",
+      "head": "dda5ff739ff0c23c37cc2e1d067b8ed0294cbbf9",
+      "base": "dda5ff739ff0c23c37cc2e1d067b8ed0294cbbf9",
+      "main_checkout_directly_inspected": false
+    },
+    "verified_scope": {
+      "current_product_files": 16,
+      "current_product_hash_matches_frozen": 16,
+      "new_untracked_product_files_explicitly_in_manifest": 7,
+      "current_patch": "a2-post-H-full-product-diff-r1.patch",
+      "current_patch_sha256": "c57cb1bf754c23d4824769ee5bbf43a24446c437170a11fc3f2363beb0971069",
+      "manifest_patch_sha256": "c57cb1bf754c23d4824769ee5bbf43a24446c437170a11fc3f2363beb0971069",
+      "patch_matches_manifest": true,
+      "staged_path_count": 0,
+      "historical_ask_policy_untracked_count": 192,
+      "npm_r5": {
+        "tests": 735,
+        "pass": 735,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "exit_code": 0,
+        "log_sha256": "61ef82920c737d5fe918c93bf848f99e5582ba60ea8d03eb16a3d93eba3bfaa7",
+        "post_hashes_match": null
+      }
+    },
+    "independent_full_review": {
+      "task_id": "node:delegated-task:command%3Amcp%3A6332d4e8-30bd-476f-80f7-fbe6b1ce0d6a%3Adelegate-task%3Aunderstanding-a2-post-H-independent-full-diff-review-r1",
+      "provider": "antigravity",
+      "model": "gemini-4-argon-high",
+      "status": "completed",
+      "verdict": "needs_review",
+      "actual_timeline_items": 82,
+      "text_truncated_items": 0,
+      "requested_product_paths": 16,
+      "exact_read_success_proven_by_tool_metadata": false,
+      "reviewer_hashes_matching_current": 0,
+      "current_hashes_matching_freeze": 16,
+      "reviewer_patch_hash_matching_manifest": false,
+      "review_report": "a2-post-H-independent-full-review-r1.md",
+      "review_result": "a2-post-H-independent-full-review-result-r1.json",
+      "reliability_readback": "a2-post-H-full-review-reliability-readback-r1.json",
+      "reliability_note": "The trace lists read requests and reviewer declarations; it does not prove successful full-byte reads. The report contains material wrong case/model/schema/flag/time/test claims."
+    },
+    "review_findings_parent_classification": {
+      "F1": "Source-backed concern, not independently reproduced yet: createTombo defaults maxModelRepairAttempts to 0; propose rethrows invalid_model_output before persisting modelRepairDiagnostics when zero; host prepare only reads persisted diagnostics. This can leave a later prepare without the validation message. Reviewer constructor detail and some line claims are wrong; the underlying persisted-diagnostic gap remains a candidate for source designer challenge and fresh RED.",
+      "F2": "Not adopted as reported: the suggested --discard-execution helper flag is not in the actual helper contract. Observation/execution/evidence-scope immutability is an existing contract; do not add mutation bypass without fresh approved design.",
+      "F3": "Not adopted as an automatic schema fix: claimless task-level gaps cannot resolve supported/refuted, which is a documented constraint. Do not relax resolution validity or auto-demote required gaps; source designer must establish whether a safe minimal use/design change is warranted."
+    },
+    "acceptance2": {
+      "pass": false,
+      "reasons": [
+        "Registered H includes Google quota partials and semantic overclaims; deterministic 735 tests do not establish live model efficacy.",
+        "F/G clock, semantic certainty, unsupported same-goal budget-extension guidance, and some required-gap/reflection outcomes remain unresolved.",
+        "A3 registered stage1 pending question remains unanswered; later actual user continuations are separate and do not resolve it."
+      ],
+      "registered_H": "18 turns / 8 observer threads; two extra actual-user continuations are separate (20 actual observer runs total)",
+      "H01_A3_pending_request_count": 1
+    },
+    "gate": {
+      "command": "python C:/Users/ryoko/.agents/skills/bench-ledger-router/scripts/task_gate.py docs/understanding-skill-work/task-state.json",
+      "exit_code": 3,
+      "ok": false,
+      "unresolved_groups": [
+        "G2",
+        "G12",
+        "G14"
+      ],
+      "evidence": "a2-task-gate-post-H-review-r1.json"
+    },
+    "live_tasks": {
+      "PM_thread_latest_ordinal": 73,
+      "PM_thread_latest_status": "completed",
+      "PM_original_task_status": "completed/result_available",
+      "source_designer_ordinal7_status": "running",
+      "full_review_status": "completed_needs_review",
+      "PM_run70_71": "cancelled; retained, not called success",
+      "A2_status": "not_passed"
+    },
+    "procedural_deviation": {
+      "status": "recorded_unwaived_for_parent_audit",
+      "issue": "Runtime owner broadened AGENTS discovery to D:/develop; main source bodies reported unread, directory enumeration unknown.",
+      "evidence": "task-state.json",
+      "waived": false
+    },
+    "publication": {
+      "current_work_commit": "none",
+      "current_work_push": "none",
+      "current_work_PR": "none",
+      "merge": "none",
+      "historical_parent_thread_PRs_not_attributed_to_this_work": true
+    },
+    "next_required": "Wait for source designer ordinal7 read-only challenge. If F1 is confirmed and runtime edits are proposed, require fresh independent design and RED before edits. Preserve A3 pending and all failures; then retest as required, obtain reliable full review, rerun gate, and repeat parent audit before publication."
+  },
+  "PM_action": "Preserve parent not_accepted_needs_review; source7 terminal now retrieved, no product change. Concrete F1-only opt-in diagnostic design will require fresh independent cross-vendor readiness before RED/source edits. No publication."
+}

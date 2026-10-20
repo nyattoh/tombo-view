@@ -1,0 +1,128 @@
+{
+  "binding": {
+    "schemaVersion": "0.1",
+    "operation": "inspect",
+    "taskId": "film-selection-task",
+    "expectedRevision": -1,
+    "requestHash": "dfe854436e0c1a08845f0fe2923f18306fcf4c27dfa1903bb1e191081fecd72d",
+    "sessionId": "d7fd4deb-92b2-46a7-bf14-d4f51a0d0e58"
+  },
+  "proposal": {
+    "claims": [
+      {
+        "id": "claim-film-map-of-small-things",
+        "role": "observation",
+        "text": "『A Map of Small Things』の上映時間は94分であり、穏やかなコメディ（gentle comedy）と記載されている",
+        "scope": "film-selection"
+      },
+      {
+        "id": "claim-film-last-lighthouse",
+        "role": "observation",
+        "text": "『The Last Lighthouse』の上映時間は108分であり、静かなミステリ（quiet mystery）と記載されている",
+        "scope": "film-selection"
+      },
+      {
+        "id": "claim-film-no-ratings",
+        "role": "observation",
+        "text": "提示されたメモには観客評価や上映実績の記録は含まれていない",
+        "scope": "film-selection"
+      },
+      {
+        "id": "claim-film-user-request-constraint",
+        "role": "observation",
+        "text": "利用者の依頼では検討全体を開始から20分以内とし、必要に応じて好みの確認を行うことが認められている",
+        "scope": "film-selection"
+      },
+      {
+        "id": "claim-viewer-preference-priority",
+        "role": "hypothesis",
+        "text": "参加者の好みの優先順位（コメディ対ミステリ、または上映時間94分対108分）が定まっている",
+        "scope": "film-selection"
+      }
+    ],
+    "lenses": [
+      {
+        "id": "lens-viewer-preference",
+        "label": "参加者の好みと作品属性の適合",
+        "rationale": "候補2作品はジャンル（コメディ対ミステリ）と上映時間（94分対108分）が異なり、どちらが適しているかは鑑賞者の好みの優先順位に依存するため。",
+        "origin": "initial",
+        "status": "active"
+      }
+    ],
+    "gaps": [
+      {
+        "id": "gap-viewer-preference",
+        "kind": "ambiguous_intent",
+        "lensId": "lens-viewer-preference",
+        "question": "今夜映画を見る参加者は、穏やかなコメディ（94分）と静かなミステリ（108分）のどちらを優先して観たいか？",
+        "triggerRefs": [
+          "task:goal"
+        ],
+        "whyItMatters": "参加者の好みの優先順位によって、選ぶべき映画（A Map of Small Things または The Last Lighthouse）が逆転するため。",
+        "importance": "required",
+        "claimIds": [
+          "claim-viewer-preference-priority"
+        ],
+        "probeIds": [
+          "probe-viewer-preference"
+        ],
+        "humanRole": "priority"
+      }
+    ],
+    "probes": [
+      {
+        "id": "probe-viewer-preference",
+        "gapIds": [
+          "gap-viewer-preference"
+        ],
+        "method": "dependency",
+        "question": "今夜映画を見る参加者は、穏やかなコメディ（94分）と静かなミステリ（108分）のどちらの雰囲気や上映時間を好みますか？",
+        "requiredCapability": "ask_user",
+        "sourceGroups": [
+          "user-request"
+        ],
+        "successCondition": "参加者から希望のジャンル（コメディかミステリか）または上映時間の好みが明示される",
+        "refutationCondition": "参加者が両作品とも希望しないか、メモ以外の作品または異なる条件を指定する",
+        "inconclusiveCondition": "好みが指定されず判断が委任されるか、または回答が得られない"
+      }
+    ],
+    "assessments": [
+      {
+        "claimId": "claim-film-map-of-small-things",
+        "evidenceIds": [
+          "evidence-film-notes"
+        ],
+        "verdict": "supports",
+        "scopeMatched": true,
+        "reason": "film-notes.mdに『A Map of Small Things: listed runtime 94 minutes; described as a gentle comedy.』と直接明記されている。"
+      },
+      {
+        "claimId": "claim-film-last-lighthouse",
+        "evidenceIds": [
+          "evidence-film-notes"
+        ],
+        "verdict": "supports",
+        "scopeMatched": true,
+        "reason": "film-notes.mdに『The Last Lighthouse: listed runtime 108 minutes; described as a quiet mystery.』と直接明記されている。"
+      },
+      {
+        "claimId": "claim-film-no-ratings",
+        "evidenceIds": [
+          "evidence-film-notes"
+        ],
+        "verdict": "supports",
+        "scopeMatched": true,
+        "reason": "film-notes.mdに『The listings do not include audience ratings or screening records.』と直接明記されている。"
+      },
+      {
+        "claimId": "claim-film-user-request-constraint",
+        "evidenceIds": [
+          "evidence-user-request"
+        ],
+        "verdict": "supports",
+        "scopeMatched": true,
+        "reason": "request.mdに『必要なら好みを聞いてください。同じ検討全体は開始から20分まででお願いします。』と明記されている。"
+      }
+    ]
+  }
+}

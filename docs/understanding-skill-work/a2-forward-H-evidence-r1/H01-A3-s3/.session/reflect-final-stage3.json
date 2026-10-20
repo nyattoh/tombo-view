@@ -1,0 +1,38 @@
+{
+  "binding": {
+    "schemaVersion": "0.1",
+    "operation": "reflect",
+    "taskId": "reading-group-format",
+    "expectedRevision": 9,
+    "requestHash": "d460f6f67593a1fd4c0549c3f6ae451c1b2c01739aff97c05f417100192ea1bc",
+    "sessionId": "24cc4f30-ba82-4066-bab9-3d4e14dff741"
+  },
+  "reflection": {
+    "binding": {
+      "taskId": "reading-group-format",
+      "basedRevision": 9,
+      "understandingHash": "33c9efadfef5ec9c40171b477a9b1fe878f10d8bd0a19053b921377da8462ead"
+    },
+    "reviewedClaimIds": [
+      "room",
+      "round-time",
+      "card-time",
+      "card-prep-estimate",
+      "priority-small-group",
+      "prep-outside",
+      "prep-minimise",
+      "comfort-unknown",
+      "card-prep-current25",
+      "card-all-in60"
+    ],
+    "completion": "completed",
+    "limitations": [
+      "旧10分を現行の根拠として利用せず、25分を現行の非実測見積りとして比較する。",
+      "会場45分と活動35分は訂正対象外として元メモの該当箇所を再確認した。準備を枠内に含めると見積り合計60分だが、枠外に確保できないことは未確認。",
+      "準備を短くしたい希望は既回答であり、繰り返し尋ねない。実際の参加者の話しやすさや少人数活動の効果は測定されていない。",
+      "パスを認める運営方針は提案であり未採用。全員に一度は話してほしいという条件も本人はまだ指定していない。",
+      "追加資料の観測と新しい25分・60分の主張は評価済みだが、claimIdsが空の訂正確認gapはsupported/refutedで解決できず未解決のまま保持した。SDK段階や選択全体の完了は主張しない。"
+    ],
+    "proposal": {}
+  }
+}

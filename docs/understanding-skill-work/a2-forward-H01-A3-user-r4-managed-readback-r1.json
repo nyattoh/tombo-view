@@ -1,0 +1,612 @@
+{
+  "actor": "H01-A3",
+  "stage": "user-r4",
+  "observedAt": "2026-10-20T19:17:00.536Z",
+  "readOnly": true,
+  "checks": {
+    "contiguousSessionJournal": true,
+    "sessionCacheMatchesJournal": true,
+    "SDKcacheMatchesAuthority": true,
+    "SDKheadMatchesAuthority": true,
+    "bindingTaskMatches": true,
+    "pinnedTaskMatches": true,
+    "pinnedBudgetMatches": true,
+    "pinnedStartedAtMatches": true,
+    "noUnfinishedOperation": true,
+    "noAccountingUncertainty": true,
+    "noSessionOrSDKLock": true
+  },
+  "sessionId": "24cc4f30-ba82-4066-bab9-3d4e14dff741",
+  "binding": {
+    "sessionId": "24cc4f30-ba82-4066-bab9-3d4e14dff741",
+    "workspace": "d:\\develop\\works\\tombo-view-ask-policy\\results\\understanding-acceptance2\\observers\\h01-a3\\scratch",
+    "ledger": "d:\\develop\\works\\tombo-view-ask-policy\\results\\understanding-acceptance2\\observers\\h01-a3\\scratch\\.session\\sdk.jsonl",
+    "statePath": "d:\\develop\\works\\tombo-view-ask-policy\\results\\understanding-acceptance2\\observers\\h01-a3\\scratch\\.session\\state.json",
+    "taskId": "reading-group-format",
+    "taskHash": "0ca4bb179552130ccff6c759dca1961c8f5a66fa66da3a6f93035103fd99bb1c",
+    "budget": {
+      "maxRounds": 5,
+      "maxModelCalls": 10,
+      "maxToolCalls": 8,
+      "maxElapsedMs": 1620588,
+      "maxInputChars": 50000,
+      "maxOutputTokensPerCall": 6500
+    },
+    "startedAt": "2026-10-20T18:33:18.366Z"
+  },
+  "sessionClock": null,
+  "actualPersistedSessionStop": null,
+  "clockExpiredAtReadback": null,
+  "clockBoundary": "Expiry at this PM readback is a derived observation only, not a helper invocation or a new persisted SDK/session stop.",
+  "state": {
+    "taskId": "reading-group-format",
+    "revision": 13,
+    "startedAt": "2026-10-20T18:33:18.366Z",
+    "budget": {
+      "maxRounds": 5,
+      "maxModelCalls": 10,
+      "maxToolCalls": 8,
+      "maxElapsedMs": 1620588,
+      "maxInputChars": 50000,
+      "maxOutputTokensPerCall": 6500
+    },
+    "usage": {
+      "rounds": 3,
+      "modelCalls": 9,
+      "toolCalls": 2,
+      "elapsedMs": 2545295,
+      "totalTokens": null,
+      "costYen": null
+    },
+    "decision": "blocked",
+    "stopReason": "budget_exhausted",
+    "understandingHash": "33c9efadfef5ec9c40171b477a9b1fe878f10d8bd0a19053b921377da8462ead",
+    "reflectionCurrent": true,
+    "reflection": {
+      "binding": {
+        "taskId": "reading-group-format",
+        "basedRevision": 9,
+        "understandingHash": "33c9efadfef5ec9c40171b477a9b1fe878f10d8bd0a19053b921377da8462ead"
+      },
+      "reviewedClaimIds": [
+        "room",
+        "round-time",
+        "card-time",
+        "card-prep-estimate",
+        "priority-small-group",
+        "prep-outside",
+        "prep-minimise",
+        "comfort-unknown",
+        "card-prep-current25",
+        "card-all-in60"
+      ],
+      "completion": "completed",
+      "limitations": [
+        "旧10分を現行の根拠として利用せず、25分を現行の非実測見積りとして比較する。",
+        "会場45分と活動35分は訂正対象外として元メモの該当箇所を再確認した。準備を枠内に含めると見積り合計60分だが、枠外に確保できないことは未確認。",
+        "準備を短くしたい希望は既回答であり、繰り返し尋ねない。実際の参加者の話しやすさや少人数活動の効果は測定されていない。",
+        "パスを認める運営方針は提案であり未採用。全員に一度は話してほしいという条件も本人はまだ指定していない。",
+        "追加資料の観測と新しい25分・60分の主張は評価済みだが、claimIdsが空の訂正確認gapはsupported/refutedで解決できず未解決のまま保持した。SDK段階や選択全体の完了は主張しない。"
+      ]
+    },
+    "evidence": [
+      {
+        "id": "note",
+        "locator": "meeting-options.md",
+        "retrievedAt": "2026-10-20T18:32:48.047Z",
+        "scope": "memo-planning",
+        "validity": "withdrawn",
+        "contentHash": "372b184220e8fb0167a85ec4bdfd295892e0196616a1e42aa547337c2ad829f4"
+      },
+      {
+        "id": "request",
+        "locator": "request.md",
+        "retrievedAt": "2026-10-20T18:32:48.047Z",
+        "scope": "user-task",
+        "validity": "current",
+        "contentHash": "315ce7b3c06d4c84b3b15eb235093b4c032984de43cbf3cc2b485ac9fd16d049"
+      },
+      {
+        "id": "origin",
+        "locator": "request-origin.json",
+        "retrievedAt": "2026-10-20T18:32:48.047Z",
+        "scope": "public-time-record",
+        "validity": "current",
+        "contentHash": "3ac55aed656cf75b9ad28eb9553294c5db7153dd0abcb881c35fafe94511933a"
+      },
+      {
+        "id": "user-stage2",
+        "locator": "request-stage2.md",
+        "retrievedAt": "2026-10-20T18:42:23.614Z",
+        "scope": "user-priority",
+        "validity": "current",
+        "contentHash": "b12c3bf5a04256098715fca6d453c109f620e515ad1ab774aa00ab2273cb16b3"
+      },
+      {
+        "id": "room-rechecked",
+        "locator": "meeting-options.md",
+        "retrievedAt": "2026-10-20T18:49:02.331Z",
+        "scope": "memo-planning",
+        "validity": "current",
+        "contentHash": "a2fcb170aad52dc7f0e72d94616c1fa8fdb5b6a00a2c92ee166c2f0790814fbd"
+      },
+      {
+        "id": "round-rechecked",
+        "locator": "meeting-options.md",
+        "retrievedAt": "2026-10-20T18:49:02.331Z",
+        "scope": "memo-planning",
+        "validity": "current",
+        "contentHash": "82c92f12276eab5eb26be1c520614d5b9e0676592aff345a59387b4af50e6588"
+      },
+      {
+        "id": "card-activity-rechecked",
+        "locator": "meeting-options.md",
+        "retrievedAt": "2026-10-20T18:49:02.331Z",
+        "scope": "memo-planning",
+        "validity": "current",
+        "contentHash": "353d2c6ab7e598067d5a5a66f0ef0163048b39a733671cfdc32b418e47a401ac"
+      },
+      {
+        "id": "prep-corrected25",
+        "locator": "preparation-update.md",
+        "retrievedAt": "2026-10-20T18:49:02.331Z",
+        "scope": "memo-planning",
+        "validity": "current",
+        "contentHash": "11280bb17d088c2f7d60a264faa1503efb7c46c7856cefb24a0a276252e365a5"
+      }
+    ],
+    "claims": [
+      {
+        "id": "room",
+        "role": "observation",
+        "text": "メモ上の会場利用枠は45分である。",
+        "scope": "memo-planning",
+        "status": "supported",
+        "assessments": [
+          {
+            "claimId": "room",
+            "evidenceIds": [
+              "note"
+            ],
+            "verdict": "supports",
+            "scopeMatched": true,
+            "reason": "メモ本文に対応する計画条件が明記されている。実施結果の証明ではない。"
+          },
+          {
+            "claimId": "room",
+            "evidenceIds": [
+              "room-rechecked"
+            ],
+            "verdict": "supports",
+            "scopeMatched": true,
+            "reason": "元メモの訂正対象外の会場45分条件を再取得した。"
+          }
+        ]
+      },
+      {
+        "id": "round-time",
+        "role": "answer_claim",
+        "text": "順番案で8人全員が各2分話す場合、発言部分は16分になる。",
+        "scope": "memo-planning",
+        "status": "supported",
+        "assessments": [
+          {
+            "claimId": "round-time",
+            "evidenceIds": [
+              "note"
+            ],
+            "verdict": "supports",
+            "scopeMatched": true,
+            "reason": "メモの8人と各最大2分から8×2=16分と計算。説明や交代は含めない。"
+          },
+          {
+            "claimId": "round-time",
+            "evidenceIds": [
+              "room-rechecked",
+              "round-rechecked"
+            ],
+            "verdict": "supports",
+            "scopeMatched": true,
+            "reason": "8人×各最大2分=16分。訂正はカード準備についてで、この条件の変更は示されていない。"
+          }
+        ]
+      },
+      {
+        "id": "card-time",
+        "role": "observation",
+        "text": "カード案の活動枠は導入込み35分である。",
+        "scope": "memo-planning",
+        "status": "supported",
+        "assessments": [
+          {
+            "claimId": "card-time",
+            "evidenceIds": [
+              "note"
+            ],
+            "verdict": "supports",
+            "scopeMatched": true,
+            "reason": "メモ本文に対応する計画条件が明記されている。実施結果の証明ではない。"
+          },
+          {
+            "claimId": "card-time",
+            "evidenceIds": [
+              "card-activity-rechecked"
+            ],
+            "verdict": "supports",
+            "scopeMatched": true,
+            "reason": "元メモの導入込み35分の活動条件を再取得した。追加メモの変更は準備見積りである。"
+          }
+        ]
+      },
+      {
+        "id": "card-prep-estimate",
+        "role": "observation",
+        "text": "メモのカード準備約10分は計画上の見積りである。",
+        "scope": "memo-planning",
+        "status": "unverified",
+        "assessments": [
+          {
+            "claimId": "card-prep-estimate",
+            "evidenceIds": [
+              "note"
+            ],
+            "verdict": "supports",
+            "scopeMatched": true,
+            "reason": "メモ本文に対応する計画条件が明記されている。実施結果の証明ではない。"
+          }
+        ]
+      },
+      {
+        "id": "priority-small-group",
+        "role": "assumption",
+        "text": "本人は今回、少人数で問いをきっかけに話すことを最優先する。",
+        "scope": "user-priority",
+        "status": "unverified",
+        "assessments": [
+          {
+            "claimId": "priority-small-group",
+            "evidenceIds": [
+              "user-stage2"
+            ],
+            "verdict": "inconclusive",
+            "scopeMatched": true,
+            "reason": "準備を短くしたい希望は明示されたが、話しやすさとの比較順位や少人数を最優先するかは未回答。別の希望の表明だけでこの命題を反証しない。"
+          }
+        ]
+      },
+      {
+        "id": "prep-outside",
+        "role": "hypothesis",
+        "text": "本人はカード準備時間を当日の45分枠の外に確保できる。",
+        "scope": "user-preparation",
+        "status": "unverified",
+        "assessments": []
+      },
+      {
+        "id": "prep-minimise",
+        "role": "observation",
+        "text": "本人は準備にかける時間をなるべく短くしたいと述べている。",
+        "scope": "user-priority",
+        "status": "supported",
+        "assessments": [
+          {
+            "claimId": "prep-minimise",
+            "evidenceIds": [
+              "user-stage2"
+            ],
+            "verdict": "supports",
+            "scopeMatched": true,
+            "reason": "本人の実回答の明示内容に限定する。参加者の実際の話しやすさや最優先条件の順位は証明しない。"
+          }
+        ]
+      },
+      {
+        "id": "comfort-unknown",
+        "role": "observation",
+        "text": "本人は参加者が全員の前で話しやすいかまだ分からないと述べている。",
+        "scope": "user-priority",
+        "status": "supported",
+        "assessments": [
+          {
+            "claimId": "comfort-unknown",
+            "evidenceIds": [
+              "user-stage2"
+            ],
+            "verdict": "supports",
+            "scopeMatched": true,
+            "reason": "本人の実回答の明示内容に限定する。参加者の実際の話しやすさや最優先条件の順位は証明しない。"
+          }
+        ]
+      },
+      {
+        "id": "card-prep-current25",
+        "role": "observation",
+        "text": "追加メモによる現行のカード準備時間の見積りは約25分である。",
+        "scope": "memo-planning",
+        "status": "supported",
+        "assessments": [
+          {
+            "claimId": "card-prep-current25",
+            "evidenceIds": [
+              "prep-corrected25"
+            ],
+            "verdict": "supports",
+            "scopeMatched": true,
+            "reason": "今回のカード仕分けが必要なため旧10分に代わり約25分という訂正。計測された準備時間ではない。"
+          }
+        ]
+      },
+      {
+        "id": "card-all-in60",
+        "role": "answer_claim",
+        "text": "カード準備と活動を両方45分枠に含める場合、現在の見積り合計は約60分になる。",
+        "scope": "memo-planning",
+        "status": "supported",
+        "assessments": [
+          {
+            "claimId": "card-all-in60",
+            "evidenceIds": [
+              "prep-corrected25",
+              "card-activity-rechecked"
+            ],
+            "verdict": "supports",
+            "scopeMatched": true,
+            "reason": "同じ会場枠に準備も含める場合だけ25+35=約60分と計算する。枠外で準備できないことまでは意味しない。"
+          }
+        ]
+      }
+    ],
+    "gaps": [
+      {
+        "id": "priority-gap",
+        "kind": "ambiguous_intent",
+        "lensId": "purpose",
+        "question": "今回の最優先は全員の考えを全体で聞くこと、少人数で問いから話すこと、準備削減のどれか。",
+        "triggerRefs": [
+          "task:goal",
+          "priority-small-group"
+        ],
+        "whyItMatters": "一般的な読書会の用途から本人の好みを推測できず、優先順位で推奨案が変わる。",
+        "importance": "required",
+        "claimIds": [
+          "priority-small-group"
+        ],
+        "probeIds": [
+          "ask-priority"
+        ],
+        "humanRole": "priority",
+        "status": "open"
+      },
+      {
+        "id": "prep-gap",
+        "kind": "missing_fact",
+        "lensId": "practical",
+        "question": "カード準備を当日45分枠の外に確保できるか。",
+        "triggerRefs": [
+          "task:goal",
+          "prep-outside",
+          "card-time",
+          "card-prep-estimate"
+        ],
+        "whyItMatters": "準備も枠内なら見積りどおりでも35+10=45分となり余裕がない。",
+        "importance": "required",
+        "claimIds": [
+          "prep-outside"
+        ],
+        "probeIds": [
+          "ask-prep"
+        ],
+        "status": "open"
+      },
+      {
+        "id": "pass-value-gap",
+        "kind": "ambiguous_intent",
+        "lensId": "participation-choice",
+        "question": "全員に発言機会を用意したうえで、パスして聞くだけの参加も認めてよいか。",
+        "triggerRefs": [
+          "task:goal",
+          "comfort-unknown",
+          "prep-minimise"
+        ],
+        "whyItMatters": "認めるなら順番案にパスを組み込む調整を検討できる。全員の発言が必須なら別の調整を考える必要がある。本人が分からない参加者の気持ちを再質問する代わりに決められる運営方針を尋ねる。",
+        "importance": "required",
+        "claimIds": [],
+        "probeIds": [
+          "ask-pass-value"
+        ],
+        "humanRole": "value",
+        "status": "open"
+      },
+      {
+        "id": "corrected-prep-gap",
+        "kind": "missing_fact",
+        "lensId": "practical",
+        "question": "追加メモが示す現行の準備見積りと、訂正の及ばない会場・活動時間の条件は何か。",
+        "triggerRefs": [
+          "task:goal",
+          "card-prep-estimate",
+          "room",
+          "round-time",
+          "card-time"
+        ],
+        "whyItMatters": "旧10分を現在値として再利用せず、新見積りで負担と45分枠を再比較する。",
+        "importance": "required",
+        "claimIds": [],
+        "probeIds": [
+          "read-corrected-planning"
+        ],
+        "status": "open"
+      }
+    ],
+    "appliedExecutions": [
+      {
+        "executionId": "stage2-answer-read",
+        "payloadHash": "af8027d9eddb2521fd2751275f92a6493a141cd7da2e4bee2643b6a02709077a",
+        "probeId": "ask-priority",
+        "outcome": "completed"
+      },
+      {
+        "executionId": "stage3-planning-read",
+        "payloadHash": "d8ad65bd87ddb2181ecc528757885b98964e1225052ba6864f887db9f845cf7f",
+        "probeId": "read-corrected-planning",
+        "outcome": "completed"
+      }
+    ],
+    "pendingAssessmentExecutionIds": null
+  },
+  "cachedManagedFields": {
+    "effectiveDecision": "blocked",
+    "understandingStatus": {
+      "requiredGapIds": [
+        "priority-gap",
+        "prep-gap",
+        "pass-value-gap",
+        "corrected-prep-gap"
+      ],
+      "reflectionStatus": "completed",
+      "canReportCompletion": false
+    },
+    "taskClockStatus": null,
+    "sessionStopReason": null,
+    "hostUsage": {
+      "totalTokens": null,
+      "costYen": null
+    }
+  },
+  "receipts": [
+    {
+      "id": "stage2-answer",
+      "source": {
+        "kind": "user_statement",
+        "locator": "request-stage2.md",
+        "receivedAt": "2026-10-20T18:42:23.614Z"
+      },
+      "text": "準備にかける時間はなるべく短くしたいです。一方で、参加者が全員の前で話しやすいかはまだ分かりません。さっきの条件のまま、少し考えを進めてもらえますか。\r\n",
+      "references": [],
+      "observations": [
+        {
+          "executionId": "stage2-answer-read",
+          "probeId": "ask-priority",
+          "outcome": "completed",
+          "evidence": [
+            {
+              "id": "user-stage2",
+              "kind": "user_statement",
+              "locator": "request-stage2.md",
+              "sourceGroup": "conversation:user-priority",
+              "retrievedAt": "2026-10-20T18:42:23.614Z",
+              "version": null,
+              "scope": "user-priority",
+              "passage": "準備にかける時間はなるべく短くしたいです。一方で、参加者が全員の前で話しやすいかはまだ分かりません。さっきの条件のまま、少し考えを進めてもらえますか。\r\n",
+              "contentHash": "b12c3bf5a04256098715fca6d453c109f620e515ad1ab774aa00ab2273cb16b3",
+              "validity": "current"
+            }
+          ],
+          "toolCalls": 1,
+          "elapsedMs": 0,
+          "costYen": null
+        }
+      ],
+      "payloadHash": "e211057a9423ce7a48eeb44de1105f70c65f30bb58ecc57df1a0faee3e3f584d",
+      "helperReceivedAt": "2026-10-20T18:42:23.750Z",
+      "status": "applied",
+      "appliedRevision": 3
+    },
+    {
+      "id": "stage3-preparation-correction",
+      "source": {
+        "kind": "document",
+        "locator": "preparation-update.md",
+        "receivedAt": "2026-10-20T18:48:29.898Z"
+      },
+      "text": "# Updated card-preparation note\n\nSynthetic, undated note from the organiser: the current prompt-card set needs about 25 minutes of preparation, rather than the earlier 10-minute estimate, because the cards must be sorted for this session. This remains an estimate; no timed preparation was recorded.\n",
+      "references": [
+        "preparation-update.md"
+      ],
+      "observations": [],
+      "payloadHash": "34edd2e39f871982a3b5d19df5d7b7902834bb44d98fc2238a8c8227db5a37ad",
+      "helperReceivedAt": "2026-10-20T18:48:30.071Z",
+      "status": "applied",
+      "appliedRevision": 9
+    },
+    {
+      "id": "pass-answer-after-deadline",
+      "source": {
+        "kind": "user_statement",
+        "locator": "conversation:pass-answer",
+        "receivedAt": "2026-10-20T19:15:43.154Z"
+      },
+      "text": "パスして聞くだけでもよい",
+      "references": [],
+      "observations": [],
+      "payloadHash": "3a47ea9aaf53c8c617697306a17fa61674011f1b767e206149d931bc9966e51d",
+      "helperReceivedAt": "2026-10-20T19:15:43.351Z",
+      "status": "received_unassessed",
+      "appliedRevision": null
+    }
+  ],
+  "stopReceipts": [
+    {
+      "revision": 11,
+      "stateHash": "eee53a2dac955f3e101271dd285632b41716484eec8ae849ccf65145bae081c4",
+      "stopReason": "budget_exhausted",
+      "usage": {
+        "rounds": 3,
+        "modelCalls": 9,
+        "toolCalls": 2,
+        "elapsedMs": 2526603,
+        "totalTokens": null,
+        "costYen": null
+      },
+      "budgetCheckpoint": {
+        "operation": "reflect",
+        "exhausted": true,
+        "accountingUnavailable": false,
+        "elapsedMs": 2526603,
+        "previousStopReason": null
+      }
+    },
+    {
+      "revision": 12,
+      "stateHash": "a71315569ca35eb98c0a12d64f6fd2c5c9d199aeee1c806d7bb095f500e72b77",
+      "stopReason": "budget_exhausted",
+      "usage": {
+        "rounds": 3,
+        "modelCalls": 9,
+        "toolCalls": 2,
+        "elapsedMs": 2545001,
+        "totalTokens": null,
+        "costYen": null
+      },
+      "budgetCheckpoint": {
+        "operation": "update",
+        "exhausted": true,
+        "accountingUnavailable": false,
+        "elapsedMs": 2545001,
+        "previousStopReason": "budget_exhausted"
+      }
+    },
+    {
+      "revision": 13,
+      "stateHash": "9815346b29502bb26805a4c8466790081f6e59033d9640b6da4e22cd47a666bf",
+      "stopReason": "budget_exhausted",
+      "usage": {
+        "rounds": 3,
+        "modelCalls": 9,
+        "toolCalls": 2,
+        "elapsedMs": 2545295,
+        "totalTokens": null,
+        "costYen": null
+      },
+      "budgetCheckpoint": {
+        "operation": "update",
+        "exhausted": true,
+        "accountingUnavailable": false,
+        "elapsedMs": 2545295,
+        "previousStopReason": "budget_exhausted"
+      }
+    }
+  ],
+  "transitions": [],
+  "outcome": "Structural evidence only; semantic and final-answer alignment require trace/raw readback. Completed actor task is not an acceptance PASS."
+}

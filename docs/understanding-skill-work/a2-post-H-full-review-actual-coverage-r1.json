@@ -1,0 +1,879 @@
+{
+  "actual_status": "completed",
+  "recentRuns": [
+    {
+      "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A6332d4e8-30bd-476f-80f7-fbe6b1ce0d6a%253Adelegate-task%253Aunderstanding-a2-post-H-independent-full-diff-review-r1:ordinal:1",
+      "ordinal": 1,
+      "status": "completed",
+      "providerInstanceId": "antigravity",
+      "model": "gemini-4-argon-high",
+      "requestedAt": "2026-10-20T19:26:59.431Z",
+      "startedAt": "2026-10-20T19:27:28.260Z",
+      "completedAt": "2026-10-20T19:37:21.843Z"
+    }
+  ],
+  "hasMore": false,
+  "item_count": 82,
+  "T3_textTruncated": [],
+  "tool_read_requests": [
+    {
+      "position": 1,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\docs\\understanding-skill-work\\a2-post-H-full-review-input-ready-r1.json",
+      "start_line": null,
+      "end_line": null,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 2,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\docs\\understanding-skill-work\\a2-post-H-full-review-product-manifest-r1.json",
+      "start_line": null,
+      "end_line": null,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 3,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\docs\\understanding-skill-work\\locked-charter.md",
+      "start_line": null,
+      "end_line": null,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 4,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\docs\\understanding-skill-work\\parent-authorized-scope-amendment-r1.md",
+      "start_line": null,
+      "end_line": null,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 5,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\README.md",
+      "start_line": null,
+      "end_line": null,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 6,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\skills\\tombo-view\\SKILL.md",
+      "start_line": null,
+      "end_line": null,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 7,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\skills\\tombo-view\\agents\\openai.yaml",
+      "start_line": null,
+      "end_line": null,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 8,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\skills\\tombo-view\\references\\host-session.md",
+      "start_line": null,
+      "end_line": null,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 9,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\README.md",
+      "start_line": 100,
+      "end_line": 400,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 10,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\skills\\tombo-view\\references\\host-session.md",
+      "start_line": 90,
+      "end_line": 400,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 11,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\README.md",
+      "start_line": 240,
+      "end_line": 450,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 12,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\skills\\tombo-view\\references\\host-session.md",
+      "start_line": 180,
+      "end_line": 450,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 13,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\skills\\tombo-view\\scripts\\session.mjs",
+      "start_line": 1,
+      "end_line": 450,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 14,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\skills\\tombo-view\\scripts\\session.mjs",
+      "start_line": 451,
+      "end_line": 1000,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 15,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\skills\\tombo-view\\scripts\\session-store.mjs",
+      "start_line": 1,
+      "end_line": 500,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 16,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\skills\\tombo-view\\scripts\\session-store.mjs",
+      "start_line": 501,
+      "end_line": 1000,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 17,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\src\\core.ts",
+      "start_line": 1,
+      "end_line": 450,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 18,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\src\\core.ts",
+      "start_line": 451,
+      "end_line": 900,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 19,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\src\\core.ts",
+      "start_line": 901,
+      "end_line": 1400,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 20,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\src\\report.ts",
+      "start_line": 1,
+      "end_line": 500,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 21,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\src\\types.ts",
+      "start_line": 1,
+      "end_line": 450,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 22,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\test\\cli-model-repair.test.mjs",
+      "start_line": 1,
+      "end_line": 500,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 23,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\test\\assessment-scope-diagnostics.test.mjs",
+      "start_line": 1,
+      "end_line": 500,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 24,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\test\\assessment-scope-report.test.mjs",
+      "start_line": 1,
+      "end_line": 500,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 25,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\test\\session-binding.test.mjs",
+      "start_line": 1,
+      "end_line": 500,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 26,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\test\\session-budget-checkpoint.test.mjs",
+      "start_line": 1,
+      "end_line": 500,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 27,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\test\\session-followup.test.mjs",
+      "start_line": 1,
+      "end_line": 500,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 28,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\test\\understanding-session.test.mjs",
+      "start_line": 1,
+      "end_line": 500,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 29,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\test\\session-followup.test.mjs",
+      "start_line": 501,
+      "end_line": 1000,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 30,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\docs\\understanding-skill-work\\a2-post-H-product-freeze-r1.json",
+      "start_line": null,
+      "end_line": null,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 31,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\docs\\understanding-skill-work\\a2-integrated-npm-test-r5.json",
+      "start_line": null,
+      "end_line": null,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 32,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\docs\\understanding-skill-work\\a2-post-H-source-diagnosis-r1.md",
+      "start_line": null,
+      "end_line": null,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 33,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\docs\\understanding-skill-work\\a2-post-H-source-diagnosis-result-r1.json",
+      "start_line": null,
+      "end_line": null,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 34,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\docs\\understanding-skill-work\\a2-post-H-full-product-diff-r1.patch",
+      "start_line": 1,
+      "end_line": 450,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 35,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\docs\\understanding-skill-work\\a2-post-H-full-product-diff-r1.patch",
+      "start_line": 451,
+      "end_line": 900,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 36,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\docs\\understanding-skill-work\\a2-post-H-full-product-diff-r1.patch",
+      "start_line": 901,
+      "end_line": 1350,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 37,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\docs\\understanding-skill-work\\a2-post-H-full-product-diff-r1.patch",
+      "start_line": 1351,
+      "end_line": 1800,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 38,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\docs\\understanding-skill-work\\a2-post-H-full-product-diff-r1.patch",
+      "start_line": 1801,
+      "end_line": 2700,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 39,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\docs\\understanding-skill-work\\a2-post-H-full-product-diff-r1.patch",
+      "start_line": 340,
+      "end_line": 460,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 40,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\docs\\understanding-skill-work\\a2-post-H-full-product-diff-r1.patch",
+      "start_line": 790,
+      "end_line": 910,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 41,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\docs\\understanding-skill-work\\parent-final-audit.json",
+      "start_line": null,
+      "end_line": null,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 42,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\docs\\understanding-skill-work\\full-review-r1.md",
+      "start_line": null,
+      "end_line": null,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 43,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\docs\\understanding-skill-work\\full-review-r2.md",
+      "start_line": null,
+      "end_line": null,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 44,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\docs\\understanding-skill-work\\a2-PM-active-vs-latest-run-readback-r1.json",
+      "start_line": null,
+      "end_line": null,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 45,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\docs\\understanding-skill-work\\a2-post-G-runtime-final-evidence-r1\\verification-summary.json",
+      "start_line": null,
+      "end_line": null,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 46,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\docs\\understanding-skill-work\\a2-post-H-full-product-diff-r1.patch",
+      "start_line": 2150,
+      "end_line": 3000,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 47,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\docs\\understanding-skill-work\\a2-raw-E-observations-r1.md",
+      "start_line": null,
+      "end_line": null,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 48,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\docs\\understanding-skill-work\\a2-behavioural-evaluation-F-r1.md",
+      "start_line": null,
+      "end_line": null,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 49,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\docs\\understanding-skill-work\\a2-behavioural-evaluation-G-r1.md",
+      "start_line": null,
+      "end_line": null,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 50,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\docs\\understanding-skill-work\\a2-behavioural-evaluation-H-r1.md",
+      "start_line": 1,
+      "end_line": 400,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 51,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\docs\\understanding-skill-work\\behavioural-evaluation.md",
+      "start_line": null,
+      "end_line": null,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 52,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\docs\\understanding-skill-work\\a2-H01-A4-registered-stage3-authority-projection-r1.json",
+      "start_line": null,
+      "end_line": null,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 53,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\docs\\understanding-skill-work\\a2-forward-H01-A4-user-r4-managed-readback-r1.json",
+      "start_line": null,
+      "end_line": null,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 54,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\docs\\understanding-skill-work\\a2-post-H-full-product-diff-r1.patch",
+      "start_line": 2490,
+      "end_line": 2700,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 55,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\docs\\understanding-skill-work\\a2-H01-A4-actual-user-r4-full-thread-trace-r1.json",
+      "start_line": 350,
+      "end_line": 600,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 56,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\results\\understanding-acceptance2\\observers\\H01-A4\\scratch\\.session\\final-answer-proposal.json",
+      "start_line": null,
+      "end_line": null,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 57,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\docs\\understanding-skill-work\\a2-H01-A3-late-question-response-r1.json",
+      "start_line": null,
+      "end_line": null,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 58,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\docs\\understanding-skill-work\\a2-forward-H01-A3-user-r4-managed-readback-r1.json",
+      "start_line": null,
+      "end_line": null,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 59,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\docs\\understanding-skill-work\\a2-integrated-npm-test-r5.log",
+      "start_line": 700,
+      "end_line": 800,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 60,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\docs\\understanding-skill-work\\design.md",
+      "start_line": null,
+      "end_line": null,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 61,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\docs\\understanding-skill-work\\design-review-r1.md",
+      "start_line": null,
+      "end_line": null,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 62,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\docs\\understanding-skill-work\\a2-H01-A4-actual-user-r4-full-thread-trace-r1.json",
+      "start_line": 601,
+      "end_line": 1200,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 63,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\docs\\understanding-skill-work\\a2-H01-A4-actual-user-r4-full-thread-trace-r1.json",
+      "start_line": 1201,
+      "end_line": 1800,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 64,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\docs\\understanding-skill-work\\a2-post-H-full-product-diff-r1.patch",
+      "start_line": 2610,
+      "end_line": 2750,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 65,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\docs\\understanding-skill-work\\a2-source-design-r1.md",
+      "start_line": null,
+      "end_line": null,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 66,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\docs\\understanding-skill-work\\a2-design-review-r1.md",
+      "start_line": null,
+      "end_line": null,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 67,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\docs\\understanding-skill-work\\a2-design-review-r2.md",
+      "start_line": null,
+      "end_line": null,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 68,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\docs\\understanding-skill-work\\a2-managed-invalidate-design-r1.md",
+      "start_line": null,
+      "end_line": null,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 69,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\docs\\understanding-skill-work\\a2-storage-design-r1.md",
+      "start_line": null,
+      "end_line": null,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 70,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\docs\\understanding-skill-work\\a2-H01-A4-actual-user-r4-full-thread-trace-r1.json",
+      "start_line": 750,
+      "end_line": 1200,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 71,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\docs\\understanding-skill-work\\a2-design-r1.md",
+      "start_line": null,
+      "end_line": null,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 72,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\docs\\understanding-skill-work\\a2-post-F-source-diagnosis-and-design-r1.md",
+      "start_line": null,
+      "end_line": null,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 73,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\docs\\understanding-skill-work\\a2-post-G-source-diagnosis-and-design-r1.md",
+      "start_line": null,
+      "end_line": null,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 74,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\docs\\understanding-skill-work\\a2-storage-design-review-r1.md",
+      "start_line": null,
+      "end_line": null,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 75,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\docs\\understanding-skill-work\\a2-post-H-docs-final-evidence-r1\\verification-summary.json",
+      "start_line": null,
+      "end_line": null,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 76,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\docs\\understanding-skill-work\\a2-post-H-docs-final-evidence-r1\\owned-diff.patch",
+      "start_line": null,
+      "end_line": null,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 77,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\results\\understanding-acceptance2\\runtime\\post-G\\api-contract.md",
+      "start_line": null,
+      "end_line": null,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 78,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\docs\\understanding-skill-work\\a2-H01-A4-actual-user-r4-full-thread-trace-r1.json",
+      "start_line": 900,
+      "end_line": 1250,
+      "tool_record_status": "completed"
+    },
+    {
+      "position": 79,
+      "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\docs\\understanding-skill-work\\a2-post-H-docs-synchronisation-brief-r1.md",
+      "start_line": 1,
+      "end_line": 250,
+      "tool_record_status": "completed"
+    }
+  ],
+  "product_coverage": [
+    {
+      "path": "README.md",
+      "actual_current_lines": 424,
+      "read_requests": [
+        {
+          "position": 5,
+          "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\README.md",
+          "start_line": null,
+          "end_line": null,
+          "tool_record_status": "completed"
+        },
+        {
+          "position": 9,
+          "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\README.md",
+          "start_line": 100,
+          "end_line": 400,
+          "tool_record_status": "completed"
+        },
+        {
+          "position": 11,
+          "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\README.md",
+          "start_line": 240,
+          "end_line": 450,
+          "tool_record_status": "completed"
+        }
+      ],
+      "reviewer_declares_full_read": true,
+      "independent_current_hash_verified_in": "a2-post-H-full-review-reliability-readback-r1.json"
+    },
+    {
+      "path": "skills/tombo-view/SKILL.md",
+      "actual_current_lines": 58,
+      "read_requests": [
+        {
+          "position": 6,
+          "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\skills\\tombo-view\\SKILL.md",
+          "start_line": null,
+          "end_line": null,
+          "tool_record_status": "completed"
+        }
+      ],
+      "reviewer_declares_full_read": true,
+      "independent_current_hash_verified_in": "a2-post-H-full-review-reliability-readback-r1.json"
+    },
+    {
+      "path": "skills/tombo-view/agents/openai.yaml",
+      "actual_current_lines": 4,
+      "read_requests": [
+        {
+          "position": 7,
+          "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\skills\\tombo-view\\agents\\openai.yaml",
+          "start_line": null,
+          "end_line": null,
+          "tool_record_status": "completed"
+        }
+      ],
+      "reviewer_declares_full_read": true,
+      "independent_current_hash_verified_in": "a2-post-H-full-review-reliability-readback-r1.json"
+    },
+    {
+      "path": "skills/tombo-view/references/host-session.md",
+      "actual_current_lines": 293,
+      "read_requests": [
+        {
+          "position": 8,
+          "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\skills\\tombo-view\\references\\host-session.md",
+          "start_line": null,
+          "end_line": null,
+          "tool_record_status": "completed"
+        },
+        {
+          "position": 10,
+          "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\skills\\tombo-view\\references\\host-session.md",
+          "start_line": 90,
+          "end_line": 400,
+          "tool_record_status": "completed"
+        },
+        {
+          "position": 12,
+          "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\skills\\tombo-view\\references\\host-session.md",
+          "start_line": 180,
+          "end_line": 450,
+          "tool_record_status": "completed"
+        }
+      ],
+      "reviewer_declares_full_read": true,
+      "independent_current_hash_verified_in": "a2-post-H-full-review-reliability-readback-r1.json"
+    },
+    {
+      "path": "skills/tombo-view/scripts/session.mjs",
+      "actual_current_lines": 313,
+      "read_requests": [
+        {
+          "position": 13,
+          "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\skills\\tombo-view\\scripts\\session.mjs",
+          "start_line": 1,
+          "end_line": 450,
+          "tool_record_status": "completed"
+        },
+        {
+          "position": 14,
+          "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\skills\\tombo-view\\scripts\\session.mjs",
+          "start_line": 451,
+          "end_line": 1000,
+          "tool_record_status": "completed"
+        }
+      ],
+      "reviewer_declares_full_read": true,
+      "independent_current_hash_verified_in": "a2-post-H-full-review-reliability-readback-r1.json"
+    },
+    {
+      "path": "src/core.ts",
+      "actual_current_lines": 784,
+      "read_requests": [
+        {
+          "position": 17,
+          "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\src\\core.ts",
+          "start_line": 1,
+          "end_line": 450,
+          "tool_record_status": "completed"
+        },
+        {
+          "position": 18,
+          "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\src\\core.ts",
+          "start_line": 451,
+          "end_line": 900,
+          "tool_record_status": "completed"
+        },
+        {
+          "position": 19,
+          "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\src\\core.ts",
+          "start_line": 901,
+          "end_line": 1400,
+          "tool_record_status": "completed"
+        }
+      ],
+      "reviewer_declares_full_read": true,
+      "independent_current_hash_verified_in": "a2-post-H-full-review-reliability-readback-r1.json"
+    },
+    {
+      "path": "src/report.ts",
+      "actual_current_lines": 106,
+      "read_requests": [
+        {
+          "position": 20,
+          "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\src\\report.ts",
+          "start_line": 1,
+          "end_line": 500,
+          "tool_record_status": "completed"
+        }
+      ],
+      "reviewer_declares_full_read": true,
+      "independent_current_hash_verified_in": "a2-post-H-full-review-reliability-readback-r1.json"
+    },
+    {
+      "path": "src/types.ts",
+      "actual_current_lines": 219,
+      "read_requests": [
+        {
+          "position": 21,
+          "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\src\\types.ts",
+          "start_line": 1,
+          "end_line": 450,
+          "tool_record_status": "completed"
+        }
+      ],
+      "reviewer_declares_full_read": true,
+      "independent_current_hash_verified_in": "a2-post-H-full-review-reliability-readback-r1.json"
+    },
+    {
+      "path": "test/cli-model-repair.test.mjs",
+      "actual_current_lines": 234,
+      "read_requests": [
+        {
+          "position": 22,
+          "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\test\\cli-model-repair.test.mjs",
+          "start_line": 1,
+          "end_line": 500,
+          "tool_record_status": "completed"
+        }
+      ],
+      "reviewer_declares_full_read": true,
+      "independent_current_hash_verified_in": "a2-post-H-full-review-reliability-readback-r1.json"
+    },
+    {
+      "path": "skills/tombo-view/scripts/session-store.mjs",
+      "actual_current_lines": 453,
+      "read_requests": [
+        {
+          "position": 15,
+          "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\skills\\tombo-view\\scripts\\session-store.mjs",
+          "start_line": 1,
+          "end_line": 500,
+          "tool_record_status": "completed"
+        },
+        {
+          "position": 16,
+          "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\skills\\tombo-view\\scripts\\session-store.mjs",
+          "start_line": 501,
+          "end_line": 1000,
+          "tool_record_status": "completed"
+        }
+      ],
+      "reviewer_declares_full_read": true,
+      "independent_current_hash_verified_in": "a2-post-H-full-review-reliability-readback-r1.json"
+    },
+    {
+      "path": "test/assessment-scope-diagnostics.test.mjs",
+      "actual_current_lines": 72,
+      "read_requests": [
+        {
+          "position": 23,
+          "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\test\\assessment-scope-diagnostics.test.mjs",
+          "start_line": 1,
+          "end_line": 500,
+          "tool_record_status": "completed"
+        }
+      ],
+      "reviewer_declares_full_read": true,
+      "independent_current_hash_verified_in": "a2-post-H-full-review-reliability-readback-r1.json"
+    },
+    {
+      "path": "test/assessment-scope-report.test.mjs",
+      "actual_current_lines": 28,
+      "read_requests": [
+        {
+          "position": 24,
+          "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\test\\assessment-scope-report.test.mjs",
+          "start_line": 1,
+          "end_line": 500,
+          "tool_record_status": "completed"
+        }
+      ],
+      "reviewer_declares_full_read": true,
+      "independent_current_hash_verified_in": "a2-post-H-full-review-reliability-readback-r1.json"
+    },
+    {
+      "path": "test/session-binding.test.mjs",
+      "actual_current_lines": 312,
+      "read_requests": [
+        {
+          "position": 25,
+          "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\test\\session-binding.test.mjs",
+          "start_line": 1,
+          "end_line": 500,
+          "tool_record_status": "completed"
+        }
+      ],
+      "reviewer_declares_full_read": true,
+      "independent_current_hash_verified_in": "a2-post-H-full-review-reliability-readback-r1.json"
+    },
+    {
+      "path": "test/session-budget-checkpoint.test.mjs",
+      "actual_current_lines": 91,
+      "read_requests": [
+        {
+          "position": 26,
+          "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\test\\session-budget-checkpoint.test.mjs",
+          "start_line": 1,
+          "end_line": 500,
+          "tool_record_status": "completed"
+        }
+      ],
+      "reviewer_declares_full_read": true,
+      "independent_current_hash_verified_in": "a2-post-H-full-review-reliability-readback-r1.json"
+    },
+    {
+      "path": "test/session-followup.test.mjs",
+      "actual_current_lines": 985,
+      "read_requests": [
+        {
+          "position": 27,
+          "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\test\\session-followup.test.mjs",
+          "start_line": 1,
+          "end_line": 500,
+          "tool_record_status": "completed"
+        },
+        {
+          "position": 29,
+          "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\test\\session-followup.test.mjs",
+          "start_line": 501,
+          "end_line": 1000,
+          "tool_record_status": "completed"
+        }
+      ],
+      "reviewer_declares_full_read": true,
+      "independent_current_hash_verified_in": "a2-post-H-full-review-reliability-readback-r1.json"
+    },
+    {
+      "path": "test/understanding-session.test.mjs",
+      "actual_current_lines": 191,
+      "read_requests": [
+        {
+          "position": 28,
+          "requested_path": "D:\\develop\\works\\tombo-view-ask-policy\\test\\understanding-session.test.mjs",
+          "start_line": 1,
+          "end_line": 500,
+          "tool_record_status": "completed"
+        }
+      ],
+      "reviewer_declares_full_read": true,
+      "independent_current_hash_verified_in": "a2-post-H-full-review-reliability-readback-r1.json"
+    }
+  ],
+  "coverage_boundary": "Tool records expose Read inputs, not successful full source-text responses. Requested ranges and reviewer declarations are retained distinctly; incorrect reviewer hashes are not current-source proof. Complete trace extracted, no source bytes changed."
+}

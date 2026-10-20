@@ -1,0 +1,35 @@
+{
+  "fromTaskId": "exhibit-visit-reasoning-review",
+  "reason": "新資料 exhibit/operations.txt の追加および当日の運用事情を踏まえた理由づけ妥当性の再評価という目的・成功条件の変更に伴う新タスクへの移行",
+  "priorState": {
+    "revision": 3,
+    "decision": "ready_for_requested_step",
+    "priorStopReason": "budget_exhausted_on_new_turn",
+    "usage": {
+      "rounds": 1,
+      "modelCalls": 3,
+      "toolCalls": 1,
+      "elapsedMs": 134165,
+      "totalTokens": null,
+      "costYen": null
+    }
+  },
+  "unresolvedMatters": [
+    "exhibit/operations.txt に記録された併催イベント、共用入口、看板設置忘れなどの運用事情が土曜開催理由に与える影響の評価",
+    "「土曜という曜日を理由にする」ことの可否の判断と会議用説明文の再構成"
+  ],
+  "carriedEvidence": [
+    {
+      "id": "ev-visits-txt",
+      "kind": "document",
+      "locator": "exhibit/visits.txt",
+      "sourceGroup": "local_file",
+      "retrievedAt": "2026-10-20T08:46:46.000Z",
+      "version": null,
+      "scope": "exhibit/visits.txt",
+      "passage": "2026-09-05（土） 来場者32人。開催時間10時〜16時。\n2026-09-12（土） 来場者35人。開催時間10時〜16時。\n2026-09-20（日） 来場者18人。開催時間10時〜16時。\nいずれも同じ部屋で、無料開催。\n",
+      "contentHash": "890aa17a9b0ed44a195ed68babe24b049b2dae25a4d70da989d17f9f156201ef",
+      "validity": "current"
+    }
+  ]
+}

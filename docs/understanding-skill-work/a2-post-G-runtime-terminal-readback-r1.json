@@ -1,0 +1,215 @@
+{
+  "at": "2026-10-21T03:17:50.032426+09:00",
+  "actual_task_status": "completed",
+  "files": [
+    {
+      "path": "api-contract.md",
+      "sha256": "3e24d0d2447ae8d3e0e5db374f06921e7b1b782dbffeae3f9edd26864af3c362"
+    },
+    {
+      "path": "before.json",
+      "sha256": "c682945f89df9e921a8a7704a972ed5c225400628f4b2af293364e62241a5f29"
+    },
+    {
+      "path": "build-final.log",
+      "sha256": "6e09b2ed8ddef342a3eea023d9f2a517595cb8d1079d405ee204c494530952f6"
+    },
+    {
+      "path": "build-typecheck-final.json",
+      "sha256": "e83d8f96ddc52fc485ecbf6f64bfae2125a9c553800f23b2c1ec7c78bbf3c804"
+    },
+    {
+      "path": "build-typecheck.json",
+      "sha256": "c453525b8198ad4abde5d143c6a55962f32f0bbdfe86b9a08d1808860758afab"
+    },
+    {
+      "path": "build.log",
+      "sha256": "6e09b2ed8ddef342a3eea023d9f2a517595cb8d1079d405ee204c494530952f6"
+    },
+    {
+      "path": "focused.json",
+      "sha256": "215b03b09609d6fd3047c7ba11078e70bdea3abcc19ac4586145d9d4526167ee"
+    },
+    {
+      "path": "focused.log",
+      "sha256": "4d83bb565922ad6d21298857ba7853a914813830c4102be8642b1a625929d162"
+    },
+    {
+      "path": "green-final.json",
+      "sha256": "b6d61705f8519ce673c138de7c5bea592d65e99d75252f1cdcf8ceac59978cac"
+    },
+    {
+      "path": "green-final.log",
+      "sha256": "a44476b83beafa363dac7ea8e3dd152678ac4c7d6e6cbf8112809022c7b2c4fc"
+    },
+    {
+      "path": "green-r1.json",
+      "sha256": "401e502e8b7ca5354b10ff7ce3e8cefbc7751ad563f72b7099bf5adfb1ca99ef"
+    },
+    {
+      "path": "green-r1.log",
+      "sha256": "5e05d6b1481fe8b673b1eaeadb5eb497af37110ae20a9f9be474db7b8b8358e7"
+    },
+    {
+      "path": "green-r2.json",
+      "sha256": "364b89a8c68c52ca70b1363dabd9bb6b6f127c45462a383ccea499ebf8345379"
+    },
+    {
+      "path": "green-r2.log",
+      "sha256": "55a9c3ed8a2eff5161621788b4b097fb087a3b54d2bb450c4d5fd120b74b059a"
+    },
+    {
+      "path": "hand_over_summary.md",
+      "sha256": "046cbf88930836d6b83e905ca2abb47a619228397a67e2aacb4fc3fe7dab775d"
+    },
+    {
+      "path": "legacy-red.json",
+      "sha256": "e427fe93c1dce4ef6ef2e6f32375f69a3d14d5c7867771cf459022aabf2879dc"
+    },
+    {
+      "path": "legacy-red.log",
+      "sha256": "4e9ec984b47a4fc9fcd68c87eea7eee91f3e55f1456ae8894e9f3f671ef8c1e1"
+    },
+    {
+      "path": "red-r2.json",
+      "sha256": "9979904e2967d0cd46d16f93da1ee2c33aaac23d45e7f8786abb7e3a4257170c"
+    },
+    {
+      "path": "red-r2.log",
+      "sha256": "e911479003e443749fce0b7f0022778d166377e9d95f48d693841804311ef0c8"
+    },
+    {
+      "path": "red.json",
+      "sha256": "e41c5ad93a83497a98c564d06fedbda2744d3c83ebfd5319e8185008f72a276b"
+    },
+    {
+      "path": "red.log",
+      "sha256": "7898d4cf6e38dea9fccabfb9cb1ce1afdb423accc926efc3b078d67f082a4b50"
+    },
+    {
+      "path": "regression.json",
+      "sha256": "c7d5a070d1159d461a70510865e600ecaa606df46ef4662e5b257fdeb0897539"
+    },
+    {
+      "path": "regression.log",
+      "sha256": "17a3e142ea65bae6b9ce0b111a192ba251baa6d6e613e716af3079c137efd98c"
+    },
+    {
+      "path": "source-freeze.json",
+      "sha256": "30703402f364661248251b4b671abfcf621d8536b78bd86c278b775ea5b958e0"
+    },
+    {
+      "path": "typecheck-final.log",
+      "sha256": "42df91725e3a9777f8e37ee339b0d2065926cffcabc4848d9efb8829f8395e35"
+    },
+    {
+      "path": "typecheck.log",
+      "sha256": "42df91725e3a9777f8e37ee339b0d2065926cffcabc4848d9efb8829f8395e35"
+    },
+    {
+      "path": "verification-summary.json",
+      "sha256": "e9d415362b9174cb535c8f0263d8eb482e4307d23d793a88984c317ffc503cfe"
+    }
+  ],
+  "test_runs": [
+    {
+      "name": "red",
+      "counts": {
+        "tests": 9,
+        "pass": 0,
+        "fail": 9,
+        "skipped": 0,
+        "cancelled": 0
+      },
+      "exit": 1,
+      "log_hash_match": true
+    },
+    {
+      "name": "red-r2",
+      "counts": {
+        "tests": 10,
+        "pass": 0,
+        "fail": 10,
+        "skipped": 0,
+        "cancelled": 0
+      },
+      "exit": 1,
+      "log_hash_match": true
+    },
+    {
+      "name": "legacy-red",
+      "counts": {
+        "tests": 1,
+        "pass": 0,
+        "fail": 1,
+        "skipped": 0,
+        "cancelled": 0
+      },
+      "exit": 1,
+      "log_hash_match": true
+    },
+    {
+      "name": "green-r1",
+      "counts": {
+        "tests": 10,
+        "pass": 9,
+        "fail": 1,
+        "skipped": 0,
+        "cancelled": 0
+      },
+      "exit": 1,
+      "log_hash_match": true
+    },
+    {
+      "name": "green-r2",
+      "counts": {
+        "tests": 10,
+        "pass": 10,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0
+      },
+      "exit": 0,
+      "log_hash_match": true
+    },
+    {
+      "name": "green-final",
+      "counts": {
+        "tests": 11,
+        "pass": 11,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0
+      },
+      "exit": 0,
+      "log_hash_match": true
+    },
+    {
+      "name": "focused",
+      "counts": {
+        "tests": 57,
+        "pass": 57,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0
+      },
+      "exit": 0,
+      "log_hash_match": true
+    },
+    {
+      "name": "regression",
+      "counts": {
+        "tests": 284,
+        "pass": 284,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0
+      },
+      "exit": 0,
+      "log_hash_match": true
+    }
+  ],
+  "all_7source_hashes_match": true,
+  "whole_npm": "NOT_RUN_after_change; must wait docs freeze",
+  "procedural_deviation": "One rg --files discovery included D:/develop root, returning first12 paths. Main source content not opened per owner; main directory enumeration absence cannot be proven. Not accepted as compliant; parent audit/fullreview must receive this note. No repeat."
+}

@@ -1,0 +1,88 @@
+{
+  "binding": {
+    "schemaVersion": "0.1",
+    "operation": "inspect",
+    "taskId": "json-export-confounded-review",
+    "expectedRevision": -1,
+    "requestHash": "00621b7f668262eacc15e1928e3cd497a8c09adae2c2e983e7c13c1ff4368a5a"
+  },
+  "proposal": {
+    "claims": [
+      {
+        "id": "claim-measured-speedup",
+        "role": "observation",
+        "text": "30,000件のローカルJSON書き出しにおいて、before（平均12.0秒）からafter（平均8.0秒）への約1.5倍の所要時間短縮が観測された",
+        "scope": "local_json_export_benchmark"
+      },
+      {
+        "id": "claim-confounded-causality",
+        "role": "answer_claim",
+        "text": "約1.5倍の所要時間短縮はまとめ書きへの変更単独によるものとは言えず、電源設定変更との交絡により要因が未分離である",
+        "scope": "local_json_export_benchmark"
+      },
+      {
+        "id": "claim-environmental-change",
+        "role": "hypothesis",
+        "text": "before測定時（省電力）とafter測定時（高パフォーマンス）でOSの電源モードが切り替えられており、環境条件が同一ではない",
+        "scope": "local_json_export_benchmark"
+      }
+    ],
+    "lenses": [
+      {
+        "id": "lens-confounding",
+        "label": "測定環境の交絡と因果関係の評価",
+        "rationale": "電源モード切り替えが性能測定結果に与える影響の分離可否を評価する",
+        "origin": "initial",
+        "status": "active"
+      }
+    ],
+    "gaps": [
+      {
+        "id": "gap-power-mode-check",
+        "kind": "conflicting_evidence",
+        "lensId": "lens-confounding",
+        "question": "notes/power-settings.txt により電源モードの切り替えが確認され、高速化要因が交絡しているか",
+        "triggerRefs": [
+          "claim-confounded-causality",
+          "task:goal"
+        ],
+        "whyItMatters": "まとめ書き変更単独の高速化として開発報告に記載できるかを判断するため",
+        "importance": "required",
+        "claimIds": [
+          "claim-confounded-causality"
+        ],
+        "probeIds": [
+          "probe-power-settings"
+        ]
+      }
+    ],
+    "probes": [
+      {
+        "id": "probe-power-settings",
+        "gapIds": [
+          "gap-power-mode-check"
+        ],
+        "method": "counterexample",
+        "question": "notes/power-settings.txt から測定時の電源設定内容を確認する",
+        "requiredCapability": "read_saved_records",
+        "sourceGroups": [
+          "notes"
+        ],
+        "successCondition": "電源モードがbeforeとafterで異なって記録されていること",
+        "refutationCondition": "電源モードが同一であったこと",
+        "inconclusiveCondition": "記録が読み取れないこと"
+      }
+    ],
+    "assessments": [
+      {
+        "claimId": "claim-measured-speedup",
+        "evidenceIds": [
+          "evidence-export-times"
+        ],
+        "verdict": "supports",
+        "scopeMatched": true,
+        "reason": "measurements/export-times.json において、before（平均12.0秒）からafter（平均8.0秒）へ約1.5倍短縮した測定値が記録されている"
+      }
+    ]
+  }
+}

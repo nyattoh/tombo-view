@@ -1,4 +1,4 @@
-import { assessmentDigest, TomboError, understandingHash } from './core.js';
+import { assessmentDigest, assessmentScopeDiagnostics, TomboError, understandingHash } from './core.js';
 import type { InspectionResult, UnderstandingState } from './types.js';
 
 const labels = {
@@ -50,6 +50,17 @@ export function renderMarkdownReport(input: InspectionResult | UnderstandingStat
   }
   if (inconclusiveReasons.length) {
     lines.push('', '## 証拠評価の理由（不明）', '', '以下は回答の主張を確定できない評価理由であり、検証済みの事実として扱わない。', '', ...inconclusiveReasons);
+  }
+  const scopeDiagnostics = assessmentScopeDiagnostics(state);
+  if (scopeDiagnostics.length) {
+    lines.push('', '## 適用できなかった証拠評価', '',
+      '評価の適用範囲を示す診断であり、証拠の無効化や停止判定ではない。評価側の不一致宣言とその理由はモデルの解釈であり、検証済みの事実ではない。', '');
+    for (const diagnostic of scopeDiagnostics) {
+      const kind = diagnostic.kind === 'assessment_scope_unmatched' ? '評価が適用範囲の不一致を宣言（モデルの解釈）' : 'scope文字列の不一致';
+      const saved = diagnostic.passageUnavailable ? '保存時の診断。本文未取得・未再検証。' : '';
+      lines.push(`- 主張: ${safe(diagnostic.claimId)}。評価index: ${diagnostic.assessmentIndex}。digest: ${diagnostic.digest}。参照証拠: ${safe(diagnostic.evidenceId)}。主張の範囲: ${safe(diagnostic.claimScope)}。証拠の範囲: ${safe(diagnostic.evidenceScope)}。${kind}。${saved}評価理由: ${safe(diagnostic.reason)}`);
+    }
+    lines.push('', '適合する資料を確認し、誤読なら証拠本文に基づく明示的な訂正を行う。必要に応じて説明を限定し、問いや実行案を再構成する。scopeを偽装して一致させたり、診断だけで必須確認を解決したりしない。');
   }
   if (state.assessmentCorrections?.length) {
     const verdicts = { supports: '支持', refutes: '反証', inconclusive: '不明' };

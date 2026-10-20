@@ -1,0 +1,192 @@
+{
+  "at": "2026-10-21T02:58:07.594451+09:00",
+  "files": [
+    {
+      "path": "README.md",
+      "bundle_match": true,
+      "source_match": true
+    },
+    {
+      "path": "dist/cli.d.ts",
+      "bundle_match": true,
+      "source_match": true
+    },
+    {
+      "path": "dist/cli.js",
+      "bundle_match": true,
+      "source_match": true
+    },
+    {
+      "path": "dist/core.d.ts",
+      "bundle_match": true,
+      "source_match": true
+    },
+    {
+      "path": "dist/core.js",
+      "bundle_match": true,
+      "source_match": true
+    },
+    {
+      "path": "dist/fixture.d.ts",
+      "bundle_match": true,
+      "source_match": true
+    },
+    {
+      "path": "dist/fixture.js",
+      "bundle_match": true,
+      "source_match": true
+    },
+    {
+      "path": "dist/hidden-side.d.ts",
+      "bundle_match": true,
+      "source_match": true
+    },
+    {
+      "path": "dist/hidden-side.js",
+      "bundle_match": true,
+      "source_match": true
+    },
+    {
+      "path": "dist/index.d.ts",
+      "bundle_match": true,
+      "source_match": true
+    },
+    {
+      "path": "dist/index.js",
+      "bundle_match": true,
+      "source_match": true
+    },
+    {
+      "path": "dist/journal.d.ts",
+      "bundle_match": true,
+      "source_match": true
+    },
+    {
+      "path": "dist/journal.js",
+      "bundle_match": true,
+      "source_match": true
+    },
+    {
+      "path": "dist/prompts.d.ts",
+      "bundle_match": true,
+      "source_match": true
+    },
+    {
+      "path": "dist/prompts.js",
+      "bundle_match": true,
+      "source_match": true
+    },
+    {
+      "path": "dist/report.d.ts",
+      "bundle_match": true,
+      "source_match": true
+    },
+    {
+      "path": "dist/report.js",
+      "bundle_match": true,
+      "source_match": true
+    },
+    {
+      "path": "dist/runner.d.ts",
+      "bundle_match": true,
+      "source_match": true
+    },
+    {
+      "path": "dist/runner.js",
+      "bundle_match": true,
+      "source_match": true
+    },
+    {
+      "path": "dist/types.d.ts",
+      "bundle_match": true,
+      "source_match": true
+    },
+    {
+      "path": "dist/types.js",
+      "bundle_match": true,
+      "source_match": true
+    },
+    {
+      "path": "docs/hidden-side-observation.md",
+      "bundle_match": true,
+      "source_match": true
+    },
+    {
+      "path": "skills/tombo-view/SKILL.md",
+      "bundle_match": true,
+      "source_match": true
+    },
+    {
+      "path": "skills/tombo-view/agents/openai.yaml",
+      "bundle_match": true,
+      "source_match": true
+    },
+    {
+      "path": "skills/tombo-view/references/host-session.md",
+      "bundle_match": true,
+      "source_match": true
+    },
+    {
+      "path": "skills/tombo-view/scripts/session-store.mjs",
+      "bundle_match": true,
+      "source_match": true
+    },
+    {
+      "path": "skills/tombo-view/scripts/session.mjs",
+      "bundle_match": true,
+      "source_match": true
+    },
+    {
+      "path": "src/core.ts",
+      "bundle_match": true,
+      "source_match": true
+    },
+    {
+      "path": "src/report.ts",
+      "bundle_match": true,
+      "source_match": true
+    },
+    {
+      "path": "src/types.ts",
+      "bundle_match": true,
+      "source_match": true
+    },
+    {
+      "path": "test/assessment-scope-diagnostics.test.mjs",
+      "bundle_match": true,
+      "source_match": true
+    },
+    {
+      "path": "test/assessment-scope-report.test.mjs",
+      "bundle_match": true,
+      "source_match": true
+    },
+    {
+      "path": "test/cli-model-repair.test.mjs",
+      "bundle_match": true,
+      "source_match": true
+    },
+    {
+      "path": "test/session-binding.test.mjs",
+      "bundle_match": true,
+      "source_match": true
+    },
+    {
+      "path": "test/session-budget-checkpoint.test.mjs",
+      "bundle_match": true,
+      "source_match": true
+    },
+    {
+      "path": "test/session-followup.test.mjs",
+      "bundle_match": true,
+      "source_match": true
+    },
+    {
+      "path": "test/understanding-session.test.mjs",
+      "bundle_match": true,
+      "source_match": true
+    }
+  ],
+  "meaning": "uncommitted working-tree snapshot at HEAD dda5ff7; not commit blob contents",
+  "red_or_observer_started": false
+}

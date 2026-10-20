@@ -1,0 +1,57 @@
+{
+  "at": "2026-10-21T01:55:21.062786+09:00",
+  "releases": [
+    {
+      "case": "G01",
+      "cwd": "D:\\develop\\works\\tombo-view-ask-policy\\results\\understanding-acceptance2\\observers\\G01\\scratch",
+      "stage": "firstturn",
+      "raw_inputs": [
+        {
+          "path": "results\\understanding-acceptance2\\observers\\G01\\scratch\\delivery-guide.md",
+          "sha256": "2df6eb1e630223ca82daa0c2050225e559aa8bb516a39a10110beb950136e33e"
+        },
+        {
+          "path": "results\\understanding-acceptance2\\observers\\G01\\scratch\\request.md",
+          "sha256": "dc8b7877406733e1dafe7f4781e61f4da11ab23ff73de6f6b23988a454d252a7"
+        }
+      ],
+      "observer_started": false,
+      "future_material_not_copied": true
+    },
+    {
+      "case": "G02",
+      "cwd": "D:\\develop\\works\\tombo-view-ask-policy\\results\\understanding-acceptance2\\observers\\G02\\scratch",
+      "stage": "firstturn",
+      "raw_inputs": [
+        {
+          "path": "results\\understanding-acceptance2\\observers\\G02\\scratch\\film-notes.md",
+          "sha256": "cebb067d0ec7522a1f64c392557ffc26cc536e16b7c08364a29ecb60606fc6b2"
+        },
+        {
+          "path": "results\\understanding-acceptance2\\observers\\G02\\scratch\\request.md",
+          "sha256": "d9c4705541e72f8c75465288629b01bce383ea10dbf44f013faecad9b5cdf552"
+        }
+      ],
+      "observer_started": false,
+      "future_material_not_copied": true
+    },
+    {
+      "case": "G03",
+      "cwd": "D:\\develop\\works\\tombo-view-ask-policy\\results\\understanding-acceptance2\\observers\\G03\\scratch",
+      "stage": "firstturn",
+      "raw_inputs": [
+        {
+          "path": "results\\understanding-acceptance2\\observers\\G03\\scratch\\planter-notes.md",
+          "sha256": "88340510e46dd755d7d965904ba80687f2567f1ed0c125301e9380ca65f613be"
+        },
+        {
+          "path": "results\\understanding-acceptance2\\observers\\G03\\scratch\\request.md",
+          "sha256": "4c32f3c5fada8047e71ef35b20b4254f347bc19abbade52221e429c8b4ffbe0b"
+        }
+      ],
+      "observer_started": false,
+      "future_material_not_copied": true
+    }
+  ],
+  "dependency": "Observers wait npm-r3 success and runtime/docs final freeze"
+}

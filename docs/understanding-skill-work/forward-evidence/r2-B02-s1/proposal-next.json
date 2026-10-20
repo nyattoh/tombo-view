@@ -1,0 +1,121 @@
+{
+  "binding": {
+    "schemaVersion": "0.1",
+    "operation": "update",
+    "taskId": "b02-review-draft-check",
+    "expectedRevision": 1,
+    "requestHash": "8d9ff87ccb7664854f133853b5591e2c61561c84d193f51456180bcecff6f929"
+  },
+  "proposal": {
+    "claims": [
+      {
+        "id": "claim-corrected-report",
+        "role": "answer_claim",
+        "text": "現在の正確な進捗は、全4件中2件（p1, p2）が投入順通り完了し、残り2件は未完了（pending）で、失敗（failed）は0件である",
+        "scope": "local-batch-17"
+      }
+    ],
+    "gaps": [
+      {
+        "id": "gap-corrected-report",
+        "kind": "unsupported_claim",
+        "lensId": "lens-accuracy",
+        "question": "修正後の進捗報告内容は仕様および記録により支持されるか？",
+        "triggerRefs": [
+          "claim-corrected-report"
+        ],
+        "whyItMatters": "修正報告文の正確性を担保するため",
+        "importance": "required",
+        "claimIds": [
+          "claim-corrected-report"
+        ],
+        "probeIds": [
+          "probe-fields",
+          "probe-snapshot"
+        ]
+      }
+    ],
+    "assessments": [
+      {
+        "claimId": "claim-pending-meaning",
+        "evidenceIds": [
+          "ev-fields",
+          "ev-snapshot"
+        ],
+        "verdict": "refutes",
+        "scopeMatched": true,
+        "reason": "docs/fields.txt により pending は受付済み未完了であり失敗とは別と定義されている。さらに export/snapshot.json でも failed は 0、pending は 2 であり、処理失敗が2件残っているという主張は反証される。"
+      },
+      {
+        "claimId": "claim-all-processed",
+        "evidenceIds": [
+          "ev-fields",
+          "ev-snapshot"
+        ],
+        "verdict": "refutes",
+        "scopeMatched": true,
+        "reason": "docs/fields.txt に snapshot は途中経過の記録であり全件完了の保証ではないとあり、export/snapshot.json でも completed_order は p1, p2 の2件のみで pending が2件残っているため、4件すべてが処理完了したという主張は反証される。"
+      },
+      {
+        "claimId": "claim-draft-valid",
+        "evidenceIds": [
+          "ev-draft",
+          "ev-fields",
+          "ev-snapshot"
+        ],
+        "verdict": "refutes",
+        "scopeMatched": true,
+        "reason": "下書き notes/review-draft.txt は pending の定義誤認（実際は未完了で failed は 0）および全件完了の誤認（実際は2件完了の途中経過）という2つの重大な誤りを含んでおり、そのまま進捗報告に使用できるという主張は反証される。"
+      },
+      {
+        "claimId": "claim-corrected-report",
+        "evidenceIds": [
+          "ev-fields",
+          "ev-snapshot"
+        ],
+        "verdict": "supports",
+        "scopeMatched": true,
+        "reason": "docs/fields.txt の定義および export/snapshot.json の記録（completed: 2 [p1, p2], pending: 2, failed: 0）と完全に一致しており、正確な進捗状況として支持される。"
+      }
+    ],
+    "resolutions": [
+      {
+        "gapId": "gap-pending",
+        "reason": "refuted",
+        "evidenceIds": [
+          "ev-fields",
+          "ev-snapshot"
+        ],
+        "explanation": "docs/fields.txt および export/snapshot.json により、pending は失敗ではなく未完了であり、failed は 0件であることが判明したため反証・解決された。"
+      },
+      {
+        "gapId": "gap-processed",
+        "reason": "refuted",
+        "evidenceIds": [
+          "ev-fields",
+          "ev-snapshot"
+        ],
+        "explanation": "export/snapshot.json により、完了したのは全4件中2件（p1, p2）のみであり、全4件が処理完了したわけではないことが判明したため反証・解決された。"
+      },
+      {
+        "gapId": "gap-draft-valid",
+        "reason": "refuted",
+        "evidenceIds": [
+          "ev-draft",
+          "ev-fields",
+          "ev-snapshot"
+        ],
+        "explanation": "下書き notes/review-draft.txt は pendingの定義および完了件数について誤りを含んでおり、そのまま進捗報告に使用できないことが確認されたため反証・解決された。"
+      },
+      {
+        "gapId": "gap-corrected-report",
+        "reason": "supported",
+        "evidenceIds": [
+          "ev-fields",
+          "ev-snapshot"
+        ],
+        "explanation": "docs/fields.txt および export/snapshot.json により、2件完了・2件未完了・0件失敗という修正報告内容が正当に支持されたため解決された。"
+      }
+    ]
+  }
+}

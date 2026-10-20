@@ -1,0 +1,27 @@
+{
+  "binding": {
+    "schemaVersion": "0.1",
+    "operation": "reflect",
+    "taskId": "task-export-workspace-deletion",
+    "expectedRevision": 1,
+    "requestHash": "e232c6a86af0cbecdd932fba72d22eca7ac5dc3ce9f4542f9e3a5a759e5a1dca",
+    "sessionId": "bf9e5b06-07da-4cff-b880-6a17da9a59ed"
+  },
+  "reflection": {
+    "binding": {
+      "taskId": "task-export-workspace-deletion",
+      "basedRevision": 1,
+      "understandingHash": "7662d21b372a3b6ceced1ea56893862306cb5e1a71e4b1571c834badc085e579"
+    },
+    "reviewedClaimIds": [
+      "claim-1"
+    ],
+    "completion": "completed",
+    "limitations": [],
+    "proposal": {
+      "lenses": [],
+      "gaps": [],
+      "probes": []
+    }
+  }
+}

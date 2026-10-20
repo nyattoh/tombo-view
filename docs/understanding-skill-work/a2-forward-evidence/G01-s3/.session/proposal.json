@@ -1,0 +1,143 @@
+{
+  "binding": {
+    "schemaVersion": "0.1",
+    "operation": "inspect",
+    "taskId": "task-notification-delivery-guide",
+    "expectedRevision": -1,
+    "requestHash": "d1efcf979765d867e8c75d45b39e6248c8041da0c545922e5ccc5335cbbd4f7f",
+    "sessionId": "a7cf7b35-9154-45a4-9589-3bfaaff6b8db"
+  },
+  "proposal": {
+    "claims": [
+      {
+        "id": "c-accepted-delivery",
+        "role": "answer_claim",
+        "text": "通知relayのacceptedはキューへの格納を意味し、下流providerや相手（受信者）に通知が届いたことは意味しない。",
+        "scope": "delivery-guide"
+      },
+      {
+        "id": "c-provider-retry",
+        "role": "answer_claim",
+        "text": "providerの429および5xx応答に対して、relayは約1分、4分、16分の設定待機時間後に再試行する。",
+        "scope": "delivery-guide"
+      }
+    ],
+    "lenses": [
+      {
+        "id": "l-delivery-guide",
+        "label": "開発メモの到達性と再試行仕様",
+        "rationale": "通知relay開発メモの記載に基づき到達性および一時エラー再試行の前提を確認する。",
+        "origin": "initial",
+        "status": "active"
+      }
+    ],
+    "gaps": [
+      {
+        "id": "g-accepted-condition",
+        "kind": "unsupported_claim",
+        "lensId": "l-delivery-guide",
+        "question": "acceptedが返ったときに相手に通知が届いたと言えるか。",
+        "triggerRefs": [
+          "c-accepted-delivery",
+          "task:goal"
+        ],
+        "whyItMatters": "利用者が通知到達の成否を誤認しないために必須の確認である。",
+        "importance": "required",
+        "claimIds": [
+          "c-accepted-delivery"
+        ],
+        "probeIds": [
+          "p-accepted-probe"
+        ]
+      },
+      {
+        "id": "g-retry-condition",
+        "kind": "unsupported_claim",
+        "lensId": "l-delivery-guide",
+        "question": "providerの一時エラー後にrelayはどのように再試行するか。",
+        "triggerRefs": [
+          "c-provider-retry",
+          "task:goal"
+        ],
+        "whyItMatters": "一時エラー時の再試行スケジュールと動作を正確に伝えるために必要である。",
+        "importance": "required",
+        "claimIds": [
+          "c-provider-retry"
+        ],
+        "probeIds": [
+          "p-retry-probe"
+        ]
+      }
+    ],
+    "probes": [
+      {
+        "id": "p-accepted-probe",
+        "gapIds": [
+          "g-accepted-condition"
+        ],
+        "method": "corroboration",
+        "question": "開発メモにacceptedの定義および到達性について何と記載されているか。",
+        "requiredCapability": "read_file",
+        "sourceGroups": [
+          "delivery-guide"
+        ],
+        "successCondition": "acceptedの定義がキュー格納であり受信者到達を意味しないことが確認できる。",
+        "refutationCondition": "acceptedが受信者到達を意味すると記載されている。",
+        "inconclusiveCondition": "acceptedに関する記載がない。"
+      },
+      {
+        "id": "p-retry-probe",
+        "gapIds": [
+          "g-retry-condition"
+        ],
+        "method": "corroboration",
+        "question": "開発メモにproviderの429や5xx一時エラー時の再試行間隔が何と記載されているか。",
+        "requiredCapability": "read_file",
+        "sourceGroups": [
+          "delivery-guide"
+        ],
+        "successCondition": "429および5xxに対して約1分、4分、16分の待機後に再試行されることが確認できる。",
+        "refutationCondition": "一時エラー時に再試行されない、または異なる再試行間隔が記載されている。",
+        "inconclusiveCondition": "一時エラー再試行に関する記載がない。"
+      }
+    ],
+    "assessments": [
+      {
+        "claimId": "c-accepted-delivery",
+        "evidenceIds": [
+          "ev-delivery-guide"
+        ],
+        "verdict": "supports",
+        "scopeMatched": true,
+        "reason": "開発メモに「accepted means the relay stored a request in its queue. It does not mean a downstream provider or recipient has received it.」と明記されている。"
+      },
+      {
+        "claimId": "c-provider-retry",
+        "evidenceIds": [
+          "ev-delivery-guide"
+        ],
+        "verdict": "supports",
+        "scopeMatched": true,
+        "reason": "開発メモに「The relay retries provider responses of 429 and 5xx after documented waits of about 1, 4, and 16 minutes. These are configured delays, not measured delivery times.」と明記されている。"
+      }
+    ],
+    "resolutions": [
+      {
+        "gapId": "g-accepted-condition",
+        "reason": "supported",
+        "evidenceIds": [
+          "ev-delivery-guide"
+        ],
+        "explanation": "開発メモの明記によりacceptedが受信者到達を意味しないことが直接支持された。"
+      },
+      {
+        "gapId": "g-retry-condition",
+        "reason": "supported",
+        "evidenceIds": [
+          "ev-delivery-guide"
+        ],
+        "explanation": "開発メモの明記により429および5xx一時エラー後に約1分、4分、16分待機で再試行されることが直接支持された。"
+      }
+    ]
+  }
+}

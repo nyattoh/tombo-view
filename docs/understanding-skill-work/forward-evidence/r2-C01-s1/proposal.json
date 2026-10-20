@@ -1,0 +1,64 @@
+{
+  "binding": {
+    "schemaVersion": "0.1",
+    "operation": "inspect",
+    "taskId": "task-craft-boxes-labels",
+    "expectedRevision": -1,
+    "requestHash": "5f850b517114ed87b91d5a3c283795950a5edbc991bc26d59d60fdf36f6497d4"
+  },
+  "proposal": {
+    "claims": [
+      {
+        "id": "claim-box-contents",
+        "role": "hypothesis",
+        "text": "craft/boxes.jsonには3つの箱（縫う道具、留める道具、測る道具）の中身の確定した配置情報が記載されている",
+        "scope": "craft/boxes.json"
+      }
+    ],
+    "lenses": [
+      {
+        "id": "lens-craft-inventory",
+        "label": "手芸用品箱の整理とラベル作成",
+        "rationale": "手芸用品の3つの箱の正確な中身を確認し、指定形式のラベルを作成するため",
+        "origin": "initial",
+        "status": "active"
+      }
+    ],
+    "gaps": [
+      {
+        "id": "gap-read-boxes-json",
+        "kind": "missing_fact",
+        "lensId": "lens-craft-inventory",
+        "question": "craft/boxes.jsonの実際の内容はどうなっているか",
+        "triggerRefs": [
+          "task:goal"
+        ],
+        "whyItMatters": "ラベルに記載する箱の名前と中身の正確な表記を取得・確認するために不可欠であるため",
+        "importance": "required",
+        "claimIds": [
+          "claim-box-contents"
+        ],
+        "probeIds": [
+          "probe-read-boxes-file"
+        ]
+      }
+    ],
+    "probes": [
+      {
+        "id": "probe-read-boxes-file",
+        "gapIds": [
+          "gap-read-boxes-json"
+        ],
+        "method": "corroboration",
+        "question": "craft/boxes.jsonファイルを読み取り、3つの箱の名前と中身のリストを取得する",
+        "requiredCapability": "read_file",
+        "sourceGroups": [
+          "local_filesystem"
+        ],
+        "successCondition": "craft/boxes.jsonが読み取れ、3つの箱の名前と中身が確認できること",
+        "refutationCondition": "ファイルが存在しないか、箱の配置が未確定または破損していること",
+        "inconclusiveCondition": "ファイルは存在するが一部の記述が不足しているか読み取り不能であること"
+      }
+    ]
+  }
+}

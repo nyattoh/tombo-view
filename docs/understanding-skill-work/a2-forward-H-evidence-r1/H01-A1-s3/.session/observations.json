@@ -1,0 +1,24 @@
+[
+  {
+    "executionId": "exec-followup-stage2",
+    "probeId": "probe-user-priority",
+    "outcome": "completed",
+    "evidence": [
+      {
+        "id": "ev-request-stage2",
+        "kind": "user_statement",
+        "locator": "request-stage2.md",
+        "sourceGroup": "user",
+        "retrievedAt": "2026-10-21T03:41:32+09:00",
+        "version": null,
+        "scope": "reading_group_planning",
+        "passage": "準備にかける時間はなるべく短くしたいです。一方で、参加者が全員の前で話しやすいかはまだ分かりません。さっきの条件のまま、少し考えを進めてもらえますか。\r\n",
+        "contentHash": "b12c3bf5a04256098715fca6d453c109f620e515ad1ab774aa00ab2273cb16b3",
+        "validity": "current"
+      }
+    ],
+    "toolCalls": 0,
+    "elapsedMs": 0,
+    "costYen": null
+  }
+]

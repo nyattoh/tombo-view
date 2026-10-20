@@ -1,0 +1,112 @@
+{
+  "at": "2026-10-21T02:33:57.540744+09:00",
+  "product_checks": [
+    {
+      "path": "README.md",
+      "matches": true
+    },
+    {
+      "path": "skills/tombo-view/SKILL.md",
+      "matches": true
+    },
+    {
+      "path": "skills/tombo-view/agents/openai.yaml",
+      "matches": true
+    },
+    {
+      "path": "skills/tombo-view/references/host-session.md",
+      "matches": true
+    },
+    {
+      "path": "skills/tombo-view/scripts/session.mjs",
+      "matches": true
+    },
+    {
+      "path": "src/core.ts",
+      "matches": true
+    },
+    {
+      "path": "src/report.ts",
+      "matches": true
+    },
+    {
+      "path": "src/types.ts",
+      "matches": true
+    },
+    {
+      "path": "test/cli-model-repair.test.mjs",
+      "matches": true
+    },
+    {
+      "path": "skills/tombo-view/scripts/session-store.mjs",
+      "matches": true
+    },
+    {
+      "path": "test/assessment-scope-diagnostics.test.mjs",
+      "matches": true
+    },
+    {
+      "path": "test/assessment-scope-report.test.mjs",
+      "matches": true
+    },
+    {
+      "path": "test/session-binding.test.mjs",
+      "matches": true
+    },
+    {
+      "path": "test/session-budget-checkpoint.test.mjs",
+      "matches": true
+    },
+    {
+      "path": "test/session-followup.test.mjs",
+      "matches": true
+    },
+    {
+      "path": "test/understanding-session.test.mjs",
+      "matches": true
+    }
+  ],
+  "all_16_unchanged": true,
+  "historical_ask_untracked": 192,
+  "staged": [],
+  "taskturns": 73,
+  "distinct_threads": 36,
+  "active_children": 0,
+  "G_turns": 10,
+  "G_threads": 4,
+  "G03_original_stage3": "cancelled",
+  "G03_same_thread_resume": "completed",
+  "timing": [
+    {
+      "case": "G01",
+      "t3_initial_run_startedAt": "2026-10-20T17:01:39.870Z",
+      "sdk_startedAt": "2026-10-20T17:08:24.708Z",
+      "sdk_start_minus_t3_start_ms": 404838.0,
+      "firstturn_t3_wall_ms": 492323.0,
+      "raw_overall_limit_ms": 300000,
+      "firstturn_exceeds_raw_limit": true,
+      "scope": "T3 provider wall time and SDK clock are distinct; no host token/cost measurement implied"
+    },
+    {
+      "case": "G02",
+      "t3_initial_run_startedAt": "2026-10-20T17:01:26.767Z",
+      "sdk_startedAt": "2026-10-20T17:06:03.457Z",
+      "sdk_start_minus_t3_start_ms": 276690.0,
+      "firstturn_t3_wall_ms": 372000.0,
+      "raw_overall_limit_ms": 1200000,
+      "firstturn_exceeds_raw_limit": false,
+      "scope": "T3 provider wall time and SDK clock are distinct; no host token/cost measurement implied"
+    },
+    {
+      "case": "G03",
+      "t3_initial_run_startedAt": "2026-10-20T17:01:54.402Z",
+      "sdk_startedAt": "2026-10-20T17:08:30.899Z",
+      "sdk_start_minus_t3_start_ms": 396497.0,
+      "firstturn_t3_wall_ms": 493594.0,
+      "raw_overall_limit_ms": 1200000,
+      "firstturn_exceeds_raw_limit": false,
+      "scope": "T3 provider wall time and SDK clock are distinct; no host token/cost measurement implied"
+    }
+  ],
+  "acceptance2": "not_passed"
+}

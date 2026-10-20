@@ -1,0 +1,6 @@
+{
+  "started_at": "2026-10-21T00:36:39.4959476+09:00",
+  "completed_at": "2026-10-21T00:37:01.9997332+09:00",
+  "command": "node --test test/session-binding.test.mjs",
+  "exit": 0
+}

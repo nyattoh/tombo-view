@@ -1,0 +1,639 @@
+{
+  "candidates": [
+    {
+      "providerInstanceId": "codex",
+      "provider": "Codex",
+      "model": "gpt-6.1-sol",
+      "label": "GPT-6.1-Sol",
+      "efforts": [
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max",
+        "ultra"
+      ],
+      "cost": {
+        "input": 2.0,
+        "output": 10.0
+      },
+      "benchmark": {
+        "best_score": 100.0,
+        "best_source": "measured",
+        "scores": [
+          {
+            "bench": "issue16-calendar-contract-20261009",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-09 04:21:12"
+          },
+          {
+            "bench": "issue10-persistence-contract-20261009",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-09 04:26:51"
+          },
+          {
+            "bench": "cuemetrica-issue10-ui-scoped-20261009",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-09 05:11:09"
+          },
+          {
+            "bench": "cuemetrica-issue12-storage-scoped-20261009",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-09 05:11:11"
+          },
+          {
+            "bench": "cuemetrica-issue11-observation-scoped-20261009",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-09 05:36:01"
+          },
+          {
+            "bench": "cuemetrica-issue12-ui-scoped-20261009",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-09 05:43:38"
+          },
+          {
+            "bench": "semantic-promo-delivery-r2-20261009",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-09 05:59:58"
+          },
+          {
+            "bench": "trajexa-licence-list-jev-budget-20261009-functional15",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-09 06:55:49"
+          },
+          {
+            "bench": "cuemetrica-issue18-test-discovery-scoped-20261009",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-09 07:14:27"
+          },
+          {
+            "bench": "cuemetrica-issue21-hash-contract",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-09 07:37:12"
+          },
+          {
+            "bench": "semantic-pr15-acceptance-r2-20261009",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-09 07:44:02"
+          },
+          {
+            "bench": "semantic-favicon-acceptance-r2-20261009",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-09 07:44:03"
+          },
+          {
+            "bench": "trajexa-prepayment-recovery-oneclick-20261009-functional10",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-09 07:44:44"
+          },
+          {
+            "bench": "semantic-quickstart-docs-r1-20261009",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-09 08:31:29"
+          },
+          {
+            "bench": "cuemetrica-issue24-diagnostic-scoped-20261009",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-09 14:32:44"
+          },
+          {
+            "bench": "cuemetrica-issue25-direction-r2-20261009",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-09 14:53:38"
+          },
+          {
+            "bench": "cuemetrica-issue24-tracker-diagnostic-20261009",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-09 14:53:38"
+          },
+          {
+            "bench": "trajexa-private-mail-guard-static-acceptance-20261009-r2",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-09 15:12:35"
+          },
+          {
+            "bench": "cuemetrica-issue26-render-contract-20261009",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-09 15:13:02"
+          },
+          {
+            "bench": "cuemetrica-issue27-bounded-search-20261009",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-09 15:30:47"
+          },
+          {
+            "bench": "cuemetrica-issue24-coordinate-diagnostic-20261009",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-09 15:42:04"
+          },
+          {
+            "bench": "trajexa-legal-disclosure-local-browser42-20261009",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-09 22:47:37"
+          },
+          {
+            "bench": "trajexa-licence-save-landing-20261010-ui",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-10 01:47:22"
+          },
+          {
+            "bench": "trajexa-ai-ui-material-change-repair-20261011-r1",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-11 02:37:18"
+          },
+          {
+            "bench": "trajexa-ai-server-n1-n7-independent-20261011-r1",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-11 03:30:05"
+          },
+          {
+            "bench": "trajexa-ai-direct-local-integration-20261011",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-11 03:35:08"
+          },
+          {
+            "bench": "cuemetrica-css-overflow-3cases-20261011",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-11 14:01:33"
+          },
+          {
+            "bench": "cuemetrica-f2-record-count-number-3cases-20261011",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-11 14:09:43"
+          },
+          {
+            "bench": "trajexa-issue32-private-switch-runtime-r2-20261011",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-11 14:19:34"
+          },
+          {
+            "bench": "cm-unified-table-20261011",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-11 15:19:48"
+          },
+          {
+            "bench": "cm-latest-owner35-20261011",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-11 15:23:37"
+          },
+          {
+            "bench": "cm-sparse-reference-20261011",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-11 15:30:40"
+          },
+          {
+            "bench": "trajexa-self-introduction-retention-20261011-r2",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-11 16:01:11"
+          },
+          {
+            "bench": "trajexa-ai-mobile-actions-css-20261011",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-11 16:06:33"
+          },
+          {
+            "bench": "cuemetrica-manual-point-persistence-20261011",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-11 16:59:11"
+          },
+          {
+            "bench": "cm-phase-status-20261011-r1",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-11 17:15:50"
+          },
+          {
+            "bench": "cuemetrica-issue19-counterexamples-20261011",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-11 18:09:03"
+          },
+          {
+            "bench": "cuemetrica-issues39-40",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-11 18:22:42"
+          },
+          {
+            "bench": "cue-free-overlay-desktop-trial-20261012",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-12 00:03:25"
+          },
+          {
+            "bench": "cue-two-point-desktop-trial-20261012",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-12 00:21:20"
+          },
+          {
+            "bench": "trajexa-combined-consent-integration-20261012-r1",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-12 14:25:12"
+          },
+          {
+            "bench": "trajexa-combined-consent-final-20261012-r2",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-12 14:25:12"
+          },
+          {
+            "bench": "trajexa-pr39-runtime-ui-release-20261013-r1",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-13 00:46:10"
+          },
+          {
+            "bench": "cuemetrica-ui-refresh-20261013-source-review",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-13 01:23:20"
+          },
+          {
+            "bench": "trajexa-payment-input-integration-20261013-r2",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-13 01:26:04"
+          },
+          {
+            "bench": "trajexa-continuation-record-fidelity-20261013-r1",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-13 02:27:15"
+          },
+          {
+            "bench": "trajexa-synthetic-dpapi-prototype-20261013-r1",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-13 03:04:39"
+          },
+          {
+            "bench": "trajexa-stage-memory-crypto-static-contract-20261013-r1",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-13 03:19:37"
+          },
+          {
+            "bench": "trajexa-stage-collector-static-contract-20261013-r1",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-13 03:41:28"
+          },
+          {
+            "bench": "trajexa-offline-sql-memory-contract-20261013-r1",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-13 03:58:23"
+          },
+          {
+            "bench": "trajexa-stage-config-capsule-contract-20261013-r1",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-13 05:03:31"
+          },
+          {
+            "bench": "trajexa-isolated-backend-restore-static-contract-20261013-r1",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-13 05:17:17"
+          },
+          {
+            "bench": "trajexa-resolved-config-input-compatibility-20261013-r2",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-13 05:32:36"
+          },
+          {
+            "bench": "trajexa-root-role-extraction-memory-contract-20261013-r1",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-13 05:32:36"
+          },
+          {
+            "bench": "trajexa-backend-producer-literal-compatibility-20261013-r2",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-13 05:43:38"
+          },
+          {
+            "bench": "trajexa-root-real-stage-guard-integration-20261013-r1",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-13 06:02:26"
+          },
+          {
+            "bench": "trajexa-click-consent-synthetic-acceptance-20261013",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-13 06:28:07"
+          },
+          {
+            "bench": "trajexa-personality-comparison-acceptance-20261013",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-13 07:03:03"
+          },
+          {
+            "bench": "trajexa-theory-docs-invariants-20261013",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-13 11:23:00"
+          },
+          {
+            "bench": "cuemetrica-skeleton-cloud-boundaries-20261013",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-13 11:47:18"
+          },
+          {
+            "bench": "trajexa-own-ai-all-items-local-acceptance-20261013",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-13 13:57:32"
+          },
+          {
+            "bench": "trajexa-narrative-closed-ui-acceptance-20261013-r2",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-13 14:12:30"
+          },
+          {
+            "bench": "aggregate-ai-schema-20261013",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-13 14:12:46"
+          },
+          {
+            "bench": "aggregate-ai-persistence-20261013",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-13 14:17:33"
+          },
+          {
+            "bench": "trajexa-own-ai-browser-test-alignment-20261013",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-13 14:22:01"
+          },
+          {
+            "bench": "trajexa-browser-storage-integration-167checks-20261013",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-13 16:09:53"
+          },
+          {
+            "bench": "cuemetrica-impact-posture-20261013",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-13 18:35:57"
+          },
+          {
+            "bench": "navigation-purpose-20261014",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-14 00:23:45"
+          },
+          {
+            "bench": "trend-nav-tidy-20261014",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-14 00:42:08"
+          },
+          {
+            "bench": "analysis-ui-dedupe-20261014",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-14 01:10:34"
+          },
+          {
+            "bench": "cuemetrica-home-real-screenshot-20261014",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-14 01:29:49"
+          },
+          {
+            "bench": "trajexa-pr44-closed-quality-boundary-acceptance-20261014-r1",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-14 02:20:19"
+          },
+          {
+            "bench": "trajexa-child-quality-fixtures-acceptance-20261014-r1",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-14 02:42:30"
+          },
+          {
+            "bench": "trajexa-pr44-quote-bfcache-three-fixes-static-acceptance-20261014-r1",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-14 12:49:16"
+          },
+          {
+            "bench": "trajexa-pr44-attributed-assertion-boundary-acceptance-20261014-r2",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-14 13:31:35"
+          },
+          {
+            "bench": "trajexa-pr44-alias-input-disclosure-acceptance-20261014-r1",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-14 13:48:53"
+          },
+          {
+            "bench": "review-memo-pdf-print-artifact-acceptance-20261014-r1",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-14 14:44:24"
+          },
+          {
+            "bench": "review-memo-access-diagrams-artifact-acceptance-20261014-r1",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-14 14:44:25"
+          },
+          {
+            "bench": "review-memo-evaluation-inventory-artifact-acceptance-20261014-r1",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-14 14:51:11"
+          },
+          {
+            "bench": "review-memo-access-diagrams-artifact-acceptance-20261014-r2",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-14 15:20:12"
+          },
+          {
+            "bench": "review-memo-narrative-ascii-artifact-acceptance-20261014-claude-r1",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-14 15:50:14"
+          },
+          {
+            "bench": "a2f-save-independent-review-20261015",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-15 03:35:46"
+          },
+          {
+            "bench": "trajexa-pr21-p2-lsc-overlap-initial-20261010",
+            "score": 80.0,
+            "source": "measured",
+            "recorded_at": "2026-10-10 05:34:54"
+          },
+          {
+            "bench": "trajexa-pr21-p2-answer-explicit-initial-20261010",
+            "score": 80.0,
+            "source": "measured",
+            "recorded_at": "2026-10-10 05:34:58"
+          },
+          {
+            "bench": "semantic-promo-delivery-r1-20261009",
+            "score": 0.0,
+            "source": "measured",
+            "recorded_at": "2026-10-09 05:59:58"
+          },
+          {
+            "bench": "semantic-pr15-acceptance-r1-20261009",
+            "score": 0.0,
+            "source": "measured",
+            "recorded_at": "2026-10-09 07:33:14"
+          },
+          {
+            "bench": "cuemetrica-integration-snapshot-r1-20261009",
+            "score": 0.0,
+            "source": "measured",
+            "recorded_at": "2026-10-09 14:42:38"
+          },
+          {
+            "bench": "trajexa-private-mail-guard-static-acceptance-20261009-r1",
+            "score": 0.0,
+            "source": "measured",
+            "recorded_at": "2026-10-09 15:12:34"
+          },
+          {
+            "bench": "trajexa-issue32-private-switch-runtime-r1-20261011",
+            "score": 0.0,
+            "source": "measured",
+            "recorded_at": "2026-10-11 14:19:33"
+          },
+          {
+            "bench": "trajexa-self-introduction-retention-20261011-r1",
+            "score": 0.0,
+            "source": "measured",
+            "recorded_at": "2026-10-11 16:01:11"
+          },
+          {
+            "bench": "trajexa-payment-input-integration-20261013-r1",
+            "score": 0.0,
+            "source": "measured",
+            "recorded_at": "2026-10-13 01:26:04"
+          },
+          {
+            "bench": "trajexa-resolved-config-source-input-contract-20261013-r1",
+            "score": 0.0,
+            "source": "measured",
+            "recorded_at": "2026-10-13 05:32:35"
+          },
+          {
+            "bench": "trajexa-backend-producer-literal-compatibility-20261013-r1",
+            "score": 0.0,
+            "source": "measured",
+            "recorded_at": "2026-10-13 05:43:38"
+          },
+          {
+            "bench": "trajexa-root-backend-stage-preflight-original-20261013",
+            "score": 0.0,
+            "source": "measured",
+            "recorded_at": "2026-10-13 05:43:38"
+          },
+          {
+            "bench": "trajexa-narrative-closed-ui-acceptance-20261013-r1",
+            "score": 0.0,
+            "source": "measured",
+            "recorded_at": "2026-10-13 11:45:13"
+          },
+          {
+            "bench": "trajexa-browser-refresh-static-artifact-20261013-google-r2",
+            "score": 0.0,
+            "source": "measured",
+            "recorded_at": "2026-10-13 16:09:52"
+          },
+          {
+            "bench": "trajexa-pr44-attributed-assertion-boundary-acceptance-20261014-r1",
+            "score": 0.0,
+            "source": "measured",
+            "recorded_at": "2026-10-14 13:03:45"
+          },
+          {
+            "bench": "review-memo-quote-integration-artifact-acceptance-20261014-r1",
+            "score": 0.0,
+            "source": "measured",
+            "recorded_at": "2026-10-14 15:11:52"
+          },
+          {
+            "bench": "review-memo-quote-integration-artifact-acceptance-20261014-r2",
+            "score": 0.0,
+            "source": "measured",
+            "recorded_at": "2026-10-14 15:36:46"
+          },
+          {
+            "bench": "review-memo-narrative-article-field-artifact-acceptance-20261014-claude-r2",
+            "score": 0.0,
+            "source": "measured",
+            "recorded_at": "2026-10-14 16:44:04"
+          },
+          {
+            "bench": "deep-swe-v1-1",
+            "score": 75.2,
+            "source": "external",
+            "recorded_at": "2026-10-09 03:39:13"
+          }
+        ]
+      },
+      "evidence": "ledger",
+      "vendor": "openai",
+      "notes": "mid tier; 1.05M ctx; >272K prompts bill 2x/1.5x | effort=medium Issue16 acceptance reproduced by Anthropic independent review; scoped18pass; no device or accuracy claim | effort=high Google independent PASS: 171 scoped tests, tsc and authority verify. Persistence adapter only; product UI and physical accuracy excluded. | effort=high Issue10 UI scoped acceptance: independent Google reran10 tests PASS; parent synthetic save reload 390px browser PASS; real-device accuracy NOT_RUN | effort=high Storage slice only: Google independent193 tests and tsc PASS; append-only owner import rollback verified; UI and real trials NOT_RUN | effort=high Google independent review: 109 scoped tests, scoped and full tsc pass. Scope excludes UI, real accuracy and acknowledged capture warning admission defect tracked separately. | effort=high Independent Google PASS249 scoped tests full and scoped tsc, synthetic browser blank required fields bilingual390px no overflow. Real trials and device accuracy NOT_RUN. | effort=medium FAILED RUN Binary scoped acceptance FAIL: actually authored article screenshot assembly; independent Astra found broken hero in saved PNG. Source LP worked. Failed PNG retained. Not a performance or product-quality score. | effort=medium Binary scoped acceptance PASS after correction: actual browser image decoded and visual PNG checked, articles refs corrected, independent Astra round2 pass; metadata20 checks/package CRC pass. Public deployment/cards/devices untested; cost unknown. | effort=high TRAJEXA licence/list/Jev-budget functional15/15 only; Gemini Google diff-only static PASS P1P2=0; parent npm/native/three-engine/PHP and realJev evidence; Cursor extra review NOT_RUN needs_review due provider-start failures; full paid goal ACTIVE; actual billed cost UNKNOWN omitted; source091499a diff0168a574 | effort=medium Independent Google PASS13 scoped plus54 related JSX tests; test glob includes tsx and dialog SVG/accessibility assertions. Parent integration1872PASS3skip/buildPASS. Static markup only; browser device precision NOT_RUN. | effort=high FAILED RUN Binary scoped acceptance FAIL: actual fifteen-second film authored; independent Astra found hard-cut/blank transitions and punctuation baseline defect. Format and original audio numerical checks passed. Not a general video quality or model capability score; cost unknown. | effort=medium Scoped binary acceptance PASS by independent Google reviewer: 25 synthetic contract tests; not real-video accuracy; commit3813d0f | effort=high Binary scoped acceptance PASS after R1 correction: actual encoded transitions and Japanese baseline fixed, 12 tests, full decode, independent Astra R2 pass, parent muted browser ended15s with matching hash. Listening/real devices NOT_RUN. Not a design capability score; cost unknown. | effort=high Binary scoped acceptance PASS: authored7 icon assets/head/manifest/closed10-fileZIP, TDD0to10 then identity9to10, independent Astra R2 actual10tests/decode/CRC/browser pass. Actual device selection/public deployment/PWA excluded; cost unknown. | effort=high Scoped prepayment recovery one-click10/10 only; Grok xAI static diff PASS findings0; owner RED/24engines/purchase56/npm487/licence12/native179B disk/protected430/HTTP164; actual remote POST values not recorded, fresh3DS payload-key observation pending; fullpaid ACTIVE, actual billed cost UNKNOWN omitted; source0098b54 diff f388a372 | effort=high Scoped acceptance PASS: JA/UK-English quickstarts, three authored static fixtures,13 checks; independent Astra source/115relative/35external link review passed. Not generic HTML or host validation. Actual task cost unknown; binary task outcome only. | effort=high Scoped diagnostic preservation only: implementation140unit and1syntheticworker pass; independent same-vendor17unit pass and5hashes match; no P1/P2. Real video tracking and full Issue24 acceptance not established. Provider startup failures excluded; actual cost unknown. | effort=high FAILED RUN Independent read-only review of fixed87-file candidate reproduced P2 direction evidence dropped by trend relay/cache; candidate verdict fail and Issue25 TDD repair assigned. This is candidate acceptance, not general model ability. No API/DB; actual cost unknown. | effort=high Scoped binary acceptance pass: independent 51 tests and direction/canonical/cache counterexamples; native same-vendor fallback; no real API/media accuracy, cost unknown | effort=high Scoped binary acceptance pass: independent 63 synthetic transitions equivalent and 11 cases; no actual media precision or different-vendor result; cost unknown | effort=high FAILED RUN Private synthetic-mail guard only; implement=OpenAI Sol/high; independent=xAI Grok4.7/high static r1; binary blocking-defect gate=fail; r1 uppercase adapter ID, r2 actual-source regression resolved; owner fake Windows/Linux 11 criteria plus Python2 in r2; not product release, SMTP-hop, inbox, general coding ability or cost; actual cost UNKNOWN omitted. | effort=high Private synthetic-mail guard only; implement=OpenAI Sol/high; independent=xAI Grok4.7/high static r2; binary blocking-defect gate=pass; r1 uppercase adapter ID, r2 actual-source regression resolved; owner fake Windows/Linux 11 criteria plus Python2 in r2; not product release, SMTP-hop, inbox, general coding ability or cost; actual cost UNKNOWN omitted. | effort=high Issue26 bounded two-file independent review: hashes and patch reconstruction matched; 12 bilingual real React synthetic render contracts passed, unchanged values/statistics. Same-vendor fallback, no video accuracy claim; cost unknown. | effort=high Scoped binary acceptance PASS. Independent same-vendor source tests before5FAIL after12PASS, hashes8/8 patch2/2, candidate7cases bounds4225/16641, latency increase3.69-3.94x. Parent full1931PASS3SKIP and syntheticChromium100 median2.4ms. Cursor failed before start. Real video precision mobile and correction UI latency NOT_RUN. Actual cost unknown. | effort=high Scoped diagnostic acceptance PASS: author61 tests, separate reviewer20 assertion bodies/504 equivalence/3 synthetic resumes, root1940PASS3SKIP and actual browser-worker numeric propagation. Cue precision unchanged and NOT PASS; same vendor fallback; actual cost unknown. | effort=high TRAJEXA legal-page local UI regression only: 42/42 owner-run Chromium Firefox WebKit, 4 widths JA/EN no-JS footer and synthetic return link tests; independent xAI Grok4.7/high static PASS findings0. Excludes legal/tax certification, X DM/disclosure operations, actual public link navigation pending, account/durability/fullpaid and cost. | effort=high Frozen licence-save landing UI scope only: npm test 491/491; synthetic Chromium production and Sandbox landing checks passed 2/2; build:app passed; independent Claude Sonnet 5.5 static review pass. No live checkout, mail, or deployment included. | effort=high Initial 4 of 5 LSC interval acceptance cases passed; Grok round 1 needs_review identified mixed classified/unclassified possible-first case, fixed by parent follow-up. Pair final handled separately. | effort=high Explicit answer mirror cases passed; final pair round 2 needs_review found legacy-record mismatch; separate follow-up corrected it. Scope score is the explicit-v3 part only; cost unknown. | effort=medium Binary scoped PASS for actual parent material-change abort, late-result suppression and fresh-consent repair.6 RED assertions then535 GREEN; Google static-only independent PASS; mocked browser194 checks incl18 targeted selection checks. No real API or deployment. Cost unknown omitted. | effort=high Binary scoped N1-N7 acceptance for actual worker fixes39d90f6..6b74448. Independent xAI full PASS recovered before stream failure, fakePHP495 and purchase230 exit0, real a2/d/d2 mutations rejected255. Controller-only ini redundant guard mutation survives; actualApache/OpenAI/key not run. Cost unknown omitted. | effort=medium Binary local integration acceptance only for actual parent work: provenance correction, P2 repair,535tests/mockbrowser194, sourceSHA readback and4implement/5verify gate0. Other author code credited separately. Google static finalPASS and xAI execution evidence retained. No OpenAI/Apache/deploy/fullpaid readiness. Cost unknown omitted. | effort=medium Fresh independent compiled CSS validation: 3/3 declared viewport cases pass; synthetic empty context, same-vendor; cost unknown; no real-video claim. Evidence fresh-f1-r4/hand_over_summary.md | effort=medium Independent compiled browser 3/3 and unit45/45 passed; same vendor G3 unmet; host cost unknown; synthetic fixtures only. No measured real-video accuracy. | effort=medium FAILED RUN Actual parent private switch repair r1 failed host postflight due relocated config __DIR__ key binding, automatic rollback SHA verified. Original static GooglePASS not runtimePASS; CRLF startup failure retained. No product-code quality or payment claim, cost unknown omitted. | effort=medium Actual parent bounded repair/deploy acceptance PASS: semantic12 and relative-origin2 fakechecks, finalGoogle staticPASS, hostswap0/protectedconfig equality/4runtimeSHA, Sandbox65HTTP/prod64+canonicalredirect, real synthetictexttransport1 completed output2B. Sales/mailfalse; no realpurchase/image/fullpaid claim. Cost unknown omitted. | effort=medium Scoped UI acceptance passed: independent Google review31tests typecheck; parent compiled E2E4pass; actual user20-video data and Gemini API not validated; host cost unknown. | effort=medium Latest trial before owner filter accepted by independent Google review76tests; compiled ledger routing3 and trend4 pass; actual20DB not examined; host cost unknown. | effort=medium Scoped acceptance only: gap elbow reference fix; independent Google 91+30+31 tests and tsc PASS; live compiled browser7PASS. Actual20 video DB and live Gemini NOT VERIFIED. Host cost unknown. | effort=medium FAILED RUN Binary scoped author acceptance failed: Google static review needs_review with3P2; deletion status actual RED reproduced. Not overall model performance or product readiness. Cost unknown omitted. | effort=medium Binary scoped acceptance after3P2 repair, Google static PASS; owner568Node/549PHP, native synthetic retention/grid/HTML readback. No live provider call/paid UI success claim. Cost unknown omitted. | effort=medium Scoped binary CSS acceptance: authored single mobile rule after actual375px wrap failure, native337.5px buttons nooverflow, Google static pass. No speed/billing/product readiness claim. Cost unknown omitted. | effort=medium Issue36 actual UI mark persistence RED then147 related unit PASS plus80 aggregation; cross-vendor AGY PASS; live6755 five synthetic E2E PASS. Real20DB and actualAPI unverified; cost unknown. | effort=medium Scoped component-state acceptance, independent AGY36 PASS; live build pending; cost unknown. | effort=medium 9 RED to 134 GREEN; independent AGY PASS; adapter contract only, real videos NOT_RUN, cost unknown | effort=medium Scoped acceptance passed: saved manual mark status and tracking-gap elbow reference; 226 synthetic unit checks and 3 live browser checks; no real video accuracy claim; cost unknown | effort=medium Bounded desktop trial only: 27 unit tests and3 browser tests PASS; AGY Google independent R3 PASS. Real20/mobile native/long-load UNVERIFIED; cost unknown. | effort=medium Bounded desktop contract passed: combined138unit, candidate7E2E, live4E2E, independent AGY R2 zero P1/P2. R1 findings fixed with RED-GREEN. Real private20, native mobile and physical accuracy UNVERIFIED; cost unknown; annotation not physics. | effort=medium Binary scoped parent integration acceptance: corrected fresh single consent and purchase restoration, all entered material and combined request. Career49 Node599 fakePHP648 plus230/258; independent Google staticPASS. No live provider/deploy/product-quality claim. Inherited Claude code not credited as parent authorship. Cost UNKNOWN omitted. | effort=medium Binary scoped parent final acceptance after comment cleanup and isolation from unrelated home commit: main-base Node598 build and realChrome4 synthetic JAENPCmobile cases; Google finalstaticPASS. CostUNKNOWN omitted; no real output quality, API or deploy claim. | effort=medium Binary scoped parent release acceptance: guarded config same-directory strict comparison,5synthetic cases, Google staticPASS, actual PHP twoenv switch+89UI each,178HTTP hashes match,430protectedunchanged. No realAI/Stripe/mails/fullgoal claim, costUNKNOWN omitted. | effort=high Owned source accepted by independent AGY review; 58 unit checks and nine new browser checks passed. Existing test maintenance pending; actual cost unknown. | effort=medium FAILED RUN Scoped full integration gate not accepted: static diffPASS conditional on unresolved old browser failure; independently diagnosed pre-existing undefinedstoryPanel disposalP2. Not a new purchase guard defect or general modelscore. CostUNKNOWN omitted. | effort=medium Actual parent helper/caller integration and P2 ghost-disposal repair passed Node602, Chrome56+input4+home7, Google finalstaticPASS and independent native56Node/56ChromePASS. Workerowned purchaseUI credited separately; no realStripe/OpenAI/physical/allgoal claim. CostUNKNOWN omitted. | effort=medium Binary six-criterion reporting-fidelity gate only; authored scoped actual evidence/media, unknown HTTP/order/blank200 retained; not overall webhook/product/legal performance; task cost UNKNOWN omitted | effort=medium Synthetic-only adapter contract accepted; TDD unsafe-F-path RED to GREEN; 20PASS lines incl report not20cases; fixed82/36 bytes; no author realdata/F/network work; not durableack/hostloss/profileloss/product readiness; cost UNKNOWN | effort=high Frozen memory crypto adapter; owner46 synthetic CLI pass, cross-vendor static contract PASS. Actual source/F backup/host loss not scored. | effort=medium Frozen collector;21 source and3 memory synthetic checks. Google static PASS. Actual F backup and durable acknowledgement excluded from score. | effort=high Frozen offline probe16 synthetic checks; Google static contract PASS. SQL memory only, full app/host loss/durable ack not scored. | effort=high Frozen configuration capsule contract; owner two positive states, 40 negative CLI cases, maximum roundtrip PASS; Google static PASS. Binary blocking-code gate only, not actual restore or release. | effort=high Frozen backend harness42 formal fake checks and Google static PASS. Binary blocking-code gate only; actual Stripe/Linux/host loss/full app NOT_RUN. | effort=high FAILED RUN Confirmed original code rejects legitimate absent optional email_key_file before collection; original static PASS retained separately. Root observed applicability failure, not production mail failure. Cost UNKNOWN omitted. | effort=high Absent-field semantic RED\u2192GREEN,9 formal fake tests; Google final static PASS; root actual derived configuration preservation and F Verify succeeded. Binary scoped code-input gate only; not full restore. Cost UNKNOWN omitted. | effort=medium Owner7 formal fake checks and Google static PASS; root actual retained role extraction3 hashes/SQLite seal verified privately in RAM. Binary extraction code gate only, not backend/full recovery. Cost UNKNOWN omitted. | effort=high FAILED RUN Original harness rejected actual generic producer strict_types header/NUL literal concatenation; owner native producer formal fake regression RED config_not_literal exit1. Binary input compatibility failure only; prior limited static PASS retained. Cost UNKNOWN omitted. | effort=high Owner actual generic producer formal fake RED\u2192GREEN70checks and Google final static parser PASS. Binary literal compatibility gate only. Later fictitious Stage guard finding is separate root integration scope, actual backend NOT_RUN. Cost UNKNOWN omitted. | effort=medium FAILED RUN Root original readonly preflight wrongly required nonexistent test_only_stage and failed before reservation/backend/provider IO. Product source uses validateEnvironment/real Sandbox flags. Measured root preflight failure only, not product or model universal quality. Cost UNKNOWN omitted. | effort=medium Root source-backed Stage guard semantic RED\u219278formal fake GREEN; Google static PASS; actual retained revision133 backend clone restore\u2192real owned-case GET-only refunded recheck passed, stored licence/source bytes kept and cleanup verified. Binary scoped gate only, not full app/primary loss/perpurchase ack. Cost UNKNOWN omitted. | effort=high Binary acceptance gate: RED2, targeted64 and full608 pass. Runtime provider calls0. Not product quality or release. | effort=high Binary acceptance gate: RED5, targeted5 and full613 pass; root current Chrome124 and native UI separately confirmed. No psychological validity or predictive superiority measured. | effort=high Binary five-document invariant acceptance only: citation and requirements/formula/sort preservation checks and scoped wording correction. No product code, empirical validity or theory effectiveness measured. | effort=high FAILED RUN Frozen artifact binary acceptance FAIL: Grok P1 grouping and P2 async races. Parent synthetic browser reproduces P1. Source Node/PHP passes do not replace failed integrated acceptance. No liveAI, billing or empiricalquality measured. | effort=medium Binary scoped acceptance pass after TDD 4 red to 17 green; AGY final code independent pass; cost unknown | effort=high Binary scoped feature acceptance: owned59 tests and integrated649 pass, native component JAEN all-material packet and actual download confirmed. Full-app script stops before feature at formula-overview keyboard assertion; fullapp/native200/physicaldevice NOT passed. No liveAI or billing measured. | effort=high Binary repaired P1/P2 acceptance only: oldUI20negative failures, repairedmountedUI21 and domain11pass, integrated649pass. Nativegroup distinction confirmed; nativefocus/fullcommercial/providerquality excluded. R1FAIL preserved. | effort=medium Offline schema fix TDD and Google independent PASS; live regeneration not run; cost unknown | effort=medium Offline persistence contract and Google independent PASS; browser mocks; actual generation after schema fix unverified; cost unknown | effort=medium Binary test-contract alignment only: real-scroll conditional wait and all-material career disclosure match source and reached thirdrun screenshots. Full browser suite still unverified; no product-performance/native200/AIquality measurement. | effort=medium FAILED RUN Parent contributed to frozen acceptance-script artifact, binary artifact gate FAIL due obsolete storage assertion. Partial shared authorship only; not model-quality, product or runtime score. | effort=medium Parent repaired storage assertion; synthetic browser report all167 checks pass plus old storage RED/new GREEN/unexpected answer key negative. Runner fs-rimraf cleanup still live at record time. Not physical-device/native200/public/provider/product efficacy score. | effort=medium 60 relevant tests PASS; real-backup browser PASS on candidate6772 and published6755; source-only independent AGY PASS; actual cost unknown | effort=medium Scoped navigation purpose implementation unit4 E2E36 tsc build passed independent AGY pass; actual cost unknown | effort=medium Scoped acceptance:14 E2E PASS,typecheck/build PASS,cross-vendor review PASS; cost unknown | effort=medium Scoped UI acceptance passed: 10 unit, 27 browser, typecheck/build; Google independent review pass. Local binary acceptance only; actual cost unknown. | effort=medium Scoped HOME actual-data screenshot replacement; capture test and HOME test passed; build passed; Google source review passed. Binary acceptance only, not general benchmark. Cost unknown. | effort=high Binary frozen closed-preview/control acceptance only: owner705 Node, focused88 and PHP251; parent8 fake-service scenarios paidrows0, crossdigest and JAEN loopback. Google static PASS only, not reviewer execution. No evaluated semantic quality/live classifier, pricing, real rights/provider/payment/refund or fullgoal score. Gemini modelID encodes high with no separate effort option. Grok cancelled and Claude rate-limit NOT_RUN are not scored. UNKNOWN cost omitted. | effort=medium Binary child test-fixture/method integration acceptance only at PR46 511563f and PR47 100ae25 against parent7ca729b. Owner PHP37/25/process27/combined15 fake checks, Google static PASS not reviewer execution. Helper product files unchanged. Preview nonconsumption, no real API/payment/refund. No semantic quality/product efficacy/current parent new-review acceptance score. Cost UNKNOWN omitted; model ID encodes medium without effort control. | effort=medium Binary acceptance only for3reported quote-strip/Unicode-sort/BFCache fixes in frozen diffa1d1b30 at7fd9714. Owner Node717/focused50+50/PHP279/build and later167Chromeexit0. PiGLMstaticR1PASS with successful3inputRead, no reviewer tests. New attributed-quote personal-assertion probe is explicitly unresolved and excluded; no semantic-quality/billing/device/fullgoal acceptance. Google unread PASS invalid, Grok cancelled, Claude rate-limited and PiR2 quotaNOT_RUN not scored. ActualcostUNKNOWN omitted. | effort=medium FAILED RUN FAIL reviewed-artifact gate at7fd9714: owner synthetic rawvalidator accepts attributed innate-talent possession assertion from an article-only source. Cursor/Grok independent staticR1 confirms P2 in raw/offline restore+result path. Score0 denotes failing artifact, not verifier defect-detection quality. Earlier PiR1 PASS for3different fixes unchanged, PiR2 quotaNOT_RUN notscored. No real provider/payment/refund, paidConsumedfalse/defaultclosed remain; no general semantic score. ActualcostUNKNOWN omitted. | effort=medium R2 PASS bounded attributed-assertion artifact gate: known direct quote-possession rejected in raw JS/PHP and JS save/restore on text/alternative/nextCheck; neutral titles and source-supported English article action pass. Owner final Node54/full721/PHP444/build/native restore rejection; Cursor/Grok independent static only, no reviewer execution. R1 FAIL preserved. No general semantic quality, physical device, native200%, real provider/payment/refund or commercial readiness; ports closed paidConsumedfalse. ActualcostUNKNOWN omitted. | effort=medium PASS two-file JA/EN person-alias input disclosure correction: included in own-AI JSON, no real names/contact details/secrets, local saving sends nothing. Authorised all-items exporter unchanged. Owner TDD2RED to focused6/full723/build and actual renderExplore standalone fixture JAEN; Cursor/Grok independent static only. No reviewer execution, normal route/physical/native200/live AI or commercial readiness. Prior attributed assertion scope not reused. ActualcostUNKNOWN omitted. | effort=medium PASS binary scoped artifact gate only. PDF ancestor visibility and cleanup: owner2unitRED to57/full612/build/source4/public4 printmedia,8nonblank PDFs. OSdialog/Firefox/Safari/physical printerNOTRUN. Cursor/Grok independent static only, no reviewer test/browser/Git execution. ActualBugbot/Codex/newDraftPR publication still pending, no merge permitted, review-only branches untouched. No wholeproduct/commercial/paid/semanticquality score. ActualcostUNKNOWN omitted. | effort=medium PASS binary scoped artifact gate only. Heading-only legacy ER fallback and FK-only connected impact paths: owner2RED to3focused/full68/localMermaid4dotted paths. Existing table0ERempty not newfix; realAccess/Rust/nativeNOTRUN. Cursor/Grok independent static only, no reviewer test/browser/Git execution. ActualBugbot/Codex/newDraftPR publication still pending, no merge permitted, review-only branches untouched. No wholeproduct/commercial/paid/semanticquality score. ActualcostUNKNOWN omitted. | effort=medium PASS binary scoped artifact gate only. Unregistered internal worklog removal and local evaluation registration/link existence guard: ownerRED2/1fail to2/full26/boundary4. No evaluation outcome or skill efficacy claim. Cursor/Grok independent static only, no reviewer test/browser/Git execution. ActualBugbot/Codex/newDraftPR publication still pending, no merge permitted, review-only branches untouched. No wholeproduct/commercial/paid/semanticquality score. ActualcostUNKNOWN omitted. | effort=medium FAILED RUN FAILED binary frozen artifact gate only. Raw Grok static R1 PASS retained; parent independently reproduced forged transport draft document reaching UI and PHP Japanese-adjacent IQ140 accepted in all3 fields, JS rejected. Exact article9 positives passed but integration not accepted. Old shortquote12 attacks alreadyfixed. No defect-detection-quality or paid/product score, real provider/payment NOT_RUN, actualcost UNKNOWN omitted. New OpenAI repair and samepair R2 pending. | effort=medium PASS binary JS/Rust scoped artifact acceptance only. Owner Rust2actualRED to plan11/domain39, fmt0/fullTauri offlinecheck0; JS68 unchanged. Differentvendor CursorGrok R2 staticPASS. R1 JS-onlyPASS and Codex productionRustP1 retained separately. No packagedexe/realHTTP/WebView2/Accessimport/productreadiness efficacy score. ActualBugbot/Codex currentnewcommit verification pending. AllmergesforbiddenKota. Actualcost UNKNOWN omitted. | effort=medium FAILED RUN FAILED binary frozen artifact R2 gate only. Grok staticFAIL found remaining PCRE word bounds on quote role/binding; actual owner RED reproduced PHPaccept/JSreject possession quotes all3fields. Transportdraft and unquotedIQ blockers fixed; ninearticle positives retained. Samepair2roundlimit reached and user informed; freshOpenAI repair and Anthropicreview planned. No defect-detection-quality/paid/product score. Actualcost UNKNOWN omitted. | effort=medium PASS binary frozen complete5file repair artifact only. Owner actualPHP quote/action/generic RED then full734/PHP942/build0/nativepositive restore24/negative18/concrete30/generic180. Previous transportfakeUI8 slice preserved. FreshAnthropicSonnet high staticPASS after originalGrok2round FAIL, alloriginals kept. Not defect-detection-quality, semanticquality, paid/productscore. Realprovider/payment/refund/deploy/deviceNOT_RUN. NewDraftPR/actualBugbotCodex verification pending, allmergesKota. Actualcost UNKNOWN omitted. | effort=medium FAILED RUN Binary frozen artifact gate NOT_ACCEPTED, score0 only. Claude static R2 needs_review: article whole-field P1 closed but existing ordinary quote P2 persists in supplied current source. Reviewer no tools/tests/liveprovider. Owner734/PHP1041/build/native48 do not cover new ordinary quote variants; next actual reproduction pending. Not model defect-detection performance, semantic quality, product/payment or SMTP score. Original R1PASS and records retained. Pair max2 exhausted; new authorised P2 repair is separate. Cost UNKNOWN omitted. | effort=high Independent integrated review PASS after P2 fix; task cost unknown; not a general reviewer-quality score.",
+      "rank": 5
+    }
+  ],
+  "policy": "existing sole docs owner retained, context/invariants and meaningful grounding rewrite; choose advertised high effort, no universal superiority claim"
+}

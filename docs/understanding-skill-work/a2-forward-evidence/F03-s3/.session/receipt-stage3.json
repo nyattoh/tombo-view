@@ -1,0 +1,13 @@
+{
+  "id": "receipt-stage3",
+  "source": {
+    "kind": "user_statement",
+    "locator": "request-stage3.md",
+    "receivedAt": "2026-10-21T01:07:44+09:00"
+  },
+  "text": "修理店から納期の訂正が来ました。新しい見積りを読んで、さっき伝えた希望を踏まえてもう一度考えてください。\n",
+  "references": [
+    "laptop-quote-correction.md"
+  ],
+  "observations": []
+}

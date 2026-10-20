@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "0.1",
+  "taskId": "editor-status-explanation",
+  "goal": "添付メモのSavedとPublished、およびチームページへの表示の関係を説明する",
+  "mode": "explain",
+  "successCriteria": [
+    "保存と公開を区別する",
+    "追加保存と既存公開版の関係を説明する",
+    "プレビューの既定表示と資料の限界を説明する"
+  ],
+  "reflectionRequired": true,
+  "proposedAnswer": "Savedは下書き保存。チームページには公開版が表示され、追加保存だけでは公開版は置き換わらない。Publishedは保存済み版から公開用コピーを作成した状態。プレビューは既定で最新の公開版を開く。合成・日付不明のメモによる説明であり実製品の現状は未確認。",
+  "capabilities": [
+    "read_local_document"
+  ],
+  "budget": {
+    "maxModelCalls": 3,
+    "maxRounds": 2,
+    "maxOutputTokensPerCall": 2000,
+    "maxInputChars": 20000,
+    "maxElapsedMs": 120000,
+    "maxToolCalls": 4
+  },
+  "evidence": [
+    {
+      "kind": "document",
+      "scope": "sample-editor-note",
+      "retrievedAt": "2026-10-21T03:32:24.7898422+09:00",
+      "locator": "local:editor-guide.md",
+      "version": null,
+      "id": "guide",
+      "validity": "current",
+      "sourceGroup": "editor-guide",
+      "passage": "# Draft editor status guide\n\nSynthetic, undated development note for the sample team editor:\n\n- `Saved` means the draft revision has been stored in the workspace.\n- `Published` means a published copy was created from a saved revision and is available on the team page.\n- Saving further edits does not replace the existing published copy.\n- The editor's preview opens the most recently published copy by default.\n",
+      "contentHash": "8e76a68f37f204332c0618bc256134674ac6ffbe4b44280164363f61871ec281"
+    }
+  ]
+}

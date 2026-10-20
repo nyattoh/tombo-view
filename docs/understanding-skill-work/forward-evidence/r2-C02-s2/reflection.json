@@ -1,0 +1,33 @@
+{
+  "binding": {
+    "schemaVersion": "0.1",
+    "operation": "reflect",
+    "taskId": "loading-policy-decision",
+    "expectedRevision": 2,
+    "requestHash": "d8562ca1c2db2ad065f729dea44a2f10c8f34a1bae4041dffab9bc93247a3690"
+  },
+  "reflection": {
+    "binding": {
+      "taskId": "loading-policy-decision",
+      "basedRevision": 2,
+      "understandingHash": "5d10fe856d3fb5279514d3db7b9e82c75beb1d2b3388c765f82e4af617ff9b0d"
+    },
+    "reviewedClaimIds": [
+      "claim-hard-constraints",
+      "claim-priority-undecided",
+      "claim-user-priority",
+      "claim-policy-conditional",
+      "claim-user-priority-first-search",
+      "claim-chosen-policy"
+    ],
+    "completion": "completed",
+    "limitations": [
+      "本点検は提示された固定資料300件の計測値（loading-options.json）および単一端末・個人利用制約（constraints.txt）の範囲内での検証結果に基づいています。"
+    ],
+    "proposal": {
+      "lenses": [],
+      "gaps": [],
+      "probes": []
+    }
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "binding": {
+    "schemaVersion": "0.1",
+    "operation": "update",
+    "taskId": "balcony-planting-g03",
+    "expectedRevision": 5,
+    "requestHash": "b3b57470b73fa64f21ad36f0b7ab91635de66995f5e542978afde629204b2472",
+    "sessionId": "81670d18-d7c4-4a64-90f1-04064b4dab50"
+  },
+  "proposal": {
+    "claims": [
+      {
+        "id": "c-sunlight-corrected",
+        "role": "observation",
+        "text": "ベランダの直射日光は日よけの影響により植栽エリアで約1〜2時間（日陰〜極めて短い日照）である。",
+        "scope": "balcony-planting"
+      },
+      {
+        "id": "c-option-a-reassessed",
+        "role": "hypothesis",
+        "text": "直射日光1〜2時間の環境では、日当たりを必要とするタイムを含むOption Aは日照不足により健全な生育が極めて困難である。",
+        "scope": "balcony-planting"
+      },
+      {
+        "id": "c-option-b-reassessed",
+        "role": "hypothesis",
+        "text": "直射日光1〜2時間の環境でも、半日陰耐性のあるミントとパセリ（Option B）は生育可能であり、現環境に適合する。",
+        "scope": "balcony-planting"
+      }
+    ],
+    "assessments": [
+      {
+        "claimId": "c-option-a",
+        "evidenceIds": [
+          "ev-planter-notes-v2"
+        ],
+        "verdict": "supports",
+        "scopeMatched": true,
+        "reason": "planter-notes.mdの記載通りOption Aは長方形プランターでタイムとチャイブを用いる。"
+      },
+      {
+        "claimId": "c-option-b",
+        "evidenceIds": [
+          "ev-planter-notes-v2"
+        ],
+        "verdict": "supports",
+        "scopeMatched": true,
+        "reason": "planter-notes.mdの記載通りOption Bは小型鉢2個でミントとパセリを用いる。"
+      },
+      {
+        "claimId": "c-sunlight",
+        "evidenceIds": [
+          "ev-light-correction-1"
+        ],
+        "verdict": "refutes",
+        "scopeMatched": true,
+        "reason": "light-observation-correction.mdにより直射日光が4〜5時間ではなく約1〜2時間であることが確認されたため反証。"
+      },
+      {
+        "claimId": "c-sunlight-corrected",
+        "evidenceIds": [
+          "ev-light-correction-1"
+        ],
+        "verdict": "supports",
+        "scopeMatched": true,
+        "reason": "light-observation-correction.mdに直射日光が約1〜2時間と記載されている。"
+      },
+      {
+        "claimId": "c-option-a-reassessed",
+        "evidenceIds": [
+          "ev-planter-notes-v2",
+          "ev-light-correction-1"
+        ],
+        "verdict": "supports",
+        "scopeMatched": true,
+        "reason": "タイムが日向を必要とするのに対し、日照1〜2時間は深刻な日照不足となるため。"
+      },
+      {
+        "claimId": "c-option-b-reassessed",
+        "evidenceIds": [
+          "ev-planter-notes-v2",
+          "ev-light-correction-1"
+        ],
+        "verdict": "supports",
+        "scopeMatched": true,
+        "reason": "パセリが半日陰耐性を持ち、ミントも耐陰性が高いため日照1〜2時間でも生育可能であるため。"
+      }
+    ],
+    "resolutions": []
+  }
+}

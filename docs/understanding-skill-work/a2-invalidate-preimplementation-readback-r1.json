@@ -1,0 +1,45 @@
+{
+  "recorded_at": "2026-10-20T23:58:30.4880895+09:00",
+  "hashes": [
+    {
+      "path": "docs/understanding-skill-work/a2-managed-invalidate-review-result-r2.json",
+      "sha256": "bd33a1c20bb9bba496cb6cdbe173b4a167b7bb89102ca025f31c4afe99aad5f2"
+    },
+    {
+      "path": "docs/understanding-skill-work/a2-managed-invalidate-review-r2.md",
+      "sha256": "87f40fa954b0ebb4250e023ed72ce04f543652e0ab2c72805f565e9859ca4ae3"
+    },
+    {
+      "path": "results/understanding-acceptance2/runtime/invalidate-red.json",
+      "sha256": "ea99aad57b6ed88f01d37319dc524ddb2e3ce850e005b2be501c02e6bb699763"
+    },
+    {
+      "path": "results/understanding-acceptance2/runtime/invalidate-red.log",
+      "sha256": "793955431599ffc99432462e0610b6ebeb988a9d4131fb68ae4b8407751db6e9"
+    },
+    {
+      "path": "results/understanding-acceptance2/runtime/managed-invalidate-addendum.md",
+      "sha256": "0535d0b32a272c0baf7e4c673922c0d6e9c487c98a8df435da71aa9101c209d7"
+    },
+    {
+      "path": "skills/tombo-view/scripts/session.mjs",
+      "sha256": "fccd8449cea32070181912afd3325cae3758dabf31c49c589e8d51ef23550c78"
+    },
+    {
+      "path": "skills/tombo-view/scripts/session-store.mjs",
+      "sha256": "52e6c4245e5419caedb6376ef3c520d20cd76dc97c6126b4f50a472ef386f353"
+    },
+    {
+      "path": "test/session-followup.test.mjs",
+      "sha256": "f0bad2bca67a6bdf0633baff75467af2a8ebb3390124057400acf8420fa18b74"
+    }
+  ],
+  "red_command": "node --test --test-name-pattern='managed invalidate|managed invalidation' test/session-followup.test.mjs",
+  "red_exit": 1,
+  "red_pass": 1,
+  "red_fail": 5,
+  "red_skip": 0,
+  "product_helper_hashes_equal_pre_invalidate": true,
+  "review_summary_matches": true,
+  "historical_untracked": 192
+}

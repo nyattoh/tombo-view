@@ -1,0 +1,35 @@
+{
+  "binding": {
+    "schemaVersion": "0.1",
+    "operation": "reflect",
+    "taskId": "film-selection-task",
+    "expectedRevision": 3,
+    "requestHash": "4a5c5ee98994e619fecf1ba408fdb030d197fbcca8fe621987d8b98a344ee141",
+    "sessionId": "d7fd4deb-92b2-46a7-bf14-d4f51a0d0e58"
+  },
+  "reflection": {
+    "binding": {
+      "taskId": "film-selection-task",
+      "basedRevision": 3,
+      "understandingHash": "b19014c47e23671fab2b026f5133b5e59e4aa0972c04509cc381da8b923d00cf"
+    },
+    "reviewedClaimIds": [
+      "claim-film-map-of-small-things",
+      "claim-film-last-lighthouse",
+      "claim-film-no-ratings",
+      "claim-film-user-request-constraint",
+      "claim-viewer-preference-priority",
+      "claim-selected-film"
+    ],
+    "completion": "completed",
+    "limitations": [
+      "メモに観客評価や上映実績の記録が含まれておらず、作品の客観的評価や人気度の比較は行えない点",
+      "選定は参加者から回答された『短めで気楽に見られるほうを優先したい』という意向と資料の属性適合に基づく判断である点"
+    ],
+    "proposal": {
+      "lenses": [],
+      "gaps": [],
+      "probes": []
+    }
+  }
+}

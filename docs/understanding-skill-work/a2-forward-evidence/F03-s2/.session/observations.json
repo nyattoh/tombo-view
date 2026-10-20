@@ -1,0 +1,24 @@
+[
+  {
+    "executionId": "exec-user-priority-response",
+    "probeId": "probe-ask-user-priority",
+    "outcome": "completed",
+    "evidence": [
+      {
+        "id": "ev-user-priority-response",
+        "kind": "user_statement",
+        "locator": "request-stage2.md",
+        "sourceGroup": "user",
+        "retrievedAt": "2026-10-21T00:58:35+09:00",
+        "version": "1",
+        "scope": "user_priority_preference",
+        "passage": "できるだけ出費を抑えたいです。ただ、来週から仕事で毎日使うので、長く使えそうかも気になります。\n",
+        "contentHash": "c8d9cc2b17a9b39c0ef53f0c3d0c0f2e528d20497f5bedb96e7877be1e62d51e",
+        "validity": "current"
+      }
+    ],
+    "toolCalls": 0,
+    "elapsedMs": 5,
+    "costYen": null
+  }
+]

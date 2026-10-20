@@ -1,0 +1,8 @@
+{
+  "started_at": "2026-10-21T03:04:34.5148879+09:00",
+  "completed_at": "2026-10-21T03:04:36.3022852+09:00",
+  "command": "node --test --test-name-pattern='post-G exact legacy' test/session-followup.test.mjs",
+  "exit": 1,
+  "product_edits_before_red": false,
+  "reason": "Exercise legacy report after actual inspect rather than its separate null-state guard"
+}

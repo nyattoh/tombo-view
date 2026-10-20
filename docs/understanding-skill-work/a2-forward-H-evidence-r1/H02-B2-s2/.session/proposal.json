@@ -1,0 +1,76 @@
+{
+  "binding": {
+    "schemaVersion": "0.1",
+    "operation": "inspect",
+    "taskId": "editor-status-explanation",
+    "expectedRevision": -1,
+    "requestHash": "a6383e53d79b63f2fdf048e081518b1657e76cc2fcd56f12f98a7be0821da248",
+    "sessionId": "58fb5139-2f6b-4c05-8842-cdde1b24a7ea"
+  },
+  "proposal": {
+    "claims": [
+      {
+        "role": "answer_claim",
+        "scope": "sample-editor-note",
+        "id": "claim-1",
+        "text": "このメモでSavedは下書き版がworkspaceに保存されたことを意味する"
+      },
+      {
+        "role": "answer_claim",
+        "scope": "sample-editor-note",
+        "id": "claim-2",
+        "text": "このメモでPublishedは保存済み版から作成した公開コピーがチームページで利用可能なことを意味する"
+      },
+      {
+        "role": "answer_claim",
+        "scope": "sample-editor-note",
+        "id": "claim-3",
+        "text": "このメモでは追加編集の保存は既存の公開コピーを置き換えない"
+      },
+      {
+        "role": "answer_claim",
+        "scope": "sample-editor-note",
+        "id": "claim-4",
+        "text": "このメモではプレビューは既定で最新の公開コピーを開く"
+      }
+    ],
+    "assessments": [
+      {
+        "evidenceIds": [
+          "guide"
+        ],
+        "scopeMatched": true,
+        "verdict": "supports",
+        "reason": "添付メモの対応する箇条書きに明記されている。実製品の現在の動作には一般化しない。",
+        "claimId": "claim-1"
+      },
+      {
+        "evidenceIds": [
+          "guide"
+        ],
+        "scopeMatched": true,
+        "verdict": "supports",
+        "reason": "添付メモの対応する箇条書きに明記されている。実製品の現在の動作には一般化しない。",
+        "claimId": "claim-2"
+      },
+      {
+        "evidenceIds": [
+          "guide"
+        ],
+        "scopeMatched": true,
+        "verdict": "supports",
+        "reason": "添付メモの対応する箇条書きに明記されている。実製品の現在の動作には一般化しない。",
+        "claimId": "claim-3"
+      },
+      {
+        "evidenceIds": [
+          "guide"
+        ],
+        "scopeMatched": true,
+        "verdict": "supports",
+        "reason": "添付メモの対応する箇条書きに明記されている。実製品の現在の動作には一般化しない。",
+        "claimId": "claim-4"
+      }
+    ]
+  }
+}

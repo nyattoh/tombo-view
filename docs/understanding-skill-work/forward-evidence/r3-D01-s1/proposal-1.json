@@ -1,0 +1,58 @@
+{
+  "binding": {
+    "schemaVersion": "0.1",
+    "operation": "update",
+    "taskId": "json-export-speedup-assessment",
+    "expectedRevision": 1,
+    "requestHash": "1ef3b6ea9b351d2e5f84ac8d51a814e5d5fd7cc7f71857c5e8dd8bd62154c673"
+  },
+  "proposal": {
+    "assessments": [
+      {
+        "claimId": "claim-speedup-ratio",
+        "evidenceIds": [
+          "evidence-export-times"
+        ],
+        "verdict": "supports",
+        "scopeMatched": true,
+        "reason": "measurements/export-times.json において、before（1件ずつ書き出し）の所要時間は平均12.03秒（12.2, 11.9, 12.0秒）、after（100件まとめ書き）の所要時間は平均8.00秒（8.1, 7.9, 8.0秒）であり、約1.50倍の高速化が確認された"
+      },
+      {
+        "claimId": "claim-output-consistency",
+        "evidenceIds": [
+          "evidence-export-times"
+        ],
+        "verdict": "supports",
+        "scopeMatched": true,
+        "reason": "measurements/export-times.json の output_comparison に『両版で出力の行数と各項目の値が一致』と記録されており、出力結果の同等性が確認された"
+      },
+      {
+        "claimId": "claim-measurement-conditions",
+        "evidenceIds": [
+          "evidence-run-summary"
+        ],
+        "verdict": "supports",
+        "scopeMatched": true,
+        "reason": "notes/run-summary.txt に同一ノートPC、同一保存先、同一ランタイムで各3回実施され、コード変更は書き込み単位のみであることが明記されている"
+      }
+    ],
+    "resolutions": [
+      {
+        "reason": "supported",
+        "evidenceIds": [
+          "evidence-export-times"
+        ],
+        "explanation": "export-times.json の計測値により、30,000件のローカルJSON書き出しにおいて1件書きの平均12.0秒から100件まとめ書きの平均8.0秒へと約1.5倍高速化したことが確認され、出力一致も確認された",
+        "gapId": "gap-export-times"
+      },
+      {
+        "reason": "supported",
+        "evidenceIds": [
+          "evidence-run-summary"
+        ],
+        "explanation": "run-summary.txt により測定環境（同一ノートPC、同一ローカル保存先、同一ランタイム）、試行回数（各3回）、変更内容（書き込み単位のみ）が確認された",
+        "gapId": "gap-measurement-conditions"
+      }
+    ]
+  }
+}

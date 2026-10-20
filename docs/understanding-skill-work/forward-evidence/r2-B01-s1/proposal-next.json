@@ -1,0 +1,49 @@
+{
+  "binding": {
+    "schemaVersion": "0.1",
+    "operation": "update",
+    "taskId": "exhibit-visit-reasoning-review",
+    "expectedRevision": 1,
+    "requestHash": "f210af03120d1d42018052ff735c315e8a92a150bc51c9f35b87de9d040ee8c4"
+  },
+  "proposal": {
+    "assessments": [
+      {
+        "claimId": "claim-saturday-higher",
+        "evidenceIds": [
+          "ev-visits-txt"
+        ],
+        "verdict": "supports",
+        "scopeMatched": true,
+        "reason": "exhibit/visits.txtの記録において、土曜（9/5: 32人、9/12: 35人）の来場者数は日曜（9/20: 18人）を上回っていることが確認できる。"
+      },
+      {
+        "claimId": "claim-saturday-rationale",
+        "evidenceIds": [
+          "ev-visits-txt"
+        ],
+        "verdict": "supports",
+        "scopeMatched": true,
+        "reason": "直近3回の実績において土曜の平均来場者数が日曜を大きく上回っているため、土曜を優先候補とする提案理由として合致する。ただし日曜の開催が1回のみであるため、継続的な検証を前提とした提案文が適切である。"
+      }
+    ],
+    "resolutions": [
+      {
+        "gapId": "gap-visit-counts",
+        "reason": "supported",
+        "evidenceIds": [
+          "ev-visits-txt"
+        ],
+        "explanation": "exhibit/visits.txtにより直近3回の来場記録（土曜32人・35人、日曜18人）が確認され、土曜のほうが来場者が多いという前提が支持された。"
+      },
+      {
+        "gapId": "gap-reasoning-validity",
+        "reason": "supported",
+        "evidenceIds": [
+          "ev-visits-txt"
+        ],
+        "explanation": "exhibit/visits.txtの記録から土曜の来場者実績を根拠とする提案理由は妥当と評価された。ただし試行回数（日曜1回）の制約を留意点として併記することが推奨される。"
+      }
+    ]
+  }
+}

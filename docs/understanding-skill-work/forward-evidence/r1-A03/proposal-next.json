@@ -1,0 +1,41 @@
+{
+  "binding": {
+    "schemaVersion": "0.1",
+    "operation": "update",
+    "taskId": "bulletin-announcement",
+    "expectedRevision": 1,
+    "requestHash": "63152eff4aa817025fb150b8fc301147fd4297d09c845b84c1639a2244c924e8"
+  },
+  "proposal": {
+    "assessments": [
+      {
+        "claimId": "claim-confirmed-facts",
+        "evidenceIds": [
+          "ev-workshop-confirmed"
+        ],
+        "verdict": "supports",
+        "scopeMatched": true,
+        "reason": "workshop/confirmed.txtにはワークショップの名称、日時、会場、対象、定員、参加費、持ち物、申込み、文体が主催側で確定済みとして記載されている"
+      },
+      {
+        "claimId": "claim-announcement-draft",
+        "evidenceIds": [
+          "ev-workshop-confirmed"
+        ],
+        "verdict": "supports",
+        "scopeMatched": true,
+        "reason": "作成した案内文案はworkshop/confirmed.txtに記載の確定事項（名称、日時、会場、対象、定員、参加費、持ち物、申込み）のみを用い、見出しと本文を合わせて130字（180字以内）であり、申込み方法も一文で含まれている"
+      }
+    ],
+    "resolutions": [
+      {
+        "gapId": "gap-check-confirmed",
+        "reason": "supported",
+        "evidenceIds": [
+          "ev-workshop-confirmed"
+        ],
+        "explanation": "workshop/confirmed.txtの確定事項が確認され、案内文の作成要件が満たされたため"
+      }
+    ]
+  }
+}

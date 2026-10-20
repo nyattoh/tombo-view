@@ -1,0 +1,88 @@
+{
+  "binding": {
+    "schemaVersion": "0.1",
+    "operation": "inspect",
+    "taskId": "b02-final-report",
+    "expectedRevision": -1,
+    "requestHash": "790b8008768edcc8fdd0dada79d54265b77bc0308319aecd8b6c6af179cb1840"
+  },
+  "proposal": {
+    "claims": [
+      {
+        "id": "claim-final-counts",
+        "role": "answer_claim",
+        "text": "バッチ local-batch-17 は全4件が完了し（completed: 4）、未完了（pending）は0件、失敗（failed）は0件である",
+        "scope": "local-batch-17"
+      },
+      {
+        "id": "claim-final-order",
+        "role": "answer_claim",
+        "text": "完了順は投入順（p1, p2, p3, p4）と異なり、p1, p2, p4, p3 の順で完了した",
+        "scope": "local-batch-17"
+      }
+    ],
+    "lenses": [
+      {
+        "id": "lens-final-verification",
+        "label": "最終完了記録の検証",
+        "rationale": "export/final.json の記録に基づき、完了件数・未完了件数・失敗件数および完了順を検証する",
+        "origin": "initial",
+        "status": "active"
+      }
+    ],
+    "gaps": [
+      {
+        "id": "gap-final-counts",
+        "kind": "unsupported_claim",
+        "lensId": "lens-final-verification",
+        "question": "全件完了の件数は completed: 4, pending: 0, failed: 0 であるか？",
+        "triggerRefs": [
+          "claim-final-counts"
+        ],
+        "whyItMatters": "最終報告の数値の正確性を担保するため",
+        "importance": "required",
+        "claimIds": [
+          "claim-final-counts"
+        ],
+        "probeIds": [
+          "probe-read-final"
+        ]
+      },
+      {
+        "id": "gap-final-order",
+        "kind": "unsupported_claim",
+        "lensId": "lens-final-verification",
+        "question": "完了順は投入順と異なり p1, p2, p4, p3 であるか？",
+        "triggerRefs": [
+          "claim-final-order"
+        ],
+        "whyItMatters": "処理順の正確な報告を行うため",
+        "importance": "required",
+        "claimIds": [
+          "claim-final-order"
+        ],
+        "probeIds": [
+          "probe-read-final"
+        ]
+      }
+    ],
+    "probes": [
+      {
+        "id": "probe-read-final",
+        "gapIds": [
+          "gap-final-counts",
+          "gap-final-order"
+        ],
+        "method": "corroboration",
+        "question": "export/final.json の counts, published_order, completed_order を確認する",
+        "requiredCapability": "file_read",
+        "sourceGroups": [
+          "export"
+        ],
+        "successCondition": "final.json が読み取れ、最終結果が確認できる",
+        "refutationCondition": "final.json が読み取れない",
+        "inconclusiveCondition": "記録形式が不正"
+      }
+    ]
+  }
+}

@@ -1,0 +1,6 @@
+次のユーザー依頼を処理してください。作業領域は D:/develop/works/tombo-view-ask-policy/results/understanding-acceptance2/observers/E03 です。最初にこの領域の request.md と venue-note.md を読んで依頼を実行し、ユーザーへの回答を返してください。
+このタスクで利用可能なskill:
+name: tombo-view
+description: 開発や通常の会話で、AI自身の理解を証拠・反例・訂正・人の回答で更新し、進む・調べる・尋ねる・問い直す・止まるを選ぶ。根拠の確認、未確認の前提や矛盾の検討、継続中の理解の見直しに使う。
+entrypoint: D:/develop/works/tombo-view-ask-policy/skills/tombo-view/SKILL.md
+必要に応じてskillとその実行資源・型定義を読めます。データとして読めるのは上記作業領域内の現時点の資料だけです。書込みはこの作業領域の .session/ 配下のみ。他の作業者がいるので既存の編集を戻さず所有外を書かない。製品source/test/docs・ホスト設定の変更、依存追加、外部API、予約、commit/push/PRは禁止。D:/develop/works/tombo-viewは直接参照禁止。docs/understanding-skill-work/、results内の他領域や設計・評価記録は読まない。通常の回答は簡潔な日本語で、必要な作業状態と実行記録だけを許可範囲へ保存してください。

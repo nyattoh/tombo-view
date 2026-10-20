@@ -1,0 +1,11 @@
+{
+  "started_at": "2026-10-21T00:41:14.5630059+09:00",
+  "completed_at": "2026-10-21T00:42:00.3696101+09:00",
+  "command": "npm test",
+  "exit_code": 0,
+  "note": "New PM regression after storage source correction and focused34/related284 GREEN; previous705 result retained.",
+  "pass": 712,
+  "total": 712,
+  "fail": 0,
+  "skip": 0
+}

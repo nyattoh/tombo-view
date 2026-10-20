@@ -1,0 +1,276 @@
+{
+  "status": "owned_scoped_verification_complete",
+  "recorded_at": "2026-10-21T03:15:09.5231495+09:00",
+  "binding": "D:\\develop\\works\\tombo-view-ask-policy",
+  "branch": "devin/20261020-1705-understanding-skill",
+  "head": "dda5ff739ff0c23c37cc2e1d067b8ed0294cbbf9",
+  "cost": "unknown",
+  "tokens": "unknown",
+  "baseline": "PM K4 37-file pre-code snapshot verified in a2-post-G-baseline-recheck-r1.json, historical724 not reused as current PASS",
+  "product_changes": [
+    "skills/tombo-view/scripts/session-store.mjs",
+    "skills/tombo-view/scripts/session.mjs"
+  ],
+  "test_changes": [
+    "test/session-followup.test.mjs"
+  ],
+  "red_before_product_edits": true,
+  "test_runs": [
+    {
+      "name": "red",
+      "command": "node --test --test-name-pattern='post-G' test/session-followup.test.mjs",
+      "started_at": "2026-10-21T03:02:28.8123097+09:00",
+      "completed_at": "2026-10-21T03:02:42.8058191+09:00",
+      "exit": 1,
+      "counts": {
+        "tests": 9,
+        "pass": 0,
+        "fail": 9,
+        "skipped": 0,
+        "cancelled": 0
+      },
+      "log": "results/understanding-acceptance2/runtime/post-G/red.log",
+      "log_sha256": "7898d4cf6e38dea9fccabfb9cb1ce1afdb423accc926efc3b078d67f082a4b50",
+      "assertions": [
+        "AssertionError [ERR_ASSERTION]: {\"error\":{\"code\":\"invalid_input\",\"message\":\"A receipt requires id and a dated source reference.\"}}",
+        "AssertionError [ERR_ASSERTION]: New invalid date must reject: 2026-10-20T19:02:29.877Z",
+        "AssertionError [ERR_ASSERTION]: The whole-task deadline must stop the helper independently of SDK budget",
+        "AssertionError [ERR_ASSERTION]: The whole-task deadline must stop the helper independently of SDK budget",
+        "AssertionError [ERR_ASSERTION]: The original observation must be represented, not SDK startedAt",
+        "AssertionError [ERR_ASSERTION]: Missing expected rejection.",
+        "AssertionError [ERR_ASSERTION]: {\"error\":{\"code\":\"invalid_input\",\"message\":\"A receipt requires id and a dated source reference.\"}}",
+        "AssertionError [ERR_ASSERTION]: The whole-task deadline must stop the helper independently of SDK budget",
+        "AssertionError [ERR_ASSERTION]: {\"error\":{\"code\":\"invalid_input\",\"message\":\"Unknown option '--task-clock'. To specify a positional argument starting with a '-', place it at the end of the command after '--', as in '-- \\\"--task-clock\\\"\"}}"
+      ]
+    },
+    {
+      "name": "red-r2",
+      "command": "node --test --test-name-pattern='post-G' test/session-followup.test.mjs",
+      "started_at": "2026-10-21T03:03:32.250569+09:00",
+      "completed_at": "2026-10-21T03:03:51.2995574+09:00",
+      "exit": 1,
+      "counts": {
+        "tests": 10,
+        "pass": 0,
+        "fail": 10,
+        "skipped": 0,
+        "cancelled": 0
+      },
+      "log": "results/understanding-acceptance2/runtime/post-G/red-r2.log",
+      "log_sha256": "e911479003e443749fce0b7f0022778d166377e9d95f48d693841804311ef0c8",
+      "assertions": [
+        "AssertionError [ERR_ASSERTION]: {\"error\":{\"code\":\"invalid_input\",\"message\":\"A receipt requires id and a dated source reference.\"}}",
+        "AssertionError [ERR_ASSERTION]: New invalid date must reject: 2026-10-20T19:03:33.480Z",
+        "AssertionError [ERR_ASSERTION]: The whole-task deadline must stop the helper independently of SDK budget",
+        "AssertionError [ERR_ASSERTION]: The whole-task deadline must stop the helper independently of SDK budget",
+        "AssertionError [ERR_ASSERTION]: The original observation must be represented, not SDK startedAt",
+        "AssertionError [ERR_ASSERTION]: Missing expected rejection.",
+        "AssertionError [ERR_ASSERTION]: {\"error\":{\"code\":\"invalid_input\",\"message\":\"A receipt requires id and a dated source reference.\"}}",
+        "AssertionError [ERR_ASSERTION]: The whole-task deadline must stop the helper independently of SDK budget",
+        "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:",
+        "AssertionError [ERR_ASSERTION]: {\"error\":{\"code\":\"revision_conflict\",\"message\":\"Inspect the activated task before this operation.\"}}"
+      ]
+    },
+    {
+      "name": "legacy-red",
+      "command": "node --test --test-name-pattern='post-G exact legacy' test/session-followup.test.mjs",
+      "started_at": "2026-10-21T03:04:34.5148879+09:00",
+      "completed_at": "2026-10-21T03:04:36.3022852+09:00",
+      "exit": 1,
+      "counts": {
+        "tests": 1,
+        "pass": 0,
+        "fail": 1,
+        "skipped": 0,
+        "cancelled": 0
+      },
+      "log": "results/understanding-acceptance2/runtime/post-G/legacy-red.log",
+      "log_sha256": "4e9ec984b47a4fc9fcd68c87eea7eee91f3e55f1456ae8894e9f3f671ef8c1e1",
+      "assertions": [
+        "AssertionError [ERR_ASSERTION]: The input did not match the regular expression /保存済みhelper実受領時刻との不整合/. Input:"
+      ]
+    },
+    {
+      "name": "green-r1",
+      "command": "node --test --test-name-pattern='post-G' test/session-followup.test.mjs",
+      "started_at": "2026-10-21T03:06:18.2743649+09:00",
+      "completed_at": "2026-10-21T03:06:47.8780427+09:00",
+      "exit": 1,
+      "counts": {
+        "tests": 10,
+        "pass": 9,
+        "fail": 1,
+        "skipped": 0,
+        "cancelled": 0
+      },
+      "log": "results/understanding-acceptance2/runtime/post-G/green-r1.log",
+      "log_sha256": "5e05d6b1481fe8b673b1eaeadb5eb497af37110ae20a9f9be474db7b8b8358e7",
+      "assertions": [
+        "AssertionError [ERR_ASSERTION]: The input did not match the regular expression /task_deadline_exceeded/. Input:"
+      ]
+    },
+    {
+      "name": "green-r2",
+      "command": "node --test --test-name-pattern='post-G' test/session-followup.test.mjs",
+      "started_at": "2026-10-21T03:07:40.2089519+09:00",
+      "completed_at": "2026-10-21T03:08:14.2073787+09:00",
+      "exit": 0,
+      "counts": {
+        "tests": 10,
+        "pass": 10,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0
+      },
+      "log": "results/understanding-acceptance2/runtime/post-G/green-r2.log",
+      "log_sha256": "55a9c3ed8a2eff5161621788b4b097fb087a3b54d2bb450c4d5fd120b74b059a",
+      "assertions": []
+    },
+    {
+      "name": "green-final",
+      "command": "node --test --test-name-pattern='post-G' test/session-followup.test.mjs",
+      "started_at": "2026-10-21T03:08:44.3700042+09:00",
+      "completed_at": "2026-10-21T03:09:15.855248+09:00",
+      "exit": 0,
+      "counts": {
+        "tests": 11,
+        "pass": 11,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0
+      },
+      "log": "results/understanding-acceptance2/runtime/post-G/green-final.log",
+      "log_sha256": "a44476b83beafa363dac7ea8e3dd152678ac4c7d6e6cbf8112809022c7b2c4fc",
+      "assertions": []
+    },
+    {
+      "name": "focused",
+      "command": "node --test test/session-budget-checkpoint.test.mjs test/session-binding.test.mjs test/session-followup.test.mjs",
+      "started_at": "2026-10-21T03:10:29.8620081+09:00",
+      "completed_at": "2026-10-21T03:12:25.1035307+09:00",
+      "exit": 0,
+      "counts": {
+        "tests": 57,
+        "pass": 57,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0
+      },
+      "log": "results/understanding-acceptance2/runtime/post-G/focused.log",
+      "log_sha256": "4d83bb565922ad6d21298857ba7853a914813830c4102be8642b1a625929d162",
+      "assertions": []
+    },
+    {
+      "name": "regression",
+      "command": "node --test test/core.test.mjs test/reflection.test.mjs test/model-repair.test.mjs test/assessment-correction.test.mjs test/assessment-correction-surfaces.test.mjs test/assessment-correction-journal.test.mjs test/assessment-scope-diagnostics.test.mjs test/assessment-scope-report.test.mjs test/ask-policy.test.mjs test/session.test.mjs test/session-repair-feedback.test.mjs test/host-session-framing.test.mjs test/recovery-journal.test.mjs test/cli-reflection.test.mjs test/cli-model-repair.test.mjs test/understanding-session.test.mjs",
+      "started_at": "2026-10-21T03:10:39.6860136+09:00",
+      "completed_at": "2026-10-21T03:11:02.107037+09:00",
+      "exit": 0,
+      "counts": {
+        "tests": 284,
+        "pass": 284,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0
+      },
+      "log": "results/understanding-acceptance2/runtime/post-G/regression.log",
+      "log_sha256": "17a3e142ea65bae6b9ce0b111a192ba251baa6d6e613e716af3079c137efd98c",
+      "assertions": []
+    }
+  ],
+  "first_red_limitations": [
+    "red.log includes one transition failure at unknown CLI flag; not credited as behavioral clock RED",
+    "red-r2.log moves actual stop assertion before CLI flag; legacy report initially reaches separately missing null-state gate",
+    "legacy-red.log reaches immutable timestamp diagnostic assertion after real inspect"
+  ],
+  "test_contract_adjustments": {
+    "legacy_preserved": "legacy future/zoneless exact replay tested; old post-F GREEN evidence unchanged",
+    "old_case": "post-F new 2040 caller date accepted",
+    "new_case": "new future date rejects; original second provenance-loop date replaced by past explicit +09:00 date, count/independent helper-time assertions retained",
+    "fixture": "isolated valid receipt journal projects legacy caller metadata/hash and absent null clock fields; no fabricated SDK state or clock gate",
+    "format_fix": "green-r1 sole failure compared raw Markdown underscores; test now compares unescaped rendered identifier"
+  },
+  "build": {
+    "command": "npm run build",
+    "completed_at": "2026-10-21T03:12:31.9636219+09:00",
+    "started_at": "2026-10-21T03:12:31.114741+09:00",
+    "exit": 0
+  },
+  "typecheck": {
+    "command": "npm run typecheck",
+    "completed_at": "2026-10-21T03:12:32.6953864+09:00",
+    "started_at": "2026-10-21T03:12:31.9636219+09:00",
+    "exit": 0
+  },
+  "earlier_build_record": "build-typecheck.json retained",
+  "source_frozen": true,
+  "source_hashes": [
+    {
+      "path": "skills/tombo-view/scripts/session-store.mjs",
+      "before_sha256": "3221357fba1123a3f91a670da9a6af14eb53d53a1e04a0029cd9c35ca29eafa5",
+      "sha256": "2bafafeaa30beb6067367ce75af9d46e2bf1abe58d4d80a1ca31729fe92b6219",
+      "unchanged": false,
+      "last_write_utc": "2026-10-20T18:10:25.9650635Z"
+    },
+    {
+      "path": "skills/tombo-view/scripts/session.mjs",
+      "before_sha256": "cb6c5e6b4fe528a44482aa20c068f2a2a60a681f1714ee8fb620ecfe44220269",
+      "sha256": "f545b21fa172b3fa975a09125ff981f6aa47b36e5446c3d76ec6ead66429688b",
+      "unchanged": false,
+      "last_write_utc": "2026-10-20T18:07:38.9793864Z"
+    },
+    {
+      "path": "test/session-followup.test.mjs",
+      "before_sha256": "8c29a95a538c6ea027035a7425a1e4d98fcd6cba32d5e344c70f4f587deb3221",
+      "sha256": "588b274e13355a31b544cc77d9a9dd52d3b16dc7dba536c65538a945a2b88e08",
+      "unchanged": false,
+      "last_write_utc": "2026-10-20T18:10:28.3454351Z"
+    },
+    {
+      "path": "src/core.ts",
+      "before_sha256": "6642d469b4a005b124da7bdc215b7a0720461488f386ec6c70afc7939e52e260",
+      "sha256": "6642d469b4a005b124da7bdc215b7a0720461488f386ec6c70afc7939e52e260",
+      "unchanged": true,
+      "last_write_utc": "2026-10-20T14:37:13.9906337Z"
+    },
+    {
+      "path": "src/types.ts",
+      "before_sha256": "2e96aea0702eb270326aae797768b53f65ae0b9dc79e25cfa7eff6e17f341d26",
+      "sha256": "2e96aea0702eb270326aae797768b53f65ae0b9dc79e25cfa7eff6e17f341d26",
+      "unchanged": true,
+      "last_write_utc": "2026-10-20T08:19:11.608243Z"
+    },
+    {
+      "path": "src/report.ts",
+      "before_sha256": "7043d10897d43e8f6bfd3457eb566545d96daf66ae9b64c5ef4e2df01e8be2e7",
+      "sha256": "7043d10897d43e8f6bfd3457eb566545d96daf66ae9b64c5ef4e2df01e8be2e7",
+      "unchanged": true,
+      "last_write_utc": "2026-10-20T08:19:16.8037327Z"
+    },
+    {
+      "path": "test/session-binding.test.mjs",
+      "before_sha256": "c07d8c636eb766ebc2ca12517491b46a7fef912df4b628663a913963de3a2acd",
+      "sha256": "c07d8c636eb766ebc2ca12517491b46a7fef912df4b628663a913963de3a2acd",
+      "unchanged": true,
+      "last_write_utc": "2026-10-20T15:35:03.0500502Z"
+    }
+  ],
+  "source_freeze_at": "2026-10-21T03:13:32.9879312+09:00",
+  "source_rechecked_at": "2026-10-21T03:15:09.5263527+09:00",
+  "api_contract": "results/understanding-acceptance2/runtime/post-G/api-contract.md",
+  "full_npm_test": "NOT_RUN_PM_INTEGRATION",
+  "acceptance2": "NOT_CLAIMED",
+  "full_review": "PM_PENDING",
+  "semantic_efficacy": "NOT_TESTED_DETERMINISTIC_INVARIANTS_ONLY",
+  "remaining_owned_items": [],
+  "limits": [
+    "Caller date provenance unauthenticated, plausible past does not become trusted",
+    "Task clock gates helper boundaries, not instant host interruption/OS hard deadline",
+    "first_observed excludes unobserved earlier origin; host_provided metadata is declared not authenticated",
+    "SDK start/budget/usage/stop unchanged except existing honest elapsed checkpoint",
+    "No same-goal extension feature",
+    "No new deps/model APIs/secrets/held-out/raw future cases/observers/children/commit/push/PR"
+  ],
+  "terminal": "all verification processes completed; code/test frozen",
+  "procedural_note": "One AGENTS discovery used rg --files with D:/develop root, returning first12 paths; main source content not opened, absence of main directory enumeration cannot be proven. Subsequent parent reads used explicit paths; no repeated broad scan."
+}

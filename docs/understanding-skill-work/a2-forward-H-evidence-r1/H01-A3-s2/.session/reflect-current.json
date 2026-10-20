@@ -1,0 +1,35 @@
+{
+  "binding": {
+    "schemaVersion": "0.1",
+    "operation": "reflect",
+    "taskId": "reading-group-format",
+    "expectedRevision": 4,
+    "requestHash": "595a06906bc48181281b6a79040c185e554dd63cb85dff7a555d4168d071fbc5",
+    "sessionId": "24cc4f30-ba82-4066-bab9-3d4e14dff741"
+  },
+  "reflection": {
+    "binding": {
+      "taskId": "reading-group-format",
+      "basedRevision": 4,
+      "understandingHash": "f51b700860c478d8ff557675bef3119e7456f0f96166514c358e14d3c13b0d7f"
+    },
+    "reviewedClaimIds": [
+      "room",
+      "round-time",
+      "card-time",
+      "card-prep-estimate",
+      "priority-small-group",
+      "prep-outside",
+      "prep-minimise",
+      "comfort-unknown"
+    ],
+    "completion": "completed",
+    "limitations": [
+      "本人の準備時間を短くしたい希望を反映したが、他の条件に対する絶対的な最優先とは確定していない。",
+      "参加者の全体での話しやすさは未確認。少人数案やパスの導入が実際に話しやすさを改善するとは実証していない。",
+      "カード準備を枠外に確保できるかは未回答であり、準備負担の希望だけでは元の可否のgapは解決しない。",
+      "パスを認める案や時間配分はAIの調整提案であり、元資料の記載や本人による採用決定とは区別する。"
+    ],
+    "proposal": {}
+  }
+}

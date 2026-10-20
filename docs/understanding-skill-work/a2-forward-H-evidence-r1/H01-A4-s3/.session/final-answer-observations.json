@@ -1,0 +1,58 @@
+[
+  {
+    "executionId": "user-priority-and-limit-observed",
+    "probeId": "ask-priority",
+    "outcome": "completed",
+    "evidence": [
+      {
+        "id": "user-priority-and-limit",
+        "kind": "user_statement",
+        "locator": "conversation:initial-question-answers",
+        "sourceGroup": "conversation:initial-question-answers",
+        "retrievedAt": "2026-10-20T18:52:58.338Z",
+        "version": null,
+        "scope": "user priority and preparation limit for this reading meeting",
+        "passage": "今回、特に大事にしたいのはどれですか。この優先順位で、2案の勧め方が変わります。\n全員が一度は自分の考えを話す機会\n\nカードの事前準備に、目安の10分ほどを使えそうですか。メモの10分は実測ではないため、余裕の有無を確認したいです。\n10分以内なら準備できる",
+        "contentHash": "6449c8f94d3ae81a1077c3b4a15ee7347a33feb622e7b6c4365e9d4a8c2ed4e1",
+        "validity": "current"
+      }
+    ],
+    "toolCalls": 0,
+    "elapsedMs": 0,
+    "costYen": null
+  },
+  {
+    "executionId": "user-corrected-final-choice-observed",
+    "probeId": "ask-corrected-25-choice",
+    "outcome": "completed",
+    "evidence": [
+      {
+        "id": "user-trial-choice",
+        "kind": "user_statement",
+        "locator": "conversation:pass-allowed-trial-answer",
+        "sourceGroup": "conversation:pass-allowed-trial-answer",
+        "retrievedAt": "2026-10-20T18:52:58.338Z",
+        "version": null,
+        "scope": "user choice under corrected preparation estimate for this reading meeting",
+        "passage": "残るのは、準備の短さと全体で話す負担をどう比べるかです。今回はどちらに寄せたいですか。\n準備を抑え、パス可の順番案を試す",
+        "contentHash": "164e753a1a43efa81ad37b0da42feae5c96361c4d3a714cb4ed95b3b09e72886",
+        "validity": "current"
+      },
+      {
+        "id": "user-corrected-final-choice",
+        "kind": "user_statement",
+        "locator": "conversation:corrected-25-choice-answer",
+        "sourceGroup": "conversation:corrected-25-choice-answer",
+        "retrievedAt": "2026-10-20T18:52:58.338Z",
+        "version": null,
+        "scope": "user choice under corrected preparation estimate for this reading meeting",
+        "passage": "準備が約25分という訂正を踏まえ、今回はどちらに寄せたいですか。25分も見積りで、話しやすさは両案とも未確認です。\n準備の短さを優先し、パス可の順番案にする",
+        "contentHash": "52a224a079498ac42cb43f2c5910b866d08ff9346f052a14255ab80928f015ca",
+        "validity": "current"
+      }
+    ],
+    "toolCalls": 0,
+    "elapsedMs": 0,
+    "costYen": null
+  }
+]

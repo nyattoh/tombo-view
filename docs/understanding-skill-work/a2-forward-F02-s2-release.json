@@ -1,0 +1,12 @@
+{
+  "case": "F02",
+  "released_at": "2026-10-21T00:59:16.6081377+09:00",
+  "stage": 2,
+  "source": "F02/stage2/game-night-update.md",
+  "user_message": "F02/stage2/user-message.md",
+  "source_hash": "21b127ae2ccc1cd400dece9902d3cfbdccd41a71128d064064c062033a8ef794",
+  "request_hash": "87c6b9105bf0785e5de6946f3f27fad6469900d08ab0543eecf272ac5e75216c",
+  "original_sdk_deadline": "2026-10-20T15:58:21.083Z",
+  "first_turn_terminal": true,
+  "expected_actions_supplied": false
+}

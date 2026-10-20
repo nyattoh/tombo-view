@@ -1,0 +1,50 @@
+[
+  {
+    "command": "node D:/develop/works/tombo-view-ask-policy/skills/tombo-view/scripts/session.mjs prepare --input .session/task.json --out .session/context.json --ledger .session/events.jsonl",
+    "cwd": "D:/develop/works/tombo-view-ask-policy/results/understanding-forward/observers/C02",
+    "exitCode": 0,
+    "description": "Prepare initial inspection context and binding"
+  },
+  {
+    "command": "node D:/develop/works/tombo-view-ask-policy/skills/tombo-view/scripts/session.mjs inspect --input .session/task.json --proposal .session/proposal.json --out .session/inspection.json --ledger .session/events.jsonl",
+    "cwd": "D:/develop/works/tombo-view-ask-policy/results/understanding-forward/observers/C02",
+    "exitCode": 0,
+    "description": "Execute initial inspect with proposal, verifying evidence and policy decision (needs_user_input)"
+  },
+  {
+    "command": "node D:/develop/works/tombo-view-ask-policy/skills/tombo-view/scripts/session.mjs report --state .session/inspection.json --out .session/report.md",
+    "cwd": "D:/develop/works/tombo-view-ask-policy/results/understanding-forward/observers/C02",
+    "exitCode": 0,
+    "description": "Generate initial markdown inspection report"
+  },
+  {
+    "command": "node D:/develop/works/tombo-view-ask-policy/skills/tombo-view/scripts/session.mjs prepare --state .session/inspection.json --observations .session/observations.json --out .session/context-next.json --ledger .session/events.jsonl",
+    "cwd": "D:/develop/works/tombo-view-ask-policy/results/understanding-forward/observers/C02",
+    "exitCode": 0,
+    "description": "Prepare update context with user priority statement observation"
+  },
+  {
+    "command": "node D:/develop/works/tombo-view-ask-policy/skills/tombo-view/scripts/session.mjs update --state .session/inspection.json --observations .session/observations.json --proposal .session/proposal-next.json --out .session/next.json --ledger .session/events.jsonl",
+    "cwd": "D:/develop/works/tombo-view-ask-policy/results/understanding-forward/observers/C02",
+    "exitCode": 0,
+    "description": "Apply user statement evidence and gap resolution, updating state to revision 2 (needs_reflection)"
+  },
+  {
+    "command": "node D:/develop/works/tombo-view-ask-policy/skills/tombo-view/scripts/session.mjs prepare --operation reflect --state .session/next.json --ledger .session/events.jsonl --out .session/reflection-context.json",
+    "cwd": "D:/develop/works/tombo-view-ask-policy/results/understanding-forward/observers/C02",
+    "exitCode": 0,
+    "description": "Prepare reflection binding and context"
+  },
+  {
+    "command": "node D:/develop/works/tombo-view-ask-policy/skills/tombo-view/scripts/session.mjs reflect --state .session/next.json --proposal .session/reflection.json --ledger .session/events.jsonl --out .session/reflected.json",
+    "cwd": "D:/develop/works/tombo-view-ask-policy/results/understanding-forward/observers/C02",
+    "exitCode": 0,
+    "description": "Commit reflection receipt, updating state to revision 3 (ready_for_requested_step)"
+  },
+  {
+    "command": "node D:/develop/works/tombo-view-ask-policy/skills/tombo-view/scripts/session.mjs report --state .session/reflected.json --out .session/report.md",
+    "cwd": "D:/develop/works/tombo-view-ask-policy/results/understanding-forward/observers/C02",
+    "exitCode": 0,
+    "description": "Generate final markdown inspection report"
+  }
+]

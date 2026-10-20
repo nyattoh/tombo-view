@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "0.1",
+  "taskId": "reading-group-format-planning",
+  "goal": "読書会の進め方について提示された2案を比較し、決定に必要な条件を確認して進め方を判断する",
+  "mode": "explain",
+  "successCriteria": [
+    "2案（Open round案およびPrompt-card activity案）の特徴・時間配分・準備負担を比較すること",
+    "決定のために不足している判断基準（主催者の優先順位）を特定し、確認事項を整理すること"
+  ],
+  "evidence": [
+    {
+      "id": "ev-meeting-options",
+      "kind": "document",
+      "locator": "meeting-options.md",
+      "sourceGroup": "planning",
+      "retrievedAt": "2026-10-20T18:30:18.635627Z",
+      "version": null,
+      "scope": "reading_group_planning",
+      "passage": "# Neighbourhood reading group: first-meeting formats\n\nSynthetic, undated planning note for eight attendees. The room is available for 45 minutes.\n\n- Open round: allow each attendee up to 2 minutes to share a thought, then leave the remaining time for open discussion. No materials are needed.\n- Prompt-card activity: use three prompt cards in small groups. The activity outline reserves 35 minutes, including the introduction. Preparing the cards is estimated at about 10 minutes; this is a planning estimate, not a measured duration.\n\n",
+      "contentHash": "372b184220e8fb0167a85ec4bdfd295892e0196616a1e42aa547337c2ad829f4",
+      "validity": "current"
+    },
+    {
+      "id": "ev-user-request",
+      "kind": "user_statement",
+      "locator": "request.md",
+      "sourceGroup": "user",
+      "retrievedAt": "2026-10-20T18:30:18.635627Z",
+      "version": null,
+      "scope": "reading_group_planning",
+      "passage": "次の読書会の進め方を決めたいです。添付メモにある2案を比べて、一緒に考えてもらえますか。どちらかに決めるために足りないことがあれば聞いてください。同じ検討全体は最初の依頼から30分まででお願いします。資料を読むことと、この固定作業領域の`.session/`配下に必要な作業状態だけを書くことを許可します。\r\n",
+      "contentHash": "315ce7b3c06d4c84b3b15eb235093b4c032984de43cbf3cc2b485ac9fd16d049",
+      "validity": "current"
+    }
+  ],
+  "reflectionRequired": true,
+  "proposedAnswer": "事前準備が不要で全員が均等に発言できるOpen round案と、少人数の対話が深まるが事前準備（約10分）を要するPrompt-card activity案のいずれを選択するかは、主催者の準備時間の有無および対話形式の重視点により決まります。",
+  "proposedActions": [
+    "主催者の優先順位（事前準備の許容度や対話形式の好み）を確認する",
+    "確認結果に基づいて2案のいずれかを選択または組み合わせを確定する"
+  ],
+  "capabilities": [
+    "read_document"
+  ],
+  "budget": {
+    "maxRounds": 5,
+    "maxModelCalls": 10,
+    "maxToolCalls": 10,
+    "maxElapsedMs": 1800000,
+    "maxInputChars": 50000,
+    "maxOutputTokensPerCall": 4000
+  }
+}

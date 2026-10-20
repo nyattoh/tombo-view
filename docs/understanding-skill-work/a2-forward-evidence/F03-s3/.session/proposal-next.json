@@ -1,0 +1,65 @@
+{
+  "binding": {
+    "schemaVersion": "0.1",
+    "operation": "update",
+    "taskId": "laptop-choice-f03",
+    "expectedRevision": 3,
+    "requestHash": "9bf7c823473fb69f096faa440fa309a3150554b9797c50fa691332a3a77a5012",
+    "sessionId": "28d44c8d-d8d1-41fd-a6c9-375f6995e3e5"
+  },
+  "proposal": {
+    "claims": [
+      {
+        "id": "claim-quotes-repair-revised-8days",
+        "role": "observation",
+        "text": "現行PCの修理納期は2営業日ではなく8営業日に訂正された。費用24,000円と90日保証は変更なし。",
+        "scope": "laptop_repair_and_refurbished_quotes"
+      },
+      {
+        "id": "claim-quotes-refurbished-confirmed-unchanged",
+        "role": "observation",
+        "text": "整備済み品の購入費用38,000円、納品予定1営業日、保証1年間は変更なし。",
+        "scope": "laptop_repair_and_refurbished_quotes"
+      },
+      {
+        "id": "claim-repair-fails-work-schedule-refurbished-selected",
+        "role": "answer_claim",
+        "text": "修理納期が8営業日となったため来週からの毎日の仕事使用に間に合わず、1営業日納品・1年保証の整備済み品（38,000円）を選択するのが唯一の実現可能な方針である。",
+        "scope": "laptop_repair_and_refurbished_quotes"
+      }
+    ],
+    "lenses": [],
+    "gaps": [],
+    "probes": [],
+    "assessments": [
+      {
+        "claimId": "claim-quotes-repair-revised-8days",
+        "evidenceIds": [
+          "ev-laptop-quote-correction"
+        ],
+        "verdict": "supports",
+        "scopeMatched": true,
+        "reason": "訂正見積もりに修理が8営業日に変更され、費用24,000円と90日保証は不変と明記されている。"
+      },
+      {
+        "claimId": "claim-quotes-refurbished-confirmed-unchanged",
+        "evidenceIds": [
+          "ev-laptop-quote-correction"
+        ],
+        "verdict": "supports",
+        "scopeMatched": true,
+        "reason": "訂正見積もりに整備済み品の見積もりは変更なし（38,000円、1営業日、1年保証）と明記されている。"
+      },
+      {
+        "claimId": "claim-repair-fails-work-schedule-refurbished-selected",
+        "evidenceIds": [
+          "ev-laptop-quote-correction"
+        ],
+        "verdict": "supports",
+        "scopeMatched": true,
+        "reason": "修理が8営業日かかり来週からの使用に間に合わないため、整備済み品が唯一適合する。"
+      }
+    ],
+    "resolutions": []
+  }
+}

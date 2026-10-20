@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "0.1",
+  "taskId": "bulletin-announcement",
+  "goal": "workshop/confirmed.txt の確定事項のみに基づき、見出しと本文を合わせて180字以内で申込み方法を一文に含めた掲示板用案内文を作成・回答する",
+  "mode": "explain",
+  "successCriteria": [
+    "workshop/confirmed.txt の確定事項のみを使用している",
+    "見出しと本文を合わせて180字以内である",
+    "申込み方法が一文で含まれている",
+    "親しみやすい、です・ます調である"
+  ],
+  "evidence": [],
+  "reflectionRequired": true,
+  "proposedAnswer": "【紙の箱づくり体験】\n2026年11月14日（土）14時〜15時に架空の地域交流館・工作室で開催します。対象は小学生以上（小学生は保護者同伴）で定員は先着10組、参加費は1組300円（材料込み、持ち物なし）です。申込みは11月1日から交流館の受付窓口へ直接お越しください。",
+  "capabilities": [
+    "read_file"
+  ],
+  "budget": {
+    "maxRounds": 5,
+    "maxModelCalls": 10,
+    "maxToolCalls": 5,
+    "maxElapsedMs": 60000,
+    "maxInputChars": 100000,
+    "maxOutputTokensPerCall": 4000
+  }
+}

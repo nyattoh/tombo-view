@@ -1,0 +1,29 @@
+{
+  "at": "2026-10-21T02:13:58.908044+09:00",
+  "case": "G01",
+  "stage": 2,
+  "firstturn_terminal_verified": true,
+  "deadline": "2026-10-20T17:13:24.708Z",
+  "original_start": "2026-10-20T17:08:24.708Z",
+  "original_budget": {
+    "maxRounds": 5,
+    "maxModelCalls": 10,
+    "maxToolCalls": 10,
+    "maxElapsedMs": 300000,
+    "maxInputChars": 20000,
+    "maxOutputTokensPerCall": 4000
+  },
+  "real_original_deadline_reached": true,
+  "firstturn_state_archived": "a2-forward-evidence/G01-s1/.session",
+  "published": [
+    {
+      "path": "results\\understanding-acceptance2\\observers\\G01\\scratch\\retry-update.md",
+      "sha256": "2f431953f8cdf166f788572e8f9a9d0283ad7ed54ecbb354051da78f0741bd23"
+    },
+    {
+      "path": "results\\understanding-acceptance2\\observers\\G01\\scratch\\request-stage2.md",
+      "sha256": "375f77874c3d0685eb4162a89245e606407b8830ac6f351eefc708b42862184d"
+    }
+  ],
+  "expectations_or_old_findings_supplied": false
+}

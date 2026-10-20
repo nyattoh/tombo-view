@@ -1,0 +1,10 @@
+{
+  "checked_at": "2026-10-20T16:57:59.981Z",
+  "taskId": "node:delegated-task:command%3Amcp%3Aa82eaa08-dbac-4ad7-914c-b2168a530ea6%3Athread-send%3Aunderstanding-a2-post-F-docs-contract-green-r1",
+  "childRunId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A8f9b8d39-0be7-46bd-a881-cc0212912ad2%253Adelegate-task%253Aunderstanding-20261020-skill-docs-r1:ordinal:8",
+  "status": "running",
+  "workState": "working",
+  "hasPendingChildRuns": false,
+  "hasPendingQuestion": false,
+  "observer_dispatches": 0
+}

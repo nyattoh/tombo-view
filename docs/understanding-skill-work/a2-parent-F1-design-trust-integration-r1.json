@@ -1,0 +1,64 @@
+{
+  "integratedAt": "2026-10-21T05:07:39.433626+09:00",
+  "parent_path": "parent-final-audit.json",
+  "parent_file_sha256_at_read": "5913b7879327dfae94e226f0987855d5c94464d0a0b2f167152a2cf42d5914a9",
+  "snapshot": {
+    "snapshot_id": "post-H-F1-design-trust-boundary-r1",
+    "observed_at_local": "2026-10-21 05:06:41 +09:00",
+    "decision": "not_accepted_needs_review",
+    "goal_complete": false,
+    "publication_ready": false,
+    "F1_design": {
+      "task_id": "node:delegated-task:command%3Amcp%3A6332d4e8-30bd-476f-80f7-fbe6b1ce0d6a%3Adelegate-task%3Aunderstanding-a2-F1-terminal-rejection-independent-design-r1",
+      "reviewer": "antigravity/gemini-4-argon-medium",
+      "verdict": "pass_with_conditions_C1_C5_design_readiness_only",
+      "implementation_pass": false,
+      "acceptance2_pass": false,
+      "full_review_pass": false,
+      "hashes_or_tests_independently_run": false,
+      "reviewer_declared_read_line_limits_match_current_file_lengths": false,
+      "parent_measured_line_counts": {
+        "core": 784,
+        "types": 219,
+        "session": 313,
+        "store": 453,
+        "hostSession": 293,
+        "followupTest": 985,
+        "designProposal": 51
+      },
+      "trust_boundary": "Treat as conditional design advice, not proof of complete full-source inspection or implementation correctness. Red-only test work may proceed within its brief; source edits/GREEN are separately gated."
+    },
+    "current_F1_red": {
+      "task_id": "node:delegated-task:command%3Amcp%3A6332d4e8-30bd-476f-80f7-fbe6b1ce0d6a%3Athread-send%3Aunderstanding-a2-F1-runtime-red-preparation-r1",
+      "owner": "existing runtime writer",
+      "thread_status": "running",
+      "ordinal": 8,
+      "permitted_write_scope": [
+        "test/cli-model-repair.test.mjs",
+        "test/session-followup.test.mjs",
+        "F1-owned evidence only"
+      ],
+      "production_source_edit": false,
+      "observed_staged_count": 0,
+      "all16_product_hashes_match_current_freeze": true
+    },
+    "previous_review_reliability": {
+      "post_H_verdict": "needs_review",
+      "reviewer_claimed_hashes_matching_current": 0,
+      "current_file_hashes_matching_freeze": 16,
+      "review_patch_hash_mismatch": true,
+      "false_cases_models_flags_timing_tests_recorded": "a2-post-H-full-review-reliability-readback-r1.json",
+      "subset_pass_adopted": false
+    },
+    "next_gates": {
+      "F1_RED_terminal_not_yet": true,
+      "source_change_requires_fresh_design_conditions": true,
+      "all_full_tests_on_changed_source_required": true,
+      "fresh_behavior_evidence_and_full_review_required": true,
+      "task_gate_exit3": true,
+      "parent_final_acceptance": false,
+      "publication": false
+    }
+  },
+  "PM_response": "Existing runtime ordinal8 RED only. No production edit/GREEN release until real terminal assertion/exit/log evidence and C1-C5 source readback. No new writer/reviewer. Parent source-read trust limits accepted, no full-byte-read claim."
+}

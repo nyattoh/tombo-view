@@ -1,0 +1,11 @@
+{
+  "started_at": "2026-10-21T00:04:29.2389151+09:00",
+  "completed_at": "2026-10-21T00:05:13.5300823+09:00",
+  "command": "npm test",
+  "exit_code": 0,
+  "note": "PM integrated regression after actual final focused27 and related284 GREEN; docs writer owns docs only.",
+  "pass": 705,
+  "fail": 0,
+  "skip": 0,
+  "total": 705
+}

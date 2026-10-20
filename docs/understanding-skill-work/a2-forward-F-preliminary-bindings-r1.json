@@ -1,0 +1,18 @@
+{
+  "observed_at": "2026-10-21T00:50:54.4172330+09:00",
+  "kind": "preliminary active-cache readback only; no terminal or authority validation yet",
+  "cases": [
+    {
+      "case": "F01",
+      "cache_present": false
+    },
+    {
+      "case": "F02",
+      "cache_present": false
+    },
+    {
+      "case": "F03",
+      "cache_present": false
+    }
+  ]
+}

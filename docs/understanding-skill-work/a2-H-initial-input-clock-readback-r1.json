@@ -1,0 +1,201 @@
+{
+  "at": "2026-10-21T03:33:16.342756+09:00",
+  "rows": [
+    {
+      "actor": "H01-A1",
+      "actual_run": {
+        "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A6332d4e8-30bd-476f-80f7-fbe6b1ce0d6a%253Adelegate-task%253Aunderstanding-a2-forward-h01-a1-s1-r1:ordinal:1",
+        "ordinal": 1,
+        "status": "running",
+        "providerInstanceId": "antigravity",
+        "model": "gemini-3.8-flash-medium",
+        "requestedAt": "2026-10-20T18:30:59.213Z",
+        "startedAt": "2026-10-20T18:31:19.846Z",
+        "completedAt": null
+      },
+      "actual_request_publication": "2026-10-20T18:30:18.635627Z",
+      "fixed_deadline": "2026-10-20T19:00:18.635627Z",
+      "publication_to_child_start_ms": 61210.373,
+      "input_files": [
+        {
+          "path": "request.md",
+          "sha256": "315ce7b3c06d4c84b3b15eb235093b4c032984de43cbf3cc2b485ac9fd16d049"
+        },
+        {
+          "path": "request-origin.json",
+          "sha256": "3ac55aed656cf75b9ad28eb9553294c5db7153dd0abcb881c35fafe94511933a"
+        },
+        {
+          "path": "meeting-options.md",
+          "sha256": "372b184220e8fb0167a85ec4bdfd295892e0196616a1e42aa547337c2ad829f4"
+        }
+      ],
+      "boundary": "publication OS observation not exact host message arrival; queue/preparation interval retained, deadline never reset to child start/SDK start",
+      "outcome": "unknown"
+    },
+    {
+      "actor": "H01-A2",
+      "actual_run": {
+        "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A6332d4e8-30bd-476f-80f7-fbe6b1ce0d6a%253Adelegate-task%253Aunderstanding-a2-forward-h01-a2-s1-r1:ordinal:1",
+        "ordinal": 1,
+        "status": "running",
+        "providerInstanceId": "antigravity",
+        "model": "gemini-3.8-flash-medium",
+        "requestedAt": "2026-10-20T18:31:01.620Z",
+        "startedAt": "2026-10-20T18:31:44.090Z",
+        "completedAt": null
+      },
+      "actual_request_publication": "2026-10-20T18:30:18.635627Z",
+      "fixed_deadline": "2026-10-20T19:00:18.635627Z",
+      "publication_to_child_start_ms": 85454.373,
+      "input_files": [
+        {
+          "path": "request.md",
+          "sha256": "315ce7b3c06d4c84b3b15eb235093b4c032984de43cbf3cc2b485ac9fd16d049"
+        },
+        {
+          "path": "request-origin.json",
+          "sha256": "3ac55aed656cf75b9ad28eb9553294c5db7153dd0abcb881c35fafe94511933a"
+        },
+        {
+          "path": "meeting-options.md",
+          "sha256": "372b184220e8fb0167a85ec4bdfd295892e0196616a1e42aa547337c2ad829f4"
+        }
+      ],
+      "boundary": "publication OS observation not exact host message arrival; queue/preparation interval retained, deadline never reset to child start/SDK start",
+      "outcome": "unknown"
+    },
+    {
+      "actor": "H01-A3",
+      "actual_run": {
+        "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A6332d4e8-30bd-476f-80f7-fbe6b1ce0d6a%253Adelegate-task%253Aunderstanding-a2-forward-h01-a3-s1-r1:ordinal:1",
+        "ordinal": 1,
+        "status": "running",
+        "providerInstanceId": "codex",
+        "model": "gpt-6.1-sol",
+        "requestedAt": "2026-10-20T18:31:04.588Z",
+        "startedAt": "2026-10-20T18:31:45.266Z",
+        "completedAt": null
+      },
+      "actual_request_publication": "2026-10-20T18:30:18.635627Z",
+      "fixed_deadline": "2026-10-20T19:00:18.635627Z",
+      "publication_to_child_start_ms": 86630.373,
+      "input_files": [
+        {
+          "path": "request.md",
+          "sha256": "315ce7b3c06d4c84b3b15eb235093b4c032984de43cbf3cc2b485ac9fd16d049"
+        },
+        {
+          "path": "request-origin.json",
+          "sha256": "3ac55aed656cf75b9ad28eb9553294c5db7153dd0abcb881c35fafe94511933a"
+        },
+        {
+          "path": "meeting-options.md",
+          "sha256": "372b184220e8fb0167a85ec4bdfd295892e0196616a1e42aa547337c2ad829f4"
+        }
+      ],
+      "boundary": "publication OS observation not exact host message arrival; queue/preparation interval retained, deadline never reset to child start/SDK start",
+      "outcome": "unknown"
+    },
+    {
+      "actor": "H01-A4",
+      "actual_run": {
+        "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A6332d4e8-30bd-476f-80f7-fbe6b1ce0d6a%253Adelegate-task%253Aunderstanding-a2-forward-h01-a4-s1-r1:ordinal:1",
+        "ordinal": 1,
+        "status": "running",
+        "providerInstanceId": "codex",
+        "model": "gpt-6.1-sol",
+        "requestedAt": "2026-10-20T18:31:06.819Z",
+        "startedAt": "2026-10-20T18:31:46.249Z",
+        "completedAt": null
+      },
+      "actual_request_publication": "2026-10-20T18:30:18.635627Z",
+      "fixed_deadline": "2026-10-20T19:00:18.635627Z",
+      "publication_to_child_start_ms": 87613.37299999999,
+      "input_files": [
+        {
+          "path": "request.md",
+          "sha256": "315ce7b3c06d4c84b3b15eb235093b4c032984de43cbf3cc2b485ac9fd16d049"
+        },
+        {
+          "path": "request-origin.json",
+          "sha256": "3ac55aed656cf75b9ad28eb9553294c5db7153dd0abcb881c35fafe94511933a"
+        },
+        {
+          "path": "meeting-options.md",
+          "sha256": "372b184220e8fb0167a85ec4bdfd295892e0196616a1e42aa547337c2ad829f4"
+        }
+      ],
+      "boundary": "publication OS observation not exact host message arrival; queue/preparation interval retained, deadline never reset to child start/SDK start",
+      "outcome": "unknown"
+    },
+    {
+      "actor": "H02-B1",
+      "actual_run": {
+        "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A6332d4e8-30bd-476f-80f7-fbe6b1ce0d6a%253Adelegate-task%253Aunderstanding-a2-forward-h02-b1-s1-r1:ordinal:1",
+        "ordinal": 1,
+        "status": "running",
+        "providerInstanceId": "antigravity",
+        "model": "gemini-3.8-flash-medium",
+        "requestedAt": "2026-10-20T18:31:09.000Z",
+        "startedAt": "2026-10-20T18:32:10.620Z",
+        "completedAt": null
+      },
+      "actual_request_publication": "2026-10-20T18:30:18.635627Z",
+      "fixed_deadline": "2026-10-20T18:35:18.635627Z",
+      "publication_to_child_start_ms": 111984.373,
+      "input_files": [
+        {
+          "path": "request.md",
+          "sha256": "f880ed89e47d83b394783078dddf7713ec00f1be052fdf34ca5003e1f47386de"
+        },
+        {
+          "path": "request-origin.json",
+          "sha256": "b5b90be296cf16ed54ff518ceda7e98b2312549519d609d090e7b28a9357651f"
+        },
+        {
+          "path": "editor-guide.md",
+          "sha256": "8e76a68f37f204332c0618bc256134674ac6ffbe4b44280164363f61871ec281"
+        }
+      ],
+      "boundary": "publication OS observation not exact host message arrival; queue/preparation interval retained, deadline never reset to child start/SDK start",
+      "outcome": "unknown"
+    },
+    {
+      "actor": "H02-B2",
+      "actual_run": {
+        "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A6332d4e8-30bd-476f-80f7-fbe6b1ce0d6a%253Adelegate-task%253Aunderstanding-a2-forward-h02-b2-s1-r1:ordinal:1",
+        "ordinal": 1,
+        "status": "running",
+        "providerInstanceId": "codex",
+        "model": "gpt-6.1-sol",
+        "requestedAt": "2026-10-20T18:31:12.020Z",
+        "startedAt": "2026-10-20T18:32:11.596Z",
+        "completedAt": null
+      },
+      "actual_request_publication": "2026-10-20T18:30:18.635627Z",
+      "fixed_deadline": "2026-10-20T18:35:18.635627Z",
+      "publication_to_child_start_ms": 112960.373,
+      "input_files": [
+        {
+          "path": "request.md",
+          "sha256": "f880ed89e47d83b394783078dddf7713ec00f1be052fdf34ca5003e1f47386de"
+        },
+        {
+          "path": "request-origin.json",
+          "sha256": "b5b90be296cf16ed54ff518ceda7e98b2312549519d609d090e7b28a9357651f"
+        },
+        {
+          "path": "editor-guide.md",
+          "sha256": "8e76a68f37f204332c0618bc256134674ac6ffbe4b44280164363f61871ec281"
+        }
+      ],
+      "boundary": "publication OS observation not exact host message arrival; queue/preparation interval retained, deadline never reset to child start/SDK start",
+      "outcome": "unknown"
+    }
+  ],
+  "stage2_released": false,
+  "expected_answers_disclosed": false,
+  "author_rationale_or_old_findings_disclosed": false,
+  "software": "735 full tests passed for frozen16/new7, not H efficacy"
+}

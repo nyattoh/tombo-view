@@ -1,0 +1,6 @@
+{
+  "evidenceIds": [
+    "e-plan-json"
+  ],
+  "reason": "jobs/plan.jsonが更新され開始時刻が00:20（plan_revision: 2）に変更されたため旧版証拠を撤回"
+}

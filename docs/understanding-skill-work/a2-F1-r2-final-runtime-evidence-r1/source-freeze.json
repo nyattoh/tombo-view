@@ -1,0 +1,214 @@
+{
+  "frozen_at": "2026-10-20T20:51:57.199Z",
+  "cwd": "D:\\develop\\works\\tombo-view-ask-policy",
+  "branch": "devin/20261020-1705-understanding-skill",
+  "head": "dda5ff739ff0c23c37cc2e1d067b8ed0294cbbf9",
+  "files": [
+    {
+      "path": "README.md",
+      "ownership": "protected",
+      "before_sha256": "ece2927fa1280a4c73dd222b44beb81701b888bfc0e60dd30b33a7624cac6acd",
+      "sha256": "1e8cfda602e87eeb8d4fabae55e140ca5b49077800e29aa2df8af58f0c99f0d0",
+      "before_mtime_ns": "1792524000222323900",
+      "mtime_ns": "1792529404699574400",
+      "bytes_unchanged": false,
+      "mtime_unchanged": false
+    },
+    {
+      "path": "skills/tombo-view/SKILL.md",
+      "ownership": "protected",
+      "before_sha256": "c8ca55395aa2727efbbe098b970bc12e5441fd77013013c978978e72a9133b39",
+      "sha256": "c8ca55395aa2727efbbe098b970bc12e5441fd77013013c978978e72a9133b39",
+      "before_mtime_ns": "1792520498150143300",
+      "mtime_ns": "1792520498150143300",
+      "bytes_unchanged": true,
+      "mtime_unchanged": true
+    },
+    {
+      "path": "skills/tombo-view/agents/openai.yaml",
+      "ownership": "protected",
+      "before_sha256": "06f40acb0d8181ca1524cbaafc49ea209043354266a045ed25d3af2e4a5b6fcf",
+      "sha256": "06f40acb0d8181ca1524cbaafc49ea209043354266a045ed25d3af2e4a5b6fcf",
+      "before_mtime_ns": "1792484131542519300",
+      "mtime_ns": "1792484131542519300",
+      "bytes_unchanged": true,
+      "mtime_unchanged": true
+    },
+    {
+      "path": "skills/tombo-view/references/host-session.md",
+      "ownership": "protected",
+      "before_sha256": "442602f5a30395e869b55ff67a397964023ed6abb5b847192f544da638df58a6",
+      "sha256": "d3e300f2928fb4b947d82ec8921b9db569b2f74365793a8e0e583d035964a9a1",
+      "before_mtime_ns": "1792524056166371300",
+      "mtime_ns": "1792529422338615200",
+      "bytes_unchanged": false,
+      "mtime_unchanged": false
+    },
+    {
+      "path": "skills/tombo-view/scripts/session.mjs",
+      "ownership": "owned",
+      "before_sha256": "f545b21fa172b3fa975a09125ff981f6aa47b36e5446c3d76ec6ead66429688b",
+      "sha256": "d7dec89c35183a0cc5f8499a280b752410fae36d94b93b7f690b4d4b19ca6b35",
+      "before_mtime_ns": "1792519658979386400",
+      "mtime_ns": "1792529007916519100",
+      "bytes_unchanged": false,
+      "mtime_unchanged": false
+    },
+    {
+      "path": "src/core.ts",
+      "ownership": "owned",
+      "before_sha256": "6642d469b4a005b124da7bdc215b7a0720461488f386ec6c70afc7939e52e260",
+      "sha256": "5f482373f1d7054c9db6005319380a4fec9a664001dac6202a6caeb25d40fde7",
+      "before_mtime_ns": "1792507033990633700",
+      "mtime_ns": "1792529005754284800",
+      "bytes_unchanged": false,
+      "mtime_unchanged": false
+    },
+    {
+      "path": "src/report.ts",
+      "ownership": "protected",
+      "before_sha256": "7043d10897d43e8f6bfd3457eb566545d96daf66ae9b64c5ef4e2df01e8be2e7",
+      "sha256": "7043d10897d43e8f6bfd3457eb566545d96daf66ae9b64c5ef4e2df01e8be2e7",
+      "before_mtime_ns": "1792484356803732700",
+      "mtime_ns": "1792484356803732700",
+      "bytes_unchanged": true,
+      "mtime_unchanged": true
+    },
+    {
+      "path": "src/types.ts",
+      "ownership": "owned",
+      "before_sha256": "2e96aea0702eb270326aae797768b53f65ae0b9dc79e25cfa7eff6e17f341d26",
+      "sha256": "9b16cf222f9d56248fb65cb7be6c6a677cdb8fc0ead5c19efea5bf65423f5eeb",
+      "before_mtime_ns": "1792484351608243000",
+      "mtime_ns": "1792528957604861600",
+      "bytes_unchanged": false,
+      "mtime_unchanged": false
+    },
+    {
+      "path": "test/cli-model-repair.test.mjs",
+      "ownership": "owned",
+      "before_sha256": "93813bd5cf44d4bcb7d1349e6db4dacfa0edc0c662ddbbb7c3eb77eb01d28d5a",
+      "sha256": "b2e93a05e6634047d30e1209231596cef208e3b18a92bad508e743f61883a3b3",
+      "before_mtime_ns": "1792528506483365000",
+      "mtime_ns": "1792529218151332500",
+      "bytes_unchanged": false,
+      "mtime_unchanged": false
+    },
+    {
+      "path": "skills/tombo-view/scripts/session-store.mjs",
+      "ownership": "protected",
+      "before_sha256": "2bafafeaa30beb6067367ce75af9d46e2bf1abe58d4d80a1ca31729fe92b6219",
+      "sha256": "2bafafeaa30beb6067367ce75af9d46e2bf1abe58d4d80a1ca31729fe92b6219",
+      "before_mtime_ns": "1792519825965063500",
+      "mtime_ns": "1792519825965063500",
+      "bytes_unchanged": true,
+      "mtime_unchanged": true
+    },
+    {
+      "path": "test/assessment-scope-diagnostics.test.mjs",
+      "ownership": "protected",
+      "before_sha256": "9ddd46e32886f46b15bd890cb87637f5864e823e5faa6443fef329a2e9e39dc0",
+      "sha256": "9ddd46e32886f46b15bd890cb87637f5864e823e5faa6443fef329a2e9e39dc0",
+      "before_mtime_ns": "1792484313569120000",
+      "mtime_ns": "1792484313569120000",
+      "bytes_unchanged": true,
+      "mtime_unchanged": true
+    },
+    {
+      "path": "test/assessment-scope-report.test.mjs",
+      "ownership": "protected",
+      "before_sha256": "c904c36645c535207b543a26e67df18e29b547afad0cb265186b620858e49f2d",
+      "sha256": "c904c36645c535207b543a26e67df18e29b547afad0cb265186b620858e49f2d",
+      "before_mtime_ns": "1792484313568145600",
+      "mtime_ns": "1792484313568145600",
+      "bytes_unchanged": true,
+      "mtime_unchanged": true
+    },
+    {
+      "path": "test/session-binding.test.mjs",
+      "ownership": "protected",
+      "before_sha256": "c07d8c636eb766ebc2ca12517491b46a7fef912df4b628663a913963de3a2acd",
+      "sha256": "c07d8c636eb766ebc2ca12517491b46a7fef912df4b628663a913963de3a2acd",
+      "before_mtime_ns": "1792510503050050200",
+      "mtime_ns": "1792510503050050200",
+      "bytes_unchanged": true,
+      "mtime_unchanged": true
+    },
+    {
+      "path": "test/session-budget-checkpoint.test.mjs",
+      "ownership": "protected",
+      "before_sha256": "36dd66b02ddfad46f6bb2c4b18cbafd7f0948c2654ff192f898437efd4d13ee0",
+      "sha256": "36dd66b02ddfad46f6bb2c4b18cbafd7f0948c2654ff192f898437efd4d13ee0",
+      "before_mtime_ns": "1792506968319791500",
+      "mtime_ns": "1792506968319791500",
+      "bytes_unchanged": true,
+      "mtime_unchanged": true
+    },
+    {
+      "path": "test/session-followup.test.mjs",
+      "ownership": "owned",
+      "before_sha256": "4f0f34ee149f8bad1bd16bfd837d90248987f1a6107343b454f98f850524b568",
+      "sha256": "4f0f34ee149f8bad1bd16bfd837d90248987f1a6107343b454f98f850524b568",
+      "before_mtime_ns": "1792528506485413300",
+      "mtime_ns": "1792528506485413300",
+      "bytes_unchanged": true,
+      "mtime_unchanged": true
+    },
+    {
+      "path": "test/understanding-session.test.mjs",
+      "ownership": "protected",
+      "before_sha256": "0768dbb8e1694ff0b83057d39f7530c4cac63511eefcd3cab3e28b61075dc721",
+      "sha256": "0768dbb8e1694ff0b83057d39f7530c4cac63511eefcd3cab3e28b61075dc721",
+      "before_mtime_ns": "1792484313570622500",
+      "mtime_ns": "1792484313570622500",
+      "bytes_unchanged": true,
+      "mtime_unchanged": true
+    }
+  ],
+  "protected11_unchanged": false,
+  "protected9_bytes_mtime_unchanged": true,
+  "concurrent_document_changes": [
+    {
+      "path": "README.md",
+      "ownership": "protected",
+      "before_sha256": "ece2927fa1280a4c73dd222b44beb81701b888bfc0e60dd30b33a7624cac6acd",
+      "sha256": "1e8cfda602e87eeb8d4fabae55e140ca5b49077800e29aa2df8af58f0c99f0d0",
+      "before_mtime_ns": "1792524000222323900",
+      "mtime_ns": "1792529404699574400",
+      "bytes_unchanged": false,
+      "mtime_unchanged": false
+    },
+    {
+      "path": "skills/tombo-view/references/host-session.md",
+      "ownership": "protected",
+      "before_sha256": "442602f5a30395e869b55ff67a397964023ed6abb5b847192f544da638df58a6",
+      "sha256": "d3e300f2928fb4b947d82ec8921b9db569b2f74365793a8e0e583d035964a9a1",
+      "before_mtime_ns": "1792524056166371300",
+      "mtime_ns": "1792529422338615200",
+      "bytes_unchanged": false,
+      "mtime_unchanged": false
+    }
+  ],
+  "document_change_attribution": "PM confirmed authorised parallel same docs owner ordinal11, actual write events255/256/257, 05:50:04/22 mtimes and matching SHAs",
+  "store_unchanged": true,
+  "test_prefix_proof": [
+    {
+      "path": "test/cli-model-repair.test.mjs",
+      "original_prefix_bytes": 17716,
+      "original_prefix_unchanged": true,
+      "entire_amended_red_prefix_unchanged": true
+    },
+    {
+      "path": "test/session-followup.test.mjs",
+      "original_prefix_bytes": 73913,
+      "original_prefix_unchanged": true,
+      "entire_amended_red_prefix_unchanged": true
+    }
+  ],
+  "helper_pre_sdk_guard_unchanged": "entire session-followup test file unchanged from amended r2 RED terminal",
+  "staged": "",
+  "ask192": 192,
+  "parallel_docs_changes_authorised": true,
+  "combined_freeze": "PM after both owner terminals",
+  "freeze_scope": "Owned source3/test2 and unchanged protected9; docs2 hashes are concurrent point-in-time observations"
+}

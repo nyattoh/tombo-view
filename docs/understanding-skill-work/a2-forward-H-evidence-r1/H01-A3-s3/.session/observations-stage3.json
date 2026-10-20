@@ -1,0 +1,60 @@
+[
+  {
+    "executionId": "stage3-planning-read",
+    "probeId": "read-corrected-planning",
+    "outcome": "completed",
+    "evidence": [
+      {
+        "id": "room-rechecked",
+        "kind": "document",
+        "locator": "meeting-options.md",
+        "sourceGroup": "meeting-options.md",
+        "retrievedAt": "2026-10-20T18:49:02.331Z",
+        "version": null,
+        "scope": "memo-planning",
+        "passage": "Synthetic, undated planning note for eight attendees. The room is available for 45 minutes.",
+        "contentHash": "a2fcb170aad52dc7f0e72d94616c1fa8fdb5b6a00a2c92ee166c2f0790814fbd",
+        "validity": "current"
+      },
+      {
+        "id": "round-rechecked",
+        "kind": "document",
+        "locator": "meeting-options.md",
+        "sourceGroup": "meeting-options.md",
+        "retrievedAt": "2026-10-20T18:49:02.331Z",
+        "version": null,
+        "scope": "memo-planning",
+        "passage": "- Open round: allow each attendee up to 2 minutes to share a thought, then leave the remaining time for open discussion. No materials are needed.",
+        "contentHash": "82c92f12276eab5eb26be1c520614d5b9e0676592aff345a59387b4af50e6588",
+        "validity": "current"
+      },
+      {
+        "id": "card-activity-rechecked",
+        "kind": "document",
+        "locator": "meeting-options.md",
+        "sourceGroup": "meeting-options.md",
+        "retrievedAt": "2026-10-20T18:49:02.331Z",
+        "version": null,
+        "scope": "memo-planning",
+        "passage": "- Prompt-card activity: use three prompt cards in small groups. The activity outline reserves 35 minutes, including the introduction.",
+        "contentHash": "353d2c6ab7e598067d5a5a66f0ef0163048b39a733671cfdc32b418e47a401ac",
+        "validity": "current"
+      },
+      {
+        "id": "prep-corrected25",
+        "kind": "document",
+        "locator": "preparation-update.md",
+        "sourceGroup": "preparation-update.md",
+        "retrievedAt": "2026-10-20T18:49:02.331Z",
+        "version": null,
+        "scope": "memo-planning",
+        "passage": "# Updated card-preparation note\n\nSynthetic, undated note from the organiser: the current prompt-card set needs about 25 minutes of preparation, rather than the earlier 10-minute estimate, because the cards must be sorted for this session. This remains an estimate; no timed preparation was recorded.\n",
+        "contentHash": "11280bb17d088c2f7d60a264faa1503efb7c46c7856cefb24a0a276252e365a5",
+        "validity": "current"
+      }
+    ],
+    "toolCalls": 1,
+    "elapsedMs": 1.325400000000002,
+    "costYen": null
+  }
+]

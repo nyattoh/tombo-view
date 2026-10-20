@@ -1,0 +1,16 @@
+{
+  "current_group": {"name": "平日夜の読書会", "period": "2026年9月〜10月", "registered": 24},
+  "survey": {
+    "group": "夏休み昼の読書会",
+    "period": "2026年8月",
+    "respondents": 15,
+    "question": "夏休み中は昼の開催を続けてほしいですか",
+    "yes": 12,
+    "no": 3,
+    "respondent_overlap_with_current_group": "未確認"
+  },
+  "current_group_comments": [
+    {"alias": "参加者あ", "text": "今の平日夜なら続けて通えます"},
+    {"alias": "参加者い", "text": "夜は帰りが遅くなるので昼が助かります"}
+  ]
+}

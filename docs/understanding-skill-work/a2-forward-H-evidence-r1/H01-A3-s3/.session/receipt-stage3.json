@@ -1,0 +1,12 @@
+{
+  "id": "stage3-preparation-correction",
+  "source": {
+    "kind": "document",
+    "locator": "preparation-update.md",
+    "receivedAt": "2026-10-20T18:48:29.898Z"
+  },
+  "text": "# Updated card-preparation note\n\nSynthetic, undated note from the organiser: the current prompt-card set needs about 25 minutes of preparation, rather than the earlier 10-minute estimate, because the cards must be sorted for this session. This remains an estimate; no timed preparation was recorded.\n",
+  "references": [
+    "preparation-update.md"
+  ]
+}

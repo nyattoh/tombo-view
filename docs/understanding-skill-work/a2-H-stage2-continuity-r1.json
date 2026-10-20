@@ -1,0 +1,104 @@
+{
+  "at": "2026-10-20T18:46:58.220750+00:00",
+  "rows": [
+    {
+      "actor": "H01-A1",
+      "checks": {
+        "binding": true,
+        "clock": true,
+        "task_id": true,
+        "sdk_start": true,
+        "budget": true,
+        "elapsed_monotonic": true
+      },
+      "before_revision": 1,
+      "after_revision": 3,
+      "scope": "structural only; no semantic PASS inferred"
+    },
+    {
+      "actor": "H01-A2",
+      "checks": {
+        "binding": true,
+        "clock": true,
+        "task_id": true,
+        "sdk_start": true,
+        "budget": true,
+        "elapsed_monotonic": true
+      },
+      "before_revision": 2,
+      "after_revision": 4,
+      "scope": "structural only; no semantic PASS inferred"
+    },
+    {
+      "actor": "H01-A3",
+      "checks": {
+        "binding": true,
+        "clock": true,
+        "task_id": true,
+        "sdk_start": true,
+        "budget": true,
+        "elapsed_monotonic": true
+      },
+      "before_revision": 2,
+      "after_revision": 5,
+      "scope": "structural only; no semantic PASS inferred"
+    },
+    {
+      "actor": "H01-A4",
+      "checks": {
+        "binding": true,
+        "clock": true,
+        "task_id": true,
+        "sdk_start": true,
+        "budget": true,
+        "elapsed_monotonic": true
+      },
+      "before_revision": 2,
+      "after_revision": 4,
+      "scope": "structural only; no semantic PASS inferred"
+    },
+    {
+      "actor": "H02-B1",
+      "checks": {
+        "binding": true,
+        "clock": true,
+        "task_id": true,
+        "sdk_start": true,
+        "budget": true,
+        "elapsed_monotonic": true,
+        "understanding_hash_unchanged": true,
+        "model_round_tool_counts_unchanged": true,
+        "known_unknown_token_cost_unchanged": true,
+        "task_expired": true,
+        "session_stop_actual": true,
+        "same_transition_history": true,
+        "new_receipts_unassessed": true
+      },
+      "before_revision": 1,
+      "after_revision": 4,
+      "scope": "structural only; no semantic PASS inferred"
+    },
+    {
+      "actor": "H02-B2",
+      "checks": {
+        "binding": true,
+        "clock": true,
+        "task_id": true,
+        "sdk_start": true,
+        "budget": true,
+        "elapsed_monotonic": true,
+        "understanding_hash_unchanged": true,
+        "model_round_tool_counts_unchanged": true,
+        "known_unknown_token_cost_unchanged": true,
+        "task_expired": true,
+        "session_stop_actual": true,
+        "same_transition_history": true,
+        "new_receipts_unassessed": true
+      },
+      "before_revision": 2,
+      "after_revision": 5,
+      "scope": "structural only; no semantic PASS inferred"
+    }
+  ],
+  "no_semantic_acceptance_implied": true
+}

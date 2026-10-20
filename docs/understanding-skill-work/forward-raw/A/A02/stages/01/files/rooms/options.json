@@ -1,0 +1,7 @@
+{
+  "currency": "JPY",
+  "slots": [
+    {"name": "白樺室", "hours": "13:00-17:00", "price": 1800, "walk_minutes": 4, "noise": "通りに面し、車の音が入る", "power": true},
+    {"name": "楓室", "hours": "13:00-17:00", "price": 1800, "walk_minutes": 12, "noise": "中庭側で静か", "power": true}
+  ]
+}

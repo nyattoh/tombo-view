@@ -1,0 +1,100 @@
+{
+  "workingDirectory": "D:/develop/works/tombo-view-ask-policy/results/understanding-forward/observers/B01",
+  "executions": [
+    {
+      "task": "task1",
+      "step": "prepare_inspect",
+      "command": "node D:/develop/works/tombo-view-ask-policy/skills/tombo-view/scripts/session.mjs prepare --input .session/task.json --out .session/context.json --ledger .session/events.jsonl",
+      "exitCode": 0
+    },
+    {
+      "task": "task1",
+      "step": "inspect",
+      "command": "node D:/develop/works/tombo-view-ask-policy/skills/tombo-view/scripts/session.mjs inspect --input .session/task.json --proposal .session/proposal.json --out .session/inspection.json --ledger .session/events.jsonl",
+      "exitCode": 0,
+      "decision": "needs_check"
+    },
+    {
+      "task": "task1",
+      "step": "prepare_update",
+      "command": "node D:/develop/works/tombo-view-ask-policy/skills/tombo-view/scripts/session.mjs prepare --state .session/inspection.json --observations .session/observations.json --out .session/context-next.json --ledger .session/events.jsonl",
+      "exitCode": 0
+    },
+    {
+      "task": "task1",
+      "step": "update",
+      "command": "node D:/develop/works/tombo-view-ask-policy/skills/tombo-view/scripts/session.mjs update --state .session/inspection.json --observations .session/observations.json --proposal .session/proposal-next.json --out .session/next.json --ledger .session/events.jsonl",
+      "exitCode": 0,
+      "decision": "needs_reflection"
+    },
+    {
+      "task": "task1",
+      "step": "prepare_reflect",
+      "command": "node D:/develop/works/tombo-view-ask-policy/skills/tombo-view/scripts/session.mjs prepare --operation reflect --state .session/next.json --ledger .session/events.jsonl --out .session/reflection-context.json",
+      "exitCode": 0
+    },
+    {
+      "task": "task1",
+      "step": "reflect",
+      "command": "node D:/develop/works/tombo-view-ask-policy/skills/tombo-view/scripts/session.mjs reflect --state .session/next.json --proposal .session/reflection.json --ledger .session/events.jsonl --out .session/reflected.json",
+      "exitCode": 0,
+      "decision": "ready_for_requested_step"
+    },
+    {
+      "task": "task1",
+      "step": "report",
+      "command": "node D:/develop/works/tombo-view-ask-policy/skills/tombo-view/scripts/session.mjs report --state .session/reflected.json --out .session/report.md",
+      "exitCode": 0
+    },
+    {
+      "transition": "handover",
+      "file": ".session/handover.json",
+      "reason": "新資料 exhibit/operations.txt 追加に伴う目的・成功条件の更新および別taskへの移行"
+    },
+    {
+      "task": "task2",
+      "step": "prepare_inspect",
+      "command": "node D:/develop/works/tombo-view-ask-policy/skills/tombo-view/scripts/session.mjs prepare --input .session/task2.json --out .session/context2.json --ledger .session/events-task2.jsonl",
+      "exitCode": 0
+    },
+    {
+      "task": "task2",
+      "step": "inspect",
+      "command": "node D:/develop/works/tombo-view-ask-policy/skills/tombo-view/scripts/session.mjs inspect --input .session/task2.json --proposal .session/proposal2.json --out .session/inspection2.json --ledger .session/events-task2.jsonl",
+      "exitCode": 0,
+      "decision": "needs_check"
+    },
+    {
+      "task": "task2",
+      "step": "prepare_update",
+      "command": "node D:/develop/works/tombo-view-ask-policy/skills/tombo-view/scripts/session.mjs prepare --state .session/inspection2.json --observations .session/observations2.json --out .session/context2-next.json --ledger .session/events-task2.jsonl",
+      "exitCode": 0
+    },
+    {
+      "task": "task2",
+      "step": "update",
+      "command": "node D:/develop/works/tombo-view-ask-policy/skills/tombo-view/scripts/session.mjs update --state .session/inspection2.json --observations .session/observations2.json --proposal .session/proposal2-next.json --out .session/next2.json --ledger .session/events-task2.jsonl",
+      "exitCode": 0,
+      "decision": "needs_reflection"
+    },
+    {
+      "task": "task2",
+      "step": "prepare_reflect",
+      "command": "node D:/develop/works/tombo-view-ask-policy/skills/tombo-view/scripts/session.mjs prepare --operation reflect --state .session/next2.json --ledger .session/events-task2.jsonl --out .session/reflection2-context.json",
+      "exitCode": 0
+    },
+    {
+      "task": "task2",
+      "step": "reflect",
+      "command": "node D:/develop/works/tombo-view-ask-policy/skills/tombo-view/scripts/session.mjs reflect --state .session/next2.json --proposal .session/reflection2.json --ledger .session/events-task2.jsonl --out .session/reflected2.json",
+      "exitCode": 0,
+      "decision": "ready_for_requested_step"
+    },
+    {
+      "task": "task2",
+      "step": "report",
+      "command": "node D:/develop/works/tombo-view-ask-policy/skills/tombo-view/scripts/session.mjs report --state .session/reflected2.json --out .session/report2.md",
+      "exitCode": 0
+    }
+  ]
+}

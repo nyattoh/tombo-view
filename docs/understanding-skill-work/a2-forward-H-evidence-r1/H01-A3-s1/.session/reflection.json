@@ -1,0 +1,33 @@
+{
+  "binding": {
+    "schemaVersion": "0.1",
+    "operation": "reflect",
+    "taskId": "reading-group-format",
+    "expectedRevision": 1,
+    "requestHash": "9fa42539562ff634fed6d97f0c209f538661dfb2adcc62b802f10a6c87d571e1",
+    "sessionId": "24cc4f30-ba82-4066-bab9-3d4e14dff741"
+  },
+  "reflection": {
+    "binding": {
+      "taskId": "reading-group-format",
+      "basedRevision": 1,
+      "understandingHash": "2b9d0d328f2a52af21850f84aefa369a20a301280df3949bb9b07143c1ee8890"
+    },
+    "reviewedClaimIds": [
+      "room",
+      "round-time",
+      "card-time",
+      "card-prep-estimate",
+      "priority-small-group",
+      "prep-outside"
+    ],
+    "completion": "completed",
+    "limitations": [
+      "資料は架空・日付なしの計画メモであり、参加者の実際の満足度や発言しやすさの測定結果ではない。",
+      "順番案の29分は全員が上限まで話した場合の算術上の残りであり、導入・交代・終了作業をまだ引いていない。",
+      "カード案の10分の余裕は準備を枠外に置いた計画上の差であり、実行時間の保証ではない。",
+      "本人の優先順位と準備可否は回答待ちであり、どちらかの案の確定や検討全体の完了は主張できない。"
+    ],
+    "proposal": {}
+  }
+}

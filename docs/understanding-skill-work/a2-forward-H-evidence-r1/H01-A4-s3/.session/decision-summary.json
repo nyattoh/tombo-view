@@ -1,0 +1,33 @@
+{
+  "selectedFormat": "open round with optional pass",
+  "basis": [
+    "本人の最重要条件は全員が自分の考えを話す機会",
+    "本人が準備に使えるのは10分以内",
+    "訂正後のカード準備は約25分の見積り",
+    "本人が訂正後もパス可の順番案を選択"
+  ],
+  "proposedAgenda": [
+    {
+      "minutes": "0-4",
+      "activity": "説明と考える時間"
+    },
+    {
+      "minutes": "4-20",
+      "activity": "一人最大2分の一巡。短くてもよく、パス可"
+    },
+    {
+      "minutes": "20-40",
+      "activity": "自由討論。後から話したくなった人も参加可"
+    },
+    {
+      "minutes": "40-45",
+      "activity": "まとめと片付け"
+    }
+  ],
+  "unknowns": [
+    "実際の話しやすさと所要時間",
+    "パス可の調整の効果"
+  ],
+  "sdkCompletion": false,
+  "sdkLimitations": "旧gapのscope不一致等により3件の未解決記録を保持。本人の回答と選択はsupported。追加質問は不要。"
+}

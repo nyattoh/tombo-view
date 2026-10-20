@@ -1,0 +1,41 @@
+{
+  "at": "2026-10-21T01:54:43.220664+09:00",
+  "source_checks": [
+    {
+      "path": "skills/tombo-view/scripts/session-store.mjs",
+      "matches": true
+    },
+    {
+      "path": "skills/tombo-view/scripts/session.mjs",
+      "matches": true
+    },
+    {
+      "path": "test/session-followup.test.mjs",
+      "matches": true
+    },
+    {
+      "path": "src/core.ts",
+      "matches": true
+    },
+    {
+      "path": "src/types.ts",
+      "matches": true
+    },
+    {
+      "path": "src/report.ts",
+      "matches": true
+    },
+    {
+      "path": "test/session-binding.test.mjs",
+      "matches": true
+    }
+  ],
+  "all_match": true,
+  "evidence_archive": "docs\\understanding-skill-work\\a2-post-F-runtime-evidence-r1",
+  "new_product_changes": [
+    "skills/tombo-view/scripts/session-store.mjs",
+    "skills/tombo-view/scripts/session.mjs",
+    "test/session-followup.test.mjs"
+  ],
+  "unknown_cost_tokens": true
+}

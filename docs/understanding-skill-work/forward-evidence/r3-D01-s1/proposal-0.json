@@ -1,0 +1,110 @@
+{
+  "binding": {
+    "schemaVersion": "0.1",
+    "operation": "inspect",
+    "taskId": "json-export-speedup-assessment",
+    "expectedRevision": -1,
+    "requestHash": "cb7f0bebe15915fbe68c35e9e0e9f1ad0b9a22f502e41159b787fcf1207decf0"
+  },
+  "proposal": {
+    "claims": [
+      {
+        "id": "claim-speedup-ratio",
+        "role": "answer_claim",
+        "text": "まとめ書き（100件単位）への変更によりローカルJSON書き出し処理（30,000件）の所要時間が約12.0秒から約8.0秒になり、約1.5倍高速化した",
+        "scope": "local_json_export_benchmark"
+      },
+      {
+        "id": "claim-output-consistency",
+        "role": "assumption",
+        "text": "まとめ書き変更の前後で行数および各項目の出力値が一致し、処理結果の同等性が維持されている",
+        "scope": "local_json_export_benchmark"
+      },
+      {
+        "id": "claim-measurement-conditions",
+        "role": "observation",
+        "text": "測定は同一ノートPC・同一ローカル保存先・同一ランタイムで各3回実施され、コード変更は書き込み単位のみである",
+        "scope": "local_json_export_benchmark"
+      }
+    ],
+    "lenses": [
+      {
+        "id": "lens-export-benchmark",
+        "label": "書き出し性能と測定信頼性の評価",
+        "rationale": "測定値に基づく高速化比率の算出と測定条件の妥当性を評価する視点",
+        "origin": "initial",
+        "status": "active"
+      }
+    ],
+    "gaps": [
+      {
+        "id": "gap-export-times",
+        "kind": "unsupported_claim",
+        "lensId": "lens-export-benchmark",
+        "question": "measurements/export-times.json の測定結果において約1.5倍の高速化が確認できるか",
+        "triggerRefs": [
+          "claim-speedup-ratio",
+          "task:goal"
+        ],
+        "whyItMatters": "開発報告に記載する約1.5倍高速化の数値的根拠を確認するため",
+        "importance": "required",
+        "claimIds": [
+          "claim-speedup-ratio"
+        ],
+        "probeIds": [
+          "probe-read-export-times"
+        ]
+      },
+      {
+        "id": "gap-measurement-conditions",
+        "kind": "missing_fact",
+        "lensId": "lens-export-benchmark",
+        "question": "notes/run-summary.txt に記録された測定環境および実行条件が比較に適しているか",
+        "triggerRefs": [
+          "claim-measurement-conditions",
+          "task:goal"
+        ],
+        "whyItMatters": "速度比較の前提条件と報告記載時の限定条件（対象件数・環境）を明確にするため",
+        "importance": "required",
+        "claimIds": [
+          "claim-measurement-conditions"
+        ],
+        "probeIds": [
+          "probe-read-run-summary"
+        ]
+      }
+    ],
+    "probes": [
+      {
+        "id": "probe-read-export-times",
+        "gapIds": [
+          "gap-export-times"
+        ],
+        "method": "corroboration",
+        "question": "measurements/export-times.json から各版の測定秒数および出力比較結果を確認する",
+        "requiredCapability": "read_saved_records",
+        "sourceGroups": [
+          "measurements"
+        ],
+        "successCondition": "beforeとafterの経過秒数が取得でき、比率が約1.5倍であること",
+        "refutationCondition": "高速化が認められないか、比率が1.5倍から大きく異なること",
+        "inconclusiveCondition": "測定結果ファイルが存在しないか形式不正で読み取れないこと"
+      },
+      {
+        "id": "probe-read-run-summary",
+        "gapIds": [
+          "gap-measurement-conditions"
+        ],
+        "method": "corroboration",
+        "question": "notes/run-summary.txt から測定日・環境・実行回数・変更点を確認する",
+        "requiredCapability": "read_saved_records",
+        "sourceGroups": [
+          "notes"
+        ],
+        "successCondition": "同一ノートPC、変更点が書き込み単位のみなどの測定条件が確認できること",
+        "refutationCondition": "異なる環境や条件で測定されており比較不能であること",
+        "inconclusiveCondition": "記録ファイルが存在しないか読み取れないこと"
+      }
+    ]
+  }
+}

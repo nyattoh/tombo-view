@@ -1,0 +1,32 @@
+{
+  "at": "2026-10-21T04:26:54.897061+09:00",
+  "ready_for_independent_challenge": true,
+  "acceptance2_pass": false,
+  "full_review_pass": false,
+  "total16": 16,
+  "new7_explicit": [
+    "skills/tombo-view/scripts/session-store.mjs",
+    "test/assessment-scope-diagnostics.test.mjs",
+    "test/assessment-scope-report.test.mjs",
+    "test/session-binding.test.mjs",
+    "test/session-budget-checkpoint.test.mjs",
+    "test/session-followup.test.mjs",
+    "test/understanding-session.test.mjs"
+  ],
+  "all_current_hashes_match": true,
+  "patch_contains_all16_including_store_binding": true,
+  "history409_unchanged": true,
+  "ask192_unchanged": true,
+  "npm": "a2-integrated-npm-test-r5.json",
+  "npm_count": {
+    "tests": 735,
+    "pass": 735,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "freeze": "a2-post-H-product-freeze-r1.json",
+  "remaining_evidence_judgement": "No new runtime/workflow/SKILL behaviour in post-H factual documentation delta. Existing registered blinded H/G02 evidence can be independently judged without presenting post-H contract explanation as behavioural retest success. All semantic/quota/old-gap failures retained; if review identifies necessary substantial change, return to fresh design/RED/affected+full tests/new blinded inputs. No acceptance waiver.",
+  "routing": "Google antigravity gemini-4-argon-high live model; model-encoded high, options empty, benchmark unknown rank33, cost unknown. Initial default candidates max20 omitted it; rerun max1000 resolved local routing output, no provider task had failed or been dispatched."
+}

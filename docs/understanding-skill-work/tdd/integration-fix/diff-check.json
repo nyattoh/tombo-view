@@ -1,0 +1,4 @@
+{
+  "command": "git diff --check -- test/cli-model-repair.test.mjs",
+  "exit": 0
+}

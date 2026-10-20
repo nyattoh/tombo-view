@@ -1,0 +1,6 @@
+{
+  "started_at": "2026-10-21T01:51:03.8064453+09:00",
+  "completed_at": "2026-10-21T01:51:59.2129146+09:00",
+  "command": "node --test test/session-budget-checkpoint.test.mjs test/session-binding.test.mjs test/session-followup.test.mjs",
+  "exit": 0
+}

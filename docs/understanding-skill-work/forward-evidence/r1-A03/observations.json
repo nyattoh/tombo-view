@@ -1,0 +1,24 @@
+[
+  {
+    "executionId": "exec-probe-read-confirmed",
+    "probeId": "probe-read-confirmed",
+    "outcome": "completed",
+    "evidence": [
+      {
+        "id": "ev-workshop-confirmed",
+        "kind": "document",
+        "locator": "workshop/confirmed.txt",
+        "sourceGroup": "workshop/confirmed.txt",
+        "retrievedAt": "2026-10-20T17:29:40+09:00",
+        "version": null,
+        "scope": "workshop/confirmed.txt",
+        "passage": "名称：紙の箱づくり体験\n日時：2026年11月14日（土）14時〜15時\n会場：架空の地域交流館・工作室\n対象：小学生以上。小学生は保護者同伴。\n定員：10組。先着順。\n参加費：1組300円。材料込み。\n持ち物：なし。\n申込み：11月1日から交流館の受付窓口へ直接。\n文体：親しみやすい、です・ます調。\nこの内容は主催側で確定済み。\n",
+        "contentHash": "a0ee3dacce2180067a48c98c64786eb63b22e9d8361044b5d2b6d062de4b1a6f",
+        "validity": "current"
+      }
+    ],
+    "toolCalls": 1,
+    "elapsedMs": 5,
+    "costYen": null
+  }
+]

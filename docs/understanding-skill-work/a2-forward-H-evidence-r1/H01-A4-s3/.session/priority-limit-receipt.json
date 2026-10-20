@@ -1,0 +1,32 @@
+{
+  "id": "user-priority-and-limit-answer",
+  "source": {
+    "kind": "user_statement",
+    "locator": "conversation:initial-question-answers"
+  },
+  "text": "今回、特に大事にしたいのはどれですか。この優先順位で、2案の勧め方が変わります。\n全員が一度は自分の考えを話す機会\n\nカードの事前準備に、目安の10分ほどを使えそうですか。メモの10分は実測ではないため、余裕の有無を確認したいです。\n10分以内なら準備できる",
+  "observations": [
+    {
+      "executionId": "user-priority-and-limit-observed",
+      "probeId": "ask-priority",
+      "outcome": "completed",
+      "evidence": [
+        {
+          "id": "user-priority-and-limit",
+          "kind": "user_statement",
+          "locator": "conversation:initial-question-answers",
+          "sourceGroup": "conversation:initial-question-answers",
+          "retrievedAt": "2026-10-20T18:52:58.338Z",
+          "version": null,
+          "scope": "user priority and preparation limit for this reading meeting",
+          "passage": "今回、特に大事にしたいのはどれですか。この優先順位で、2案の勧め方が変わります。\n全員が一度は自分の考えを話す機会\n\nカードの事前準備に、目安の10分ほどを使えそうですか。メモの10分は実測ではないため、余裕の有無を確認したいです。\n10分以内なら準備できる",
+          "contentHash": "6449c8f94d3ae81a1077c3b4a15ee7347a33feb622e7b6c4365e9d4a8c2ed4e1",
+          "validity": "current"
+        }
+      ],
+      "toolCalls": 0,
+      "elapsedMs": 0,
+      "costYen": null
+    }
+  ]
+}

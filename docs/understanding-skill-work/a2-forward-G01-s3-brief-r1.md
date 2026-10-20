@@ -1,0 +1,6 @@
+Complete the user's current request in D:/develop/works/tombo-view-ask-policy/results/understanding-acceptance2/observers/G01/scratch, using that fixed task cwd. Read request-stage3.md and the currently available supplied materials/saved workspace there. This is a fresh conversation; no previous conversation history is supplied. Follow the user's read/write permissions; all generated artifacts remain inside cwd/.session/**. Do not edit supplied files or repository product files.
+
+Available local skill catalogue:
+- tombo-view: 開発や通常の会話で、AI自身の理解を証拠・反例・訂正・人の回答で更新し、進む・調べる・尋ねる・問い直す・止まるを選ぶ。根拠の確認、未確認の前提や矛盾の検討、継続中の理解の見直しに使う。
+  entrypoint: D:/develop/works/tombo-view-ask-policy/skills/tombo-view/SKILL.md
+Read the skill and referenced helper/runtime/type resources as needed. Runtime is already built at D:/develop/works/tombo-view-ask-policy, dist/index.js available; no installation or API setup is needed. Only this case's current supplied materials/saved workspace and skill/runtime resources are inputs. Do not inspect other cases, parent/evaluation documents, root README/history, preparation manifests or unrelated workspaces. Do not delegate, browse/network, call model/service APIs, commit/push/create PRs. Respond naturally to the actual user request and actual work/limits. No expected answer is provided.

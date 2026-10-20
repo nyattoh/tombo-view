@@ -1,0 +1,8 @@
+{
+  "threadId": "thread:delegated-task:command%3Amcp%3A6332d4e8-30bd-476f-80f7-fbe6b1ce0d6a%3Adelegate-task%3Aunderstanding-a2-forward-h01-a3-s1-r1",
+  "messageId": "message:mcp:6332d4e8-30bd-476f-80f7-fbe6b1ce0d6a:thread-send:understanding-a2-forward-h01-a3-s2-r1",
+  "runId": "run:thread:thread%3Adelegated-task%3Acommand%253Amcp%253A6332d4e8-30bd-476f-80f7-fbe6b1ce0d6a%253Adelegate-task%253Aunderstanding-a2-forward-h01-a3-s1-r1:ordinal:2",
+  "taskId": "node:delegated-task:command%3Amcp%3A6332d4e8-30bd-476f-80f7-fbe6b1ce0d6a%3Athread-send%3Aunderstanding-a2-forward-h01-a3-s2-r1",
+  "status": "starting",
+  "delivery": "started"
+}

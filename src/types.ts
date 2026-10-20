@@ -39,6 +39,14 @@ export interface AssessmentReference {
   assessmentIndex: number;
   digest: string;
 }
+export interface AssessmentScopeDiagnostic extends AssessmentReference {
+  evidenceId: string;
+  claimScope: string;
+  evidenceScope: string;
+  kind: 'assessment_scope_unmatched' | 'evidence_scope_mismatch';
+  reason: string;
+  passageUnavailable: boolean;
+}
 export const claimDefinitionSchema = z.strictObject({
   id, role: z.enum(['observation', 'assumption', 'hypothesis', 'answer_claim']), text, scope: text,
 });
@@ -112,12 +120,24 @@ export const modelValidationFeedbackSchema = z.strictObject({
 export const modelRepairDiagnosticSchema = modelValidationFeedbackSchema.extend({
   operation: z.enum(['inspect', 'update', 'reflect']),
 });
+export const proposalRejectionTargetSchema = z.strictObject({
+  kind: z.enum(['gap', 'claim', 'probe', 'lens']),
+  id: id.refine(value => !/[\s\x00-\x1f\x7f]/u.test(value), 'Unsafe diagnostic target'),
+});
+export const lastProposalRejectionSchema = z.strictObject({
+  operation: z.enum(['update', 'reflect']), taskId: id, atRevision: count,
+  understandingHash: z.string().regex(/^[a-f0-9]{64}$/), code: z.literal('invalid_model_output'),
+  kind: z.enum(['resolution_not_justified', 'reflection_binding_mismatch', 'reflection_claim_coverage_mismatch', 'proposal_validation_failed']),
+  target: proposalRejectionTargetSchema.optional(),
+  rejectedAttempt: z.number().int().min(1).max(3), maxAttempts: z.number().int().min(1).max(3),
+}).refine(value => value.rejectedAttempt <= value.maxAttempts, 'Rejected attempt exceeds attempt limit');
 export const stateSchema = z.strictObject({
   schemaVersion: z.literal('0.1'), taskId: id, revision: count, startedAt: z.iso.datetime({ offset: true }),
   task: taskPacketSchema, evidence: z.array(evidenceSchema), claims: z.array(claimSchema), lenses: z.array(lensSchema),
   gaps: z.array(gapSchema), probes: z.array(probeSchema), usage: usageSchema, decision: decisionSchema,
   stopReason: text.nullable(), appliedExecutions: z.array(appliedExecutionSchema),
   modelRepairDiagnostics: z.array(modelRepairDiagnosticSchema).optional(),
+  lastProposalRejection: lastProposalRejectionSchema.optional(),
   assessmentCorrections: z.array(assessmentCorrectionSchema).optional(),
   pendingAssessmentExecutionIds: ids.min(1).optional(), reflection: reflectionReceiptSchema.optional(),
   policyHistory: policyHistorySchema.optional(), reflectionEffects: reflectionEffectsSchema.optional(),
@@ -177,6 +197,7 @@ export type GapKind = Gap['kind'];
 export type ProbeMethod = Probe['method'];
 export type ModelValidationFeedback = z.infer<typeof modelValidationFeedbackSchema>;
 export type ModelRepairDiagnostic = z.infer<typeof modelRepairDiagnosticSchema>;
+export type LastProposalRejection = z.infer<typeof lastProposalRejectionSchema>;
 export interface GenerationInput {
   assessmentReferences?: AssessmentReference[];
   validationFeedback?: ModelValidationFeedback;

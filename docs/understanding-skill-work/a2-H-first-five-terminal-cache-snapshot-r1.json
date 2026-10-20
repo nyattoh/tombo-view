@@ -1,0 +1,601 @@
+{
+  "at": "2026-10-21T03:37:20.504783+09:00",
+  "not_authority_validated_yet": true,
+  "rows": [
+    {
+      "actor": "H01-A1",
+      "cacheKeys": [
+        "mode",
+        "state",
+        "session",
+        "effectiveDecision",
+        "understandingStatus",
+        "budgetCheckpoint",
+        "assessmentScopeDiagnostics",
+        "apiCallsMade",
+        "hostUsage"
+      ],
+      "taskId": "reading-group-format-planning",
+      "revision": 1,
+      "startedAt": "2026-10-20T18:36:01.971Z",
+      "decision": "needs_user_input",
+      "stopReason": null,
+      "budget": null,
+      "usage": {
+        "rounds": 0,
+        "modelCalls": 1,
+        "toolCalls": 0,
+        "elapsedMs": 3,
+        "totalTokens": null,
+        "costYen": null
+      },
+      "claims": [
+        {
+          "id": "claim-open-round",
+          "text": "Open round案は参加者各2分の発言後に全体討議を行い、事前教材やカード等の準備は不要である。",
+          "status": "supported"
+        },
+        {
+          "id": "claim-prompt-card",
+          "text": "Prompt-card activity案は小グループで3枚のカードを用い、導入を含めて35分を確保する。カード準備は約10分（計画見積もり）を要する。",
+          "status": "supported"
+        },
+        {
+          "id": "claim-room-constraints",
+          "text": "読書会の参加者は8名で、部屋の利用可能時間は45分である。",
+          "status": "supported"
+        },
+        {
+          "id": "claim-decision-dependency",
+          "text": "2案の選択は、主催者の事前準備（カード作成約10分）の可否および少人数討議と全体討議の優先順位に依存する。",
+          "status": "unverified"
+        }
+      ],
+      "gaps": [
+        {
+          "id": "gap-user-priority",
+          "kind": "ambiguous_intent",
+          "lensId": "lens-format-comparison",
+          "question": "事前準備の手間（カード作成約10分）を避けたいか、あるいは小グループでのカード討議と全員での自由討議のどちらを重視しますか？",
+          "triggerRefs": [
+            "task:goal"
+          ],
+          "whyItMatters": "事前準備の許容度と討議形式の好みが定まらないと、どちらの案を採用すべきか一意に決定できません。",
+          "importance": "required",
+          "claimIds": [
+            "claim-decision-dependency"
+          ],
+          "probeIds": [
+            "probe-user-priority"
+          ],
+          "humanRole": "priority",
+          "status": "open"
+        }
+      ],
+      "pendingAssessmentExecutionIds": null,
+      "archive_files": [
+        {
+          "path": ".session/context.json",
+          "sha256": "d44d10580e78ccbc1b47b440008e6713ff14c51b420898d1ec471c3a634d6537"
+        },
+        {
+          "path": ".session/proposal.json",
+          "sha256": "f422aafc1a26bb2f19a6117bec58e59b0d527f78bcc5129add42467448502a0b"
+        },
+        {
+          "path": ".session/report.md",
+          "sha256": "4a9cd1aa489b17478f954522751924c8a3c69dd68b076171ae0a977d76087e9e"
+        },
+        {
+          "path": ".session/sdk.jsonl",
+          "sha256": "b9fe454c9bb3bc4e15af539267dc14c89d3c451f46bf5b27e435c566f3bfcf3f"
+        },
+        {
+          "path": ".session/state.json",
+          "sha256": "7bfdd9efcc8de8404393a4db7d221bca099de060b6bd40ea6f6b01ed15380f3a"
+        },
+        {
+          "path": ".session/task.json",
+          "sha256": "b578f145edf369c4dc52d8ab5b919ac8980ccde3290748b4c0653249916da251"
+        },
+        {
+          "path": ".session/tombo-session.json",
+          "sha256": "39f4afba4782264914d9b4fe99703a0065673847578572477a92fb8696512e20"
+        },
+        {
+          "path": ".session/tombo-session.jsonl",
+          "sha256": "2c652ac09fd34a5d5627c3d10b5a81f590fba410aff4f321c9febe0b00d3aae3"
+        }
+      ]
+    },
+    {
+      "actor": "H01-A3",
+      "cacheKeys": [
+        "mode",
+        "state",
+        "session",
+        "effectiveDecision",
+        "understandingStatus",
+        "budgetCheckpoint",
+        "assessmentScopeDiagnostics",
+        "apiCallsMade",
+        "hostUsage"
+      ],
+      "taskId": "reading-group-format",
+      "revision": 2,
+      "startedAt": "2026-10-20T18:33:18.366Z",
+      "decision": "needs_user_input",
+      "stopReason": null,
+      "budget": null,
+      "usage": {
+        "rounds": 0,
+        "modelCalls": 2,
+        "toolCalls": 0,
+        "elapsedMs": 17149,
+        "totalTokens": null,
+        "costYen": null
+      },
+      "claims": [
+        {
+          "id": "room",
+          "text": "メモ上の会場利用枠は45分である。",
+          "status": "supported"
+        },
+        {
+          "id": "round-time",
+          "text": "順番案で8人全員が各2分話す場合、発言部分は16分になる。",
+          "status": "supported"
+        },
+        {
+          "id": "card-time",
+          "text": "カード案の活動枠は導入込み35分である。",
+          "status": "supported"
+        },
+        {
+          "id": "card-prep-estimate",
+          "text": "メモのカード準備約10分は計画上の見積りである。",
+          "status": "supported"
+        },
+        {
+          "id": "priority-small-group",
+          "text": "本人は今回、少人数で問いをきっかけに話すことを最優先する。",
+          "status": "unverified"
+        },
+        {
+          "id": "prep-outside",
+          "text": "本人はカード準備時間を当日の45分枠の外に確保できる。",
+          "status": "unverified"
+        }
+      ],
+      "gaps": [
+        {
+          "id": "priority-gap",
+          "kind": "ambiguous_intent",
+          "lensId": "purpose",
+          "question": "今回の最優先は全員の考えを全体で聞くこと、少人数で問いから話すこと、準備削減のどれか。",
+          "triggerRefs": [
+            "task:goal",
+            "priority-small-group"
+          ],
+          "whyItMatters": "一般的な読書会の用途から本人の好みを推測できず、優先順位で推奨案が変わる。",
+          "importance": "required",
+          "claimIds": [
+            "priority-small-group"
+          ],
+          "probeIds": [
+            "ask-priority"
+          ],
+          "humanRole": "priority",
+          "status": "open"
+        },
+        {
+          "id": "prep-gap",
+          "kind": "missing_fact",
+          "lensId": "practical",
+          "question": "カード準備を当日45分枠の外に確保できるか。",
+          "triggerRefs": [
+            "task:goal",
+            "prep-outside",
+            "card-time",
+            "card-prep-estimate"
+          ],
+          "whyItMatters": "準備も枠内なら見積りどおりでも35+10=45分となり余裕がない。",
+          "importance": "required",
+          "claimIds": [
+            "prep-outside"
+          ],
+          "probeIds": [
+            "ask-prep"
+          ],
+          "status": "open"
+        }
+      ],
+      "pendingAssessmentExecutionIds": null,
+      "archive_files": [
+        {
+          "path": ".session/context.json",
+          "sha256": "2a62a2c615732eb33f64e0eb691e3c786911bb3ba5da34c71c5126fd03ddb232"
+        },
+        {
+          "path": ".session/inspection.json",
+          "sha256": "1f2a54dd91564e19df7d94213324d366a7d37941212d9086249749b6dcb6394a"
+        },
+        {
+          "path": ".session/proposal.json",
+          "sha256": "f5e48257dbad411b9e616bbd5389a733559b25730a1a608df9efd557aaf88932"
+        },
+        {
+          "path": ".session/reflection-context.json",
+          "sha256": "526374ddd47276e20321f4f6cb711ae7337f04257e8c4322b66d4c131ab3a842"
+        },
+        {
+          "path": ".session/reflection-result.json",
+          "sha256": "a3a1697658e5978907904539ab80c6a3c89ab18fc73d61f2d706012122e33ec6"
+        },
+        {
+          "path": ".session/reflection.json",
+          "sha256": "0c447614422baad105444e4696396d0e40fd79234e907f00d6cf6356a5d42ed8"
+        },
+        {
+          "path": ".session/report.md",
+          "sha256": "d909679f6a89a527de86692568b41df25227d51d0caab660571194d9d60ce552"
+        },
+        {
+          "path": ".session/sdk.jsonl",
+          "sha256": "e9493d17cf72b7a676254f99d426f84c658bf395bd11382b89c6eceac60592c0"
+        },
+        {
+          "path": ".session/state.json",
+          "sha256": "f5c750e4ca1fdf270bde66e6813d64514b2e4f509702fc6f260574a1a23546bd"
+        },
+        {
+          "path": ".session/task.json",
+          "sha256": "3407b8f62eccb064b24c26cb585042c20997f184329e3cd98ad94c82f04137f1"
+        },
+        {
+          "path": ".session/time-window.json",
+          "sha256": "3c54d3acbc2272dff9f41af008682126eed8d5f4c93f105ac264c40e35a38165"
+        },
+        {
+          "path": ".session/tombo-session.json",
+          "sha256": "80022bdbb6b95db9846f4d6de4667875daea25f76776d881bf85a02a6518237d"
+        },
+        {
+          "path": ".session/tombo-session.jsonl",
+          "sha256": "390831d0ac03d185a16f6c15cf6ea116f5ad6ef9fb3534a027421773ccf6d222"
+        }
+      ]
+    },
+    {
+      "actor": "H01-A4",
+      "cacheKeys": [
+        "mode",
+        "state",
+        "session",
+        "effectiveDecision",
+        "taskClockStatus",
+        "sessionStopReason",
+        "understandingStatus",
+        "budgetCheckpoint",
+        "assessmentScopeDiagnostics",
+        "apiCallsMade",
+        "hostUsage"
+      ],
+      "taskId": "reading-meeting-formats",
+      "revision": 2,
+      "startedAt": "2026-10-20T18:34:06.401Z",
+      "decision": "needs_user_input",
+      "stopReason": null,
+      "budget": null,
+      "usage": {
+        "rounds": 0,
+        "modelCalls": 2,
+        "toolCalls": 0,
+        "elapsedMs": 42260,
+        "totalTokens": null,
+        "costYen": null
+      },
+      "claims": [
+        {
+          "id": "open-round-duration",
+          "text": "順番に話す案の一巡は、8人全員が上限2分を使うと計16分である。",
+          "status": "supported"
+        },
+        {
+          "id": "card-duration",
+          "text": "カード案の活動計画は導入込み35分を確保している。",
+          "status": "supported"
+        },
+        {
+          "id": "card-preparation-estimate",
+          "text": "カード準備の約10分は実測ではなく計画上の見積りである。",
+          "status": "supported"
+        },
+        {
+          "id": "priority-small-groups",
+          "text": "本人が今回いちばん重視するのは少人数でお題に沿って話す時間である。",
+          "status": "unverified"
+        },
+        {
+          "id": "preparation-flexible",
+          "text": "本人はカード準備が目安の10分を多少超えても準備時間を確保できる。",
+          "status": "unverified"
+        }
+      ],
+      "gaps": [
+        {
+          "id": "priority-gap",
+          "kind": "ambiguous_intent",
+          "lensId": "participant-and-organiser",
+          "question": "今回いちばん大事にしたいのは全員の発言機会、少人数のお題による対話、準備負担の抑制のどれか。",
+          "triggerRefs": [
+            "task:goal"
+          ],
+          "whyItMatters": "優先順位によってAとBの勧め方が逆転する。",
+          "importance": "required",
+          "claimIds": [
+            "priority-small-groups"
+          ],
+          "probeIds": [
+            "ask-priority"
+          ],
+          "humanRole": "priority",
+          "status": "open"
+        },
+        {
+          "id": "preparation-gap",
+          "kind": "ambiguous_intent",
+          "lensId": "participant-and-organiser",
+          "question": "準備の目安10分と多少の超過を本人が受け入れられるか。",
+          "triggerRefs": [
+            "card-preparation-estimate"
+          ],
+          "whyItMatters": "カード案の準備を無理なく引き受けられるかを確認する。",
+          "importance": "required",
+          "claimIds": [
+            "preparation-flexible"
+          ],
+          "probeIds": [
+            "ask-preparation"
+          ],
+          "humanRole": "priority",
+          "status": "open"
+        }
+      ],
+      "pendingAssessmentExecutionIds": null,
+      "archive_files": [
+        {
+          "path": ".session/context.json",
+          "sha256": "420f4d3856509a3188e4fe9ccaefafb7857a2e335f7a1a9d8faa6e45e18d69a7"
+        },
+        {
+          "path": ".session/inspection.json",
+          "sha256": "8a5487d9e3eeafac2a08df201b8b2bc5e1851299a5444f0304a556c262cde9e4"
+        },
+        {
+          "path": ".session/proposal.json",
+          "sha256": "de71eca57522ccb3eee3a17843b4e28f626fa65550458715709aefbb9637724c"
+        },
+        {
+          "path": ".session/reflect-context.json",
+          "sha256": "31420ac6230225f7b63f8fd9826073f85adc23b03e982a87363b778ff980ad6c"
+        },
+        {
+          "path": ".session/reflection-result.json",
+          "sha256": "6c4a315c44d282823316ffc464893b20f5edfd80f7571461812d55117ec080ee"
+        },
+        {
+          "path": ".session/reflection.json",
+          "sha256": "e9fa130979821bbff4b840629404bbbb67ca437912fe80569a05cd5c81901618"
+        },
+        {
+          "path": ".session/report.md",
+          "sha256": "1613085b24f197a63452976540a70d8ca527fa55795b505a98b66288a95b0284"
+        },
+        {
+          "path": ".session/sdk.jsonl",
+          "sha256": "91b0d2148268eee3d98efdc2eef724b94f01b1c3fa2be11b3846d3d31b9d4edf"
+        },
+        {
+          "path": ".session/state.json",
+          "sha256": "f9f2282d229121b2837112183b78aeb5cd2b3e7158e2bc54391f5267cb4ff095"
+        },
+        {
+          "path": ".session/task-clock.json",
+          "sha256": "29135c909171637028a3cb248ae282912bb2e48208357edc72d7947cbc147d6a"
+        },
+        {
+          "path": ".session/task.json",
+          "sha256": "271b98d20585b2ba107b3df67c2a36502764fc397c9ce3a234cde68ad7330e4d"
+        },
+        {
+          "path": ".session/tombo-session.json",
+          "sha256": "8fb4180b6103aa313f1cfc7a01a10ba7acb8d5c2fa1829b31d8191ef083a3ece"
+        },
+        {
+          "path": ".session/tombo-session.jsonl",
+          "sha256": "dc25be2a71b4d4157216dd4299f6deb974e6a8ec96c254b9bfd7dcc015382ac8"
+        }
+      ]
+    },
+    {
+      "actor": "H02-B1",
+      "cacheKeys": [
+        "mode",
+        "state",
+        "session",
+        "effectiveDecision",
+        "taskClockStatus",
+        "sessionStopReason",
+        "understandingStatus",
+        "budgetCheckpoint",
+        "assessmentScopeDiagnostics",
+        "apiCallsMade",
+        "hostUsage"
+      ],
+      "taskId": "task-saved-published-explanation",
+      "revision": 1,
+      "startedAt": "2026-10-20T18:34:33.502Z",
+      "decision": "blocked",
+      "stopReason": "budget_exhausted",
+      "budget": null,
+      "usage": {
+        "rounds": 0,
+        "modelCalls": 0,
+        "toolCalls": 0,
+        "elapsedMs": 13457,
+        "totalTokens": 0,
+        "costYen": 0
+      },
+      "claims": [],
+      "gaps": [],
+      "pendingAssessmentExecutionIds": null,
+      "archive_files": [
+        {
+          "path": ".session/context.json",
+          "sha256": "2de5db90115ae22413a7eb63833c1d09f145088d9bec05c92ae487620d4cd3df"
+        },
+        {
+          "path": ".session/proposal.json",
+          "sha256": "f07ac6b4bce80f435b4573199982e0b6cba0a6163d74f9ba7b95dab6a075d3ea"
+        },
+        {
+          "path": ".session/report.md",
+          "sha256": "817350107b38db7b097c634463a051fea5c5aaa356b6e15647ebd6ea797f0cf1"
+        },
+        {
+          "path": ".session/sdk.jsonl",
+          "sha256": "ccf1c4fe30317eda2cc3cc62367623325a0747934a3678041d1ea71b2f7ff6c6"
+        },
+        {
+          "path": ".session/state.json",
+          "sha256": "0ece3ff7225672e54bacd0d2a04a381f2f23048b3201e5d519ad5d798942f077"
+        },
+        {
+          "path": ".session/task-clock.json",
+          "sha256": "18f27d08970a77c9ded14e0c3c0eee202b0c1b4959f896c8a6d385123444e718"
+        },
+        {
+          "path": ".session/task.json",
+          "sha256": "229ac2b392681d2db46983791ae961359459b1aef83e7b54939c253960a68927"
+        },
+        {
+          "path": ".session/tombo-session.json",
+          "sha256": "f78feb062519f60019dfd413a84b208b1d0ef788a4e9fb0742fed57f5043c681"
+        },
+        {
+          "path": ".session/tombo-session.jsonl",
+          "sha256": "c2f2abc2cf84d78e43132028e455224b5a2df72048c381842289986d2debfd19"
+        }
+      ]
+    },
+    {
+      "actor": "H02-B2",
+      "cacheKeys": [
+        "mode",
+        "state",
+        "session",
+        "effectiveDecision",
+        "taskClockStatus",
+        "sessionStopReason",
+        "understandingStatus",
+        "budgetCheckpoint",
+        "assessmentScopeDiagnostics",
+        "apiCallsMade",
+        "hostUsage"
+      ],
+      "taskId": "editor-status-explanation",
+      "revision": 2,
+      "startedAt": "2026-10-20T18:33:07.337Z",
+      "decision": "ready_for_requested_step",
+      "stopReason": null,
+      "budget": null,
+      "usage": {
+        "rounds": 0,
+        "modelCalls": 2,
+        "toolCalls": 0,
+        "elapsedMs": 16630,
+        "totalTokens": null,
+        "costYen": null
+      },
+      "claims": [
+        {
+          "id": "claim-1",
+          "text": "このメモでSavedは下書き版がworkspaceに保存されたことを意味する",
+          "status": "supported"
+        },
+        {
+          "id": "claim-2",
+          "text": "このメモでPublishedは保存済み版から作成した公開コピーがチームページで利用可能なことを意味する",
+          "status": "supported"
+        },
+        {
+          "id": "claim-3",
+          "text": "このメモでは追加編集の保存は既存の公開コピーを置き換えない",
+          "status": "supported"
+        },
+        {
+          "id": "claim-4",
+          "text": "このメモではプレビューは既定で最新の公開コピーを開く",
+          "status": "supported"
+        }
+      ],
+      "gaps": [],
+      "pendingAssessmentExecutionIds": null,
+      "archive_files": [
+        {
+          "path": ".session/context.json",
+          "sha256": "1f7b69be5c7584bb1c0b62d8767bd903df47a84d36bf3e5902c9082caf91ab42"
+        },
+        {
+          "path": ".session/inspect-result.json",
+          "sha256": "68a1bfe9fc042f4de52773e927be7fde5690639187e4dba39576c2ce9a7edd03"
+        },
+        {
+          "path": ".session/proposal.json",
+          "sha256": "cc57b97be36a08581ee046f2abd2880cb3e933f4d2c679322490b427a54fa6b0"
+        },
+        {
+          "path": ".session/reflect-context.json",
+          "sha256": "6162479235d8639dbf4557ca258eb54fed6f80f16a02501f5679d8d9a3924149"
+        },
+        {
+          "path": ".session/reflect-result.json",
+          "sha256": "f0e697d4c65488a4006505c29988825588fb7ce3c8bd1a86aa7e736d3a5148e4"
+        },
+        {
+          "path": ".session/reflection.json",
+          "sha256": "59896f562bc6e868832ce7113987d5a11f0649d04fec883d595f0c6c77b32fb1"
+        },
+        {
+          "path": ".session/report.md",
+          "sha256": "7c487e67f6c63c0b069ad1b153ab8da8507fad5a727da172660d6e19af9c369a"
+        },
+        {
+          "path": ".session/sdk.jsonl",
+          "sha256": "d15dbdab007182f2066fb146f34b333c011f6ddbdbe74ad3fef269069d287b3a"
+        },
+        {
+          "path": ".session/state.json",
+          "sha256": "2d8771624090d69bc74effac4a027cdde369fb82c156d00fc7f0156259e4f9b3"
+        },
+        {
+          "path": ".session/task-clock.json",
+          "sha256": "9880990fec169a9f40d9d03640ea8c9505399b467ac6deb0bbefd25587fc2524"
+        },
+        {
+          "path": ".session/task.json",
+          "sha256": "029d72413134e3a2e09bf8d8df93cc945d6c133f7eca542abfdf5dc7ed646247"
+        },
+        {
+          "path": ".session/tombo-session.json",
+          "sha256": "9b5695706e3d9904c493fa53ce122799cdf043b2e85b90d378110c63ff9e90cf"
+        },
+        {
+          "path": ".session/tombo-session.jsonl",
+          "sha256": "ef122ff425fffd170413ce61c85167919bdca2bb41e87f2f90dab71b7e08ee02"
+        }
+      ]
+    }
+  ]
+}

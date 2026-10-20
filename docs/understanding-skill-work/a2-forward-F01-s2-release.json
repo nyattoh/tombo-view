@@ -1,0 +1,12 @@
+{
+  "case": "F01",
+  "released_at": "2026-10-21T00:58:30.4320493+09:00",
+  "stage": 2,
+  "source": "F01/stage2/export-update.md",
+  "user_message": "F01/stage2/user-message.md",
+  "source_hash": "cca1f067503f0de0e6db503ecf4e976fe4bf884206f07d8ac2ae65ce8ed1466a",
+  "request_hash": "61a0fe969c0a73bfd2a3489750eb69f16931285a0888506e0fa3966775ffbfe2",
+  "original_sdk_deadline": "2026-10-20T15:57:45.248Z",
+  "first_turn_terminal": true,
+  "expected_actions_supplied": false
+}

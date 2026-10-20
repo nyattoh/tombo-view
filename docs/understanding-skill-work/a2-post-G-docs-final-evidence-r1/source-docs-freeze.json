@@ -1,0 +1,172 @@
+{
+  "frozen_at": "2026-10-21T03:22:59.395186+09:00",
+  "binding": "D:\\develop\\works\\tombo-view-ask-policy",
+  "branch": "devin/20261020-1705-understanding-skill",
+  "head": "dda5ff739ff0c23c37cc2e1d067b8ed0294cbbf9",
+  "files": [
+    {
+      "path": "skills/tombo-view/SKILL.md",
+      "before_sha256": "c20314c6297a1b8d0cc293911353859fcea7e7e7ff58b494b8ee39867b401f30",
+      "sha256": "c8ca55395aa2727efbbe098b970bc12e5441fd77013013c978978e72a9133b39",
+      "before_mtime_ns": 1792515304406490100,
+      "mtime_ns": 1792520498150143300,
+      "hash_unchanged": false,
+      "mtime_unchanged": false
+    },
+    {
+      "path": "skills/tombo-view/references/host-session.md",
+      "before_sha256": "332457a7c499296b714e59dc70833e6f65afb834787ca4a167f22787df50629c",
+      "sha256": "75ac6e2bdd055be17acb316408195cf2462940a063408951dd1eec02e45f6cc1",
+      "before_mtime_ns": 1792515367985153900,
+      "mtime_ns": 1792520518685186400,
+      "hash_unchanged": false,
+      "mtime_unchanged": false
+    },
+    {
+      "path": "README.md",
+      "before_sha256": "f54de2b96b65a68c2eb8010cdb264be6c9607e1cb5320dd5ac1385c3e8f34344",
+      "sha256": "6e60ddffff7541d0c4d5f93f4e9f78329f28f1dcfd3993a42cffe69579c041bf",
+      "before_mtime_ns": 1792515367987156000,
+      "mtime_ns": 1792520498153796600,
+      "hash_unchanged": false,
+      "mtime_unchanged": false
+    },
+    {
+      "path": "skills/tombo-view/scripts/session-store.mjs",
+      "before_sha256": "2bafafeaa30beb6067367ce75af9d46e2bf1abe58d4d80a1ca31729fe92b6219",
+      "sha256": "2bafafeaa30beb6067367ce75af9d46e2bf1abe58d4d80a1ca31729fe92b6219",
+      "before_mtime_ns": 1792519825965063500,
+      "mtime_ns": 1792519825965063500,
+      "hash_unchanged": true,
+      "mtime_unchanged": true
+    },
+    {
+      "path": "skills/tombo-view/scripts/session.mjs",
+      "before_sha256": "f545b21fa172b3fa975a09125ff981f6aa47b36e5446c3d76ec6ead66429688b",
+      "sha256": "f545b21fa172b3fa975a09125ff981f6aa47b36e5446c3d76ec6ead66429688b",
+      "before_mtime_ns": 1792519658979386400,
+      "mtime_ns": 1792519658979386400,
+      "hash_unchanged": true,
+      "mtime_unchanged": true
+    },
+    {
+      "path": "test/session-followup.test.mjs",
+      "before_sha256": "588b274e13355a31b544cc77d9a9dd52d3b16dc7dba536c65538a945a2b88e08",
+      "sha256": "588b274e13355a31b544cc77d9a9dd52d3b16dc7dba536c65538a945a2b88e08",
+      "before_mtime_ns": 1792519828345435100,
+      "mtime_ns": 1792519828345435100,
+      "hash_unchanged": true,
+      "mtime_unchanged": true
+    },
+    {
+      "path": "src/core.ts",
+      "before_sha256": "6642d469b4a005b124da7bdc215b7a0720461488f386ec6c70afc7939e52e260",
+      "sha256": "6642d469b4a005b124da7bdc215b7a0720461488f386ec6c70afc7939e52e260",
+      "before_mtime_ns": 1792507033990633700,
+      "mtime_ns": 1792507033990633700,
+      "hash_unchanged": true,
+      "mtime_unchanged": true
+    },
+    {
+      "path": "src/types.ts",
+      "before_sha256": "2e96aea0702eb270326aae797768b53f65ae0b9dc79e25cfa7eff6e17f341d26",
+      "sha256": "2e96aea0702eb270326aae797768b53f65ae0b9dc79e25cfa7eff6e17f341d26",
+      "before_mtime_ns": 1792484351608243000,
+      "mtime_ns": 1792484351608243000,
+      "hash_unchanged": true,
+      "mtime_unchanged": true
+    },
+    {
+      "path": "src/report.ts",
+      "before_sha256": "7043d10897d43e8f6bfd3457eb566545d96daf66ae9b64c5ef4e2df01e8be2e7",
+      "sha256": "7043d10897d43e8f6bfd3457eb566545d96daf66ae9b64c5ef4e2df01e8be2e7",
+      "before_mtime_ns": 1792484356803732700,
+      "mtime_ns": 1792484356803732700,
+      "hash_unchanged": true,
+      "mtime_unchanged": true
+    },
+    {
+      "path": "test/session-binding.test.mjs",
+      "before_sha256": "c07d8c636eb766ebc2ca12517491b46a7fef912df4b628663a913963de3a2acd",
+      "sha256": "c07d8c636eb766ebc2ca12517491b46a7fef912df4b628663a913963de3a2acd",
+      "before_mtime_ns": 1792510503050050200,
+      "mtime_ns": 1792510503050050200,
+      "hash_unchanged": true,
+      "mtime_unchanged": true
+    },
+    {
+      "path": "skills/tombo-view/agents/openai.yaml",
+      "before_sha256": "06f40acb0d8181ca1524cbaafc49ea209043354266a045ed25d3af2e4a5b6fcf",
+      "sha256": "06f40acb0d8181ca1524cbaafc49ea209043354266a045ed25d3af2e4a5b6fcf",
+      "before_mtime_ns": 1792484131542519300,
+      "mtime_ns": 1792484131542519300,
+      "hash_unchanged": true,
+      "mtime_unchanged": true
+    }
+  ],
+  "preservation": {
+    "skill_hidden_side_crossrag_body_bytes": true,
+    "readme_fixed_state_japanese": true,
+    "readme_fixed_state_english": true,
+    "readme_hidden_side_crossrag_japanese": true,
+    "readme_hidden_side_crossrag_english": true,
+    "storage_reservations": true,
+    "managed_invalidate_discarded_history": true,
+    "advanced_diagnostics_corrections_recovery": true,
+    "openai_ui_hash_and_mtime_unchanged": true,
+    "runtime_seven_hashes_and_mtimes_unchanged": true,
+    "runtime_seven_match_actual_freeze": true,
+    "ask_history_hashes_unchanged": true,
+    "owned_change_set_exact_three": true
+  },
+  "ask_history_count": 409,
+  "input_readback": [
+    {
+      "path": "docs/understanding-skill-work/locked-charter.md",
+      "sha256": "9084a8b40104f23a36ca3074fc4c9e6180cf788daee95735277efedfe0b2c8ca",
+      "mtime_ns": 1792483208215783800
+    },
+    {
+      "path": "docs/understanding-skill-work/parent-authorized-scope-amendment-r1.md",
+      "sha256": "f0952686138c9c35a14acbb2e14ce6b5a0da761de17bd81fbbc8e786ad04706d",
+      "mtime_ns": 1792505170992976800
+    },
+    {
+      "path": "docs/understanding-skill-work/a2-post-G-source-diagnosis-r1.md",
+      "sha256": "f2b900a7da28ddc3ce6a7a37bdf7c993646bc3a99f4bcfa83350a3af5f090890",
+      "mtime_ns": 1792518261227013800
+    },
+    {
+      "path": "docs/understanding-skill-work/a2-post-G-repair-design-r1.md",
+      "sha256": "18dbd43bc46353041e8cbd193132fa14e51566655ba54030eb54d586000263a0",
+      "mtime_ns": 1792518599982259100
+    },
+    {
+      "path": "docs/understanding-skill-work/a2-post-G-independent-design-review-r1.md",
+      "sha256": "d2c91fb0dc567c753c6331a9689b2b8c81e1fbbbb69c2ccb78b21138cea969ef",
+      "mtime_ns": 1792519045460156100
+    },
+    {
+      "path": "docs/understanding-skill-work/a2-post-G-design-conditions-accepted-r1.md",
+      "sha256": "4e6ff49bfea6c5e89e51845370d3f212fcecfaead65802019f4802edcc7b887e",
+      "mtime_ns": 1792519117866978900
+    },
+    {
+      "path": "docs/understanding-skill-work/a2-post-G-runtime-API-GREEN-readback-r1.json",
+      "sha256": "2299bdc94c90f907acde9661fd77e1c79bcf357269963b047c45d1b23eb86303",
+      "mtime_ns": 1792520098569446600
+    },
+    {
+      "path": "results/understanding-acceptance2/runtime/post-G/api-contract.md",
+      "sha256": "3e24d0d2447ae8d3e0e5db374f06921e7b1b782dbffeae3f9edd26864af3c362",
+      "mtime_ns": 1792520016440632900
+    },
+    {
+      "path": "results/understanding-acceptance2/runtime/post-G/source-freeze.json",
+      "sha256": "30703402f364661248251b4b671abfcf621d8536b78bd86c278b775ea5b958e0",
+      "mtime_ns": 1792520013162211400
+    }
+  ],
+  "freeze": "product docs now frozen; no further product edits by this writer",
+  "raw_boundary": "H raw/manifest/observer and K4 condition contents not read; no actor or evaluator work"
+}

@@ -1,0 +1,70 @@
+{
+  "binding": {
+    "schemaVersion": "0.1",
+    "operation": "inspect",
+    "taskId": "bulletin-announcement",
+    "expectedRevision": -1,
+    "requestHash": "3e5fcc73af54be96fbd8b3581cca6caa2eeffefb0f30eb9a2257941ca4ee37d7"
+  },
+  "proposal": {
+    "claims": [
+      {
+        "id": "claim-confirmed-facts",
+        "role": "hypothesis",
+        "text": "workshop/confirmed.txtにワークショップの確定事項が記載されている",
+        "scope": "workshop/confirmed.txt"
+      },
+      {
+        "id": "claim-announcement-draft",
+        "role": "answer_claim",
+        "text": "案内文案はworkshop/confirmed.txtの確定事項のみを含み、見出しと本文を合わせて180字以内で申込み方法を一文で含んでいる",
+        "scope": "workshop/confirmed.txt"
+      }
+    ],
+    "lenses": [
+      {
+        "id": "lens-confirmed-facts",
+        "label": "確定事項の確認",
+        "rationale": "案内文の作成にあたりworkshop/confirmed.txtの確定事項を確認する視点",
+        "origin": "initial",
+        "status": "active"
+      }
+    ],
+    "gaps": [
+      {
+        "id": "gap-check-confirmed",
+        "kind": "missing_fact",
+        "lensId": "lens-confirmed-facts",
+        "question": "workshop/confirmed.txtの確定事項の内容は何か",
+        "triggerRefs": [
+          "task:goal"
+        ],
+        "whyItMatters": "案内文に確定事項のみを正確に反映し、要件を満たすため",
+        "importance": "required",
+        "claimIds": [
+          "claim-confirmed-facts"
+        ],
+        "probeIds": [
+          "probe-read-confirmed"
+        ]
+      }
+    ],
+    "probes": [
+      {
+        "id": "probe-read-confirmed",
+        "gapIds": [
+          "gap-check-confirmed"
+        ],
+        "method": "corroboration",
+        "question": "workshop/confirmed.txtを読み込み、記載されている確定事項を確認する",
+        "requiredCapability": "read_file",
+        "sourceGroups": [
+          "workshop/confirmed.txt"
+        ],
+        "successCondition": "ファイルが読み込め、確定事項が確認できること",
+        "refutationCondition": "ファイルが存在しない、または確定事項が確認できないこと",
+        "inconclusiveCondition": "記載内容が不明瞭であること"
+      }
+    ]
+  }
+}

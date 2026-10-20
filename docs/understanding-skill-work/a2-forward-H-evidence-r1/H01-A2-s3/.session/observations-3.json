@@ -1,0 +1,46 @@
+[
+  {
+    "executionId": "exec-prep-update",
+    "probeId": "probe-ask-priority",
+    "outcome": "completed",
+    "evidence": [
+      {
+        "id": "ev-prep-update",
+        "kind": "document",
+        "locator": "preparation-update.md",
+        "sourceGroup": "planning_update",
+        "retrievedAt": "2026-10-21T03:47:26+09:00",
+        "version": null,
+        "scope": "first_meeting",
+        "passage": "# Updated card-preparation note\n\nSynthetic, undated note from the organiser: the current prompt-card set needs about 25 minutes of preparation, rather than the earlier 10-minute estimate, because the cards must be sorted for this session. This remains an estimate; no timed preparation was recorded.\n",
+        "contentHash": "11280bb17d088c2f7d60a264faa1503efb7c46c7856cefb24a0a276252e365a5",
+        "validity": "current"
+      }
+    ],
+    "toolCalls": 0,
+    "elapsedMs": 0,
+    "costYen": 0
+  },
+  {
+    "executionId": "exec-request-stage3",
+    "probeId": "probe-ask-priority",
+    "outcome": "completed",
+    "evidence": [
+      {
+        "id": "ev-request-stage3",
+        "kind": "user_statement",
+        "locator": "request-stage3.md",
+        "sourceGroup": "user_request",
+        "retrievedAt": "2026-10-21T03:47:26+09:00",
+        "version": null,
+        "scope": "first_meeting",
+        "passage": "主催の人からカード準備について訂正がありました。追加メモを読んで、同じ読書会の進め方について考え直してもらえますか。最初にお願いした時間と、この固定作業領域の`.session/`配下だけに作業状態を書く条件は変わりません。\r\n",
+        "contentHash": "29dcfd9317850ad3cfd0904c6d271512fbb5562356405d8c893d0f43bc6784ca",
+        "validity": "current"
+      }
+    ],
+    "toolCalls": 0,
+    "elapsedMs": 0,
+    "costYen": 0
+  }
+]

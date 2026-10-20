@@ -1,0 +1,39 @@
+{
+  "checked_at": "2026-10-21T01:22:51.0955630+09:00",
+  "product_files": 16,
+  "new_files": 7,
+  "all_hashes_unchanged": true,
+  "mismatches": [],
+  "traces": [
+    {
+      "trace": "F01-stages1-2",
+      "thread_status": "completed",
+      "hasMore": false,
+      "truncated_count": 0
+    },
+    {
+      "trace": "F02-stages1-2",
+      "thread_status": "completed",
+      "hasMore": false,
+      "truncated_count": 0
+    },
+    {
+      "trace": "F03-stages1-3",
+      "thread_status": "completed",
+      "hasMore": false,
+      "truncated_count": 0
+    },
+    {
+      "trace": "F01-fresh-stage3",
+      "thread_status": "completed",
+      "hasMore": false,
+      "truncated_count": 0
+    }
+  ],
+  "latest_gate_exit": 3,
+  "gate_reexecuted": false,
+  "head": "dda5ff739ff0c23c37cc2e1d067b8ed0294cbbf9",
+  "branch": "devin/20261020-1705-understanding-skill",
+  "historical_untracked_count": 192,
+  "staged_paths": []
+}

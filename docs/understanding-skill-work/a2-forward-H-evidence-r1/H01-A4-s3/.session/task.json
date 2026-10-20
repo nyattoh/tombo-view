@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "0.1",
+  "taskId": "reading-meeting-formats",
+  "goal": "次の読書会の2案を比較し、本人の優先順位と準備可能性に沿って選択を支援する",
+  "mode": "explain",
+  "successCriteria": [
+    "資料にある計画とAIの推論・提案・未確認の効果を区別する",
+    "選択を左右する本人の優先順位と準備可能性を確認し、条件に沿った進め方を提案する",
+    "公開依頼時刻に基づく30分の全体期限を保持する"
+  ],
+  "reflectionRequired": true,
+  "evidence": [
+    {
+      "id": "meeting-note",
+      "kind": "document",
+      "locator": "local:meeting-options.md",
+      "sourceGroup": "meeting-note",
+      "retrievedAt": "2026-10-20T18:32:02.246Z",
+      "version": null,
+      "scope": "undated synthetic reading-group plan for eight attendees, 45-minute room",
+      "passage": "# Neighbourhood reading group: first-meeting formats\n\nSynthetic, undated planning note for eight attendees. The room is available for 45 minutes.\n\n- Open round: allow each attendee up to 2 minutes to share a thought, then leave the remaining time for open discussion. No materials are needed.\n- Prompt-card activity: use three prompt cards in small groups. The activity outline reserves 35 minutes, including the introduction. Preparing the cards is estimated at about 10 minutes; this is a planning estimate, not a measured duration.\n\n",
+      "contentHash": "372b184220e8fb0167a85ec4bdfd295892e0196616a1e42aa547337c2ad829f4",
+      "validity": "current"
+    }
+  ],
+  "proposedAnswer": "Aは各人最大2分で計16分、差引29分。Bは導入込み35分で差引10分。差引時間は入退室や移動をまだ引いていない。Aは準備不要、Bの準備10分は見積り。実際の話しやすさ・満足度は資料から未確認。優先順位と準備可能性を質問済みで、本人の回答を待って勧め方を決める。",
+  "capabilities": [
+    "read_allowed_local_material",
+    "ask_user"
+  ],
+  "budget": {
+    "maxRounds": 6,
+    "maxModelCalls": 12,
+    "maxToolCalls": 12,
+    "maxElapsedMs": 1800000,
+    "maxInputChars": 50000,
+    "maxOutputTokensPerCall": 5000
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "schemaVersion": "0.1",
+  "binding": {
+    "sessionId": "24cc4f30-ba82-4066-bab9-3d4e14dff741",
+    "workspace": "d:\\develop\\works\\tombo-view-ask-policy\\results\\understanding-acceptance2\\observers\\h01-a3\\scratch",
+    "ledger": "d:\\develop\\works\\tombo-view-ask-policy\\results\\understanding-acceptance2\\observers\\h01-a3\\scratch\\.session\\sdk.jsonl",
+    "statePath": "d:\\develop\\works\\tombo-view-ask-policy\\results\\understanding-acceptance2\\observers\\h01-a3\\scratch\\.session\\state.json",
+    "taskId": "reading-group-format",
+    "taskHash": "0ca4bb179552130ccff6c759dca1961c8f5a66fa66da3a6f93035103fd99bb1c",
+    "budget": {
+      "maxRounds": 5,
+      "maxModelCalls": 10,
+      "maxToolCalls": 8,
+      "maxElapsedMs": 1620588,
+      "maxInputChars": 50000,
+      "maxOutputTokensPerCall": 6500
+    },
+    "startedAt": "2026-10-20T18:33:18.366Z"
+  },
+  "task": {
+    "schemaVersion": "0.1",
+    "taskId": "reading-group-format",
+    "goal": "次の読書会の2案を比較し、本人の優先順位と準備条件に沿って選択を一緒に考える。最初の依頼から30分の同一検討枠を維持する。",
+    "mode": "explain",
+    "successCriteria": [
+      "資料記載と計算・提案・未測定の効果を区別して比較する",
+      "選択を左右する本人の優先順位と事前準備の可否を確認し、未回答なら確定しない",
+      "公開記録の期限2026-10-20T19:00:18.635627Zを超えて検討を継続しない"
+    ],
+    "evidence": [
+      {
+        "id": "note",
+        "kind": "document",
+        "locator": "meeting-options.md",
+        "sourceGroup": "meeting-options.md",
+        "retrievedAt": "2026-10-20T18:32:48.047Z",
+        "version": null,
+        "scope": "memo-planning",
+        "passage": "",
+        "contentHash": "372b184220e8fb0167a85ec4bdfd295892e0196616a1e42aa547337c2ad829f4",
+        "validity": "current",
+        "passageUnavailable": true
+      },
+      {
+        "id": "request",
+        "kind": "document",
+        "locator": "request.md",
+        "sourceGroup": "request.md",
+        "retrievedAt": "2026-10-20T18:32:48.047Z",
+        "version": null,
+        "scope": "user-task",
+        "passage": "",
+        "contentHash": "315ce7b3c06d4c84b3b15eb235093b4c032984de43cbf3cc2b485ac9fd16d049",
+        "validity": "current",
+        "passageUnavailable": true
+      },
+      {
+        "id": "origin",
+        "kind": "document",
+        "locator": "request-origin.json",
+        "sourceGroup": "request-origin.json",
+        "retrievedAt": "2026-10-20T18:32:48.047Z",
+        "version": null,
+        "scope": "public-time-record",
+        "passage": "",
+        "contentHash": "3ac55aed656cf75b9ad28eb9553294c5db7153dd0abcb881c35fafe94511933a",
+        "validity": "current",
+        "passageUnavailable": true
+      }
+    ],
+    "reflectionRequired": true,
+    "proposedAnswer": "順番案は最大16分の全員発言枠と残り最大29分、カード案は導入込み35分と残り10分。準備約10分は見積りで、枠外に確保できるか不明。本人の優先順位が未指定なので条件付き比較を行い、重要な2点を質問する。",
+    "capabilities": [
+      "local_document_read",
+      "user_dialogue",
+      "session_state_write"
+    ],
+    "budget": {
+      "maxRounds": 5,
+      "maxModelCalls": 10,
+      "maxToolCalls": 8,
+      "maxElapsedMs": 1620588,
+      "maxInputChars": 50000,
+      "maxOutputTokensPerCall": 6500
+    }
+  },
+  "head": {
+    "revision": 2,
+    "stateHash": "e04d6317ca44bb24de9198b61c4391fbbaa23627f23b59e44202c91dc8c63ad0"
+  },
+  "updates": [],
+  "transitions": [],
+  "pendingOperation": null,
+  "accountingUncertain": false,
+  "lastObservedAt": 1792521215896,
+  "stopReceipts": []
+}

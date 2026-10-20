@@ -1,0 +1,9 @@
+# Parent-authorised scope amendment r1
+
+Date: 2026-10-20 JST
+
+The user explicitly instructed: “受け入れ2を達成してgoalを完了させて。上手くモデルを振り分けて。” This authorises continuing the same goal after the prior parent audit, specifically to close locked-charter acceptance 2 and complete the goal.
+
+The previous parent audit and locked charter remain immutable historical records. This amendment does not waive acceptance 2, relabel D01 as a pass, or authorise unrelated product changes. It supersedes the prior `third_silent_edit_authorized: false` state for the narrow purpose of achieving acceptance 2. Diagnose the observed same-goal continuation failure, use the best supported design/implementation/reviewer assignments from the fresh live catalogue, and change the skill/helper/runtime only if a concrete mechanism is justified. Require a fresh cross-vendor design check before any substantial new implementation and fresh independent full-diff review after it. Forward evaluation must use fresh raw-only scenarios with expected actions withheld, explicitly exercise same-goal budget exhaustion and follow-up, and verify preservation of task identity, elapsed/budget accounting, usage, stop reason, evidence, and understanding. A new task or budget may not be presented as unbroken continuation. Preserve previous A/B/C/D failures and all historical artifacts.
+
+The prior two-round stopping cap is superseded only because the user explicitly authorised completion after escalation. Continue only on this acceptance criterion, with dependency-aware task waves, disjoint ownership, the T3 maximum of 20 active/queued threads, no new dependencies or direct paid model APIs, no secret/held-out/Ommatidia access, and unknown cost/token reporting unless measured. Do not commit, push, or create/update a PR until the parent independently confirms acceptance 2, all required review/gate evidence and scope. Draft PR remains authorised after those gates; merge remains unauthorised.

@@ -1,0 +1,116 @@
+{
+  "schemaVersion": "0.1",
+  "binding": {
+    "sessionId": "c59dc9a2-2b21-40b3-b8de-baa9cfb5fc2b",
+    "workspace": "d:\\develop\\works\\tombo-view-ask-policy\\results\\understanding-acceptance2\\observers\\h01-a4\\scratch",
+    "ledger": "d:\\develop\\works\\tombo-view-ask-policy\\results\\understanding-acceptance2\\observers\\h01-a4\\scratch\\.session\\sdk.jsonl",
+    "statePath": "d:\\develop\\works\\tombo-view-ask-policy\\results\\understanding-acceptance2\\observers\\h01-a4\\scratch\\.session\\state.json",
+    "taskId": "reading-meeting-formats",
+    "taskHash": "454ec105432ec0c25ad05d21371805451fbebf9a3082ca8e0d9284806d2c82ca",
+    "budget": {
+      "maxRounds": 6,
+      "maxModelCalls": 12,
+      "maxToolCalls": 12,
+      "maxElapsedMs": 1800000,
+      "maxInputChars": 50000,
+      "maxOutputTokensPerCall": 5000
+    },
+    "startedAt": "2026-10-20T18:34:06.401Z"
+  },
+  "task": {
+    "schemaVersion": "0.1",
+    "taskId": "reading-meeting-formats",
+    "goal": "次の読書会の2案を比較し、本人の優先順位と準備可能性に沿って選択を支援する",
+    "mode": "explain",
+    "successCriteria": [
+      "資料にある計画とAIの推論・提案・未確認の効果を区別する",
+      "選択を左右する本人の優先順位と準備可能性を確認し、条件に沿った進め方を提案する",
+      "公開依頼時刻に基づく30分の全体期限を保持する"
+    ],
+    "evidence": [
+      {
+        "id": "meeting-note",
+        "kind": "document",
+        "locator": "local:meeting-options.md",
+        "sourceGroup": "meeting-note",
+        "retrievedAt": "2026-10-20T18:32:02.246Z",
+        "version": null,
+        "scope": "undated synthetic reading-group plan for eight attendees, 45-minute room",
+        "passage": "",
+        "contentHash": "372b184220e8fb0167a85ec4bdfd295892e0196616a1e42aa547337c2ad829f4",
+        "validity": "current",
+        "passageUnavailable": true
+      }
+    ],
+    "reflectionRequired": true,
+    "proposedAnswer": "Aは各人最大2分で計16分、差引29分。Bは導入込み35分で差引10分。差引時間は入退室や移動をまだ引いていない。Aは準備不要、Bの準備10分は見積り。実際の話しやすさ・満足度は資料から未確認。優先順位と準備可能性を質問済みで、本人の回答を待って勧め方を決める。",
+    "capabilities": [
+      "read_allowed_local_material",
+      "ask_user"
+    ],
+    "budget": {
+      "maxRounds": 6,
+      "maxModelCalls": 12,
+      "maxToolCalls": 12,
+      "maxElapsedMs": 1800000,
+      "maxInputChars": 50000,
+      "maxOutputTokensPerCall": 5000
+    }
+  },
+  "taskClock": {
+    "startedAt": "2026-10-20T18:30:18.635627Z",
+    "deadlineAt": "2026-10-20T19:00:18.635627Z",
+    "basis": "host_provided",
+    "sourceRef": "local:request-origin.json; publication observation, not exact host delivery",
+    "recordedAt": "2026-10-20T18:33:32.002Z"
+  },
+  "taskClockStop": null,
+  "head": {
+    "revision": 4,
+    "stateHash": "2d7be7fdeb81db2a0a2a57c9a270608f2a6b416dcf22408bfa9fc2fae2e09d0b"
+  },
+  "updates": [
+    {
+      "id": "stage2-user-answer",
+      "source": {
+        "kind": "user_statement",
+        "locator": "conversation:stage2;local:request-stage2.md"
+      },
+      "text": "準備にかける時間はなるべく短くしたいです。一方で、参加者が全員の前で話しやすいかはまだ分かりません。さっきの条件のまま、少し考えを進めてもらえますか。",
+      "references": [],
+      "observations": [
+        {
+          "executionId": "stage2-user-answer-observation",
+          "probeId": "ask-priority",
+          "outcome": "completed",
+          "evidence": [
+            {
+              "id": "user-stage2",
+              "kind": "user_statement",
+              "locator": "conversation:stage2;local:request-stage2.md",
+              "sourceGroup": "user-stage2",
+              "retrievedAt": "2026-10-20T18:41:49.365Z",
+              "version": null,
+              "scope": "user preferences and stated uncertainty for this reading meeting",
+              "passage": "準備にかける時間はなるべく短くしたいです。一方で、参加者が全員の前で話しやすいかはまだ分かりません。さっきの条件のまま、少し考えを進めてもらえますか。",
+              "contentHash": "3a38d780596bd45c803060e4cb9eb5bd39ba5a94082301248f800b1866d49003",
+              "validity": "current"
+            }
+          ],
+          "toolCalls": 0,
+          "elapsedMs": 0,
+          "costYen": null
+        }
+      ],
+      "payloadHash": "9e82f994b6a7c11edbf56bca1f152b501a4116dd6e231558f330b91cf118e0bb",
+      "helperReceivedAt": "2026-10-20T18:42:26.889Z",
+      "status": "applied",
+      "appliedRevision": 3
+    }
+  ],
+  "transitions": [],
+  "pendingOperation": null,
+  "accountingUncertain": false,
+  "lastObservedAt": 1792521824850,
+  "stopReceipts": []
+}

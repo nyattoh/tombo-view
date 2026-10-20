@@ -1,0 +1,152 @@
+{
+  "status": "F1_R2_OWNED_IMPLEMENTATION_AND_SCOPED_VERIFICATION_COMPLETE",
+  "recorded_at": "2026-10-20T20:51:57.551Z",
+  "binding": "D:\\develop\\works\\tombo-view-ask-policy",
+  "branch": "devin/20261020-1705-understanding-skill",
+  "head": "dda5ff739ff0c23c37cc2e1d067b8ed0294cbbf9",
+  "cost": "unknown",
+  "tokens": "unknown",
+  "red": {
+    "command": "node --test --test-name-pattern='F1' test/cli-model-repair.test.mjs test/session-followup.test.mjs",
+    "started_at": "2026-10-21T05:35:06.4961335+09:00",
+    "completed_at": "2026-10-21T05:35:14.8087681+09:00",
+    "exit": 1,
+    "counts": {
+      "tests": 29,
+      "pass": 2,
+      "fail": 27,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    "log_sha256": "f31f874b8a5a311930d981f209e41ea1a09e584f7eb1f0f97af14aae2af32b46",
+    "record": "results/understanding-acceptance2/runtime/F1/r2-red/verification-summary.json"
+  },
+  "test_runs": [
+    {
+      "name": "f1-green-r1",
+      "command": "node --test --test-name-pattern='F1' test/cli-model-repair.test.mjs test/session-followup.test.mjs",
+      "started_at": "2026-10-21T05:43:35.8428402+09:00",
+      "completed_at": "2026-10-21T05:43:49.2380970+09:00",
+      "exit": 0,
+      "counts": {
+        "tests": 29,
+        "pass": 29,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0
+      },
+      "log": "results/understanding-acceptance2/runtime/F1/r2-green/f1-green-r1.log",
+      "log_sha256": "d8cd7070c8e23d318eaf5955ab139f8ef745a73e851cee9c78190f30d2158ae9"
+    },
+    {
+      "name": "affected-r1",
+      "command": "node --test test/cli-model-repair.test.mjs test/session-followup.test.mjs test/session-binding.test.mjs test/session-budget-checkpoint.test.mjs",
+      "started_at": "2026-10-21T05:46:58.1640490+09:00",
+      "completed_at": "2026-10-21T05:48:44.3948118+09:00",
+      "exit": 0,
+      "counts": {
+        "tests": 119,
+        "pass": 119,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0
+      },
+      "log": "results/understanding-acceptance2/runtime/F1/r2-green/affected-r1.log",
+      "log_sha256": "6e235aa87ca6dae4a159e8493877da794e6911889a35337f3e08bb4a9e913234"
+    },
+    {
+      "name": "regression-r1",
+      "command": "node --test test/core.test.mjs test/reflection.test.mjs test/model-repair.test.mjs test/assessment-correction.test.mjs test/assessment-correction-surfaces.test.mjs test/assessment-correction-journal.test.mjs test/assessment-scope-diagnostics.test.mjs test/assessment-scope-report.test.mjs test/ask-policy.test.mjs test/session.test.mjs test/session-repair-feedback.test.mjs test/host-session-framing.test.mjs test/recovery-journal.test.mjs test/cli-reflection.test.mjs test/understanding-session.test.mjs",
+      "started_at": "2026-10-21T05:47:08.3758887+09:00",
+      "completed_at": "2026-10-21T05:47:22.1330634+09:00",
+      "exit": 0,
+      "counts": {
+        "tests": 254,
+        "pass": 254,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0
+      },
+      "log": "results/understanding-acceptance2/runtime/F1/r2-green/regression-r1.log",
+      "log_sha256": "9633114b2ea7f9629d3c70eb78117260471b2cefedc03307d200b2cb6a23d5ec"
+    }
+  ],
+  "final_build": {
+    "command": "npm run build",
+    "started_at": "2026-10-21T05:49:23.5727899+09:00",
+    "completed_at": "2026-10-21T05:49:24.3932621+09:00",
+    "exit": 0
+  },
+  "final_typecheck": {
+    "command": "npm run typecheck",
+    "started_at": "2026-10-21T05:49:24.3932621+09:00",
+    "completed_at": "2026-10-21T05:49:25.0700253+09:00",
+    "exit": 0
+  },
+  "initial_build": "build-r1.json/log exit0 retained",
+  "changed_owned_files": [
+    "skills/tombo-view/scripts/session.mjs",
+    "src/core.ts",
+    "src/types.ts",
+    "test/cli-model-repair.test.mjs"
+  ],
+  "source_freeze": "results/understanding-acceptance2/runtime/F1/r2-green/source-freeze.json",
+  "frozen_at": "2026-10-20T20:51:57.199Z",
+  "protected11_unchanged": false,
+  "protected9_unchanged": true,
+  "store_unchanged": true,
+  "concurrent_document_changes": [
+    {
+      "path": "README.md",
+      "ownership": "protected",
+      "before_sha256": "ece2927fa1280a4c73dd222b44beb81701b888bfc0e60dd30b33a7624cac6acd",
+      "sha256": "1e8cfda602e87eeb8d4fabae55e140ca5b49077800e29aa2df8af58f0c99f0d0",
+      "before_mtime_ns": "1792524000222323900",
+      "mtime_ns": "1792529404699574400",
+      "bytes_unchanged": false,
+      "mtime_unchanged": false
+    },
+    {
+      "path": "skills/tombo-view/references/host-session.md",
+      "ownership": "protected",
+      "before_sha256": "442602f5a30395e869b55ff67a397964023ed6abb5b847192f544da638df58a6",
+      "sha256": "d3e300f2928fb4b947d82ec8921b9db569b2f74365793a8e0e583d035964a9a1",
+      "before_mtime_ns": "1792524056166371300",
+      "mtime_ns": "1792529422338615200",
+      "bytes_unchanged": false,
+      "mtime_unchanged": false
+    }
+  ],
+  "document_change_attribution": "PM confirmed authorised parallel same docs owner ordinal11, actual write events255/256/257, 05:50:04/22 mtimes and matching SHAs",
+  "failed_freeze_attempt": "freeze-attempt-r1.md / freeze-drift-r1.json preserved; assertion exited1 on parallel docs changes, not a test failure",
+  "tests_not_weakened": true,
+  "test_prefix_proof": [
+    {
+      "path": "test/cli-model-repair.test.mjs",
+      "original_prefix_bytes": 17716,
+      "original_prefix_unchanged": true,
+      "entire_amended_red_prefix_unchanged": true
+    },
+    {
+      "path": "test/session-followup.test.mjs",
+      "original_prefix_bytes": 73913,
+      "original_prefix_unchanged": true,
+      "entire_amended_red_prefix_unchanged": true
+    }
+  ],
+  "additional_f1_coverage": "Three appended SDK invariant cases; initial F1-only29 GREEN preserved; full affected119 includes all32 F1 cases",
+  "actual_paths_reached": "Captured returned state, privacy/safe kinds, invalid current binding, inactive history/fallback, cache/replay, same-batch recovery/usage, coexistence and real expiry all executed in GREEN",
+  "fixture_boundaries": "Local deterministic adapters; public positive-repair result seeded through explicit SessionStore transaction; metadata-only stale/current validation fixture",
+  "api_contract": "results/understanding-acceptance2/runtime/F1/r2-green/api-contract.md",
+  "full_npm": "NOT_RUN_PM_INTEGRATION",
+  "acceptance2": "NOT_CLAIMED",
+  "F3_rescue": "NOT_CLAIMED",
+  "semantic_efficacy": "NOT_CLAIMED",
+  "full_review_parent_gate": "PM_PENDING_NOT_PASS",
+  "no_child_model_api_secret_publication": true,
+  "remaining_owned_items": [],
+  "terminal": "All tests complete; owned source/test frozen; no further product edits planned",
+  "parallel_docs_changes_authorised": true,
+  "combined_freeze": "PM after both owner terminals",
+  "freeze_scope": "Owned source3/test2 and unchanged protected9; docs2 hashes are concurrent point-in-time observations"
+}

@@ -1,0 +1,37 @@
+{
+  "binding": {
+    "schemaVersion": "0.1",
+    "operation": "reflect",
+    "taskId": "reading-meeting-formats",
+    "expectedRevision": 3,
+    "requestHash": "94a51855dc70acd2a2fffb0050567d8f62245220e3937df81c171b7538188a0c",
+    "sessionId": "c59dc9a2-2b21-40b3-b8de-baa9cfb5fc2b"
+  },
+  "reflection": {
+    "binding": {
+      "taskId": "reading-meeting-formats",
+      "basedRevision": 3,
+      "understandingHash": "074843c048af383c0a36f6f63f91c694a3f4bfe9dd36cbee13f1d6c0659a9236"
+    },
+    "reviewedClaimIds": [
+      "open-round-duration",
+      "card-duration",
+      "card-preparation-estimate",
+      "priority-small-groups",
+      "preparation-flexible",
+      "prefers-short-preparation",
+      "group-speaking-comfort-unknown",
+      "open-round-no-materials"
+    ],
+    "completion": "completed",
+    "limitations": [
+      "準備を短くしたい希望は実回答で確認できたが、少人数対話との最終的な優先順位と10分超の準備可能性は未確定であり、既存の2つの必須gapは解決していない。",
+      "本人が参加者の話しやすさを知らないことは、参加者が全体で話せないことや、少人数なら話せることの証拠ではない。",
+      "資料不要は準備負担を抑える構成上の利点であるが、進行準備が完全にゼロとの実測ではない。",
+      "短い一言でもよい・パス可を加えるのは元の順番案へのAIの調整提案であり、元資料の条件や本人の承認、効果の測定と混同しない。",
+      "調整した順番案は発言の機会を設けるが全員の実発言を保証しない。カード案も全員の話しやすさを保証しない。",
+      "条件付きでは準備負担の観点から順番案を第一候補にできるが、準備が多少増えても少人数を優先するかという本人の残る比較判断を代行しない。"
+    ],
+    "proposal": {}
+  }
+}

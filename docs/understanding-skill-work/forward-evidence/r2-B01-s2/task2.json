@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "0.1",
+  "taskId": "exhibit-operations-reasoning-review",
+  "goal": "exhibit/operations.txtの当日の運用事情を確認し、土曜という曜日を理由にする妥当性を再評価して会議用の文を再作成する",
+  "mode": "explain",
+  "successCriteria": [
+    "exhibit/operations.txtの運用記録（併催イベント・共用入口・案内板等）を確認する",
+    "土曜という曜日を理由にする妥当性を再評価する",
+    "運用条件の差を踏まえた会議用の提案文を再作成する"
+  ],
+  "evidence": [
+    {
+      "id": "ev-visits-txt",
+      "kind": "document",
+      "locator": "exhibit/visits.txt",
+      "sourceGroup": "local_file",
+      "retrievedAt": "2026-10-20T08:46:46.000Z",
+      "version": null,
+      "scope": "exhibit/visits.txt",
+      "passage": "2026-09-05（土） 来場者32人。開催時間10時〜16時。\n2026-09-12（土） 来場者35人。開催時間10時〜16時。\n2026-09-20（日） 来場者18人。開催時間10時〜16時。\nいずれも同じ部屋で、無料開催。\n",
+      "contentHash": "890aa17a9b0ed44a195ed68babe24b049b2dae25a4d70da989d17f9f156201ef",
+      "validity": "current"
+    }
+  ],
+  "reflectionRequired": true,
+  "capabilities": [
+    "read_local_file",
+    "converse"
+  ],
+  "budget": {
+    "maxRounds": 4,
+    "maxModelCalls": 8,
+    "maxToolCalls": 8,
+    "maxElapsedMs": 300000,
+    "maxInputChars": 30000,
+    "maxOutputTokensPerCall": 2500
+  }
+}

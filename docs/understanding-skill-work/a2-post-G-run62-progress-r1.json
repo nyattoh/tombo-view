@@ -1,0 +1,21 @@
+{
+  "at": "2026-10-21T03:01:16.692194+09:00",
+  "pm_thread": "thread:delegated-task:command%3Amcp%3Adcc7a0ba-9101-46f3-9102-ed0a89ba52ed%3Adelegate-task%3Atombo-understanding-skill-20261020-goal-pm-r1",
+  "pm_run_ordinal": 62,
+  "pm_status": "running",
+  "design": "completed PASS design readiness only",
+  "runtime": "same ordinal7 running",
+  "raw": "same ordinal5 started",
+  "actual_child_turns": 77,
+  "distinct_threads": 37,
+  "active_children": 2,
+  "historical_ask_untracked": 192,
+  "staged": [],
+  "baseline": "724 preserved; not tests for pending changes",
+  "acceptance2": "not_passed",
+  "full_review": "not_started",
+  "gate": "last exit3 G2/G12/G14; no new pass",
+  "parent_audit": "pending",
+  "publication": "none",
+  "cost_tokens": "unknown"
+}

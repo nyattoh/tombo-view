@@ -1,0 +1,5 @@
+{
+  "command": "python C:/Users/ryoko/.agents/skills/bench-ledger-router/scripts/task_gate.py docs/understanding-skill-work/task-state.json",
+  "exit_code": 3,
+  "stderr": ""
+}

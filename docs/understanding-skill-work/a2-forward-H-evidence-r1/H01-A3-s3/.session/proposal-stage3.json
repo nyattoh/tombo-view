@@ -1,0 +1,88 @@
+{
+  "binding": {
+    "schemaVersion": "0.1",
+    "operation": "update",
+    "taskId": "reading-group-format",
+    "expectedRevision": 7,
+    "requestHash": "86bea86392bf198f3150874857e1bcca93096926e3ede73b8305430537b5bf6f",
+    "sessionId": "24cc4f30-ba82-4066-bab9-3d4e14dff741"
+  },
+  "proposal": {
+    "claims": [
+      {
+        "id": "card-prep-current25",
+        "role": "observation",
+        "text": "追加メモによる現行のカード準備時間の見積りは約25分である。",
+        "scope": "memo-planning"
+      },
+      {
+        "id": "card-all-in60",
+        "role": "answer_claim",
+        "text": "カード準備と活動を両方45分枠に含める場合、現在の見積り合計は約60分になる。",
+        "scope": "memo-planning"
+      }
+    ],
+    "assessments": [
+      {
+        "claimId": "room",
+        "evidenceIds": [
+          "room-rechecked"
+        ],
+        "verdict": "supports",
+        "scopeMatched": true,
+        "reason": "元メモの訂正対象外の会場45分条件を再取得した。"
+      },
+      {
+        "claimId": "round-time",
+        "evidenceIds": [
+          "room-rechecked",
+          "round-rechecked"
+        ],
+        "verdict": "supports",
+        "scopeMatched": true,
+        "reason": "8人×各最大2分=16分。訂正はカード準備についてで、この条件の変更は示されていない。"
+      },
+      {
+        "claimId": "card-time",
+        "evidenceIds": [
+          "card-activity-rechecked"
+        ],
+        "verdict": "supports",
+        "scopeMatched": true,
+        "reason": "元メモの導入込み35分の活動条件を再取得した。追加メモの変更は準備見積りである。"
+      },
+      {
+        "claimId": "card-prep-current25",
+        "evidenceIds": [
+          "prep-corrected25"
+        ],
+        "verdict": "supports",
+        "scopeMatched": true,
+        "reason": "今回のカード仕分けが必要なため旧10分に代わり約25分という訂正。計測された準備時間ではない。"
+      },
+      {
+        "claimId": "card-all-in60",
+        "evidenceIds": [
+          "prep-corrected25",
+          "card-activity-rechecked"
+        ],
+        "verdict": "supports",
+        "scopeMatched": true,
+        "reason": "同じ会場枠に準備も含める場合だけ25+35=約60分と計算する。枠外で準備できないことまでは意味しない。"
+      }
+    ],
+    "resolutions": [
+      {
+        "gapId": "corrected-prep-gap",
+        "reason": "supported",
+        "evidenceIds": [
+          "prep-corrected25",
+          "room-rechecked",
+          "round-rechecked",
+          "card-activity-rechecked"
+        ],
+        "explanation": "現行準備見積り25分を確認し、変更範囲をカード準備に限定して元メモの他の時間条件を再取得した。旧10分は現行比較に用いない。本人の準備可否やパス方針のgapは解決しない。"
+      }
+    ]
+  }
+}

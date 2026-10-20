@@ -1,0 +1,6 @@
+{
+  "command": "Get-Content -Raw results/understanding-acceptance2/runtime/F1/r2-green/verification-summary.json; Get-Content -Raw results/understanding-acceptance2/runtime/F1/r2-green/source-freeze.json",
+  "result": "Both Get-Content calls reported PathNotFound at this readback; exact exit and invocation time were not captured in the saved tool projection.",
+  "exit": null,
+  "boundary": "Artifact read failure, not a test failure. New final figures were not adopted from unfinished packaging. API specification remained the verified milestone contract."
+}

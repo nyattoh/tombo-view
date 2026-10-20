@@ -1,0 +1,24 @@
+[
+  {
+    "executionId": "exec-read-survey",
+    "probeId": "probe-inspect-survey-results",
+    "outcome": "completed",
+    "toolCalls": 1,
+    "elapsedMs": 15,
+    "costYen": null,
+    "evidence": [
+      {
+        "id": "evidence-survey-results",
+        "kind": "document",
+        "locator": "survey/results.json",
+        "sourceGroup": "survey",
+        "retrievedAt": "2026-10-20T17:47:00+09:00",
+        "version": null,
+        "scope": "夏休み昼の読書会（2026年8月）アンケート及び平日夜の読書会（2026年9月〜10月）コメント",
+        "passage": "{\n  \"current_group\": {\"name\": \"平日夜の読書会\", \"period\": \"2026年9月〜10月\", \"registered\": 24},\n  \"survey\": {\n    \"group\": \"夏休み昼の読書会\",\n    \"period\": \"2026年8月\",\n    \"respondents\": 15,\n    \"question\": \"夏休み中は昼の開催を続けてほしいですか\",\n    \"yes\": 12,\n    \"no\": 3,\n    \"respondent_overlap_with_current_group\": \"未確認\"\n  },\n  \"current_group_comments\": [\n    {\"alias\": \"参加者あ\", \"text\": \"今の平日夜なら続けて通えます\"},\n    {\"alias\": \"参加者い\", \"text\": \"夜は帰りが遅くなるので昼が助かります\"}\n  ]\n}\n",
+        "contentHash": "31331b8e32f571ff5da263e5a768e2edb07c1f7b1fd9046dbbe180010ae22956",
+        "validity": "current"
+      }
+    ]
+  }
+]

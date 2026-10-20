@@ -1,0 +1,94 @@
+{
+  "candidates": [
+    {
+      "providerInstanceId": "antigravity",
+      "provider": "Antigravity",
+      "model": "gemini-3.8-flash-medium",
+      "label": "Gemini 3.8 Flash (Medium)",
+      "efforts": [
+        "default"
+      ],
+      "cost": {
+        "input": 0.75,
+        "output": 3.75
+      },
+      "benchmark": {
+        "best_score": 100.0,
+        "best_source": "measured",
+        "scores": [
+          {
+            "bench": "aggregate-ai-schema-review-20261013",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-13 14:12:46"
+          },
+          {
+            "bench": "aggregate-ai-persistence-review-20261013",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-13 14:17:34"
+          },
+          {
+            "bench": "aggregate-pending-cache-review-20261013",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-13 15:44:55"
+          },
+          {
+            "bench": "cuemetrica-impact-posture-review-20261013",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-13 18:35:57"
+          },
+          {
+            "bench": "navigation-purpose-review-20261014",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-14 00:23:45"
+          },
+          {
+            "bench": "trend-nav-tidy-review-20261014",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-14 00:42:08"
+          },
+          {
+            "bench": "trajexa-child-quality-fixtures-acceptance-20261014-r1",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-14 02:42:30"
+          },
+          {
+            "bench": "crossrag-v4-review",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-18 06:50:17"
+          },
+          {
+            "bench": "cuemetrica-roi-tracker-feasibility-20261020",
+            "score": 100.0,
+            "source": "measured",
+            "recorded_at": "2026-10-20 18:56:49"
+          },
+          {
+            "bench": "terminal-bench-2-1",
+            "score": 90.8,
+            "source": "external",
+            "recorded_at": "2026-10-09 03:02:24"
+          },
+          {
+            "bench": "deep-swe-v1-1",
+            "score": 61.4,
+            "source": "external",
+            "recorded_at": "2026-10-09 03:02:24"
+          }
+        ]
+      },
+      "evidence": "ledger",
+      "vendor": "google",
+      "notes": "fast tier | Read-only schema review PASS with16relay tests and15controller-client tests; no live generation; cost unknown | effort=medium Independent static and unit review PASS; initial browser invocation targeted old live build, excluded from acceptance; cost unknown | AGY independent review: 82 tests passed, tsc passed; personal Chrome and paid generation not run; cost unknown | effort=host_default Independent source/tests/anonymised numeric review PASS; 34 focused tests and type check PASS; browser verified by parent; actual cost unknown | effort=model-encoded-medium Independent r3 review final frozen navigation code pass; repeated unit4 E2E36 tsc build; actual cost unknown | effort=model-encoded-medium Review completed with artifact and hash/browser checks; no P1/P2; cost unknown | effort=host_default Binary child test-fixture/method integration acceptance only at PR46 511563f and PR47 100ae25 against parent7ca729b. Owner PHP37/25/process27/combined15 fake checks, Google static PASS not reviewer execution. Helper product files unchanged. Preview nonconsumption, no real API/payment/refund. No semantic quality/product efficacy/current parent new-review acceptance score. Cost UNKNOWN omitted; model ID encodes medium without effort control. | effort=default Independent cross-vendor review of integrated.md: verdict pass; 0 mismatches over 8 JSON files (table + Jaccard) | effort=medium Jev real API diagnosis on Gustavo sports CV on-device, identified smartphone browser memory limits and distilled to geometric heuristics",
+      "rank": 2
+    }
+  ],
+  "policy": "Observer descriptive comparison, not formal independent acceptance review. Same Google observer as F/G, separate Codex high observer. Effort labels not equivalent; actual cost/quota unknown."
+}

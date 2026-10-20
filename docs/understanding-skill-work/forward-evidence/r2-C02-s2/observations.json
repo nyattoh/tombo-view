@@ -1,0 +1,24 @@
+[
+  {
+    "executionId": "exec-user-priority-statement",
+    "probeId": "probe-user-priority",
+    "outcome": "completed",
+    "evidence": [
+      {
+        "id": "evidence-user-priority-statement",
+        "kind": "user_statement",
+        "locator": "conversation://user-response-1",
+        "sourceGroup": "user",
+        "retrievedAt": "2026-10-20T17:53:58+09:00",
+        "version": null,
+        "scope": "local_search_tool",
+        "passage": "起動時に少し待つのは構いません。検索ボタンを押した後に待たされる方が気になります。今回は最初の検索の待ち時間を短くすることを優先してください。この優先順位で方針を一つに決めて、理由を短く教えてください。実装はまだ不要です。",
+        "contentHash": "6785935287cddd6de1dce38eecac982462561738f39798cb6ea34c94ba03ec3e",
+        "validity": "current"
+      }
+    ],
+    "toolCalls": 0,
+    "elapsedMs": 100,
+    "costYen": null
+  }
+]

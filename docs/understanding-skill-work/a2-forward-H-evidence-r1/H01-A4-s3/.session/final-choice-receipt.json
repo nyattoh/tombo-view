@@ -1,0 +1,47 @@
+{
+  "id": "user-corrected-final-choice-answer",
+  "source": {
+    "kind": "user_statement",
+    "locator": "conversation:pass-allowed-trial-and-corrected-choice"
+  },
+  "references": [
+    "conversation:pass-allowed-trial-answer",
+    "conversation:corrected-25-choice-answer"
+  ],
+  "observations": [
+    {
+      "executionId": "user-corrected-final-choice-observed",
+      "probeId": "ask-corrected-25-choice",
+      "outcome": "completed",
+      "evidence": [
+        {
+          "id": "user-trial-choice",
+          "kind": "user_statement",
+          "locator": "conversation:pass-allowed-trial-answer",
+          "sourceGroup": "conversation:pass-allowed-trial-answer",
+          "retrievedAt": "2026-10-20T18:52:58.338Z",
+          "version": null,
+          "scope": "user choice under corrected preparation estimate for this reading meeting",
+          "passage": "残るのは、準備の短さと全体で話す負担をどう比べるかです。今回はどちらに寄せたいですか。\n準備を抑え、パス可の順番案を試す",
+          "contentHash": "164e753a1a43efa81ad37b0da42feae5c96361c4d3a714cb4ed95b3b09e72886",
+          "validity": "current"
+        },
+        {
+          "id": "user-corrected-final-choice",
+          "kind": "user_statement",
+          "locator": "conversation:corrected-25-choice-answer",
+          "sourceGroup": "conversation:corrected-25-choice-answer",
+          "retrievedAt": "2026-10-20T18:52:58.338Z",
+          "version": null,
+          "scope": "user choice under corrected preparation estimate for this reading meeting",
+          "passage": "準備が約25分という訂正を踏まえ、今回はどちらに寄せたいですか。25分も見積りで、話しやすさは両案とも未確認です。\n準備の短さを優先し、パス可の順番案にする",
+          "contentHash": "52a224a079498ac42cb43f2c5910b866d08ff9346f052a14255ab80928f015ca",
+          "validity": "current"
+        }
+      ],
+      "toolCalls": 0,
+      "elapsedMs": 0,
+      "costYen": null
+    }
+  ]
+}

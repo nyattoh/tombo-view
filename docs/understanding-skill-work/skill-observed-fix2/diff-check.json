@@ -1,0 +1,4 @@
+{
+  "command": "git diff --check -- skills/tombo-view/SKILL.md skills/tombo-view/references/host-session.md skills/tombo-view/agents/openai.yaml README.md",
+  "exit_code": 0
+}

@@ -1,0 +1,1 @@
+{"ok": false, "violations": ["G2: implement task implementation has no verify task", "G12: implement task implementation needs exactly one completed goal PM for goal_id"], "counts": {"implement": 1, "verify": 1}}

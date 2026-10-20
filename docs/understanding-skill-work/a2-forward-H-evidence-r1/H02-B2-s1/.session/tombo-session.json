@@ -1,0 +1,77 @@
+{
+  "schemaVersion": "0.1",
+  "binding": {
+    "sessionId": "58fb5139-2f6b-4c05-8842-cdde1b24a7ea",
+    "workspace": "d:\\develop\\works\\tombo-view-ask-policy\\results\\understanding-acceptance2\\observers\\h02-b2\\scratch",
+    "ledger": "d:\\develop\\works\\tombo-view-ask-policy\\results\\understanding-acceptance2\\observers\\h02-b2\\scratch\\.session\\sdk.jsonl",
+    "statePath": "d:\\develop\\works\\tombo-view-ask-policy\\results\\understanding-acceptance2\\observers\\h02-b2\\scratch\\.session\\state.json",
+    "taskId": "editor-status-explanation",
+    "taskHash": "2f093be652e56c8a74054e0f748b5de869ca6c8833cb55bfcd3dd6e8cb5a1a8b",
+    "budget": {
+      "maxRounds": 2,
+      "maxModelCalls": 3,
+      "maxToolCalls": 4,
+      "maxElapsedMs": 120000,
+      "maxInputChars": 20000,
+      "maxOutputTokensPerCall": 2000
+    },
+    "startedAt": "2026-10-20T18:33:07.337Z"
+  },
+  "task": {
+    "schemaVersion": "0.1",
+    "taskId": "editor-status-explanation",
+    "goal": "添付メモのSavedとPublished、およびチームページへの表示の関係を説明する",
+    "mode": "explain",
+    "successCriteria": [
+      "保存と公開を区別する",
+      "追加保存と既存公開版の関係を説明する",
+      "プレビューの既定表示と資料の限界を説明する"
+    ],
+    "evidence": [
+      {
+        "id": "guide",
+        "kind": "document",
+        "locator": "local:editor-guide.md",
+        "sourceGroup": "editor-guide",
+        "retrievedAt": "2026-10-21T03:32:24.7898422+09:00",
+        "version": null,
+        "scope": "sample-editor-note",
+        "passage": "",
+        "contentHash": "8e76a68f37f204332c0618bc256134674ac6ffbe4b44280164363f61871ec281",
+        "validity": "current",
+        "passageUnavailable": true
+      }
+    ],
+    "reflectionRequired": true,
+    "proposedAnswer": "Savedは下書き保存。チームページには公開版が表示され、追加保存だけでは公開版は置き換わらない。Publishedは保存済み版から公開用コピーを作成した状態。プレビューは既定で最新の公開版を開く。合成・日付不明のメモによる説明であり実製品の現状は未確認。",
+    "capabilities": [
+      "read_local_document"
+    ],
+    "budget": {
+      "maxRounds": 2,
+      "maxModelCalls": 3,
+      "maxToolCalls": 4,
+      "maxElapsedMs": 120000,
+      "maxInputChars": 20000,
+      "maxOutputTokensPerCall": 2000
+    }
+  },
+  "taskClock": {
+    "startedAt": "2026-10-20T18:30:18.635627Z",
+    "deadlineAt": "2026-10-20T18:35:18.635627Z",
+    "basis": "host_provided",
+    "sourceRef": "local:request-origin.json (publication observation; not exact host delivery)",
+    "recordedAt": "2026-10-20T18:32:52.978Z"
+  },
+  "taskClockStop": null,
+  "head": {
+    "revision": 2,
+    "stateHash": "4e136c677430e95a2580dcfb7d853f9e876e03ae2af3c09a925049496dc53811"
+  },
+  "updates": [],
+  "transitions": [],
+  "pendingOperation": null,
+  "accountingUncertain": false,
+  "lastObservedAt": 1792521209615,
+  "stopReceipts": []
+}

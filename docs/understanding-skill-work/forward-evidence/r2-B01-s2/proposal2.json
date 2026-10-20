@@ -1,0 +1,138 @@
+{
+  "binding": {
+    "schemaVersion": "0.1",
+    "operation": "inspect",
+    "taskId": "exhibit-operations-reasoning-review",
+    "expectedRevision": -1,
+    "requestHash": "c5cc2d389e8d6a1e27aa31b0ad61e5c422b76458c3d9129d644560b789ca3e47"
+  },
+  "proposal": {
+    "claims": [
+      {
+        "id": "claim-attendance-numbers",
+        "role": "observation",
+        "text": "直近3回の来場記録において土曜日は32人・35人、日曜日は18人であった",
+        "scope": "exhibit/visits.txt"
+      },
+      {
+        "id": "claim-operations-confound",
+        "role": "hypothesis",
+        "text": "過去の土曜日の来場者数には同建物内の別無料イベントおよび共用入口の影響があり、日曜日は別イベントがなく案内板も設置されていなかった",
+        "scope": "exhibit/operations.txt"
+      },
+      {
+        "id": "claim-saturday-alone-unjustified",
+        "role": "answer_claim",
+        "text": "当日の運用条件の差（併催イベントや共用受付等）を考慮すると、土曜という曜日のみを理由として次回も土曜にする提案理由はそのままでは不十分である",
+        "scope": "exhibit/operations.txt"
+      }
+    ],
+    "lenses": [
+      {
+        "id": "lens-visit-records",
+        "label": "来場実績",
+        "rationale": "過去3回の曜日別来場実績を確認する",
+        "origin": "initial",
+        "status": "active"
+      },
+      {
+        "id": "lens-operational-factors",
+        "label": "当日の運用条件・外部要因",
+        "rationale": "併催イベントや案内板の有無など、曜日以外の集客要因を検証する",
+        "origin": "initial",
+        "status": "active"
+      }
+    ],
+    "gaps": [
+      {
+        "id": "gap-prior-visits",
+        "kind": "missing_fact",
+        "lensId": "lens-visit-records",
+        "question": "過去3回の来場実績数値は確認できているか？",
+        "triggerRefs": [
+          "task:criterion:0"
+        ],
+        "whyItMatters": "来場者数の比較基礎を確認するため",
+        "importance": "required",
+        "claimIds": [
+          "claim-attendance-numbers"
+        ],
+        "probeIds": [
+          "probe-verify-visits"
+        ]
+      },
+      {
+        "id": "gap-operations-factors",
+        "kind": "missing_fact",
+        "lensId": "lens-operational-factors",
+        "question": "exhibit/operations.txt に記録された各回の併催イベントや受付、案内板の運用事情はどのようになっているか？",
+        "triggerRefs": [
+          "task:criterion:0",
+          "task:criterion:1"
+        ],
+        "whyItMatters": "土曜の集客が曜日によるものか併催イベント等の運用条件によるものかを判断するため",
+        "importance": "required",
+        "claimIds": [
+          "claim-operations-confound",
+          "claim-saturday-alone-unjustified"
+        ],
+        "probeIds": [
+          "probe-read-operations"
+        ]
+      }
+    ],
+    "probes": [
+      {
+        "id": "probe-verify-visits",
+        "gapIds": [
+          "gap-prior-visits"
+        ],
+        "method": "corroboration",
+        "question": "すでに取得されたexhibit/visits.txtの証拠を確認する",
+        "requiredCapability": "read_local_file",
+        "sourceGroups": [
+          "local_file"
+        ],
+        "successCondition": "証拠から来場実績数値が確認できること",
+        "refutationCondition": "証拠が存在しないこと",
+        "inconclusiveCondition": "数値が不明なこと"
+      },
+      {
+        "id": "probe-read-operations",
+        "gapIds": [
+          "gap-operations-factors"
+        ],
+        "method": "corroboration",
+        "question": "exhibit/operations.txt を読み取り、各回の併催イベント、受付・入口の状況、案内板の有無等の運用事情を取得する",
+        "requiredCapability": "read_local_file",
+        "sourceGroups": [
+          "local_file"
+        ],
+        "successCondition": "各回の併催イベントや共用受付等の運用記録が取得できること",
+        "refutationCondition": "exhibit/operations.txtが存在しない、または運用事情が取得できないこと",
+        "inconclusiveCondition": "記録の一部のみ取得でき、各回の条件差が不明なこと"
+      }
+    ],
+    "assessments": [
+      {
+        "claimId": "claim-attendance-numbers",
+        "evidenceIds": [
+          "ev-visits-txt"
+        ],
+        "verdict": "supports",
+        "scopeMatched": true,
+        "reason": "ev-visits-txtの記録により、9/5（土）32人、9/12（土）35人、9/20（日）18人であることが確認できる。"
+      }
+    ],
+    "resolutions": [
+      {
+        "gapId": "gap-prior-visits",
+        "reason": "supported",
+        "evidenceIds": [
+          "ev-visits-txt"
+        ],
+        "explanation": "ev-visits-txtの記録により来場実績数値が確認された。"
+      }
+    ]
+  }
+}

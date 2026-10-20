@@ -1,0 +1,114 @@
+{
+  "binding": {
+    "schemaVersion": "0.1",
+    "operation": "update",
+    "taskId": "reading-meeting-formats",
+    "expectedRevision": 10,
+    "requestHash": "748bc05fea085e2f3f5592fab1519d36adbccd589ff8e0dd6d0b9ff9d71a5279",
+    "sessionId": "c59dc9a2-2b21-40b3-b8de-baa9cfb5fc2b"
+  },
+  "proposal": {
+    "claims": [
+      {
+        "id": "priority-everyone-opportunity",
+        "role": "observation",
+        "text": "本人が今回特に大事にしたいのは、全員が一度は自分の考えを話す機会である。",
+        "scope": "user priority and preparation limit for this reading meeting"
+      },
+      {
+        "id": "preparation-limit-ten",
+        "role": "observation",
+        "text": "本人が準備に使える時間の上限は10分である。",
+        "scope": "user priority and preparation limit for this reading meeting"
+      },
+      {
+        "id": "chosen-pass-allowed-round",
+        "role": "answer_claim",
+        "text": "本人は訂正後の準備見積りも踏まえ、準備を抑えてパス可の順番案を採用することを選んだ。",
+        "scope": "user choice under corrected preparation estimate for this reading meeting"
+      }
+    ],
+    "assessments": [
+      {
+        "claimId": "priority-everyone-opportunity",
+        "evidenceIds": [
+          "user-priority-and-limit"
+        ],
+        "verdict": "supports",
+        "scopeMatched": true,
+        "reason": "本人が全員の発言機会という選択肢を明示した。実際に全員が話すという結果の保証ではない。"
+      },
+      {
+        "claimId": "preparation-limit-ten",
+        "evidenceIds": [
+          "user-priority-and-limit"
+        ],
+        "verdict": "supports",
+        "scopeMatched": true,
+        "reason": "本人が10分以内なら準備できると明示した。訂正後の25分を10分に戻す回答ではない。"
+      },
+      {
+        "claimId": "chosen-pass-allowed-round",
+        "evidenceIds": [
+          "user-corrected-final-choice"
+        ],
+        "verdict": "supports",
+        "scopeMatched": true,
+        "reason": "約25分という訂正を踏まえた質問に対し、準備の短さを優先しパス可の順番案にすると本人が明示した。"
+      },
+      {
+        "claimId": "priority-small-groups",
+        "evidenceIds": [
+          "user-priority-and-limit"
+        ],
+        "verdict": "refutes",
+        "scopeMatched": true,
+        "reason": "本人が最も大事にしたい条件として少人数のお題対話ではなく全員の発言機会を選んだ。"
+      },
+      {
+        "claimId": "preparation-flexible",
+        "evidenceIds": [
+          "user-priority-and-limit"
+        ],
+        "verdict": "refutes",
+        "scopeMatched": true,
+        "reason": "準備可能なのは10分以内という明示回答であり、10分超の確保は受け入れていない。"
+      },
+      {
+        "claimId": "accepts-25-for-small-groups",
+        "evidenceIds": [
+          "user-corrected-final-choice"
+        ],
+        "verdict": "refutes",
+        "scopeMatched": true,
+        "reason": "訂正後25分の準備を引き受けてカード案を選ぶ選択肢ではなく、準備を抑えたパス可の順番案を選んだ。"
+      }
+    ],
+    "resolutions": [
+      {
+        "gapId": "priority-gap",
+        "reason": "refuted",
+        "evidenceIds": [
+          "user-priority-and-limit"
+        ],
+        "explanation": "本人が全員の発言機会を最重要として明示し、少人数を最優先とする仮説を否定した。"
+      },
+      {
+        "gapId": "preparation-gap",
+        "reason": "refuted",
+        "evidenceIds": [
+          "user-priority-and-limit"
+        ],
+        "explanation": "本人が準備の上限を10分以内と明示し、10分を多少超えてもよいとする仮説を否定した。訂正後25分の見積りとは区別する。"
+      },
+      {
+        "gapId": "corrected-25-preference-gap",
+        "reason": "refuted",
+        "evidenceIds": [
+          "user-corrected-final-choice"
+        ],
+        "explanation": "訂正後の条件でも本人がパス可の順番案を選択したため、25分の準備をかけて少人数を優先するという仮説を否定した。"
+      }
+    ]
+  }
+}

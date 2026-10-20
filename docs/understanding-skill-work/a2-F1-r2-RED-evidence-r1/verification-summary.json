@@ -1,0 +1,95 @@
+{
+  "status": "R2_TEST_AMENDMENTS_AND_RED_ONLY_TERMINAL",
+  "recorded_at": "2026-10-20T20:35:59.061Z",
+  "started_at": "2026-10-21T05:35:06.4961335+09:00",
+  "completed_at": "2026-10-21T05:35:14.8087681+09:00",
+  "command": "node --test --test-name-pattern='F1' test/cli-model-repair.test.mjs test/session-followup.test.mjs",
+  "exit": 1,
+  "phase": "r2 test amendments and RED only",
+  "source_edits": false,
+  "green_build_typecheck_npm": "NOT_RUN",
+  "counts": {
+    "tests": 29,
+    "pass": 2,
+    "fail": 27,
+    "skipped": 0,
+    "cancelled": 0
+  },
+  "log_sha256": "f31f874b8a5a311930d981f209e41ea1a09e584f7eb1f0f97af14aae2af32b46",
+  "all_failures_are_assertions": true,
+  "assertions": [
+    "AssertionError [ERR_ASSERTION]: F1 actual terminal proposal failure must persist a bounded rejection object",
+    "AssertionError [ERR_ASSERTION]: F1 actual terminal proposal failure must persist a bounded rejection object",
+    "AssertionError [ERR_ASSERTION]: F1 actual terminal proposal failure must persist a bounded rejection object",
+    "AssertionError [ERR_ASSERTION]: F1 actual terminal proposal failure must persist a bounded rejection object",
+    "AssertionError [ERR_ASSERTION]: F1 actual terminal proposal failure must persist a bounded rejection object",
+    "AssertionError [ERR_ASSERTION]: F1 actual terminal proposal failure must persist a bounded rejection object",
+    "AssertionError [ERR_ASSERTION]: F1 actual terminal proposal failure must persist a bounded rejection object",
+    "AssertionError [ERR_ASSERTION]: F1 actual terminal proposal failure must persist a bounded rejection object",
+    "AssertionError [ERR_ASSERTION]: F1 actual terminal proposal failure must persist a bounded rejection object",
+    "AssertionError [ERR_ASSERTION]: F1 actual terminal proposal failure must persist a bounded rejection object",
+    "AssertionError [ERR_ASSERTION]: F1 actual terminal proposal failure must persist a bounded rejection object",
+    "AssertionError [ERR_ASSERTION]: F1 actual terminal proposal failure must persist a bounded rejection object",
+    "AssertionError [ERR_ASSERTION]: F1 actual terminal proposal failure must persist a bounded rejection object",
+    "AssertionError [ERR_ASSERTION]: F1 actual terminal proposal failure must persist a bounded rejection object",
+    "AssertionError [ERR_ASSERTION]: F1 actual terminal proposal failure must persist a bounded rejection object",
+    "AssertionError [ERR_ASSERTION]: F1 actual terminal proposal failure must persist a bounded rejection object",
+    "AssertionError [ERR_ASSERTION]: F1 actual terminal proposal failure must persist a bounded rejection object",
+    "AssertionError [ERR_ASSERTION]: F1 actual terminal proposal failure must persist a bounded rejection object",
+    "AssertionError [ERR_ASSERTION]: Missing expected exception.",
+    "AssertionError [ERR_ASSERTION]: Missing expected exception.",
+    "AssertionError [ERR_ASSERTION]: Missing expected exception.",
+    "AssertionError [ERR_ASSERTION]: F1 managed real semantic rejection must persist lastProposalRejection",
+    "AssertionError [ERR_ASSERTION]: F1 exact pending retry must provide real rejection feedback",
+    "AssertionError [ERR_ASSERTION]: F1 managed real semantic rejection must persist lastProposalRejection",
+    "AssertionError [ERR_ASSERTION]: F1 managed real semantic rejection must persist lastProposalRejection",
+    "AssertionError [ERR_ASSERTION]: F1 r2 coexistence requires the genuine opted-in terminal record before direct SessionStore setup",
+    "AssertionError [ERR_ASSERTION]: F1 managed real semantic rejection must persist lastProposalRejection"
+  ],
+  "protected14_unchanged": true,
+  "source3_unchanged": true,
+  "store_unchanged": true,
+  "prefix": [
+    {
+      "path": "test/cli-model-repair.test.mjs",
+      "prefix_bytes": 17716,
+      "unchanged": true
+    },
+    {
+      "path": "test/session-followup.test.mjs",
+      "prefix_bytes": 73913,
+      "unchanged": true
+    }
+  ],
+  "pre_sdk_guard_entire_block_unchanged": true,
+  "no_stale_feedback_assertion_preserved": true,
+  "r1_artifacts_unchanged": true,
+  "new_test_hashes": [
+    {
+      "path": "test/cli-model-repair.test.mjs",
+      "ownership": "test-only",
+      "before_sha256": "3f3be921c9fe8c520fedeb83a6bf1133781258297218278369c800d618679866",
+      "sha256": "93813bd5cf44d4bcb7d1349e6db4dacfa0edc0c662ddbbb7c3eb77eb01d28d5a",
+      "before_mtime_ns": "1792526834141904800",
+      "mtime_ns": "1792528506483365000",
+      "bytes_unchanged": false,
+      "mtime_unchanged": false
+    },
+    {
+      "path": "test/session-followup.test.mjs",
+      "ownership": "test-only",
+      "before_sha256": "5eef341502f2f69742b34b867b91e1bbe4d0924e972c6e0f40bc0c1210d99c4b",
+      "sha256": "4f0f34ee149f8bad1bd16bfd837d90248987f1a6107343b454f98f850524b568",
+      "before_mtime_ns": "1792526953391652500",
+      "mtime_ns": "1792528506485413300",
+      "bytes_unchanged": false,
+      "mtime_unchanged": false
+    }
+  ],
+  "filtered_tests": "NOT_RUN outside F1 pattern; selected skip0 is not whole-suite evidence",
+  "future_assertions": "Historical retention, corrupt-current binding rejection, metadata inactivity/cache/privacy/recovery remain blocked by missing real record; not claimed executed",
+  "coexistence_boundary": "r1 actual legacy reproduction preserved; r2 case now positively asserts missing opt-in record before direct setup, so new-object invalidate/prepare branch NOT_REACHED",
+  "cost": "unknown",
+  "tokens": "unknown",
+  "terminal": "All selected processes completed; await separate explicit production release"
+}

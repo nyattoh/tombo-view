@@ -1,0 +1,59 @@
+{
+  "candidates": [
+    {
+      "providerInstanceId": "antigravity",
+      "provider": "Antigravity",
+      "model": "gemini-4-argon-high",
+      "label": "Gemini 4 Argon (High)",
+      "efforts": [
+        "default"
+      ],
+      "cost": {
+        "input": null,
+        "output": null
+      },
+      "benchmark": null,
+      "evidence": "unknown",
+      "vendor": "google",
+      "notes": null,
+      "rank": 33
+    },
+    {
+      "providerInstanceId": "antigravity",
+      "provider": "Antigravity",
+      "model": "gemini-4-argon-medium",
+      "label": "Gemini 4 Argon (Medium)",
+      "efforts": [
+        "default"
+      ],
+      "cost": {
+        "input": null,
+        "output": null
+      },
+      "benchmark": null,
+      "evidence": "unknown",
+      "vendor": "google",
+      "notes": null,
+      "rank": 32
+    },
+    {
+      "providerInstanceId": "antigravity",
+      "provider": "Antigravity",
+      "model": "gemini-4-argon-low",
+      "label": "Gemini 4 Argon (Low)",
+      "efforts": [
+        "default"
+      ],
+      "cost": {
+        "input": null,
+        "output": null
+      },
+      "benchmark": null,
+      "evidence": "unknown",
+      "vendor": "google",
+      "notes": null,
+      "rank": 34
+    }
+  ],
+  "reason": "Google cross-vendor requested; Claude/Grok excluded. H Flash quota failure known; distinct live Argon availability is unverified until actual task. Unknown benchmark evidence retained, vendor is model identity, not a measured score. Prefer model-encoded high for full feature review."
+}

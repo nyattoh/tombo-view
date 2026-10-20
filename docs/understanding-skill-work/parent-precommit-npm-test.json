@@ -1,0 +1,17 @@
+{
+  "command": "npm test",
+  "cwd": "D:\\develop\\works\\tombo-view-ask-policy",
+  "started_at": "2026-10-20T21:06:17.220698+00:00",
+  "completed_at": "2026-10-20T21:08:11.631713+00:00",
+  "exit_code": 0,
+  "counts": {
+    "tests": 767,
+    "pass": 767,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "log": "docs/understanding-skill-work/parent-precommit-npm-test.log",
+  "log_sha256": "05c21c9db6a8bea2c4540b13579daef804f656ad01dfb868a3c5696435f52ad5"
+}

@@ -1,0 +1,9 @@
+{
+  "command": "npm run build",
+  "cwd": "D:\\develop\\works\\tombo-view-ask-policy",
+  "started_at": "2026-10-20T21:08:21.741147+00:00",
+  "completed_at": "2026-10-20T21:08:22.636320+00:00",
+  "exit_code": 0,
+  "log": "docs/understanding-skill-work/parent-precommit-build.log",
+  "log_sha256": "22c07b21c9b6b6c682ab2c82c82c5a6419c70ba088b609425a5905c39b80f484"
+}

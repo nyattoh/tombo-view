@@ -1,0 +1,152 @@
+{
+  "binding": {
+    "schemaVersion": "0.1",
+    "operation": "inspect",
+    "taskId": "task-retry-note-audit-A01",
+    "expectedRevision": -1,
+    "requestHash": "9906085d9add55b24b8780caf2a950ea061b098048c6f4470a07072a139007ea"
+  },
+  "proposal": {
+    "claims": [
+      {
+        "id": "claim-note-status-408",
+        "role": "observation",
+        "text": "notes/retry-note.txt には HTTP 408 も自動で再試行すると記載されている",
+        "scope": "batch:retry"
+      },
+      {
+        "id": "claim-note-max-attempts",
+        "role": "observation",
+        "text": "notes/retry-note.txt には maxAttempts は初回を除いた再試行回数を表すと記載されている",
+        "scope": "batch:retry"
+      },
+      {
+        "id": "claim-impl-status-match",
+        "role": "answer_claim",
+        "text": "現在の実装（src/retry.ts）において HTTP 408 が自動再試行の対象として含まれている",
+        "scope": "batch:retry"
+      },
+      {
+        "id": "claim-impl-attempts-match",
+        "role": "answer_claim",
+        "text": "現在の実装（src/retry.ts）において maxAttempts は初回を除いた再試行回数として判定されている",
+        "scope": "batch:retry"
+      }
+    ],
+    "lenses": [
+      {
+        "id": "lens-code-conformance",
+        "label": "実装整合性",
+        "rationale": "運用メモの記述がソースコードの実装仕様および設定ファイルと合致しているかを評価する観点",
+        "origin": "initial",
+        "status": "active"
+      }
+    ],
+    "gaps": [
+      {
+        "id": "gap-check-status-408",
+        "kind": "unsupported_claim",
+        "lensId": "lens-code-conformance",
+        "question": "src/retry.ts において HTTP 408 が再試行対象ステータスとして判定されているか？",
+        "triggerRefs": [
+          "claim-impl-status-match",
+          "claim-note-status-408"
+        ],
+        "whyItMatters": "運用メモと実装コードで再試行対象ステータスに齟齬があると、エラー発生時の運用判断を誤るため",
+        "importance": "required",
+        "claimIds": [
+          "claim-impl-status-match"
+        ],
+        "probeIds": [
+          "probe-src-retry-status"
+        ]
+      },
+      {
+        "id": "gap-check-max-attempts",
+        "kind": "unsupported_claim",
+        "lensId": "lens-code-conformance",
+        "question": "src/retry.ts および config/job.json において maxAttempts は初回を除いた再試行回数として扱われているか？",
+        "triggerRefs": [
+          "claim-impl-attempts-match",
+          "claim-note-max-attempts"
+        ],
+        "whyItMatters": "maxAttempts の解釈がずれていると、許容される試行回数の見積もりが誤るため",
+        "importance": "required",
+        "claimIds": [
+          "claim-impl-attempts-match"
+        ],
+        "probeIds": [
+          "probe-src-retry-attempts",
+          "probe-config-job"
+        ]
+      }
+    ],
+    "probes": [
+      {
+        "id": "probe-src-retry-status",
+        "gapIds": [
+          "gap-check-status-408"
+        ],
+        "method": "corroboration",
+        "question": "src/retry.ts の shouldRetry 関数のステータスコード判定条件を確認する",
+        "requiredCapability": "local_file_read",
+        "sourceGroups": [
+          "src/retry.ts"
+        ],
+        "successCondition": "shouldRetry で status === 408 が判定に含まれていることが確認できる",
+        "refutationCondition": "shouldRetry で status === 408 が含まれず 429 または 500 以上のみが判定されていることが確認できる",
+        "inconclusiveCondition": "src/retry.ts が読み込めないか、判定ロジックが確認できない"
+      },
+      {
+        "id": "probe-src-retry-attempts",
+        "gapIds": [
+          "gap-check-max-attempts"
+        ],
+        "method": "corroboration",
+        "question": "src/retry.ts の shouldRetry 関数において attempt と maxAttempts の関係および attempt の初期値仕様を確認する",
+        "requiredCapability": "local_file_read",
+        "sourceGroups": [
+          "src/retry.ts"
+        ],
+        "successCondition": "maxAttempts が初回を除いた再試行回数として判定されていることが確認できる",
+        "refutationCondition": "attempt starts at 1 かつ attempt < maxAttempts であり、maxAttempts が初回を含む最大試行回数であることが確認できる",
+        "inconclusiveCondition": "attempt の初期値や比較条件が確認できない"
+      },
+      {
+        "id": "probe-config-job",
+        "gapIds": [
+          "gap-check-max-attempts"
+        ],
+        "method": "dependency",
+        "question": "config/job.json に設定された maxAttempts の値を確認する",
+        "requiredCapability": "local_file_read",
+        "sourceGroups": [
+          "config/job.json"
+        ],
+        "successCondition": "config/job.json に maxAttempts の設定値が記述されていることが確認できる",
+        "refutationCondition": "config/job.json に maxAttempts の記述がない",
+        "inconclusiveCondition": "config/job.json が読み込めない"
+      }
+    ],
+    "assessments": [
+      {
+        "claimId": "claim-note-status-408",
+        "evidenceIds": [
+          "evi-retry-note"
+        ],
+        "verdict": "supports",
+        "scopeMatched": true,
+        "reason": "notes/retry-note.txt の記述「HTTP 408、429、500以上の失敗は自動で再試行する」と一致する"
+      },
+      {
+        "claimId": "claim-note-max-attempts",
+        "evidenceIds": [
+          "evi-retry-note"
+        ],
+        "verdict": "supports",
+        "scopeMatched": true,
+        "reason": "notes/retry-note.txt の記述「設定値 maxAttempts は、初回を除いた再試行回数を表す」と一致する"
+      }
+    ]
+  }
+}

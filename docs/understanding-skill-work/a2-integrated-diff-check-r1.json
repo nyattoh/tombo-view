@@ -1,0 +1,5 @@
+{
+  "recorded_at": "2026-10-21T00:05:55.8575700+09:00",
+  "command": "git diff --check",
+  "exit_code": 0
+}

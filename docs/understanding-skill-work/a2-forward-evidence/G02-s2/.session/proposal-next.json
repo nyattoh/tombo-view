@@ -1,0 +1,51 @@
+{
+  "binding": {
+    "schemaVersion": "0.1",
+    "operation": "update",
+    "taskId": "film-selection-task",
+    "expectedRevision": 2,
+    "requestHash": "7e24e0452d0d234212e76b7db520fb3d04bfae39974391814dfbf715c8b36394",
+    "sessionId": "d7fd4deb-92b2-46a7-bf14-d4f51a0d0e58"
+  },
+  "proposal": {
+    "claims": [
+      {
+        "id": "claim-selected-film",
+        "role": "answer_claim",
+        "text": "短めで気楽に見られる作品（穏やかなコメディ・94分）として『A Map of Small Things』が今夜見る映画として選定される",
+        "scope": "film-selection"
+      }
+    ],
+    "assessments": [
+      {
+        "claimId": "claim-viewer-preference-priority",
+        "evidenceIds": [
+          "evidence-user-preference-answer"
+        ],
+        "verdict": "supports",
+        "scopeMatched": true,
+        "reason": "request-stage2.mdにて『今日はあまり遅くならないようにしたいので、短めで気楽に見られるほうを優先したいです。』と優先順位が明確に回答された。"
+      },
+      {
+        "claimId": "claim-selected-film",
+        "evidenceIds": [
+          "evidence-film-notes",
+          "evidence-user-preference-answer"
+        ],
+        "verdict": "supports",
+        "scopeMatched": true,
+        "reason": "film-notes.mdに記載の94分・穏やかなコメディという属性が、利用者の回答した短めで気楽に見たいという優先順位に合致するため。"
+      }
+    ],
+    "resolutions": [
+      {
+        "gapId": "gap-viewer-preference",
+        "reason": "supported",
+        "evidenceIds": [
+          "evidence-user-preference-answer"
+        ],
+        "explanation": "参加者から短めで気楽に見られるほう（コメディ・94分）を優先する意向が回答され、好みの優先順位が確定したため。"
+      }
+    ]
+  }
+}

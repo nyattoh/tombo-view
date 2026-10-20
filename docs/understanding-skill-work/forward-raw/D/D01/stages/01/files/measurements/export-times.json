@@ -1,0 +1,10 @@
+{
+  "task": "ローカルJSON書き出し",
+  "input": {"record_count": 30000, "same_records_for_both_versions": true},
+  "elapsed_definition": "書き出し開始から出力ファイルを閉じるまでの経過秒数",
+  "runs": [
+    {"version": "before", "write_mode": "one_record_at_a_time", "elapsed_seconds": [12.2, 11.9, 12.0]},
+    {"version": "after", "write_mode": "batch_of_100", "elapsed_seconds": [8.1, 7.9, 8.0]}
+  ],
+  "output_comparison": "両版で出力の行数と各項目の値が一致"
+}
