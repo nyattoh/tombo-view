@@ -512,6 +512,7 @@ Respond strictly in valid JSON format:
 - **保存先**: `evaluation/ask-policy-baseline/f2ecc2e/src/`
   - `core.ts`: `git show f2ecc2e4ccbfe109596d9e156095fff7af76ea6a:src/core.ts` のバイト完全コピー
   - `types.ts`: `git show f2ecc2e4ccbfe109596d9e156095fff7af76ea6a:src/types.ts` のバイト完全コピー
+  - 実行時は `git show` を使わず、コミット済みスナップショットのGit blob ID（`core` 561031d…、`types` 61ea27a…、`scripts/ask-policy-compare.mjs` の `BASE_BLOBS`）を検証する。`f2ecc2e` が公開履歴のsquashで欠落しても再現できる。
   （`core.ts` 内の内部依存は `./types.js` のみであり、同ディレクトリに揃えることで完全解決）
 - **検証記録**:
   スナップショットの Git Blob Object ID および展開後 SHA-256 ハッシュを比較レポートに必ず記録する。

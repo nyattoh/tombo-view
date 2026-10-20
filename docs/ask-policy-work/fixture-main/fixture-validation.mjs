@@ -1,8 +1,6 @@
 import assert from 'node:assert/strict';
-import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
-import { fileURLToPath } from 'node:url';
 
 export const baseCommit = 'f2ecc2e4ccbfe109596d9e156095fff7af76ea6a';
 export const domains = ['development', 'automation', 'research'];
@@ -23,9 +21,8 @@ export async function oldSdk() {
     assert.equal(handover.baseline.commit, baseCommit, 'Comparison baseline handover is required');
     assert.equal(handover.baseline.compiler.exit_code, 0);
     for (const file of ['core', 'types']) {
-      const source = execFileSync('git', ['show', `${baseCommit}:src/${file}.ts`], { cwd: fileURLToPath(root) });
       const snapshot = readFileSync(new URL(`evaluation/ask-policy-baseline/f2ecc2e/src/${file}.ts`, root));
-      assert.deepEqual(snapshot, source, 'Comparison snapshot must equal Git bytes');
+      assert.equal(createHash('sha1').update(`blob ${snapshot.length}\0`).update(snapshot).digest('hex'), handover.baseline.sources[file].blobId, 'Comparison snapshot must equal Git blob');
       assert.equal(sha256(snapshot), handover.baseline.sources[file].sha256);
     }
     for (const file of ['core-bridge.js', 'types.js']) {

@@ -1,10 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { execFileSync } from 'node:child_process';
 import { readFile, writeFile, mkdtemp, rm } from 'node:fs/promises';
 import { resolve, join } from 'node:path';
 import {
-  BASE_COMMIT, prepareBaseline, projectToOldSchema, normaliseDecision,
+  BASE_BLOBS, gitBlobId, prepareBaseline, projectToOldSchema, normaliseDecision,
   validateDataset, compareDataset, serialiseReport, sha256,
 } from '../scripts/ask-policy-compare.mjs';
 
@@ -46,10 +45,10 @@ async function getBaseline() { return baseline ??= await prepareBaseline({ root 
 test('snapshot bytes and blob IDs are exactly the committed Git objects; bridge runs as ESM', async () => {
   await getBaseline();
   for (const name of ['core', 'types']) {
-    const bytes = execFileSync('git', ['show', `${BASE_COMMIT}:src/${name}.ts`], { cwd: root });
-    assert.deepEqual(await readFile(join(baseline.directory, 'src', `${name}.ts`)), bytes);
+    const bytes = await readFile(join(baseline.directory, 'src', `${name}.ts`));
     assert.equal(baseline.sources[name].sha256, sha256(bytes));
-    assert.equal(baseline.sources[name].blobId, execFileSync('git', ['rev-parse', `${BASE_COMMIT}:src/${name}.ts`], { cwd: root, encoding: 'utf8' }).trim());
+    assert.equal(baseline.sources[name].blobId, BASE_BLOBS[name]);
+    assert.equal(gitBlobId(bytes), BASE_BLOBS[name]);
   }
   const core = await readFile(join(baseline.directory, 'src/core.ts'));
   const bridge = await readFile(join(baseline.directory, '.generated/core-bridge.ts'));

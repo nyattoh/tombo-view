@@ -7,6 +7,10 @@ import ts from 'typescript';
 import { z } from 'zod';
 
 export const BASE_COMMIT = 'f2ecc2e4ccbfe109596d9e156095fff7af76ea6a';
+// Git blob IDs of src/{core,types}.ts at BASE_COMMIT. The committed snapshot is verified against these,
+// so the squashed-away commit need not exist locally.
+export const BASE_BLOBS = Object.freeze({ core: '561031da516c5c7eabf742a09fa40e79569e0cbf', types: '61ea27a90b148efb7ebd5cd9fed8deccbe5d7e6e' });
+export const gitBlobId = bytes => createHash('sha1').update(`blob ${bytes.length}\0`).update(bytes).digest('hex');
 const ROOT = resolve(import.meta.dirname, '..');
 const VENDORS = ['openai', 'google', 'nvidia'];
 const ACTIONS = ['proceed', 'check', 'ask', 'reframe', 'blocked'];
@@ -51,7 +55,6 @@ export function projectToOldSchema(input) {
   for (const gap of copy.gaps ?? []) delete gap.humanRole;
   return copy;
 }
-function git(root, args) { return execFileSync('git', args, { cwd: root, maxBuffer: 16 * 1024 * 1024 }); }
 async function preserveExact(path, expected) {
   let existing;
   try { existing = await readFile(path); } catch (error) { if (error.code !== 'ENOENT') throw error; }
@@ -78,10 +81,9 @@ export async function prepareBaseline({ root = ROOT, directory = join(root, 'eva
   await preserveExact(join(directory, '.gitignore'), Buffer.from('.generated/\n'));
   const sources = {}, buffers = {};
   for (const name of ['core', 'types']) {
-    const bytes = git(root, ['show', `${BASE_COMMIT}:src/${name}.ts`]);
-    const blobId = git(root, ['rev-parse', `${BASE_COMMIT}:src/${name}.ts`]).toString('utf8').trim();
-    const actualBlob = execFileSync('git', ['hash-object', '--stdin'], { cwd: root, input: bytes, encoding: 'utf8' }).trim();
-    requireThat(actualBlob === blobId, `Git blob mismatch: ${name}`);
+    const bytes = await readFile(join(root, 'evaluation/ask-policy-baseline/f2ecc2e/src', `${name}.ts`));
+    const blobId = BASE_BLOBS[name];
+    requireThat(gitBlobId(bytes) === blobId, `Git blob mismatch: ${name}`);
     await preserveExact(join(directory, 'src', `${name}.ts`), bytes);
     buffers[name] = bytes;
     sources[name] = { blobId, sha256: sha256(bytes), bytes: bytes.length };
