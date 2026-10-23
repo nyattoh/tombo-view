@@ -2,6 +2,12 @@
 
 TOMBO repository skill・managed session・SDK診断のDraft PRです。今回の修正ではWindows 8.3別名とphysical rootを同一directory identityで照合し、原caller表記を残してroot/ancestor/.sessionのjunctionを拒否します。新bindingはcanonical rootを使い、両方向の再開で旧event・bindingを保持します。transition日時はtimezone必須ISO/未来5秒までへ制限しました。同期scriptはApply時にmain・exact merged SHA=HEAD・clean（untracked含む）・origin/main包含とcommit treeのコピー対象一致を確認します。4 deployed copiesは同期していません。
 
+## 2026-10-23 Codex P1/P2修正
+
+- P1: parsed TaskPacketのevidence重複・passage availability/hash・inspect入力上限をactivation/transitionのsession記録前に検査します。helperは変更していません。直接Storeは旧bytes不変、CLI activationはauthority未作成を検査。CLI invalid transitionは拒否し、既存checkpoint由来のevent+1とsession journal/cache更新だけを許容し、SDK bytes・task/binding/head/history/revision/pending/uncertaintyを保持します。checkpoint-only対照に基づく親の契約精密化です。
+- P2: statusで隠れるassume-unchanged/skip-worktree変更も、source raw bytesとresolved commit blobのOID照合でcopy前に拒否します。両index flagのfixtureをfinallyで解除し、Copy-Item/New-Itemとも実行しません。
+- 実証: P1旧RED12/12・中間1failを保存。改訂baselineは21件16pass/5fail（baseline direct activationのみ）、current focused21/21・関連82/82・build/typecheck0。P2 RED14件11pass/3fail→GREEN14/14。skip0。新PM全npm/buildの実counts/log hashと新head CIはライブPR本文の実行記録を参照してください。旧787/787は過去freezeです。
+
 ## PRの縮小と証跡
 
 [短いreview summary](https://github.com/nyattoh/tombo-view/blob/devin/20261020-1705-understanding-skill/docs/understanding-skill-work/pr8-review-summary.md) と [path/SHA-256/size manifest](https://github.com/nyattoh/tombo-view/blob/devin/20261020-1705-understanding-skill/docs/understanding-skill-work/evidence-manifest.jsonl) を残し、linked-evidence 38件を含む1821件の詳細証跡を現在のPR indexから除外しました。実ファイルはローカルに保持し、過去commit履歴は書き換えていません。mutableなPM task-stateの継続更新1件は新snapshot/hashへ更新し、旧manifest entryも証跡に残します。README内の旧証跡リンクはshort summaryへ張り替えました。manifestは実データの代替でも受入PASSの証明でもありません。

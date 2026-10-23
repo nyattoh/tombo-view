@@ -97,6 +97,16 @@ if ($Apply) {
   if ($pathDifferences.Count -gt 0) {
     throw "Deployable source files do not match commit $resolvedMergedCommit; no copies were changed."
   }
+
+  foreach ($file in $sourceFiles) {
+    $relativePath = [IO.Path]::GetRelativePath($sourceRoot, $file.FullName).Replace('\', '/')
+    $repositoryPath = "skills/tombo-view/$relativePath"
+    $commitBlob = Get-GitOutput -Arguments @('rev-parse', '--verify', "$($resolvedMergedCommit):$repositoryPath") -FailureMessage "Commit blob for $repositoryPath cannot be resolved"
+    $sourceBlob = Get-GitOutput -Arguments @('hash-object', '--no-filters', '--', $file.FullName) -FailureMessage "Raw source bytes for $relativePath cannot be hashed"
+    if ($sourceBlob -ne $commitBlob) {
+      throw "Source bytes for '$relativePath' do not match the exact commit blob; no copies were changed."
+    }
+  }
 }
 
 $sourceHashes = @{}

@@ -109,6 +109,29 @@ function assertRejectedBeforeCopy(result, message) {
   assert.doesNotMatch(`${result.stdout}\n${result.stderr}`, /(?:COPY_ITEM_INTERCEPTED|NEW_ITEM_INTERCEPTED|UNEXPECTED_COPY_ITEM|UNEXPECTED_NEW_ITEM)/, `${message}: reached a destination write guard`);
 }
 
+async function assertHiddenTrackedEditRejected(t, flag, clearFlag, label) {
+  const fixture = await repository(t);
+  fixture.pointOriginMain(fixture.initial);
+  const relativePath = 'skills/tombo-view/SKILL.md';
+  const sourcePath = join(fixture.root, ...relativePath.split('/'));
+  const originalBytes = await readFile(sourcePath);
+  try {
+    git(fixture.root, 'update-index', flag, '--', relativePath);
+    await writeFile(sourcePath, Buffer.from('# changed bytes hidden by index flag\n'));
+    assert.equal(git(fixture.root, 'status', '--porcelain', '--untracked-files=all'), '', `${label} must hide the worktree edit from status`);
+    assert.notDeepEqual(await readFile(sourcePath), originalBytes, `${label} fixture must contain different raw worktree bytes`);
+
+    const result = apply(fixture.root, fixture.initial);
+    assertRejectedBeforeCopy(result, label);
+    assert.match(`${result.stdout}\n${result.stderr}`, /source bytes.*exact commit blob/i, `${label} must fail at raw blob verification`);
+  } finally {
+    git(fixture.root, 'update-index', clearFlag, '--', relativePath);
+    await writeFile(sourcePath, originalBytes);
+    assert.equal(git(fixture.root, 'status', '--porcelain', '--untracked-files=all'), '', `${label} cleanup must restore a clean fixture`);
+    assert.match(git(fixture.root, 'ls-files', '-v', '--', relativePath), /^H /, `${label} cleanup must clear the index flag`);
+  }
+}
+
 test('Apply binds deployment to the exact clean main commit before any copy', async t => {
   await t.test('rejects an old merged ancestor when HEAD has moved on a feature branch', async t => {
     const fixture = await repository(t);
@@ -132,6 +155,14 @@ test('Apply binds deployment to the exact clean main commit before any copy', as
     fixture.pointOriginMain(fixture.initial);
     await writeFile(join(fixture.root, 'skills', 'tombo-view', 'SKILL.md'), '# dirty source\n');
     assertRejectedBeforeCopy(apply(fixture.root, fixture.initial), 'tracked dirty source');
+  });
+
+  await t.test('rejects raw source bytes hidden by assume-unchanged', async t => {
+    await assertHiddenTrackedEditRejected(t, '--assume-unchanged', '--no-assume-unchanged', 'assume-unchanged');
+  });
+
+  await t.test('rejects raw source bytes hidden by skip-worktree', async t => {
+    await assertHiddenTrackedEditRejected(t, '--skip-worktree', '--no-skip-worktree', 'skip-worktree');
   });
 
   await t.test('rejects untracked working tree files', async t => {

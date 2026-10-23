@@ -51,6 +51,16 @@ async function sameWorkspaceBinding(bindingWorkspace, workspace) {
     return !(await hasLinkComponent(spelling)) && await sameDirectoryIdentity(spelling, workspace);
   } catch { return false; }
 }
+function validateTaskPacketIntegrity(task, sdk) {
+  const known = new Set();
+  for (const item of task.evidence) {
+    if (known.has(item.id)) throw new sdk.TomboError('invalid_input', `Duplicate evidence ID ${item.id}`);
+    known.add(item.id);
+    if (item.passageUnavailable) throw new sdk.TomboError('invalid_input', `Evidence passage unavailable ${item.id}`);
+    if (sdk.hashPassage(item.passage) !== item.contentHash) throw new sdk.TomboError('invalid_input', `Passage hash mismatch ${item.id}`);
+  }
+  if (JSON.stringify(task).length > task.budget.maxInputChars) throw new sdk.TomboError('input_too_large', 'Task exceeds character cap');
+}
 export function redacted(state) {
   const saved = structuredClone(state);
   for (const item of [...saved.evidence, ...saved.task.evidence]) { item.passage = ''; item.passageUnavailable = true; }
@@ -245,7 +255,9 @@ export class SessionStore {
   }
 
   async activate(taskInput, ledger, statePath, clockInput) {
-    const task = this.sdk.taskPacketSchema.parse(taskInput), paths = await this.paths(ledger, statePath);
+    const task = this.sdk.taskPacketSchema.parse(taskInput);
+    validateTaskPacketIntegrity(task, this.sdk);
+    const paths = await this.paths(ledger, statePath);
     const clock = clockInput === undefined ? null : this.taskClock(clockInput);
     if (this.snapshot) {
       this.require(this.snapshot.binding.taskHash === taskDigest(task) && this.snapshot.binding.ledger === paths.ledger && this.snapshot.binding.statePath === paths.statePath, 'revision_conflict', 'This workspace already has a fixed session. Resume it; do not reactivate a new task or budget.');
@@ -462,7 +474,9 @@ export class SessionStore {
   }
 
   async transition(input, ledger, statePath, clockInput) {
-    const task = this.sdk.taskPacketSchema.parse(input.task), change = input.userChange, previous = this.snapshot;
+    const task = this.sdk.taskPacketSchema.parse(input.task);
+    validateTaskPacketIntegrity(task, this.sdk);
+    const change = input.userChange, previous = this.snapshot;
     this.require(!previous.pendingOperation && !previous.accountingUncertain && this.state, 'revision_conflict', 'Resolve or explicitly recover the current transaction before a goal transition.');
     this.require(input.previousSessionId === previous.binding.sessionId && typeof input.reason === 'string' && input.reason.length > 0 && change?.kind === 'user_statement' && typeof change.id === 'string' && typeof change.locator === 'string' && change.locator.length > 0 && isoTime(change.receivedAt) && Date.parse(change.receivedAt) <= Date.now() + 5000 && typeof change.passage === 'string' && change.passage.length > 0 && change.contentHash === this.sdk.hashPassage(change.passage), 'invalid_input', 'Transition requires a referenced, dated user change, not an AI paraphrase.');
     this.require(change.previousGoal === previous.task.goal && change.newGoal === task.goal && canonical(change.previousSuccessCriteria) === canonical(previous.task.successCriteria) && canonical(change.newSuccessCriteria) === canonical(task.successCriteria), 'invalid_input', 'The user change must reference the actual previous and new conditions.');

@@ -30,6 +30,14 @@ The same A owner recorded no-skip RED, then actual managed CLI and canonical-bin
 
 The earlier PM full suite at `eb6e9c6` was 781/781 (fail/skip/cancelled 0, exit 0), with build exit 0; it is a historical local baseline, not verification of this changed source. Current integration results and all eight job conclusions are recorded in the live PR body with their head/run IDs. No review-request comment is posted until all eight current-head jobs succeed.
 
+## Codex P1/P2 repair — 2026-10-23
+
+- P1: activation and genuine transition validate the parsed TaskPacket before committing a new session: unique evidence IDs, available passages, matching passage hashes and the existing SDK inspect input-character cap. Validation is pure; no model call or budget reset is used. The managed helper itself is unchanged.
+- Direct Store rejection preserves all prior session/SDK/cache bytes; invalid CLI activation creates no authority. Invalid CLI transition rejects the task while retaining the existing checkpoint observation: exactly one journal event, only session journal/cache changed, only lastObservedAt advances. SDK ledger/state bytes, binding/task/head/history/revision and transaction/accounting state remain unchanged. Parent approved this explicit boundary after an isolated checkpoint-only control matched it; it does not permit an invalid-task commit.
+- P2: Apply compares each deployable source file's raw Git object ID (`hash-object --no-filters`) with the exact blob in the resolved commit. Hidden edits using assume-unchanged or skip-worktree reject before both destination-write interceptors. Fixture flags are cleared in finally. No deployed copy was accessed or synchronised.
+
+P1 preserves initial RED12/12 and the intermediate11/12 checkpoint-boundary result. The final revised baseline run is21 tests/16 pass/5 fail: the five failures are baseline direct-activation parent+four variants; other direct/CLI paths in that run use current code. Current-source focused GREEN is21/21, related regression82/82, build/typecheck exit0. P2's RED is14 tests/11 pass/3 fail (two flag cases plus their parent), then14/14 GREEN. All final tests have skip0. PM integrated npm/build results and current-head CI/review results belong to the live PR execution record; previous787/787 is an older freeze only.
+
 ## Historical evidence and review boundaries
 
 The earlier D01 same-goal task/budget reset failure, E activation limits, F/G timestamp and semantic overclaims, H semantic/quota partials and remaining old gaps are retained. Registered H's 18 turns/8 threads remain separate from the two additional actual-user continuations. H01-A3's old pending request is not answered using another case. F1's bounded rejection diagnostics do not repair already-created claimless required gaps or prove semantic truth/model efficacy.
