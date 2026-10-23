@@ -293,4 +293,3 @@ for (const selectedId of ['__proto__', 'constructor', 'toString']) test(`r3 revi
   assert.equal(reloaded.session.updates.find(item => item.id === selectedId).status, 'applied');
   assert.equal(reloaded.session.updates.find(item => item.id === unselectedId).status, 'received_unassessed');
 });
-
