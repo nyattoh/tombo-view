@@ -38,7 +38,14 @@ function New-Item {
 }
 function Copy-Item {
   param([string]$LiteralPath, [string]$Destination, [switch]$Force)
-  if (Test-IsDestinationPath $Destination) { throw 'COPY_ITEM_INTERCEPTED: destination file copy was intercepted by the isolated test harness' }
+  if (Test-IsDestinationPath $Destination) {
+    if ($env:MUTATE_SOURCE_BEFORE_COPY -eq '1' -and (Split-Path -Leaf $Destination) -ne $env:SOURCE_DESTINATION_BASENAME) { return }
+    if ($env:MUTATE_SOURCE_BEFORE_COPY -eq '1' -and (Split-Path -Leaf $Destination) -eq $env:SOURCE_DESTINATION_BASENAME) {
+      [IO.File]::WriteAllBytes($env:SOURCE_PATH_TO_MUTATE, [Convert]::FromBase64String($env:MUTATED_SOURCE_BASE64))
+      [IO.File]::WriteAllBytes($env:CAPTURED_COPY_BYTES_PATH, [IO.File]::ReadAllBytes($LiteralPath))
+    }
+    throw 'COPY_ITEM_INTERCEPTED: destination file copy was intercepted by the isolated test harness'
+  }
   throw "UNEXPECTED_COPY_ITEM: write outside the isolated destination roots was blocked ($Destination)"
 }
 & $env:SYNC_SCRIPT -Apply -MergedCommit $env:MERGED_COMMIT
@@ -79,7 +86,7 @@ async function repository(t) {
   };
 }
 
-function apply(root, mergedCommit, { forceDestinationAbsent = false } = {}) {
+function apply(root, mergedCommit, { forceDestinationAbsent = false, mutateSourceBeforeCopy = false, raceFile = 'SKILL.md', mutatedBytes = Buffer.from('# changed after commit verification\n') } = {}) {
   const run = spawnSync('pwsh', ['-NoLogo', '-NoProfile', '-NonInteractive', '-Command', isolatedHarness], {
     cwd: root,
     encoding: 'utf8',
@@ -88,6 +95,11 @@ function apply(root, mergedCommit, { forceDestinationAbsent = false } = {}) {
       SYNC_SCRIPT: join(root, 'scripts', 'sync-tombo-view-skills.ps1'),
       MERGED_COMMIT: mergedCommit,
       FORCE_DESTINATION_ABSENT: forceDestinationAbsent ? '1' : '0',
+      MUTATE_SOURCE_BEFORE_COPY: mutateSourceBeforeCopy ? '1' : '0',
+      SOURCE_PATH_TO_MUTATE: join(root, 'skills', 'tombo-view', raceFile),
+      SOURCE_DESTINATION_BASENAME: raceFile.split(/[\\/]/).at(-1),
+      MUTATED_SOURCE_BASE64: mutatedBytes.toString('base64'),
+      CAPTURED_COPY_BYTES_PATH: join(root, '.git', 'captured-copy-bytes.bin'),
     },
   });
   assert.ifError(run.error);
@@ -163,6 +175,26 @@ test('Apply binds deployment to the exact clean main commit before any copy', as
 
   await t.test('rejects raw source bytes hidden by skip-worktree', async t => {
     await assertHiddenTrackedEditRejected(t, '--skip-worktree', '--no-skip-worktree', 'skip-worktree');
+  });
+
+  await t.test('copies the verified commit bytes if the worktree changes immediately before copying', async t => {
+    const fixture = await repository(t);
+    const raceFile = 'assets/payload.bin';
+    const sourcePath = join(fixture.root, 'skills', 'tombo-view', ...raceFile.split('/'));
+    await mkdir(join(fixture.root, 'skills', 'tombo-view', 'assets'), { recursive: true });
+    const committedBytes = Buffer.from([0, 13, 10, 255, 128, 0, 65, 13, 10]);
+    const changedBytes = Buffer.from([255, 0, 13, 10, 0, 128, 66]);
+    await writeFile(sourcePath, committedBytes);
+    const committedHead = fixture.commit();
+    fixture.pointOriginMain(committedHead);
+    const capturePath = join(fixture.root, '.git', 'captured-copy-bytes.bin');
+
+    const result = apply(fixture.root, committedHead, { mutateSourceBeforeCopy: true, raceFile, mutatedBytes: changedBytes });
+
+    assert.notEqual(result.status, 0, 'the isolated destination copy must be intercepted');
+    assert.match(`${result.stdout}\n${result.stderr}`, /COPY_ITEM_INTERCEPTED/, 'the source must pass verification and reach the copy boundary');
+    assert.deepEqual(await readFile(sourcePath), changedBytes, 'the race fixture must replace the mutable worktree source at copy time');
+    assert.deepEqual(await readFile(capturePath), committedBytes, 'the bytes selected for deployment must remain those from the verified commit');
   });
 
   await t.test('rejects untracked working tree files', async t => {

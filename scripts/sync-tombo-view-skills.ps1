@@ -40,6 +40,42 @@ function Assert-GitSuccess {
   }
 }
 
+function Export-CommitBlob {
+  param(
+    [Parameter(Mandatory)][string]$BlobObjectId,
+    [Parameter(Mandatory)][string]$DestinationPath
+  )
+
+  $startInfo = [Diagnostics.ProcessStartInfo]::new()
+  $startInfo.FileName = 'git'
+  $startInfo.WorkingDirectory = $repositoryRoot
+  $startInfo.UseShellExecute = $false
+  $startInfo.RedirectStandardOutput = $true
+  $startInfo.RedirectStandardError = $true
+  $null = $startInfo.ArgumentList.Add('cat-file')
+  $null = $startInfo.ArgumentList.Add('blob')
+  $null = $startInfo.ArgumentList.Add($BlobObjectId)
+
+  $process = [Diagnostics.Process]::new()
+  $process.StartInfo = $startInfo
+  if (-not $process.Start()) { throw "Git could not start while exporting blob $BlobObjectId." }
+
+  $errorTask = $process.StandardError.ReadToEndAsync()
+  $destinationStream = [IO.File]::Open($DestinationPath, [IO.FileMode]::CreateNew, [IO.FileAccess]::Write, [IO.FileShare]::None)
+  try {
+    $process.StandardOutput.BaseStream.CopyTo($destinationStream)
+  } finally {
+    $destinationStream.Dispose()
+  }
+  $process.WaitForExit()
+  $errorText = $errorTask.GetAwaiter().GetResult()
+  if ($process.ExitCode -ne 0) {
+    $null = [IO.File]::Delete($DestinationPath)
+    throw "Git could not export blob $BlobObjectId (exit code $($process.ExitCode)): $errorText"
+  }
+  $process.Dispose()
+}
+
 if (-not (Test-Path -LiteralPath (Join-Path $sourceRoot 'SKILL.md') -PathType Leaf)) {
   throw "Skill source not found: $sourceRoot"
 }
@@ -80,74 +116,99 @@ $sourceFiles = @(Get-ChildItem -LiteralPath $sourceRoot -File -Recurse -Force | 
 
 if ($sourceFiles.Count -eq 0) { throw 'The skill source contains no deployable files.' }
 
-if ($Apply) {
-  $committedTree = Get-GitOutput -Arguments @('ls-tree', '-r', '--name-only', '--full-tree', $resolvedMergedCommit, '--', 'skills/tombo-view') -FailureMessage "Deployable files for $resolvedMergedCommit cannot be listed"
-  $committedSourcePaths = @($committedTree -split '\r?\n' | Where-Object { -not [string]::IsNullOrEmpty($_) } | ForEach-Object {
-    if (-not $_.StartsWith('skills/tombo-view/')) {
-      throw "Unexpected skill path in commit tree: $_; no copies were changed."
+$commitSourceRoot = $null
+try {
+  $filesForDeployment = @()
+  if ($Apply) {
+    $committedTree = Get-GitOutput -Arguments @('ls-tree', '-r', '--name-only', '--full-tree', $resolvedMergedCommit, '--', 'skills/tombo-view') -FailureMessage "Deployable files for $resolvedMergedCommit cannot be listed"
+    $committedSourcePaths = @($committedTree -split '\r?\n' | Where-Object { -not [string]::IsNullOrEmpty($_) } | ForEach-Object {
+      if (-not $_.StartsWith('skills/tombo-view/')) {
+        throw "Unexpected skill path in commit tree: $_; no copies were changed."
+      }
+      $_.Substring('skills/tombo-view/'.Length)
+    } | Where-Object {
+      $_ -ne 'references/runtime.json' -and
+        -not $_.StartsWith('.session/') -and
+        -not $_.Contains('/.session/')
+    } | Sort-Object)
+    $sourcePaths = @($sourceFiles | ForEach-Object { [IO.Path]::GetRelativePath($sourceRoot, $_.FullName).Replace('\', '/') } | Sort-Object)
+    $pathDifferences = @(Compare-Object -ReferenceObject $committedSourcePaths -DifferenceObject $sourcePaths -CaseSensitive)
+    if ($pathDifferences.Count -gt 0) {
+      throw "Deployable source files do not match commit $resolvedMergedCommit; no copies were changed."
     }
-    $_.Substring('skills/tombo-view/'.Length)
-  } | Where-Object {
-    $_ -ne 'references/runtime.json' -and
-      -not $_.StartsWith('.session/') -and
-      -not $_.Contains('/.session/')
-  } | Sort-Object)
-  $sourcePaths = @($sourceFiles | ForEach-Object { [IO.Path]::GetRelativePath($sourceRoot, $_.FullName).Replace('\', '/') } | Sort-Object)
-  $pathDifferences = @(Compare-Object -ReferenceObject $committedSourcePaths -DifferenceObject $sourcePaths -CaseSensitive)
-  if ($pathDifferences.Count -gt 0) {
-    throw "Deployable source files do not match commit $resolvedMergedCommit; no copies were changed."
+
+    $commitSourceRoot = Join-Path ([IO.Path]::GetTempPath()) ("tombo-view-skill-commit-" + [Guid]::NewGuid().ToString('N'))
+    $null = [IO.Directory]::CreateDirectory($commitSourceRoot)
+    foreach ($file in $sourceFiles) {
+      $relativePath = [IO.Path]::GetRelativePath($sourceRoot, $file.FullName).Replace('\', '/')
+      $repositoryPath = "skills/tombo-view/$relativePath"
+      $commitBlob = Get-GitOutput -Arguments @('rev-parse', '--verify', "$($resolvedMergedCommit):$repositoryPath") -FailureMessage "Commit blob for $repositoryPath cannot be resolved"
+      $sourceBlob = Get-GitOutput -Arguments @('hash-object', '--no-filters', '--', $file.FullName) -FailureMessage "Raw source bytes for $relativePath cannot be hashed"
+      if ($sourceBlob -ne $commitBlob) {
+        throw "Source bytes for '$relativePath' do not match the exact commit blob; no copies were changed."
+      }
+
+      $materializedPath = Join-Path $commitSourceRoot $relativePath
+      $materializedDirectory = Split-Path -Parent $materializedPath
+      $null = [IO.Directory]::CreateDirectory($materializedDirectory)
+      Export-CommitBlob -BlobObjectId $commitBlob -DestinationPath $materializedPath
+      $materializedBlob = Get-GitOutput -Arguments @('hash-object', '--no-filters', '--', $materializedPath) -FailureMessage "Materialized bytes for $relativePath cannot be verified"
+      if ($materializedBlob -ne $commitBlob) {
+        throw "Materialized bytes for '$relativePath' do not match commit blob $commitBlob; no copies were changed."
+      }
+      $filesForDeployment += [pscustomobject]@{ RelativePath = $relativePath; FullName = $materializedPath }
+    }
+  } else {
+    $filesForDeployment = @($sourceFiles | ForEach-Object {
+      [pscustomobject]@{
+        RelativePath = [IO.Path]::GetRelativePath($sourceRoot, $_.FullName).Replace('\', '/')
+        FullName = $_.FullName
+      }
+    })
   }
 
-  foreach ($file in $sourceFiles) {
-    $relativePath = [IO.Path]::GetRelativePath($sourceRoot, $file.FullName).Replace('\', '/')
-    $repositoryPath = "skills/tombo-view/$relativePath"
-    $commitBlob = Get-GitOutput -Arguments @('rev-parse', '--verify', "$($resolvedMergedCommit):$repositoryPath") -FailureMessage "Commit blob for $repositoryPath cannot be resolved"
-    $sourceBlob = Get-GitOutput -Arguments @('hash-object', '--no-filters', '--', $file.FullName) -FailureMessage "Raw source bytes for $relativePath cannot be hashed"
-    if ($sourceBlob -ne $commitBlob) {
-      throw "Source bytes for '$relativePath' do not match the exact commit blob; no copies were changed."
-    }
+  $sourceHashes = @{}
+  $manifestLines = foreach ($file in $filesForDeployment) {
+    $hash = (Get-FileHash -LiteralPath $file.FullName -Algorithm SHA256).Hash.ToLowerInvariant()
+    $sourceHashes[$file.RelativePath] = $hash
+    "$($file.RelativePath) $hash"
   }
-}
+  $manifestHash = [Convert]::ToHexString([Security.Cryptography.SHA256]::HashData([Text.Encoding]::UTF8.GetBytes(($manifestLines -join "`n")))).ToLowerInvariant()
 
-$sourceHashes = @{}
-$manifestLines = foreach ($file in $sourceFiles) {
-  $relativePath = [IO.Path]::GetRelativePath($sourceRoot, $file.FullName).Replace('\', '/')
-  $hash = (Get-FileHash -LiteralPath $file.FullName -Algorithm SHA256).Hash.ToLowerInvariant()
-  $sourceHashes[$relativePath] = $hash
-  "$relativePath $hash"
-}
-$manifestHash = [Convert]::ToHexString([Security.Cryptography.SHA256]::HashData([Text.Encoding]::UTF8.GetBytes(($manifestLines -join "`n")))).ToLowerInvariant()
+  Write-Output "Source: $sourceRoot"
+  Write-Output "Deployable files: $($filesForDeployment.Count); manifest SHA256: $manifestHash"
+  Write-Output 'Preserved at each destination: references/runtime.json and any .session data; stale destination files are not deleted.'
+  foreach ($target in $targets) {
+    if ($Apply) { Write-Output "Copy and verify: $target" }
+    else { Write-Output "Dry run: $target"; continue }
 
-Write-Output "Source: $sourceRoot"
-Write-Output "Deployable files: $($sourceFiles.Count); manifest SHA256: $manifestHash"
-Write-Output 'Preserved at each destination: references/runtime.json and any .session data; stale destination files are not deleted.'
-foreach ($target in $targets) {
-  if ($Apply) { Write-Output "Copy and verify: $target" }
-  else { Write-Output "Dry run: $target"; continue }
-
-  foreach ($file in $sourceFiles) {
-    $relativePath = [IO.Path]::GetRelativePath($sourceRoot, $file.FullName)
-    $destination = Join-Path $target $relativePath
-    $destinationDirectory = Split-Path -Parent $destination
-    if (-not (Test-Path -LiteralPath $destinationDirectory -PathType Container)) {
-      $null = New-Item -ItemType Directory -Path $destinationDirectory -Force
+    foreach ($file in $filesForDeployment) {
+      $destination = Join-Path $target $file.RelativePath
+      $destinationDirectory = Split-Path -Parent $destination
+      if (-not (Test-Path -LiteralPath $destinationDirectory -PathType Container)) {
+        $null = New-Item -ItemType Directory -Path $destinationDirectory -Force
+      }
+      Copy-Item -LiteralPath $file.FullName -Destination $destination -Force
     }
-    Copy-Item -LiteralPath $file.FullName -Destination $destination -Force
+
+    foreach ($relativePath in $sourceHashes.Keys) {
+      $destination = Join-Path $target $relativePath
+      if (-not (Test-Path -LiteralPath $destination -PathType Leaf)) {
+        throw "Copy verification failed for $target/$relativePath (missing file)."
+      }
+      $actualHash = (Get-FileHash -LiteralPath $destination -Algorithm SHA256).Hash.ToLowerInvariant()
+      if ($actualHash -ne $sourceHashes[$relativePath]) {
+        throw "Copy verification failed for $target/$relativePath (SHA256 mismatch)."
+      }
+    }
+    Write-Output "Verified $($sourceHashes.Count) files; manifest SHA256: $manifestHash"
   }
 
-  foreach ($relativePath in $sourceHashes.Keys) {
-    $destination = Join-Path $target $relativePath
-    if (-not (Test-Path -LiteralPath $destination -PathType Leaf)) {
-      throw "Copy verification failed for $target/$relativePath (missing file)."
-    }
-    $actualHash = (Get-FileHash -LiteralPath $destination -Algorithm SHA256).Hash.ToLowerInvariant()
-    if ($actualHash -ne $sourceHashes[$relativePath]) {
-      throw "Copy verification failed for $target/$relativePath (SHA256 mismatch)."
-    }
+  if (-not $Apply) {
+    Write-Output 'Dry run only. After the PR is merged and the merged commit is checked out, rerun with -Apply -MergedCommit <sha>.'
   }
-  Write-Output "Verified $($sourceHashes.Count) files; manifest SHA256: $manifestHash"
-}
-
-if (-not $Apply) {
-  Write-Output 'Dry run only. After the PR is merged and the merged commit is checked out, rerun with -Apply -MergedCommit <sha>.'
+} finally {
+  if ($null -ne $commitSourceRoot -and [IO.Directory]::Exists($commitSourceRoot)) {
+    [IO.Directory]::Delete($commitSourceRoot, $true)
+  }
 }
