@@ -311,7 +311,7 @@ export class SessionStore {
           this.snapshot.discardedAssessments.push({ atRevision: current.revision, executionIds, invalidatedEvidenceIds: pending.context.invalidation.evidenceIds, reason: 'pending_assessment_discarded_by_invalidation' });
         }
       }
-      this.markApplied(current, pending.context?.receiptExecutionIds ?? {});
+      this.markApplied(current, pending.context?.receiptExecutionIds ?? {}, pending.operation === 'invalidate' ? pending.context.invalidation : null);
       this.snapshot.pendingOperation = null;
       await this.append();
     } else {
@@ -466,12 +466,14 @@ export class SessionStore {
     return receiptExecutionIds;
   }
 
-  markApplied(state, receiptExecutionIds = {}) {
+  markApplied(state, receiptExecutionIds = {}, invalidation = null) {
     if (!state) return;
     const pending = new Set(state.pendingAssessmentExecutionIds ?? []);
     const executions = new Map(state.appliedExecutions.filter(item => !pending.has(item.executionId)).map(item => [item.executionId, item.payloadHash]));
     for (const update of this.snapshot.updates) {
       if (update.status === 'applied') continue;
+      // Withdrawal metadata applies only with its own committed managed invalidate, never through linked or later observations.
+      const withdrawn = !!update.invalidation && canonical(update.invalidation) === canonical(invalidation);
       const discarded = (this.snapshot.discardedAssessments ?? []).filter(record => update.observations.some(item => record.executionIds.includes(item.executionId)));
       const discardedIds = new Set(discarded.flatMap(record => record.executionIds));
       if (discarded.length) update.discardedAssessment = {
@@ -482,11 +484,11 @@ export class SessionStore {
       };
       const remaining = update.observations.filter(item => !discardedIds.has(item.executionId));
       const linkedIds = update.observations.length ? remaining.map(item => item.executionId) : Object.hasOwn(receiptExecutionIds, update.id) ? receiptExecutionIds[update.id] : [];
-      const proof = linkedIds.length > 0 && linkedIds.every(id => {
+      const proof = (withdrawn && !update.observations.length) || (linkedIds.length > 0 && linkedIds.every(id => {
         const expected = update.observations.find(item => item.executionId === id);
         return !pending.has(id) && executions.has(id) && (!expected || executions.get(id) === digest(expected));
-      });
-      if (discarded.length ? remaining.length === 0 || proof : proof) {
+      }));
+      if ((!update.invalidation || withdrawn) && (discarded.length ? remaining.length === 0 || proof : proof)) {
         update.status = discarded.length ? 'discarded_unassessed' : 'applied';
         update.appliedRevision = discarded.length ? null : state.revision;
       }

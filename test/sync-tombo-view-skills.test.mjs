@@ -121,15 +121,16 @@ function assertRejectedBeforeCopy(result, message) {
   assert.doesNotMatch(`${result.stdout}\n${result.stderr}`, /(?:COPY_ITEM_INTERCEPTED|NEW_ITEM_INTERCEPTED|UNEXPECTED_COPY_ITEM|UNEXPECTED_NEW_ITEM)/, `${message}: reached a destination write guard`);
 }
 
-async function assertHiddenTrackedEditRejected(t, flag, clearFlag, label) {
+async function assertHiddenTrackedEditRejected(t, flag, clearFlag, label, autocrlf = false) {
   const fixture = await repository(t);
   fixture.pointOriginMain(fixture.initial);
+  if (autocrlf) git(fixture.root, 'config', 'core.autocrlf', 'true');
   const relativePath = 'skills/tombo-view/SKILL.md';
   const sourcePath = join(fixture.root, ...relativePath.split('/'));
   const originalBytes = await readFile(sourcePath);
   try {
     git(fixture.root, 'update-index', flag, '--', relativePath);
-    await writeFile(sourcePath, Buffer.from('# changed bytes hidden by index flag\n'));
+    await writeFile(sourcePath, Buffer.from(`# changed bytes hidden by index flag${autocrlf ? '\r\n' : '\n'}`));
     assert.equal(git(fixture.root, 'status', '--porcelain', '--untracked-files=all'), '', `${label} must hide the worktree edit from status`);
     assert.notDeepEqual(await readFile(sourcePath), originalBytes, `${label} fixture must contain different raw worktree bytes`);
 
@@ -142,6 +143,24 @@ async function assertHiddenTrackedEditRejected(t, flag, clearFlag, label) {
     assert.equal(git(fixture.root, 'status', '--porcelain', '--untracked-files=all'), '', `${label} cleanup must restore a clean fixture`);
     assert.match(git(fixture.root, 'ls-files', '-v', '--', relativePath), /^H /, `${label} cleanup must clear the index flag`);
   }
+}
+
+async function assertCleanConvertedSourceDeploysCommitBytes(fixture, worktreeBytes, label) {
+  const relativePath = 'skills/tombo-view/SKILL.md';
+  const sourcePath = join(fixture.root, ...relativePath.split('/'));
+  const head = git(fixture.root, 'rev-parse', 'HEAD');
+  fixture.pointOriginMain(head);
+  const committedBytes = execFileSync('git', ['cat-file', 'blob', `${head}:${relativePath}`], { cwd: fixture.root });
+  await rm(sourcePath);
+  git(fixture.root, 'checkout', '--', relativePath);
+  assert.deepEqual(await readFile(sourcePath), worktreeBytes, `${label} checkout must write converted worktree bytes`);
+  assert.notDeepEqual(worktreeBytes, committedBytes, `${label} fixture must differ from the commit blob in raw bytes`);
+  assert.equal(git(fixture.root, 'status', '--porcelain', '--untracked-files=all'), '', `${label} must leave the converted worktree Git-clean`);
+
+  const result = apply(fixture.root, head, { mutateSourceBeforeCopy: true, mutatedBytes: worktreeBytes });
+
+  assert.match(`${result.stdout}\n${result.stderr}`, /COPY_ITEM_INTERCEPTED/, `${label}: Git-clean source must pass verification and reach the copy boundary`);
+  assert.deepEqual(await readFile(join(fixture.root, '.git', 'captured-copy-bytes.bin')), committedBytes, `${label}: deployment must use exact commit blob bytes, not converted worktree bytes`);
 }
 
 test('Apply binds deployment to the exact clean main commit before any copy', async t => {
@@ -175,6 +194,28 @@ test('Apply binds deployment to the exact clean main commit before any copy', as
 
   await t.test('rejects raw source bytes hidden by skip-worktree', async t => {
     await assertHiddenTrackedEditRejected(t, '--skip-worktree', '--no-skip-worktree', 'skip-worktree');
+  });
+
+  for (const [flag, clearFlag] of [['--assume-unchanged', '--no-assume-unchanged'], ['--skip-worktree', '--no-skip-worktree']]) {
+    await t.test(`rejects CRLF source edits hidden by ${flag.slice(2)} under core.autocrlf=true`, async t => {
+      await assertHiddenTrackedEditRejected(t, flag, clearFlag, `${flag.slice(2)} with core.autocrlf=true`, true);
+    });
+  }
+
+  await t.test('accepts a Git-clean CRLF worktree under core.autocrlf=true and copies the commit bytes', async t => {
+    const fixture = await repository(t);
+    git(fixture.root, 'config', 'core.autocrlf', 'true');
+    await assertCleanConvertedSourceDeploysCommitBytes(fixture, Buffer.from('# isolated source\r\n'), 'core.autocrlf=true');
+  });
+
+  await t.test('accepts a Git-clean worktree under a configured clean filter and copies the commit bytes', async t => {
+    const fixture = await repository(t);
+    git(fixture.root, 'config', 'core.autocrlf', 'false');
+    git(fixture.root, 'config', 'filter.pr8-fixture.clean', "sed -e 's/^# smudged source$/# isolated source/'");
+    git(fixture.root, 'config', 'filter.pr8-fixture.smudge', "sed -e 's/^# isolated source$/# smudged source/'");
+    await writeFile(join(fixture.root, '.gitattributes'), 'skills/tombo-view/SKILL.md filter=pr8-fixture\n');
+    fixture.commit();
+    await assertCleanConvertedSourceDeploysCommitBytes(fixture, Buffer.from('# smudged source\n'), 'configured clean filter');
   });
 
   await t.test('copies the verified commit bytes if the worktree changes immediately before copying', async t => {

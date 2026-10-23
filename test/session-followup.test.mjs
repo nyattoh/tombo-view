@@ -482,6 +482,38 @@ test('managed invalidation transactions recover staged commits and reject extern
   }
 });
 
+test('receipt invalidation metadata stays pending through linked or later observations until its managed invalidate commits', async t => {
+  const h = await harness(t), { source } = await readyForInvalidation(h);
+  const invalidation = { evidenceIds: [source.id], reason: 'The configuration was replaced.' };
+  const later = evidence('later-config', 'The replacement still says minimum is 24.', { locator: source.locator }), obs = observation('read-later-config', later);
+  const linked = { id: 'withdrawal-notice', source: { kind: 'document', locator: 'conversation:withdrawal-notice' }, text: 'The configuration was replaced.', references: [source.locator], invalidation };
+  const observed = { ...receipt('withdrawal-with-observation', 'The replacement was read.', [obs]), invalidation };
+  for (const input of [linked, observed]) h.call('receive', '--input', await h.json(input));
+  await h.apply('update', { assessments: [assessment(later.id)] }, [obs], ['--receipt', linked.id]);
+  const reviewed = await h.apply('reflect', {});
+  const report = h.run('report', '--state', h.state, '--ledger', h.ledger);
+  assert.equal(report.status, 0, report.stderr);
+  assert.equal(reviewed.state.evidence.find(item => item.id === source.id).validity, 'current');
+  for (const id of [linked.id, observed.id]) {
+    const update = reviewed.session.updates.find(item => item.id === id);
+    assert.equal(update.status, 'received_unassessed', `${id}: linked or later observations must not apply an uncommitted withdrawal`);
+    assert.equal(update.appliedRevision, null);
+    assert.ok(report.stdout.includes(`- ${id}: `), `${id} must stay in the unassessed report section`);
+  }
+  assert.deepEqual(reviewed.session.pendingUpdates.map(item => item.id), [linked.id, observed.id]);
+  assert.equal(reviewed.understandingStatus.canReportCompletion, false);
+  const other = h.call('invalidate', '--state', h.state, '--input', await h.json({ evidenceIds: [later.id], reason: 'A different withdrawal.' }), '--ledger', h.ledger);
+  assert.equal(other.session.pendingUpdates.length, 2, 'A different committed withdrawal does not apply this request');
+  const withdrawn = h.call('invalidate', '--state', h.state, '--input', await h.json(invalidation), '--ledger', h.ledger);
+  assert.equal(withdrawn.state.evidence.find(item => item.id === source.id).validity, 'withdrawn');
+  for (const id of [linked.id, observed.id]) {
+    const update = withdrawn.session.updates.find(item => item.id === id);
+    assert.equal(update.status, 'applied');
+    assert.equal(update.appliedRevision, withdrawn.state.revision);
+  }
+  assert.equal(withdrawn.session.pendingUpdates.length, 0);
+});
+
 function expectUnderstanding(result, expected) {
   assert.ok(result.understandingStatus, 'Managed output must expose non-mutating understandingStatus');
   assert.deepEqual(result.understandingStatus, expected);
