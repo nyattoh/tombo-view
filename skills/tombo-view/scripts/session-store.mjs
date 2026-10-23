@@ -311,7 +311,7 @@ export class SessionStore {
           this.snapshot.discardedAssessments.push({ atRevision: current.revision, executionIds, invalidatedEvidenceIds: pending.context.invalidation.evidenceIds, reason: 'pending_assessment_discarded_by_invalidation' });
         }
       }
-      this.markApplied(current, pending.receiptIds ?? []);
+      this.markApplied(current, pending.context?.receiptExecutionIds ?? {});
       this.snapshot.pendingOperation = null;
       await this.append();
     } else {
@@ -420,26 +420,53 @@ export class SessionStore {
       this.require(existing.payloadHash === payloadHash, 'invalid_input', `Receipt payload collision ${input.id}`);
       return existing;
     }
+    this.validateObservationApplicability(observations);
     this.require(this.locked, 'revision_conflict', 'An exclusive session lock is required.');
     const helperNow = Date.now();
     this.require(!Object.hasOwn(input.source, 'receivedAt') || isoTime(input.source.receivedAt) && Date.parse(input.source.receivedAt) <= helperNow + 5000, 'invalid_input', 'New caller receivedAt must be timezone-qualified ISO and no more than 5000ms in the future; omit it if unknown.');
     const update = { ...normalized, payloadHash, helperReceivedAt: new Date(helperNow).toISOString(), status: 'received_unassessed', appliedRevision: null };
     this.snapshot.updates.push(update);
-    this.markApplied(this.state, []);
+    this.markApplied(this.state);
     await this.append();
     return update;
   }
 
-  validateReceipts(ids, observations) {
-    const deliveries = new Map(observations.map(item => [item.executionId, digest(item)]));
-    for (const id of ids) {
-      const update = this.snapshot.updates.find(item => item.id === id);
-      this.require(update, 'invalid_input', `Unknown receipt ${id}`);
-      this.require(update.observations.length ? update.observations.every(item => deliveries.get(item.executionId) === digest(item)) : observations.some(item => item.evidence.some(evidence => (evidence.passage === update.text && evidence.locator === update.source.locator) || update.references.includes(evidence.locator))), 'invalid_input', 'The receipt must be linked to an actual matching observation.');
+  validateObservationApplicability(observations) {
+    const evidence = new Map((this.state?.evidence ?? []).map(item => [item.id, item]));
+    for (const observation of observations) {
+      this.require(this.state?.probes.some(item => item.id === observation.probeId), 'invalid_input', `Unknown probe ${observation.probeId}`);
+      this.require(observation.outcome === 'completed' || observation.evidence.length === 0, 'invalid_input', 'Non-completed outcome cannot contain evidence.');
+      const ids = new Set();
+      for (const item of observation.evidence) {
+        this.require(!ids.has(item.id), 'invalid_input', `Duplicate evidence ID ${item.id}`);
+        ids.add(item.id);
+        const previous = evidence.get(item.id);
+        const rehydrated = previous?.passageUnavailable && canonical({ ...previous, passage: item.passage, passageUnavailable: undefined }) === canonical(item);
+        this.require(!previous || canonical(previous) === canonical(item) || rehydrated, 'invalid_input', `Evidence ID collision ${item.id}`);
+        evidence.set(item.id, item);
+      }
     }
   }
 
-  markApplied(state, ids) {
+  validateReceipts(ids, observations) {
+    const deliveries = new Map(observations.map(item => [item.executionId, digest(item)]));
+    const receiptExecutionIds = Object.create(null);
+    for (const id of ids) {
+      const update = this.snapshot.updates.find(item => item.id === id);
+      this.require(update, 'invalid_input', `Unknown receipt ${id}`);
+      if (update.observations.length) {
+        this.require(update.observations.every(item => deliveries.get(item.executionId) === digest(item)), 'invalid_input', 'The receipt must be linked to an actual matching observation.');
+        receiptExecutionIds[id] = update.observations.map(item => item.executionId);
+      } else {
+        const linked = observations.filter(item => item.evidence.some(evidence => (evidence.passage === update.text && evidence.locator === update.source.locator) || update.references.includes(evidence.locator)));
+        this.require(linked.length > 0, 'invalid_input', 'The receipt must be linked to an actual matching observation.');
+        receiptExecutionIds[id] = linked.map(item => item.executionId);
+      }
+    }
+    return receiptExecutionIds;
+  }
+
+  markApplied(state, receiptExecutionIds = {}) {
     if (!state) return;
     const pending = new Set(state.pendingAssessmentExecutionIds ?? []);
     const executions = new Map(state.appliedExecutions.filter(item => !pending.has(item.executionId)).map(item => [item.executionId, item.payloadHash]));
@@ -454,7 +481,12 @@ export class SessionStore {
         reason: 'pending_assessment_discarded_by_invalidation',
       };
       const remaining = update.observations.filter(item => !discardedIds.has(item.executionId));
-      if (update.observations.length ? remaining.every(item => executions.get(item.executionId) === digest(item)) : ids.includes(update.id) && !pending.size && state.stopReason !== 'invalid_model_output') {
+      const linkedIds = update.observations.length ? remaining.map(item => item.executionId) : Object.hasOwn(receiptExecutionIds, update.id) ? receiptExecutionIds[update.id] : [];
+      const proof = linkedIds.length > 0 && linkedIds.every(id => {
+        const expected = update.observations.find(item => item.executionId === id);
+        return !pending.has(id) && executions.has(id) && (!expected || executions.get(id) === digest(expected));
+      });
+      if (discarded.length ? remaining.length === 0 || proof : proof) {
         update.status = discarded.length ? 'discarded_unassessed' : 'applied';
         update.appliedRevision = discarded.length ? null : state.revision;
       }

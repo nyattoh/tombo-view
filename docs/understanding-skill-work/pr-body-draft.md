@@ -2,11 +2,23 @@
 
 TOMBO repository skill・managed session・SDK診断のDraft PRです。今回の修正ではWindows 8.3別名とphysical rootを同一directory identityで照合し、原caller表記を残してroot/ancestor/.sessionのjunctionを拒否します。新bindingはcanonical rootを使い、両方向の再開で旧event・bindingを保持します。transition日時はtimezone必須ISO/未来5秒までへ制限しました。同期scriptはApply時にmain・exact merged SHA=HEAD・clean（untracked含む）・origin/main包含とcommit treeのコピー対象一致を確認します。4 deployed copiesは同期していません。
 
-## 2026-10-23 Codex P1/P2修正
+## 前修正 ef009567 — 2026-10-23 Codex P1/P2
 
 - P1: parsed TaskPacketのevidence重複・passage availability/hash・inspect入力上限をactivation/transitionのsession記録前に検査します。helperは変更していません。直接Storeは旧bytes不変、CLI activationはauthority未作成を検査。CLI invalid transitionは拒否し、既存checkpoint由来のevent+1とsession journal/cache更新だけを許容し、SDK bytes・task/binding/head/history/revision/pending/uncertaintyを保持します。checkpoint-only対照に基づく親の契約精密化です。
 - P2: statusで隠れるassume-unchanged/skip-worktree変更も、source raw bytesとresolved commit blobのOID照合でcopy前に拒否します。両index flagのfixtureをfinallyで解除し、Copy-Item/New-Itemとも実行しません。
 - 実証: P1旧RED12/12・中間1failを保存。改訂baselineは21件16pass/5fail（baseline direct activationのみ）、current focused21/21・関連82/82・build/typecheck0。P2 RED14件11pass/3fail→GREEN14/14。skip0。新PM全npm/buildの実counts/log hashと新head CIはライブPR本文の実行記録を参照してください。旧787/787は過去freezeです。
+
+## R3追加修正（base ef009567）
+
+- activated inspectの入力passage/hashをtransaction開始前に検査し、sealed task/budget照合を保持します。
+- receiveは新規observationのprobe/evidence適用可能性をappend前に検査。完全一致receipt replayは先に判定し、初回helper時刻/statusとinvalidate後の互換性を保持します。
+- 実評価が終わったlinked execution proofだけでreceiptをappliedにし、未評価のmanaged invalid_inputやdirect SDK/store no_progressではpendingを保持します。既存receiptリンクguardとmixed receiptの未評価fresh保持を維持。既存tests/fixturesは変更していません。
+- 正式baseline REDは7件2pass/5fail、final focused8/8、関連82/82、build/typecheck exit0・skip0。初期契約3のfixture/link失敗は意味あるREDに数えず、途中のguard緩和は不採用として戻しました。再送回帰と81/82の中間失敗も保存しています。PM全npm/build、内部別vendor review、新head CIは実結果だけをrun recordへ記載します。
+- R3ではGitHubレビュー依頼コメント、merge/main/force push、4コピー同期は禁止。A2・親監査の未達を維持します。
+
+### R3内部review指摘への対応
+
+初回Google内部reviewは元freezeにPASS＋Low指摘1件。任意receipt IDの__proto__/constructorで実RED（11件9pass/2fail）を再現し、safe own-property map/lookupへ最小修正しました。IDは変更せず、stage・SDK commit・reconcile/reloadで選択receiptだけ適用され未選択はpendingを保持。最終focused11/11・関連82/82、skip0です。最終freezeへの新しいGoogle round2と、その後のPM全npm/buildは実結果のみをrun recordへ記載します。PRレビューコメントは禁止です。
 
 ## PRの縮小と証跡
 

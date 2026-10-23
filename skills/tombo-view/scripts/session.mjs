@@ -47,6 +47,13 @@ function proposalFeedback(state, operation) {
   return undefined;
 }
 
+function validateActivatedInspectInput(task, sdk) {
+  for (const item of task.evidence) {
+    if (item.passageUnavailable || sdk.hashPassage(item.passage) !== item.contentHash) throw new TomboError('invalid_input', `Inspect evidence does not match its sealed passage ${item.id}`);
+  }
+  if (JSON.stringify(task).length > task.budget.maxInputChars) throw new TomboError('input_too_large', 'Task exceeds character cap');
+}
+
 async function managed(command, values, workspace) {
   const store = new SessionStore(workspace, sdk);
   const cwdMatchesWorkspace = process.platform === 'win32'
@@ -114,13 +121,15 @@ async function managed(command, values, workspace) {
     if (store.state) await loadManagedState(store, values.state);
     const task = store.state?.task ?? taskPacketSchema.parse(await json(values.input));
     if (taskDigest(task) !== store.snapshot.binding.taskHash) throw new TomboError('revision_conflict', 'The TaskPacket does not match the activated goal and budget.');
+    if (operation === 'inspect') validateActivatedInspectInput(task, sdk);
     const observations = operation === 'update' ? observationsSchema.parse(await json(values.observations)) : undefined;
     const receiptIds = values.receipt ?? [];
+    let receiptExecutionIds = {};
     if (receiptIds.length && operation !== 'update') throw new TomboError('invalid_input', '--receipt is only valid for update or its prepare.');
     if (observations) {
       const executions = store.executionMap();
       for (const observation of observations) if (executions.has(observation.executionId) && executions.get(observation.executionId) !== digest(observation)) throw new TomboError('invalid_input', `Execution payload collision ${observation.executionId}`);
-      store.validateReceipts(receiptIds, observations);
+      receiptExecutionIds = store.validateReceipts(receiptIds, observations);
     }
     const checkpoint = await store.checkpoint(operation === 'inspect' ? 'reflect' : operation);
     if (store.snapshot.taskClockStop || checkpoint?.budgetCheckpoint.exhausted || checkpoint?.budgetCheckpoint.accountingUnavailable) {
@@ -164,7 +173,7 @@ async function managed(command, values, workspace) {
       return;
     }
     const tombo = createTombo({ captureProposalRejection: true, adapter: { async generate() { return { proposal, usage: { totalTokens: null, outputTokens: 0, costYen: null }, model: 'host-authored-proposal' }; } } });
-    await store.begin(operation, null, receiptIds);
+    await store.begin(operation, operation === 'update' ? { receiptExecutionIds } : null, receiptIds);
     const result = operation === 'reflect' ? await tombo.reflect(state, { async reflect(input) {
       if (canonical(input.binding) !== canonical(reflection.binding)) throw new TomboError('revision_conflict', 'Reflection operation mismatch.');
       return { ...reflection, usage: { totalTokens: null, outputTokens: 0, costYen: null }, model: reflection.model ?? 'host-authored-reflection' };
