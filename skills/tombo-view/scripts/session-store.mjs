@@ -511,18 +511,51 @@ export class SessionStore {
     const task = this.sdk.taskPacketSchema.parse(input.task);
     validateTaskPacketIntegrity(task, this.sdk);
     const change = input.userChange, previous = this.snapshot;
-    this.require(!previous.pendingOperation && !previous.accountingUncertain && this.state, 'revision_conflict', 'Resolve or explicitly recover the current transaction before a goal transition.');
+    const sameGoal = task.goal.trim() === previous.task.goal.trim() && canonical(task.successCriteria) === canonical(previous.task.successCriteria);
+    const hasLegacyCostCap = !this.state && previous.head === null && previous.binding.budget.maxCostYen !== undefined;
+    const restoredTask = structuredClone(task);
+    restoredTask.taskId = previous.task.taskId;
+    restoredTask.budget.maxCostYen = previous.binding.budget.maxCostYen;
+    const { recordedAt, ...sealedClock } = previous.taskClock ?? {};
+    const recovery = hasLegacyCostCap && sameGoal && !previous.pendingOperation && !previous.accountingUncertain &&
+      !previous.taskClockStop && (!previous.taskClock || Date.now() < Date.parse(previous.taskClock.deadlineAt)) &&
+      task.taskId !== previous.binding.taskId && !previous.transitions.some(item => item.previous.taskId === task.taskId) &&
+      task.budget.maxCostYen === undefined && taskDigest(restoredTask) === previous.binding.taskHash &&
+      (clockInput === undefined || canonical(sealedClock) === canonical(clockInput));
+    this.require(!previous.pendingOperation && !previous.accountingUncertain && (this.state || recovery), 'revision_conflict', 'Resolve or explicitly recover the current transaction before a goal transition.');
     this.require(input.previousSessionId === previous.binding.sessionId && typeof input.reason === 'string' && input.reason.length > 0 && change?.kind === 'user_statement' && typeof change.id === 'string' && typeof change.locator === 'string' && change.locator.length > 0 && isoTime(change.receivedAt) && Date.parse(change.receivedAt) <= Date.now() + 5000 && typeof change.passage === 'string' && change.passage.length > 0 && change.contentHash === this.sdk.hashPassage(change.passage), 'invalid_input', 'Transition requires a referenced, dated user change, not an AI paraphrase.');
     this.require(change.previousGoal === previous.task.goal && change.newGoal === task.goal && canonical(change.previousSuccessCriteria) === canonical(previous.task.successCriteria) && canonical(change.newSuccessCriteria) === canonical(task.successCriteria), 'invalid_input', 'The user change must reference the actual previous and new conditions.');
-    this.require(task.taskId !== previous.binding.taskId && (task.goal.trim() !== previous.task.goal.trim() || canonical(task.successCriteria) !== canonical(previous.task.successCriteria)), 'revision_conflict', 'A same-goal follow-up cannot start a new task or budget.');
+    this.require(task.taskId !== previous.binding.taskId && (task.goal.trim() !== previous.task.goal.trim() || canonical(task.successCriteria) !== canonical(previous.task.successCriteria) || recovery), 'revision_conflict', 'A same-goal follow-up cannot start a new task or budget.');
     const summary = input.hand_over_summary;
-    const unresolved = this.state.gaps.filter(item => item.status !== 'resolved').map(item => item.id);
-    this.require(summary && Array.isArray(summary.unknowns) && summary.unknowns.every(item => typeof item === 'string' && item.length > 0) && Array.isArray(summary.unresolvedGapIds) && unresolved.every(id => summary.unresolvedGapIds.includes(id)), 'invalid_input', 'Carry unresolved gaps and explicit unknowns into the goal transition.');
+    const unresolved = this.state?.gaps.filter(item => item.status !== 'resolved').map(item => item.id) ?? [];
+    this.require(summary && Array.isArray(summary.unknowns) && summary.unknowns.every(item => typeof item === 'string' && item.length > 0) && (!recovery || summary.unknowns.length > 0) && Array.isArray(summary.unresolvedGapIds) && unresolved.every(id => summary.unresolvedGapIds.includes(id)), 'invalid_input', 'Carry unresolved gaps and explicit unknowns into the goal transition.');
     const paths = await this.paths(ledger, statePath);
-    const clock = clockInput === undefined ? null : this.taskClock(clockInput);
-    this.require(paths.ledger !== previous.binding.ledger && paths.statePath !== previous.binding.statePath && !existsSync(paths.ledger) && !existsSync(`${paths.ledger}.lock`) && !existsSync(paths.statePath), 'revision_conflict', 'A real new goal needs distinct, unused SDK ledger and state paths without a leftover SDK lock.');
+    const clock = recovery ? previous.taskClock ?? null : clockInput === undefined ? null : this.taskClock(clockInput);
+    this.require(paths.ledger !== previous.binding.ledger && paths.statePath !== previous.binding.statePath && !existsSync(paths.ledger) && !existsSync(`${paths.ledger}.lock`) && !existsSync(paths.statePath), 'revision_conflict', 'A transition needs distinct, unused SDK ledger and state paths without a leftover SDK lock.');
     const view = this.view();
-    const record = { userChange: structuredClone(change), reason: input.reason, previous: { ...previous.binding, taskClock: previous.taskClock ?? null, taskClockStop: previous.taskClockStop ?? null, revision: this.state.revision, stateHash: stateDigest(this.state), usage: this.state.usage, stopReason: this.state.stopReason, unresolvedGapIds: unresolved, unknowns: summary.unknowns, pendingUpdates: view.pendingUpdates, discardedUpdates: view.discardedUpdates, discardedAssessments: previous.discardedAssessments ?? [], pendingUsage: view.pendingUsage, stopReceipts: previous.stopReceipts } };
+    this.require(this.state || view.pendingUpdates.length === previous.updates.length, 'revision_conflict', 'A state-less recovery must archive every receipt as unassessed.');
+    const record = {
+      userChange: structuredClone(change),
+      reason: input.reason,
+      ...(recovery ? { recovery: 'unsupported_cost_cap_without_sdk_state' } : {}),
+      previous: {
+        ...previous.binding,
+        ...(recovery ? { sdkStateStatus: 'not_created' } : {}),
+        taskClock: previous.taskClock ?? null,
+        taskClockStop: previous.taskClockStop ?? null,
+        revision: this.state?.revision ?? null,
+        stateHash: this.state ? stateDigest(this.state) : null,
+        usage: this.state?.usage ?? null,
+        stopReason: this.state?.stopReason ?? null,
+        unresolvedGapIds: unresolved,
+        unknowns: structuredClone(summary.unknowns),
+        pendingUpdates: view.pendingUpdates,
+        discardedUpdates: view.discardedUpdates,
+        discardedAssessments: previous.discardedAssessments ?? [],
+        pendingUsage: view.pendingUsage,
+        stopReceipts: previous.stopReceipts,
+      },
+    };
     this.snapshot = { schemaVersion: '0.1', binding: { sessionId: randomUUID(), workspace: this.workspace, ...paths, taskId: task.taskId, taskHash: taskDigest(task), budget: structuredClone(task.budget), startedAt: null }, task: taskSnapshot(task), taskClock: clock, taskClockStop: null, head: null, updates: [], transitions: [...previous.transitions, record], pendingOperation: null, accountingUncertain: false, lastObservedAt: Date.now(), stopReceipts: [] };
     this.state = null;
     await this.append();

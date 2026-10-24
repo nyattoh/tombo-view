@@ -69,6 +69,30 @@ function goalChange(current, previous, task) {
   const passage = `Change the task: ${task.goal}`;
   return { task, reason: 'The user changed the requested subject.', previousSessionId: current.session.binding.sessionId, userChange: { id: `change-${task.taskId}`, kind: 'user_statement', locator: `conversation:change-${task.taskId}`, receivedAt: new Date().toISOString(), passage, contentHash: sdk.hashPassage(passage), previousGoal: previous.goal, newGoal: task.goal, previousSuccessCriteria: previous.successCriteria, newSuccessCriteria: task.successCriteria }, hand_over_summary: { unresolvedGapIds: current.state?.gaps.filter(gap => gap.status !== 'resolved').map(gap => gap.id) ?? [], unknowns: ['The previous goal remains unresolved.'] } };
 }
+function sameGoalRecovery(current, previous, task, transitionId) {
+  const passage = 'The user requests recovery of the same goal under a new task ID after removing unsupported maxCostYen. The legacy SDK state was not generated, so prior total SDK usage is unknown.';
+  return {
+    task,
+    reason: 'The user requested recovery of the same goal without the unsupported monetary cap.',
+    previousSessionId: current.session.binding.sessionId,
+    userChange: {
+      id: transitionId,
+      kind: 'user_statement',
+      locator: `conversation:${transitionId}`,
+      receivedAt: new Date().toISOString(),
+      passage,
+      contentHash: sdk.hashPassage(passage),
+      previousGoal: previous.goal,
+      newGoal: task.goal,
+      previousSuccessCriteria: previous.successCriteria,
+      newSuccessCriteria: task.successCriteria,
+    },
+    hand_over_summary: {
+      unresolvedGapIds: [],
+      unknowns: ['The legacy SDK state was not generated.', 'Prior total SDK usage is unknown.', 'Any pending receipts remain unassessed and archived.'],
+    },
+  };
+}
 const nextGoal = taskId => packet({ taskId, goal: 'Explain the packaging licence instead.', successCriteria: ['Read the licence terms.'] });
 
 test('fresh managed activation with an unsupported monetary cap leaves no authority and the same goal activates with the corrected budget', async t => {
@@ -198,6 +222,282 @@ test('legacy capped session without SDK state keeps reads and receipts and refus
     sealed(after);
     assert.equal(after.session.transitions.length, 0);
   });
+});
+
+test('legacy capped session without SDK state can transition the same goal to a new cap-free task without inventing usage', async t => {
+  const capped = packet({ budget: cappedBudget });
+  const h = await harness(t, capped, undefined, true);
+  assert.equal(h.activation.state, null, 'the pre-fix fixture has no SDK state');
+  assert.equal(await readFile(h.ledger, 'utf8').catch(() => null), null, 'the pre-fix fixture has no SDK ledger');
+  assert.equal(await readFile(h.state, 'utf8').catch(() => null), null, 'the pre-fix fixture has no SDK state cache');
+
+  const correctedInput = await h.json(packet({ budget }));
+  await rejectedWithout(h, ['activate', '--input', correctedInput, '--ledger', h.ledger, '--out', h.state], 'revision_conflict');
+
+  const received = h.call('receive', '--input', await h.json(receipt('legacy-unassessed-receipt', 'The same goal needs another source check.')));
+  const archivedReceipt = structuredClone(received.session.pendingUpdates[0]);
+  assert.equal(archivedReceipt.status, 'received_unassessed');
+
+  const recoveryBudget = { ...cappedBudget };
+  delete recoveryBudget.maxCostYen;
+  const recoveryTask = packet({ taskId: 'recovered-followup', budget: recoveryBudget });
+  const current = h.call('status');
+  const passage = 'Please recover the same goal with a new task ID after removing the unsupported maxCostYen cap. Prior SDK usage is unknown, and the pending receipt remains unassessed.';
+  const transition = {
+    task: recoveryTask,
+    reason: 'The user requested recovery of the same goal without the unsupported monetary cap.',
+    previousSessionId: current.session.binding.sessionId,
+    userChange: {
+      id: 'change-recovered-followup',
+      kind: 'user_statement',
+      locator: 'conversation:change-recovered-followup',
+      receivedAt: new Date().toISOString(),
+      passage,
+      contentHash: sdk.hashPassage(passage),
+      previousGoal: capped.goal,
+      newGoal: recoveryTask.goal,
+      previousSuccessCriteria: capped.successCriteria,
+      newSuccessCriteria: recoveryTask.successCriteria,
+    },
+    hand_over_summary: {
+      unresolvedGapIds: [],
+      unknowns: [
+        'The legacy SDK state was not generated.',
+        'Prior total SDK usage is unknown.',
+        'The pending receipt remains unassessed and archived.',
+      ],
+    },
+  };
+  const nextLedger = join(h.dir, 'recovered-sdk.jsonl'), nextState = join(h.dir, 'recovered-state.json');
+  const result = h.run('transition', '--input', await h.json(transition), '--ledger', nextLedger, '--out', nextState);
+  assert.equal(result.status, 0, result.stderr || result.stdout);
+
+  const recovered = JSON.parse(result.stdout);
+  assert.equal(recovered.session.binding.taskId, recoveryTask.taskId);
+  assert.deepEqual(recovered.session.binding.budget, recoveryBudget);
+  assert.notEqual(recovered.session.binding.sessionId, current.session.binding.sessionId);
+  assert.equal(recovered.state, null);
+  assert.equal(recovered.session.pendingOperation, null);
+  assert.equal(recovered.session.accountingUncertain, false);
+  assert.equal(await readFile(nextLedger, 'utf8').catch(() => null), null, 'recovery must not invent an SDK ledger');
+  assert.equal(await readFile(nextState, 'utf8').catch(() => null), null, 'recovery must not invent an SDK state cache');
+
+  const report = h.run('report', '--ledger', nextLedger);
+  assert.equal(report.status, 0, report.stderr);
+  assert.match(report.stdout, /## 旧セッションのアーカイブ済み復旧履歴/);
+  assert.match(report.stdout, /Prior total SDK usage is unknown\./);
+  assert.match(report.stdout, /legacy-unassessed-receipt[^\r\n]*received\\_unassessed/);
+  const currentPendingSection = report.stdout.split('## 受領済み・未評価')[1]?.split(/\r?\n## /)[0] ?? '';
+  assert.match(report.stdout, /## 受領済み・未評価/);
+  assert.doesNotMatch(currentPendingSection, /legacy-unassessed-receipt/);
+  assert.match(currentPendingSection, /未評価の追補はない/);
+
+  const archived = recovered.session.transitions.at(-1).previous;
+  assert.deepEqual({
+    sessionId: archived.sessionId,
+    workspace: archived.workspace,
+    ledger: archived.ledger,
+    statePath: archived.statePath,
+    taskId: archived.taskId,
+    taskHash: archived.taskHash,
+    budget: archived.budget,
+    startedAt: archived.startedAt,
+  }, current.session.binding);
+  assert.equal(archived.sdkStateStatus, 'not_created');
+  assert.equal(archived.revision, null);
+  assert.equal(archived.stateHash, null);
+  assert.equal(archived.usage, null);
+  assert.deepEqual(archived.pendingUpdates, [archivedReceipt]);
+  assert.equal(archived.pendingUpdates[0].status, 'received_unassessed');
+  assert.deepEqual(archived.pendingUsage, { toolCalls: 0, costYen: 0, totalTokens: null, executionIds: [], observedElapsedMs: [] }, 'a text-only receipt contributes no observation usage');
+  assert.deepEqual(archived.unknowns, [
+    'The legacy SDK state was not generated.',
+    'Prior total SDK usage is unknown.',
+    'The pending receipt remains unassessed and archived.',
+  ]);
+
+  const afterRecovery = h.call('status');
+  assert.equal(afterRecovery.session.binding.sessionId, recovered.session.binding.sessionId);
+  assert.deepEqual(afterRecovery.session.binding.budget, recoveryBudget);
+  assert.deepEqual(afterRecovery.session.pendingUpdates, []);
+  assert.equal(afterRecovery.session.pendingOperation, null);
+  assert.equal(afterRecovery.session.accountingUncertain, false);
+  assert.deepEqual(afterRecovery.session.transitions.at(-1).previous.pendingUpdates, [archivedReceipt]);
+  assert.equal(afterRecovery.state, null);
+
+  const recoveryInput = await h.json(recoveryTask);
+  const prepared = h.call('prepare', '--input', recoveryInput, '--ledger', nextLedger);
+  const inspected = h.run('inspect', '--input', recoveryInput, '--ledger', nextLedger, '--out', nextState, '--proposal', await h.envelope('inspect', prepared, initial));
+  assert.equal(inspected.status, 0, inspected.stderr || inspected.stdout);
+  const continued = JSON.parse(inspected.stdout);
+  assert.equal(continued.state.task.taskId, recoveryTask.taskId);
+  assert.deepEqual(continued.state.task.budget, recoveryBudget);
+  assert.ok(await readFile(nextLedger, 'utf8'));
+  assert.ok(await readFile(nextState, 'utf8'));
+  assert.equal(continued.session.binding.taskId, recoveryTask.taskId);
+  assert.deepEqual(continued.session.binding.budget, recoveryBudget);
+  assert.equal(continued.session.pendingOperation, null);
+  assert.equal(continued.session.accountingUncertain, false);
+  assert.deepEqual(continued.session.transitions.at(-1).previous.pendingUpdates, [archivedReceipt]);
+});
+
+test('legacy capped recovery refuses changes to other budget limits', async t => {
+  const capped = packet({ budget: cappedBudget });
+  const h = await harness(t, capped, undefined, true);
+  const current = h.call('status');
+  const sealedBinding = structuredClone(current.session.binding);
+  const recoveryBudget = { ...cappedBudget, maxRounds: cappedBudget.maxRounds + 1 };
+  delete recoveryBudget.maxCostYen;
+  const recoveryTask = packet({ taskId: 'changed-budget-recovery', budget: recoveryBudget });
+  const nextLedger = join(h.dir, 'changed-budget-sdk.jsonl'), nextState = join(h.dir, 'changed-budget-state.json');
+
+  const refused = h.run('transition', '--input', await h.json(sameGoalRecovery(current, capped, recoveryTask, 'changed-budget-recovery-change')), '--ledger', nextLedger, '--out', nextState);
+  assert.equal(refused.status, 1, refused.stdout);
+  assert.equal(JSON.parse(refused.stderr).error.code, 'revision_conflict');
+  assert.equal(await readFile(nextLedger, 'utf8').catch(() => null), null);
+  assert.equal(await readFile(`${nextLedger}.lock`, 'utf8').catch(() => null), null);
+  assert.equal(await readFile(nextState, 'utf8').catch(() => null), null);
+  assert.equal(await readFile(`${nextState}.lock`, 'utf8').catch(() => null), null);
+
+  const after = h.call('status');
+  assert.deepEqual(after.session.binding, sealedBinding);
+  assert.equal(after.session.transitions.length, 0);
+  assert.equal(after.session.pendingOperation, null);
+  assert.equal(after.session.accountingUncertain, false);
+  assert.equal(after.state, null);
+});
+
+test('legacy capped recovery preserves an unexpired host task clock when transition omits a new clock', async t => {
+  const capped = packet({ budget: cappedBudget });
+  const clock = {
+    startedAt: new Date(Date.now() - 10000).toISOString(),
+    deadlineAt: new Date(Date.now() + 3600000).toISOString(),
+    basis: 'host_provided',
+    sourceRef: 'host:legacy-maxcost-deadline',
+  };
+  const h = await harness(t, capped, clock, true);
+  const current = h.call('status');
+  const sealedClock = structuredClone(current.session.taskClock);
+  assert.equal(current.session.taskClockStop, null);
+  assert.equal(current.taskClockStatus.expired, false);
+
+  const recoveryBudget = { ...cappedBudget };
+  delete recoveryBudget.maxCostYen;
+  const recoveryTask = packet({ taskId: 'clock-recovered-followup', budget: recoveryBudget });
+  const nextLedger = join(h.dir, 'clock-recovered-sdk.jsonl'), nextState = join(h.dir, 'clock-recovered-state.json');
+  const result = h.run('transition', '--input', await h.json(sameGoalRecovery(current, capped, recoveryTask, 'clock-recovery-change')), '--ledger', nextLedger, '--out', nextState);
+  assert.equal(result.status, 0, result.stderr || result.stdout);
+
+  const recovered = JSON.parse(result.stdout);
+  const archived = recovered.session.transitions.at(-1).previous;
+  assert.deepEqual(archived.taskClock, sealedClock);
+  assert.equal(archived.taskClock.deadlineAt, clock.deadlineAt);
+  assert.equal(archived.taskClockStop, null);
+  assert.deepEqual(recovered.session.taskClock, sealedClock, 'transition without a new --task-clock preserves the sealed clock');
+  assert.equal(recovered.session.taskClockStop, null);
+  assert.equal(recovered.taskClockStatus.deadlineAt, clock.deadlineAt);
+  assert.equal(recovered.taskClockStatus.expired, false);
+  assert.equal(recovered.session.binding.taskId, recoveryTask.taskId);
+  assert.deepEqual(recovered.session.binding.budget, recoveryBudget);
+});
+
+test('expired legacy capped recovery remains refused without new SDK artifacts or a transition', async t => {
+  const capped = packet({ budget: cappedBudget });
+  const clock = {
+    startedAt: null,
+    deadlineAt: new Date(Date.now() - 1000).toISOString(),
+    basis: 'host_provided',
+    sourceRef: 'host:expired-legacy-maxcost-deadline',
+  };
+  const h = await harness(t, capped, clock, true);
+  const current = h.call('status');
+  assert.equal(current.session.taskClockStop.reason, 'task_deadline_exceeded');
+  assert.equal(current.session.taskClock.deadlineAt, clock.deadlineAt);
+
+  const recoveryBudget = { ...cappedBudget };
+  delete recoveryBudget.maxCostYen;
+  const recoveryTask = packet({ taskId: 'expired-clock-recovery', budget: recoveryBudget });
+  const nextLedger = join(h.dir, 'expired-recovery-sdk.jsonl'), nextState = join(h.dir, 'expired-recovery-state.json');
+  const refused = h.run('transition', '--input', await h.json(sameGoalRecovery(current, capped, recoveryTask, 'expired-clock-recovery-change')), '--ledger', nextLedger, '--out', nextState);
+  assert.equal(refused.status, 1, refused.stdout);
+  assert.equal(JSON.parse(refused.stderr).error.code, 'revision_conflict');
+  assert.equal(await readFile(nextLedger, 'utf8').catch(() => null), null);
+  assert.equal(await readFile(`${nextLedger}.lock`, 'utf8').catch(() => null), null);
+  assert.equal(await readFile(nextState, 'utf8').catch(() => null), null);
+  assert.equal(await readFile(`${nextState}.lock`, 'utf8').catch(() => null), null);
+
+  const after = h.call('status');
+  assert.equal(after.session.binding.sessionId, current.session.binding.sessionId);
+  assert.equal(after.session.transitions.length, 0);
+  assert.equal(after.session.taskClock.deadlineAt, clock.deadlineAt);
+  assert.equal(after.session.taskClockStop.reason, 'task_deadline_exceeded');
+  assert.equal(after.session.accountingUncertain, false);
+});
+
+test('same-goal recovery stays refused when the capped legacy session already has SDK state', async t => {
+  const source = evidence('legacy-stateful-source', 'Minimum is 24.');
+  const capped = packet({ evidence: [source], budget: cappedBudget });
+  const h = await harness(t, capped, undefined, sealedInspect(capped));
+  const current = h.call('status');
+  assert.ok(current.state);
+
+  const recoveryBudget = { ...cappedBudget };
+  delete recoveryBudget.maxCostYen;
+  const recoveryTask = packet({ taskId: 'stateful-recovery-refused', evidence: [source], budget: recoveryBudget });
+  const nextLedger = join(h.dir, 'stateful-recovery-sdk.jsonl'), nextState = join(h.dir, 'stateful-recovery-state.json');
+  const refused = h.run('transition', '--input', await h.json(sameGoalRecovery(current, capped, recoveryTask, 'stateful-recovery-change')), '--ledger', nextLedger, '--out', nextState);
+
+  assert.equal(refused.status, 1, refused.stdout);
+  assert.equal(JSON.parse(refused.stderr).error.code, 'revision_conflict');
+  assert.equal(await readFile(nextLedger, 'utf8').catch(() => null), null);
+  assert.equal(await readFile(`${nextLedger}.lock`, 'utf8').catch(() => null), null);
+  assert.equal(await readFile(nextState, 'utf8').catch(() => null), null);
+  assert.equal(await readFile(`${nextState}.lock`, 'utf8').catch(() => null), null);
+
+  const after = h.call('status');
+  assert.deepEqual(after.session.binding, current.session.binding);
+  assert.equal(after.state.revision, current.state.revision);
+  assert.deepEqual(after.state.usage, current.state.usage);
+  assert.equal(after.session.transitions.length, current.session.transitions.length);
+  assert.equal(after.session.pendingOperation, null);
+  assert.equal(after.session.accountingUncertain, false);
+});
+
+test('same-goal recovery stays refused for a state-less capped session with clock-regression uncertainty', async t => {
+  const capped = packet({ budget: cappedBudget });
+  const h = await harness(t, capped, undefined, async store => {
+    const observedAt = store.snapshot.lastObservedAt;
+    const now = Date.now;
+    Date.now = () => observedAt - 1;
+    try { await store.observe(); }
+    finally { Date.now = now; }
+  });
+  const current = h.call('status');
+  assert.equal(current.state, null);
+  assert.equal(current.session.pendingOperation, null);
+  assert.equal(current.session.accountingUncertain, true);
+  assert.ok(current.session.clockRegression.observedAt < current.session.clockRegression.previousObservedAt);
+
+  const recoveryBudget = { ...cappedBudget };
+  delete recoveryBudget.maxCostYen;
+  const recoveryTask = packet({ taskId: 'uncertain-recovery-refused', budget: recoveryBudget });
+  const nextLedger = join(h.dir, 'uncertain-recovery-sdk.jsonl'), nextState = join(h.dir, 'uncertain-recovery-state.json');
+  const refused = h.run('transition', '--input', await h.json(sameGoalRecovery(current, capped, recoveryTask, 'uncertain-recovery-change')), '--ledger', nextLedger, '--out', nextState);
+
+  assert.equal(refused.status, 1, refused.stdout);
+  assert.equal(JSON.parse(refused.stderr).error.code, 'revision_conflict');
+  assert.equal(await readFile(nextLedger, 'utf8').catch(() => null), null);
+  assert.equal(await readFile(`${nextLedger}.lock`, 'utf8').catch(() => null), null);
+  assert.equal(await readFile(nextState, 'utf8').catch(() => null), null);
+  assert.equal(await readFile(`${nextState}.lock`, 'utf8').catch(() => null), null);
+
+  const after = h.call('status');
+  assert.deepEqual(after.session.binding, current.session.binding);
+  assert.equal(after.session.pendingOperation, null);
+  assert.equal(after.session.accountingUncertain, true);
+  assert.deepEqual(after.session.clockRegression, current.session.clockRegression);
+  assert.equal(after.session.transitions.length, 0);
+  assert.equal(after.state, null);
 });
 
 test('legacy capped session with an interrupted operation keeps its uncertainty while reads and receipts remain available', async t => {

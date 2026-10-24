@@ -263,7 +263,20 @@ function managedReport(result) {
   }
   lines.push('', `SDK未計上の実ツール呼出し: ${result.session.pendingUsage.toolCalls}`, `未計上費用: ${result.session.pendingUsage.costYen ?? 'unknown'}`, '会話側の費用・tokenはunknown。受領は証拠評価や外部操作の許可を意味しない。');
   if (result.session.accountingUncertain) lines.push('中断または時刻逆行により消費は未確定。再生成・再初期化を行わず、明示的な復旧が必要。');
-  for (const transition of result.session.transitions) lines.push('', `旧task: ${safe(transition.previous.taskId)}。旧停止: ${safe(transition.previous.stopReason ?? 'なし')}。旧利用量: ${safe(JSON.stringify(transition.previous.usage))}。未知: ${safe(transition.previous.unknowns.join('、'))}。未評価破棄の履歴: ${transition.previous.discardedUpdates?.length ?? 0}件。新taskの予算は旧taskの継続予算ではない。`);
+  for (const transition of result.session.transitions) {
+    const previous = transition.previous;
+    if (transition.recovery === 'unsupported_cost_cap_without_sdk_state') {
+      lines.push('', '## 旧セッションのアーカイブ済み復旧履歴', '', `旧task: ${safe(previous.taskId)}。旧予算のmaxCostYen: ${safe(previous.budget.maxCostYen)}。旧SDK stateは未生成で、総SDK利用量・revision・stateHashは不明（0ではない）。`);
+      for (const unknown of previous.unknowns ?? []) lines.push(`- 未確認: ${safe(unknown)}`);
+      if (previous.pendingUpdates?.length) {
+        lines.push('以下のreceiptは旧sessionのアーカイブ記録であり、現在のpending updatesではない。再配信・再評価していない。');
+        for (const update of previous.pendingUpdates) lines.push(`- ${safe(update.id)}。状態: ${safe(update.status)}。appliedRevision: ${safe(update.appliedRevision ?? 'null')}。内容: ${safe(update.text ?? update.references.join('、'))}。出典: ${safe(update.source.locator)}。`);
+      } else lines.push('旧sessionにアーカイブされた未評価receiptはない。');
+      if (previous.discardedUpdates?.length) lines.push(`旧sessionの評価せず破棄した追補: ${previous.discardedUpdates.length}件。`);
+      continue;
+    }
+    lines.push('', `旧task: ${safe(previous.taskId)}。旧停止: ${safe(previous.stopReason ?? 'なし')}。旧利用量: ${safe(JSON.stringify(previous.usage))}。未知: ${safe(previous.unknowns.join('、'))}。未評価破棄の履歴: ${previous.discardedUpdates?.length ?? 0}件。新taskの予算は旧taskの継続予算ではない。`);
+  }
   return `${lines.join('\n')}\n`;
 }
 
