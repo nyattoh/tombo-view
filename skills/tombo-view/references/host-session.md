@@ -197,21 +197,25 @@ SDK ledgerが理解/usage/停止、固定cwdの `.session/tombo-session.jsonl` �
 
 現在のhelperにsame-goalの予算・期限延長APIはない。利用者の追加指示だけで評価を再開できるとは案内しない。時計なし旧sessionはcoverage: unavailableを保ち、原開始・期限を後付けしない。時計inputやcacheを書き換えても封印値の変更経路にはならない。
 
+旧TaskPacketがunsupportedな `maxCostYen` 付きで封印され、SDK state/headが未生成のまま `inspect` を拒否された場合は、狭い同goal recoveryだけを許可する。`pendingOperation` がなく `accountingUncertain` がfalseで、sealed task clockにstopがなく期限前であること、実際のuser_statementを記録することが条件。新しい `taskId` と `maxCostYen` の削除以外はTaskPacketとbudgetを完全一致させる。`activate` の同goal binding差替え、他budgetの変更、一般のstate:null transitionは引き続き拒否する。既存clockは同じdeadlineのまま引き継ぎ、期限停止済みなら回復しない。
+
+回復記録は旧bindingと上限付きbudgetをアーカイブし、SDK state statusを `not_created`、revision/stateHash/総SDK usageをunknownとして保持する。旧receiptは `received_unassessed` のままpreviousへ残し、新sessionへ複製・再評価しない。`report` はこのarchiveを現在のpending updatesと分けて表示する。新sessionではcost capなしで初回prepare/inspectから再開し、旧総SDK usageを0や新sessionのusageとして扱わない。
+
 SDK commitとsession記録の中断は、保存された同結果と両正本から照合復旧する。保存済みcommitを復旧してから新規作業へ時計gateを適用し、期限を理由に旧commitを巻き戻さない。結果確定前の中断や時刻逆行で消費が未確定ならaccountingUncertainとなり、prepare/applyは拒否される。新しい生成や予算で隠さない。残存lockは自動で奪わず、明示的な復旧を要する。不整合・消失した正本をcacheやAI要約で置換しない。
 
 redacted履歴の復元は再検証ではない。本文を必要とする生成・再考には許可された元資料から同じ証拠ID/hash/metadataで保存時本文を復元する。既存probeで本文を再取得した場合は新executionの実消費を記録しupdateへ渡す。別版・現在の状態の再検査は新しい証拠IDの実観測で扱う。保存不能や元資料へアクセス不能なら、その境界を残す。
 
 ## 正当な目的変更と未管理APIの境界
 
-利用者が実際にgoal/successCriteriaを変えた場合だけtransitionを使う。新資料、人回答、反例、説明文修正、同goalの期限切れには使わない。capabilityだけの変更が通る操作とは説明しない。
+通常のtransitionは利用者が実際にgoal/successCriteriaを変えた場合だけ使う。新資料、人回答、反例、説明文修正、同goalの期限切れには使わない。capabilityだけの変更が通る操作とは説明しない。前節の旧 `maxCostYen` recoveryは別の限定例外で、同goal/successCriteriaを保ち、taskIdを変え、unsupportedなcost capだけを除く。
 
 ```text
 node <helper> transition --input .session/transition.json --ledger .session/new-sdk.jsonl --out .session/new-state.json --task-clock .session/new-task-clock.json
 ```
 
-clockを付けるなら、正当な新目的の実開始・期限根拠からexact4 fieldsを `.session/new-task-clock.json` へ作る。旧clock/taskClockStopはtransitions[].previous.taskClock/taskClockStopへ保持される。旧taskが初回inspect前のstate:nullならtransitionできるとは約束しない。
+clockを付けるなら、正当な新目的の実開始・期限根拠からexact4 fieldsを `.session/new-task-clock.json` へ作る。旧clock/taskClockStopはtransitions[].previous.taskClock/taskClockStopへ保持される。初回inspect前のstate:null sessionは通常transitionできない。前節のcost-cap recoveryだけはsealed clockがstopされておらず期限前なら同じclockを引き継ぎ、新しいclockを開始・延長しない。
 
-AIが用意するinputには新TaskPacketのtask、reason、previousSessionId、hand_over_summary（旧未解決gapを含むunresolvedGapIdsとunknowns）、userChangeが必要。userChangeは実本人発言のid/kind:user_statement/locator/receivedAt/passage/contentHashと、実新旧goal/successCriteriaを参照する。AIの言い換えだけを変更指示の証拠にしない。新ledger/stateは別の未使用パス。新TaskPacketをファイルへ保存する場合も `.session/new-task.json` 等の非予約名を使い、遷移後はその実入力と新固定ledger/stateを指定して初回prepare/inspectを行い、旧会計・停止・未知・未評価追補の参照を保持する。破棄済み未評価観測もtransitionsのprevious.discardedUpdates/discardedAssessmentsへ保持し、評価済みへ読み替えない。新task単独予算を旧taskの残予算や利用者上限回避として表示しない。
+AIが用意するinputには新TaskPacketのtask、reason、previousSessionId、hand_over_summary（旧未解決gapを含むunresolvedGapIdsとunknowns）、userChangeが必要。cost-cap recoveryではunknownsにSDK state未生成、旧総SDK usage不明、旧receipt未評価も記す。userChangeは実本人発言のid/kind:user_statement/locator/receivedAt/passage/contentHashと、実新旧goal/successCriteriaを参照する。AIの言い換えだけを変更指示の証拠にしない。新ledger/stateは別の未使用パス。新TaskPacketをファイルへ保存する場合も `.session/new-task.json` 等の非予約名を使い、遷移後はその実入力と新固定ledger/stateを指定して初回prepare/inspectを行い、旧会計・停止・未知・未評価追補の参照を保持する。破棄済み未評価観測もtransitionsのprevious.discardedUpdates/discardedAssessmentsへ保持し、評価済みへ読み替えない。新task単独予算を旧taskの残予算や利用者上限回避として表示しない。
 
 未activation領域の旧helper/SDK/CLIは互換用に残るが、管理session継続ではない。managed ledgerへSDK/CLIで直接commitすると正本照合に反するため、迂回復旧の通常手順にしない。保証は保持された固定workspace/bindingを使うhelper経路に限り、別workspace、session記録の外部削除、両正本改ざん、SDK直利用、虚偽のuserChangeまで封じるOS sandboxではない。期限検査はhelper呼出し境界でありhost自由処理の即時中断ではない。global hook/全message interceptionや、別会話で保存領域を自動的に利用できる保証もない。
 
