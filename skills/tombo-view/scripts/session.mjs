@@ -60,6 +60,15 @@ async function managed(command, values, workspace) {
     ? await sameDirectoryIdentity(process.cwd(), store.workspace)
     : await canonicalPath(process.cwd()) === store.workspace;
   if (!cwdMatchesWorkspace) throw new TomboError('revision_conflict', 'Return to the fixed activated workspace. A child directory cannot create another binding.');
+  // withLock creates .session and its lock, so a fresh unsupported cap must be rejected before it; existing authority still replays its sealed budget.
+  if (command === 'activate' && ![store.path, store.cache, store.lock].some(path => existsSync(path))) {
+    const task = taskPacketSchema.safeParse(await json(values.input)).data;
+    if (task?.budget.maxCostYen !== undefined) {
+      validateActivatedInspectInput(task, sdk);
+      await store.paths(values.ledger, values.out);
+      throw new TomboError('budget_accounting_unavailable', 'The managed host adapters cannot estimate cost for a TaskPacket with maxCostYen. Activate without maxCostYen.');
+    }
+  }
   await store.withLock(async () => {
     await store.load();
     if (command === 'activate') {
@@ -81,8 +90,10 @@ async function managed(command, values, workspace) {
       return;
     }
     if (command === 'transition') {
+      const input = await json(values.input);
+      if (taskPacketSchema.safeParse(input?.task).data?.budget.maxCostYen !== undefined) throw new TomboError('budget_accounting_unavailable', 'The managed host adapters cannot estimate cost for a TaskPacket with maxCostYen. Transition without maxCostYen.');
       await store.checkpoint('reflect');
-      await store.transition(await json(values.input), values.ledger, values.out, values['task-clock'] !== undefined ? await json(values['task-clock']) : undefined);
+      await store.transition(input, values.ledger, values.out, values['task-clock'] !== undefined ? await json(values['task-clock']) : undefined);
       process.stdout.write(`${JSON.stringify(managedResult(store), null, 2)}\n`);
       return;
     }

@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdtemp, writeFile, readFile, rm } from 'node:fs/promises';
+import { mkdtemp, writeFile, readFile, readdir, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
@@ -16,7 +16,7 @@ const evidence = (id, passage, extra = {}) => ({ id, kind: 'document', locator: 
 const observation = (executionId, ev, extra = {}) => ({ executionId, probeId: 'probe', outcome: 'completed', evidence: [ev], toolCalls: 1, elapsedMs: 2, costYen: null, ...extra });
 const assessment = (id, verdict = 'supports') => ({ claimId: 'claim', evidenceIds: [id], verdict, scopeMatched: true, reason: 'The current source determines the requirement.' });
 const receipt = (id, text, observations = []) => ({ id, source: { kind: 'document', locator: `conversation:${id}`, receivedAt: new Date().toISOString() }, text, observations });
-async function harness(t, task = packet({}), taskClock) {
+async function harness(t, task = packet({}), taskClock, seed = !!taskClock) {
   const dir = await mkdtemp(join(tmpdir(), 'tombo-followup-'));
   t.after(() => rm(dir, { recursive: true, force: true }));
   const ledger = join(dir, 'sdk.jsonl'), state = join(dir, 'state.json'), input = join(dir, 'task.json');
@@ -38,18 +38,67 @@ async function harness(t, task = packet({}), taskClock) {
     assert.ok(value.binding, JSON.stringify(value));
     return call(operation, ...args, '--ledger', ledger, '--out', state, '--proposal', await envelope(operation, value, proposal), ...extra);
   }
-  if (taskClock) {
+  if (seed) {
     const { SessionStore } = await import(pathToFileURL(resolve('skills/tombo-view/scripts/session-store.mjs')).href);
     const store = new SessionStore(dir, sdk);
-    await store.withLock(async () => { await store.load(); await store.activate(task, ledger, state, taskClock); });
+    await store.withLock(async () => { await store.load(); await store.activate(task, ledger, state, taskClock); if (typeof seed === 'function') await seed(store); });
   }
-  const activation = taskClock ? call('status') : call('activate', '--input', input, '--ledger', ledger, '--out', state);
+  const activation = seed ? call('status') : call('activate', '--input', input, '--ledger', ledger, '--out', state);
   return { dir, ledger, state, input, task, json, run, call, prepared, envelope, apply, activation };
 }
 
+const cappedBudget = { ...budget, maxCostYen: 10 };
+// Legacy fixture only: an SDK adapter with an estimator seeds a valid head that the helper's own adapters cannot extend.
+const sealedInspect = task => async store => {
+  const result = await sdk.createTombo({ adapter: { estimateMaxCostYen: () => 0, async generate() { return { proposal: initial, usage: { totalTokens: null, outputTokens: 0, costYen: 0 } }; } } }).inspect(task);
+  await store.begin('inspect');
+  await store.commit(result.state);
+};
+const authority = h => Promise.all([join(h.dir, '.session', 'tombo-session.jsonl'), join(h.dir, '.session', 'tombo-session.json'), h.ledger, h.state].map(path => readFile(path, 'utf8').catch(() => null)));
+const listing = async dir => (await readdir(dir, { recursive: true })).sort();
+const certain = result => { assert.equal(result.session.pendingOperation, null); assert.equal(result.session.accountingUncertain, false); };
+async function rejectedWithout(h, args, code) {
+  const before = await authority(h), files = await listing(h.dir);
+  const result = h.run(...args);
+  assert.equal(result.status, 1, result.stdout);
+  assert.equal(JSON.parse(result.stderr).error.code, code);
+  assert.deepEqual(await authority(h), before, 'the rejection must not append to the session journal or rewrite its cache, SDK ledger or state');
+  assert.deepEqual(await listing(h.dir), files, 'the rejection must create no session, lock, SDK ledger or state artifact');
+}
+function goalChange(current, previous, task) {
+  const passage = `Change the task: ${task.goal}`;
+  return { task, reason: 'The user changed the requested subject.', previousSessionId: current.session.binding.sessionId, userChange: { id: `change-${task.taskId}`, kind: 'user_statement', locator: `conversation:change-${task.taskId}`, receivedAt: new Date().toISOString(), passage, contentHash: sdk.hashPassage(passage), previousGoal: previous.goal, newGoal: task.goal, previousSuccessCriteria: previous.successCriteria, newSuccessCriteria: task.successCriteria }, hand_over_summary: { unresolvedGapIds: current.state?.gaps.filter(gap => gap.status !== 'resolved').map(gap => gap.id) ?? [], unknowns: ['The previous goal remains unresolved.'] } };
+}
+const nextGoal = taskId => packet({ taskId, goal: 'Explain the packaging licence instead.', successCriteria: ['Read the licence terms.'] });
+
+test('fresh managed activation with an unsupported monetary cap leaves no authority and the same goal activates with the corrected budget', async t => {
+  const dir = await mkdtemp(join(tmpdir(), 'tombo-cost-cap-activate-'));
+  t.after(() => rm(dir, { recursive: true, force: true }));
+  const ledger = join(dir, 'sdk.jsonl'), state = join(dir, 'state.json'), capped = join(dir, 'capped.json'), corrected = join(dir, 'corrected.json');
+  await writeFile(capped, JSON.stringify(packet({ budget: { ...budget, maxCostYen: 10 } })));
+  await writeFile(corrected, JSON.stringify(packet({})));
+  const run = (...args) => spawnSync(process.execPath, [helper, ...args], { cwd: dir, encoding: 'utf8', env: { ...process.env, TOMBO_ROOT: resolve('.') } });
+  const rejected = run('activate', '--input', capped, '--ledger', ledger, '--out', state);
+  const artifacts = (await readdir(dir, { recursive: true })).sort();
+  const retried = run('activate', '--input', corrected, '--ledger', ledger, '--out', state);
+  t.diagnostic(JSON.stringify({ rejectedStatus: rejected.status, rejectedError: rejected.stderr.trim(), artifactsAfterRejection: artifacts, retriedStatus: retried.status, retriedError: retried.stderr.trim() }));
+
+  assert.equal(rejected.status, 1, 'activation must reject a maxCostYen the managed adapters cannot estimate');
+  assert.equal(JSON.parse(rejected.stderr).error.code, 'budget_accounting_unavailable');
+  assert.deepEqual(artifacts, ['capped.json', 'corrected.json'], 'the rejected activation must create no session directory, lock, journal, cache, SDK ledger or state file');
+
+  assert.equal(retried.status, 0, retried.stderr);
+  const activated = JSON.parse(retried.stdout);
+  assert.equal(activated.session.binding.taskId, 'followup');
+  assert.deepEqual(activated.session.binding.budget, budget, 'the corrected same-goal budget omits maxCostYen');
+  assert.equal(activated.session.pendingOperation, null);
+  assert.equal(activated.session.accountingUncertain, false);
+});
+
 test('unsupported managed monetary cap rejects before opening an operation and leaves the session usable', async t => {
   const task = packet({ budget: { ...budget, maxCostYen: 10 } });
-  const h = await harness(t, task);
+  // CLI activation rejects this cap; seed the already-sealed legacy session directly.
+  const h = await harness(t, task, undefined, true);
   const { args, value } = await h.prepared('inspect');
   const rejected = h.run('inspect', ...args, '--ledger', h.ledger, '--out', h.state, '--proposal', await h.envelope('inspect', value, initial));
 
@@ -68,6 +117,141 @@ test('unsupported managed monetary cap rejects before opening an operation and l
   assert.equal(received.session.pendingOperation, null);
   assert.equal(received.session.accountingUncertain, false);
   assert.equal(received.session.pendingUpdates.length, 1, 'normal session operations remain available after the rejected inspect');
+});
+
+test('legacy capped session with SDK state keeps reads, receipts and invalidation while generation rejects before begin', async t => {
+  const source = evidence('legacy-source', 'Minimum is 24.');
+  const capped = packet({ evidence: [source], budget: cappedBudget });
+  const h = await harness(t, capped, undefined, sealedInspect(capped));
+  assert.ok(h.activation.state, 'the legacy fixture has a committed SDK head');
+  const sealed = result => { assert.equal(result.session.binding.sessionId, h.activation.session.binding.sessionId); assert.deepEqual(result.session.binding.budget, cappedBudget); certain(result); };
+  sealed(h.activation);
+  await t.test('activate replays the sealed capped task', () => sealed(h.call('activate', '--input', h.input, '--ledger', h.ledger, '--out', h.state)));
+  await t.test('activate with a corrected budget cannot replace the sealed budget', async () => rejectedWithout(h, ['activate', '--input', await h.json(packet({ evidence: [source] })), '--ledger', h.ledger, '--out', h.state], 'revision_conflict'));
+  await t.test('status remains available', () => sealed(h.call('status')));
+  await t.test('report remains available', () => {
+    const report = h.run('report', '--state', h.state, '--ledger', h.ledger);
+    assert.equal(report.status, 0, report.stderr);
+    assert.match(report.stdout, /旧理解のスナップショット/);
+  });
+  await t.test('receive remains available', async () => {
+    const received = h.call('receive', '--input', await h.json(receipt('legacy-followup', 'A follow-up for the capped session.')));
+    sealed(received);
+    assert.equal(received.session.pendingUpdates.length, 1);
+  });
+  for (const operation of ['update', 'reflect']) await t.test(`${operation} prepares but its generation rejects before begin`, async () => {
+    const { args, value } = await h.prepared(operation, operation === 'update' ? [observation('legacy-read', evidence('legacy-read-source', 'Minimum is 24.'), { costYen: 0 })] : undefined);
+    assert.ok(value.binding, JSON.stringify(value));
+    sealed(value);
+    await rejectedWithout(h, [operation, ...args, '--ledger', h.ledger, '--out', h.state, '--proposal', await h.envelope(operation, value, {})], 'budget_accounting_unavailable');
+  });
+  await t.test('inspect stays closed after the task started', async () => rejectedWithout(h, ['inspect', '--input', h.input, '--ledger', h.ledger, '--out', h.state, '--proposal', await h.json({})], 'revision_conflict'));
+  await t.test('invalidate remains a non-generating transaction', async () => {
+    const withdrawn = h.call('invalidate', '--state', h.state, '--input', await h.json({ evidenceIds: [source.id], reason: 'The legacy source was withdrawn.' }), '--ledger', h.ledger);
+    sealed(withdrawn);
+    assert.equal(withdrawn.state.evidence.find(item => item.id === source.id).validity, 'withdrawn');
+  });
+  await t.test('checkpoint with unknown pending cost records the existing SDK accounting stop', async () => {
+    const received = h.call('receive', '--input', await h.json(receipt('unknown-cost', 'A check with unknown cost.', [observation('unknown-cost-read', evidence('unknown-cost-source', 'Minimum is 24.'))])));
+    sealed(received);
+    assert.equal(received.budgetCheckpoint.accountingUnavailable, true);
+    assert.equal(received.state.stopReason, 'budget_accounting_unavailable');
+  });
+  await t.test('transition to a cap-free new goal is available', async () => {
+    const moved = h.call('transition', '--input', await h.json(goalChange(h.call('status'), capped, nextGoal('legacy-cap-free'))), '--ledger', join(h.dir, 'next-sdk.jsonl'), '--out', join(h.dir, 'next-state.json'));
+    assert.equal(moved.session.binding.taskId, 'legacy-cap-free');
+    assert.deepEqual(moved.session.binding.budget, budget);
+    assert.deepEqual(moved.session.transitions.at(-1).previous.budget, cappedBudget, 'the sealed capped budget is archived unchanged');
+    certain(moved);
+  });
+});
+
+test('legacy capped session without SDK state keeps reads and receipts and refuses transition without new artifacts', async t => {
+  const capped = packet({ budget: cappedBudget });
+  const h = await harness(t, capped, undefined, true);
+  const sealed = result => { assert.equal(result.session.binding.sessionId, h.activation.session.binding.sessionId); assert.deepEqual(result.session.binding.budget, cappedBudget); assert.equal(result.state, null); certain(result); };
+  await t.test('status remains available', () => sealed(h.call('status')));
+  await t.test('report remains available', () => {
+    const report = h.run('report', '--ledger', h.ledger);
+    assert.equal(report.status, 0, report.stderr);
+    assert.match(report.stdout, /SDK理解スナップショットは未生成/);
+  });
+  await t.test('prepare remains available', () => {
+    const prepared = h.call('prepare', '--input', h.input, '--ledger', h.ledger);
+    assert.ok(prepared.binding, JSON.stringify(prepared));
+    sealed(prepared);
+  });
+  await t.test('receive remains available', async () => {
+    const received = h.call('receive', '--input', await h.json(receipt('null-state-followup', 'A follow-up before any inspect.')));
+    sealed(received);
+    assert.equal(received.session.pendingUpdates.length, 1);
+  });
+  await t.test('transition without SDK state keeps the existing refusal', async t => {
+    const input = await h.json(goalChange(h.call('status'), capped, nextGoal('null-state-next')));
+    const files = await listing(h.dir), events = (await authority(h))[0].trimEnd().split('\n').length;
+    const refused = h.run('transition', '--input', input, '--ledger', join(h.dir, 'next-sdk.jsonl'), '--out', join(h.dir, 'next-state.json'));
+    t.diagnostic(JSON.stringify({ status: refused.status, error: refused.stderr.trim(), journalEventDelta: (await authority(h))[0].trimEnd().split('\n').length - events }));
+    assert.equal(refused.status, 1, refused.stdout);
+    assert.equal(JSON.parse(refused.stderr).error.code, 'revision_conflict');
+    assert.deepEqual(await listing(h.dir), files, 'the refusal creates no new SDK ledger, state cache or lock');
+    const after = h.call('status');
+    sealed(after);
+    assert.equal(after.session.transitions.length, 0);
+  });
+});
+
+test('legacy capped session with an interrupted operation keeps its uncertainty while reads and receipts remain available', async t => {
+  const capped = packet({ budget: cappedBudget });
+  const h = await harness(t, capped, undefined, store => store.begin('inspect'));
+  const interrupted = h.activation.session.pendingOperation;
+  assert.equal(interrupted?.operation, 'inspect');
+  assert.equal(h.activation.session.accountingUncertain, true, 'the pre-existing interrupted operation is already uncertain');
+  const preserved = result => {
+    assert.equal(result.session.binding.sessionId, h.activation.session.binding.sessionId);
+    assert.deepEqual(result.session.binding.budget, cappedBudget);
+    assert.deepEqual(result.session.pendingOperation, interrupted, 'the interrupted operation is never cleared automatically');
+    assert.equal(result.session.accountingUncertain, true, 'uncertain accounting is never cleared automatically');
+    assert.equal(result.effectiveDecision, 'blocked');
+  };
+  await t.test('activate replay preserves the interrupted operation', () => preserved(h.call('activate', '--input', h.input, '--ledger', h.ledger, '--out', h.state)));
+  await t.test('status preserves the interrupted operation', () => preserved(h.call('status')));
+  await t.test('report states that explicit recovery is required', () => {
+    const report = h.run('report', '--ledger', h.ledger);
+    assert.equal(report.status, 0, report.stderr);
+    assert.match(report.stdout, /明示的な復旧が必要/);
+  });
+  await t.test('receive remains available', async () => {
+    const received = h.call('receive', '--input', await h.json(receipt('interrupted-followup', 'A follow-up during recovery.')));
+    preserved(received);
+    assert.equal(received.session.pendingUpdates.length, 1);
+  });
+  for (const [name, args] of [
+    ['prepare', async () => ['prepare', '--input', h.input, '--ledger', h.ledger]],
+    ['inspect', async () => ['inspect', '--input', h.input, '--ledger', h.ledger, '--out', h.state, '--proposal', await h.json({})]],
+    ['transition', async () => ['transition', '--input', await h.json(goalChange(h.call('status'), capped, nextGoal('interrupted-next'))), '--ledger', join(h.dir, 'next-sdk.jsonl'), '--out', join(h.dir, 'next-state.json')]],
+  ]) await t.test(`${name} is refused without clearing the interrupted operation`, async () => {
+    const result = h.run(...await args());
+    assert.equal(result.status, 1, result.stdout);
+    assert.equal(JSON.parse(result.stderr).error.code, 'revision_conflict');
+    preserved(h.call('status'));
+  });
+});
+
+test('transition to a new unsupported monetary cap rejects before checkpoint and the corrected cap-free goal transitions', async t => {
+  const h = await harness(t);
+  await h.apply('inspect', initial);
+  const current = h.call('status');
+  const next = nextGoal('capped-next'), ledger = join(h.dir, 'next-sdk.jsonl'), state = join(h.dir, 'next-state.json');
+  await rejectedWithout(h, ['transition', '--input', await h.json(goalChange(current, h.task, { ...next, budget: cappedBudget })), '--ledger', ledger, '--out', state], 'budget_accounting_unavailable');
+  const kept = h.call('status');
+  assert.equal(kept.session.binding.sessionId, current.session.binding.sessionId);
+  assert.equal(kept.state.revision, current.state.revision);
+  assert.equal(kept.session.transitions.length, 0);
+  certain(kept);
+  const moved = h.call('transition', '--input', await h.json(goalChange(kept, h.task, next)), '--ledger', ledger, '--out', state);
+  assert.equal(moved.session.binding.taskId, next.taskId);
+  assert.deepEqual(moved.session.binding.budget, budget);
+  certain(moved);
 });
 
 test('in-budget prepare/apply do not invalidate their own binding and receipts are applied exactly once', async t => {
