@@ -7,3 +7,9 @@ dist/
 *.log
 tmp/
 results/
+
+# Keep bulky local understanding evidence out of the review tree.
+docs/understanding-skill-work/**
+!docs/understanding-skill-work/pr8-review-summary.md
+!docs/understanding-skill-work/evidence-manifest.jsonl
+!docs/understanding-skill-work/pr-body-draft.md
