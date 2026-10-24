@@ -122,6 +122,16 @@ async function managed(command, values, workspace) {
     const task = store.state?.task ?? taskPacketSchema.parse(await json(values.input));
     if (taskDigest(task) !== store.snapshot.binding.taskHash) throw new TomboError('revision_conflict', 'The TaskPacket does not match the activated goal and budget.');
     if (operation === 'inspect') validateActivatedInspectInput(task, sdk);
+    let proposal, reflection;
+    const adapter = { async generate() { return { proposal, usage: { totalTokens: null, outputTokens: 0, costYen: null }, model: 'host-authored-proposal' }; } };
+    const reflectionAdapter = { async reflect(input) {
+      if (canonical(input.binding) !== canonical(reflection.binding)) throw new TomboError('revision_conflict', 'Reflection operation mismatch.');
+      return { ...reflection, usage: { totalTokens: null, outputTokens: 0, costYen: null }, model: reflection.model ?? 'host-authored-reflection' };
+    } };
+    const operationAdapter = operation === 'reflect' ? reflectionAdapter : adapter;
+    if (command !== 'prepare' && task.budget.maxCostYen !== undefined && typeof operationAdapter.estimateMaxCostYen !== 'function') {
+      throw new TomboError('budget_accounting_unavailable', 'The managed host adapter cannot estimate cost for a TaskPacket with maxCostYen.');
+    }
     const observations = operation === 'update' ? observationsSchema.parse(await json(values.observations)) : undefined;
     const receiptIds = values.receipt ?? [];
     let receiptExecutionIds = {};
@@ -161,8 +171,8 @@ async function managed(command, values, workspace) {
     }
     const envelope = await json(values.proposal);
     if (!envelope.binding || canonical(envelope.binding) !== canonical(binding)) throw new TomboError('revision_conflict', 'Prepare the proposal against this exact activated session, task, state and observations.');
-    const proposal = operation === 'reflect' ? undefined : proposalSchema.parse(envelope.proposal);
-    const reflection = operation === 'reflect' ? reflectionOutputSchema.parse(envelope.reflection) : undefined;
+    proposal = operation === 'reflect' ? undefined : proposalSchema.parse(envelope.proposal);
+    reflection = operation === 'reflect' ? reflectionOutputSchema.parse(envelope.reflection) : undefined;
     if (reflection && canonical(reflection.binding) !== canonical(request.binding)) throw new TomboError('revision_conflict', 'The reflection binding does not match the current understanding.');
     const finalCheckpoint = await store.checkpoint(operation);
     if (store.snapshot.taskClockStop || finalCheckpoint?.budgetCheckpoint.exhausted || finalCheckpoint?.budgetCheckpoint.accountingUnavailable || store.snapshot.accountingUncertain) {
@@ -172,12 +182,9 @@ async function managed(command, values, workspace) {
       process.stdout.write(`${JSON.stringify(stopped, null, 2)}\n`);
       return;
     }
-    const tombo = createTombo({ captureProposalRejection: true, adapter: { async generate() { return { proposal, usage: { totalTokens: null, outputTokens: 0, costYen: null }, model: 'host-authored-proposal' }; } } });
+    const tombo = createTombo({ captureProposalRejection: true, adapter });
     await store.begin(operation, operation === 'update' ? { receiptExecutionIds } : null, receiptIds);
-    const result = operation === 'reflect' ? await tombo.reflect(state, { async reflect(input) {
-      if (canonical(input.binding) !== canonical(reflection.binding)) throw new TomboError('revision_conflict', 'Reflection operation mismatch.');
-      return { ...reflection, usage: { totalTokens: null, outputTokens: 0, costYen: null }, model: reflection.model ?? 'host-authored-reflection' };
-    } }) : operation === 'update' ? await tombo.update(state, observations) : await tombo.inspect(task);
+    const result = operation === 'reflect' ? await tombo.reflect(state, reflectionAdapter) : operation === 'update' ? await tombo.update(state, observations) : await tombo.inspect(task);
     await store.commit(result.state);
     const output = { ...result, ...managedResult(store) };
     await store.writeCache(store.snapshot.binding.statePath, output);

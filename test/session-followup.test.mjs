@@ -47,6 +47,29 @@ async function harness(t, task = packet({}), taskClock) {
   return { dir, ledger, state, input, task, json, run, call, prepared, envelope, apply, activation };
 }
 
+test('unsupported managed monetary cap rejects before opening an operation and leaves the session usable', async t => {
+  const task = packet({ budget: { ...budget, maxCostYen: 10 } });
+  const h = await harness(t, task);
+  const { args, value } = await h.prepared('inspect');
+  const rejected = h.run('inspect', ...args, '--ledger', h.ledger, '--out', h.state, '--proposal', await h.envelope('inspect', value, initial));
+
+  assert.equal(rejected.status, 1);
+  assert.equal(JSON.parse(rejected.stderr).error.code, 'budget_accounting_unavailable');
+
+  const persisted = (await readFile(join(h.dir, '.session', 'tombo-session.jsonl'), 'utf8')).trim().split('\n').map(JSON.parse);
+  assert.ok(persisted.every(event => event.snapshot.pendingOperation === null), 'no pending operation may be appended before unsupported-cost rejection');
+  assert.ok(persisted.every(event => event.snapshot.accountingUncertain === false), 'rejection must not persist uncertain accounting');
+
+  const status = h.call('status');
+  assert.equal(status.session.pendingOperation, null, 'failed preflight must not leave an operation to reconcile');
+  assert.equal(status.session.accountingUncertain, false, 'no proposal consumption means the session remains certain');
+
+  const received = h.call('receive', '--input', await h.json(receipt('after-unsupported-cost-cap', 'A follow-up can still be received.')), '--ledger', h.ledger);
+  assert.equal(received.session.pendingOperation, null);
+  assert.equal(received.session.accountingUncertain, false);
+  assert.equal(received.session.pendingUpdates.length, 1, 'normal session operations remain available after the rejected inspect');
+});
+
 test('in-budget prepare/apply do not invalidate their own binding and receipts are applied exactly once', async t => {
   const h = await harness(t);
   const first = await h.apply('inspect', initial);
